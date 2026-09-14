@@ -22,7 +22,8 @@
         "CANARY-FORMAL-1618": 0,
         "CANARY-AGENT-2718": 0
       },
-      "init_output_style": "formal-report"
+      "init_output_style": "formal-report",
+      "delegations": []
     },
     "canary-formal-namespaced": {
       "model": "claude-opus-5[1m]",
@@ -42,7 +43,8 @@
         "CANARY-FORMAL-1618": 0,
         "CANARY-AGENT-2718": 0
       },
-      "init_output_style": "ko-quality:formal-report"
+      "init_output_style": "ko-quality:formal-report",
+      "delegations": []
     },
     "canary-main": {
       "model": "claude-opus-5[1m]",
@@ -62,7 +64,8 @@
         "CANARY-FORMAL-1618": 0,
         "CANARY-AGENT-2718": 0
       },
-      "init_output_style": "default"
+      "init_output_style": "default",
+      "delegations": []
     },
     "canary-subagent": {
       "model": "claude-opus-5[1m]",
@@ -87,7 +90,14 @@
         "CANARY-FORMAL-1618": 0,
         "CANARY-AGENT-2718": 5
       },
-      "init_output_style": "default"
+      "init_output_style": "default",
+      "delegations": [
+        {
+          "tool": "Agent",
+          "subagent_type": "ko-quality:korean-reviewer",
+          "description": "한국어 글 검토"
+        }
+      ]
     },
     "policy-main": {
       "model": "claude-opus-5[1m]",
@@ -107,7 +117,8 @@
         "CANARY-FORMAL-1618": 0,
         "CANARY-AGENT-2718": 0
       },
-      "init_output_style": "default"
+      "init_output_style": "default",
+      "delegations": []
     },
     "policy-subagent": {
       "model": "claude-opus-5[1m]",
@@ -134,7 +145,14 @@
         "CANARY-FORMAL-1618": 0,
         "CANARY-AGENT-2718": 0
       },
-      "init_output_style": "default"
+      "init_output_style": "default",
+      "delegations": [
+        {
+          "tool": "Agent",
+          "subagent_type": "ko-quality:korean-reviewer",
+          "description": "한국어 글 검토"
+        }
+      ]
     }
   }
 }

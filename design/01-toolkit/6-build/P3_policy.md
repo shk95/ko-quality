@@ -88,8 +88,8 @@ Exploration cap: 0 of 4 used.
 
 | # | Tier | Purpose | Tokens | Result |
 |---|---|---|---|---|
-| V | mid (Sonnet 5) | Verification of the done-condition (outside the cap) | _pending_ | _pending_ |
+| V | mid (Sonnet 5) | Verification of the done-condition (outside the cap) | 118.0k | Both clauses and all three checks **met**. Reproduced both channels with its own markers on a throwaway copy (`subagent_type: ko-quality:korean-reviewer` seen in the stream). Diffed rendered bodies against upstream directly. Noted the committed summary abbreviated the delegation call; `delegations` (tool, `subagent_type`) added to `tests/runs/P3/policy-channel.json` |
 
 ## Release-blocked
 
-_(Updated after the verification run.)_
+None. Every done-condition clause was verified met. formal-report reachability is not a P3 release-blocked condition; it carries to P5 (flow D4).
