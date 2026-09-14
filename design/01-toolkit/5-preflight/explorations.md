@@ -1,6 +1,6 @@
 # Preflight explorations — raw material, not decisions
 
-2026-09-14. Six independent mid-tier (Sonnet) subagents were given a question and the sources, never a leaning, and asked for both sides. Their reports are condensed here so that `flow.md` can decide from them. **Nothing below is decided.** The one still-running exploration (anchor robustness over upstream history) is appended when it arrives; if this file lacks it, it did not.
+2026-09-14. Six independent mid-tier (Sonnet) subagents were given a question and the sources, never a leaning, and asked for both sides. Their reports are condensed here so that `flow.md` can decide from them. **Nothing below is decided.**
 
 Work stopped here at the user's request: environment set up, exploration and build not started. Next session resumes at `flow.md`.
 
@@ -33,6 +33,24 @@ Candidates: A orchestrator `skills/humanize-korean/SKILL.md` (331 lines), B sing
 - Invariants: 10 confirmed in P0. C carries 9 in one place (missing an explicit 서법 보존 line, which lives in `quick-rules.header.md`, and a declarative 내용 앵커, which A states). No single file has all 10.
 - **Recommendation:** B as skeleton, C's nine invariants merged, the two missing ones from quick-rules header / A. Cheapest to reverse. Confidence medium.
 - **Counter:** B has no version stamp and is a parallel fork; nothing shows it is kept invariant-complete when A/C change, so a later lock bump could silently inherit a stale subset.
+
+## E2 — anchor form, tested against upstream git history (06 §5.5)
+
+Method: compare HEAD with ~10 and ~30 commits back for each key file in the cached clones.
+
+| File | Finding |
+|---|---|
+| im-not-ai `ai-tell-taxonomy.md` | 61 → 80 → 85 pattern headings over 30 commits. **No id ever removed or renumbered.** Full heading text changed on 8 of 61 (mostly `· v2.x` tag suffixes; A-16 and B-2 changed substance too). One heading changed *level* (`### J-1.` → `## J-1.`) with id and content intact. Ids unique at HEAD |
+| yoonmoon `ai-tell-taxonomy.md` | 10 → 11 sections; all 10 original section titles byte-identical across history; table first cells identical across history (the header word `패턴` repeats per table and must be skipped) |
+| yoonmoon `detect/SKILL.md` | **Rewritten wholesale** from `### Phase n` headings to `<phase n="…">` tags at one commit; later a camelCase rename (`scoring_rubric` → `scoringRubric`); `phase n="3"` removed, `n="1S"` added. No anchor form survives a rewrite of that kind |
+| fluent-korean output-style files | H2 headings byte-identical across the entire history of both files |
+| fluent-korean README blocks | 6 → 7 blocks; bold-question text drifted on 3 of 6 (spacing, arrow glyph, wording). Least stable form observed |
+| Code-block trap | No heading-shaped lines inside fences in any of the six files today; the rule still matters for the scanner. Real trap instead: `## J-1. 과도한 **볼드**` sits at H2 among H3 siblings and contains inline bold |
+
+Per-candidate: (b) id prefix, depth-agnostic — strongest for im-not-ai, survives every edit seen; (a) full heading text — flawless for yoonmoon sections and fluent-korean styles, breaks on im-not-ai tags and README blocks; (c) heading path — never needed for uniqueness in these files, keep as the fallback 06 §5.5 rule 2 requires; (d) tag path — yoonmoon SKILL.md only, survives the rename only with case/underscore normalization; (e) bold label — README only, volatile; (f) heading + first cell — yoonmoon tables, perfectly stable.
+
+- **Recommendation:** per-file-type combination — (b) for im-not-ai patterns with (c) as fallback; (a) for yoonmoon sections and fluent-korean style files; (f) for yoonmoon table rows; (d) normalized for yoonmoon's tagged SKILL.md; (e) for README blocks, accepting periodic re-anchoring. Confidence medium-high.
+- **Counter:** one form everywhere is simpler to scan and review; but no single form applies to most files, and the one that could would maximize false "anchor not found" on exactly the churning files.
 
 ## E3 — upstream/ours separation in rendered SKILL.md (06 §16.2)
 
@@ -77,6 +95,6 @@ Summarized in "Environment checks done" above. Additional facts: skills are invo
 ## What `flow.md` must still settle
 
 - E1, E3, E4, E5 recommendations: accept, amend, or reject each, with the counter-argument answered.
-- E2 (anchor form) once its report is in; otherwise P1 tries id-prefix for im-not-ai and heading text elsewhere under 06 §5.5's three rules.
+- E2 anchor forms: accept the per-file-type combination or fix one form; either way the scanner must be heading-depth-agnostic and skip table header rows.
 - The formal-report reachability problem (E4): second output style, or a different vehicle for the second profile.
 - Whether to run the Codex headless probe before P1 or defer it to P6.
