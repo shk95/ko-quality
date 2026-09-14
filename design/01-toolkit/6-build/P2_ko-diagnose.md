@@ -85,8 +85,8 @@ Exploration cap: 0 of 4 used.
 
 | # | Tier | Purpose | Tokens | Result |
 |---|---|---|---|---|
-| V | mid (Sonnet 5) | Verification of the done-condition (outside the cap) | _pending_ | _pending_ |
+| V | mid (Sonnet 5) | Verification of the done-condition (outside the cap) | 124.7k | Done-condition and all four checks **met**. Reran short-sns live (same tool sequence, pure diagnosis). Hand-checked 6 spans byte-identical; 0 `adapted`. "Cannot tell" only on whether friction and unsupplied links were recorded (it may not read this file; both are recorded above). Flagged the §7 body/references allocation, already under Differs from spec |
 
 ## Release-blocked
 
-_(Updated after the verification run.)_
+None. Every done-condition clause was verified met.
