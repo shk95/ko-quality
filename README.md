@@ -75,6 +75,19 @@
 - **sub-to-sub는 구조로 보장되지 않는다.** 서브에이전트가 또 띄우는 에이전트에 정책을 넘기는 것은 여전히 모델의 몫이고, 로거도 그 경로를 가리지 못한다.
 - **force-for-plugin은 먼저 로드된 플러그인이 이긴다.** 다른 강제 스타일 플러그인이 있으면 우리 정책이 밀릴 수 있다.
 
+## 의존하는 upstream
+
+문장은 전부 아래 네 프로젝트의 것입니다. ko-quality는 이들을 고정된 커밋에서 받아와 역할별 규격으로 정규화하고, 조각마다 출처를 답니다. 문장을 고치지 않고, 두 taxonomy를 한 컨텍스트에 올리지 않습니다.
+
+| 프로젝트 | 역할 | 가져오는 것 | 라이선스 | 고정 커밋 |
+|---|---|---|---|---|
+| [snflkd/fluent-korean](https://github.com/snflkd/fluent-korean) | `policy` — 생성 시점 정책 | 출력 스타일 본문 2종(coding / not-coding)과 README의 선택 블록 7종 | MIT | `ce8683f` |
+| [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) | `procedure.rewrite`, `taxonomy.rewrite` — 윤문 | 절차와 철칙, AI 티 분류 체계(10대 분류, 85 패턴) | MIT | `9747f03` |
+| [amondnet/yoonmoon](https://github.com/amondnet/yoonmoon) | `procedure.diagnose`, `taxonomy.diagnose` — 진단 | detect 절차(수정 없이 신호 보고), 11대 분류 | MIT | `c888531` |
+| [DaleSeo/korean-skills](https://github.com/DaleSeo/korean-skills) | `procedure.grammar` — 맞춤법·띄어쓰기 | grammar-checker 절차 | MIT | `ae12ba2` |
+
+정확한 커밋·확인일은 [`upstream/lock.yaml`](upstream/lock.yaml)에 있습니다. 원본은 저장소에 커밋하지 않고(`upstream/.cache/`), 정규화 산출물(`upstream/normalized/`)만 커밋합니다. 검증 단계에서 결정론 규칙(`ruleset`) 공급자가 더해질 수 있습니다.
+
 ## 저장소
 
 ```text
