@@ -1,0 +1,1394 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ko-quality 작동 구조</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Gowun+Batang:wght@400;700&display=swap">
+<style>
+  :root {
+    --ink:        #1A1E1D;
+    --ink-soft:   #3C4542;
+    --paper:      #F6F7F5;
+    --surface:    #FFFFFF;
+    --muted:      #6B7370;
+    --line:       #D9DEDB;
+    --line-soft:  #E8ECEA;
+
+    --accent:       #1F6F6B;
+    --accent-wash:  #E8F2F1;
+    --warn:         #A8761F;
+    --warn-wash:    #FAF2E2;
+    --alert:        #B4432E;
+    --alert-wash:   #FBEDE9;
+    --upstream-wash:#EFF1EF;
+
+    --measure: 64ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink:        #E7EBE8;
+      --ink-soft:   #C2CAC6;
+      --paper:      #121614;
+      --surface:    #1A201D;
+      --muted:      #939C98;
+      --line:       #2E3633;
+      --line-soft:  #242B28;
+
+      --accent:       #63BDB4;
+      --accent-wash:  #17302E;
+      --warn:         #D9A84E;
+      --warn-wash:    #2C2617;
+      --alert:        #E58468;
+      --alert-wash:   #331F1A;
+      --upstream-wash:#202623;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ink:        #E7EBE8;
+    --ink-soft:   #C2CAC6;
+    --paper:      #121614;
+    --surface:    #1A201D;
+    --muted:      #939C98;
+    --line:       #2E3633;
+    --line-soft:  #242B28;
+
+    --accent:       #63BDB4;
+    --accent-wash:  #17302E;
+    --warn:         #D9A84E;
+    --warn-wash:    #2C2617;
+    --alert:        #E58468;
+    --alert-wash:   #331F1A;
+    --upstream-wash:#202623;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    font-size: 16px;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 940px;
+    margin: 0 auto;
+    padding-inline: 24px;
+    padding-block: 56px 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead { display: flex; flex-direction: column; gap: 14px; }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(30px, 5.2vw, 44px);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.18;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    margin: 0;
+    max-width: var(--measure);
+    font-size: 17px;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+
+  .masthead-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+
+  /* ---------- prose ---------- */
+
+  section { display: flex; flex-direction: column; gap: 22px; }
+
+  h2 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  p { margin: 0; max-width: var(--measure); }
+  p + p { margin-top: -6px; }
+
+  .lede { color: var(--ink-soft); }
+
+  code {
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.86em;
+    background: var(--line-soft);
+    padding: 0.12em 0.36em;
+    border-radius: 3px;
+  }
+
+  .thesis {
+    font-family: 'Gowun Batang', 'Apple SD Gothic Neo', serif;
+    font-size: 21px;
+    line-height: 1.62;
+    color: var(--ink);
+    max-width: 52ch;
+    margin: 0;
+    padding-left: 22px;
+    border-left: 2px solid var(--accent);
+  }
+  .thesis cite {
+    display: block;
+    margin-top: 10px;
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 11.5px;
+    font-style: normal;
+    color: var(--muted);
+  }
+
+  /* ---------- figures ---------- */
+
+  figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .frame {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+    overflow-x: auto;
+  }
+
+  .frame svg {
+    display: block;
+    width: 100%;
+    min-width: 680px;
+    max-width: 880px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  figcaption {
+    max-width: var(--measure);
+    font-size: 14px;
+    line-height: 1.62;
+    color: var(--ink-soft);
+  }
+  figcaption b { color: var(--ink); font-weight: 600; }
+
+  .scroll-hint {
+    display: none;
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+  }
+
+  /* ---------- svg primitives ---------- */
+
+  svg text {
+    font-family: 'IBM Plex Sans KR', -apple-system, 'Apple SD Gothic Neo', sans-serif;
+    fill: var(--ink);
+  }
+  svg .mono {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  }
+
+  .dg-boundary {
+    fill: none;
+    stroke: var(--muted);
+    stroke-width: 1.25;
+    stroke-dasharray: 7 5;
+    opacity: 0.75;
+  }
+  .dg-boundary-label { font-size: 11px; fill: var(--muted); letter-spacing: 0.01em; }
+
+  .dg-box       { fill: var(--surface); stroke: var(--ink-soft); stroke-width: 1.4; }
+  .dg-box-same  { fill: none; stroke: var(--line); stroke-width: 1.2; }
+  .dg-box-own   { fill: var(--accent-wash); stroke: var(--accent); stroke-width: 1.4; }
+  .dg-box-up    { fill: var(--upstream-wash); stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 4 3; }
+  .dg-box-log   { fill: var(--warn-wash); stroke: var(--warn); stroke-width: 1.4; }
+  .dg-box-gap   { fill: var(--alert-wash); stroke: var(--alert); stroke-width: 1.4; }
+
+  .dg-name   { font-size: 13px; font-weight: 600; }
+  .dg-name-s { font-size: 11.5px; font-weight: 500; }
+  .dg-sub    { font-size: 10.5px; fill: var(--muted); }
+  .dg-sub-a  { font-size: 10.5px; fill: var(--accent); }
+  .dg-sub-x  { font-size: 10.5px; fill: var(--alert); }
+
+  .dg-edge       { fill: none; stroke: var(--muted); stroke-width: 1.4; }
+  .dg-edge-own   { fill: none; stroke: var(--accent); stroke-width: 1.4; }
+  .dg-edge-log   { fill: none; stroke: var(--warn); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .dg-edge-gap   { fill: none; stroke: var(--alert); stroke-width: 1.5; stroke-dasharray: 6 4; }
+  .dg-edge-thin  { fill: none; stroke: var(--accent); stroke-width: 1.1; }
+  .dg-edge-thinx { fill: none; stroke: var(--alert); stroke-width: 1.1; }
+  .dg-axis       { fill: none; stroke: var(--ink-soft); stroke-width: 1.5; }
+
+  .dg-elabel  { font-size: 11px; fill: var(--muted); }
+  .dg-elabel-x{ font-size: 11px; fill: var(--alert); }
+  .dg-elabel-w{ font-size: 11px; fill: var(--warn); }
+
+  .ah      { fill: var(--muted); }
+  .ah-own  { fill: var(--accent); }
+  .ah-log  { fill: var(--warn); }
+  .ah-gap  { fill: var(--alert); }
+
+  /* ---------- legend ---------- */
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 26px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+  .legend span { display: flex; align-items: center; gap: 8px; }
+  .swatch {
+    width: 22px; height: 13px;
+    border-radius: 3px;
+    flex: none;
+  }
+  .sw-own  { background: var(--accent-wash); border: 1.4px solid var(--accent); }
+  .sw-up   { background: var(--upstream-wash); border: 1.2px dashed var(--muted); }
+  .sw-box  { background: var(--surface); border: 1.4px solid var(--ink-soft); }
+  .sw-log  { background: var(--warn-wash); border: 1.4px solid var(--warn); }
+  .sw-same { background: transparent; border: 1.2px solid var(--line); }
+  .sw-gap  { background: var(--alert-wash); border: 1.4px solid var(--alert); }
+
+  /* ---------- table ---------- */
+
+  .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+
+  table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  thead th {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.preset {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-weight: 500;
+  }
+  td.mark { text-align: center; font-variant-numeric: tabular-nums; }
+  .on  { color: var(--accent); font-size: 15px; line-height: 1; }
+  .off { color: var(--line); font-size: 15px; line-height: 1; }
+  td.note { color: var(--ink-soft); font-size: 12.5px; }
+  td.note em { font-style: normal; color: var(--alert); }
+
+  /* ---------- gap list ---------- */
+
+  .gaps { display: flex; flex-direction: column; gap: 2px; }
+  .gap {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line-soft);
+    max-width: 72ch;
+  }
+  .gap:first-child { border-top: 1px solid var(--line); }
+  .gap-n {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 11.5px;
+    color: var(--alert);
+    padding-top: 4px;
+  }
+  .gap-t { font-weight: 600; font-size: 15.5px; letter-spacing: -0.01em; }
+  .gap-b { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin-top: 3px; }
+
+  /* ---------- use cases ---------- */
+
+  .uc-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .uc-legend span { display: flex; align-items: center; gap: 7px; }
+  .uc-legend i {
+    width: 20px; height: 12px; border-radius: 3px; flex: none;
+  }
+  .lg-on  { background: var(--accent-wash); border: 1.3px solid var(--accent); }
+  .lg-off { background: transparent; border: 1.3px dashed var(--line); }
+  .lg-cut { background: var(--alert-wash); border: 1.3px dashed var(--alert); }
+  .lg-log { background: var(--warn-wash); border: 1.3px solid var(--warn); }
+
+  .uc {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-block: 28px;
+    border-top: 1px solid var(--line);
+  }
+
+  .uc-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; }
+  .uc-title {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+  .uc-pos {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 10.5px;
+    padding: 2.5px 8px;
+    border-radius: 3px;
+    background: var(--line-soft);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .uc-sit { font-size: 14.5px; color: var(--ink-soft); max-width: 68ch; line-height: 1.65; }
+
+  .uc-cfg {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 11.5px;
+    color: var(--accent);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+  }
+
+  .path {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 7px;
+  }
+  .path-node {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    text-align: center;
+    padding: 6px 4px;
+    border-radius: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .path-on  { background: var(--accent-wash); border: 1.3px solid var(--accent); color: var(--ink); }
+  .path-off { background: transparent; border: 1.3px dashed var(--line); color: var(--muted); }
+  .path-cut { background: var(--alert-wash); border: 1.3px dashed var(--alert); color: var(--alert); }
+  .path-log { background: var(--warn-wash); border: 1.3px solid var(--warn); color: var(--ink); }
+
+  .uc-out { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .uc-col { padding-left: 14px; border-left: 2px solid var(--line); }
+  .uc-col.neg { border-left-color: var(--alert); }
+  .uc-lab {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  .uc-col.neg .uc-lab { color: var(--alert); }
+  .uc-txt { font-size: 13.5px; line-height: 1.62; color: var(--ink-soft); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+    font-size: 13px;
+    color: var(--muted);
+    max-width: var(--measure);
+  }
+
+  @media (max-width: 720px) {
+    .wrap { padding-block: 40px 64px; gap: 44px; }
+    .frame { padding: 14px; }
+    .scroll-hint { display: block; }
+    .uc-out { grid-template-columns: 1fr; gap: 16px; }
+    .path { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">05 구성 계층 · 구현 대상</div>
+    <h1>ko-quality 작동 구조</h1>
+    <p class="standfirst">
+      한국어 품질 upstream들을 프로파일·프리셋·에이전트로 묶어 에이전트에게 붙이는 얇은 층.
+      런타임에 무엇이 무엇을 부르고, 무엇이 하네스 밖에 남는가.
+    </p>
+    <div class="masthead-meta">
+      <span>기준 문서 · 05_composition_spec.md</span>
+      <span>전제 · upstream 신뢰, 사용성 우선</span>
+      <span>보류 · 04 검증 엔진</span>
+    </div>
+  </header>
+
+  <!-- ============ 1. 런타임 ============ -->
+  <section>
+    <h2>런타임</h2>
+    <h3>하네스 안에서 도는 것, 밖에 남는 것</h3>
+    <p class="lede">
+      설정 자산은 adapter를 거쳐 하네스 안으로 들어가고, 산출물은 transcript를 통해 한 번 밖으로 나온다.
+      경계를 넘는 방향은 각각 하나씩뿐이다.
+    </p>
+
+    <figure>
+      <div class="frame">
+        <span class="scroll-hint">← 좌우로 스크롤</span>
+        <svg viewBox="0 0 880 690" role="img" aria-label="ko-quality 런타임 구조. 설정 자산과 adapter가 하네스 밖에서 정책을 렌더해 오케스트레이터에 주입하고, 오케스트레이터가 writer·reviewer·editor 서브에이전트를 띄우며, reviewer와 editor만 라우터 SKILL을 거쳐 upstream skill을 호출한다. 로거는 하네스 밖에서 transcript를 읽기만 한다.">
+          <defs>
+            <marker id="f1-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah"/>
+            </marker>
+            <marker id="f1-ah-own" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah-own"/>
+            </marker>
+            <marker id="f1-ah-log" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah-log"/>
+            </marker>
+          </defs>
+
+          <!-- harness boundary -->
+          <rect class="dg-boundary" x="24" y="96" width="832" height="430" rx="12"/>
+          <text class="dg-boundary-label" x="40" y="120">하네스 경계 — 모델이 도는 곳. 토큰은 여기 안에서만 나간다</text>
+
+          <!-- row 1 : config assets -->
+          <rect class="dg-box-own" x="60" y="20" width="236" height="56" rx="6"/>
+          <text class="dg-name" x="178" y="45" text-anchor="middle">설정 자산</text>
+          <text class="dg-sub mono" x="178" y="63" text-anchor="middle">profiles · presets · policy-blocks</text>
+
+          <path class="dg-edge-own" d="M296,48 L346,48" marker-end="url(#f1-ah-own)"/>
+          <text class="dg-elabel" x="321" y="38" text-anchor="middle">렌더</text>
+
+          <rect class="dg-box-own" x="352" y="20" width="176" height="56" rx="6"/>
+          <text class="dg-name" x="440" y="45" text-anchor="middle">adapter</text>
+          <text class="dg-sub mono" x="440" y="63" text-anchor="middle">generic · claude-code</text>
+
+          <path class="dg-edge-own" d="M440,76 L440,144" marker-end="url(#f1-ah-own)"/>
+          <text class="dg-elabel" x="452" y="106">system prompt / output-style</text>
+          <text class="dg-sub" x="452" y="122">세션 시작 시 1회</text>
+
+          <!-- row 2 : orchestrator -->
+          <rect class="dg-box" x="340" y="150" width="200" height="50" rx="6"/>
+          <text class="dg-name" x="440" y="180" text-anchor="middle">오케스트레이터</text>
+
+          <!-- spawn bus -->
+          <path class="dg-edge" d="M440,200 L440,222"/>
+          <path class="dg-edge" d="M168,222 L712,222"/>
+          <path class="dg-edge" d="M168,222 L168,244" marker-end="url(#f1-ah)"/>
+          <path class="dg-edge" d="M440,222 L440,244" marker-end="url(#f1-ah)"/>
+          <path class="dg-edge" d="M712,222 L712,244" marker-end="url(#f1-ah)"/>
+          <text class="dg-elabel" x="452" y="240">spawn + 정책 주입</text>
+
+          <!-- row 3 : agents -->
+          <rect class="dg-box-own" x="70" y="250" width="196" height="58" rx="6"/>
+          <text class="dg-name-s mono" x="168" y="275" text-anchor="middle">korean-writer</text>
+          <text class="dg-sub" x="168" y="293" text-anchor="middle">정책을 받아 생성</text>
+
+          <rect class="dg-box-own" x="342" y="250" width="196" height="58" rx="6"/>
+          <text class="dg-name-s mono" x="440" y="275" text-anchor="middle">korean-reviewer</text>
+          <text class="dg-sub" x="440" y="293" text-anchor="middle">고치지 않고 진단</text>
+
+          <rect class="dg-box-own" x="614" y="250" width="196" height="58" rx="6"/>
+          <text class="dg-name-s mono" x="712" y="275" text-anchor="middle">korean-editor</text>
+          <text class="dg-sub" x="712" y="293" text-anchor="middle">윤문 + 맞춤법</text>
+
+          <!-- writer bypasses router -->
+          <text class="dg-sub-x" x="168" y="332" text-anchor="middle">라우터를 거치지 않는다</text>
+          <text class="dg-sub" x="168" y="348" text-anchor="middle">주입된 정책만으로 생성</text>
+
+          <path class="dg-edge" d="M440,308 L440,346" marker-end="url(#f1-ah)"/>
+          <text class="dg-elabel mono" x="452" y="332">preset: review</text>
+
+          <path class="dg-edge" d="M712,308 L712,330 L520,330 L520,346" marker-end="url(#f1-ah)"/>
+          <text class="dg-elabel mono" x="616" y="322" text-anchor="middle">preset: edit</text>
+
+          <!-- row 4 : router -->
+          <rect class="dg-box-own" x="300" y="352" width="260" height="52" rx="6"/>
+          <text class="dg-name" x="430" y="375" text-anchor="middle">라우터 SKILL.md</text>
+          <text class="dg-sub" x="430" y="392" text-anchor="middle">프리셋을 stage 순서로 푼다</text>
+
+          <!-- router → upstreams bus -->
+          <path class="dg-edge" d="M430,404 L430,424"/>
+          <path class="dg-edge" d="M133,424 L727,424"/>
+          <path class="dg-edge" d="M133,424 L133,446" marker-end="url(#f1-ah)"/>
+          <path class="dg-edge" d="M331,424 L331,446" marker-end="url(#f1-ah)"/>
+          <path class="dg-edge" d="M529,424 L529,446" marker-end="url(#f1-ah)"/>
+          <path class="dg-edge" d="M727,424 L727,446" marker-end="url(#f1-ah)"/>
+          <text class="dg-elabel" x="442" y="417">순서대로 호출 · 출력을 그대로 이어 붙인다</text>
+
+          <!-- row 5 : upstreams -->
+          <rect class="dg-box-up" x="44" y="452" width="178" height="54" rx="6"/>
+          <text class="dg-name-s mono" x="133" y="475" text-anchor="middle">fluent-korean</text>
+          <text class="dg-sub" x="133" y="492" text-anchor="middle">policy</text>
+
+          <rect class="dg-box-up" x="246" y="452" width="170" height="54" rx="6"/>
+          <text class="dg-name-s mono" x="331" y="475" text-anchor="middle">im-not-ai</text>
+          <text class="dg-sub" x="331" y="492" text-anchor="middle">rewrite</text>
+
+          <rect class="dg-box-up" x="440" y="452" width="178" height="54" rx="6"/>
+          <text class="dg-name-s mono" x="529" y="475" text-anchor="middle">korean-skills</text>
+          <text class="dg-sub" x="529" y="492" text-anchor="middle">grammar</text>
+
+          <rect class="dg-box-up" x="642" y="452" width="170" height="54" rx="6"/>
+          <text class="dg-name-s mono" x="727" y="475" text-anchor="middle">yoonmoon</text>
+          <text class="dg-sub" x="727" y="492" text-anchor="middle">diagnose</text>
+
+          <!-- boundary crossing → logger -->
+          <path class="dg-edge-log" d="M440,526 L440,584" marker-end="url(#f1-ah-log)"/>
+          <text class="dg-elabel-w" x="452" y="548">Stop hook → transcript</text>
+          <text class="dg-sub" x="452" y="564">읽기 전용 · 토큰 0 · 모델은 로거를 모른다</text>
+
+          <!-- row 6 : logger -->
+          <rect class="dg-box-log" x="24" y="590" width="832" height="78" rx="10"/>
+          <text class="dg-name-s" x="44" y="614">로거 — 하네스 밖의 스크립트</text>
+
+          <rect class="dg-box" x="44" y="626" width="150" height="28" rx="4"/>
+          <text class="dg-sub" x="119" y="644" text-anchor="middle">transcript 캡처</text>
+          <path class="dg-edge" d="M198,640 L222,640" marker-end="url(#f1-ah)"/>
+
+          <rect class="dg-box" x="228" y="626" width="118" height="28" rx="4"/>
+          <text class="dg-sub mono" x="287" y="644" text-anchor="middle">axes.py</text>
+          <path class="dg-edge" d="M350,640 L374,640" marker-end="url(#f1-ah)"/>
+
+          <rect class="dg-box" x="380" y="626" width="118" height="28" rx="4"/>
+          <text class="dg-sub mono" x="439" y="644" text-anchor="middle">filter.py</text>
+          <path class="dg-edge" d="M502,640 L526,640" marker-end="url(#f1-ah)"/>
+
+          <rect class="dg-box" x="532" y="626" width="252" height="28" rx="4"/>
+          <text class="dg-sub mono" x="658" y="644" text-anchor="middle">~/.ko-quality/logs/*.jsonl</text>
+        </svg>
+      </div>
+      <div class="legend">
+        <span><i class="swatch sw-own"></i>ko-quality가 쓰는 것</span>
+        <span><i class="swatch sw-up"></i>설치하는 upstream</span>
+        <span><i class="swatch sw-box"></i>하네스가 주는 것</span>
+        <span><i class="swatch sw-log"></i>하네스 밖 스크립트</span>
+      </div>
+      <figcaption>
+        경계를 넘는 경로는 둘뿐이다. 들어가는 것은 <b>정책 텍스트 한 번</b>(세션 시작), 나오는 것은 <b>transcript 한 번</b>(Stop hook).
+        로거로 향하는 화살표에 되돌아오는 짝이 없다는 것이 “토큰을 쓰지 않는다”의 실제 모양이다.
+        <code>korean-writer</code>가 라우터로 가지 않는 것도 의도된 것 — writer의 유일한 입력은 주입된 정책이고, 그래서 writer 경로에는 검사 지점이 하나도 없다.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 2. 두 방향 ============ -->
+  <section>
+    <h2>두 방향</h2>
+    <h3>같은 profile이 갈라지는 지점</h3>
+    <p class="lede">
+      02a가 재정의한 “재사용성”은 이 두 경로를 말한다. 하나는 생성 전에 정책을 넣는 것, 하나는 생성 후에 진단을 위임하는 것.
+      두 경로는 같은 <code>profile</code>에서 출발하지만 끝에서 전혀 다른 것을 남긴다.
+    </p>
+
+    <figure>
+      <div class="frame">
+        <span class="scroll-hint">← 좌우로 스크롤</span>
+        <svg viewBox="0 0 880 400" role="img" aria-label="생성 방향과 검토 방향의 비교. 생성 방향은 profile에서 system prompt를 거쳐 writer가 산출물을 내지만 정책이 걸렸는지 확인할 지점이 없다. 검토 방향은 산출물이 reviewer와 upstream을 거쳐 오케스트레이터에 도달하지만 05에는 pass 필드가 없어 사람이 읽고 정한다.">
+          <defs>
+            <marker id="f2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah"/>
+            </marker>
+          </defs>
+
+          <line x1="440" y1="18" x2="440" y2="382" class="dg-boundary"/>
+
+          <!-- LEFT : generation -->
+          <text class="dg-name" x="30" y="32" fill="currentColor">생성 방향 — 프롬프트에 정책을 주입</text>
+
+          <rect class="dg-box-own" x="30" y="52" width="340" height="52" rx="6"/>
+          <text class="dg-name-s mono" x="200" y="76" text-anchor="middle">profile: agent-reply</text>
+          <text class="dg-sub" x="200" y="93" text-anchor="middle">policy.fluent-korean + blocks</text>
+
+          <path class="dg-edge" d="M200,104 L200,134" marker-end="url(#f2-ah)"/>
+          <text class="dg-elabel" x="212" y="123">블록 합성</text>
+
+          <rect class="dg-box-own" x="30" y="140" width="340" height="52" rx="6"/>
+          <text class="dg-name-s" x="200" y="164" text-anchor="middle">system prompt / output-style</text>
+          <text class="dg-sub" x="200" y="181" text-anchor="middle">세션 시작 시 1회 로드</text>
+
+          <path class="dg-edge" d="M200,192 L200,222" marker-end="url(#f2-ah)"/>
+          <text class="dg-elabel" x="212" y="211">priming</text>
+
+          <rect class="dg-box-own" x="30" y="228" width="340" height="52" rx="6"/>
+          <text class="dg-name-s mono" x="200" y="252" text-anchor="middle">korean-writer</text>
+          <text class="dg-sub" x="200" y="269" text-anchor="middle">정책이 걸린 채로 생성</text>
+
+          <path class="dg-edge" d="M200,280 L200,310" marker-end="url(#f2-ah)"/>
+
+          <rect class="dg-box-gap" x="30" y="316" width="340" height="52" rx="6"/>
+          <text class="dg-name-s" x="200" y="340" text-anchor="middle">산출물</text>
+          <text class="dg-sub-x" x="200" y="357" text-anchor="middle">정책이 걸렸는지 확인할 지점 없음</text>
+
+          <!-- RIGHT : review -->
+          <text class="dg-name" x="466" y="32" fill="currentColor">검토 방향 — 서브에이전트에 위임</text>
+
+          <rect class="dg-box" x="466" y="52" width="384" height="52" rx="6"/>
+          <text class="dg-name-s" x="658" y="76" text-anchor="middle">산출물</text>
+          <text class="dg-sub" x="658" y="93" text-anchor="middle">이미 만들어진 텍스트</text>
+
+          <path class="dg-edge" d="M658,104 L658,134" marker-end="url(#f2-ah)"/>
+          <text class="dg-elabel" x="670" y="123">입력</text>
+
+          <rect class="dg-box-own" x="466" y="140" width="384" height="52" rx="6"/>
+          <text class="dg-name-s mono" x="658" y="164" text-anchor="middle">korean-reviewer</text>
+          <text class="dg-sub" x="658" y="181" text-anchor="middle">preset: review · 텍스트를 고치지 않는다</text>
+
+          <path class="dg-edge" d="M658,192 L658,222" marker-end="url(#f2-ah)"/>
+          <text class="dg-elabel mono" x="670" y="211">diagnose.yoonmoon</text>
+
+          <rect class="dg-box-up" x="466" y="228" width="384" height="52" rx="6"/>
+          <text class="dg-name-s" x="658" y="252" text-anchor="middle">upstream 출력</text>
+          <text class="dg-sub" x="658" y="269" text-anchor="middle">AI 가능성 · 신뢰도 · 근거</text>
+
+          <path class="dg-edge" d="M658,280 L658,310" marker-end="url(#f2-ah)"/>
+          <text class="dg-elabel" x="670" y="299">요약 없이 그대로</text>
+
+          <rect class="dg-box-gap" x="466" y="316" width="384" height="52" rx="6"/>
+          <text class="dg-name-s" x="658" y="340" text-anchor="middle">오케스트레이터 판단</text>
+          <text class="dg-sub-x" x="658" y="357" text-anchor="middle">report.pass 가 없다 — 사람이 읽고 정한다</text>
+        </svg>
+      </div>
+      <figcaption>
+        두 경로의 차이는 <b>되돌아오는 신호가 있느냐</b>다. 검토 방향에는 산출물이 다시 올라오는 경로가 있고, 생성 방향에는 없다.
+        다만 05에서는 그 신호가 upstream의 산문 보고라서 기계가 읽을 수 있는 <code>pass</code>가 아니다. 04가 채우려던 자리가 여기다.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 3. preset ============ -->
+  <section>
+    <h2>배선</h2>
+    <h3>프리셋이 실제로 부르는 것</h3>
+    <p class="lede">
+      라우터가 프리셋을 stage 목록으로 풀면 아래 조합이 된다. 04에서는 모든 행 끝에 <code>gate</code>가 하나씩 더 붙는다.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>preset</th>
+            <th style="text-align:center">policy</th>
+            <th style="text-align:center">rewrite</th>
+            <th style="text-align:center">grammar</th>
+            <th style="text-align:center">diagnose</th>
+            <th>05에서 실제로 부하가 걸리는가</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="preset">quick</td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="note"><em>아니오</em> — 빈 프리셋. 로거는 preset과 무관하게 돈다</td>
+          </tr>
+          <tr>
+            <td class="preset">standard</td>
+            <td class="mark"><span class="on">●</span></td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="note"><em>거의 아니오</em> — output-style로 이미 켜져 있다</td>
+          </tr>
+          <tr>
+            <td class="preset">review</td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="mark"><span class="on">●</span></td>
+            <td class="note">예 — yoonmoon detect 호출</td>
+          </tr>
+          <tr>
+            <td class="preset">edit</td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="mark"><span class="on">●</span></td>
+            <td class="mark"><span class="on">●</span></td>
+            <td class="mark"><span class="off">○</span></td>
+            <td class="note">예 — 단, 첫 profile이 agent-reply라 거의 안 쓰인다</td>
+          </tr>
+          <tr>
+            <td class="preset">full</td>
+            <td class="mark"><span class="on">●</span></td>
+            <td class="mark"><span class="on">●</span></td>
+            <td class="mark"><span class="on">●</span></td>
+            <td class="mark"><span class="on">●</span></td>
+            <td class="note">예 — formal-report의 기본값</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      다섯 프리셋 중 첫 profile에서 실제로 도는 것은 <code>standard</code> 하나이고, 그건 fluent-korean 플러그인을 설치해 둔 상태다.
+      즉 05 구현의 실질은 <b>upstream 설치 + 로거</b>이고, 나머지 자산은 두 번째 profile이나 서브에이전트 경로가 생길 때 부하를 받기 시작한다.
+    </p>
+  </section>
+
+  <!-- ============ 4. 로거 ============ -->
+  <section>
+    <h2>로거</h2>
+    <h3>대조군 배정이 성립하지 않는 이유</h3>
+    <p class="lede">
+      로거의 유일한 실험 장치는 <code>schedule.py</code>의 층별 off 교대다. 층 키는 네 값으로 이루어지는데,
+      배정은 세션 시작에 일어나고 값 중 둘은 세션이 끝나야 확정된다.
+    </p>
+
+    <figure>
+      <div class="frame">
+        <span class="scroll-hint">← 좌우로 스크롤</span>
+        <svg viewBox="0 0 880 400" role="img" aria-label="로거의 타이밍 모순. schedule.py는 세션 시작 시점에 policy on/off를 배정해야 하는데, 층 키 네 요소 중 profile과 injection_point만 그 시점에 확정되고 harness_position과 task_type은 세션이 끝나야 알 수 있다.">
+          <defs>
+            <marker id="f4-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah"/>
+            </marker>
+            <marker id="f4-ah-own" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah-own"/>
+            </marker>
+            <marker id="f4-ah-gap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah-gap"/>
+            </marker>
+            <marker id="f4-ah-axis" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah"/>
+            </marker>
+          </defs>
+
+          <!-- scheduler -->
+          <rect class="dg-box-own" x="40" y="40" width="280" height="56" rx="6"/>
+          <text class="dg-name-s mono" x="180" y="65" text-anchor="middle">schedule.py</text>
+          <text class="dg-sub" x="180" y="83" text-anchor="middle">policy on/off 를 여기서 배정한다</text>
+
+          <path class="dg-edge-own" d="M180,96 L180,182" marker-end="url(#f4-ah-own)"/>
+
+          <!-- time axis -->
+          <path class="dg-axis" d="M60,192 L830,192" marker-end="url(#f4-ah-axis)"/>
+          <line class="dg-axis" x1="180" y1="184" x2="180" y2="200"/>
+          <line class="dg-axis" x1="700" y1="184" x2="700" y2="200"/>
+          <text class="dg-sub" x="180" y="216" text-anchor="middle">세션 시작</text>
+          <text class="dg-sub" x="700" y="216" text-anchor="middle">세션 종료</text>
+          <text class="dg-sub" x="812" y="182" text-anchor="end">시간</text>
+
+          <!-- known at start -->
+          <path class="dg-edge-thin" d="M180,200 L180,250"/>
+          <rect class="dg-box-own" x="76" y="250" width="208" height="32" rx="4"/>
+          <text class="dg-sub mono" x="180" y="270" text-anchor="middle">profile</text>
+          <rect class="dg-box-own" x="76" y="290" width="208" height="32" rx="4"/>
+          <text class="dg-sub mono" x="180" y="310" text-anchor="middle">injection_point</text>
+          <text class="dg-sub-a" x="180" y="342" text-anchor="middle">배정 시점에 확정됨</text>
+
+          <!-- known only at end -->
+          <path class="dg-edge-thinx" d="M700,200 L700,250"/>
+          <rect class="dg-box-gap" x="596" y="250" width="208" height="32" rx="4"/>
+          <text class="dg-sub mono" x="700" y="270" text-anchor="middle">harness_position</text>
+          <rect class="dg-box-gap" x="596" y="290" width="208" height="32" rx="4"/>
+          <text class="dg-sub mono" x="700" y="310" text-anchor="middle">task_type</text>
+          <text class="dg-sub-x" x="700" y="342" text-anchor="middle">세션이 끝나야 확정됨</text>
+
+          <!-- the backward dependency -->
+          <path class="dg-edge-gap" d="M592,268 C470,268 380,230 326,92" marker-end="url(#f4-ah-gap)"/>
+          <text class="dg-elabel-x" x="466" y="150">층 키에 필요하지만</text>
+          <text class="dg-elabel-x" x="466" y="166">이 시점엔 아직 없다</text>
+
+          <text class="dg-sub mono" x="440" y="380" text-anchor="middle">층 키 = (profile, harness_position, injection_point, task_type)</text>
+        </svg>
+      </div>
+      <figcaption>
+        화살표가 시간축을 거슬러 올라간다는 것이 문제의 전부다. 사전 균형 배정이 불가능하므로 남는 것은 <b>사후 층화</b>뿐이고,
+        층이 최대 72개(profile 2 × position 3 × injection 4 × task 3)로 쪼개지는데 off 비율이 <code>k=10</code>이면 층당 대조 표본이 사실상 쌓이지 않는다.
+        층화용 축을 둘로 줄이고 <code>k</code>를 3~5로 내리는 것이 이 그림에서 나오는 처방이다.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 5. use cases ============ -->
+  <section>
+    <h2>유스케이스</h2>
+    <h3>같은 기계, 다섯 가지 경로</h3>
+    <p class="lede">
+      다섯 단계 칸의 자리를 고정해 두었다. 카드를 세로로 훑으면 어떤 상황에서 어느 단계가 실제로 켜지는지 한 열씩 비교된다.
+      <code>로거</code> 열이 언제나 켜져 있는 것은 로거가 프리셋과 무관하게 하네스 밖에서 돌기 때문이다.
+    </p>
+
+    <div class="uc-legend">
+      <span><i class="lg-on"></i>이 경로에서 동작</span>
+      <span><i class="lg-off"></i>프리셋에 없음</span>
+      <span><i class="lg-cut"></i>의도적으로 끔</span>
+      <span><i class="lg-log"></i>하네스 밖</span>
+    </div>
+
+    <div>
+
+      <div class="uc">
+        <div class="uc-head">
+          <div class="uc-title">코딩 세션의 보고</div>
+          <span class="uc-pos">main → user</span>
+        </div>
+        <p class="uc-sit">
+          에이전트가 작업을 마치고 무엇을 고쳤는지 한국어로 보고한다. 01이 출발점으로 삼은 바로 그 장면이고, 실사용의 대부분을 차지한다.
+        </p>
+        <div class="uc-cfg">
+          <span>profile: agent-reply</span><span>preset: standard</span><span>injection: output-style</span>
+        </div>
+        <div class="path">
+          <div class="path-node path-on">policy</div>
+          <div class="path-node path-off">rewrite</div>
+          <div class="path-node path-off">grammar</div>
+          <div class="path-node path-off">diagnose</div>
+          <div class="path-node path-log">로거</div>
+        </div>
+        <div class="uc-out">
+          <div class="uc-col">
+            <div class="uc-lab">일어나는 일</div>
+            <div class="uc-txt">
+              세션 시작에 output-style이 한 번 읽힌다. writer가 그 priming 아래 생성하고, Stop hook이 transcript를 떠서 레코드 한 건을 남긴다.
+            </div>
+          </div>
+          <div class="uc-col neg">
+            <div class="uc-lab">일어나지 않는 일</div>
+            <div class="uc-txt">
+              라우터도 upstream도 호출되지 않는다. 이 경로에서 05의 실질은 <b>fluent-korean 설치 + 관측</b>이고, 나머지 자산은 부하를 받지 않는다.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="uc">
+        <div class="uc-head">
+          <div class="uc-title">서브에이전트가 서브에이전트에게 넘길 때</div>
+          <span class="uc-pos">sub → sub</span>
+        </div>
+        <p class="uc-sit">
+          오케스트레이터가 조사용 서브에이전트를 띄우고, 그 결과를 다시 다른 서브에이전트에게 한국어로 넘긴다.
+          단계마다 의미가 깎여 나가는 누적 저하가 생기는 지점이다.
+        </p>
+        <div class="uc-cfg">
+          <span>profile: agent-reply</span><span>preset: standard</span><span>blocks: subagent-propagation</span>
+        </div>
+        <div class="path">
+          <div class="path-node path-on">policy</div>
+          <div class="path-node path-off">rewrite</div>
+          <div class="path-node path-off">grammar</div>
+          <div class="path-node path-off">diagnose</div>
+          <div class="path-node path-log">로거</div>
+        </div>
+        <div class="uc-out">
+          <div class="uc-col">
+            <div class="uc-lab">일어나는 일</div>
+            <div class="uc-txt">
+              spawn마다 정책 텍스트가 새 system prompt에 다시 들어간다. 로거는 <code>harness_position</code>을 <code>sub-to-sub</code>로 기록한다.
+            </div>
+          </div>
+          <div class="uc-col neg">
+            <div class="uc-lab">일어나지 않는 일</div>
+            <div class="uc-txt">
+              전파가 실제로 됐는지는 확인되지 않는다. <code>subagent-propagation</code>은 엔진이 거는 배선이 아니라 모델에게 주는 조항이라,
+              <b>누적을 막으라는 지시 자체가 누적의 영향을 받는다.</b>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="uc">
+        <div class="uc-head">
+          <div class="uc-title">사용자에게 나갈 문서</div>
+          <span class="uc-pos">main → user</span>
+        </div>
+        <p class="uc-sit">
+          분석 결과를 마크다운 보고서로 낸다. 사람이 읽고 다른 사람에게 전달할 산출물이라 문체 기준이 보고보다 높다.
+        </p>
+        <div class="uc-cfg">
+          <span>profile: formal-report</span><span>preset: full</span><span>intensity: conservative</span>
+        </div>
+        <div class="path">
+          <div class="path-node path-on">policy</div>
+          <div class="path-node path-on">rewrite</div>
+          <div class="path-node path-on">grammar</div>
+          <div class="path-node path-on">diagnose</div>
+          <div class="path-node path-log">로거</div>
+        </div>
+        <div class="uc-out">
+          <div class="uc-col">
+            <div class="uc-lab">일어나는 일</div>
+            <div class="uc-txt">
+              라우터가 네 upstream을 순서대로 부른다. im-not-ai가 변경률 50%를 넘기면 스스로 중단하고 보고하며, 오케스트레이터는 그 중단을 존중한다.
+            </div>
+          </div>
+          <div class="uc-col neg">
+            <div class="uc-lab">일어나지 않는 일</div>
+            <div class="uc-txt">
+              <code>on_final_fail: block</code>을 강제할 gate가 없다. 04a가 “formal-report로 새어 나가면 fail인 문서가 사용자에게 도달한다”고 걱정한 자리가 정확히 여기다.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="uc">
+        <div class="uc-head">
+          <div class="uc-title">남의 초안을 진단만</div>
+          <span class="uc-pos">sub → orchestrator</span>
+        </div>
+        <p class="uc-sit">
+          이미 쓰인 한국어 문서가 AI스러운지 판단하고 싶다. 고치지는 않는다 — 고칠지 말지는 원문을 쓴 사람이 정한다.
+        </p>
+        <div class="uc-cfg">
+          <span>preset: review</span><span>agent: korean-reviewer</span>
+        </div>
+        <div class="path">
+          <div class="path-node path-off">policy</div>
+          <div class="path-node path-off">rewrite</div>
+          <div class="path-node path-off">grammar</div>
+          <div class="path-node path-on">diagnose</div>
+          <div class="path-node path-log">로거</div>
+        </div>
+        <div class="uc-out">
+          <div class="uc-col">
+            <div class="uc-lab">일어나는 일</div>
+            <div class="uc-txt">
+              reviewer가 yoonmoon detect를 부르고 AI 가능성·신뢰도·근거를 그대로 돌려준다. 텍스트를 건드리지 않으므로
+              “고치는 모델이 자기 결과를 괜찮다고 하는” 순환이 끊긴다.
+            </div>
+          </div>
+          <div class="uc-col neg">
+            <div class="uc-lab">일어나지 않는 일</div>
+            <div class="uc-txt">
+              돌아오는 값이 산문이라 오케스트레이터가 기계적으로 읽을 수 없다. 수락과 거부는 사람 몫으로 남는다.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="uc">
+        <div class="uc-head">
+          <div class="uc-title">대조군 세션</div>
+          <span class="uc-pos">로거의 자기 유스케이스</span>
+        </div>
+        <p class="uc-sit">
+          <code>schedule.py</code>가 배정한 k번째 세션. 정책을 일부러 끄고 돌려서, 나중에 “정책이 효과가 있었나”를 물을 때 비교할 짝을 만든다.
+        </p>
+        <div class="uc-cfg">
+          <span>profile: agent-reply</span><span>policy_on: false</span><span>injection: none</span>
+        </div>
+        <div class="path">
+          <div class="path-node path-cut">policy</div>
+          <div class="path-node path-off">rewrite</div>
+          <div class="path-node path-off">grammar</div>
+          <div class="path-node path-off">diagnose</div>
+          <div class="path-node path-log">로거</div>
+        </div>
+        <div class="uc-out">
+          <div class="uc-col">
+            <div class="uc-lab">일어나는 일</div>
+            <div class="uc-txt">
+              output-style을 default로 둔 채 평소처럼 작업한다. 정책 없는 한국어 산출물이 나오고, 레코드가 off 샘플로 쌓인다.
+              fluent-korean이 늘리던 만큼 토큰은 오히려 덜 쓴다.
+            </div>
+          </div>
+          <div class="uc-col neg">
+            <div class="uc-lab">일어나지 않는 일</div>
+            <div class="uc-txt">
+              이 샘플이 어느 층의 대조군이 될지는 세션이 끝나야 정해진다. 그리고 그 세션의 한국어는 나빠지므로,
+              <b>비용은 사용자가 진다.</b>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p>
+      다섯 중 S2 시점에 실재하는 것은 <b>첫째와 다섯째</b>뿐이다. 나머지 셋은 에이전트 템플릿과 adapter가 생기는 S3~S5 이후에야 돈다.
+      구현 순서를 정할 때 이 비율이 근거가 된다 — 먼저 쌓이는 재료는 <code>main→user</code> 경로의 on/off 짝이고, 01이 지목한 누적 저하는 그 재료에 들어 있지 않다.
+    </p>
+  </section>
+
+  <!-- ============ 6. before / after ============ -->
+  <section>
+    <h2>도입 전후</h2>
+    <h3>쓰던 사람의 흐름은 어디가 바뀌는가</h3>
+    <p class="lede">
+      한국어로 코딩 에이전트를 쓰던 사람이 ko-quality를 얹으면 무엇이 달라지는지를 행 단위로 맞춰 놓았다.
+      가로로 읽으면 같은 단계에서 세 경우가 어떻게 갈리는지 보이고, 세로로 읽으면 각 경우의 처리 순서가 보인다.
+    </p>
+
+    <figure>
+      <div class="frame">
+        <span class="scroll-hint">← 좌우로 스크롤</span>
+        <svg viewBox="0 0 880 660" role="img" aria-label="ko-quality 도입 전과 후의 처리 과정 비교. 도입 전에는 설치도 기록도 없고 사용자가 눈으로 보고 다시 써달라고 요청한다. 도입 후 일상 보고 경로에서는 세션 시작의 정책 주입과 세션 끝의 로거 기록만 늘고, 지시·작업·수동 교정 루프는 그대로 남는다. 문서 산출 경로에서만 검토 단계가 새로 생겨 수동 루프를 대체한다.">
+          <defs>
+            <marker id="f6-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah"/>
+            </marker>
+            <marker id="f6-ah-own" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah-own"/>
+            </marker>
+            <marker id="f6-ah-gap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah-gap"/>
+            </marker>
+          </defs>
+
+          <!-- column headers -->
+          <text class="dg-name-s" x="230" y="30" text-anchor="middle" fill="currentColor">도입 전 — 지금</text>
+          <text class="dg-name-s" x="490" y="30" text-anchor="middle" fill="var(--accent)">도입 후 · 일상 보고</text>
+          <text class="dg-name-s" x="750" y="30" text-anchor="middle" fill="var(--accent)">도입 후 · 문서 산출</text>
+
+          <!-- before / after divider -->
+          <line class="dg-boundary" x1="360" y1="14" x2="360" y2="636"/>
+
+          <!-- row labels -->
+          <text class="dg-sub" x="100" y="82"  text-anchor="end">설치 · 1회</text>
+          <text class="dg-sub" x="100" y="156" text-anchor="end">세션 시작</text>
+          <text class="dg-sub" x="100" y="230" text-anchor="end">지시</text>
+          <text class="dg-sub" x="100" y="304" text-anchor="end">작업</text>
+          <text class="dg-sub" x="100" y="378" text-anchor="end">한국어 산출</text>
+          <text class="dg-sub" x="100" y="452" text-anchor="end">검토</text>
+          <text class="dg-sub" x="100" y="526" text-anchor="end">교정</text>
+          <text class="dg-sub" x="100" y="600" text-anchor="end">기록</text>
+
+          <!-- ===== column 1 : before ===== -->
+          <text class="dg-sub" x="230" y="82" text-anchor="middle">설치할 것이 없다</text>
+
+          <rect class="dg-box" x="112" y="126" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="230" y="149" text-anchor="middle">기본 시스템 프롬프트</text>
+          <text class="dg-sub" x="230" y="166" text-anchor="middle">한국어 지침 없음</text>
+
+          <rect class="dg-box-same" x="112" y="200" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="230" y="223" text-anchor="middle">사용자가 한국어로 지시</text>
+          <text class="dg-sub" x="230" y="240" text-anchor="middle">평소대로</text>
+
+          <rect class="dg-box-same" x="112" y="274" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="230" y="297" text-anchor="middle">도구 호출 · 파일 편집</text>
+          <text class="dg-sub" x="230" y="314" text-anchor="middle">평소대로</text>
+
+          <rect class="dg-box-gap" x="112" y="348" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="230" y="371" text-anchor="middle">조사·어미 탈락, 전보체</text>
+          <text class="dg-sub-x" x="230" y="388" text-anchor="middle">품질이 턴마다 다르다</text>
+
+          <text class="dg-sub" x="218" y="452" text-anchor="end">체계적 검토 없음</text>
+
+          <rect class="dg-box-gap" x="112" y="496" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="230" y="519" text-anchor="middle">사용자가 눈으로 발견</text>
+          <text class="dg-sub-x" x="230" y="536" text-anchor="middle">다시 써달라고 요청</text>
+
+          <text class="dg-sub" x="230" y="600" text-anchor="middle">남는 것이 없다</text>
+
+          <path class="dg-edge" d="M230,178 L230,194" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge" d="M230,252 L230,268" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge" d="M230,326 L230,342" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge" d="M230,400 L230,490" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge-gap" d="M286,490 L286,406" marker-end="url(#f6-ah-gap)"/>
+          <text class="dg-elabel-x" x="294" y="452">재요청</text>
+
+          <!-- ===== column 2 : after, everyday ===== -->
+          <rect class="dg-box-own" x="372" y="52" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="490" y="75" text-anchor="middle">플러그인 설치 + profile 선택</text>
+          <text class="dg-sub mono" x="490" y="92" text-anchor="middle">Stop hook 등록</text>
+
+          <rect class="dg-box-own" x="372" y="126" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="490" y="149" text-anchor="middle">+ 정책 텍스트 주입</text>
+          <text class="dg-sub" x="490" y="166" text-anchor="middle">output-style · 매 세션 토큰 증가</text>
+
+          <rect class="dg-box-same" x="372" y="200" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="490" y="223" text-anchor="middle">동일</text>
+          <text class="dg-sub" x="490" y="240" text-anchor="middle">사용자가 바꿀 것 없음</text>
+
+          <rect class="dg-box-same" x="372" y="274" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="490" y="297" text-anchor="middle">동일</text>
+          <text class="dg-sub" x="490" y="314" text-anchor="middle">작업 흐름 그대로</text>
+
+          <rect class="dg-box-own" x="372" y="348" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="490" y="371" text-anchor="middle">정책이 priming된 보고</text>
+          <text class="dg-sub-x" x="490" y="388" text-anchor="middle">나아졌는지는 측정되지 않음</text>
+
+          <text class="dg-sub" x="478" y="452" text-anchor="end">체계적 검토 없음</text>
+
+          <rect class="dg-box-gap" x="372" y="496" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="490" y="519" text-anchor="middle">그대로 — 눈으로 발견</text>
+          <text class="dg-sub-x" x="490" y="536" text-anchor="middle">05에 자동 교정 지점이 없다</text>
+
+          <rect class="dg-box-log" x="372" y="570" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="490" y="593" text-anchor="middle">로거 레코드 1건</text>
+          <text class="dg-sub" x="490" y="610" text-anchor="middle">축 + 산출물 + 토큰 · 토큰 비용 0</text>
+
+          <path class="dg-edge-own" d="M490,104 L490,120" marker-end="url(#f6-ah-own)" stroke-dasharray="5 4"/>
+          <path class="dg-edge" d="M490,178 L490,194" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge" d="M490,252 L490,268" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge" d="M490,326 L490,342" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge" d="M490,400 L490,490" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge-gap" d="M546,490 L546,406" marker-end="url(#f6-ah-gap)"/>
+          <text class="dg-elabel-x" x="554" y="452">재요청</text>
+          <path class="dg-edge-log" d="M490,548 L490,564" marker-end="url(#f6-ah)"/>
+
+          <!-- ===== column 3 : after, document ===== -->
+          <rect class="dg-box-own" x="632" y="52" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="750" y="75" text-anchor="middle">동일한 설치</text>
+          <text class="dg-sub mono" x="750" y="92" text-anchor="middle">profile: formal-report</text>
+
+          <rect class="dg-box-own" x="632" y="126" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="750" y="149" text-anchor="middle">+ 정책 텍스트 주입</text>
+          <text class="dg-sub" x="750" y="166" text-anchor="middle">output-style · 매 세션 토큰 증가</text>
+
+          <rect class="dg-box-same" x="632" y="200" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="750" y="223" text-anchor="middle">동일</text>
+          <text class="dg-sub" x="750" y="240" text-anchor="middle">사용자가 바꿀 것 없음</text>
+
+          <rect class="dg-box-same" x="632" y="274" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="750" y="297" text-anchor="middle">동일</text>
+          <text class="dg-sub" x="750" y="314" text-anchor="middle">작업 흐름 그대로</text>
+
+          <rect class="dg-box-own" x="632" y="348" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="750" y="371" text-anchor="middle">초안</text>
+          <text class="dg-sub" x="750" y="388" text-anchor="middle">아직 사용자에게 보이지 않음</text>
+
+          <rect class="dg-box-own" x="632" y="422" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="750" y="445" text-anchor="middle">reviewer / editor 서브에이전트</text>
+          <text class="dg-sub mono" x="750" y="462" text-anchor="middle">diagnose → rewrite → grammar</text>
+
+          <rect class="dg-box-own" x="632" y="496" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="750" y="519" text-anchor="middle">upstream이 윤문한다</text>
+          <text class="dg-sub" x="750" y="536" text-anchor="middle">변경률 50% 초과면 스스로 중단</text>
+
+          <rect class="dg-box-log" x="632" y="570" width="236" height="52" rx="5"/>
+          <text class="dg-name-s" x="750" y="593" text-anchor="middle">로거 레코드 1건</text>
+          <text class="dg-sub" x="750" y="610" text-anchor="middle">before / after + upstream 보고</text>
+
+          <path class="dg-edge-own" d="M750,104 L750,120" marker-end="url(#f6-ah-own)" stroke-dasharray="5 4"/>
+          <path class="dg-edge" d="M750,178 L750,194" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge" d="M750,252 L750,268" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge" d="M750,326 L750,342" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge" d="M750,400 L750,416" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge" d="M750,474 L750,490" marker-end="url(#f6-ah)"/>
+          <path class="dg-edge" d="M750,548 L750,564" marker-end="url(#f6-ah)"/>
+        </svg>
+      </div>
+      <div class="legend">
+        <span><i class="swatch sw-own"></i>ko-quality가 더하는 것</span>
+        <span><i class="swatch sw-same"></i>그대로인 것</span>
+        <span><i class="swatch sw-gap"></i>사용자가 계속 떠안는 것</span>
+        <span><i class="swatch sw-log"></i>하네스 밖 기록</span>
+      </div>
+      <figcaption>
+        가운데 열에서 실제로 늘어난 상자는 <b>둘</b>이다 — 세션 시작의 정책 주입, 세션 끝의 로거 기록.
+        지시하는 방식도 작업 흐름도 그대로이고, 사용자가 통증으로 느끼는 <b>수동 재요청 루프는 붉은 채로 남는다.</b>
+        오른쪽 열에서만 검토 상자가 새로 생기면서 그 루프를 대체한다 — 즉 흐름의 모양이 바뀌는 것은 문서 산출 경계에서뿐이다.
+      </figcaption>
+    </figure>
+
+    <p>
+      사용자 입장에서 도입은 <b>조작의 변화가 아니라 비용과 기록의 변화</b>다. 새로 배울 명령이 없고, 프롬프트를 다르게 쓸 필요도 없다.
+      대신 매 세션 정책 텍스트만큼 토큰이 늘고(fluent-korean이 생략된 성분을 복원하므로 출력도 길어진다),
+      대조군 배정에 걸린 세션에서는 한국어가 일부러 나빠지며, 그 대가로 <code>~/.ko-quality/logs/</code>에 비교 가능한 기록이 쌓인다.
+    </p>
+    <p>
+      가운데 열의 붉은 상자가 이 페이지의 결론과 맞닿는다. 사용자가 없애고 싶은 것은 “다시 써줘”를 반복하는 루프인데,
+      05는 그 루프를 닫지 않는다. 닫는 것은 04의 <code>selfcheck</code>와 <code>gate</code> — 출력 직전에 도구를 불러 실패 항목을 스스로 고치는 경로다.
+      도입 효과를 사용자에게 설명할 때 과장하지 않으려면 이 구분을 먼저 말해야 한다.
+    </p>
+  </section>
+
+  <!-- ============ 7. seam ============ -->
+  <section>
+    <h2>이음매</h2>
+    <h3>04가 나중에 붙는 자리</h3>
+    <p class="lede">
+      부분집합 원칙의 실제 모양. 04는 새 파일을 만드는 게 아니라 05가 이미 쓰고 있는 파일에 절을 더한다.
+    </p>
+
+    <figure>
+      <div class="frame">
+        <span class="scroll-hint">← 좌우로 스크롤</span>
+        <svg viewBox="0 0 880 390" role="img" aria-label="04 검증 엔진의 다섯 장치가 05 구성 계층의 같은 파일에 절로 더해지는 구조. vendor.lock만은 04의 장치가 아니라 05 로거의 전제조건이다.">
+          <defs>
+            <marker id="f5-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah"/>
+            </marker>
+            <marker id="f5-ah-gap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ah-gap"/>
+            </marker>
+          </defs>
+
+          <!-- band B : 04 -->
+          <rect class="dg-boundary" x="24" y="24" width="832" height="124" rx="12"/>
+          <text class="dg-boundary-label" x="44" y="48">04 검증 엔진 — 나중에 더하는 것 (보류)</text>
+
+          <rect class="dg-box" x="44" y="70" width="145" height="44" rx="5"/>
+          <text class="dg-sub mono" x="116" y="89" text-anchor="middle">gate</text>
+          <text class="dg-sub" x="116" y="105" text-anchor="middle">결정론 검증</text>
+
+          <rect class="dg-box" x="205" y="70" width="145" height="44" rx="5"/>
+          <text class="dg-sub mono" x="277" y="89" text-anchor="middle">report.pass</text>
+          <text class="dg-sub" x="277" y="105" text-anchor="middle">수락 판정</text>
+
+          <rect class="dg-box" x="366" y="70" width="145" height="44" rx="5"/>
+          <text class="dg-sub mono" x="438" y="89" text-anchor="middle">eval runner</text>
+          <text class="dg-sub" x="438" y="105" text-anchor="middle">회귀 테스트</text>
+
+          <rect class="dg-box" x="527" y="70" width="145" height="44" rx="5"/>
+          <text class="dg-sub mono" x="599" y="89" text-anchor="middle">baseline</text>
+          <text class="dg-sub" x="599" y="105" text-anchor="middle">비교 기준</text>
+
+          <rect class="dg-box-gap" x="688" y="70" width="145" height="44" rx="5"/>
+          <text class="dg-sub mono" x="760" y="89" text-anchor="middle">vendor.lock</text>
+          <text class="dg-sub-x" x="760" y="105" text-anchor="middle">버전 고정</text>
+
+          <!-- seams -->
+          <path class="dg-edge" d="M116,114 L116,256" marker-end="url(#f5-ah)"/>
+          <text class="dg-elabel" x="124" y="190">preset 끝에 추가</text>
+
+          <path class="dg-edge" d="M277,114 L277,256" marker-end="url(#f5-ah)"/>
+          <text class="dg-elabel mono" x="285" y="190">ko.gate 추가</text>
+
+          <path class="dg-edge" d="M438,114 L438,256" marker-end="url(#f5-ah)"/>
+          <text class="dg-elabel mono" x="446" y="190">expect: 채움</text>
+
+          <path class="dg-edge" d="M599,114 L599,256" marker-end="url(#f5-ah)"/>
+          <text class="dg-elabel mono" x="607" y="190">baseline: 절</text>
+
+          <path class="dg-edge-gap" d="M760,114 L760,256" marker-end="url(#f5-ah-gap)"/>
+          <text class="dg-elabel-x" x="768" y="190">지금 필요</text>
+
+          <!-- band A : 05 -->
+          <rect class="dg-box-own" x="24" y="216" width="832" height="124" rx="12" fill="none"/>
+          <text class="dg-sub-a" x="44" y="240">05 구성 계층 — 지금 만드는 것</text>
+
+          <rect class="dg-box-own" x="44" y="262" width="145" height="44" rx="5"/>
+          <text class="dg-sub mono" x="116" y="281" text-anchor="middle">presets.yaml</text>
+          <text class="dg-sub" x="116" y="297" text-anchor="middle">stage 목록</text>
+
+          <rect class="dg-box-own" x="205" y="262" width="145" height="44" rx="5"/>
+          <text class="dg-sub mono" x="277" y="281" text-anchor="middle">agents/*.yaml</text>
+          <text class="dg-sub" x="277" y="297" text-anchor="middle">capabilities 없음</text>
+
+          <rect class="dg-box-own" x="366" y="262" width="145" height="44" rx="5"/>
+          <text class="dg-sub" x="438" y="281" text-anchor="middle">로거 레코드</text>
+          <text class="dg-sub mono" x="438" y="297" text-anchor="middle">expect: null</text>
+
+          <rect class="dg-box-own" x="527" y="262" width="145" height="44" rx="5"/>
+          <text class="dg-sub mono" x="599" y="281" text-anchor="middle">profiles/*.yaml</text>
+          <text class="dg-sub" x="599" y="297" text-anchor="middle">gate 절 없음</text>
+
+          <rect class="dg-box-gap" x="688" y="262" width="145" height="44" rx="5"/>
+          <text class="dg-sub mono" x="760" y="281" text-anchor="middle">upstreams.yaml</text>
+          <text class="dg-sub-x" x="760" y="297" text-anchor="middle">수동 기입</text>
+
+          <text class="dg-elabel-x" x="440" y="370" text-anchor="middle">vendor.lock 만은 04 의 장치가 아니다 — 로거의 upstream_versions 가 참이려면 05 에 있어야 한다</text>
+        </svg>
+      </div>
+      <figcaption>
+        네 개의 이음매는 예정대로 동작한다. 다섯 번째만 방향이 반대다.
+        05가 하는 유일한 검증 활동이 재료를 쌓는 것인데, 플러그인이 조용히 업데이트되면 레코드의 <code>upstream_versions</code>가 거짓이 되고 쌓인 로그의 비교 가능성이 통째로 깨진다.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 6. gaps ============ -->
+  <section>
+    <h2>구조가 드러내는 것</h2>
+    <p class="thesis">
+      LLM 계층은 프롬프트 텍스트가 재사용되는 게 아니라, 그 텍스트가 여전히 효과가 있는지 확인하는 테스트가 재사용된다.
+      <cite>02a_findings_reusability.md</cite>
+    </p>
+    <p>
+      위 그림들을 겹쳐 놓으면 같은 자리가 반복해서 비어 있다. 정책이 들어가는 경로는 그려지는데, 그것이 걸렸는지 확인하는 경로가 어디에도 없다.
+    </p>
+
+    <div class="gaps">
+      <div class="gap">
+        <div class="gap-n">01</div>
+        <div>
+          <div class="gap-t">로거에 종속변수가 없다</div>
+          <div class="gap-b">
+            축은 아홉 개인데 결과에 해당하는 필드는 <code>tokens.output</code>뿐이다. <code>features</code>(쉼표율·조사 부재율·명사 종결 비율)와
+            <code>outcome</code>(재시도·수락 여부)을 레코드에 더하면 04 없이도 사후 분석이 성립한다. 판정이 아니라 측정이므로 로거 원칙과 충돌하지 않는다.
+          </div>
+        </div>
+      </div>
+      <div class="gap">
+        <div class="gap-n">02</div>
+        <div>
+          <div class="gap-t">층 배정이 시간축을 거스른다</div>
+          <div class="gap-b">
+            층화용 축을 <code>harness_position × policy_on</code> 둘로 제한하고, 나머지는 기록만 해서 사후 필터로 쓴다. <code>k</code>는 3~5.
+          </div>
+        </div>
+      </div>
+      <div class="gap">
+        <div class="gap-n">03</div>
+        <div>
+          <div class="gap-t">05는 02a 기준의 “장치”가 아니다</div>
+          <div class="gap-b">
+            텍스트·계약·회귀 테스트 셋 중 뒤의 둘이 04로 빠졌다. 04a에 한 줄 — 05는 <b>설치 구성 + 관측</b>이고 장치가 되는 시점은 eval이 들어올 때 — 을 적어 두면 부분집합 원칙과 모순 없이 정리된다.
+          </div>
+        </div>
+      </div>
+      <div class="gap">
+        <div class="gap-n">04</div>
+        <div>
+          <div class="gap-t">버전 스냅샷만 05로 당긴다</div>
+          <div class="gap-b">
+            lock 전체가 아니라, 캡처 스크립트가 세션 시작 시 플러그인 디렉터리의 <code>git rev-parse</code>나 해시를 찍어 레코드에 넣는 것으로 충분하다. 수동 기입이 사라지고 값이 참이 된다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    05_composition_spec.md 기준. 04_design_spec.md는 보류 상태이며, 이 그림에서 점선과 붉은 표시로 남긴 자리가 04가 다시 들어올 지점이다.
+  </footer>
+
+</div>
+
+</body></html>

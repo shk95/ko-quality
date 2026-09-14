@@ -1,0 +1,6 @@
+# upstream 원본 캐시 — 커밋하지 않음 (06 §4, §5.2)
+upstream/.cache/
+
+# 로컬 환경
+.DS_Store
+.claude/settings.local.json
