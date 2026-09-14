@@ -132,5 +132,6 @@ design/
 
 ## 참고
 
-- 설계 세션에서 만든 페이지 [ko-quality 작동 구조](01-toolkit/3-spec/composition-structure.html)는 **05 기준**이라 06과 다릅니다. 06 기준 그림은 `01-toolkit/3-spec/prompt-flow.html`과 루트 README에 있습니다.
+- 06 기준 작동 구조 그림은 `01-toolkit/3-spec/prompt-flow.html`과 루트 README에 있습니다. 05 기준 그림은 `01-toolkit/3-spec/composition-structure.html`입니다.
+- **언어.** 시대 02부터 `1-concept/`는 한국어, 2~7단계 문서는 영어로 씁니다. 시대 01은 이 규칙 이전의 기록이라 한국어 그대로 둡니다. 영어 문서 안에서 한국어 고유의 용어(조사, 어미, 윤문 등)와 고유명사는 한국어를 섞어 써도 됩니다 (`CLAUDE.md`).
 - 시대가 둘 이상이 되면 이 파일의 "01-toolkit 문서 지도"는 각 시대 디렉터리의 README로 내려가고, 여기에는 시대 목록과 현재 위치만 남깁니다.

@@ -18,7 +18,9 @@ Read that first, then the documents it points to.
 
 - English by default: code, commit messages, this file, anything agent-facing.
 - `README.md` files are Korean.
-- Conversation with the user may be Korean. Design documents keep the language they were written in; era 01 is Korean.
+- Design documents: `1-concept/` is Korean — the concept of a Korean-language project is kept in Korean. Stages 2–7, where the agent works with the user, are English. Era 01 predates this rule and stays Korean as a record.
+- Korean is allowed inside English prose for terms of art of the Korean language (조사, 어미, 윤문, 번역투, 전보체) and for Korean proper nouns, when the English would be lossy. Not in source code: identifiers, file names, and keys stay ASCII.
+- Conversation with the user may be Korean.
 
 ## Process: seven stages, one direction
 
