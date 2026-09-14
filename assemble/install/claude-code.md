@@ -31,7 +31,9 @@ claude plugin uninstall ko-quality@ko-quality        # 설치할 때 --scope를 
 claude plugin marketplace remove ko-quality
 ```
 
-플러그인을 끄기만 하려면 `claude plugin disable ko-quality@ko-quality`입니다. 마켓플레이스를 제거하면 사용자 설정(`~/.claude/settings.json`)에 빈 `"extraKnownMarketplaces": {}` 항목이 남을 수 있습니다(2.1.270에서 확인). 동작에는 영향이 없고 지워도 됩니다.
+플러그인을 끄기만 하려면 `claude plugin disable ko-quality@ko-quality`입니다.
+
+제거 뒤에 남는 것(2.1.270에서 확인): 사용자 설정(`~/.claude/settings.json`)의 빈 `"extraKnownMarketplaces": {}` 항목, 그리고 `~/.claude/plugins/cache/ko-quality/`의 플러그인 사본입니다. 사본에는 `.orphaned_at` 표시가 붙어 Claude Code가 나중에 정리합니다. 둘 다 동작에는 영향이 없고 바로 지워도 됩니다.
 
 ## 알아둘 것
 
