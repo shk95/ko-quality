@@ -1,0 +1,31 @@
+# upstream/lock.yaml — 06 §5.6
+# commit: 기본 브랜치(main) HEAD, 2026-09-14 조회
+# license: GitHub license API + 저장소 루트 LICENSE 파일
+
+- name: fluent-korean
+  url: https://github.com/snflkd/fluent-korean
+  commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
+  license: MIT
+  license_checked: 2026-09-14
+  roles: [policy]
+
+- name: im-not-ai
+  url: https://github.com/epoko77-ai/im-not-ai
+  commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+  license: MIT
+  license_checked: 2026-09-14
+  roles: [procedure.rewrite, taxonomy.rewrite]
+
+- name: korean-skills
+  url: https://github.com/DaleSeo/korean-skills
+  commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+  license: MIT
+  license_checked: 2026-09-14
+  roles: [procedure.grammar]
+
+- name: yoonmoon
+  url: https://github.com/amondnet/yoonmoon
+  commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+  license: MIT
+  license_checked: 2026-09-14
+  roles: [procedure.diagnose, taxonomy.diagnose]
