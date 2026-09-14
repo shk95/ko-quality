@@ -1,0 +1,82 @@
+# Preflight explorations — raw material, not decisions
+
+2026-09-14. Six independent mid-tier (Sonnet) subagents were given a question and the sources, never a leaning, and asked for both sides. Their reports are condensed here so that `flow.md` can decide from them. **Nothing below is decided.** The one still-running exploration (anchor robustness over upstream history) is appended when it arrives; if this file lacks it, it did not.
+
+Work stopped here at the user's request: environment set up, exploration and build not started. Next session resumes at `flow.md`.
+
+## Environment checks done
+
+| Check | Result |
+|---|---|
+| Headless Claude Code with a local plugin | **Works.** `claude -p "…" --plugin-dir <dir> --max-turns 4 --output-format json` invoked a throwaway skill (`ko-ping`) and returned its fixed token. 3 turns, ≈$0.20. This is P1's test harness (Claude Code 2.1.270) |
+| Headless Codex with a local plugin | **Not run.** Documented path (from official docs and `codex plugin … --help`, codex-cli 0.154.0): register a local marketplace (`codex plugin marketplace add <dir>` with `.agents/plugins/marketplace.json` — shape below), `codex plugin add <plugin>@<marketplace>`, then `codex exec --json -C <dir> "$skill …"`; hooks need `--dangerously-bypass-hook-trust` for automation. Whether plugins, hooks, AGENTS.md and `.codex/agents/*.toml` load under `exec` the same as interactive is **not documented**. Remove with `codex plugin remove <plugin>@<marketplace>` |
+
+Marketplace shape seen in Codex's bundled marketplace:
+
+```json
+{"name": "<marketplace>", "interface": {"displayName": "…"},
+ "plugins": [{"name": "<plugin>", "source": {"source": "local", "path": "./plugins/<plugin>"},
+              "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"}, "category": "…"}]}
+```
+
+## E1 — im-not-ai procedure source for `ko-rewrite` (06 §16.2)
+
+Candidates: A orchestrator `skills/humanize-korean/SKILL.md` (331 lines), B single-call `codex/skills/humanize-korean/SKILL.md` (45), C `agents/humanize-monolith.md` (150).
+
+| | verbatim | selected out | adapted |
+|---|---|---|---|
+| A | ~15 lines (content anchors, cautions) | ~300 lines of routing, `${SKILL_ROOT}` paths, Agent calls, scripts | 1 (`"자동 로드 금지. 프로젝트 CLAUDE.md 등…"` names a harness file) |
+| B | bulk: 철칙 1–7, 절차 1–6, 등급 | title/intro naming three harnesses, secondary refs | 1 (`"④ 등급 B 이하면 정밀 검증은 Claude Code의 정밀 모드(3콜) 권장 안내"`) |
+| C | 철칙 1–9 (fullest invariant block), steps 2–4 | `model: opus`, inter-agent params, team protocol, `/humanize-redo`, summary block | 2 (tool-call count in a heading; `input_path`/`quick_rules_path` framing) |
+
+- Reference file: the running procedure (B, C) names only `quick-rules.md`; A's own notes say the full taxonomy is "maintainer-only, runtime calls do not read it". `quick-rules.md` is generated, but every line is a concatenation of `quick_pattern`/`quick_fix` fields hand-written inside `ai-tell-taxonomy.md`. Suggested: take quick-rules' *selection* (which ids, S1/S2, self-check list) but anchor the content to the taxonomy's hand-written entries by id.
+- Invariants: 10 confirmed in P0. C carries 9 in one place (missing an explicit 서법 보존 line, which lives in `quick-rules.header.md`, and a declarative 내용 앵커, which A states). No single file has all 10.
+- **Recommendation:** B as skeleton, C's nine invariants merged, the two missing ones from quick-rules header / A. Cheapest to reverse. Confidence medium.
+- **Counter:** B has no version stamp and is a parallel fork; nothing shows it is kept invariant-complete when A/C change, so a later lock bump could silently inherit a stale subset.
+
+## E3 — upstream/ours separation in rendered SKILL.md (06 §16.2)
+
+Options: A inline HTML comment markers per fragment; B section split + `## Sources` block; C sidecar `SKILL.provenance.yaml`; D frontmatter `metadata.provenance`.
+
+- HTML comments: documented as stripped for CLAUDE.md, **not** documented for skills in either harness; skills docs say every loaded line is a recurring token cost. Treat inline comments as costing tokens on every invocation.
+- Frontmatter: Claude Code documents `metadata` as free-form and inert; the stricter Agent Skills validator allows exactly `name, description, license, compatibility, metadata, allowed-tools`. Codex requires `name`, `description`, says nothing about extra keys.
+- Extra files in the skill directory are allowed and ignored by both harnesses; the body loads only on invocation in both.
+- **Recommendation:** C (sidecar). Zero context cost, per-fragment hash checkable by the build. Confidence medium. B is the fallback if human readability of SKILL.md alone matters more.
+- **Counter:** a hand edit to SKILL.md drifts silently from the sidecar; only the build's hash check (06 §12 check 1) catches it, and only if it runs before the commit lands.
+
+## E4 — policy composition rules (06 §16 decision ③)
+
+- Block position: README says three times to append at the end ("지침 끝에", "본문 말미에", "텍스트 말미에"). Nothing argues otherwise.
+- Frontmatter `name`/`description` are metadata, not sentences: replacing them with ours is not an upstream text change. `force-for-plugin` is added. formal-report omits `keep-coding-instructions` (default false: drops Claude Code's built-in engineering instructions).
+- `force-for-plugin`: docs state "first loaded wins" only across plugins; two styles in one plugin is undocumented. Only one should set it (agent-reply). `/output-style` is removed (v2.1.91); the user switches via `/config` or the `outputStyle` setting, but a forced style overrides that while the plugin is enabled — **so formal-report is unreachable as an output style without disabling the plugin.** Open point for `flow.md`.
+- Politeness block: keep `'사용자님'` literal → verbatim, 0 adapted; it is an ordinary honorific.
+- Subagent clause (`## 추가 사항`): exists only in the coding variant; pulling it into formal-report is a cross-file `selected`. Recommended to leave it out, respecting upstream's split. Counter: formal-report sessions also spawn subagents.
+- Sizes: agent-reply body 6,119 B / 43 lines; formal-report body + politeness block 6,094 B / 40 lines.
+- **Recommendation:** as above, adapted count 0 for both profiles. Confidence medium.
+
+## E5 — role for materials that are neither procedure nor taxonomy (06 §7, §13.2)
+
+| File | Lines | Kind | Required by the steps? |
+|---|---|---|---|
+| yoonmoon `detect/references/lread-rubric.md` | 67 | scoring rubric + rationale | yes (Phase 1–2 "판정 틀") |
+| yoonmoon `humanize/references/katfishnet-research.md` | 57 | research rationale, maps to taxonomy categories | yes (Phase 1 quantitative signals) |
+| yoonmoon `detect/references/xdac-research.md` | 59 | research rationale, short-text | conditional (Phase 1-S only) |
+| im-not-ai `references/quick-rules.md` | 129 | generated projection of the taxonomy | yes (step 1 "룰북 로드") |
+| im-not-ai `references/rewriting-playbook.md` | 212 | per-category rewrite recipes (procedural) | **no** — listed under `## 참고` only |
+
+- Folding research notes into `taxonomy` breaks taxonomy isolation: they cross-reference taxonomy categories directly. Folding rubric/recipes into `procedure` breaks one-supplier-per-slot.
+- Dropping non-required references keeps everything but the playbook (saves 212 lines) at the risk of weaker rewrites.
+- Licensing: the research notes paraphrase papers with citations and statistics, not extended verbatim prose; low risk under yoonmoon's MIT. The LREAD PDF stays excluded.
+- **Recommendation:** add a fourth role `reference` (per slot, provenance-tracked, rendered under `references/`). Confidence medium.
+- **Counter:** one `reference` bucket conflates three kinds (rubric, generated derivative, cited research) and only relocates the mixing problem; the spec deferred new roles to P4 for a reason.
+
+## E6 — Codex local plugin and headless run
+
+Summarized in "Environment checks done" above. Additional facts: skills are invocable by `$name` and by description match (`allow_implicit_invocation`, default true); subagents are enabled by `agents.enabled` (default true) and are invoked by natural-language delegation, not by name; installed plugins live under `~/.codex/plugins/cache/<marketplace>/<plugin>/<version>/`.
+
+## What `flow.md` must still settle
+
+- E1, E3, E4, E5 recommendations: accept, amend, or reject each, with the counter-argument answered.
+- E2 (anchor form) once its report is in; otherwise P1 tries id-prefix for im-not-ai and heading text elsewhere under 06 §5.5's three rules.
+- The formal-report reachability problem (E4): second output style, or a different vehicle for the second profile.
+- Whether to run the Codex headless probe before P1 or defer it to P6.
