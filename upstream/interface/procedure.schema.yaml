@@ -1,0 +1,12 @@
+# role: procedure — steps, invariants, input/output contract, self-check, grades (06 §5.3). One supplier per slot.
+extends: common.schema.yaml
+top_level:
+  role: {const: procedure}
+  slot: {required: true, examples: [rewrite, diagnose, grammar]}
+file_name: "upstream/normalized/procedure/<slot>.yaml"
+fragment_kinds_seen:
+  selection: [summary, invariant, step, output, check, grade, input]     # im-not-ai (P1)
+  whole_file: [paragraph, item, quote, row, table-header, table-sep]      # yoonmoon (P2)
+render_notes:
+  - "Rendered into skills/<skill>/SKILL.md; material that is not a step may render into skills/<skill>/references/ to keep the body within 100 lines (06 §7, P2)."
+  - "Tag lines and headings of the source are structure, not fragments; the renderer supplies them."

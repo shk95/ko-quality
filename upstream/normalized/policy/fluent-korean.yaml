@@ -42,7 +42,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 상황과 목표 > item -"
+      anchor: "## 상황과 목표 > item 1"
       content_hash: sha256:4b8261e341ef29737c56c54cf605385fc9dcf2568eec570aee163629ea02eea0
       transform: verbatim
   - id: coding.04
@@ -52,7 +52,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 상황과 목표 > item -"
+      anchor: "## 상황과 목표 > item 2"
       content_hash: sha256:5a90993b169ce09207a96c812b56019085b19608e82d90b007d93db9611c1c5e
       transform: verbatim
   - id: coding.05
@@ -72,7 +72,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 동작 범위 > item 1."
+      anchor: "## 동작 범위 > item 1"
       content_hash: sha256:632e900623f21846b532bfd6b3042223227b1038be701e95c723badeefbd477d
       transform: verbatim
   - id: coding.07
@@ -82,7 +82,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 동작 범위 > item 2."
+      anchor: "## 동작 범위 > item 2"
       content_hash: sha256:76f38cc98a31d23f50e3cad6f9cea7581bddfd954d14e649b0f09c81b60d98c6
       transform: verbatim
   - id: coding.08
@@ -92,7 +92,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 동작 범위 > item 3."
+      anchor: "## 동작 범위 > item 3"
       content_hash: sha256:924ccb4db1730935d678d1292cc94ef4bee3da8a6d72edbbfccf91d6dbcafeeb
       transform: verbatim
   - id: coding.09
@@ -102,7 +102,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 동작 범위 > item 4."
+      anchor: "## 동작 범위 > item 4"
       content_hash: sha256:9bc0f2577f4c00724f3f1a0196a61cf1d91ae783bafff68c625a218a74fae2f3
       transform: verbatim
   - id: coding.10
@@ -122,7 +122,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 문장 단위 > item 1."
+      anchor: "## 문장 단위 > item 1"
       content_hash: sha256:266638757af48054cf9d0fecb2a33ef3e499c7fd98ebfe58aaea673799f5f37f
       transform: verbatim
   - id: coding.12
@@ -132,7 +132,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 문장 단위 > item 2."
+      anchor: "## 문장 단위 > item 2"
       content_hash: sha256:8ed46f08bf4b45cca0393ae55b04655aa3aa0f40725be60684d2770a2aabd28f
       transform: verbatim
   - id: coding.13
@@ -152,7 +152,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 구 단위 > item 1."
+      anchor: "## 구 단위 > item 1"
       content_hash: sha256:1d46ef71f346114f46ab9fc1049a96ca94af6c488392e84183fce3d527b82214
       transform: verbatim
   - id: coding.15
@@ -162,7 +162,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 구 단위 > item 2."
+      anchor: "## 구 단위 > item 2"
       content_hash: sha256:16433acd81521807ee8f8a08f8e3dac3cfe93118ff71e7568b22907e228419c5
       transform: verbatim
   - id: coding.16
@@ -172,7 +172,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 구 단위 > item 3."
+      anchor: "## 구 단위 > item 3"
       content_hash: sha256:b622c67e7727be76d2c9a3e0a4277a893e9c27f16d2eb8c6ebcee4a83208788a
       transform: verbatim
   - id: coding.17
@@ -182,7 +182,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 구 단위 > item 4."
+      anchor: "## 구 단위 > item 4"
       content_hash: sha256:1ec1fa7c180f63d7fba40ef6f5f6d6ba4c27d68470dd3609b4b248ed0299538c
       transform: verbatim
   - id: coding.18
@@ -202,7 +202,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean.md
-      anchor: "## 추가 사항 > item -"
+      anchor: "## 추가 사항 > item 1"
       content_hash: sha256:df5a084e2f90d562336be3ac940add2802ccba8495e01b55fa46b7c5b8e42cbe
       transform: verbatim
   - id: not-coding.01
@@ -232,7 +232,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 상황과 목표 > item -"
+      anchor: "## 상황과 목표 > item 1"
       content_hash: sha256:4b8261e341ef29737c56c54cf605385fc9dcf2568eec570aee163629ea02eea0
       transform: verbatim
   - id: not-coding.04
@@ -242,7 +242,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 상황과 목표 > item -"
+      anchor: "## 상황과 목표 > item 2"
       content_hash: sha256:5a90993b169ce09207a96c812b56019085b19608e82d90b007d93db9611c1c5e
       transform: verbatim
   - id: not-coding.05
@@ -262,7 +262,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 동작 범위 > item 1."
+      anchor: "## 동작 범위 > item 1"
       content_hash: sha256:632e900623f21846b532bfd6b3042223227b1038be701e95c723badeefbd477d
       transform: verbatim
   - id: not-coding.07
@@ -272,7 +272,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 동작 범위 > item 2."
+      anchor: "## 동작 범위 > item 2"
       content_hash: sha256:76f38cc98a31d23f50e3cad6f9cea7581bddfd954d14e649b0f09c81b60d98c6
       transform: verbatim
   - id: not-coding.08
@@ -282,7 +282,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 동작 범위 > item 3."
+      anchor: "## 동작 범위 > item 3"
       content_hash: sha256:924ccb4db1730935d678d1292cc94ef4bee3da8a6d72edbbfccf91d6dbcafeeb
       transform: verbatim
   - id: not-coding.09
@@ -292,7 +292,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 동작 범위 > item 4."
+      anchor: "## 동작 범위 > item 4"
       content_hash: sha256:9bc0f2577f4c00724f3f1a0196a61cf1d91ae783bafff68c625a218a74fae2f3
       transform: verbatim
   - id: not-coding.10
@@ -312,7 +312,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 문장 단위 > item 1."
+      anchor: "## 문장 단위 > item 1"
       content_hash: sha256:371b3df432af05647cf835077580a709eed0dfcf69ddcf081fb2e76be0489ca5
       transform: verbatim
   - id: not-coding.12
@@ -322,7 +322,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 문장 단위 > item 2."
+      anchor: "## 문장 단위 > item 2"
       content_hash: sha256:8ed46f08bf4b45cca0393ae55b04655aa3aa0f40725be60684d2770a2aabd28f
       transform: verbatim
   - id: not-coding.13
@@ -342,7 +342,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 구 단위 > item 1."
+      anchor: "## 구 단위 > item 1"
       content_hash: sha256:1d46ef71f346114f46ab9fc1049a96ca94af6c488392e84183fce3d527b82214
       transform: verbatim
   - id: not-coding.15
@@ -352,7 +352,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 구 단위 > item 2."
+      anchor: "## 구 단위 > item 2"
       content_hash: sha256:16433acd81521807ee8f8a08f8e3dac3cfe93118ff71e7568b22907e228419c5
       transform: verbatim
   - id: not-coding.16
@@ -362,7 +362,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 구 단위 > item 3."
+      anchor: "## 구 단위 > item 3"
       content_hash: sha256:b622c67e7727be76d2c9a3e0a4277a893e9c27f16d2eb8c6ebcee4a83208788a
       transform: verbatim
   - id: not-coding.17
@@ -372,7 +372,7 @@ fragments:
       upstream: fluent-korean
       commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
       path: plugins/fluent-korean/output-styles/fluent-korean-not-coding.md
-      anchor: "## 구 단위 > item 4."
+      anchor: "## 구 단위 > item 4"
       content_hash: sha256:a00270afc8476cac08f04ae8736e53ed033e81324a1c04fc0df306f71bf182fa
       transform: verbatim
   - id: block.beginner
