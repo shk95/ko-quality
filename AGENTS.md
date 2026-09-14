@@ -14,6 +14,7 @@ This file never holds state. Where the project is and what comes next lives in
 | `assemble/` | Ours. Profiles, presets, agent definitions, skill templates |
 | `build/`, `dist/` | Generated. Never hand-edit `dist/` after the build step exists |
 | `server/`, `logger/` | MCP server (instructions only for now) and the hook logger |
+| `tests/` | Test cases, run summaries, and temporary checks (`check_provenance.py` until P4's extractors). Raw run logs stay outside the tree |
 
 ## Language
 
