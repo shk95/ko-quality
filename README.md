@@ -97,7 +97,8 @@ ko-quality/
 ├── assemble/   우리의 것. 프로파일·프리셋·에이전트·스킬 템플릿
 ├── build/ dist/  만들어진 것
 ├── server/ logger/
-└── CLAUDE.md   에이전트 규칙. 상태 없음
+├── AGENTS.md   에이전트 규칙. 상태 없음. Codex는 직접, Claude Code는 CLAUDE.md의 import로 읽음
+└── CLAUDE.md   `@AGENTS.md` 한 줄
 ```
 
 같은 그림을 한 페이지로 본 것: [`design/01-toolkit/3-spec/prompt-flow.html`](design/01-toolkit/3-spec/prompt-flow.html).
