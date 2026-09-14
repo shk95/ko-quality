@@ -6,6 +6,7 @@ kind: research
 fragments:
   - id: xdac-research.000
     kind: heading
+    blanks: 0
     text: "# 학술 근거 — XDAC (단문/SNS·댓글 AI 탐지, ACL 2025)"
     provenance:
       upstream: yoonmoon
@@ -16,6 +17,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.001
     kind: paragraph
+    blanks: 1
     text: "`detect`는 문어체(KatFishNet)·사람 판별 루브릭(LREAD) 중심이다. **단문·구어체(SNS·댓글·채팅)** 는 신호\n방향이 달라, 한국어 댓글 AI 탐지 연구 **XDAC**로 별도 보강한다. 이 문서는 XDAC 본문 검증 결과와 단문 신호,\n그리고 detect 스킬에 'SNS/댓글 톤' 축을 더할 때의 조건을 정리한다."
     provenance:
       upstream: yoonmoon
@@ -26,6 +28,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.002
     kind: heading
+    blanks: 1
     text: "## 출처 (confidence: HIGH — ACL Anthology PDF 본문 대조)"
     provenance:
       upstream: yoonmoon
@@ -36,6 +39,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.003
     kind: quote
+    blanks: 1
     text: "> **XDAC: XAI-Driven Detection and Attribution of LLM-Generated News Comments in Korean.**\n> Wooyoung Go(NSRI/KAIST), Hyoungshick Kim(Sungkyunkwan), Alice Oh(KAIST), Yongdae Kim(KAIST).\n> _Proceedings of the 63rd Annual Meeting of the ACL (Vol. 1: Long Papers)_, 2025, pp. 22737–22747.\n> ACL Anthology: https://aclanthology.org/2025.acl-long.1108/ · code: https://github.com/airobotlab/XDAC"
     provenance:
       upstream: yoonmoon
@@ -46,6 +50,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.004
     kind: item
+    blanks: 1
     text: "- **과제**: 한국어 뉴스 **댓글(평균 51자 / 11단어)** 의 LLM 생성 여부 탐지(Detection) + 어떤 모델인지 귀속(Attribution)."
     provenance:
       upstream: yoonmoon
@@ -56,6 +61,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.005
     kind: item
+    blanks: 0
     text: "- **데이터**: HWC 1.3M(실제 한국어 뉴스 댓글) + LGC 1M(14개 모델 생성). 실세계 분석에서 네이버 댓글 5.24M 중 27,029건을 잠재 LGC로 식별."
     provenance:
       upstream: yoonmoon
@@ -66,6 +72,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.006
     kind: item
+    blanks: 0
     text: "- **성능**: **Detection F1 98.5%**(GPTZero가 짧은 댓글서 F1 41.7%로 무력한 것과 대비), Attribution F1 84.3%."
     provenance:
       upstream: yoonmoon
@@ -76,6 +83,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.007
     kind: item
+    blanks: 0
     text: "- **방법**: KcBERT 파인튜닝 + XAI(Guided Grad-CAM·Captum). 토크나이저에 포맷팅 토큰(`<SPACE>/<ENTER>/<TAB>`)·\n  반복 인코딩(`<REP>ㅋ5</REP>`)·tone/특수문자 토큰 추가."
     provenance:
       upstream: yoonmoon
@@ -86,6 +94,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.008
     kind: heading
+    blanks: 1
     text: "## 사람(HWC) vs AI(LGC) 단문 신호 (Table 2·8 직접 확인)"
     provenance:
       upstream: yoonmoon
@@ -96,6 +105,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.009
     kind: table-header
+    blanks: 1
     text: "| 신호 축                  | 사람(HWC)             | AI(LGC)                        | 정량 근거 (HWC vs LGC, %) |"
     provenance:
       upstream: yoonmoon
@@ -106,6 +116,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.010
     kind: table-sep
+    blanks: 0
     text: "| ------------------------ | --------------------- | ------------------------------ | ------------------------- |"
     provenance:
       upstream: yoonmoon
@@ -116,6 +127,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.011
     kind: row
+    blanks: 0
     text: "| 반복문자(ㅋㅋ/ㅎㅎ/ㅠㅠ) | 감정·강조용 빈번      | repetition penalty로 거의 없음 | 2자↑ **51.69 vs 11.61**   |"
     provenance:
       upstream: yoonmoon
@@ -126,6 +138,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.012
     kind: row
+    blanks: 0
     text: "| 줄바꿈(newline)          | 사용                  | 거의 0                         | **10.2 vs 0.001**         |"
     provenance:
       upstream: yoonmoon
@@ -136,6 +149,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.013
     kind: row
+    blanks: 0
     text: "| 이중공백(double space)   | 사용                  | 희박                           | **19.1 vs 1.1**           |"
     provenance:
       upstream: yoonmoon
@@ -146,6 +160,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.014
     kind: row
+    blanks: 0
     text: "| 포맷팅 전체              | 풍부                  | 거의 없음                      | **26.1 vs 1.1**           |"
     provenance:
       upstream: yoonmoon
@@ -156,6 +171,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.015
     kind: row
+    blanks: 0
     text: "| 특수문자·이모지          | 다양·문화특화         | 존재해도 표준·공통기호로 획일  | (Fig 2, 정성)             |"
     provenance:
       upstream: yoonmoon
@@ -166,6 +182,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.016
     kind: row
+    blanks: 0
     text: "| 격식·정형 표현           | 변이 큼, 구어·감정    | 격식·정형 선호(\"것 같다\")      | (XAI, 정성)               |"
     provenance:
       upstream: yoonmoon
@@ -176,6 +193,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.017
     kind: row
+    blanks: 0
     text: "| 길이 분산                | 큼(median 35, IQR 45) | 일관·작음(IQR 23)              | Table 8                   |"
     provenance:
       upstream: yoonmoon
@@ -186,6 +204,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.018
     kind: row
+    blanks: 0
     text: "| 감정 극성                | 부정 편향(부 77.9)    | 중립·균형(부 37.9)             | 본문                      |"
     provenance:
       upstream: yoonmoon
@@ -196,6 +215,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.019
     kind: paragraph
+    blanks: 1
     text: "**핵심**: AI 단문 = 표준화·일관·격식·**포맷팅 부재** / 사람 단문 = 변이·감정·반복·**포맷팅 풍부**."
     provenance:
       upstream: yoonmoon
@@ -206,6 +226,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.020
     kind: heading
+    blanks: 1
     text: "## ⚠️ \"이모지=사람\" 단정 금지 (정정)"
     provenance:
       upstream: yoonmoon
@@ -216,6 +237,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.021
     kind: paragraph
+    blanks: 1
     text: "XDAC는 이모지를 사람 신호로 단순화하지 **않는다**. LGC가 이모지를 넣어도 \"전세계 공통 표준 기호에만 의존하는\n**표준화된 패턴**\"을 보인다(Fig 2). 즉 신호는 **이모지 유무가 아니라 사용의 다양성/표준화 정도**다. \"이모지 있으면\n사람\"으로 판정하면 위양성이 난다."
     provenance:
       upstream: yoonmoon
@@ -226,6 +248,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.022
     kind: heading
+    blanks: 1
     text: "## detect 스킬 'SNS/댓글 톤' 축 — 조건부 권고"
     provenance:
       upstream: yoonmoon
@@ -236,6 +259,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.023
     kind: paragraph
+    blanks: 1
     text: "KcBERT 가중치를 직접 못 쓰므로 규칙형 신호로 전환해 **보조 축**으로 추가한다. 단 아래 조건 필수:"
     provenance:
       upstream: yoonmoon
@@ -246,6 +270,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.024
     kind: item
+    blanks: 1
     text: "1. **장르 게이트(필수)** — 이 축은 **SNS·댓글·채팅 등 단문 구어체에만** 적용. 블로그·리포트·공식문서(문어체)에\n   \"반복문자 없으니 AI\"를 적용하면 100% 위양성. 입력이 단문·비격식일 때만 활성화한다."
     provenance:
       upstream: yoonmoon
@@ -256,6 +281,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.025
     kind: item
+    blanks: 0
     text: "2. **다축 합산만** — 개별 신호는 약하다(사람도 격식 댓글을 쓰고, LGC도 11.61%는 반복문자가 있음). 단일 신호로 단정 금지."
     provenance:
       upstream: yoonmoon
@@ -266,6 +292,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.026
     kind: item
+    blanks: 0
     text: "3. **카테고리 8과 신호 방향이 반대** — 카테고리 8(시각 장식)은 문어체에서 **이모지·장식 과잉 = AI**다. 그러나 단문에서는\n   **포맷팅·반복문자 결핍 = AI**다. 같은 표면 요소가 장르에 따라 정반대 신호이므로, 단문 축은 카테고리 8의 **형제/하위\n   노드**로 두되 방향을 분리 표기한다."
     provenance:
       upstream: yoonmoon
@@ -276,6 +303,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.027
     kind: paragraph
+    blanks: 1
     text: "넣을 신호(강→약): ① 반복문자 부재(구어 맥락인데 ㅋㅋ/ㅎㅎ 전무) ② 줄바꿈·이중공백 부재 ③ 격식·헤지 정형구 과다·\n중립 어조 ④ 길이 일관성 ⑤ 이모지/특수문자의 획일성(유무 아님)."
     provenance:
       upstream: yoonmoon
@@ -286,6 +314,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.028
     kind: heading
+    blanks: 1
     text: "## 주의"
     provenance:
       upstream: yoonmoon
@@ -296,6 +325,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.029
     kind: item
+    blanks: 1
     text: "- XDAC도 \"stylistic patterns were context-dependent, not always critical\"라고 경고 — 신호는 '가산점'으로, 단정은 보수적으로."
     provenance:
       upstream: yoonmoon
@@ -306,6 +336,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.030
     kind: item
+    blanks: 0
     text: "- 이 축은 **확률적 보조 판단**이다. 표절·부정행위 단정의 단독 근거로 쓰지 않는다([`lread-rubric.md`](lread-rubric.md)의 fluency trap·보수성 원칙과 동일)."
     provenance:
       upstream: yoonmoon
@@ -316,6 +347,7 @@ fragments:
       transform: verbatim
   - id: xdac-research.031
     kind: item
+    blanks: 0
     text: "- 14개 생성 모델 전수 목록·Fig 2 정확 퍼센트는 본문에서 그림/부록 기반이라 **세부 수치는 LOW**(핵심 결론은 HIGH)."
     provenance:
       upstream: yoonmoon

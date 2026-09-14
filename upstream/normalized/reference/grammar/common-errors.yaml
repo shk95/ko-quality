@@ -5,6 +5,7 @@ kind: recipes
 fragments:
   - id: common-errors.001
     kind: heading
+    blanks: 0
     text: "# 흔한 한국어 오류 패턴"
     provenance:
       upstream: korean-skills
@@ -15,6 +16,7 @@ fragments:
       transform: verbatim
   - id: common-errors.002
     kind: paragraph
+    blanks: 1
     text: "이 문서는 자주 발생하는 한국어 오류 패턴과 교정 방법을 정리한 것입니다."
     provenance:
       upstream: korean-skills
@@ -25,6 +27,7 @@ fragments:
       transform: verbatim
   - id: common-errors.003
     kind: heading
+    blanks: 1
     text: "## 목차"
     provenance:
       upstream: korean-skills
@@ -35,6 +38,7 @@ fragments:
       transform: verbatim
   - id: common-errors.004
     kind: item
+    blanks: 1
     text: "1. [헷갈리기 쉬운 단어](#헷갈리기-쉬운-단어)"
     provenance:
       upstream: korean-skills
@@ -45,6 +49,7 @@ fragments:
       transform: verbatim
   - id: common-errors.005
     kind: item
+    blanks: 0
     text: "2. [띄어쓰기 오류 패턴](#띄어쓰기-오류-패턴)"
     provenance:
       upstream: korean-skills
@@ -55,6 +60,7 @@ fragments:
       transform: verbatim
   - id: common-errors.006
     kind: item
+    blanks: 0
     text: "3. [조사 사용 오류](#조사-사용-오류)"
     provenance:
       upstream: korean-skills
@@ -65,6 +71,7 @@ fragments:
       transform: verbatim
   - id: common-errors.007
     kind: item
+    blanks: 0
     text: "4. [어미 사용 오류](#어미-사용-오류)"
     provenance:
       upstream: korean-skills
@@ -75,6 +82,7 @@ fragments:
       transform: verbatim
   - id: common-errors.008
     kind: item
+    blanks: 0
     text: "5. [문장 부호 오류](#문장-부호-오류)"
     provenance:
       upstream: korean-skills
@@ -85,6 +93,7 @@ fragments:
       transform: verbatim
   - id: common-errors.009
     kind: paragraph
+    blanks: 1
     text: "---"
     provenance:
       upstream: korean-skills
@@ -95,6 +104,7 @@ fragments:
       transform: verbatim
   - id: common-errors.010
     kind: heading
+    blanks: 1
     text: "## 헷갈리기 쉬운 단어"
     provenance:
       upstream: korean-skills
@@ -105,6 +115,7 @@ fragments:
       transform: verbatim
   - id: common-errors.011
     kind: heading
+    blanks: 1
     text: "### 1. 되/돼"
     provenance:
       upstream: korean-skills
@@ -115,6 +126,7 @@ fragments:
       transform: verbatim
   - id: common-errors.012
     kind: paragraph
+    blanks: 1
     text: "**규칙**: \"되어\"의 준말이 \"돼\""
     provenance:
       upstream: korean-skills
@@ -125,6 +137,7 @@ fragments:
       transform: verbatim
   - id: common-errors.013
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -135,6 +148,7 @@ fragments:
       transform: verbatim
   - id: common-errors.014
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -145,6 +159,7 @@ fragments:
       transform: verbatim
   - id: common-errors.015
     kind: row
+    blanks: 0
     text: "| 되요 | 돼요 | \"되어요\"의 준말 |"
     provenance:
       upstream: korean-skills
@@ -155,6 +170,7 @@ fragments:
       transform: verbatim
   - id: common-errors.016
     kind: row
+    blanks: 0
     text: "| 됬어요 | 됐어요 | \"되었어요\"의 준말 |"
     provenance:
       upstream: korean-skills
@@ -165,6 +181,7 @@ fragments:
       transform: verbatim
   - id: common-errors.017
     kind: row
+    blanks: 0
     text: "| 안되요 | 안 돼요 | \"안 되어요\"의 준말 |"
     provenance:
       upstream: korean-skills
@@ -175,6 +192,7 @@ fragments:
       transform: verbatim
   - id: common-errors.018
     kind: row
+    blanks: 0
     text: "| 어떻게되요? | 어떻게 돼요? | \"어떻게 되어요?\"의 준말 |"
     provenance:
       upstream: korean-skills
@@ -185,6 +203,7 @@ fragments:
       transform: verbatim
   - id: common-errors.019
     kind: paragraph
+    blanks: 1
     text: "**확인 방법**: \"하다\"를 \"해\"로 바꾸는 것처럼, \"되다\"는 \"돼\"로 바꿈"
     provenance:
       upstream: korean-skills
@@ -195,6 +214,7 @@ fragments:
       transform: verbatim
   - id: common-errors.020
     kind: heading
+    blanks: 1
     text: "### 2. -ㄴ지/-는지"
     provenance:
       upstream: korean-skills
@@ -205,6 +225,7 @@ fragments:
       transform: verbatim
   - id: common-errors.021
     kind: paragraph
+    blanks: 1
     text: "**규칙**:"
     provenance:
       upstream: korean-skills
@@ -215,6 +236,7 @@ fragments:
       transform: verbatim
   - id: common-errors.022
     kind: item
+    blanks: 0
     text: "- 형용사 + -ㄴ지"
     provenance:
       upstream: korean-skills
@@ -225,6 +247,7 @@ fragments:
       transform: verbatim
   - id: common-errors.023
     kind: item
+    blanks: 0
     text: "- 동사 + -는지"
     provenance:
       upstream: korean-skills
@@ -235,6 +258,7 @@ fragments:
       transform: verbatim
   - id: common-errors.024
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -245,6 +269,7 @@ fragments:
       transform: verbatim
   - id: common-errors.025
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -255,6 +280,7 @@ fragments:
       transform: verbatim
   - id: common-errors.026
     kind: row
+    blanks: 0
     text: "| 좋는지 | 좋은지 | 형용사 \"좋다\" |"
     provenance:
       upstream: korean-skills
@@ -265,6 +291,7 @@ fragments:
       transform: verbatim
   - id: common-errors.027
     kind: row
+    blanks: 0
     text: "| 가는지 | 가는지 | ✅ 동사 \"가다\" |"
     provenance:
       upstream: korean-skills
@@ -275,6 +302,7 @@ fragments:
       transform: verbatim
   - id: common-errors.028
     kind: row
+    blanks: 0
     text: "| 많는지 | 많은지 | 형용사 \"많다\" |"
     provenance:
       upstream: korean-skills
@@ -285,6 +313,7 @@ fragments:
       transform: verbatim
   - id: common-errors.029
     kind: row
+    blanks: 0
     text: "| 하는지 | 하는지 | ✅ 동사 \"하다\" |"
     provenance:
       upstream: korean-skills
@@ -295,6 +324,7 @@ fragments:
       transform: verbatim
   - id: common-errors.030
     kind: heading
+    blanks: 1
     text: "### 3. -ㄹ게/-를게"
     provenance:
       upstream: korean-skills
@@ -305,6 +335,7 @@ fragments:
       transform: verbatim
   - id: common-errors.031
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 항상 \"-ㄹ게\"만 사용 (받침 유무 관계없음)"
     provenance:
       upstream: korean-skills
@@ -315,6 +346,7 @@ fragments:
       transform: verbatim
   - id: common-errors.032
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 |"
     provenance:
       upstream: korean-skills
@@ -325,6 +357,7 @@ fragments:
       transform: verbatim
   - id: common-errors.033
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|"
     provenance:
       upstream: korean-skills
@@ -335,6 +368,7 @@ fragments:
       transform: verbatim
   - id: common-errors.034
     kind: row
+    blanks: 0
     text: "| 하를게요 | 할게요 |"
     provenance:
       upstream: korean-skills
@@ -345,6 +379,7 @@ fragments:
       transform: verbatim
   - id: common-errors.035
     kind: row
+    blanks: 0
     text: "| 먹을게요 | 먹을게요 ✅ |"
     provenance:
       upstream: korean-skills
@@ -355,6 +390,7 @@ fragments:
       transform: verbatim
   - id: common-errors.036
     kind: row
+    blanks: 0
     text: "| 갈게요 | 갈게요 ✅ |"
     provenance:
       upstream: korean-skills
@@ -365,6 +401,7 @@ fragments:
       transform: verbatim
   - id: common-errors.037
     kind: row
+    blanks: 0
     text: "| 볼게요 | 볼게요 ✅ |"
     provenance:
       upstream: korean-skills
@@ -375,6 +412,7 @@ fragments:
       transform: verbatim
   - id: common-errors.038
     kind: heading
+    blanks: 1
     text: "### 4. 던/든"
     provenance:
       upstream: korean-skills
@@ -385,6 +423,7 @@ fragments:
       transform: verbatim
   - id: common-errors.039
     kind: paragraph
+    blanks: 1
     text: "**던**: 과거 회상\n**든**: 선택"
     provenance:
       upstream: korean-skills
@@ -395,6 +434,7 @@ fragments:
       transform: verbatim
   - id: common-errors.040
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -405,6 +445,7 @@ fragments:
       transform: verbatim
   - id: common-errors.041
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -415,6 +456,7 @@ fragments:
       transform: verbatim
   - id: common-errors.042
     kind: row
+    blanks: 0
     text: "| 그때 먹든 음식 | 그때 먹던 음식 | 과거 회상 |"
     provenance:
       upstream: korean-skills
@@ -425,6 +467,7 @@ fragments:
       transform: verbatim
   - id: common-errors.043
     kind: row
+    blanks: 0
     text: "| 뭐던 좋아요 | 뭐든 좋아요 | 선택 |"
     provenance:
       upstream: korean-skills
@@ -435,6 +478,7 @@ fragments:
       transform: verbatim
   - id: common-errors.044
     kind: row
+    blanks: 0
     text: "| 갔든 곳 | 갔던 곳 | 과거 회상 |"
     provenance:
       upstream: korean-skills
@@ -445,6 +489,7 @@ fragments:
       transform: verbatim
   - id: common-errors.045
     kind: row
+    blanks: 0
     text: "| 어디던지 | 어디든지 | 선택 |"
     provenance:
       upstream: korean-skills
@@ -455,6 +500,7 @@ fragments:
       transform: verbatim
   - id: common-errors.046
     kind: heading
+    blanks: 1
     text: "### 5. -로써/-로서"
     provenance:
       upstream: korean-skills
@@ -465,6 +511,7 @@ fragments:
       transform: verbatim
   - id: common-errors.047
     kind: paragraph
+    blanks: 1
     text: "**-로써**: 수단, 도구 (with)\n**-로서**: 자격, 지위 (as)"
     provenance:
       upstream: korean-skills
@@ -475,6 +522,7 @@ fragments:
       transform: verbatim
   - id: common-errors.048
     kind: table-header
+    blanks: 1
     text: "| 올바른 예 | 의미 |"
     provenance:
       upstream: korean-skills
@@ -485,6 +533,7 @@ fragments:
       transform: verbatim
   - id: common-errors.049
     kind: table-sep
+    blanks: 0
     text: "|---------|------|"
     provenance:
       upstream: korean-skills
@@ -495,6 +544,7 @@ fragments:
       transform: verbatim
   - id: common-errors.050
     kind: row
+    blanks: 0
     text: "| 칼로써 자른다 | 수단 (칼을 사용하여) |"
     provenance:
       upstream: korean-skills
@@ -505,6 +555,7 @@ fragments:
       transform: verbatim
   - id: common-errors.051
     kind: row
+    blanks: 0
     text: "| 학생으로서 | 자격 (학생의 자격으로) |"
     provenance:
       upstream: korean-skills
@@ -515,6 +566,7 @@ fragments:
       transform: verbatim
   - id: common-errors.052
     kind: row
+    blanks: 0
     text: "| 이것으로써 | 수단 (이것을 사용하여) |"
     provenance:
       upstream: korean-skills
@@ -525,6 +577,7 @@ fragments:
       transform: verbatim
   - id: common-errors.053
     kind: row
+    blanks: 0
     text: "| 대표로서 | 자격 (대표의 자격으로) |"
     provenance:
       upstream: korean-skills
@@ -535,6 +588,7 @@ fragments:
       transform: verbatim
   - id: common-errors.054
     kind: heading
+    blanks: 1
     text: "### 6. 안/않"
     provenance:
       upstream: korean-skills
@@ -545,6 +599,7 @@ fragments:
       transform: verbatim
   - id: common-errors.055
     kind: paragraph
+    blanks: 1
     text: "**안**: 부정 부사 (동사/형용사 앞)\n**않**: 보조 형용사 (-지 않다)"
     provenance:
       upstream: korean-skills
@@ -555,6 +610,7 @@ fragments:
       transform: verbatim
   - id: common-errors.056
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 |"
     provenance:
       upstream: korean-skills
@@ -565,6 +621,7 @@ fragments:
       transform: verbatim
   - id: common-errors.057
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|"
     provenance:
       upstream: korean-skills
@@ -575,6 +632,7 @@ fragments:
       transform: verbatim
   - id: common-errors.058
     kind: row
+    blanks: 0
     text: "| 하지 안다 | 하지 않다 |"
     provenance:
       upstream: korean-skills
@@ -585,6 +643,7 @@ fragments:
       transform: verbatim
   - id: common-errors.059
     kind: row
+    blanks: 0
     text: "| 않 해요 | 안 해요 |"
     provenance:
       upstream: korean-skills
@@ -595,6 +654,7 @@ fragments:
       transform: verbatim
   - id: common-errors.060
     kind: row
+    blanks: 0
     text: "| 좋지 안아요 | 좋지 않아요 |"
     provenance:
       upstream: korean-skills
@@ -605,6 +665,7 @@ fragments:
       transform: verbatim
   - id: common-errors.061
     kind: row
+    blanks: 0
     text: "| 않 가요 | 안 가요 |"
     provenance:
       upstream: korean-skills
@@ -615,6 +676,7 @@ fragments:
       transform: verbatim
   - id: common-errors.062
     kind: heading
+    blanks: 1
     text: "### 7. 웬/왠"
     provenance:
       upstream: korean-skills
@@ -625,6 +687,7 @@ fragments:
       transform: verbatim
   - id: common-errors.063
     kind: paragraph
+    blanks: 1
     text: "**웬**: \"어찌 된\" (what)\n**왠**: \"왜 그런\" (why) → 거의 \"왠지\"에만 사용"
     provenance:
       upstream: korean-skills
@@ -635,6 +698,7 @@ fragments:
       transform: verbatim
   - id: common-errors.064
     kind: table-header
+    blanks: 1
     text: "| 올바른 예 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -645,6 +709,7 @@ fragments:
       transform: verbatim
   - id: common-errors.065
     kind: table-sep
+    blanks: 0
     text: "|---------|------|"
     provenance:
       upstream: korean-skills
@@ -655,6 +720,7 @@ fragments:
       transform: verbatim
   - id: common-errors.066
     kind: row
+    blanks: 0
     text: "| 웬 일이야? | 어찌 된 일이야? |"
     provenance:
       upstream: korean-skills
@@ -665,6 +731,7 @@ fragments:
       transform: verbatim
   - id: common-errors.067
     kind: row
+    blanks: 0
     text: "| 왠지 모르게 | 왜 그런지 모르게 |"
     provenance:
       upstream: korean-skills
@@ -675,6 +742,7 @@ fragments:
       transform: verbatim
   - id: common-errors.068
     kind: row
+    blanks: 0
     text: "| 웬만하면 | 어찌 되든 |"
     provenance:
       upstream: korean-skills
@@ -685,6 +753,7 @@ fragments:
       transform: verbatim
   - id: common-errors.069
     kind: paragraph
+    blanks: 1
     text: "**기억법**: \"왠\"은 거의 \"왠지\"에만 사용, 나머지는 \"웬\""
     provenance:
       upstream: korean-skills
@@ -695,6 +764,7 @@ fragments:
       transform: verbatim
   - id: common-errors.070
     kind: heading
+    blanks: 1
     text: "### 8. 어떻게/어떡해"
     provenance:
       upstream: korean-skills
@@ -705,6 +775,7 @@ fragments:
       transform: verbatim
   - id: common-errors.071
     kind: paragraph
+    blanks: 1
     text: "**어떻게**: 방법, 상태 (how)\n**어떡해**: \"어떻게 해\"의 준말"
     provenance:
       upstream: korean-skills
@@ -715,6 +786,7 @@ fragments:
       transform: verbatim
   - id: common-errors.072
     kind: table-header
+    blanks: 1
     text: "| 올바른 예 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -725,6 +797,7 @@ fragments:
       transform: verbatim
   - id: common-errors.073
     kind: table-sep
+    blanks: 0
     text: "|---------|------|"
     provenance:
       upstream: korean-skills
@@ -735,6 +808,7 @@ fragments:
       transform: verbatim
   - id: common-errors.074
     kind: row
+    blanks: 0
     text: "| 어떻게 했어? | 방법 질문 |"
     provenance:
       upstream: korean-skills
@@ -745,6 +819,7 @@ fragments:
       transform: verbatim
   - id: common-errors.075
     kind: row
+    blanks: 0
     text: "| 어떡해? | \"어떻게 해?\"의 준말 |"
     provenance:
       upstream: korean-skills
@@ -755,6 +830,7 @@ fragments:
       transform: verbatim
   - id: common-errors.076
     kind: row
+    blanks: 0
     text: "| 어떻게 가요? | 방법 질문 |"
     provenance:
       upstream: korean-skills
@@ -765,6 +841,7 @@ fragments:
       transform: verbatim
   - id: common-errors.077
     kind: row
+    blanks: 0
     text: "| 어떡하지? | \"어떻게 하지?\"의 준말 |"
     provenance:
       upstream: korean-skills
@@ -775,6 +852,7 @@ fragments:
       transform: verbatim
   - id: common-errors.078
     kind: paragraph
+    blanks: 1
     text: "---"
     provenance:
       upstream: korean-skills
@@ -785,6 +863,7 @@ fragments:
       transform: verbatim
   - id: common-errors.079
     kind: heading
+    blanks: 1
     text: "## 띄어쓰기 오류 패턴"
     provenance:
       upstream: korean-skills
@@ -795,6 +874,7 @@ fragments:
       transform: verbatim
   - id: common-errors.080
     kind: heading
+    blanks: 1
     text: "### 1. 의존명사 오류"
     provenance:
       upstream: korean-skills
@@ -805,6 +885,7 @@ fragments:
       transform: verbatim
   - id: common-errors.081
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -815,6 +896,7 @@ fragments:
       transform: verbatim
   - id: common-errors.082
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -825,6 +907,7 @@ fragments:
       transform: verbatim
   - id: common-errors.083
     kind: row
+    blanks: 0
     text: "| 할수있다 | 할 수 있다 | \"수\"는 의존명사 |"
     provenance:
       upstream: korean-skills
@@ -835,6 +918,7 @@ fragments:
       transform: verbatim
   - id: common-errors.084
     kind: row
+    blanks: 0
     text: "| 먹을만큼 | 먹을 만큼 | \"만큼\"은 의존명사 |"
     provenance:
       upstream: korean-skills
@@ -845,6 +929,7 @@ fragments:
       transform: verbatim
   - id: common-errors.085
     kind: row
+    blanks: 0
     text: "| 하는것 | 하는 것 | \"것\"은 의존명사 |"
     provenance:
       upstream: korean-skills
@@ -855,6 +940,7 @@ fragments:
       transform: verbatim
   - id: common-errors.086
     kind: row
+    blanks: 0
     text: "| 갈뿐이다 | 갈 뿐이다 | \"뿐\"은 의존명사 |"
     provenance:
       upstream: korean-skills
@@ -865,6 +951,7 @@ fragments:
       transform: verbatim
   - id: common-errors.087
     kind: row
+    blanks: 0
     text: "| 하는데 | 하는 데 | \"데\"는 의존명사 (장소) |"
     provenance:
       upstream: korean-skills
@@ -875,6 +962,7 @@ fragments:
       transform: verbatim
   - id: common-errors.088
     kind: row
+    blanks: 0
     text: "| 먹을줄알다 | 먹을 줄 알다 | \"줄\"은 의존명사 |"
     provenance:
       upstream: korean-skills
@@ -885,6 +973,7 @@ fragments:
       transform: verbatim
   - id: common-errors.089
     kind: heading
+    blanks: 1
     text: "### 2. 보조용언 오류"
     provenance:
       upstream: korean-skills
@@ -895,6 +984,7 @@ fragments:
       transform: verbatim
   - id: common-errors.090
     kind: paragraph
+    blanks: 1
     text: "**원칙**: 띄어 쓰기 (하지만 붙여 쓰기도 허용)"
     provenance:
       upstream: korean-skills
@@ -905,6 +995,7 @@ fragments:
       transform: verbatim
   - id: common-errors.091
     kind: table-header
+    blanks: 1
     text: "| 원칙 | 허용 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -915,6 +1006,7 @@ fragments:
       transform: verbatim
   - id: common-errors.092
     kind: table-sep
+    blanks: 0
     text: "|-----|------|------|"
     provenance:
       upstream: korean-skills
@@ -925,6 +1017,7 @@ fragments:
       transform: verbatim
   - id: common-errors.093
     kind: row
+    blanks: 0
     text: "| 해 주세요 | 해주세요 | 보조용언 \"-아/어 주다\" |"
     provenance:
       upstream: korean-skills
@@ -935,6 +1028,7 @@ fragments:
       transform: verbatim
   - id: common-errors.094
     kind: row
+    blanks: 0
     text: "| 하고 있습니다 | 하고있습니다 | 보조용언 \"-고 있다\" |"
     provenance:
       upstream: korean-skills
@@ -945,6 +1039,7 @@ fragments:
       transform: verbatim
   - id: common-errors.095
     kind: row
+    blanks: 0
     text: "| 해 보세요 | 해보세요 | 보조용언 \"-아/어 보다\" |"
     provenance:
       upstream: korean-skills
@@ -955,6 +1050,7 @@ fragments:
       transform: verbatim
   - id: common-errors.096
     kind: row
+    blanks: 0
     text: "| 하게 하다 | 하게하다 | 보조용언 \"-게 하다\" |"
     provenance:
       upstream: korean-skills
@@ -965,6 +1061,7 @@ fragments:
       transform: verbatim
   - id: common-errors.097
     kind: paragraph
+    blanks: 1
     text: "**권장**: 격식체에서는 띄어 쓰기"
     provenance:
       upstream: korean-skills
@@ -975,6 +1072,7 @@ fragments:
       transform: verbatim
   - id: common-errors.098
     kind: heading
+    blanks: 1
     text: "### 3. 단위명사 오류"
     provenance:
       upstream: korean-skills
@@ -985,6 +1083,7 @@ fragments:
       transform: verbatim
   - id: common-errors.099
     kind: table-header
+    blanks: 1
     text: "| 격식체 (권장) | 비격식체 (허용) |"
     provenance:
       upstream: korean-skills
@@ -995,6 +1094,7 @@ fragments:
       transform: verbatim
   - id: common-errors.100
     kind: table-sep
+    blanks: 0
     text: "|-----------|-------------|"
     provenance:
       upstream: korean-skills
@@ -1005,6 +1105,7 @@ fragments:
       transform: verbatim
   - id: common-errors.101
     kind: row
+    blanks: 0
     text: "| 10 개 | 10개 |"
     provenance:
       upstream: korean-skills
@@ -1015,6 +1116,7 @@ fragments:
       transform: verbatim
   - id: common-errors.102
     kind: row
+    blanks: 0
     text: "| 5 명 | 5명 |"
     provenance:
       upstream: korean-skills
@@ -1025,6 +1127,7 @@ fragments:
       transform: verbatim
   - id: common-errors.103
     kind: row
+    blanks: 0
     text: "| 3 권 | 3권 |"
     provenance:
       upstream: korean-skills
@@ -1035,6 +1138,7 @@ fragments:
       transform: verbatim
   - id: common-errors.104
     kind: row
+    blanks: 0
     text: "| 100 원 | 100원 |"
     provenance:
       upstream: korean-skills
@@ -1045,6 +1149,7 @@ fragments:
       transform: verbatim
   - id: common-errors.105
     kind: heading
+    blanks: 1
     text: "### 4. 합성어 오류"
     provenance:
       upstream: korean-skills
@@ -1055,6 +1160,7 @@ fragments:
       transform: verbatim
   - id: common-errors.106
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -1065,6 +1171,7 @@ fragments:
       transform: verbatim
   - id: common-errors.107
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -1075,6 +1182,7 @@ fragments:
       transform: verbatim
   - id: common-errors.108
     kind: row
+    blanks: 0
     text: "| 사과 나무 | 사과나무 | 합성어 |"
     provenance:
       upstream: korean-skills
@@ -1085,6 +1193,7 @@ fragments:
       transform: verbatim
   - id: common-errors.109
     kind: row
+    blanks: 0
     text: "| 손 목 시계 | 손목시계 | 합성어 |"
     provenance:
       upstream: korean-skills
@@ -1095,6 +1204,7 @@ fragments:
       transform: verbatim
   - id: common-errors.110
     kind: row
+    blanks: 0
     text: "| 먹 거리 | 먹거리 | 합성어 |"
     provenance:
       upstream: korean-skills
@@ -1105,6 +1215,7 @@ fragments:
       transform: verbatim
   - id: common-errors.111
     kind: row
+    blanks: 0
     text: "| 읽을 거리 | 읽을거리 | 합성어 |"
     provenance:
       upstream: korean-skills
@@ -1115,6 +1226,7 @@ fragments:
       transform: verbatim
   - id: common-errors.112
     kind: heading
+    blanks: 1
     text: "### 5. 부사 오류"
     provenance:
       upstream: korean-skills
@@ -1125,6 +1237,7 @@ fragments:
       transform: verbatim
   - id: common-errors.113
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -1135,6 +1248,7 @@ fragments:
       transform: verbatim
   - id: common-errors.114
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -1145,6 +1259,7 @@ fragments:
       transform: verbatim
   - id: common-errors.115
     kind: row
+    blanks: 0
     text: "| 아주 | 아주 ✅ | 부사는 띄어 쓰기 |"
     provenance:
       upstream: korean-skills
@@ -1155,6 +1270,7 @@ fragments:
       transform: verbatim
   - id: common-errors.116
     kind: row
+    blanks: 0
     text: "| 매우좋다 | 매우 좋다 | 부사 \"매우\" |"
     provenance:
       upstream: korean-skills
@@ -1165,6 +1281,7 @@ fragments:
       transform: verbatim
   - id: common-errors.117
     kind: row
+    blanks: 0
     text: "| 너무나빨리 | 너무나 빨리 | 부사 띄어 쓰기 |"
     provenance:
       upstream: korean-skills
@@ -1175,6 +1292,7 @@ fragments:
       transform: verbatim
   - id: common-errors.118
     kind: row
+    blanks: 0
     text: "| 정말로좋다 | 정말로 좋다 | 부사 \"정말로\" |"
     provenance:
       upstream: korean-skills
@@ -1185,6 +1303,7 @@ fragments:
       transform: verbatim
   - id: common-errors.119
     kind: paragraph
+    blanks: 1
     text: "---"
     provenance:
       upstream: korean-skills
@@ -1195,6 +1314,7 @@ fragments:
       transform: verbatim
   - id: common-errors.120
     kind: heading
+    blanks: 1
     text: "## 조사 사용 오류"
     provenance:
       upstream: korean-skills
@@ -1205,6 +1325,7 @@ fragments:
       transform: verbatim
   - id: common-errors.121
     kind: heading
+    blanks: 1
     text: "### 1. -을/를 오류"
     provenance:
       upstream: korean-skills
@@ -1215,6 +1336,7 @@ fragments:
       transform: verbatim
   - id: common-errors.122
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -1225,6 +1347,7 @@ fragments:
       transform: verbatim
   - id: common-errors.123
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -1235,6 +1358,7 @@ fragments:
       transform: verbatim
   - id: common-errors.124
     kind: row
+    blanks: 0
     text: "| 사과을 | 사과를 | 받침 X → \"-를\" |"
     provenance:
       upstream: korean-skills
@@ -1245,6 +1369,7 @@ fragments:
       transform: verbatim
   - id: common-errors.125
     kind: row
+    blanks: 0
     text: "| 책를 | 책을 | 받침 O → \"-을\" |"
     provenance:
       upstream: korean-skills
@@ -1255,6 +1380,7 @@ fragments:
       transform: verbatim
   - id: common-errors.126
     kind: row
+    blanks: 0
     text: "| 물을 | 물을 ✅ | 받침 O → \"-을\" |"
     provenance:
       upstream: korean-skills
@@ -1265,6 +1391,7 @@ fragments:
       transform: verbatim
   - id: common-errors.127
     kind: row
+    blanks: 0
     text: "| 차을 | 차를 | 받침 X → \"-를\" |"
     provenance:
       upstream: korean-skills
@@ -1275,6 +1402,7 @@ fragments:
       transform: verbatim
   - id: common-errors.128
     kind: heading
+    blanks: 1
     text: "### 2. -이/가 오류"
     provenance:
       upstream: korean-skills
@@ -1285,6 +1413,7 @@ fragments:
       transform: verbatim
   - id: common-errors.129
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -1295,6 +1424,7 @@ fragments:
       transform: verbatim
   - id: common-errors.130
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -1305,6 +1435,7 @@ fragments:
       transform: verbatim
   - id: common-errors.131
     kind: row
+    blanks: 0
     text: "| 사과이 | 사과가 | 받침 X → \"-가\" |"
     provenance:
       upstream: korean-skills
@@ -1315,6 +1446,7 @@ fragments:
       transform: verbatim
   - id: common-errors.132
     kind: row
+    blanks: 0
     text: "| 책가 | 책이 | 받침 O → \"-이\" |"
     provenance:
       upstream: korean-skills
@@ -1325,6 +1457,7 @@ fragments:
       transform: verbatim
   - id: common-errors.133
     kind: row
+    blanks: 0
     text: "| 물이 | 물이 ✅ | 받침 O → \"-이\" |"
     provenance:
       upstream: korean-skills
@@ -1335,6 +1468,7 @@ fragments:
       transform: verbatim
   - id: common-errors.134
     kind: row
+    blanks: 0
     text: "| 차이 | 차가 | 받침 X → \"-가\" |"
     provenance:
       upstream: korean-skills
@@ -1345,6 +1479,7 @@ fragments:
       transform: verbatim
   - id: common-errors.135
     kind: heading
+    blanks: 1
     text: "### 3. -은/는 오류"
     provenance:
       upstream: korean-skills
@@ -1355,6 +1490,7 @@ fragments:
       transform: verbatim
   - id: common-errors.136
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -1365,6 +1501,7 @@ fragments:
       transform: verbatim
   - id: common-errors.137
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -1375,6 +1512,7 @@ fragments:
       transform: verbatim
   - id: common-errors.138
     kind: row
+    blanks: 0
     text: "| 사과은 | 사과는 | 받침 X → \"-는\" |"
     provenance:
       upstream: korean-skills
@@ -1385,6 +1523,7 @@ fragments:
       transform: verbatim
   - id: common-errors.139
     kind: row
+    blanks: 0
     text: "| 책는 | 책은 | 받침 O → \"-은\" |"
     provenance:
       upstream: korean-skills
@@ -1395,6 +1534,7 @@ fragments:
       transform: verbatim
   - id: common-errors.140
     kind: row
+    blanks: 0
     text: "| 물은 | 물은 ✅ | 받침 O → \"-은\" |"
     provenance:
       upstream: korean-skills
@@ -1405,6 +1545,7 @@ fragments:
       transform: verbatim
   - id: common-errors.141
     kind: row
+    blanks: 0
     text: "| 차은 | 차는 | 받침 X → \"-는\" |"
     provenance:
       upstream: korean-skills
@@ -1415,6 +1556,7 @@ fragments:
       transform: verbatim
   - id: common-errors.142
     kind: heading
+    blanks: 1
     text: "### 4. -와/과 오류"
     provenance:
       upstream: korean-skills
@@ -1425,6 +1567,7 @@ fragments:
       transform: verbatim
   - id: common-errors.143
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -1435,6 +1578,7 @@ fragments:
       transform: verbatim
   - id: common-errors.144
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -1445,6 +1589,7 @@ fragments:
       transform: verbatim
   - id: common-errors.145
     kind: row
+    blanks: 0
     text: "| 사과과 | 사과와 | 받침 X → \"-와\" |"
     provenance:
       upstream: korean-skills
@@ -1455,6 +1600,7 @@ fragments:
       transform: verbatim
   - id: common-errors.146
     kind: row
+    blanks: 0
     text: "| 책와 | 책과 | 받침 O → \"-과\" |"
     provenance:
       upstream: korean-skills
@@ -1465,6 +1611,7 @@ fragments:
       transform: verbatim
   - id: common-errors.147
     kind: row
+    blanks: 0
     text: "| 물과 | 물과 ✅ | 받침 O → \"-과\" |"
     provenance:
       upstream: korean-skills
@@ -1475,6 +1622,7 @@ fragments:
       transform: verbatim
   - id: common-errors.148
     kind: row
+    blanks: 0
     text: "| 차과 | 차와 | 받침 X → \"-와\" |"
     provenance:
       upstream: korean-skills
@@ -1485,6 +1633,7 @@ fragments:
       transform: verbatim
   - id: common-errors.149
     kind: paragraph
+    blanks: 1
     text: "---"
     provenance:
       upstream: korean-skills
@@ -1495,6 +1644,7 @@ fragments:
       transform: verbatim
   - id: common-errors.150
     kind: heading
+    blanks: 1
     text: "## 어미 사용 오류"
     provenance:
       upstream: korean-skills
@@ -1505,6 +1655,7 @@ fragments:
       transform: verbatim
   - id: common-errors.151
     kind: heading
+    blanks: 1
     text: "### 1. -ㅂ니다/습니다 오류"
     provenance:
       upstream: korean-skills
@@ -1515,6 +1666,7 @@ fragments:
       transform: verbatim
   - id: common-errors.152
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -1525,6 +1677,7 @@ fragments:
       transform: verbatim
   - id: common-errors.153
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -1535,6 +1688,7 @@ fragments:
       transform: verbatim
   - id: common-errors.154
     kind: row
+    blanks: 0
     text: "| 먹읍니다 | 먹습니다 | 받침 O → \"-습니다\" |"
     provenance:
       upstream: korean-skills
@@ -1545,6 +1699,7 @@ fragments:
       transform: verbatim
   - id: common-errors.155
     kind: row
+    blanks: 0
     text: "| 갑니다 | 갑니다 ✅ | 받침 X → \"-ㅂ니다\" |"
     provenance:
       upstream: korean-skills
@@ -1555,6 +1710,7 @@ fragments:
       transform: verbatim
   - id: common-errors.156
     kind: row
+    blanks: 0
     text: "| 있읍니다 | 있습니다 | 받침 O → \"-습니다\" |"
     provenance:
       upstream: korean-skills
@@ -1565,6 +1721,7 @@ fragments:
       transform: verbatim
   - id: common-errors.157
     kind: heading
+    blanks: 1
     text: "### 2. -아요/-어요 오류"
     provenance:
       upstream: korean-skills
@@ -1575,6 +1732,7 @@ fragments:
       transform: verbatim
   - id: common-errors.158
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -1585,6 +1743,7 @@ fragments:
       transform: verbatim
   - id: common-errors.159
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -1595,6 +1754,7 @@ fragments:
       transform: verbatim
   - id: common-errors.160
     kind: row
+    blanks: 0
     text: "| 가아요 | 가요 | \"가+아요\" → \"가요\" |"
     provenance:
       upstream: korean-skills
@@ -1605,6 +1765,7 @@ fragments:
       transform: verbatim
   - id: common-errors.161
     kind: row
+    blanks: 0
     text: "| 서어요 | 서요 | \"서+어요\" → \"서요\" |"
     provenance:
       upstream: korean-skills
@@ -1615,6 +1776,7 @@ fragments:
       transform: verbatim
   - id: common-errors.162
     kind: row
+    blanks: 0
     text: "| 하아요 | 해요 | \"하+아요\" → \"해요\" |"
     provenance:
       upstream: korean-skills
@@ -1625,6 +1787,7 @@ fragments:
       transform: verbatim
   - id: common-errors.163
     kind: row
+    blanks: 0
     text: "| 오아요 | 와요 | \"오+아요\" → \"와요\" |"
     provenance:
       upstream: korean-skills
@@ -1635,6 +1798,7 @@ fragments:
       transform: verbatim
   - id: common-errors.164
     kind: heading
+    blanks: 1
     text: "### 3. -ㄹ까요/-을까요 오류"
     provenance:
       upstream: korean-skills
@@ -1645,6 +1809,7 @@ fragments:
       transform: verbatim
   - id: common-errors.165
     kind: table-header
+    blanks: 1
     text: "| 틀린 표현 | 올바른 표현 | 설명 |"
     provenance:
       upstream: korean-skills
@@ -1655,6 +1820,7 @@ fragments:
       transform: verbatim
   - id: common-errors.166
     kind: table-sep
+    blanks: 0
     text: "|---------|----------|------|"
     provenance:
       upstream: korean-skills
@@ -1665,6 +1831,7 @@ fragments:
       transform: verbatim
   - id: common-errors.167
     kind: row
+    blanks: 0
     text: "| 먹을까요 | 먹을까요 ✅ | 받침 O → \"-을까요\" |"
     provenance:
       upstream: korean-skills
@@ -1675,6 +1842,7 @@ fragments:
       transform: verbatim
   - id: common-errors.168
     kind: row
+    blanks: 0
     text: "| 갈까요 | 갈까요 ✅ | 받침 X → \"-ㄹ까요\" |"
     provenance:
       upstream: korean-skills
@@ -1685,6 +1853,7 @@ fragments:
       transform: verbatim
   - id: common-errors.169
     kind: row
+    blanks: 0
     text: "| 읽을까요 | 읽을까요 ✅ | 받침 O → \"-을까요\" |"
     provenance:
       upstream: korean-skills
@@ -1695,6 +1864,7 @@ fragments:
       transform: verbatim
   - id: common-errors.170
     kind: paragraph
+    blanks: 1
     text: "---"
     provenance:
       upstream: korean-skills
@@ -1705,6 +1875,7 @@ fragments:
       transform: verbatim
   - id: common-errors.171
     kind: heading
+    blanks: 1
     text: "## 문장 부호 오류"
     provenance:
       upstream: korean-skills
@@ -1715,6 +1886,7 @@ fragments:
       transform: verbatim
   - id: common-errors.172
     kind: heading
+    blanks: 1
     text: "### 1. 과도한 쉼표 사용"
     provenance:
       upstream: korean-skills
@@ -1725,6 +1897,7 @@ fragments:
       transform: verbatim
   - id: common-errors.173
     kind: paragraph
+    blanks: 1
     text: "**오류 패턴**: 영어식 쉼표 사용"
     provenance:
       upstream: korean-skills
@@ -1735,6 +1908,7 @@ fragments:
       transform: verbatim
   - id: common-errors.174
     kind: table-header
+    blanks: 1
     text: "| 틀린 예 | 올바른 예 |"
     provenance:
       upstream: korean-skills
@@ -1745,6 +1919,7 @@ fragments:
       transform: verbatim
   - id: common-errors.175
     kind: table-sep
+    blanks: 0
     text: "|--------|----------|"
     provenance:
       upstream: korean-skills
@@ -1755,6 +1930,7 @@ fragments:
       transform: verbatim
   - id: common-errors.176
     kind: row
+    blanks: 0
     text: "| 나는, 학교에 갔다. | 나는 학교에 갔다. |"
     provenance:
       upstream: korean-skills
@@ -1765,6 +1941,7 @@ fragments:
       transform: verbatim
   - id: common-errors.177
     kind: row
+    blanks: 0
     text: "| 사과, 배, 그리고 포도 | 사과, 배, 포도 |"
     provenance:
       upstream: korean-skills
@@ -1775,6 +1952,7 @@ fragments:
       transform: verbatim
   - id: common-errors.178
     kind: row
+    blanks: 0
     text: "| 만약 비가 오면, 우산을 가져가세요. | 만약 비가 오면 우산을 가져가세요. |"
     provenance:
       upstream: korean-skills
@@ -1785,6 +1963,7 @@ fragments:
       transform: verbatim
   - id: common-errors.179
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 한국어는 영어보다 쉼표를 적게 사용"
     provenance:
       upstream: korean-skills
@@ -1795,6 +1974,7 @@ fragments:
       transform: verbatim
   - id: common-errors.180
     kind: heading
+    blanks: 1
     text: "### 2. 불필요한 느낌표 과다 사용"
     provenance:
       upstream: korean-skills
@@ -1805,6 +1985,7 @@ fragments:
       transform: verbatim
   - id: common-errors.181
     kind: paragraph
+    blanks: 1
     text: "**오류 패턴**: 과도한 강조"
     provenance:
       upstream: korean-skills
@@ -1815,6 +1996,7 @@ fragments:
       transform: verbatim
   - id: common-errors.182
     kind: table-header
+    blanks: 1
     text: "| 틀린 예 | 올바른 예 |"
     provenance:
       upstream: korean-skills
@@ -1825,6 +2007,7 @@ fragments:
       transform: verbatim
   - id: common-errors.183
     kind: table-sep
+    blanks: 0
     text: "|--------|----------|"
     provenance:
       upstream: korean-skills
@@ -1835,6 +2018,7 @@ fragments:
       transform: verbatim
   - id: common-errors.184
     kind: row
+    blanks: 0
     text: "| 안녕하세요!!! | 안녕하세요! |"
     provenance:
       upstream: korean-skills
@@ -1845,6 +2029,7 @@ fragments:
       transform: verbatim
   - id: common-errors.185
     kind: row
+    blanks: 0
     text: "| 좋아요!!! 정말 좋아요!!! | 좋아요! 정말 좋아요. |"
     provenance:
       upstream: korean-skills
@@ -1855,6 +2040,7 @@ fragments:
       transform: verbatim
   - id: common-errors.186
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 격식체 문서에서는 느낌표를 최소화"
     provenance:
       upstream: korean-skills
@@ -1865,6 +2051,7 @@ fragments:
       transform: verbatim
   - id: common-errors.187
     kind: heading
+    blanks: 1
     text: "### 3. 따옴표 혼용"
     provenance:
       upstream: korean-skills
@@ -1875,6 +2062,7 @@ fragments:
       transform: verbatim
   - id: common-errors.188
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 큰따옴표와 작은따옴표를 일관되게 사용"
     provenance:
       upstream: korean-skills
@@ -1885,6 +2073,7 @@ fragments:
       transform: verbatim
   - id: common-errors.189
     kind: table-header
+    blanks: 1
     text: "| 혼란스러운 예 | 올바른 예 |"
     provenance:
       upstream: korean-skills
@@ -1895,6 +2084,7 @@ fragments:
       transform: verbatim
   - id: common-errors.190
     kind: table-sep
+    blanks: 0
     text: "|-----------|----------|"
     provenance:
       upstream: korean-skills
@@ -1905,6 +2095,7 @@ fragments:
       transform: verbatim
   - id: common-errors.191
     kind: row
+    blanks: 0
     text: "| 그는 '안녕\"이라고 했다. | 그는 \"안녕\"이라고 했다. |"
     provenance:
       upstream: korean-skills
@@ -1915,6 +2106,7 @@ fragments:
       transform: verbatim
   - id: common-errors.192
     kind: row
+    blanks: 0
     text: "| \"hello'라고 썼다. | \"hello\"라고 썼다. |"
     provenance:
       upstream: korean-skills
@@ -1925,6 +2117,7 @@ fragments:
       transform: verbatim
   - id: common-errors.193
     kind: heading
+    blanks: 1
     text: "### 4. 마침표 누락"
     provenance:
       upstream: korean-skills
@@ -1935,6 +2128,7 @@ fragments:
       transform: verbatim
   - id: common-errors.194
     kind: paragraph
+    blanks: 1
     text: "**오류 패턴**: 문장 끝 마침표 생략"
     provenance:
       upstream: korean-skills
@@ -1945,6 +2139,7 @@ fragments:
       transform: verbatim
   - id: common-errors.195
     kind: table-header
+    blanks: 1
     text: "| 틀린 예 | 올바른 예 |"
     provenance:
       upstream: korean-skills
@@ -1955,6 +2150,7 @@ fragments:
       transform: verbatim
   - id: common-errors.196
     kind: table-sep
+    blanks: 0
     text: "|--------|----------|"
     provenance:
       upstream: korean-skills
@@ -1965,6 +2161,7 @@ fragments:
       transform: verbatim
   - id: common-errors.197
     kind: row
+    blanks: 0
     text: "| 오늘은 날씨가 좋다 그래서 산책을 갔다 | 오늘은 날씨가 좋다. 그래서 산책을 갔다. |"
     provenance:
       upstream: korean-skills
@@ -1975,6 +2172,7 @@ fragments:
       transform: verbatim
   - id: common-errors.198
     kind: heading
+    blanks: 1
     text: "### 5. 가운뎃점(·) 오남용"
     provenance:
       upstream: korean-skills
@@ -1985,6 +2183,7 @@ fragments:
       transform: verbatim
   - id: common-errors.199
     kind: paragraph
+    blanks: 1
     text: "**오류 패턴**: 단순 열거나 독립적인 대안 나열에 가운뎃점 사용"
     provenance:
       upstream: korean-skills
@@ -1995,6 +2194,7 @@ fragments:
       transform: verbatim
   - id: common-errors.200
     kind: paragraph
+    blanks: 1
     text: "가운뎃점은 한글 맞춤법 부록 「문장 부호」에서 **\"짝을 이루거나 공통 성분으로 묶이는 어구\"**를 표시할 때만 사용합니다. 단순 나열에는 쉼표를 씁니다."
     provenance:
       upstream: korean-skills
@@ -2005,6 +2205,7 @@ fragments:
       transform: verbatim
   - id: common-errors.201
     kind: table-header
+    blanks: 1
     text: "| 부적절한 예 | 권장 |"
     provenance:
       upstream: korean-skills
@@ -2015,6 +2216,7 @@ fragments:
       transform: verbatim
   - id: common-errors.202
     kind: table-sep
+    blanks: 0
     text: "|-----------|------|"
     provenance:
       upstream: korean-skills
@@ -2025,6 +2227,7 @@ fragments:
       transform: verbatim
   - id: common-errors.203
     kind: row
+    blanks: 0
     text: "| 쿠키·세션·JWT | 쿠키, 세션, JWT |"
     provenance:
       upstream: korean-skills
@@ -2035,6 +2238,7 @@ fragments:
       transform: verbatim
   - id: common-errors.204
     kind: row
+    blanks: 0
     text: "| React·Vue·Svelte 중 선택 | React, Vue, Svelte 중 선택 |"
     provenance:
       upstream: korean-skills
@@ -2045,6 +2249,7 @@ fragments:
       transform: verbatim
   - id: common-errors.205
     kind: row
+    blanks: 0
     text: "| 프론트엔드·데브옵스·QA | 프론트엔드, 데브옵스, QA |"
     provenance:
       upstream: korean-skills
@@ -2055,6 +2260,7 @@ fragments:
       transform: verbatim
   - id: common-errors.206
     kind: row
+    blanks: 0
     text: "| DNS·TTL·CDN 개념 | DNS, TTL, CDN 개념 |"
     provenance:
       upstream: korean-skills
@@ -2065,6 +2271,7 @@ fragments:
       transform: verbatim
   - id: common-errors.207
     kind: paragraph
+    blanks: 1
     text: "**가운뎃점이 적절한 예** (대조):"
     provenance:
       upstream: korean-skills
@@ -2075,6 +2282,7 @@ fragments:
       transform: verbatim
   - id: common-errors.208
     kind: table-header
+    blanks: 1
     text: "| 적절한 예 | 이유 |"
     provenance:
       upstream: korean-skills
@@ -2085,6 +2293,7 @@ fragments:
       transform: verbatim
   - id: common-errors.209
     kind: table-sep
+    blanks: 0
     text: "|---------|------|"
     provenance:
       upstream: korean-skills
@@ -2095,6 +2304,7 @@ fragments:
       transform: verbatim
   - id: common-errors.210
     kind: row
+    blanks: 0
     text: "| 금·은·동메달 | 공통 성분 `메달` 축약 |"
     provenance:
       upstream: korean-skills
@@ -2105,6 +2315,7 @@ fragments:
       transform: verbatim
   - id: common-errors.211
     kind: row
+    blanks: 0
     text: "| 한·미·일 회담 | 짝/그룹으로 묶임 |"
     provenance:
       upstream: korean-skills
@@ -2115,6 +2326,7 @@ fragments:
       transform: verbatim
   - id: common-errors.212
     kind: row
+    blanks: 0
     text: "| 읽기·쓰기 권한 | 짝을 이루는 권한 |"
     provenance:
       upstream: korean-skills
@@ -2125,6 +2337,7 @@ fragments:
       transform: verbatim
   - id: common-errors.213
     kind: row
+    blanks: 0
     text: "| 3·1 운동 | 특정 의미 있는 날짜 |"
     provenance:
       upstream: korean-skills
@@ -2135,6 +2348,7 @@ fragments:
       transform: verbatim
   - id: common-errors.214
     kind: paragraph
+    blanks: 1
     text: "**판별 질문**: \"이 항목들은 서로 짝을 이루는가, 아니면 단순한 대안 나열인가?\" 후자라면 가운뎃점이 아니라 쉼표를 사용하세요."
     provenance:
       upstream: korean-skills
@@ -2145,6 +2359,7 @@ fragments:
       transform: verbatim
   - id: common-errors.215
     kind: paragraph
+    blanks: 1
     text: "**확신도**: ⚠️ 권장 사항 (가운뎃점 사용 자체는 어문 규정상 허용되나, 짝/그룹 관계가 없는 단순 나열에는 쉼표가 더 적절)"
     provenance:
       upstream: korean-skills
@@ -2155,6 +2370,7 @@ fragments:
       transform: verbatim
   - id: common-errors.216
     kind: paragraph
+    blanks: 1
     text: "---"
     provenance:
       upstream: korean-skills
@@ -2165,6 +2381,7 @@ fragments:
       transform: verbatim
   - id: common-errors.217
     kind: heading
+    blanks: 1
     text: "## 검사 전략"
     provenance:
       upstream: korean-skills
@@ -2175,6 +2392,7 @@ fragments:
       transform: verbatim
   - id: common-errors.218
     kind: heading
+    blanks: 1
     text: "### 우선순위"
     provenance:
       upstream: korean-skills
@@ -2185,6 +2403,7 @@ fragments:
       transform: verbatim
   - id: common-errors.219
     kind: item
+    blanks: 1
     text: "1. **최우선**: 명백한 맞춤법 오류 (되요 → 돼요)"
     provenance:
       upstream: korean-skills
@@ -2195,6 +2414,7 @@ fragments:
       transform: verbatim
   - id: common-errors.220
     kind: item
+    blanks: 0
     text: "2. **높음**: 띄어쓰기 오류 (할수있다 → 할 수 있다)"
     provenance:
       upstream: korean-skills
@@ -2205,6 +2425,7 @@ fragments:
       transform: verbatim
   - id: common-errors.221
     kind: item
+    blanks: 0
     text: "3. **중간**: 조사 사용 오류"
     provenance:
       upstream: korean-skills
@@ -2215,6 +2436,7 @@ fragments:
       transform: verbatim
   - id: common-errors.222
     kind: item
+    blanks: 0
     text: "4. **낮음**: 스타일 개선 제안"
     provenance:
       upstream: korean-skills
@@ -2225,6 +2447,7 @@ fragments:
       transform: verbatim
   - id: common-errors.223
     kind: heading
+    blanks: 1
     text: "### 문맥 고려 사항"
     provenance:
       upstream: korean-skills
@@ -2235,6 +2458,7 @@ fragments:
       transform: verbatim
   - id: common-errors.224
     kind: item
+    blanks: 1
     text: "- **비격식체**: 일부 규칙을 느슨하게 적용"
     provenance:
       upstream: korean-skills
@@ -2245,6 +2469,7 @@ fragments:
       transform: verbatim
   - id: common-errors.225
     kind: item
+    blanks: 0
     text: "- **구어체**: 줄임말이나 생략 허용"
     provenance:
       upstream: korean-skills
@@ -2255,6 +2480,7 @@ fragments:
       transform: verbatim
   - id: common-errors.226
     kind: item
+    blanks: 0
     text: "- **기술 문서**: 전문 용어와 외래어 주의"
     provenance:
       upstream: korean-skills
@@ -2265,6 +2491,7 @@ fragments:
       transform: verbatim
   - id: common-errors.227
     kind: item
+    blanks: 0
     text: "- **코드 주석**: 간결함을 우선"
     provenance:
       upstream: korean-skills
@@ -2275,6 +2502,7 @@ fragments:
       transform: verbatim
   - id: common-errors.228
     kind: heading
+    blanks: 1
     text: "### 확신도 표시"
     provenance:
       upstream: korean-skills
@@ -2285,6 +2513,7 @@ fragments:
       transform: verbatim
   - id: common-errors.229
     kind: item
+    blanks: 1
     text: "- ✅ **확실한 오류**: 규칙 명백히 위반"
     provenance:
       upstream: korean-skills
@@ -2295,6 +2524,7 @@ fragments:
       transform: verbatim
   - id: common-errors.230
     kind: item
+    blanks: 0
     text: "- ⚠️ **권장 사항**: 더 나은 표현 존재"
     provenance:
       upstream: korean-skills
@@ -2305,6 +2535,7 @@ fragments:
       transform: verbatim
   - id: common-errors.231
     kind: item
+    blanks: 0
     text: "- 💡 **제안**: 선택적 개선 사항"
     provenance:
       upstream: korean-skills

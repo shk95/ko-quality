@@ -7,6 +7,7 @@ Anchor forms produced (context is the tag path, else the last heading, else `top
   <context> > item **label** | bold label **label**
   <context> > table header "<first cell>" | table separator | row "<first cell>"
   <any of the above> > N                         second and later occurrence of the same anchor in one file
+  <tag path> > open | <tag path> > close         tag lines (text stored without indentation)
 """
 import re
 
@@ -57,12 +58,13 @@ def parse(text, top="(top)"):
         if m and not fence:
             attrs = dict(re.findall(r'(\w+)="([^"]*)"', m.group(2)))
             seg = m.group(1).lower().replace("_", "") + (f"[n={attrs['n']}]" if "n" in attrs else "")
-            blocks.append(dict(kind="tag", text=l.strip(), anchor="", ctx=ctx(), blanks=blanks))
-            tags.append(seg); blanks = 0; i += 1; continue
+            tags.append(seg)
+            blocks.append(dict(kind="tag", text=l.strip(), anchor=f"{'/'.join(tags)} > open", ctx=ctx(), blanks=blanks))
+            blanks = 0; i += 1; continue
         m = TAG_CLOSE.match(l)
         if m and not fence:
+            blocks.append(dict(kind="tag", text=l.strip(), anchor=f"{'/'.join(tags)} > close", ctx=ctx(), blanks=blanks))
             tags.pop()
-            blocks.append(dict(kind="tag", text=l.strip(), anchor="", ctx=ctx(), blanks=blanks))
             blanks = 0; i += 1; continue
         if not fence and re.match(r"^#{1,6} ", l):
             heads.append(l); add("heading", l, "heading"); blocks[-1]["anchor"] = l
@@ -108,8 +110,6 @@ def parse(text, top="(top)"):
     # 06 §5.5 rule 2: an anchor repeated in one file gets its occurrence number (" > 2", " > 3")
     seen = {}
     for blk in blocks:
-        if blk["kind"] == "tag":
-            continue
         seen[blk["anchor"]] = seen.get(blk["anchor"], 0) + 1
         if seen[blk["anchor"]] > 1:
             blk["anchor"] = f"{blk['anchor']} > {seen[blk['anchor']]}"

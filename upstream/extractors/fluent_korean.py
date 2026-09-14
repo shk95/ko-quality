@@ -41,7 +41,8 @@ def extract(commit):
         fm, _ = split_frontmatter(text)
         data[vid] = dict(path=path, frontmatter=fm)
         for n, b in enumerate(parse(text, top="(intro)"), 1):
-            frags.append(dict(id=f"{vid}.{n:02d}", kind=b["kind"], text=b["text"], path=path, anchor=b["anchor"], transform="verbatim"))
+            frags.append(dict(id=f"{vid}.{n:02d}", kind=b["kind"], blanks=b["blanks"], text=b["text"], path=path,
+                              anchor=b["anchor"], transform="verbatim"))
     blocks = readme_blocks(read(NAME, README, commit))
     if len(blocks) != len(BLOCK_IDS):
         failures.append(("blocks", f"{README}: expected {len(BLOCK_IDS)} selection blocks, found {len(blocks)}"))

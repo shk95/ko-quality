@@ -10,8 +10,9 @@ fragment:
   kind:
     required: true
     enum:
-      structural: [heading, paragraph, item, quote, row, table-header, table-sep]   # block parser, whole-file extraction
+      structural: [heading, paragraph, item, quote, row, table-header, table-sep, tag]   # block parser, whole-file extraction; tag = an XML-style tag line (P5)
       semantic: [summary, invariant, step, output, check, grade, input, severity, exclusion, category, pattern, block]  # hand-written selection
+  blanks: {required: false, format: "non-negative integer", note: "blank lines before the block in the upstream file; whole-file extraction only; layout for renderers (P5)"}
   text: {required: true, format: "JSON string (exact upstream bytes)"}
   provenance:
     upstream: {required: true, must_be: "a name in upstream/lock.yaml"}

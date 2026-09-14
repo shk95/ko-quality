@@ -1,0 +1,20 @@
+---
+name: ko-route
+description: Runs a Korean writing-quality preset over a text — review (diagnose), edit (rewrite, then grammar) or full — in the order this toolkit defines. Use when the user names a preset or asks for a combined Korean quality pass. For a single task use ko-rewrite, ko-diagnose or ko-grammar directly.
+metadata:
+  provenance: SKILL.provenance.yaml
+---
+
+# ko-route
+
+## Presets
+
+@presets
+
+## How to run a preset
+
+1. Use the preset the user named. If none was named, use the default preset of the installed profile above.
+2. Run the listed skills in that order. When a skill changes the text (ko-rewrite, ko-grammar), give its result to the next skill. ko-diagnose never changes the text.
+3. Reply with the final text if it changed, then each skill's report in order.
+
+The order is what this toolkit recommends; it is not enforced (06 §13.3).

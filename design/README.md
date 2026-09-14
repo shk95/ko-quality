@@ -6,9 +6,9 @@
 
 > 새 세션은 여기서 시작합니다.
 
-**현재 위치:** 시대 `01-toolkit`, **6-build 시작.** 구현 흐름 정의 `5-preflight/flow.md`가 수락됐습니다(2026-09-14). 탐색 보고, E1 후속, Codex 헤드리스 실측은 `5-preflight/explorations.md`에 있습니다. 구현 코드는 없습니다. upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT). 프로세스(`AGENTS.md`)와 저장소 구성은 끝났습니다.
+**현재 위치:** 시대 `01-toolkit`, **6-build 진행 중 — P1~P4 완료, P5 진행.** 구현 흐름 정의는 `5-preflight/flow.md`(2026-09-14 수락), 단계별 기록은 `01-toolkit/6-build/P<n>_*.md`. 탐색 보고, E1 후속, Codex 헤드리스 실측은 `5-preflight/explorations.md`에 있습니다. 구현 코드는 없습니다. upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT). 프로세스(`AGENTS.md`)와 저장소 구성은 끝났습니다.
 
-**다음 작업:** `dev`에서 P1(im-not-ai → `ko-rewrite`) 자율 구현. 진행 기록은 `01-toolkit/6-build/`.
+**다음 작업:** P5(조립과 Claude Code 빌드), 이어서 P6(Codex), P7(서버와 로거). 멈추지 않고 진행하며 release-blocked 표시는 7-review에서 다룹니다.
 
 **읽는 순서 (최소):**
 
@@ -78,7 +78,10 @@ design/
 | 5-preflight | `06b_built_prototype.md` | P0 사전 확인(lock, 파일 지도, 하네스 재확인, 06 반영 결정), 문서 검토 |
 | | `explorations.md` | 열린 결정 탐색 보고 6건(절차 원천, 앵커 형식, 렌더 구분, 합성 규칙, 참조 역할, Codex 로컬 플러그인), E1 후속, Codex 헤드리스 실측, 환경 확인 |
 | | `flow.md` | 구현 흐름 정의 — 결정 D1~D7, P1~P7, release를 막는 조건. 수락됨 |
-| 6-build | — | P1부터 |
+| 6-build | `P1_ko-rewrite.md` | im-not-ai → ko-rewrite 손 추출, 헤드리스 실행 |
+| | `P2_ko-diagnose.md` | yoonmoon → ko-diagnose, 참조 역할 |
+| | `P3_policy.md` | fluent-korean 정책, 결정 ③, 채널 실측 |
+| | `P4_abstraction.md` | 스키마, 추출기 코드, 네 번째 벤더, 업데이트 실측 |
 | 7-review | — | |
 
 ## 단계 요약

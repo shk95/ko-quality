@@ -6,6 +6,7 @@ kind: rubric
 fragments:
   - id: lread-rubric.000
     kind: heading
+    blanks: 0
     text: "# 학술 근거 — LREAD 루브릭 (사람의 한국어 AI 글 판별)"
     provenance:
       upstream: yoonmoon
@@ -16,6 +17,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.001
     kind: paragraph
+    blanks: 1
     text: "윤문 탐지(detect)의 판정 절차는 **LREAD 루브릭**으로 보강된다. LREAD는 사람이 한국어 LLM 글을\n\"기준에 따라\" 판별하도록 만든 루브릭으로, 직관만으로는 놓치는 미시 단서를 표면화한다."
     provenance:
       upstream: yoonmoon
@@ -26,6 +28,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.002
     kind: heading
+    blanks: 1
     text: "## 출처"
     provenance:
       upstream: yoonmoon
@@ -36,6 +39,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.003
     kind: quote
+    blanks: 1
     text: "> **From Intuition to Calibrated Judgment: A Rubric-Based Expert-Panel Study of Human Detection of\n> LLM-Generated Korean Text.** Shinwoo Park, Yo-Sub Han (Yonsei). arXiv:2601.19913 (2026, preprint).\n> https://arxiv.org/abs/2601.19913 · 루브릭·데이터 https://github.com/Shinwoo-Park/lread\n> KatFishNet(ACL 2025)과 동일 연구진. confidence: HIGH — arXiv `2601.19913`(v1~v3)·GitHub\n> `Shinwoo-Park/lread` 실재 검증(2026-06). 제목·핵심 수치(정확도 0.60→0.90, κ −0.09→0.24→0.82)·\n> 루브릭 배점(100점=내용40·조직10·표현50)을 본문과 대조 확인. preprint 주의."
     provenance:
       upstream: yoonmoon
@@ -46,6 +50,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.004
     kind: heading
+    blanks: 1
     text: "## 핵심 발견 — fluency trap (유창성 함정)"
     provenance:
       upstream: yoonmoon
@@ -56,6 +61,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.005
     kind: item
+    blanks: 1
     text: "- 사람의 **직관만** 판별: 다수결 정확도 60%, 평가자 일치도 Fleiss κ −0.09(우연 수준). **루브릭 적용 후**\n  일치도 κ 0.24→0.82로 급상승, 오탐(특히 LLM을 사람으로 오판하는 false-negative) 급감."
     provenance:
       upstream: yoonmoon
@@ -66,6 +72,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.006
     kind: item
+    blanks: 0
     text: "- **표면적 매끄러움·규범 준수·구조 완결성은 \"사람이 썼다\"는 증거가 아니다.** LLM 글은 형식 차원,\n  특히 **조직(Organization)** 에서 사람과 비슷하거나 더 높은 점수를 받는다(템플릿 충실·구조 완결)."
     provenance:
       upstream: yoonmoon
@@ -76,6 +83,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.007
     kind: item
+    blanks: 0
     text: "- 진짜 판별력은 **표현(Expression)**(과도한 규범화, register 안정성의 부자연스러운 과잉, 번역투)과\n  **내용(Content)**(창의성, 발달 수준에 맞는 비정형성)에 있다."
     provenance:
       upstream: yoonmoon
@@ -86,6 +94,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.008
     kind: item
+    blanks: 0
     text: "- 루브릭은 주의를 *전역적 유창성*에서 **띄어쓰기·구두점·register·페르소나 충실도** 같은 안정적 단서로 돌린다."
     provenance:
       upstream: yoonmoon
@@ -96,6 +105,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.009
     kind: heading
+    blanks: 1
     text: "## LREAD 루브릭 구조 (총 100점 · 3대 차원)"
     provenance:
       upstream: yoonmoon
@@ -106,6 +116,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.010
     kind: paragraph
+    blanks: 1
     text: "원래 한국어 **논증 에세이 작문 평가** 루브릭(국가 글쓰기 기준 기반)을 판별용으로 전용한 것. 항목별 3단계 채점."
     provenance:
       upstream: yoonmoon
@@ -116,6 +127,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.011
     kind: heading
+    blanks: 1
     text: "### 내용 Content (40)"
     provenance:
       upstream: yoonmoon
@@ -126,6 +138,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.012
     kind: item
+    blanks: 1
     text: "- **논지 명확성(10)** — 논지가 논제와 부합·일관되는가"
     provenance:
       upstream: yoonmoon
@@ -136,6 +149,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.013
     kind: item
+    blanks: 0
     text: "- **근거 적절성/충분성(15)** — 근거가 적절·충분·깊이 있는가"
     provenance:
       upstream: yoonmoon
@@ -146,6 +160,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.014
     kind: item
+    blanks: 0
     text: "- **반론 고려(5)** — 반론을 제시·평가하는가"
     provenance:
       upstream: yoonmoon
@@ -156,6 +171,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.015
     kind: item
+    blanks: 0
     text: "- **창의성(10)** — 내용상 창의적이라고 볼 부분이 있는가 (유/무)"
     provenance:
       upstream: yoonmoon
@@ -166,6 +182,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.016
     kind: heading
+    blanks: 1
     text: "### 조직 Organization (10) ← LLM이 높은 점수를 받는 구간(함정)"
     provenance:
       upstream: yoonmoon
@@ -176,6 +193,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.017
     kind: item
+    blanks: 1
     text: "- **글(문단) 전체 조직(5)** — 문단이 서–본–결 구조의 완결성을 갖는가"
     provenance:
       upstream: yoonmoon
@@ -186,6 +204,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.018
     kind: item
+    blanks: 0
     text: "- **문장 간 유기성(5)** — 문단 내 문장들이 논리적으로 연결되는가"
     provenance:
       upstream: yoonmoon
@@ -196,6 +215,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.019
     kind: heading
+    blanks: 1
     text: "### 표현 Expression (50) ← 판별력이 가장 큰 구간"
     provenance:
       upstream: yoonmoon
@@ -206,6 +226,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.020
     kind: item
+    blanks: 1
     text: "- **어휘 사용(10)** — 어휘 적확성, 불필요한 어휘 중복성(어절 대비 오류율)"
     provenance:
       upstream: yoonmoon
@@ -216,6 +237,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.021
     kind: item
+    blanks: 0
     text: "- **문장 구성(10)** — 정확하고 어색하지 않은 문장(문장 길이·필수 성분·문법 오류·중의성)"
     provenance:
       upstream: yoonmoon
@@ -226,6 +248,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.022
     kind: item
+    blanks: 0
     text: "- **어문 규범(10)** — 맞춤법·표준어·**띄어쓰기**(총 단어 대비 오류율) ← 구두점/정서법 단서"
     provenance:
       upstream: yoonmoon
@@ -236,6 +259,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.023
     kind: item
+    blanks: 0
     text: "- **글쓰기 관습(10)** — 장르 적합 표현(구어체 등), **자연스러운 우리말 표현(번역투 등)** ← translationese 단서"
     provenance:
       upstream: yoonmoon
@@ -246,6 +270,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.024
     kind: item
+    blanks: 0
     text: "- **표현 창의성(10)** — 표현상 창의적이라고 볼 부분(2개 이상 / 1개 / 0개)"
     provenance:
       upstream: yoonmoon
@@ -256,6 +281,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.025
     kind: heading
+    blanks: 1
     text: "## detect 신호 매핑"
     provenance:
       upstream: yoonmoon
@@ -266,6 +292,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.026
     kind: table-header
+    blanks: 1
     text: "| LREAD 항목                              | detect 신호                   | 해석 방향                                              |"
     provenance:
       upstream: yoonmoon
@@ -276,6 +303,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.027
     kind: table-sep
+    blanks: 0
     text: "| --------------------------------------- | ----------------------------- | ------------------------------------------------------ |"
     provenance:
       upstream: yoonmoon
@@ -286,6 +314,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.028
     kind: row
+    blanks: 0
     text: "| 글쓰기 관습 — 자연스러운 우리말(번역투) | taxonomy 카테고리 1·2·6       | 번역투 단서가 많을수록 AI 가능성↑                      |"
     provenance:
       upstream: yoonmoon
@@ -296,6 +325,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.029
     kind: row
+    blanks: 0
     text: "| 어문 규범 — 띄어쓰기·구두점             | KatFishNet 쉼표·띄어쓰기 신호 | 정형적 구두점/띄어쓰기 = AI 단서                       |"
     provenance:
       upstream: yoonmoon
@@ -306,6 +336,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.030
     kind: row
+    blanks: 0
     text: "| 문장 구성 — 어색함·중의성               | taxonomy 4·7·9                | —                                                      |"
     provenance:
       upstream: yoonmoon
@@ -316,6 +347,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.031
     kind: row
+    blanks: 0
     text: "| 조직 — 구조 완결성                      | (역설 신호)                   | **높을수록** 오히려 AI 의심(함정 주의)                 |"
     provenance:
       upstream: yoonmoon
@@ -326,6 +358,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.032
     kind: row
+    blanks: 0
     text: "| 창의성(내용·표현)                       | 인간 신호                     | **부재**가 AI 단서, 존재가 사람 단서                   |"
     provenance:
       upstream: yoonmoon
@@ -336,6 +369,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.033
     kind: row
+    blanks: 0
     text: "| register 안정성                         | taxonomy 9(리듬)·register     | 부자연스럽게 _과도하게_ 일정하면 AI 단서               |"
     provenance:
       upstream: yoonmoon
@@ -346,6 +380,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.034
     kind: row
+    blanks: 0
     text: "| 페르소나 충실도                         | (메타)                        | 주장된 작성자(연령·수준)와 글의 정교함이 어긋나면 단서 |"
     provenance:
       upstream: yoonmoon
@@ -356,6 +391,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.035
     kind: heading
+    blanks: 1
     text: "## 주의"
     provenance:
       upstream: yoonmoon
@@ -366,6 +402,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.036
     kind: item
+    blanks: 1
     text: "- **형식 점수가 높다고 사람이 아니다(그 반대일 수 있다).** 매끄러움·구조 완결성에 속지 말 것 — fluency trap."
     provenance:
       upstream: yoonmoon
@@ -376,6 +413,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.037
     kind: item
+    blanks: 0
     text: "- 창의성·발달적 비정형성·페르소나 일치는 **사람** 신호다. 그 부재가 AI 단서다."
     provenance:
       upstream: yoonmoon
@@ -386,6 +424,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.038
     kind: item
+    blanks: 0
     text: "- 루브릭 기준은 **논증 에세이(초·중·고)** 에서 도출 — 다른 장르·성인 전문 글에는 가중치를 조정해 적용한다."
     provenance:
       upstream: yoonmoon
@@ -396,6 +435,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.039
     kind: item
+    blanks: 0
     text: "- preprint이며, 항목별 정확한 배점 세부는 repo의 `LREAD_Rubric_Korean.xlsx` 원본을 따른다."
     provenance:
       upstream: yoonmoon
@@ -406,6 +446,7 @@ fragments:
       transform: verbatim
   - id: lread-rubric.040
     kind: item
+    blanks: 0
     text: "- 이 단서는 **확률적 보조 판단**이다. 표절·부정행위 단정의 단독 근거로 쓰지 않는다."
     provenance:
       upstream: yoonmoon

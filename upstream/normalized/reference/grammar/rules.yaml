@@ -5,6 +5,7 @@ kind: rubric
 fragments:
   - id: rules.001
     kind: heading
+    blanks: 0
     text: "# 한국어 문법 및 맞춤법 규칙"
     provenance:
       upstream: korean-skills
@@ -15,6 +16,7 @@ fragments:
       transform: verbatim
   - id: rules.002
     kind: paragraph
+    blanks: 1
     text: "이 문서는 한국어 문법 검사 시 참조할 표준 규칙을 정리한 것입니다."
     provenance:
       upstream: korean-skills
@@ -25,6 +27,7 @@ fragments:
       transform: verbatim
   - id: rules.003
     kind: heading
+    blanks: 1
     text: "## 목차"
     provenance:
       upstream: korean-skills
@@ -35,6 +38,7 @@ fragments:
       transform: verbatim
   - id: rules.004
     kind: item
+    blanks: 1
     text: "1. [맞춤법 규칙](#맞춤법-규칙)"
     provenance:
       upstream: korean-skills
@@ -45,6 +49,7 @@ fragments:
       transform: verbatim
   - id: rules.005
     kind: item
+    blanks: 0
     text: "2. [띄어쓰기 규칙](#띄어쓰기-규칙)"
     provenance:
       upstream: korean-skills
@@ -55,6 +60,7 @@ fragments:
       transform: verbatim
   - id: rules.006
     kind: item
+    blanks: 0
     text: "3. [문법 구조 규칙](#문법-구조-규칙)"
     provenance:
       upstream: korean-skills
@@ -65,6 +71,7 @@ fragments:
       transform: verbatim
   - id: rules.007
     kind: item
+    blanks: 0
     text: "4. [구두점 규칙](#구두점-규칙)"
     provenance:
       upstream: korean-skills
@@ -75,6 +82,7 @@ fragments:
       transform: verbatim
   - id: rules.008
     kind: paragraph
+    blanks: 1
     text: "---"
     provenance:
       upstream: korean-skills
@@ -85,6 +93,7 @@ fragments:
       transform: verbatim
   - id: rules.009
     kind: heading
+    blanks: 1
     text: "## 맞춤법 규칙"
     provenance:
       upstream: korean-skills
@@ -95,6 +104,7 @@ fragments:
       transform: verbatim
   - id: rules.010
     kind: heading
+    blanks: 1
     text: "### 1. 사이시옷 사용"
     provenance:
       upstream: korean-skills
@@ -105,6 +115,7 @@ fragments:
       transform: verbatim
   - id: rules.011
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 순우리말 + 순우리말, 순우리말 + 한자어, 한자어 + 순우리말 조합에서 사이시옷 사용"
     provenance:
       upstream: korean-skills
@@ -115,6 +126,7 @@ fragments:
       transform: verbatim
   - id: rules.012
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -125,6 +137,7 @@ fragments:
       transform: verbatim
   - id: rules.013
     kind: item
+    blanks: 0
     text: "- 나뭇잎, 나뭇가지, 나뭇결"
     provenance:
       upstream: korean-skills
@@ -135,6 +148,7 @@ fragments:
       transform: verbatim
   - id: rules.014
     kind: item
+    blanks: 0
     text: "- 곳간, 숫자, 찻잔, 툇마루"
     provenance:
       upstream: korean-skills
@@ -145,6 +159,7 @@ fragments:
       transform: verbatim
   - id: rules.015
     kind: item
+    blanks: 0
     text: "- 횟수, 댓수"
     provenance:
       upstream: korean-skills
@@ -155,6 +170,7 @@ fragments:
       transform: verbatim
   - id: rules.016
     kind: paragraph
+    blanks: 1
     text: "**틀린 예**:"
     provenance:
       upstream: korean-skills
@@ -165,6 +181,7 @@ fragments:
       transform: verbatim
   - id: rules.017
     kind: item
+    blanks: 0
     text: "- ❌ 나무잎 → ✅ 나뭇잎"
     provenance:
       upstream: korean-skills
@@ -175,6 +192,7 @@ fragments:
       transform: verbatim
   - id: rules.018
     kind: item
+    blanks: 0
     text: "- ❌ 차잔 → ✅ 찻잔"
     provenance:
       upstream: korean-skills
@@ -185,6 +203,7 @@ fragments:
       transform: verbatim
   - id: rules.019
     kind: item
+    blanks: 0
     text: "- ❌ 회수 (횟수의 의미) → ✅ 횟수"
     provenance:
       upstream: korean-skills
@@ -195,6 +214,7 @@ fragments:
       transform: verbatim
   - id: rules.020
     kind: paragraph
+    blanks: 1
     text: "**예외**: 한자어 + 한자어는 사이시옷을 쓰지 않음 (예: 회사일, 차고지)"
     provenance:
       upstream: korean-skills
@@ -205,6 +225,7 @@ fragments:
       transform: verbatim
   - id: rules.021
     kind: heading
+    blanks: 1
     text: "### 2. 준말과 원말"
     provenance:
       upstream: korean-skills
@@ -215,6 +236,7 @@ fragments:
       transform: verbatim
   - id: rules.022
     kind: paragraph
+    blanks: 1
     text: "**-ㄴ/는 것, -ㄹ/을 것**:"
     provenance:
       upstream: korean-skills
@@ -225,6 +247,7 @@ fragments:
       transform: verbatim
   - id: rules.023
     kind: item
+    blanks: 0
     text: "- ❌ ~ㄴ걸 → ✅ ~ㄴ 걸 또는 ~ㄴ 것을"
     provenance:
       upstream: korean-skills
@@ -235,6 +258,7 @@ fragments:
       transform: verbatim
   - id: rules.024
     kind: item
+    blanks: 0
     text: "- ❌ ~ㄹ껄 → ✅ ~ㄹ 걸 또는 ~ㄹ 것을"
     provenance:
       upstream: korean-skills
@@ -245,6 +269,7 @@ fragments:
       transform: verbatim
   - id: rules.025
     kind: paragraph
+    blanks: 1
     text: "**되/돼**:"
     provenance:
       upstream: korean-skills
@@ -255,6 +280,7 @@ fragments:
       transform: verbatim
   - id: rules.026
     kind: item
+    blanks: 0
     text: "- \"되어\"의 준말 → \"돼\""
     provenance:
       upstream: korean-skills
@@ -265,6 +291,7 @@ fragments:
       transform: verbatim
   - id: rules.027
     kind: item
+    blanks: 0
     text: "- ✅ 돼요, 됐어요, 될 거예요"
     provenance:
       upstream: korean-skills
@@ -275,6 +302,7 @@ fragments:
       transform: verbatim
   - id: rules.028
     kind: item
+    blanks: 0
     text: "- ❌ 되요 → ✅ 돼요"
     provenance:
       upstream: korean-skills
@@ -285,6 +313,7 @@ fragments:
       transform: verbatim
   - id: rules.029
     kind: item
+    blanks: 0
     text: "- ❌ 됬어요 → ✅ 됐어요"
     provenance:
       upstream: korean-skills
@@ -295,6 +324,7 @@ fragments:
       transform: verbatim
   - id: rules.030
     kind: paragraph
+    blanks: 1
     text: "**-ㄹ게/를게**:"
     provenance:
       upstream: korean-skills
@@ -305,6 +335,7 @@ fragments:
       transform: verbatim
   - id: rules.031
     kind: item
+    blanks: 0
     text: "- ❌ ~를게요 → ✅ ~ㄹ게요"
     provenance:
       upstream: korean-skills
@@ -315,6 +346,7 @@ fragments:
       transform: verbatim
   - id: rules.032
     kind: item
+    blanks: 0
     text: "- 예: 할게요, 먹을게요, 갈게요"
     provenance:
       upstream: korean-skills
@@ -325,6 +357,7 @@ fragments:
       transform: verbatim
   - id: rules.033
     kind: heading
+    blanks: 1
     text: "### 3. 외래어 표기"
     provenance:
       upstream: korean-skills
@@ -335,6 +368,7 @@ fragments:
       transform: verbatim
   - id: rules.034
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 국립국어원 외래어 표기법 준수"
     provenance:
       upstream: korean-skills
@@ -345,6 +379,7 @@ fragments:
       transform: verbatim
   - id: rules.035
     kind: paragraph
+    blanks: 1
     text: "**흔한 오류**:"
     provenance:
       upstream: korean-skills
@@ -355,6 +390,7 @@ fragments:
       transform: verbatim
   - id: rules.036
     kind: item
+    blanks: 0
     text: "- ❌ 캐릭터 → ✅ 캐릭터 (character)"
     provenance:
       upstream: korean-skills
@@ -365,6 +401,7 @@ fragments:
       transform: verbatim
   - id: rules.037
     kind: item
+    blanks: 0
     text: "- ❌ 쉐어 → ✅ 셰어 (share)"
     provenance:
       upstream: korean-skills
@@ -375,6 +412,7 @@ fragments:
       transform: verbatim
   - id: rules.038
     kind: item
+    blanks: 0
     text: "- ❌ 디바이스 → ✅ 디바이스 (device)"
     provenance:
       upstream: korean-skills
@@ -385,6 +423,7 @@ fragments:
       transform: verbatim
   - id: rules.039
     kind: item
+    blanks: 0
     text: "- ❌ 어플 → ✅ 앱 (app)"
     provenance:
       upstream: korean-skills
@@ -395,6 +434,7 @@ fragments:
       transform: verbatim
   - id: rules.040
     kind: heading
+    blanks: 1
     text: "### 4. 두음법칙"
     provenance:
       upstream: korean-skills
@@ -405,6 +445,7 @@ fragments:
       transform: verbatim
   - id: rules.041
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 단어 첫머리에서 \"ㄹ\"이 발음되지 않는 경우"
     provenance:
       upstream: korean-skills
@@ -415,6 +456,7 @@ fragments:
       transform: verbatim
   - id: rules.042
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -425,6 +467,7 @@ fragments:
       transform: verbatim
   - id: rules.043
     kind: item
+    blanks: 0
     text: "- ✅ 여자, 요일, 양심, 역사"
     provenance:
       upstream: korean-skills
@@ -435,6 +478,7 @@ fragments:
       transform: verbatim
   - id: rules.044
     kind: item
+    blanks: 0
     text: "- ❌ 녀자, 료일, 량심, 력사"
     provenance:
       upstream: korean-skills
@@ -445,6 +489,7 @@ fragments:
       transform: verbatim
   - id: rules.045
     kind: paragraph
+    blanks: 1
     text: "**예외**: 성(姓)과 단어 중간에는 두음법칙을 적용하지 않음"
     provenance:
       upstream: korean-skills
@@ -455,6 +500,7 @@ fragments:
       transform: verbatim
   - id: rules.046
     kind: item
+    blanks: 0
     text: "- 이순신, 신라, 광한루"
     provenance:
       upstream: korean-skills
@@ -465,6 +511,7 @@ fragments:
       transform: verbatim
   - id: rules.047
     kind: paragraph
+    blanks: 1
     text: "---"
     provenance:
       upstream: korean-skills
@@ -475,6 +522,7 @@ fragments:
       transform: verbatim
   - id: rules.048
     kind: heading
+    blanks: 1
     text: "## 띄어쓰기 규칙"
     provenance:
       upstream: korean-skills
@@ -485,6 +533,7 @@ fragments:
       transform: verbatim
   - id: rules.049
     kind: heading
+    blanks: 1
     text: "### 1. 의존명사"
     provenance:
       upstream: korean-skills
@@ -495,6 +544,7 @@ fragments:
       transform: verbatim
   - id: rules.050
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 의존명사는 앞말과 띄어 씀"
     provenance:
       upstream: korean-skills
@@ -505,6 +555,7 @@ fragments:
       transform: verbatim
   - id: rules.051
     kind: paragraph
+    blanks: 1
     text: "**흔한 의존명사**:"
     provenance:
       upstream: korean-skills
@@ -515,6 +566,7 @@ fragments:
       transform: verbatim
   - id: rules.052
     kind: item
+    blanks: 0
     text: "- 것, 수, 만큼, 뿐, 데, 바, 지, 듯, 따름, 줄"
     provenance:
       upstream: korean-skills
@@ -525,6 +577,7 @@ fragments:
       transform: verbatim
   - id: rules.053
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -535,6 +588,7 @@ fragments:
       transform: verbatim
   - id: rules.054
     kind: item
+    blanks: 0
     text: "- ✅ 할 수 있다, 먹을 만큼, 공부하는 것"
     provenance:
       upstream: korean-skills
@@ -545,6 +599,7 @@ fragments:
       transform: verbatim
   - id: rules.055
     kind: item
+    blanks: 0
     text: "- ❌ 할수있다, 먹을만큼, 공부하는것"
     provenance:
       upstream: korean-skills
@@ -555,6 +610,7 @@ fragments:
       transform: verbatim
   - id: rules.056
     kind: paragraph
+    blanks: 1
     text: "**예외**: \"것\"이 대명사로 쓰일 때는 띄어 쓰지만, 자주 쓰여 붙여 쓰는 것도 허용되는 경우 있음"
     provenance:
       upstream: korean-skills
@@ -565,6 +621,7 @@ fragments:
       transform: verbatim
   - id: rules.057
     kind: heading
+    blanks: 1
     text: "### 2. 보조용언"
     provenance:
       upstream: korean-skills
@@ -575,6 +632,7 @@ fragments:
       transform: verbatim
   - id: rules.058
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 보조용언은 앞말과 띄어 씀 (원칙상), 하지만 붙여 쓰는 것도 허용"
     provenance:
       upstream: korean-skills
@@ -585,6 +643,7 @@ fragments:
       transform: verbatim
   - id: rules.059
     kind: paragraph
+    blanks: 1
     text: "**주요 보조용언**:"
     provenance:
       upstream: korean-skills
@@ -595,6 +654,7 @@ fragments:
       transform: verbatim
   - id: rules.060
     kind: item
+    blanks: 0
     text: "- -아/어 주다, -고 있다, -아/어 보다, -게 하다, -지 않다"
     provenance:
       upstream: korean-skills
@@ -605,6 +665,7 @@ fragments:
       transform: verbatim
   - id: rules.061
     kind: paragraph
+    blanks: 1
     text: "**올바른 예** (둘 다 가능):"
     provenance:
       upstream: korean-skills
@@ -615,6 +676,7 @@ fragments:
       transform: verbatim
   - id: rules.062
     kind: item
+    blanks: 0
     text: "- ✅ 해 주세요 / 해주세요"
     provenance:
       upstream: korean-skills
@@ -625,6 +687,7 @@ fragments:
       transform: verbatim
   - id: rules.063
     kind: item
+    blanks: 0
     text: "- ✅ 하고 있습니다 / 하고있습니다"
     provenance:
       upstream: korean-skills
@@ -635,6 +698,7 @@ fragments:
       transform: verbatim
   - id: rules.064
     kind: item
+    blanks: 0
     text: "- ✅ 해 보세요 / 해보세요"
     provenance:
       upstream: korean-skills
@@ -645,6 +709,7 @@ fragments:
       transform: verbatim
   - id: rules.065
     kind: paragraph
+    blanks: 1
     text: "**권장**: 격식체 문서에서는 띄어 쓰기, 비격식체에서는 자유롭게"
     provenance:
       upstream: korean-skills
@@ -655,6 +720,7 @@ fragments:
       transform: verbatim
   - id: rules.066
     kind: heading
+    blanks: 1
     text: "### 3. 단위명사"
     provenance:
       upstream: korean-skills
@@ -665,6 +731,7 @@ fragments:
       transform: verbatim
   - id: rules.067
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 수를 나타내는 말 뒤에 오는 단위명사는 띄어 씀"
     provenance:
       upstream: korean-skills
@@ -675,6 +742,7 @@ fragments:
       transform: verbatim
   - id: rules.068
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -685,6 +753,7 @@ fragments:
       transform: verbatim
   - id: rules.069
     kind: item
+    blanks: 0
     text: "- ✅ 10 개, 5 명, 3 권, 20 년"
     provenance:
       upstream: korean-skills
@@ -695,6 +764,7 @@ fragments:
       transform: verbatim
   - id: rules.070
     kind: item
+    blanks: 0
     text: "- ❌ 10개, 5명, 3권, 20년 (비격식체에서는 허용)"
     provenance:
       upstream: korean-skills
@@ -705,6 +775,7 @@ fragments:
       transform: verbatim
   - id: rules.071
     kind: paragraph
+    blanks: 1
     text: "**예외**: 비격식체나 일상 대화에서는 붙여 쓰는 것도 허용됨"
     provenance:
       upstream: korean-skills
@@ -715,6 +786,7 @@ fragments:
       transform: verbatim
   - id: rules.072
     kind: heading
+    blanks: 1
     text: "### 4. 합성어와 연결어"
     provenance:
       upstream: korean-skills
@@ -725,6 +797,7 @@ fragments:
       transform: verbatim
   - id: rules.073
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 두 개 이상의 단어가 결합하여 하나의 의미를 이루는 합성어는 붙여 씀"
     provenance:
       upstream: korean-skills
@@ -735,6 +808,7 @@ fragments:
       transform: verbatim
   - id: rules.074
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -745,6 +819,7 @@ fragments:
       transform: verbatim
   - id: rules.075
     kind: item
+    blanks: 0
     text: "- ✅ 먹거리, 볼거리, 읽을거리"
     provenance:
       upstream: korean-skills
@@ -755,6 +830,7 @@ fragments:
       transform: verbatim
   - id: rules.076
     kind: item
+    blanks: 0
     text: "- ✅ 사과나무, 강아지, 손목시계"
     provenance:
       upstream: korean-skills
@@ -765,6 +841,7 @@ fragments:
       transform: verbatim
   - id: rules.077
     kind: item
+    blanks: 0
     text: "- ❌ 사과 나무, 강 아지, 손목 시계"
     provenance:
       upstream: korean-skills
@@ -775,6 +852,7 @@ fragments:
       transform: verbatim
   - id: rules.078
     kind: heading
+    blanks: 1
     text: "### 5. 조사"
     provenance:
       upstream: korean-skills
@@ -785,6 +863,7 @@ fragments:
       transform: verbatim
   - id: rules.079
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 조사는 앞말에 붙여 씀"
     provenance:
       upstream: korean-skills
@@ -795,6 +874,7 @@ fragments:
       transform: verbatim
   - id: rules.080
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -805,6 +885,7 @@ fragments:
       transform: verbatim
   - id: rules.081
     kind: item
+    blanks: 0
     text: "- ✅ 나는, 너를, 그가, 집에서"
     provenance:
       upstream: korean-skills
@@ -815,6 +896,7 @@ fragments:
       transform: verbatim
   - id: rules.082
     kind: item
+    blanks: 0
     text: "- ❌ 나 는, 너 를, 그 가, 집 에서"
     provenance:
       upstream: korean-skills
@@ -825,6 +907,7 @@ fragments:
       transform: verbatim
   - id: rules.083
     kind: paragraph
+    blanks: 1
     text: "---"
     provenance:
       upstream: korean-skills
@@ -835,6 +918,7 @@ fragments:
       transform: verbatim
   - id: rules.084
     kind: heading
+    blanks: 1
     text: "## 문법 구조 규칙"
     provenance:
       upstream: korean-skills
@@ -845,6 +929,7 @@ fragments:
       transform: verbatim
   - id: rules.085
     kind: heading
+    blanks: 1
     text: "### 1. 시제 일치"
     provenance:
       upstream: korean-skills
@@ -855,6 +940,7 @@ fragments:
       transform: verbatim
   - id: rules.086
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 문장 내에서 시제는 일관되게 유지"
     provenance:
       upstream: korean-skills
@@ -865,6 +951,7 @@ fragments:
       transform: verbatim
   - id: rules.087
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -875,6 +962,7 @@ fragments:
       transform: verbatim
   - id: rules.088
     kind: item
+    blanks: 0
     text: "- ✅ 나는 어제 학교에 갔고, 친구를 만났다."
     provenance:
       upstream: korean-skills
@@ -885,6 +973,7 @@ fragments:
       transform: verbatim
   - id: rules.089
     kind: item
+    blanks: 0
     text: "- ❌ 나는 어제 학교에 가고, 친구를 만났다."
     provenance:
       upstream: korean-skills
@@ -895,6 +984,7 @@ fragments:
       transform: verbatim
   - id: rules.090
     kind: heading
+    blanks: 1
     text: "### 2. 주어와 서술어 호응"
     provenance:
       upstream: korean-skills
@@ -905,6 +995,7 @@ fragments:
       transform: verbatim
   - id: rules.091
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 주어와 서술어는 수와 인칭에서 호응해야 함"
     provenance:
       upstream: korean-skills
@@ -915,6 +1006,7 @@ fragments:
       transform: verbatim
   - id: rules.092
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -925,6 +1017,7 @@ fragments:
       transform: verbatim
   - id: rules.093
     kind: item
+    blanks: 0
     text: "- ✅ 학생들이 공부를 한다."
     provenance:
       upstream: korean-skills
@@ -935,6 +1028,7 @@ fragments:
       transform: verbatim
   - id: rules.094
     kind: item
+    blanks: 0
     text: "- ❌ 학생들이 공부를 합니다. (존대 불일치 - 문맥에 따라 허용 가능)"
     provenance:
       upstream: korean-skills
@@ -945,6 +1039,7 @@ fragments:
       transform: verbatim
   - id: rules.095
     kind: heading
+    blanks: 1
     text: "### 3. 이중 부정 피하기"
     provenance:
       upstream: korean-skills
@@ -955,6 +1050,7 @@ fragments:
       transform: verbatim
   - id: rules.096
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 불필요한 이중 부정은 피함"
     provenance:
       upstream: korean-skills
@@ -965,6 +1061,7 @@ fragments:
       transform: verbatim
   - id: rules.097
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -975,6 +1072,7 @@ fragments:
       transform: verbatim
   - id: rules.098
     kind: item
+    blanks: 0
     text: "- ✅ 가능합니다."
     provenance:
       upstream: korean-skills
@@ -985,6 +1083,7 @@ fragments:
       transform: verbatim
   - id: rules.099
     kind: item
+    blanks: 0
     text: "- ❌ 불가능하지 않습니다. (의도적 강조가 아니라면)"
     provenance:
       upstream: korean-skills
@@ -995,6 +1094,7 @@ fragments:
       transform: verbatim
   - id: rules.100
     kind: heading
+    blanks: 1
     text: "### 4. 조사 사용"
     provenance:
       upstream: korean-skills
@@ -1005,6 +1105,7 @@ fragments:
       transform: verbatim
   - id: rules.101
     kind: paragraph
+    blanks: 1
     text: "**-을/를**:"
     provenance:
       upstream: korean-skills
@@ -1015,6 +1116,7 @@ fragments:
       transform: verbatim
   - id: rules.102
     kind: item
+    blanks: 0
     text: "- 받침 O + 을: 책을, 밥을"
     provenance:
       upstream: korean-skills
@@ -1025,6 +1127,7 @@ fragments:
       transform: verbatim
   - id: rules.103
     kind: item
+    blanks: 0
     text: "- 받침 X + 를: 사과를, 차를"
     provenance:
       upstream: korean-skills
@@ -1035,6 +1138,7 @@ fragments:
       transform: verbatim
   - id: rules.104
     kind: paragraph
+    blanks: 1
     text: "**-이/가**:"
     provenance:
       upstream: korean-skills
@@ -1045,6 +1149,7 @@ fragments:
       transform: verbatim
   - id: rules.105
     kind: item
+    blanks: 0
     text: "- 받침 O + 이: 책이, 밥이"
     provenance:
       upstream: korean-skills
@@ -1055,6 +1160,7 @@ fragments:
       transform: verbatim
   - id: rules.106
     kind: item
+    blanks: 0
     text: "- 받침 X + 가: 사과가, 차가"
     provenance:
       upstream: korean-skills
@@ -1065,6 +1171,7 @@ fragments:
       transform: verbatim
   - id: rules.107
     kind: paragraph
+    blanks: 1
     text: "**-은/는**:"
     provenance:
       upstream: korean-skills
@@ -1075,6 +1182,7 @@ fragments:
       transform: verbatim
   - id: rules.108
     kind: item
+    blanks: 0
     text: "- 받침 O + 은: 책은, 밥은"
     provenance:
       upstream: korean-skills
@@ -1085,6 +1193,7 @@ fragments:
       transform: verbatim
   - id: rules.109
     kind: item
+    blanks: 0
     text: "- 받침 X + 는: 사과는, 차는"
     provenance:
       upstream: korean-skills
@@ -1095,6 +1204,7 @@ fragments:
       transform: verbatim
   - id: rules.110
     kind: paragraph
+    blanks: 1
     text: "**-와/과**:"
     provenance:
       upstream: korean-skills
@@ -1105,6 +1215,7 @@ fragments:
       transform: verbatim
   - id: rules.111
     kind: item
+    blanks: 0
     text: "- 받침 O + 과: 책과, 밥과"
     provenance:
       upstream: korean-skills
@@ -1115,6 +1226,7 @@ fragments:
       transform: verbatim
   - id: rules.112
     kind: item
+    blanks: 0
     text: "- 받침 X + 와: 사과와, 차와"
     provenance:
       upstream: korean-skills
@@ -1125,6 +1237,7 @@ fragments:
       transform: verbatim
   - id: rules.113
     kind: heading
+    blanks: 1
     text: "### 5. 높임법"
     provenance:
       upstream: korean-skills
@@ -1135,6 +1248,7 @@ fragments:
       transform: verbatim
   - id: rules.114
     kind: paragraph
+    blanks: 1
     text: "**규칙**: 문장 내에서 높임법은 일관되게 사용"
     provenance:
       upstream: korean-skills
@@ -1145,6 +1259,7 @@ fragments:
       transform: verbatim
   - id: rules.115
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -1155,6 +1270,7 @@ fragments:
       transform: verbatim
   - id: rules.116
     kind: item
+    blanks: 0
     text: "- ✅ 선생님께서 말씀하셨습니다."
     provenance:
       upstream: korean-skills
@@ -1165,6 +1281,7 @@ fragments:
       transform: verbatim
   - id: rules.117
     kind: item
+    blanks: 0
     text: "- ❌ 선생님이 말했습니다. (높임 불일치)"
     provenance:
       upstream: korean-skills
@@ -1175,6 +1292,7 @@ fragments:
       transform: verbatim
   - id: rules.118
     kind: paragraph
+    blanks: 1
     text: "---"
     provenance:
       upstream: korean-skills
@@ -1185,6 +1303,7 @@ fragments:
       transform: verbatim
   - id: rules.119
     kind: heading
+    blanks: 1
     text: "## 구두점 규칙"
     provenance:
       upstream: korean-skills
@@ -1195,6 +1314,7 @@ fragments:
       transform: verbatim
   - id: rules.120
     kind: heading
+    blanks: 1
     text: "### 1. 쉼표(,)"
     provenance:
       upstream: korean-skills
@@ -1205,6 +1325,7 @@ fragments:
       transform: verbatim
   - id: rules.121
     kind: paragraph
+    blanks: 1
     text: "**사용 시점**:"
     provenance:
       upstream: korean-skills
@@ -1215,6 +1336,7 @@ fragments:
       transform: verbatim
   - id: rules.122
     kind: item
+    blanks: 0
     text: "- 같은 자격의 어구를 나열할 때"
     provenance:
       upstream: korean-skills
@@ -1225,6 +1347,7 @@ fragments:
       transform: verbatim
   - id: rules.123
     kind: item
+    blanks: 0
     text: "- 짧은 문장을 이어 줄 때"
     provenance:
       upstream: korean-skills
@@ -1235,6 +1358,7 @@ fragments:
       transform: verbatim
   - id: rules.124
     kind: item
+    blanks: 0
     text: "- 문장의 연결 관계를 분명히 할 때"
     provenance:
       upstream: korean-skills
@@ -1245,6 +1369,7 @@ fragments:
       transform: verbatim
   - id: rules.125
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -1255,6 +1380,7 @@ fragments:
       transform: verbatim
   - id: rules.126
     kind: item
+    blanks: 0
     text: "- 사과, 배, 포도를 샀다."
     provenance:
       upstream: korean-skills
@@ -1265,6 +1391,7 @@ fragments:
       transform: verbatim
   - id: rules.127
     kind: item
+    blanks: 0
     text: "- 날씨가 좋으면, 산책을 가겠다."
     provenance:
       upstream: korean-skills
@@ -1275,6 +1402,7 @@ fragments:
       transform: verbatim
   - id: rules.128
     kind: paragraph
+    blanks: 1
     text: "**주의**: 한국어는 영어보다 쉼표를 덜 사용함. 과도한 쉼표는 피하기"
     provenance:
       upstream: korean-skills
@@ -1285,6 +1413,7 @@ fragments:
       transform: verbatim
   - id: rules.129
     kind: heading
+    blanks: 1
     text: "### 2. 마침표(.)"
     provenance:
       upstream: korean-skills
@@ -1295,6 +1424,7 @@ fragments:
       transform: verbatim
   - id: rules.130
     kind: paragraph
+    blanks: 1
     text: "**사용 시점**:"
     provenance:
       upstream: korean-skills
@@ -1305,6 +1435,7 @@ fragments:
       transform: verbatim
   - id: rules.131
     kind: item
+    blanks: 0
     text: "- 서술, 명령, 청유의 문장 끝"
     provenance:
       upstream: korean-skills
@@ -1315,6 +1446,7 @@ fragments:
       transform: verbatim
   - id: rules.132
     kind: item
+    blanks: 0
     text: "- 완결된 문장의 끝"
     provenance:
       upstream: korean-skills
@@ -1325,6 +1457,7 @@ fragments:
       transform: verbatim
   - id: rules.133
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -1335,6 +1468,7 @@ fragments:
       transform: verbatim
   - id: rules.134
     kind: item
+    blanks: 0
     text: "- 나는 학교에 갔다."
     provenance:
       upstream: korean-skills
@@ -1345,6 +1479,7 @@ fragments:
       transform: verbatim
   - id: rules.135
     kind: item
+    blanks: 0
     text: "- 공부하자."
     provenance:
       upstream: korean-skills
@@ -1355,6 +1490,7 @@ fragments:
       transform: verbatim
   - id: rules.136
     kind: heading
+    blanks: 1
     text: "### 3. 물음표(?)"
     provenance:
       upstream: korean-skills
@@ -1365,6 +1501,7 @@ fragments:
       transform: verbatim
   - id: rules.137
     kind: paragraph
+    blanks: 1
     text: "**사용 시점**:"
     provenance:
       upstream: korean-skills
@@ -1375,6 +1512,7 @@ fragments:
       transform: verbatim
   - id: rules.138
     kind: item
+    blanks: 0
     text: "- 의문문의 끝"
     provenance:
       upstream: korean-skills
@@ -1385,6 +1523,7 @@ fragments:
       transform: verbatim
   - id: rules.139
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -1395,6 +1534,7 @@ fragments:
       transform: verbatim
   - id: rules.140
     kind: item
+    blanks: 0
     text: "- 너는 어디에 가니?"
     provenance:
       upstream: korean-skills
@@ -1405,6 +1545,7 @@ fragments:
       transform: verbatim
   - id: rules.141
     kind: item
+    blanks: 0
     text: "- 이것이 맞나요?"
     provenance:
       upstream: korean-skills
@@ -1415,6 +1556,7 @@ fragments:
       transform: verbatim
   - id: rules.142
     kind: heading
+    blanks: 1
     text: "### 4. 느낌표(!)"
     provenance:
       upstream: korean-skills
@@ -1425,6 +1567,7 @@ fragments:
       transform: verbatim
   - id: rules.143
     kind: paragraph
+    blanks: 1
     text: "**사용 시점**:"
     provenance:
       upstream: korean-skills
@@ -1435,6 +1578,7 @@ fragments:
       transform: verbatim
   - id: rules.144
     kind: item
+    blanks: 0
     text: "- 감탄이나 강한 느낌을 나타낼 때"
     provenance:
       upstream: korean-skills
@@ -1445,6 +1589,7 @@ fragments:
       transform: verbatim
   - id: rules.145
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -1455,6 +1600,7 @@ fragments:
       transform: verbatim
   - id: rules.146
     kind: item
+    blanks: 0
     text: "- 와! 정말 아름답다!"
     provenance:
       upstream: korean-skills
@@ -1465,6 +1611,7 @@ fragments:
       transform: verbatim
   - id: rules.147
     kind: item
+    blanks: 0
     text: "- 조용히 하세요!"
     provenance:
       upstream: korean-skills
@@ -1475,6 +1622,7 @@ fragments:
       transform: verbatim
   - id: rules.148
     kind: paragraph
+    blanks: 1
     text: "**주의**: 과도한 느낌표 사용은 피하기 (특히 격식체 문서)"
     provenance:
       upstream: korean-skills
@@ -1485,6 +1633,7 @@ fragments:
       transform: verbatim
   - id: rules.149
     kind: heading
+    blanks: 1
     text: "### 5. 따옴표(\" \", ' ')"
     provenance:
       upstream: korean-skills
@@ -1495,6 +1644,7 @@ fragments:
       transform: verbatim
   - id: rules.150
     kind: paragraph
+    blanks: 1
     text: "**사용 시점**:"
     provenance:
       upstream: korean-skills
@@ -1505,6 +1655,7 @@ fragments:
       transform: verbatim
   - id: rules.151
     kind: item
+    blanks: 0
     text: "- 직접 인용할 때"
     provenance:
       upstream: korean-skills
@@ -1515,6 +1666,7 @@ fragments:
       transform: verbatim
   - id: rules.152
     kind: item
+    blanks: 0
     text: "- 강조할 때"
     provenance:
       upstream: korean-skills
@@ -1525,6 +1677,7 @@ fragments:
       transform: verbatim
   - id: rules.153
     kind: item
+    blanks: 0
     text: "- 특별한 의미를 나타낼 때"
     provenance:
       upstream: korean-skills
@@ -1535,6 +1688,7 @@ fragments:
       transform: verbatim
   - id: rules.154
     kind: paragraph
+    blanks: 1
     text: "**올바른 예**:"
     provenance:
       upstream: korean-skills
@@ -1545,6 +1699,7 @@ fragments:
       transform: verbatim
   - id: rules.155
     kind: item
+    blanks: 0
     text: "- 그는 \"안녕\"이라고 말했다."
     provenance:
       upstream: korean-skills
@@ -1555,6 +1710,7 @@ fragments:
       transform: verbatim
   - id: rules.156
     kind: item
+    blanks: 0
     text: "- 이 '특별한' 순간을 기억하세요."
     provenance:
       upstream: korean-skills
@@ -1565,6 +1721,7 @@ fragments:
       transform: verbatim
   - id: rules.157
     kind: heading
+    blanks: 1
     text: "### 6. 가운뎃점(·)"
     provenance:
       upstream: korean-skills
@@ -1575,6 +1732,7 @@ fragments:
       transform: verbatim
   - id: rules.158
     kind: paragraph
+    blanks: 1
     text: "**근거**: 한글 맞춤법 부록 「문장 부호」(국립국어원). 가운뎃점은 서양 문장 부호에는 없는 한국어 고유의 부호로, **단순 열거가 아니라 \"짝을 이루거나 한 묶음으로 묶이는\" 어구**를 표시합니다."
     provenance:
       upstream: korean-skills
@@ -1585,6 +1743,7 @@ fragments:
       transform: verbatim
   - id: rules.159
     kind: paragraph
+    blanks: 1
     text: "**사용 시점** (3가지 용법):"
     provenance:
       upstream: korean-skills
@@ -1595,6 +1754,7 @@ fragments:
       transform: verbatim
   - id: rules.160
     kind: item
+    blanks: 1
     text: "1. **짝을 이루는 어구·공통 성분 축약**: 두 항목이 한 쌍을 이루거나, 공통되는 부분(접미사·접두사)을 줄여서 묶을 때\n   - 예: `금·은·동메달` (공통 성분 `메달` 축약)\n   - 예: `시·도지사` (공통 성분 `지사` 축약)\n   - 예: `한·미 정상회담` (한국과 미국이 짝)"
     provenance:
       upstream: korean-skills
@@ -1605,6 +1765,7 @@ fragments:
       transform: verbatim
   - id: rules.161
     kind: item
+    blanks: 1
     text: "2. **같은 묶음 안의 항목 표시**: 일정 기준으로 묶었을 때, 묶음 안의 항목 사이\n   - 예: `상·중·하위권`\n   - 예: `읽기·쓰기 권한`"
     provenance:
       upstream: korean-skills
@@ -1615,6 +1776,7 @@ fragments:
       transform: verbatim
   - id: rules.162
     kind: item
+    blanks: 1
     text: "3. **특정 의미가 있는 날짜**: 역사적 사건이나 약식 날짜 표기\n   - 예: `3·1 운동`, `8·15 광복`\n   - 예: `2026·4·26` (마침표 대신 허용)"
     provenance:
       upstream: korean-skills
@@ -1625,6 +1787,7 @@ fragments:
       transform: verbatim
   - id: rules.163
     kind: paragraph
+    blanks: 1
     text: "**가운뎃점 대신 쉼표(,)를 쓰는 것도 모두 허용됩니다.** 가운뎃점은 의무가 아니라 선택지입니다."
     provenance:
       upstream: korean-skills
@@ -1635,6 +1798,7 @@ fragments:
       transform: verbatim
   - id: rules.164
     kind: paragraph
+    blanks: 1
     text: "**부적절한 사용** (흔한 오용):"
     provenance:
       upstream: korean-skills
@@ -1645,6 +1809,7 @@ fragments:
       transform: verbatim
   - id: rules.165
     kind: paragraph
+    blanks: 1
     text: "가운뎃점은 **단순 열거나 독립적인 대안**을 나열하는 데 쓰는 부호가 **아닙니다**. 다음 패턴은 규정상 부적절합니다."
     provenance:
       upstream: korean-skills
@@ -1655,6 +1820,7 @@ fragments:
       transform: verbatim
   - id: rules.166
     kind: table-header
+    blanks: 1
     text: "| 부적절한 예 | 권장 |"
     provenance:
       upstream: korean-skills
@@ -1665,6 +1831,7 @@ fragments:
       transform: verbatim
   - id: rules.167
     kind: table-sep
+    blanks: 0
     text: "|-----------|------|"
     provenance:
       upstream: korean-skills
@@ -1675,6 +1842,7 @@ fragments:
       transform: verbatim
   - id: rules.168
     kind: row
+    blanks: 0
     text: "| `쿠키·세션·JWT` (독립적 대안 나열) | `쿠키, 세션, JWT` 또는 `쿠키 / 세션 / JWT` |"
     provenance:
       upstream: korean-skills
@@ -1685,6 +1853,7 @@ fragments:
       transform: verbatim
   - id: rules.169
     kind: row
+    blanks: 0
     text: "| `React·Vue·Svelte` (독립적 프레임워크 나열) | `React, Vue, Svelte` |"
     provenance:
       upstream: korean-skills
@@ -1695,6 +1864,7 @@ fragments:
       transform: verbatim
   - id: rules.170
     kind: row
+    blanks: 0
     text: "| `DNS·TTL·CDN` (서로 다른 개념 나열) | `DNS, TTL, CDN` |"
     provenance:
       upstream: korean-skills
@@ -1705,6 +1875,7 @@ fragments:
       transform: verbatim
   - id: rules.171
     kind: paragraph
+    blanks: 1
     text: "**판별 기준**:"
     provenance:
       upstream: korean-skills
@@ -1715,6 +1886,7 @@ fragments:
       transform: verbatim
   - id: rules.172
     kind: item
+    blanks: 1
     text: "- 항목들이 **공통 성분을 공유**하거나 **짝을 이루는가**? → 가운뎃점 가능"
     provenance:
       upstream: korean-skills
@@ -1725,6 +1897,7 @@ fragments:
       transform: verbatim
   - id: rules.173
     kind: item
+    blanks: 0
     text: "- 항목들이 단순히 **같은 범주의 독립적 대안**인가? → 쉼표 권장"
     provenance:
       upstream: korean-skills
@@ -1735,6 +1908,7 @@ fragments:
       transform: verbatim
   - id: rules.174
     kind: item
+    blanks: 0
     text: "- IT 기술 용어 나열에서는 **쉼표 또는 슬래시(/)가 관례**"
     provenance:
       upstream: korean-skills
@@ -1745,6 +1919,7 @@ fragments:
       transform: verbatim
   - id: rules.175
     kind: paragraph
+    blanks: 1
     text: "**검사 시 주의**:"
     provenance:
       upstream: korean-skills
@@ -1755,6 +1930,7 @@ fragments:
       transform: verbatim
   - id: rules.176
     kind: item
+    blanks: 1
     text: "- 같은 문서 안에서 `A와 B`(연결어미)와 `A·B`(가운뎃점)를 섞어 쓰면 **문체 일관성**이 깨집니다. style-guide 영역의 일관성 문제로도 다룰 수 있습니다."
     provenance:
       upstream: korean-skills
@@ -1765,6 +1941,7 @@ fragments:
       transform: verbatim
   - id: rules.177
     kind: item
+    blanks: 0
     text: "- `John F. Kennedy`처럼 **외국 인명의 미들네임 표기**는 가운뎃점이 아니라 마침표(`.`)를 사용합니다. 한국어 표기 시에도 `존 F. 케네디`가 일반적입니다."
     provenance:
       upstream: korean-skills
@@ -1775,6 +1952,7 @@ fragments:
       transform: verbatim
   - id: rules.178
     kind: paragraph
+    blanks: 1
     text: "---"
     provenance:
       upstream: korean-skills
@@ -1785,6 +1963,7 @@ fragments:
       transform: verbatim
   - id: rules.179
     kind: heading
+    blanks: 1
     text: "## 검사 시 주의사항"
     provenance:
       upstream: korean-skills
@@ -1795,6 +1974,7 @@ fragments:
       transform: verbatim
   - id: rules.180
     kind: heading
+    blanks: 1
     text: "### 문맥 고려"
     provenance:
       upstream: korean-skills
@@ -1805,6 +1985,7 @@ fragments:
       transform: verbatim
   - id: rules.181
     kind: paragraph
+    blanks: 1
     text: "문법 규칙이 항상 절대적이지는 않습니다. 다음 상황에서는 유연하게 적용:"
     provenance:
       upstream: korean-skills
@@ -1815,6 +1996,7 @@ fragments:
       transform: verbatim
   - id: rules.182
     kind: item
+    blanks: 1
     text: "1. **비격식체 문서**: 구어체나 블로그 글에서는 일부 규칙을 느슨하게 적용"
     provenance:
       upstream: korean-skills
@@ -1825,6 +2007,7 @@ fragments:
       transform: verbatim
   - id: rules.183
     kind: item
+    blanks: 0
     text: "2. **강조 목적**: 의도적인 반복이나 변형"
     provenance:
       upstream: korean-skills
@@ -1835,6 +2018,7 @@ fragments:
       transform: verbatim
   - id: rules.184
     kind: item
+    blanks: 0
     text: "3. **고유명사**: 브랜드명이나 특별한 표기"
     provenance:
       upstream: korean-skills
@@ -1845,6 +2029,7 @@ fragments:
       transform: verbatim
   - id: rules.185
     kind: item
+    blanks: 0
     text: "4. **기술 용어**: IT 용어나 전문 용어"
     provenance:
       upstream: korean-skills
@@ -1855,6 +2040,7 @@ fragments:
       transform: verbatim
   - id: rules.186
     kind: heading
+    blanks: 1
     text: "### 확신 수준"
     provenance:
       upstream: korean-skills
@@ -1865,6 +2051,7 @@ fragments:
       transform: verbatim
   - id: rules.187
     kind: paragraph
+    blanks: 1
     text: "오류를 지적할 때 확신 수준을 표시:"
     provenance:
       upstream: korean-skills
@@ -1875,6 +2062,7 @@ fragments:
       transform: verbatim
   - id: rules.188
     kind: item
+    blanks: 0
     text: "- **확실한 오류**: 맞춤법/띄어쓰기 규칙 위반"
     provenance:
       upstream: korean-skills
@@ -1885,6 +2073,7 @@ fragments:
       transform: verbatim
   - id: rules.189
     kind: item
+    blanks: 0
     text: "- **권장 사항**: 더 나은 표현이 있을 때"
     provenance:
       upstream: korean-skills
@@ -1895,6 +2084,7 @@ fragments:
       transform: verbatim
   - id: rules.190
     kind: item
+    blanks: 0
     text: "- **스타일 제안**: 선택의 문제일 때"
     provenance:
       upstream: korean-skills

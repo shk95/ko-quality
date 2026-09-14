@@ -12,7 +12,7 @@ ROLES = {
 }
 KINDS = {
     # structural kinds, assigned by the block parser (whole-file extraction)
-    "heading", "paragraph", "item", "quote", "row", "table-header", "table-sep",
+    "heading", "paragraph", "item", "quote", "row", "table-header", "table-sep", "tag",
     # semantic kinds, assigned by a hand-written selection
     "summary", "invariant", "step", "output", "check", "grade", "input",
     "severity", "exclusion", "category", "pattern", "block",
@@ -47,6 +47,8 @@ def validate_text(rel, text, locks):
                 errors.append(f"{where}: missing {k}")
         if f.get("kind") not in KINDS:
             errors.append(f"{where}: kind {f.get('kind')!r} not allowed")
+        if "blanks" in f and not str(f["blanks"]).isdigit():
+            errors.append(f"{where}: blanks must be a non-negative integer")
         if f.get("transform") not in TRANSFORMS:
             errors.append(f"{where}: transform {f.get('transform')!r} not allowed")
         if f.get("transform") == "adapted" and not f.get("original"):

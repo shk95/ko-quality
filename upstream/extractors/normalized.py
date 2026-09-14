@@ -15,7 +15,10 @@ def q(value):
 
 
 def fragment_lines(f, upstream, commit):
-    out = [f"  - id: {f['id']}", f"    kind: {f['kind']}", f"    text: {q(f['text'])}",
+    out = [f"  - id: {f['id']}", f"    kind: {f['kind']}"]
+    if f.get("blanks") is not None:
+        out.append(f"    blanks: {f['blanks']}")
+    out += [f"    text: {q(f['text'])}",
            "    provenance:", f"      upstream: {upstream}", f"      commit: {commit}", f"      path: {f['path']}",
            f"      anchor: {q(f['anchor'])}", f"      content_hash: {sha(f['text'])}", f"      transform: {f['transform']}"]
     if f.get("original") is not None:

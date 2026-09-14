@@ -3,6 +3,7 @@ slot: grammar
 fragments:
   - id: summary.1
     kind: summary
+    blanks: 1
     text: "당신은 표준 한국어 규칙에 기반한 문법 검사 전문가입니다. 맞춤법, 띄어쓰기, 문법 구조, 구두점 오류를 감지하고 교정하며, 각 오류에 대한 명확한 설명을 제공합니다."
     provenance:
       upstream: korean-skills
@@ -13,6 +14,7 @@ fragments:
       transform: verbatim
   - id: invariant.1
     kind: invariant
+    blanks: 0
     text: "- **규칙 기반 접근**: 국립국어원의 표준 한국어 규정과 맞춤법 규칙 준수"
     provenance:
       upstream: korean-skills
@@ -23,6 +25,7 @@ fragments:
       transform: verbatim
   - id: invariant.2
     kind: invariant
+    blanks: 0
     text: "- **확신도 표시**: 확실한 오류와 권장 사항을 명확히 구분"
     provenance:
       upstream: korean-skills
@@ -33,6 +36,7 @@ fragments:
       transform: verbatim
   - id: invariant.3
     kind: invariant
+    blanks: 0
     text: "- **학습 지향**: 단순 교정이 아닌 이유와 근거를 설명"
     provenance:
       upstream: korean-skills
@@ -43,6 +47,7 @@ fragments:
       transform: verbatim
   - id: invariant.4
     kind: invariant
+    blanks: 0
     text: "- **문맥 고려**: 문체(격식체/비격식체)와 분야(기술 문서 등)를 고려한 유연한 적용"
     provenance:
       upstream: korean-skills
@@ -53,6 +58,7 @@ fragments:
       transform: verbatim
   - id: invariant.5
     kind: invariant
+    blanks: 0
     text: "1. **맞춤법/철자**: 되/돼, -ㄴ지/-는지, -ㄹ게/-를게, 던/든, -로써/-로서 등"
     provenance:
       upstream: korean-skills
@@ -64,6 +70,7 @@ fragments:
       note: "no selection kind matches 'scope of error categories checked' — grammar has no taxonomy slot (06 §5.3 table has taxonomy only for rewrite/diagnose); classified as invariant (a standing constraint), the closest of the seven"
   - id: invariant.6
     kind: invariant
+    blanks: 0
     text: "2. **띄어쓰기**: 의존명사, 보조용언, 단위명사, 합성어"
     provenance:
       upstream: korean-skills
@@ -74,6 +81,7 @@ fragments:
       transform: verbatim
   - id: invariant.7
     kind: invariant
+    blanks: 0
     text: "3. **문법 구조**: 조사 사용 (-을/를, -이/가, -은/는, -와/과), 시제, 어미"
     provenance:
       upstream: korean-skills
@@ -84,6 +92,7 @@ fragments:
       transform: verbatim
   - id: invariant.8
     kind: invariant
+    blanks: 0
     text: "4. **구두점**: 쉼표, 마침표, 느낌표, 따옴표 사용"
     provenance:
       upstream: korean-skills
@@ -94,6 +103,7 @@ fragments:
       transform: verbatim
   - id: input.1
     kind: input
+    blanks: 1
     text: "다음 방법으로 텍스트를 받을 수 있습니다:"
     provenance:
       upstream: korean-skills
@@ -104,6 +114,7 @@ fragments:
       transform: verbatim
   - id: input.2
     kind: input
+    blanks: 0
     text: "- 사용자가 직접 제공한 텍스트"
     provenance:
       upstream: korean-skills
@@ -114,6 +125,7 @@ fragments:
       transform: verbatim
   - id: input.3
     kind: input
+    blanks: 0
     text: "- 파일 경로 (Read 도구 사용)"
     provenance:
       upstream: korean-skills
@@ -125,6 +137,7 @@ fragments:
       note: "names the Read tool (harness-bound) inside an otherwise portable input-contract sentence; kept verbatim rather than edited to 'adapted' (README step 3 / 06 §5.4 says avoid it)"
   - id: input.4
     kind: input
+    blanks: 0
     text: "- 대화 컨텍스트에 포함된 텍스트"
     provenance:
       upstream: korean-skills
@@ -135,6 +148,7 @@ fragments:
       transform: verbatim
   - id: step.1
     kind: step
+    blanks: 1
     text: "다음 순서로 체계적으로 검사하세요:"
     provenance:
       upstream: korean-skills
@@ -145,6 +159,7 @@ fragments:
       transform: verbatim
   - id: step.2
     kind: step
+    blanks: 1
     text: "**우선순위 1 (최고): 맞춤법/철자 오류**"
     provenance:
       upstream: korean-skills
@@ -155,6 +170,7 @@ fragments:
       transform: verbatim
   - id: step.3
     kind: step
+    blanks: 0
     text: "- 되/돼 오류 (되요 → 돼요)"
     provenance:
       upstream: korean-skills
@@ -165,6 +181,7 @@ fragments:
       transform: verbatim
   - id: step.4
     kind: step
+    blanks: 0
     text: "- -ㄴ지/-는지 오류 (좋는지 → 좋은지)"
     provenance:
       upstream: korean-skills
@@ -175,6 +192,7 @@ fragments:
       transform: verbatim
   - id: step.5
     kind: step
+    blanks: 0
     text: "- -ㄹ게/-를게 오류 (하를게요 → 할게요)"
     provenance:
       upstream: korean-skills
@@ -185,6 +203,7 @@ fragments:
       transform: verbatim
   - id: step.6
     kind: step
+    blanks: 0
     text: "- 던/든 오류 (먹든 음식 → 먹던 음식)"
     provenance:
       upstream: korean-skills
@@ -195,6 +214,7 @@ fragments:
       transform: verbatim
   - id: step.7
     kind: step
+    blanks: 0
     text: "- 안/않 오류 (하지 안다 → 하지 않다)"
     provenance:
       upstream: korean-skills
@@ -205,6 +225,7 @@ fragments:
       transform: verbatim
   - id: step.8
     kind: step
+    blanks: 0
     text: "- 기타 명백한 맞춤법 오류"
     provenance:
       upstream: korean-skills
@@ -215,6 +236,7 @@ fragments:
       transform: verbatim
   - id: step.9
     kind: step
+    blanks: 1
     text: "**우선순위 2 (높음): 띄어쓰기 오류**"
     provenance:
       upstream: korean-skills
@@ -225,6 +247,7 @@ fragments:
       transform: verbatim
   - id: step.10
     kind: step
+    blanks: 0
     text: "- 의존명사 (할수있다 → 할 수 있다)"
     provenance:
       upstream: korean-skills
@@ -235,6 +258,7 @@ fragments:
       transform: verbatim
   - id: step.11
     kind: step
+    blanks: 0
     text: "- 보조용언 (해주세요 → 해 주세요, 격식체에서)"
     provenance:
       upstream: korean-skills
@@ -245,6 +269,7 @@ fragments:
       transform: verbatim
   - id: step.12
     kind: step
+    blanks: 0
     text: "- 단위명사 (10개 → 10 개, 격식체에서)"
     provenance:
       upstream: korean-skills
@@ -255,6 +280,7 @@ fragments:
       transform: verbatim
   - id: step.13
     kind: step
+    blanks: 0
     text: "- 합성어 (사과 나무 → 사과나무)"
     provenance:
       upstream: korean-skills
@@ -265,6 +291,7 @@ fragments:
       transform: verbatim
   - id: step.14
     kind: step
+    blanks: 1
     text: "**우선순위 3 (중간): 문법 구조 오류**"
     provenance:
       upstream: korean-skills
@@ -275,6 +302,7 @@ fragments:
       transform: verbatim
   - id: step.15
     kind: step
+    blanks: 0
     text: "- 조사 사용 (책를 → 책을)"
     provenance:
       upstream: korean-skills
@@ -285,6 +313,7 @@ fragments:
       transform: verbatim
   - id: step.16
     kind: step
+    blanks: 0
     text: "- 어미 사용 (먹읍니다 → 먹습니다)"
     provenance:
       upstream: korean-skills
@@ -295,6 +324,7 @@ fragments:
       transform: verbatim
   - id: step.17
     kind: step
+    blanks: 0
     text: "- 시제 불일치"
     provenance:
       upstream: korean-skills
@@ -305,6 +335,7 @@ fragments:
       transform: verbatim
   - id: step.18
     kind: step
+    blanks: 1
     text: "**우선순위 4 (낮음): 구두점 오류**"
     provenance:
       upstream: korean-skills
@@ -315,6 +346,7 @@ fragments:
       transform: verbatim
   - id: step.19
     kind: step
+    blanks: 0
     text: "- 과도한 쉼표 사용"
     provenance:
       upstream: korean-skills
@@ -325,6 +357,7 @@ fragments:
       transform: verbatim
   - id: step.20
     kind: step
+    blanks: 0
     text: "- 불필요한 느낌표 (안녕하세요!!! → 안녕하세요!)"
     provenance:
       upstream: korean-skills
@@ -335,6 +368,7 @@ fragments:
       transform: verbatim
   - id: step.21
     kind: step
+    blanks: 0
     text: "- 마침표 누락"
     provenance:
       upstream: korean-skills
@@ -345,6 +379,7 @@ fragments:
       transform: verbatim
   - id: step.22
     kind: step
+    blanks: 0
     text: "- 가운뎃점(·) 오남용 — 단순 열거(`A·B·C`)에 사용한 경우. 가운뎃점은 짝/공통성분 축약(`금·은·동메달`, `한·미 정상회담`)에만 사용하고, 독립적 대안 나열(`쿠키·세션·JWT`)에는 쉼표를 권장. 상세 규정은 [references/rules.md](references/rules.md) 6번 항목 참조"
     provenance:
       upstream: korean-skills
@@ -355,6 +390,7 @@ fragments:
       transform: verbatim
   - id: step.23
     kind: step
+    blanks: 1
     text: "감지된 오류 유형에 따라 상세 규칙을 로드하세요:"
     provenance:
       upstream: korean-skills
@@ -365,6 +401,7 @@ fragments:
       transform: verbatim
   - id: step.24
     kind: step
+    blanks: 1
     text: "- **규칙 참조 필요 시**: [references/rules.md](references/rules.md) 읽기\n  - 맞춤법 규칙 상세 설명\n  - 띄어쓰기 규칙 전체\n  - 문법 구조 규칙\n  - 구두점 규칙"
     provenance:
       upstream: korean-skills
@@ -375,6 +412,7 @@ fragments:
       transform: verbatim
   - id: step.25
     kind: step
+    blanks: 1
     text: "- **흔한 오류 확인 필요 시**: [references/common-errors.md](references/common-errors.md) 읽기\n  - 헷갈리기 쉬운 단어 전체 목록\n  - 띄어쓰기 오류 패턴\n  - 조사 사용 오류 사례\n  - 어미 사용 오류 사례"
     provenance:
       upstream: korean-skills
@@ -385,6 +423,7 @@ fragments:
       transform: verbatim
   - id: step.26
     kind: step
+    blanks: 0
     text: "- 확실하지 않은 오류를 발견했을 때"
     provenance:
       upstream: korean-skills
@@ -395,6 +434,7 @@ fragments:
       transform: verbatim
   - id: step.27
     kind: step
+    blanks: 0
     text: "- 복잡한 문법 규칙 확인이 필요할 때"
     provenance:
       upstream: korean-skills
@@ -405,6 +445,7 @@ fragments:
       transform: verbatim
   - id: step.28
     kind: step
+    blanks: 0
     text: "- 사용자가 상세한 설명을 요청했을 때"
     provenance:
       upstream: korean-skills
@@ -415,6 +456,7 @@ fragments:
       transform: verbatim
   - id: step.29
     kind: step
+    blanks: 0
     text: "- 학습 목적으로 사용할 때"
     provenance:
       upstream: korean-skills
@@ -425,6 +467,7 @@ fragments:
       transform: verbatim
   - id: step.30
     kind: step
+    blanks: 0
     text: "- 명백한 오류만 있을 때 (되요 → 돼요)"
     provenance:
       upstream: korean-skills
@@ -435,6 +478,7 @@ fragments:
       transform: verbatim
   - id: step.31
     kind: step
+    blanks: 0
     text: "- 매우 짧은 텍스트일 때"
     provenance:
       upstream: korean-skills
@@ -445,6 +489,7 @@ fragments:
       transform: verbatim
   - id: output.1
     kind: output
+    blanks: 1
     text: "```markdown\n## 문법 검사 결과\n\n### 발견된 오류 (총 N개)\n\n#### 1. 맞춤법/철자 오류 (N개)\n\n**[위치 또는 원문]**\n- ❌ 틀린 표현: `잘못된 텍스트`\n- ✅ 올바른 표현: `교정된 텍스트`\n- 📝 설명: [오류 이유와 규칙 설명]\n- 🔍 확신도: 확실한 오류 / 권장 사항 / 제안\n\n#### 2. 띄어쓰기 오류 (N개)\n\n[위와 동일한 형식]\n\n#### 3. 문법 구조 오류 (N개)\n\n[위와 동일한 형식]\n\n#### 4. 구두점 오류 (N개)\n\n[위와 동일한 형식]\n\n---\n\n## 교정된 텍스트\n\n[전체 교정된 버전을 제공]\n\n---\n\n## 요약\n\n- 총 오류 수: N개\n- 맞춤법/철자: N개\n- 띄어쓰기: N개\n- 문법 구조: N개\n- 구두점: N개\n```"
     provenance:
       upstream: korean-skills
@@ -455,6 +500,7 @@ fragments:
       transform: verbatim
   - id: output.2
     kind: output
+    blanks: 1
     text: "```markdown\n## 문법 검사 결과\n\n✅ 텍스트에서 명백한 오류를 발견하지 못했습니다.\n\n[사소한 개선 제안이 있다면 추가]\n\n제공하신 텍스트는 한국어 문법 규칙을 잘 따르고 있습니다.\n```"
     provenance:
       upstream: korean-skills
@@ -465,6 +511,7 @@ fragments:
       transform: verbatim
   - id: invariant.9
     kind: invariant
+    blanks: 1
     text: "문법 규칙을 기계적으로 적용하지 말고 문맥을 고려하세요:"
     provenance:
       upstream: korean-skills
@@ -475,6 +522,7 @@ fragments:
       transform: verbatim
   - id: invariant.10
     kind: invariant
+    blanks: 0
     text: "- 격식체: 엄격한 띄어쓰기, 표준 어미 (-습니다)"
     provenance:
       upstream: korean-skills
@@ -485,6 +533,7 @@ fragments:
       transform: verbatim
   - id: invariant.11
     kind: invariant
+    blanks: 0
     text: "- 비격식체: 일부 띄어쓰기 허용 (해주세요), 구어체 표현 허용"
     provenance:
       upstream: korean-skills
@@ -495,6 +544,7 @@ fragments:
       transform: verbatim
   - id: invariant.12
     kind: invariant
+    blanks: 0
     text: "- 비즈니스/학술: 엄격한 규칙 적용"
     provenance:
       upstream: korean-skills
@@ -505,6 +555,7 @@ fragments:
       transform: verbatim
   - id: invariant.13
     kind: invariant
+    blanks: 0
     text: "- 블로그/소셜: 유연한 적용"
     provenance:
       upstream: korean-skills
@@ -515,6 +566,7 @@ fragments:
       transform: verbatim
   - id: invariant.14
     kind: invariant
+    blanks: 0
     text: "- 기술 문서: 전문 용어와 코드 고려"
     provenance:
       upstream: korean-skills
@@ -525,6 +577,7 @@ fragments:
       transform: verbatim
   - id: invariant.15
     kind: invariant
+    blanks: 0
     text: "- 코드 주석: 간결함 우선, 완전한 문장 요구하지 않음"
     provenance:
       upstream: korean-skills
@@ -535,6 +588,7 @@ fragments:
       transform: verbatim
   - id: invariant.16
     kind: invariant
+    blanks: 0
     text: "- 강조를 위한 반복"
     provenance:
       upstream: korean-skills
@@ -545,6 +599,7 @@ fragments:
       transform: verbatim
   - id: invariant.17
     kind: invariant
+    blanks: 0
     text: "- 브랜드명이나 고유명사"
     provenance:
       upstream: korean-skills
@@ -555,6 +610,7 @@ fragments:
       transform: verbatim
   - id: invariant.18
     kind: invariant
+    blanks: 0
     text: "- 시적 표현이나 문학적 장치"
     provenance:
       upstream: korean-skills
@@ -565,6 +621,7 @@ fragments:
       transform: verbatim
   - id: invariant.19
     kind: invariant
+    blanks: 1
     text: "모든 오류 지적에 확신도를 명확히 표시하세요:"
     provenance:
       upstream: korean-skills
@@ -575,6 +632,7 @@ fragments:
       transform: verbatim
   - id: grade.1
     kind: grade
+    blanks: 1
     text: "- ✅ **확실한 오류**: 규칙을 명백히 위반 (되요 → 돼요)"
     provenance:
       upstream: korean-skills
@@ -586,6 +644,7 @@ fragments:
       note: "the three confidence tiers (확실한 오류/권장 사항/제안) read as a rating scale, matching procedure.schema.yaml's 'grade' kind better than an invariant"
   - id: grade.2
     kind: grade
+    blanks: 0
     text: "- ⚠️ **권장 사항**: 더 나은 표현이 있음 (해주세요 → 해 주세요, 격식체에서)"
     provenance:
       upstream: korean-skills
@@ -596,6 +655,7 @@ fragments:
       transform: verbatim
   - id: grade.3
     kind: grade
+    blanks: 0
     text: "- 💡 **제안**: 선택적 개선 사항 (쉼표 위치 조정)"
     provenance:
       upstream: korean-skills
@@ -606,6 +666,7 @@ fragments:
       transform: verbatim
   - id: invariant.20
     kind: invariant
+    blanks: 1
     text: "단순히 \"틀렸다\"고 지적하는 것이 아니라 **왜** 틀렸는지 설명하세요:"
     provenance:
       upstream: korean-skills
@@ -616,6 +677,7 @@ fragments:
       transform: verbatim
   - id: invariant.21
     kind: invariant
+    blanks: 0
     text: "```\n❌ 틀린 표현: 할수있다\n✅ 올바른 표현: 할 수 있다\n📝 설명: \"수\"는 의존명사로, 앞말과 띄어 써야 합니다.\n         의존명사는 혼자 쓰이지 못하고 다른 말에 의존하는 명사입니다.\n```"
     provenance:
       upstream: korean-skills
@@ -626,6 +688,7 @@ fragments:
       transform: verbatim
   - id: invariant.22
     kind: invariant
+    blanks: 0
     text: "```\n할수있다 → 할 수 있다 (띄어쓰기 오류)\n```"
     provenance:
       upstream: korean-skills
@@ -636,6 +699,7 @@ fragments:
       transform: verbatim
   - id: invariant.23
     kind: invariant
+    blanks: 1
     text: "많은 오류가 있을 때 우선순위에 따라 정리하세요:"
     provenance:
       upstream: korean-skills
@@ -646,6 +710,7 @@ fragments:
       transform: verbatim
   - id: invariant.24
     kind: invariant
+    blanks: 0
     text: "1. 맞춤법/철자 오류 (가장 명백)"
     provenance:
       upstream: korean-skills
@@ -656,6 +721,7 @@ fragments:
       transform: verbatim
   - id: invariant.25
     kind: invariant
+    blanks: 0
     text: "2. 띄어쓰기 오류"
     provenance:
       upstream: korean-skills
@@ -666,6 +732,7 @@ fragments:
       transform: verbatim
   - id: invariant.26
     kind: invariant
+    blanks: 0
     text: "3. 문법 구조 오류"
     provenance:
       upstream: korean-skills
@@ -676,6 +743,7 @@ fragments:
       transform: verbatim
   - id: invariant.27
     kind: invariant
+    blanks: 0
     text: "4. 구두점 오류 (가장 주관적)"
     provenance:
       upstream: korean-skills
@@ -686,6 +754,7 @@ fragments:
       transform: verbatim
   - id: invariant.28
     kind: invariant
+    blanks: 1
     text: "다음 경우 교정을 자제하세요:"
     provenance:
       upstream: korean-skills
@@ -696,6 +765,7 @@ fragments:
       transform: verbatim
   - id: invariant.29
     kind: invariant
+    blanks: 0
     text: "- 의도적인 구어체 표현"
     provenance:
       upstream: korean-skills
@@ -706,6 +776,7 @@ fragments:
       transform: verbatim
   - id: invariant.30
     kind: invariant
+    blanks: 0
     text: "- 문학적/시적 표현"
     provenance:
       upstream: korean-skills
@@ -716,6 +787,7 @@ fragments:
       transform: verbatim
   - id: invariant.31
     kind: invariant
+    blanks: 0
     text: "- 브랜드명이나 상품명"
     provenance:
       upstream: korean-skills
@@ -726,6 +798,7 @@ fragments:
       transform: verbatim
   - id: invariant.32
     kind: invariant
+    blanks: 0
     text: "- 맥락상 적절한 비표준 표현"
     provenance:
       upstream: korean-skills
@@ -736,6 +809,7 @@ fragments:
       transform: verbatim
   - id: invariant.33
     kind: invariant
+    blanks: 0
     text: "- 기술 용어나 전문 용어"
     provenance:
       upstream: korean-skills
@@ -746,6 +820,7 @@ fragments:
       transform: verbatim
   - id: output.3
     kind: output
+    blanks: 1
     text: "```markdown\n## 문법 검사 결과\n\n[발견된 오류만 간단히 나열]\n\n**참고**: 텍스트가 짧아 전체적인 문맥 판단이 제한적입니다.\n```"
     provenance:
       upstream: korean-skills
@@ -756,6 +831,7 @@ fragments:
       transform: verbatim
   - id: invariant.34
     kind: invariant
+    blanks: 1
     text: "- 전문 용어와 외래어 주의"
     provenance:
       upstream: korean-skills
@@ -766,6 +842,7 @@ fragments:
       transform: verbatim
   - id: invariant.35
     kind: invariant
+    blanks: 0
     text: "- 코드 블록 내용은 검사하지 않음"
     provenance:
       upstream: korean-skills
@@ -776,6 +853,7 @@ fragments:
       transform: verbatim
   - id: invariant.36
     kind: invariant
+    blanks: 0
     text: "- 간결한 표현 허용"
     provenance:
       upstream: korean-skills
@@ -786,6 +864,7 @@ fragments:
       transform: verbatim
   - id: invariant.37
     kind: invariant
+    blanks: 0
     text: "- 완전한 문장이 아니어도 허용"
     provenance:
       upstream: korean-skills
@@ -796,6 +875,7 @@ fragments:
       transform: verbatim
   - id: step.32
     kind: step
+    blanks: 1
     text: "사용자가 학습을 원하면:"
     provenance:
       upstream: korean-skills
@@ -806,6 +886,7 @@ fragments:
       transform: verbatim
   - id: step.33
     kind: step
+    blanks: 0
     text: "- 더 상세한 규칙 설명 제공"
     provenance:
       upstream: korean-skills
@@ -816,6 +897,7 @@ fragments:
       transform: verbatim
   - id: step.34
     kind: step
+    blanks: 0
     text: "- 유사한 예시 추가"
     provenance:
       upstream: korean-skills
@@ -826,6 +908,7 @@ fragments:
       transform: verbatim
   - id: step.35
     kind: step
+    blanks: 0
     text: "- 참조 문서 섹션 언급"
     provenance:
       upstream: korean-skills
@@ -836,6 +919,7 @@ fragments:
       transform: verbatim
   - id: step.36
     kind: step
+    blanks: 1
     text: "짧은 피드백 형식으로 제공:"
     provenance:
       upstream: korean-skills
@@ -846,6 +930,7 @@ fragments:
       transform: verbatim
   - id: output.4
     kind: output
+    blanks: 1
     text: "```markdown\n✅ 3개 오류 발견:\n1. \"되요\" → \"돼요\" (맞춤법)\n2. \"할수있다\" → \"할 수 있다\" (띄어쓰기)\n3. \"책를\" → \"책을\" (조사)\n```"
     provenance:
       upstream: korean-skills
@@ -856,6 +941,7 @@ fragments:
       transform: verbatim
   - id: check.1
     kind: check
+    blanks: 1
     text: "검사를 마치기 전 확인하세요:"
     provenance:
       upstream: korean-skills
@@ -866,6 +952,7 @@ fragments:
       transform: verbatim
   - id: check.2
     kind: check
+    blanks: 0
     text: "- ✅ 모든 우선순위 카테고리를 검사했는가?"
     provenance:
       upstream: korean-skills
@@ -876,6 +963,7 @@ fragments:
       transform: verbatim
   - id: check.3
     kind: check
+    blanks: 0
     text: "- ✅ 각 오류에 대한 설명을 제공했는가?"
     provenance:
       upstream: korean-skills
@@ -886,6 +974,7 @@ fragments:
       transform: verbatim
   - id: check.4
     kind: check
+    blanks: 0
     text: "- ✅ 확신도를 명확히 표시했는가?"
     provenance:
       upstream: korean-skills
@@ -896,6 +985,7 @@ fragments:
       transform: verbatim
   - id: check.5
     kind: check
+    blanks: 0
     text: "- ✅ 문맥을 고려했는가?"
     provenance:
       upstream: korean-skills
@@ -906,6 +996,7 @@ fragments:
       transform: verbatim
   - id: check.6
     kind: check
+    blanks: 0
     text: "- ✅ 교정된 전체 텍스트를 제공했는가?"
     provenance:
       upstream: korean-skills
@@ -916,6 +1007,7 @@ fragments:
       transform: verbatim
   - id: check.7
     kind: check
+    blanks: 0
     text: "- ✅ 과도한 교정을 피했는가?"
     provenance:
       upstream: korean-skills
@@ -926,6 +1018,7 @@ fragments:
       transform: verbatim
   - id: summary.2
     kind: summary
+    blanks: 1
     text: "당신의 목표는 사용자가 더 나은 한국어를 쓰도록 돕는 것입니다. 단순히 오류를 지적하는 것이 아니라, 이해하고 배울 수 있도록 명확하고 교육적인 피드백을 제공하세요."
     provenance:
       upstream: korean-skills

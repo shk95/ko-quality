@@ -6,6 +6,7 @@ kind: research
 fragments:
   - id: katfishnet-research.000
     kind: heading
+    blanks: 0
     text: "# 학술 근거 — KatFishNet (ACL 2025)"
     provenance:
       upstream: yoonmoon
@@ -16,6 +17,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.001
     kind: paragraph
+    blanks: 1
     text: "윤문의 AI 티 탐지 기준 일부는 한국어 LLM 텍스트 탐지 연구로 뒷받침된다. 그중 가장 직접적인 근거가\n**KatFishNet** 논문이다. 이 문서는 논문의 핵심 발견을 정리하고, 윤문의 어떤 카테고리에 어떻게\n반영되는지 매핑한다."
     provenance:
       upstream: yoonmoon
@@ -26,6 +28,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.002
     kind: heading
+    blanks: 1
     text: "## 출처"
     provenance:
       upstream: yoonmoon
@@ -36,6 +39,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.003
     kind: quote
+    blanks: 1
     text: "> **KatFishNet: Detecting LLM-Generated Korean Text through Linguistic Feature Analysis**\n> Shinwoo Park, Shubin Kim, Do-Kyung Kim, Yo-Sub Han.\n> _Proceedings of the 63rd Annual Meeting of the ACL (Volume 1: Long Papers)_, 2025, pp. 21189–21222.\n> ACL Anthology: https://aclanthology.org/2025.acl-long.1030/ · DOI: 10.18653/v1/2025.acl-long.1030\n> 코드·데이터(KatFish 벤치마크): https://github.com/Shinwoo-Park/katfishnet"
     provenance:
       upstream: yoonmoon
@@ -46,6 +50,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.004
     kind: paragraph
+    blanks: 1
     text: "논문은 인간 작성 vs LLM 생성 한국어 텍스트를 **에세이·시·논문 초록** 세 장르에서 비교하고,\n세 가지 언어 특징군으로 둘을 구분한다. 핵심 결론: **쉼표(구두점) 기반 특징이 가장 강력한 판별자**로,\n에세이에서 평균 AUC-ROC **94.88%**, 기존 최고 기법 대비 평균 **+19.78%p**."
     provenance:
       upstream: yoonmoon
@@ -56,6 +61,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.005
     kind: heading
+    blanks: 1
     text: "## 세 가지 언어 특징군"
     provenance:
       upstream: yoonmoon
@@ -66,6 +72,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.006
     kind: heading
+    blanks: 1
     text: "### 1) 띄어쓰기 패턴 (Word Spacing)"
     provenance:
       upstream: yoonmoon
@@ -76,6 +83,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.007
     kind: item
+    blanks: 1
     text: "- **의존명사(BN)·보조용언(VX)** 주변 띄어쓰기 분포를 분석. (MMN-BN Space Ratio, BN Space Ratio)"
     provenance:
       upstream: yoonmoon
@@ -86,6 +94,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.008
     kind: item
+    blanks: 0
     text: "- LLM 텍스트는 표준 띄어쓰기 규칙을 더 기계적·균일하게 따르는 경향. 사람 글은 변이가 크다."
     provenance:
       upstream: yoonmoon
@@ -96,6 +105,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.009
     kind: item
+    blanks: 0
     text: "- **윤문에서의 활용**: 주로 *탐지 신호*다. 윤문은 띄어쓰기를 함부로 바꾸지 않는다(맞춤법 교정은 범위 밖).\n  다만 \"할 수 있다 / 하는 것 / 것이다\"처럼 의존명사·보조용언이 기계적으로 반복되는 정황은\n  → **카테고리 6(형식명사·명사화)** 신호로 본다."
     provenance:
       upstream: yoonmoon
@@ -106,6 +116,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.010
     kind: heading
+    blanks: 1
     text: "### 2) POS n-gram 다양성 (POS N-gram Diversity)"
     provenance:
       upstream: yoonmoon
@@ -116,6 +127,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.011
     kind: item
+    blanks: 1
     text: "- 품사 n-gram(uni~penta)의 다양성을 측정. **사람 글은 통사 구조가 풍부**하고, LLM은 흔한 구조를 반복한다."
     provenance:
       upstream: yoonmoon
@@ -126,6 +138,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.012
     kind: item
+    blanks: 0
     text: "- **윤문에서의 활용**: → **카테고리 9(리듬 균일성)** 의 핵심 근거. 종결어미·문장 구조·문두가 단조롭게\n  반복되면 AI 티다. 윤문은 의미를 바꾸지 않는 선에서 구조·종결을 변주해 다양성을 회복한다."
     provenance:
       upstream: yoonmoon
@@ -136,6 +149,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.013
     kind: heading
+    blanks: 1
     text: "### 3) 쉼표 사용 패턴 (Comma Usage) ★ 가장 강력"
     provenance:
       upstream: yoonmoon
@@ -146,6 +160,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.014
     kind: item
+    blanks: 1
     text: "- 쉼표의 **빈도·상대 위치·쉼표 앞뒤 품사 조합 다양성**을 분석.\n  (Comma Inclusion Rate, Average Comma Usage Rate, Relative Position of Comma, POS Diversity around comma)"
     provenance:
       upstream: yoonmoon
@@ -156,6 +171,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.015
     kind: item
+    blanks: 0
     text: "- 한국어는 본래 영어보다 쉼표를 **덜** 쓴다. 그런데 LLM 생성 한국어는 영어 영향으로 **쉼표를 과용**한다.\n  특히 연결어미·접속부사 뒤에 습관적으로 쉼표를 찍는다."
     provenance:
       upstream: yoonmoon
@@ -166,6 +182,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.016
     kind: item
+    blanks: 0
     text: "- **윤문에서의 활용**: → **카테고리 4(접속사·연결어 남발)** 의 \"연결어미 뒤 불필요한 쉼표\"를 심각도 **강**으로\n  두는 직접 근거. \"그리고, / 하지만, / 또한, / 즉,\" 같은 패턴을 우선 제거한다."
     provenance:
       upstream: yoonmoon
@@ -176,6 +193,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.017
     kind: heading
+    blanks: 1
     text: "## 윤문 taxonomy 매핑 요약"
     provenance:
       upstream: yoonmoon
@@ -186,6 +204,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.018
     kind: table-header
+    blanks: 1
     text: "| KatFishNet 특징                 | 윤문 카테고리        | 처리                           |"
     provenance:
       upstream: yoonmoon
@@ -196,6 +215,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.019
     kind: table-sep
+    blanks: 0
     text: "| ------------------------------- | -------------------- | ------------------------------ |"
     provenance:
       upstream: yoonmoon
@@ -206,6 +226,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.020
     kind: row
+    blanks: 0
     text: "| 쉼표 과용(연결어미·접속부사 뒤) | 4 접속사·연결어 남발 | 불필요한 쉼표 제거 (심각도 강) |"
     provenance:
       upstream: yoonmoon
@@ -216,6 +237,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.021
     kind: row
+    blanks: 0
     text: "| POS n-gram 다양성 저하          | 9 리듬 균일성        | 종결·구조·문두 변주(의미 보존) |"
     provenance:
       upstream: yoonmoon
@@ -226,6 +248,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.022
     kind: row
+    blanks: 0
     text: "| 의존명사·보조용언 기계적 반복   | 6 형식명사·명사화    | 명사화 풀어 동사화             |"
     provenance:
       upstream: yoonmoon
@@ -236,6 +259,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.023
     kind: heading
+    blanks: 1
     text: "## 주의 — 윤문은 \"탐지 우회\" 도구가 아니다"
     provenance:
       upstream: yoonmoon
@@ -246,6 +270,7 @@ fragments:
       transform: verbatim
   - id: katfishnet-research.024
     kind: paragraph
+    blanks: 1
     text: "KatFishNet은 **탐지(detection)** 연구다. 윤문의 목적은 탐지기를 속이는 것이 아니라, **한국어다운 자연스러운\n글로 다듬는 것**이다. 같은 언어 특징을 참고하지만 방향이 다르다: 연구는 \"무엇이 LLM 티인가\"를 밝히고,\n윤문은 \"그 티를 의미를 해치지 않고 어떻게 자연스럽게 고치는가\"에 집중한다. 수치·인용·주장 등 내용은\n언제나 보존한다([`ai-tell-taxonomy.md`](ai-tell-taxonomy.md)의 보존 원칙 참조)."
     provenance:
       upstream: yoonmoon

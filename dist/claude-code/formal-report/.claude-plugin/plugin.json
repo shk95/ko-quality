@@ -1,0 +1,9 @@
+{
+  "name": "ko-quality-formal",
+  "version": "0.1.0",
+  "description": "Korean writing quality toolkit: rewrite, diagnose, grammar and the Korean output policy for documents delivered to the user (profile formal-report)",
+  "author": {
+    "name": "ko-quality"
+  },
+  "license": "MIT"
+}

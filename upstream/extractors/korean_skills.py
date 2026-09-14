@@ -101,7 +101,7 @@ def _procedure_fragments(commit):
                 excluded.append((SKILL_PATH, b["anchor"], info))
             continue
         counters[kind] = counters.get(kind, 0) + 1
-        frag = {"id": f"{kind}.{counters[kind]}", "kind": kind, "text": b["text"],
+        frag = {"id": f"{kind}.{counters[kind]}", "kind": kind, "blanks": b["blanks"], "text": b["text"],
                 "path": SKILL_PATH, "anchor": b["anchor"], "transform": "verbatim"}
         if info:
             frag["note"] = info
@@ -119,7 +119,7 @@ def _reference_file(commit, name, path, kind):
     blocks = markdown.parse(text)
     lines = ["role: reference", "slot: grammar", f"name: {name}", f"kind: {kind}", "fragments:"]
     for i, b in enumerate(blocks, start=1):
-        frag = {"id": f"{name}.{i:03d}", "kind": b["kind"], "text": b["text"],
+        frag = {"id": f"{name}.{i:03d}", "kind": b["kind"], "blanks": b["blanks"], "text": b["text"],
                 "path": path, "anchor": b["anchor"], "transform": "verbatim"}
         lines += fragment_lines(frag, NAME, commit)
     return "\n".join(lines) + "\n"

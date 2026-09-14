@@ -15,9 +15,10 @@ HDR = "# Temporary format (P1 shape, used unchanged in P2 — flow.md). Schema i
 def _frags(prefix, path, blocks, include):
     out = []
     for n, b in enumerate(blocks):
-        if b["kind"] == "tag" or not include(b):
+        if not include(b):
             continue
-        out.append(dict(id=f"{prefix}.{n:03d}", kind=b["kind"], text=b["text"], path=path, anchor=b["anchor"], transform="verbatim"))
+        out.append(dict(id=f"{prefix}.{n:03d}", kind=b["kind"], blanks=b["blanks"], text=b["text"], path=path,
+                        anchor=b["anchor"], transform="verbatim"))
     return out
 
 

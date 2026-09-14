@@ -1,0 +1,15 @@
+# assemble/profiles/formal-report.yaml — 06 §6. Build-time profile (decision ②, P5): one dist per profile.
+id: formal-report
+register: 사용자에게 전달되는 문서
+policy: policy/fluent-korean#not-coding
+blocks: [honorific]
+default_preset: full
+intensity: conservative
+exempt: []
+plugin:
+  name: ko-quality-formal
+  description: "Korean writing quality toolkit: rewrite, diagnose, grammar and the Korean output policy for documents delivered to the user (profile formal-report)"
+output_style:
+  name: formal-report
+  description: "Korean output policy for documents delivered to the user (fluent-korean, not-coding variant, honorific block)."
+  force: true
