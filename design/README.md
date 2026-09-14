@@ -6,9 +6,9 @@
 
 > 새 세션은 여기서 시작합니다.
 
-**현재 위치:** 시대 `01-toolkit`, **6-build 진행 중 — P1~P4 완료, P5 진행.** 구현 흐름 정의는 `5-preflight/flow.md`(2026-09-14 수락), 단계별 기록은 `01-toolkit/6-build/P<n>_*.md`. 탐색 보고, E1 후속, Codex 헤드리스 실측은 `5-preflight/explorations.md`에 있습니다. 구현 코드는 없습니다. upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT). 프로세스(`AGENTS.md`)와 저장소 구성은 끝났습니다.
+**현재 위치:** 시대 `01-toolkit`, **6-build 진행 중 — P1~P5 완료(검증 통과), P6 기록 완료·검증 결과 미기록, P7 일부.** 사용자 요청으로 멈춤(2026-09-14). 구현 흐름 정의는 `5-preflight/flow.md`, 단계별 기록은 `01-toolkit/6-build/P<n>_*.md`. release-blocked 표시: P6(Codex에서 이름 붙은 커스텀 에이전트 호출 불안정). 탐색 보고, E1 후속, Codex 헤드리스 실측은 `5-preflight/explorations.md`에 있습니다. 구현 코드는 없습니다. upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT). 프로세스(`AGENTS.md`)와 저장소 구성은 끝났습니다.
 
-**다음 작업:** P5(조립과 Claude Code 빌드), 이어서 P6(Codex), P7(서버와 로거). 멈추지 않고 진행하며 release-blocked 표시는 7-review에서 다룹니다.
+**다음 작업:** `01-toolkit/6-build/P7_server-logger.md`의 "Next (resume here)"부터 — P6 검증 재실행과 기록, 로거·hook·빌드 스탬프를 두 빌드에 싣기, 양쪽 하네스 실측, P7 검증. 그 뒤 7-review.
 
 **읽는 순서 (최소):**
 
@@ -82,6 +82,9 @@ design/
 | | `P2_ko-diagnose.md` | yoonmoon → ko-diagnose, 참조 역할 |
 | | `P3_policy.md` | fluent-korean 정책, 결정 ③, 채널 실측 |
 | | `P4_abstraction.md` | 스키마, 추출기 코드, 네 번째 벤더, 업데이트 실측 |
+| | `P5_claude-code-build.md` | 조립, 프로파일별 Claude Code 플러그인, 설치·eval |
+| | `P6_codex-build.md` | Codex 빌드, 설치기, 채널 실측, 커스텀 에이전트 release-blocked |
+| | `P7_server-logger.md` | 로거(진행 중), 재개 지점 |
 | 7-review | — | |
 
 ## 단계 요약
