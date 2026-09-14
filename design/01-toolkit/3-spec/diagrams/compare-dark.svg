@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 500" width="1080" height="500" role="img" aria-label="기존 구성과 ko-quality 구성을 같은 다섯 층으로 나란히 비교: 시스템 프롬프트, 메인 에이전트, 서브에이전트, 윤문·진단 스킬, 버전과 로그. 서브에이전트 층과 버전·로그 층이 달라진다">
+<style>
+text{font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif}
+.box{fill:#1D2128;stroke:#E6E8EB;stroke-width:1.2}
+.region{fill:none;stroke:#343B45;stroke-width:1;stroke-dasharray:4 4}
+.pol{fill:#22364C;stroke:#7FB0E0;stroke-width:1.3}
+.up{fill:#3A2F17;stroke:#D9AE5A;stroke-width:1.2}
+.miss{fill:none;stroke:#E07B72;stroke-width:1.2;stroke-dasharray:5 4}
+.half{fill:#22364C;stroke:#7FB0E0;stroke-width:1.2;stroke-dasharray:5 4}
+.logbox{fill:none;stroke:#8E97A3;stroke-width:1.2}
+.chip{fill:#272D36;stroke:none}
+.t{font-size:12.5px;fill:#E6E8EB}
+.ts{font-size:11px;fill:#9AA3AE}
+.tb{font-size:13px;font-weight:600;fill:#E6E8EB}
+.tp{font-size:12px;fill:#BAD5F0;font-weight:500}
+.tu{font-size:12px;fill:#EBCB8A;font-weight:500}
+.tw{font-size:12px;fill:#E07B72;font-weight:500}
+.tl{font-size:11.5px;fill:#8E97A3}
+.ar{stroke:#E6E8EB;stroke-width:1.3;fill:none}
+.ar-p{stroke:#7FB0E0;stroke-width:1.6;fill:none}
+.ar-l{stroke:#8E97A3;stroke-width:1.2;fill:none;stroke-dasharray:4 3}
+.ar-w{stroke:#E07B72;stroke-width:1.3;fill:none;stroke-dasharray:5 4}
+.lane{stroke:#343B45;stroke-width:1;stroke-dasharray:3 4}
+</style>
+<rect width="1080" height="500" fill="#1D2128"/>
+      <defs>
+        <marker id="ch" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E6E8EB"/></marker>
+        <marker id="chp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7FB0E0"/></marker>
+        <marker id="chw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E07B72"/></marker>
+        <marker id="chl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8E97A3"/></marker>
+      </defs>
+      <!-- panel titles -->
+      <text x="30" y="34" class="tb">기존 — upstream을 각자 설치</text>
+      <text x="570" y="34" class="tb">ko-quality — 플러그인 하나</text>
+      <line x1="540" y1="20" x2="540" y2="480" class="lane"/>
+
+      <!-- row labels (left of each panel) -->
+      <!-- LEFT PANEL rows: x=30 w=480 -->
+      <text x="30" y="66" class="ts">시스템 프롬프트</text>
+      <rect x="30" y="72" width="480" height="54" rx="4" class="half"/>
+      <text x="46" y="94" class="tp">fluent-korean 출력 스타일 — 사용자가 직접 골라야 걸린다</text>
+      <text x="46" y="112" class="ts">다른 스타일로 바꾸거나 새 환경이면 빠진다. Codex는 README를 보고 손으로 붙인다</text>
+
+      <text x="30" y="152" class="ts">메인 에이전트</text>
+      <rect x="30" y="158" width="480" height="40" rx="4" class="box"/>
+      <text x="46" y="183" class="t">골랐을 때만 정책 적용</text>
+
+      <text x="30" y="224" class="ts">서브에이전트</text>
+      <rect x="30" y="230" width="480" height="54" rx="4" class="miss"/>
+      <text x="46" y="252" class="tw">정책 없음 — 출력 스타일이 닿지 않는다</text>
+      <text x="46" y="270" class="ts">한국어로 주고받을수록 조사·어미 탈락이 단계마다 누적된다 (01)</text>
+
+      <text x="30" y="310" class="ts">윤문 · 진단 · 맞춤법</text>
+      <rect x="30" y="316" width="480" height="68" rx="4" class="box"/>
+      <rect x="46" y="328" width="96" height="20" rx="3" class="up"/><text x="94" y="342" text-anchor="middle" class="tu">im-not-ai</text>
+      <rect x="150" y="328" width="88" height="20" rx="3" class="up"/><text x="194" y="342" text-anchor="middle" class="tu">yoonmoon</text>
+      <rect x="246" y="328" width="108" height="20" rx="3" class="up"/><text x="300" y="342" text-anchor="middle" class="tu">korean-skills</text>
+      <text x="46" y="372" class="ts">셋을 따로 설치. 형식이 제각각(마크다운 제목 / XML 태그 / 표). im-not-ai는 Claude Code용과 Codex용이 다른 판</text>
+
+      <text x="30" y="410" class="ts">버전 · 기록</text>
+      <rect x="30" y="416" width="480" height="54" rx="4" class="miss"/>
+      <text x="46" y="438" class="tw">마켓플레이스가 각자 갱신 — 언제 무엇이 바뀌었는지 모른다</text>
+      <text x="46" y="456" class="ts">무엇이 어떤 조건에서 나왔는지 남는 기록이 없다</text>
+
+      <!-- left arrows -->
+      <line x1="270" y1="126" x2="270" y2="156" class="ar" marker-end="url(#ch)"/>
+      <line x1="270" y1="198" x2="270" y2="228" class="ar-w" marker-end="url(#chw)"/>
+      <text x="280" y="217" class="tw">프롬프트만 넘어간다</text>
+
+      <!-- RIGHT PANEL rows: x=570 w=480 -->
+      <text x="570" y="66" class="ts">시스템 프롬프트</text>
+      <rect x="570" y="72" width="480" height="54" rx="4" class="pol"/>
+      <text x="586" y="94" class="tp">같은 fluent-korean 본문 — 플러그인이 자동 적용 (force-for-plugin)</text>
+      <text x="586" y="112" class="ts">Codex는 AGENTS.md 절로 같은 본문. 프로파일별 선택 블록 합성</text>
+
+      <text x="570" y="152" class="ts">메인 에이전트</text>
+      <rect x="570" y="158" width="480" height="40" rx="4" class="box"/>
+      <text x="586" y="183" class="t">항상 정책 적용</text>
+
+      <text x="570" y="224" class="ts">서브에이전트</text>
+      <rect x="570" y="230" width="480" height="54" rx="4" class="pol"/>
+      <text x="586" y="252" class="tp">korean-reviewer · editor · writer 정의 파일에 정책 본문이 직접 들어 있다</text>
+      <text x="586" y="270" class="ts">한 겹은 구조로 보장. 서브가 또 띄우는 서브(sub-to-sub)는 여전히 모델에게 부탁</text>
+
+      <text x="570" y="310" class="ts">윤문 · 진단 · 맞춤법</text>
+      <rect x="570" y="316" width="480" height="68" rx="4" class="box"/>
+      <rect x="586" y="328" width="84" height="20" rx="3" class="up"/><text x="628" y="342" text-anchor="middle" class="tu">ko-rewrite</text>
+      <rect x="678" y="328" width="92" height="20" rx="3" class="up"/><text x="724" y="342" text-anchor="middle" class="tu">ko-diagnose</text>
+      <rect x="778" y="328" width="88" height="20" rx="3" class="up"/><text x="822" y="342" text-anchor="middle" class="tu">ko-grammar</text>
+      <rect x="874" y="328" width="70" height="20" rx="3" class="chip"/><text x="909" y="342" text-anchor="middle" class="t">ko-route</text>
+      <text x="586" y="372" class="ts">한 규격(절차 / taxonomy 참조). 문장은 upstream 그대로, 조각마다 출처. Claude Code와 Codex가 바이트 동일</text>
+
+      <text x="570" y="410" class="ts">버전 · 기록</text>
+      <rect x="570" y="416" width="480" height="54" rx="4" class="logbox"/>
+      <text x="586" y="438" class="tl">lock.yaml이 커밋을 고정 — 정규화 산출물의 diff가 곧 변경 내역</text>
+      <text x="586" y="456" class="ts">hook 로거가 조건·원문·버전을 기록. 검증 단계의 재료</text>
+
+      <!-- right arrows -->
+      <line x1="810" y1="126" x2="810" y2="156" class="ar-p" marker-end="url(#chp)"/>
+      <line x1="810" y1="198" x2="810" y2="228" class="ar-p" marker-end="url(#chp)"/>
+      <text x="820" y="217" class="tp">정책이 정의에 이미 있다</text>
+    </svg>

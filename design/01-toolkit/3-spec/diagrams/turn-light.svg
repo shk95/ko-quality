@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 430" width="1080" height="430" role="img" aria-label="윤문 요청 한 턴의 순서: 사용자 지시, 메인 에이전트가 ko-rewrite SKILL.md를 읽고 필요하면 taxonomy 참조를 읽어 span 단위로 수정한 뒤 변경률과 함께 돌려주고, 로거가 Stop hook에서 기록">
+<style>
+text{font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif}
+.box{fill:#FFFFFF;stroke:#1B2028;stroke-width:1.2}
+.region{fill:none;stroke:#D5D9DE;stroke-width:1;stroke-dasharray:4 4}
+.pol{fill:#DCE8F4;stroke:#2E5E8E;stroke-width:1.3}
+.up{fill:#F6ECD6;stroke:#9A6B14;stroke-width:1.2}
+.miss{fill:none;stroke:#B5443A;stroke-width:1.2;stroke-dasharray:5 4}
+.half{fill:#DCE8F4;stroke:#2E5E8E;stroke-width:1.2;stroke-dasharray:5 4}
+.logbox{fill:none;stroke:#6B7380;stroke-width:1.2}
+.chip{fill:#E6E9EC;stroke:none}
+.t{font-size:12.5px;fill:#1B2028}
+.ts{font-size:11px;fill:#5C6470}
+.tb{font-size:13px;font-weight:600;fill:#1B2028}
+.tp{font-size:12px;fill:#1F4569;font-weight:500}
+.tu{font-size:12px;fill:#6E4B0B;font-weight:500}
+.tw{font-size:12px;fill:#B5443A;font-weight:500}
+.tl{font-size:11.5px;fill:#6B7380}
+.ar{stroke:#1B2028;stroke-width:1.3;fill:none}
+.ar-p{stroke:#2E5E8E;stroke-width:1.6;fill:none}
+.ar-l{stroke:#6B7380;stroke-width:1.2;fill:none;stroke-dasharray:4 3}
+.ar-w{stroke:#B5443A;stroke-width:1.3;fill:none;stroke-dasharray:5 4}
+.lane{stroke:#D5D9DE;stroke-width:1;stroke-dasharray:3 4}
+</style>
+<rect width="1080" height="430" fill="#FFFFFF"/>
+      <defs>
+        <marker id="sh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2028"/></marker>
+        <marker id="shl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7380"/></marker>
+      </defs>
+      <!-- lanes -->
+      <rect x="40" y="20" width="120" height="34" rx="3" class="box"/><text x="100" y="42" text-anchor="middle" class="tb">사용자</text>
+      <rect x="320" y="20" width="140" height="34" rx="3" class="box"/><text x="390" y="42" text-anchor="middle" class="tb">메인 에이전트</text>
+      <rect x="600" y="20" width="150" height="34" rx="3" class="up"/><text x="675" y="42" text-anchor="middle" class="tu">스킬 파일 (dist/)</text>
+      <rect x="880" y="20" width="120" height="34" rx="3" class="logbox"/><text x="940" y="42" text-anchor="middle" class="tl">hook 로거</text>
+      <line x1="100" y1="54" x2="100" y2="415" class="lane"/>
+      <line x1="390" y1="54" x2="390" y2="415" class="lane"/>
+      <line x1="675" y1="54" x2="675" y2="415" class="lane"/>
+      <line x1="940" y1="54" x2="940" y2="415" class="lane"/>
+
+      <!-- 1 -->
+      <line x1="100" y1="90" x2="388" y2="90" class="ar" marker-end="url(#sh)"/>
+      <text x="244" y="82" text-anchor="middle" class="t">이 초안 윤문해줘</text>
+      <line x1="390" y1="112" x2="938" y2="112" class="ar-l" marker-end="url(#shl)"/>
+      <text x="664" y="104" text-anchor="middle" class="tl">UserPromptSubmit — 지시 원문, 지시 언어</text>
+      <!-- 2 -->
+      <line x1="390" y1="150" x2="673" y2="150" class="ar" marker-end="url(#sh)"/>
+      <text x="532" y="142" text-anchor="middle" class="t">description이 맞아 ko-rewrite를 고른다</text>
+      <line x1="675" y1="180" x2="392" y2="180" class="ar" marker-end="url(#sh)"/>
+      <text x="532" y="172" text-anchor="middle" class="tu">SKILL.md — im-not-ai 절차 + 철칙 (≤100줄)</text>
+      <!-- 3 -->
+      <line x1="390" y1="218" x2="673" y2="218" class="ar" marker-end="url(#sh)"/>
+      <text x="532" y="210" text-anchor="middle" class="t">패턴을 대조할 때만</text>
+      <line x1="675" y1="248" x2="392" y2="248" class="ar" marker-end="url(#sh)"/>
+      <text x="532" y="240" text-anchor="middle" class="tu">references/taxonomy-rewrite.md — 85 패턴, 심각도 S1~S3</text>
+      <!-- 4 self -->
+      <polyline points="390,270 440,270 440,300 392,300" class="ar" marker-end="url(#sh)"/>
+      <text x="452" y="290" class="t">탐지된 span만 고친다 · 의미·장르·숫자 보존 · 변경률 30% 경고, 50% 중단 (자기 보고)</text>
+      <!-- 5 -->
+      <line x1="390" y1="338" x2="102" y2="338" class="ar" marker-end="url(#sh)"/>
+      <text x="244" y="330" text-anchor="middle" class="t">윤문본 + 변경률 X%, 등급</text>
+      <line x1="390" y1="368" x2="938" y2="368" class="ar-l" marker-end="url(#shl)"/>
+      <text x="664" y="360" text-anchor="middle" class="tl">Stop — last_assistant_message, upstream_report</text>
+      <polyline points="940,385 990,385 990,405 942,405" class="ar-l" marker-end="url(#shl)"/>
+      <text x="998" y="399" class="tl">append</text>
+    </svg>

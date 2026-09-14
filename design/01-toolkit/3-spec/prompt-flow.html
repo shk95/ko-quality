@@ -1,0 +1,453 @@
+<title>ko-quality 프롬프트 흐름</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F5F6F3; --surface:#FFFFFF; --ink:#1B2028; --muted:#5C6470; --line:#D5D9DE; --line-soft:#E6E9EC;
+  --accent:#2E5E8E; --accent-fill:#DCE8F4; --accent-ink:#1F4569;
+  --up:#9A6B14; --up-fill:#F6ECD6; --up-ink:#6E4B0B;
+  --warn:#B5443A; --warn-fill:#F8E4E1;
+  --log:#6B7380;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14171C; --surface:#1D2128; --ink:#E6E8EB; --muted:#9AA3AE; --line:#343B45; --line-soft:#272D36;
+    --accent:#7FB0E0; --accent-fill:#22364C; --accent-ink:#BAD5F0;
+    --up:#D9AE5A; --up-fill:#3A2F17; --up-ink:#EBCB8A;
+    --warn:#E07B72; --warn-fill:#3F2320;
+    --log:#8E97A3;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171C; --surface:#1D2128; --ink:#E6E8EB; --muted:#9AA3AE; --line:#343B45; --line-soft:#272D36;
+  --accent:#7FB0E0; --accent-fill:#22364C; --accent-ink:#BAD5F0;
+  --up:#D9AE5A; --up-fill:#3A2F17; --up-ink:#EBCB8A;
+  --warn:#E07B72; --warn-fill:#3F2320;
+  --log:#8E97A3;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;font-size:15px;line-height:1.7;padding-block:40px 80px;padding-inline:clamp(16px,4vw,40px)}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:"Hahmlet","Noto Serif KR",Georgia,serif;font-weight:600;line-height:1.3;text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,4vw,38px)}
+h2{font-size:22px}
+h3{font-size:16px;font-family:"IBM Plex Sans KR",system-ui,sans-serif;font-weight:600}
+p{margin:0;max-width:66ch}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+code{background:var(--line-soft);padding:1px 5px;border-radius:3px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+header{display:flex;flex-direction:column;gap:14px;border-bottom:1px solid var(--line);padding-bottom:28px}
+header .meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:18px}
+.lede{font-size:17px;max-width:60ch}
+figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.fig-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px}
+figure svg{display:block;width:100%;min-width:720px;height:auto;color:var(--ink);font-family:"IBM Plex Sans KR",system-ui,sans-serif}
+figcaption{font-size:13.5px;color:var(--muted);max-width:80ch}
+/* svg classes */
+.box{fill:var(--surface);stroke:currentColor;stroke-width:1.2}
+.region{fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:4 4}
+.pol{fill:var(--accent-fill);stroke:var(--accent);stroke-width:1.3}
+.up{fill:var(--up-fill);stroke:var(--up);stroke-width:1.2}
+.miss{fill:none;stroke:var(--warn);stroke-width:1.2;stroke-dasharray:5 4}
+.half{fill:var(--accent-fill);stroke:var(--accent);stroke-width:1.2;stroke-dasharray:5 4}
+.logbox{fill:none;stroke:var(--log);stroke-width:1.2}
+.chip{fill:var(--line-soft);stroke:none}
+.t{font-size:12.5px;fill:currentColor}
+.ts{font-size:11px;fill:var(--muted)}
+.tb{font-size:13px;font-weight:600;fill:currentColor}
+.tp{font-size:12px;fill:var(--accent-ink);font-weight:500}
+.tu{font-size:12px;fill:var(--up-ink);font-weight:500}
+.tw{font-size:12px;fill:var(--warn);font-weight:500}
+.tl{font-size:11.5px;fill:var(--log)}
+.ar{stroke:currentColor;stroke-width:1.3;fill:none}
+.ar-p{stroke:var(--accent);stroke-width:1.6;fill:none}
+.ar-l{stroke:var(--log);stroke-width:1.2;fill:none;stroke-dasharray:4 3}
+.ar-w{stroke:var(--warn);stroke-width:1.3;fill:none;stroke-dasharray:5 4}
+.lane{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+/* cards */
+.uses{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.use{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.use .say{font-family:"Hahmlet","Noto Serif KR",serif;font-size:17px;font-weight:500}
+.use .say::before{content:"“";color:var(--muted)}
+.use .say::after{content:"”";color:var(--muted)}
+.use dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13.5px}
+.use dt{color:var(--muted)}
+.use dd{margin:0}
+.tag{display:inline-block;font-size:11px;letter-spacing:.06em;padding:2px 7px;border-radius:3px;font-weight:500}
+.tag.p{background:var(--accent-fill);color:var(--accent-ink)}
+.tag.u{background:var(--up-fill);color:var(--up-ink)}
+.tag.l{border:1px dashed var(--log);color:var(--log)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:13px;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:22px;height:13px;border-radius:2px;display:inline-block}
+.sw.p{background:var(--accent-fill);border:1.3px solid var(--accent)}
+.sw.u{background:var(--up-fill);border:1.2px solid var(--up)}
+.sw.m{border:1.2px dashed var(--warn)}
+.sw.l{border:1.2px dashed var(--log)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;background:var(--surface);border:1px solid var(--line)}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+.tbl{overflow-x:auto}
+.limits{background:var(--surface);border-left:3px solid var(--warn);padding:16px 20px;display:flex;flex-direction:column;gap:10px;border-radius:0 6px 6px 0}
+.limits ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+ul.plain{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+@media (prefers-reduced-motion:no-preference){ a{transition:color .15s} }
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">설계 06 · 툴킷 스펙 기준 · 2026-09-14 · 구현 전(P1 착수 전)</div>
+  <h1>ko-quality 프롬프트 흐름</h1>
+  <p class="lede">설치하면 한국어 품질 upstream 넷이 하나의 플러그인이 되어, 사용자가 손대지 않아도 정책이 메인 대화와 서브에이전트 양쪽에 걸리고, 윤문·진단·맞춤법은 스킬로 부르며, 그 결과가 하네스 밖에 기록됩니다. 이 페이지는 사용자 입력 하나가 하네스 안에서 어떤 파일을 만나는지, 지금과 무엇이 다른지를 그립니다.</p>
+  <div class="meta">
+    <span>정책 · fluent-korean</span><span>윤문 · im-not-ai</span><span>진단 · yoonmoon</span><span>맞춤법 · korean-skills</span><span>하네스 · Claude Code, Codex</span>
+  </div>
+  <div class="legend">
+    <span><i class="sw p"></i>우리가 조립해 주입하는 정책 (문장은 upstream 것)</span>
+    <span><i class="sw u"></i>upstream 문장 그대로 (출처 표시)</span>
+    <span><i class="sw m"></i>없거나 보장되지 않음</span>
+    <span><i class="sw l"></i>hook 로거 — 모델은 모른다</span>
+  </div>
+</header>
+
+<section>
+  <div class="eyebrow">사용자가 할 수 있는 것</div>
+  <h2>여섯 가지 쓰임새, 세 가지 방식</h2>
+  <p>02a에서 재정의한 재사용성 그대로입니다. 정책이 <strong>생성에 스며들고</strong>, 절차를 <strong>스킬로 부르고</strong>, 검토를 <strong>서브에이전트에 위임</strong>합니다.</p>
+  <div class="uses">
+    <div class="use">
+      <span class="tag p">생성 주입 · 자동</span>
+      <div class="say">(아무 말도 안 함)</div>
+      <dl><dt>일어나는 일</dt><dd>플러그인이 켜져 있으면 fluent-korean 정책이 출력 스타일로 자동 적용됩니다. 보고문의 조사·어미가 살아나고 전보체가 사라집니다.</dd>
+      <dt>읽히는 것</dt><dd><code>output-styles/agent-reply.md</code> — 세션 시작에 한 번</dd></dl>
+    </div>
+    <div class="use">
+      <span class="tag u">스킬 호출</span>
+      <div class="say">이 초안 윤문해줘</div>
+      <dl><dt>일어나는 일</dt><dd>모델이 <code>ko-rewrite</code>의 description을 보고 스킬을 고릅니다. im-not-ai 절차와 철칙대로 탐지된 구간만 고치고 변경률을 보고합니다.</dd>
+      <dt>읽히는 것</dt><dd><code>skills/ko-rewrite/SKILL.md</code>, 필요할 때만 <code>references/taxonomy-rewrite.md</code></dd></dl>
+    </div>
+    <div class="use">
+      <span class="tag u">스킬 호출</span>
+      <div class="say">AI가 쓴 티가 나는지 봐줘</div>
+      <dl><dt>일어나는 일</dt><dd><code>ko-diagnose</code>가 yoonmoon detect 절차로 AI 가능성·신뢰도·근거를 보고합니다. 글은 고치지 않습니다.</dd>
+      <dt>읽히는 것</dt><dd><code>skills/ko-diagnose/SKILL.md</code>, <code>references/taxonomy-diagnose.md</code></dd></dl>
+    </div>
+    <div class="use">
+      <span class="tag u">스킬 호출</span>
+      <div class="say">맞춤법이랑 띄어쓰기 봐줘</div>
+      <dl><dt>일어나는 일</dt><dd><code>ko-grammar</code>가 korean-skills grammar-checker 절차를 따릅니다.</dd>
+      <dt>읽히는 것</dt><dd><code>skills/ko-grammar/SKILL.md</code></dd></dl>
+    </div>
+    <div class="use">
+      <span class="tag p">검토 위임</span>
+      <div class="say">korean-reviewer로 검토시켜</div>
+      <dl><dt>일어나는 일</dt><dd>정책 본문이 정의에 들어 있는 서브에이전트가 뜹니다. 진단만 하고 upstream 출력 형식 그대로 돌려줍니다.</dd>
+      <dt>읽히는 것</dt><dd><code>agents/korean-reviewer.md</code> — 정책 + ko-diagnose 절차</dd></dl>
+    </div>
+    <div class="use">
+      <span class="tag p">검토 위임</span>
+      <div class="say">korean-editor로 고쳐서 줘</div>
+      <dl><dt>일어나는 일</dt><dd>같은 방식의 서브에이전트가 rewrite → grammar 순서로 고칩니다. 프리셋 순서는 지시이지 강제가 아닙니다.</dd>
+      <dt>읽히는 것</dt><dd><code>agents/korean-editor.md</code>, 스킬 둘</dd></dl>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">하네스 안에서</div>
+  <h2>지시 하나가 만나는 파일들</h2>
+  <p>정책은 세션 시작 전에 파일로 놓여 있어야 하고, 스킬은 모델이 고르며, 로거는 hook 입력만 받습니다. 세 층이 서로 다른 시점에 움직입니다.</p>
+  <figure>
+    <div class="fig-scroll">
+    <svg viewBox="0 0 1080 580" role="img" aria-label="사용자 지시가 시스템 프롬프트 층의 정책, 메인 에이전트, 스킬 파일, 정책이 포함된 서브에이전트를 거쳐 응답으로 나가고, hook 로거가 그 과정을 하네스 밖에 기록하는 흐름">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        <marker id="ahp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker>
+        <marker id="ahl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--log)"/></marker>
+      </defs>
+
+      <!-- harness region -->
+      <rect x="180" y="20" width="880" height="425" rx="8" class="region"/>
+      <text x="196" y="40" class="ts">에이전트 하네스 — Claude Code 또는 Codex. 정책·에이전트·스킬은 세션 시작 전에 dist/ 파일로 놓인다</text>
+
+      <!-- user -->
+      <rect x="20" y="185" width="120" height="64" rx="4" class="box"/>
+      <text x="80" y="212" text-anchor="middle" class="tb">사용자</text>
+      <text x="80" y="232" text-anchor="middle" class="ts">한국어 지시</text>
+
+      <!-- system prompt layer -->
+      <rect x="200" y="58" width="840" height="72" rx="4" class="box"/>
+      <text x="214" y="82" class="tb">시스템 프롬프트 층</text>
+      <text x="214" y="102" class="ts">세션 시작에 한 번 읽힌다</text>
+      <rect x="380" y="72" width="330" height="44" rx="3" class="pol"/>
+      <text x="545" y="90" text-anchor="middle" class="tp">정책 — fluent-korean 본문 + 선택 블록</text>
+      <text x="545" y="107" text-anchor="middle" class="ts">agent-reply 프로파일 · 문장은 verbatim, 합성만 우리 것</text>
+      <text x="730" y="88" class="ts">Claude Code: 출력 스타일, force-for-plugin</text>
+      <text x="730" y="106" class="ts">Codex: AGENTS.md 절 (또는 developer_instructions)</text>
+
+      <!-- main agent -->
+      <rect x="200" y="170" width="220" height="90" rx="4" class="box"/>
+      <text x="310" y="200" text-anchor="middle" class="tb">메인 에이전트</text>
+      <text x="310" y="220" text-anchor="middle" class="ts">모델 + 컨텍스트</text>
+      <rect x="230" y="232" width="160" height="18" rx="3" class="pol"/>
+      <text x="310" y="245" text-anchor="middle" class="tp">정책 적용됨</text>
+
+      <!-- response -->
+      <rect x="840" y="180" width="200" height="70" rx="4" class="box"/>
+      <text x="940" y="205" text-anchor="middle" class="tb">사용자에게 돌아가는 것</text>
+      <text x="940" y="225" text-anchor="middle" class="ts">응답 · 윤문본 · 진단 보고</text>
+      <text x="940" y="241" text-anchor="middle" class="ts">변경률은 모델의 자기 보고</text>
+
+      <!-- skills group -->
+      <rect x="480" y="300" width="300" height="130" rx="4" class="box"/>
+      <text x="494" y="322" class="tb">스킬</text>
+      <text x="530" y="322" class="ts">dist/skills/ — 모델이 description을 보고 고른다</text>
+      <rect x="494" y="334" width="62" height="24" rx="3" class="chip"/><text x="525" y="350" text-anchor="middle" class="t">ko-route</text>
+      <rect x="562" y="334" width="72" height="24" rx="3" class="up"/><text x="598" y="350" text-anchor="middle" class="tu">ko-rewrite</text>
+      <rect x="640" y="334" width="78" height="24" rx="3" class="up"/><text x="679" y="350" text-anchor="middle" class="tu">ko-diagnose</text>
+      <rect x="724" y="334" width="46" height="24" rx="3" class="up"/><text x="747" y="350" text-anchor="middle" class="tu">ko-gr…</text>
+      <rect x="494" y="372" width="272" height="44" rx="3" class="up"/>
+      <text x="630" y="390" text-anchor="middle" class="tu">references/taxonomy-*.md</text>
+      <text x="630" y="406" text-anchor="middle" class="ts">패턴 목록. 필요할 때만 읽는다 · rewrite와 diagnose는 서로 안 읽음</text>
+
+      <!-- subagent -->
+      <rect x="200" y="300" width="220" height="110" rx="4" class="box"/>
+      <text x="310" y="324" text-anchor="middle" class="tb">서브에이전트</text>
+      <text x="310" y="342" text-anchor="middle" class="ts">korean-reviewer · editor · writer</text>
+      <rect x="216" y="354" width="188" height="20" rx="3" class="pol"/>
+      <text x="310" y="368" text-anchor="middle" class="tp">정의 파일에 정책 본문이 직접 있음</text>
+      <text x="310" y="394" text-anchor="middle" class="tw">출력 스타일은 여기 닿지 않는다</text>
+
+      <!-- arrows -->
+      <line x1="140" y1="217" x2="198" y2="217" class="ar" marker-end="url(#ah)"/>
+      <text x="169" y="207" text-anchor="middle" class="ts">지시</text>
+
+      <line x1="310" y1="130" x2="310" y2="168" class="ar-p" marker-end="url(#ahp)"/>
+      <text x="320" y="153" class="tp">주입</text>
+
+      <line x1="420" y1="215" x2="838" y2="215" class="ar" marker-end="url(#ah)"/>
+      <text x="630" y="205" text-anchor="middle" class="ts">응답 (last_assistant_message)</text>
+
+      <polyline points="420,245 450,245 450,345 478,345" class="ar" marker-end="url(#ah)"/>
+      <text x="456" y="290" class="ts" transform="rotate(90 456 290)">스킬 호출</text>
+
+      <line x1="260" y1="260" x2="260" y2="298" class="ar-p" marker-end="url(#ahp)"/>
+      <text x="200" y="283" class="tp" text-anchor="start" transform="translate(-4 0)">띄운다</text>
+      <line x1="370" y1="298" x2="370" y2="262" class="ar" marker-end="url(#ah)"/>
+      <text x="378" y="283" class="ts">결과</text>
+
+      <line x1="420" y1="392" x2="478" y2="392" class="ar" marker-end="url(#ah)"/>
+      <text x="449" y="383" text-anchor="middle" class="ts">스킬</text>
+
+      <!-- hook row -->
+      <text x="200" y="478" class="tl">hook 로거 — 하네스 밖 스크립트. 판정하지 않고 차단하지 않고 transcript를 읽지 않는다</text>
+      <rect x="200" y="520" width="110" height="34" rx="3" class="logbox"/><text x="255" y="542" text-anchor="middle" class="tl">SessionStart</text>
+      <rect x="330" y="520" width="140" height="34" rx="3" class="logbox"/><text x="400" y="542" text-anchor="middle" class="tl">UserPromptSubmit</text>
+      <rect x="490" y="520" width="110" height="34" rx="3" class="logbox"/><text x="545" y="542" text-anchor="middle" class="tl">PostToolUse</text>
+      <rect x="620" y="520" width="120" height="34" rx="3" class="logbox"/><text x="680" y="542" text-anchor="middle" class="tl">SubagentStop</text>
+      <rect x="760" y="520" width="70" height="34" rx="3" class="logbox"/><text x="795" y="542" text-anchor="middle" class="tl">Stop</text>
+      <rect x="870" y="508" width="170" height="58" rx="3" class="logbox"/>
+      <text x="955" y="530" text-anchor="middle" class="tl">~/.ko-quality/logs/*.jsonl</text>
+      <text x="955" y="548" text-anchor="middle" class="ts">조건 + 원문. 작업 트리 밖</text>
+      <line x1="830" y1="537" x2="868" y2="537" class="ar-l" marker-end="url(#ahl)"/>
+
+      <polyline points="80,249 80,490 400,490 400,518" class="ar-l" marker-end="url(#ahl)"/>
+      <text x="240" y="503" text-anchor="middle" class="tl">지시 원문</text>
+      <polyline points="310,410 310,455 680,455 680,518" class="ar-l" marker-end="url(#ahl)"/>
+      <text x="500" y="468" text-anchor="middle" class="tl">agent_type + last_assistant_message</text>
+      <polyline points="940,250 940,475 795,475 795,518" class="ar-l" marker-end="url(#ahl)"/>
+      <text x="880" y="488" text-anchor="middle" class="tl">last_assistant_message</text>
+    </svg>
+    </div>
+    <figcaption>파랑 상자가 같은 정책 본문입니다. 시스템 프롬프트 층 하나로 서브에이전트까지 덮을 수 없으니(출력 스타일은 서브에이전트에 닿지 않음) 에이전트 정의 파일마다 같은 본문을 넣습니다. 스킬 본문은 절차와 철칙만 100줄 안에 두고, 패턴 목록은 참조 파일로 내려 모델이 필요할 때만 읽게 합니다. 로거는 모델이 모르는 곳에서 hook 입력만 모읍니다.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="eyebrow">한 턴을 따라가면</div>
+  <h2>“이 초안 윤문해줘”</h2>
+  <figure>
+    <div class="fig-scroll">
+    <svg viewBox="0 0 1080 430" role="img" aria-label="윤문 요청 한 턴의 순서: 사용자 지시, 메인 에이전트가 ko-rewrite SKILL.md를 읽고 필요하면 taxonomy 참조를 읽어 span 단위로 수정한 뒤 변경률과 함께 돌려주고, 로거가 Stop hook에서 기록">
+      <defs>
+        <marker id="sh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        <marker id="shl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--log)"/></marker>
+      </defs>
+      <!-- lanes -->
+      <rect x="40" y="20" width="120" height="34" rx="3" class="box"/><text x="100" y="42" text-anchor="middle" class="tb">사용자</text>
+      <rect x="320" y="20" width="140" height="34" rx="3" class="box"/><text x="390" y="42" text-anchor="middle" class="tb">메인 에이전트</text>
+      <rect x="600" y="20" width="150" height="34" rx="3" class="up"/><text x="675" y="42" text-anchor="middle" class="tu">스킬 파일 (dist/)</text>
+      <rect x="880" y="20" width="120" height="34" rx="3" class="logbox"/><text x="940" y="42" text-anchor="middle" class="tl">hook 로거</text>
+      <line x1="100" y1="54" x2="100" y2="415" class="lane"/>
+      <line x1="390" y1="54" x2="390" y2="415" class="lane"/>
+      <line x1="675" y1="54" x2="675" y2="415" class="lane"/>
+      <line x1="940" y1="54" x2="940" y2="415" class="lane"/>
+
+      <!-- 1 -->
+      <line x1="100" y1="90" x2="388" y2="90" class="ar" marker-end="url(#sh)"/>
+      <text x="244" y="82" text-anchor="middle" class="t">이 초안 윤문해줘</text>
+      <line x1="390" y1="112" x2="938" y2="112" class="ar-l" marker-end="url(#shl)"/>
+      <text x="664" y="104" text-anchor="middle" class="tl">UserPromptSubmit — 지시 원문, 지시 언어</text>
+      <!-- 2 -->
+      <line x1="390" y1="150" x2="673" y2="150" class="ar" marker-end="url(#sh)"/>
+      <text x="532" y="142" text-anchor="middle" class="t">description이 맞아 ko-rewrite를 고른다</text>
+      <line x1="675" y1="180" x2="392" y2="180" class="ar" marker-end="url(#sh)"/>
+      <text x="532" y="172" text-anchor="middle" class="tu">SKILL.md — im-not-ai 절차 + 철칙 (≤100줄)</text>
+      <!-- 3 -->
+      <line x1="390" y1="218" x2="673" y2="218" class="ar" marker-end="url(#sh)"/>
+      <text x="532" y="210" text-anchor="middle" class="t">패턴을 대조할 때만</text>
+      <line x1="675" y1="248" x2="392" y2="248" class="ar" marker-end="url(#sh)"/>
+      <text x="532" y="240" text-anchor="middle" class="tu">references/taxonomy-rewrite.md — 85 패턴, 심각도 S1~S3</text>
+      <!-- 4 self -->
+      <polyline points="390,270 440,270 440,300 392,300" class="ar" marker-end="url(#sh)"/>
+      <text x="452" y="290" class="t">탐지된 span만 고친다 · 의미·장르·숫자 보존 · 변경률 30% 경고, 50% 중단 (자기 보고)</text>
+      <!-- 5 -->
+      <line x1="390" y1="338" x2="102" y2="338" class="ar" marker-end="url(#sh)"/>
+      <text x="244" y="330" text-anchor="middle" class="t">윤문본 + 변경률 X%, 등급</text>
+      <line x1="390" y1="368" x2="938" y2="368" class="ar-l" marker-end="url(#shl)"/>
+      <text x="664" y="360" text-anchor="middle" class="tl">Stop — last_assistant_message, upstream_report</text>
+      <polyline points="940,385 990,385 990,405 942,405" class="ar-l" marker-end="url(#shl)"/>
+      <text x="998" y="399" class="tl">append</text>
+    </svg>
+    </div>
+    <figcaption>스킬을 고르는 것도, 참조 파일을 읽을지도, 변경률을 세는 것도 모델입니다. 툴킷이 보장하는 것은 모델이 읽는 문장이 upstream의 것 그대로이고 그 출처와 버전이 기록된다는 점입니다. 변경률을 코드로 판정하는 gate는 검증 단계에서 더합니다.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="eyebrow">기존과의 차이</div>
+  <h2>같은 세션, 두 구성</h2>
+  <p>왼쪽은 오늘 upstream들을 각자 설치했을 때, 오른쪽은 ko-quality 하나를 설치했을 때입니다. 바뀌는 것은 문장이 아니라 <strong>그 문장이 놓이는 자리와 개수</strong>입니다.</p>
+  <figure>
+    <div class="fig-scroll">
+    <svg viewBox="0 0 1080 500" role="img" aria-label="기존 구성과 ko-quality 구성을 같은 다섯 층으로 나란히 비교: 시스템 프롬프트, 메인 에이전트, 서브에이전트, 윤문·진단 스킬, 버전과 로그. 서브에이전트 층과 버전·로그 층이 달라진다">
+      <defs>
+        <marker id="ch" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        <marker id="chp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker>
+        <marker id="chw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--warn)"/></marker>
+        <marker id="chl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--log)"/></marker>
+      </defs>
+      <!-- panel titles -->
+      <text x="30" y="34" class="tb">기존 — upstream을 각자 설치</text>
+      <text x="570" y="34" class="tb">ko-quality — 플러그인 하나</text>
+      <line x1="540" y1="20" x2="540" y2="480" class="lane"/>
+
+      <!-- row labels (left of each panel) -->
+      <!-- LEFT PANEL rows: x=30 w=480 -->
+      <text x="30" y="66" class="ts">시스템 프롬프트</text>
+      <rect x="30" y="72" width="480" height="54" rx="4" class="half"/>
+      <text x="46" y="94" class="tp">fluent-korean 출력 스타일 — 사용자가 직접 골라야 걸린다</text>
+      <text x="46" y="112" class="ts">다른 스타일로 바꾸거나 새 환경이면 빠진다. Codex는 README를 보고 손으로 붙인다</text>
+
+      <text x="30" y="152" class="ts">메인 에이전트</text>
+      <rect x="30" y="158" width="480" height="40" rx="4" class="box"/>
+      <text x="46" y="183" class="t">골랐을 때만 정책 적용</text>
+
+      <text x="30" y="224" class="ts">서브에이전트</text>
+      <rect x="30" y="230" width="480" height="54" rx="4" class="miss"/>
+      <text x="46" y="252" class="tw">정책 없음 — 출력 스타일이 닿지 않는다</text>
+      <text x="46" y="270" class="ts">한국어로 주고받을수록 조사·어미 탈락이 단계마다 누적된다 (01)</text>
+
+      <text x="30" y="310" class="ts">윤문 · 진단 · 맞춤법</text>
+      <rect x="30" y="316" width="480" height="68" rx="4" class="box"/>
+      <rect x="46" y="328" width="96" height="20" rx="3" class="up"/><text x="94" y="342" text-anchor="middle" class="tu">im-not-ai</text>
+      <rect x="150" y="328" width="88" height="20" rx="3" class="up"/><text x="194" y="342" text-anchor="middle" class="tu">yoonmoon</text>
+      <rect x="246" y="328" width="108" height="20" rx="3" class="up"/><text x="300" y="342" text-anchor="middle" class="tu">korean-skills</text>
+      <text x="46" y="372" class="ts">셋을 따로 설치. 형식이 제각각(마크다운 제목 / XML 태그 / 표). im-not-ai는 Claude Code용과 Codex용이 다른 판</text>
+
+      <text x="30" y="410" class="ts">버전 · 기록</text>
+      <rect x="30" y="416" width="480" height="54" rx="4" class="miss"/>
+      <text x="46" y="438" class="tw">마켓플레이스가 각자 갱신 — 언제 무엇이 바뀌었는지 모른다</text>
+      <text x="46" y="456" class="ts">무엇이 어떤 조건에서 나왔는지 남는 기록이 없다</text>
+
+      <!-- left arrows -->
+      <line x1="270" y1="126" x2="270" y2="156" class="ar" marker-end="url(#ch)"/>
+      <line x1="270" y1="198" x2="270" y2="228" class="ar-w" marker-end="url(#chw)"/>
+      <text x="280" y="217" class="tw">프롬프트만 넘어간다</text>
+
+      <!-- RIGHT PANEL rows: x=570 w=480 -->
+      <text x="570" y="66" class="ts">시스템 프롬프트</text>
+      <rect x="570" y="72" width="480" height="54" rx="4" class="pol"/>
+      <text x="586" y="94" class="tp">같은 fluent-korean 본문 — 플러그인이 자동 적용 (force-for-plugin)</text>
+      <text x="586" y="112" class="ts">Codex는 AGENTS.md 절로 같은 본문. 프로파일별 선택 블록 합성</text>
+
+      <text x="570" y="152" class="ts">메인 에이전트</text>
+      <rect x="570" y="158" width="480" height="40" rx="4" class="box"/>
+      <text x="586" y="183" class="t">항상 정책 적용</text>
+
+      <text x="570" y="224" class="ts">서브에이전트</text>
+      <rect x="570" y="230" width="480" height="54" rx="4" class="pol"/>
+      <text x="586" y="252" class="tp">korean-reviewer · editor · writer 정의 파일에 정책 본문이 직접 들어 있다</text>
+      <text x="586" y="270" class="ts">한 겹은 구조로 보장. 서브가 또 띄우는 서브(sub-to-sub)는 여전히 모델에게 부탁</text>
+
+      <text x="570" y="310" class="ts">윤문 · 진단 · 맞춤법</text>
+      <rect x="570" y="316" width="480" height="68" rx="4" class="box"/>
+      <rect x="586" y="328" width="84" height="20" rx="3" class="up"/><text x="628" y="342" text-anchor="middle" class="tu">ko-rewrite</text>
+      <rect x="678" y="328" width="92" height="20" rx="3" class="up"/><text x="724" y="342" text-anchor="middle" class="tu">ko-diagnose</text>
+      <rect x="778" y="328" width="88" height="20" rx="3" class="up"/><text x="822" y="342" text-anchor="middle" class="tu">ko-grammar</text>
+      <rect x="874" y="328" width="70" height="20" rx="3" class="chip"/><text x="909" y="342" text-anchor="middle" class="t">ko-route</text>
+      <text x="586" y="372" class="ts">한 규격(절차 / taxonomy 참조). 문장은 upstream 그대로, 조각마다 출처. Claude Code와 Codex가 바이트 동일</text>
+
+      <text x="570" y="410" class="ts">버전 · 기록</text>
+      <rect x="570" y="416" width="480" height="54" rx="4" class="logbox"/>
+      <text x="586" y="438" class="tl">lock.yaml이 커밋을 고정 — 정규화 산출물의 diff가 곧 변경 내역</text>
+      <text x="586" y="456" class="ts">hook 로거가 조건·원문·버전을 기록. 검증 단계의 재료</text>
+
+      <!-- right arrows -->
+      <line x1="810" y1="126" x2="810" y2="156" class="ar-p" marker-end="url(#chp)"/>
+      <line x1="810" y1="198" x2="810" y2="228" class="ar-p" marker-end="url(#chp)"/>
+      <text x="820" y="217" class="tp">정책이 정의에 이미 있다</text>
+    </svg>
+    </div>
+    <figcaption>바뀌는 층은 둘입니다. 서브에이전트 층은 “정책 없음”에서 “정의에 정책 포함”으로, 버전·기록 층은 “각자 갱신, 기록 없음”에서 “lock 고정, hook 기록”으로. 정책 문장과 윤문 절차 자체는 양쪽이 같습니다. ko-quality는 그것을 고쳐 쓰지 않고 놓는 자리를 바꿉니다.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="two">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="eyebrow">하네스별 주입 지점</div>
+      <h3>같은 본문, 다른 자리</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>층</th><th>Claude Code</th><th>Codex</th></tr></thead>
+        <tbody>
+          <tr><td>메인 스레드</td><td><code>output-styles/&lt;profile&gt;.md</code><br>force-for-plugin: true</td><td><code>AGENTS.md</code> 절 (전역/프로젝트)<br>대안: <code>developer_instructions</code></td></tr>
+          <tr><td>서브에이전트</td><td><code>agents/&lt;name&gt;.md</code> 본문</td><td><code>.codex/agents/&lt;name&gt;.toml</code><br><code>developer_instructions</code></td></tr>
+          <tr><td>스킬</td><td colspan="2"><code>skills/&lt;name&gt;/SKILL.md</code> — 양쪽 바이트 동일</td></tr>
+          <tr><td>로거</td><td>플러그인 <code>hooks/hooks.json</code></td><td>플러그인 번들 (사용자 신뢰 검토 필요)</td></tr>
+          <tr><td>보조 채널</td><td>—</td><td>MCP 서버 <code>instructions</code> (둘지 미정)</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="eyebrow">보장하지 않는 것</div>
+      <h3>06이 스스로 적은 한계</h3>
+      <div class="limits">
+        <ul>
+          <li><strong>효과는 아직 재지 않는다.</strong> 정책을 넣으면 나아지는지는 검증 단계의 일이다. 지금 쌓이는 로그에는 대조군(policy off)이 없다.</li>
+          <li><strong>변경률은 모델의 자기 보고다.</strong> upstream의 Claude Code 경로는 스크립트로 판정하지만 06은 스크립트를 공급하지 않는다.</li>
+          <li><strong>프리셋 순서는 권고다.</strong> ko-route가 모델에게 지시할 뿐 실행 순서를 강제하지 못한다.</li>
+          <li><strong>sub-to-sub는 구조로 보장되지 않는다.</strong> 서브에이전트가 또 띄우는 에이전트에 정책을 넘기는 것은 여전히 모델의 몫이고, 로거도 그 경로를 가리지 못한다.</li>
+          <li><strong>force-for-plugin은 먼저 로드된 플러그인이 이긴다.</strong> 다른 강제 스타일 플러그인이 있으면 우리 정책이 밀릴 수 있다.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">지금 어디까지</div>
+  <h2>P0 완료, P1 착수 전</h2>
+  <ul class="plain">
+    <li>upstream 4종의 커밋·라이선스(모두 MIT)를 <code>upstream/lock.yaml</code>에 고정했고 파일 지도를 만들었다.</li>
+    <li>P1은 im-not-ai를 손으로 정규화해 <code>ko-rewrite</code> 하나를 Claude Code에서 실제로 돌려 보는 수직 슬라이스다.</li>
+    <li>스키마는 P1~P3 실물에서 P4에 역산하고, 네 번째 벤더(korean-skills)로 추상화를 시험한다.</li>
+    <li>이 페이지의 그림은 06 스펙이고 실측 전이다. P1부터 06b가 스펙과 달랐던 것을 기록한다.</li>
+  </ul>
+</section>
+</div>
