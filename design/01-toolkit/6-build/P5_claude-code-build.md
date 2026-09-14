@@ -82,7 +82,7 @@ Exploration cap: 1 of 4 used.
 | # | Tier | Purpose | Tokens | Result |
 |---|---|---|---|---|
 | 1 | claude-code-guide (docs lookup) | `claude plugin eval` case format, local marketplace, `CLAUDE_CONFIG_DIR` isolation, forced styles, plugin agent fields | 86.3k | Case/grader format and marketplace format confirmed; `CLAUDE_CONFIG_DIR` also keys the Keychain credential, so a throwaway config dir has no login; two forced styles: first loaded wins |
-| V | mid (Sonnet 5) | Verification of the done-condition (outside the cap) | _pending_ | _pending_ |
+| V | mid (Sonnet 5) | Verification of the done-condition (outside the cap) | 111.3k | All four clauses **met**. Reproduced `korean-reviewer` → `ko-diagnose` on the unmodified agent-reply plugin; re-diffed hand vs build (every difference explained); confirmed checks 2–3 "within Claude Code only" is honest scope before P6. Caveat: the marketplace install/uninstall cycle ran for `ko-quality` only; `ko-quality-formal` rests on `validate --strict` and `--plugin-dir` runs |
 
 ## Build process note
 
@@ -90,4 +90,4 @@ One step (saving this log and editing this record) used an unquoted shell heredo
 
 ## Release-blocked
 
-_(Updated after the verification run.)_
+None. Every done-condition clause was verified met. Open for 7-review, not blocking: install `ko-quality-formal` through the marketplace once (only `ko-quality` went through the full install cycle).
