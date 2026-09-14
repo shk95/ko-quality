@@ -43,10 +43,10 @@ def policy_body(harness, pdir):
 def agent_prompts(harness, pdir):
     if harness == "claude-code":
         return {p.stem: body(p).rstrip("\n") for p in sorted((pdir / "agents").glob("*.md"))}
-    import tomllib  # Python 3.11+
+    from build.mini_toml import loads
     out = {}
     for p in sorted((pdir / "install" / ".codex" / "agents").glob("*.toml")):
-        data = tomllib.loads(p.read_text(encoding="utf-8"))
+        data = loads(p.read_text(encoding="utf-8"))
         out[data["name"]] = data["developer_instructions"].rstrip("\n")
     return out
 

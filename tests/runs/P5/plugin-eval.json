@@ -1,0 +1,267 @@
+{
+  "stage": "P5",
+  "tool": "claude plugin eval (Claude Code 2.1.270)",
+  "command": "claude plugin eval <scratch copy of dist/claude-code/<profile> + tests/evals/claude-code cases> --runs 1 -j 4 --max-cost-usd 8 --no-publish --trust-plugin --threshold 0 (ablation with-without)",
+  "profiles": {
+    "agent-reply": {
+      "costUsd": 2.23,
+      "durationSeconds": 175,
+      "cases": {
+        "diagnose-fires": {
+          "graders": [
+            "tool_used"
+          ],
+          "arms": {
+            "with": [
+              {
+                "score": 1,
+                "passed": true,
+                "turns": 6,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "skill-fired",
+                    "passed": true,
+                    "explanation": "Skill called 1x (expected 1..∞)",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ],
+            "without": [
+              {
+                "score": 0,
+                "passed": false,
+                "turns": 1,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "skill-fired",
+                    "passed": false,
+                    "explanation": "Skill called 0x (expected 1..∞)",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "grammar-fires": {
+          "graders": [
+            "tool_used"
+          ],
+          "arms": {
+            "with": [
+              {
+                "score": 1,
+                "passed": true,
+                "turns": 4,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "skill-fired",
+                    "passed": true,
+                    "explanation": "Skill called 1x (expected 1..∞)",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ],
+            "without": [
+              {
+                "score": 0,
+                "passed": false,
+                "turns": 1,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "skill-fired",
+                    "passed": false,
+                    "explanation": "Skill called 0x (expected 1..∞)",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "policy-agent-reply": {
+          "graders": [
+            "llm"
+          ],
+          "arms": {
+            "with": [
+              {
+                "score": 1,
+                "passed": true,
+                "turns": 1,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "policy",
+                    "passed": true,
+                    "explanation": "judge votes: PASS PASS PASS",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ],
+            "without": [
+              {
+                "score": 0,
+                "passed": false,
+                "turns": 1,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "policy",
+                    "passed": false,
+                    "explanation": "judge votes: FAIL FAIL FAIL",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "rewrite-fires": {
+          "graders": [
+            "tool_used"
+          ],
+          "arms": {
+            "with": [
+              {
+                "score": 1,
+                "passed": true,
+                "turns": 4,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "skill-fired",
+                    "passed": true,
+                    "explanation": "Skill called 1x (expected 1..∞)",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ],
+            "without": [
+              {
+                "score": 0,
+                "passed": false,
+                "turns": 1,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "skill-fired",
+                    "passed": false,
+                    "explanation": "Skill called 0x (expected 1..∞)",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "route-fires": {
+          "graders": [
+            "tool_used"
+          ],
+          "arms": {
+            "with": [
+              {
+                "score": 1,
+                "passed": true,
+                "turns": 9,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "skill-fired",
+                    "passed": true,
+                    "explanation": "Skill called 1x (expected 1..∞)",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ],
+            "without": [
+              {
+                "score": 0,
+                "passed": false,
+                "turns": 3,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "skill-fired",
+                    "passed": false,
+                    "explanation": "Skill called 0x (expected 1..∞)",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "aggregates": {
+        "casesTotal": 5,
+        "casesPassed": 5,
+        "overallScore": 1,
+        "overallPassRate": 1,
+        "meanDelta": 1
+      }
+    },
+    "formal-report": {
+      "costUsd": 0.23,
+      "durationSeconds": 18,
+      "cases": {
+        "policy-formal-report": {
+          "graders": [
+            "llm"
+          ],
+          "arms": {
+            "with": [
+              {
+                "score": 1,
+                "passed": true,
+                "turns": 3,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "policy",
+                    "passed": true,
+                    "explanation": "judge votes: PASS PASS PASS",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ],
+            "without": [
+              {
+                "score": 0,
+                "passed": false,
+                "turns": 4,
+                "error": null,
+                "graders": [
+                  {
+                    "name": "policy",
+                    "passed": false,
+                    "explanation": "judge votes: FAIL FAIL FAIL",
+                    "withOnly": false
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "aggregates": {
+        "casesTotal": 1,
+        "casesPassed": 1,
+        "overallScore": 1,
+        "overallPassRate": 1,
+        "meanDelta": 1
+      }
+    }
+  }
+}
