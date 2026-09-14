@@ -15,9 +15,9 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def sha(s): return "sha256:" + hashlib.sha256(s.encode("utf-8")).hexdigest()
 
-def load_fragments(role_slot):
-    role, slot = role_slot.split("/")
-    text = (ROOT / "upstream/normalized" / role / f"{slot}.yaml").read_text(encoding="utf-8")
+def load_fragments(ref):
+    # ref is the path under upstream/normalized without .yaml: procedure/rewrite, reference/diagnose/lread-rubric
+    text = (ROOT / "upstream/normalized" / f"{ref}.yaml").read_text(encoding="utf-8")
     frags = {}
     for block in text.split("\n  - id: ")[1:]:
         fid = block.split("\n")[0].strip()

@@ -1,0 +1,23 @@
+# Test cases for ko-diagnose (P2, flow.md §3). Upstream inputs are read from upstream/.cache at the lock commit.
+skill: ko-diagnose
+cases:
+  - id: ai-column
+    owner: upstream
+    input_from: {upstream: yoonmoon, path: skills/humanize/references/examples.md, select: "first <before> block (genre 칼럼)"}
+    prompt_prefix: "이 글 AI가 쓴 거야?\n\n"
+    expect: {skill_fires: ko-diagnose, checks: [outputFormat one-line verdict, evidence summary, signal table, suspect spans, text not modified]}
+  - id: human-academic
+    owner: upstream
+    input_from: {upstream: im-not-ai, path: tests/golden/fixtures/02_academic_structure/input.txt}
+    prompt_prefix: "사람이 쓴 글 맞아? AI 탐지 좀 해줘.\n\n"
+    expect: {skill_fires: ko-diagnose, checks: [outputFormat, confidence lowered for formal report (scoringRubric), text not modified]}
+  - id: short-sns
+    owner: ours
+    input: "ㅋㅋㅋㅋ 어제 그거 나도 봤는데\n\n배우 연기 진짜 미쳤음ㅠㅠ 2화에서 우는 장면 몇 번 돌려봄"
+    prompt_prefix: "이 댓글 AI가 쓴 건지 판별해줘: "
+    expect: {skill_fires: ko-diagnose, checks: [short mode on, xdac-research read, outputFormat with short-mode rows]}
+  - id: diagnose-and-fix
+    owner: upstream
+    input_from: {upstream: yoonmoon, path: skills/humanize/references/examples.md, select: "second <before> block (genre 리포트)"}
+    prompt_prefix: "이 글 AI가 쓴 건지 판별하고, 이상한 부분은 고쳐줘.\n\n"
+    expect: {skill_fires: ko-diagnose, checks: [diagnosis report does not modify the text, if ko-rewrite also fires each skill reads only its own references]}
