@@ -242,7 +242,9 @@ def build():
     ctx = dict(presets=presets, profiles=profiles)
     if DIST.exists():
         shutil.rmtree(DIST)
-    market = {"name": "ko-quality", "owner": {"name": "ko-quality"}, "plugins": []}
+    market = {"name": "ko-quality", "owner": {"name": "ko-quality"},
+              "description": "ko-quality: Korean writing quality toolkit for Claude Code, one plugin per profile (enable one)",
+              "plugins": []}
     for profile in profiles:
         pdir = DIST / profile["id"]
         (pdir / ".claude-plugin").mkdir(parents=True)
@@ -283,6 +285,8 @@ def build():
     (DIST / ".claude-plugin").mkdir()
     (DIST / ".claude-plugin/marketplace.json").write_text(json.dumps(market, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("built dist/claude-code/.claude-plugin/marketplace.json")
+    shutil.copyfile(ASM / "install/claude-code.md", DIST / "README.md")
+    print("built dist/claude-code/README.md")
 
 
 if __name__ == "__main__":

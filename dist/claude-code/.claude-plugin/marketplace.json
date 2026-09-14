@@ -3,6 +3,7 @@
   "owner": {
     "name": "ko-quality"
   },
+  "description": "ko-quality: Korean writing quality toolkit for Claude Code, one plugin per profile (enable one)",
   "plugins": [
     {
       "name": "ko-quality",
