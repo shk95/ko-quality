@@ -6,15 +6,15 @@
 
 > 새 세션은 여기서 시작합니다.
 
-**현재 위치:** 시대 `01-toolkit`, **5-preflight 진행 중.** P0 사전 확인과 문서 검토가 끝났고, 열린 결정에 대한 독립 탐색 보고 6건과 환경 확인(헤드리스 Claude Code 플러그인 로드 성공)을 `5-preflight/explorations.md`에 모아 두었습니다. 구현 흐름 정의(`flow.md`)는 아직 쓰지 않았고, 구현 코드는 없습니다. upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT). 프로세스(`AGENTS.md`)와 저장소 구성은 끝났습니다.
+**현재 위치:** 시대 `01-toolkit`, **6-build 시작.** 구현 흐름 정의 `5-preflight/flow.md`가 수락됐습니다(2026-09-14). 탐색 보고, E1 후속, Codex 헤드리스 실측은 `5-preflight/explorations.md`에 있습니다. 구현 코드는 없습니다. upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT). 프로세스(`AGENTS.md`)와 저장소 구성은 끝났습니다.
 
-**다음 작업:** `01-toolkit/5-preflight/flow.md` 작성. `explorations.md`의 권고 넷을 받아들일지 정하는 것부터 시작하고, 사용자와 깊이를 맞춰 가며 씁니다. 받아들여지면 `dev`에서 P1(im-not-ai → `ko-rewrite`)을 자율 구현으로 시작합니다.
+**다음 작업:** `dev`에서 P1(im-not-ai → `ko-rewrite`) 자율 구현. 진행 기록은 `01-toolkit/6-build/`.
 
 **읽는 순서 (최소):**
 
 1. `01-toolkit/3-spec/06_toolkit_spec.md` — §1 목적, §3 층, §5 공급 층, **§14 프로토타입 계획**, **§16 결정 현황**
 2. `01-toolkit/5-preflight/06b_built_prototype.md` — P0 파일 지도, 06 반영 결정, 문서 검토, **P1에 넘기는 것**
-3. `01-toolkit/5-preflight/README.md` — preflight가 만들어야 하는 것
+3. `01-toolkit/5-preflight/flow.md` — preflight 결정 D1~D7과 P1~P7 흐름
 4. 필요할 때만 — `3-spec/06a`(공급 층 근거), `3-spec/05a`(검증 단계 준비), `1-concept/01a`(upstream 조사)
 
 ## 구조: 시대와 일곱 단계
@@ -76,8 +76,8 @@ design/
 | | `prompt-flow.html`, `diagrams/` | 06 기준 작동 구조. 루트 README가 같은 그림을 씀 |
 | 4-plan | `README.md` | 계획은 06 §14·§16 안에 있음 |
 | 5-preflight | `06b_built_prototype.md` | P0 사전 확인(lock, 파일 지도, 하네스 재확인, 06 반영 결정), 문서 검토 |
-| | `explorations.md` | 열린 결정 탐색 보고 6건(절차 원천, 앵커 형식, 렌더 구분, 합성 규칙, 참조 역할, Codex 로컬 플러그인)과 환경 확인 |
-| | `flow.md` | 구현 흐름 정의 — **다음 작업** |
+| | `explorations.md` | 열린 결정 탐색 보고 6건(절차 원천, 앵커 형식, 렌더 구분, 합성 규칙, 참조 역할, Codex 로컬 플러그인), E1 후속, Codex 헤드리스 실측, 환경 확인 |
+| | `flow.md` | 구현 흐름 정의 — 결정 D1~D7, P1~P7, release를 막는 조건. 수락됨 |
 | 6-build | — | P1부터 |
 | 7-review | — | |
 
@@ -102,8 +102,9 @@ design/
    ↓ P0 반영     06 개정: 정책 조각 단위, 앵커 규칙, rewrite invariant(hjongc 원칙 제외), Codex 플러그인 사실
    ↓ 문서 검토   문서 안 어긋남 13건 정정, 사양 재검증 26건(어긋남 없음, 몰랐던 것 9건). 열린 결정 8건 추가
    ↓ 프로세스    시대 / 7단계 일방향으로 재배치. 판단 규칙은 AGENTS.md로 분리
-   ⋯ preflight   구현 흐름 정의 (다음)
-   ⋯ build       P1 부터 자율 구현 (06 §14)
+   ↓ 탐색        열린 결정 6건 독립 보고, B가 낡았는지 후속 탐색, Codex 헤드리스 실측(커스텀 에이전트 닿지 않음)
+   ↓ preflight   flow.md — 결정 D1~D7, P1~P7 흐름. 수락
+   ⋯ build       P1 부터 자율 구현 (flow.md §3)
 ```
 
 조사에서 나온 제약 셋이 06 의 형태를 결정했습니다.

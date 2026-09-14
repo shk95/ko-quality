@@ -1,6 +1,6 @@
 # Preflight explorations — raw material, not decisions
 
-2026-09-14. Six independent mid-tier (Sonnet) subagents were given a question and the sources, never a leaning, and asked for both sides. Their reports are condensed here so that `flow.md` can decide from them. **Nothing below is decided.**
+2026-09-14. Six independent mid-tier (Sonnet) subagents were given a question and the sources, never a leaning, and asked for both sides. Their reports are condensed here so that `flow.md` can decide from them. **Nothing below is decided** — the decisions are in `flow.md` §1. E1b and the Codex probe were added in the same session, before `flow.md` was written.
 
 Work stopped here at the user's request: environment set up, exploration and build not started. Next session resumes at `flow.md`.
 
@@ -9,7 +9,7 @@ Work stopped here at the user's request: environment set up, exploration and bui
 | Check | Result |
 |---|---|
 | Headless Claude Code with a local plugin | **Works.** `claude -p "…" --plugin-dir <dir> --max-turns 4 --output-format json` invoked a throwaway skill (`ko-ping`) and returned its fixed token. 3 turns, ≈$0.20. This is P1's test harness (Claude Code 2.1.270) |
-| Headless Codex with a local plugin | **Not run.** Documented path (from official docs and `codex plugin … --help`, codex-cli 0.154.0): register a local marketplace (`codex plugin marketplace add <dir>` with `.agents/plugins/marketplace.json` — shape below), `codex plugin add <plugin>@<marketplace>`, then `codex exec --json -C <dir> "$skill …"`; hooks need `--dangerously-bypass-hook-trust` for automation. Whether plugins, hooks, AGENTS.md and `.codex/agents/*.toml` load under `exec` the same as interactive is **not documented**. Remove with `codex plugin remove <plugin>@<marketplace>` |
+| Headless Codex with a local plugin | **Run later in preflight — see "Codex probe" below.** Documented before the run: Documented path (from official docs and `codex plugin … --help`, codex-cli 0.154.0): register a local marketplace (`codex plugin marketplace add <dir>` with `.agents/plugins/marketplace.json` — shape below), `codex plugin add <plugin>@<marketplace>`, then `codex exec --json -C <dir> "$skill …"`; hooks need `--dangerously-bypass-hook-trust` for automation. Whether plugins, hooks, AGENTS.md and `.codex/agents/*.toml` load under `exec` the same as interactive is **not documented**. Remove with `codex plugin remove <plugin>@<marketplace>` |
 
 Marketplace shape seen in Codex's bundled marketplace:
 
@@ -98,3 +98,28 @@ Summarized in "Environment checks done" above. Additional facts: skills are invo
 - E2 anchor forms: accept the per-file-type combination or fix one form; either way the scanner must be heading-depth-agnostic and skip table header rows.
 - The formal-report reachability problem (E4): second output style, or a different vehicle for the second profile.
 - Whether to run the Codex headless probe before P1 or defer it to P6.
+
+## E1b — is B stale? (follow-up to E1)
+
+Question raised in preflight: B was last changed 2026-08-09; A and C changed after. One `mid` run compared the commits, the steps and the invariants.
+
+- Commits touching A or C after 2026-08-09: 9. Content changes B lacks: two — C `60bef28` adds 내용 앵커 (anchor_ledger, 철칙 #1 extended, extract/protect/verify in steps 2–4); A `b48fa05` adds chatbot-residue input hygiene. The other seven are paths, versions, script wiring.
+- Steps 1–3, detection order, rewrite order, grades and the 4-part response are near-identical in B and C. C-only: anchor_ledger steps, `residual_findings`, `over_polish_aborted`, previous-output handling, team protocol. B-only: file-path input, non-Korean early exit, `옵션`/`참고`.
+- Invariants in each file's own text: B lacks 빼기 전용, 서법 보존, 내용 앵커, and states register one-directionally. C lacks only 서법 보존, which exists only in `quick-rules.header.md` (added 08-23).
+- Estimates: B skeleton + grafts ≈60–65 body lines; C skeleton ≈95–115 lines with 12–18 `adapted`. The report counted 4 `adapted` for B; renumbering and removing whole harness-bound sentences are structure and `selected`, so the preflight count is 0.
+- **Recommendation:** B skeleton, grafts from C / header / A. Confidence medium. **Counter:** B's staleness becomes ours on every lock bump; B must be re-diffed, not just re-pinned.
+- Run: mid (Sonnet), ≈92k tokens.
+
+## Codex probe (E6, run in preflight)
+
+2026-09-14, codex-cli 0.154.0, model `gpt-5.6-luna`, `codex exec --ephemeral --json -s read-only`. A throwaway plugin (`.codex-plugin/plugin.json`, one skill with a `metadata` frontmatter key and a `SKILL.provenance.yaml` sidecar, a `SessionStart` hook via `extensions.com.openai.hooks`) was installed through a local marketplace, and a scratch git repo held a project `AGENTS.md` and `.codex/agents/kq-sub.toml`. Everything was uninstalled afterwards; `~/.codex/config.toml` was diffed back to its original.
+
+| Check | Result | Tokens (in / out) |
+|---|---|---|
+| `codex plugin marketplace add <dir>` + `codex plugin add <plugin>@<mkt>` | Works. Installs to `~/.codex/plugins/cache/<mkt>/<plugin>/<version>/`; adds `[marketplaces.*]` and `[plugins.*]` to `config.toml`. `remove` leaves an empty `cache/<mkt>/` directory | — |
+| Plugin skill under `exec` (`$kq-ping …`) | **Works.** The model read `SKILL.md` from the plugin cache with a shell command and returned the fixed token | 35k / 285 |
+| `metadata` frontmatter key and sidecar file | Accepted, no warning | — |
+| Project `AGENTS.md` under `exec` | **Loaded** | 17k / 11 |
+| Project `AGENTS.md` reaching a spawned subagent | **Yes** — the subagent answered with the AGENTS.md token | — |
+| Custom agent `.codex/agents/kq-sub.toml` | **Not reached.** `spawn_agent` exposed no agent-type parameter; a generic subagent was spawned. Same with the project marked trusted (`-c projects."<dir>".trust_level="trusted"`). Cause unknown: model, feature flag, or `exec` mode | 129k / 667, 129k / 1,246 |
+| Plugin hook | **Not run.** `--dangerously-bypass-hook-trust` was blocked by Claude Code's auto-mode classifier; without it an untrusted hook does not run | — |
