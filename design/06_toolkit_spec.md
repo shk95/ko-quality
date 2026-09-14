@@ -7,6 +7,8 @@
 > **개정됨 (06a 반영).** upstream과 우리 사이에 **공급 층**을 두고, 추상화(스키마)는 프로토타입 뒤로 미뤘다. 구현은 §14의 프로토타입 계획 P0부터 시작한다. 근거는 `06a_findings_supply.md`.
 >
 > **개정됨 (06b P0 반영, 2026-09-14).** 정책 조각의 단위(§5.3·§6·§9), 앵커 규칙(§5.5), `ko-rewrite` invariant의 범위와 변경률의 성격(§1·§7·§13.1), Codex 플러그인 사실(§2·§11.5·§12·§13.2). 근거와 기각한 선택지는 `06b_built_prototype.md`의 P0 "06 반영 결정".
+>
+> **개정됨 (P1 착수 전 문서 검토, 2026-09-14).** 문서 안의 어긋남과 빈 곳을 고치고(§5.2 파일 이름, §6 presets, §7 참조, §8 결합, §9 분량·`force-for-plugin`·`instructions`, §12 검사 2, §13.3 대조군, §15·§16), 공식 문서로 다시 확인한 사실을 반영했다(§2.1 `force-for-plugin` 충돌, §2.2 Codex `developer_instructions`·플러그인 확장 키·hook 기본 활성, §2.4 참여사, §11.2 `model`·에이전트 이름, §13.1 `tokens`·`sub-to-sub`). 기록은 `06b_built_prototype.md`의 "검토 — P1 착수 전 문서 정리".
 
 ## 1. 목적과 전제
 
@@ -41,10 +43,11 @@
 | 플러그인 구성요소 | `skills/`, `commands/`, `agents/`, `workflows/`, `hooks/hooks.json`, `.mcp.json`, `.lsp.json`, `monitors/monitors.json`, `bin/`, `scripts/`, `settings.json`, `output-styles/`, `themes/`(실험) |
 | 매니페스트 | `.claude-plugin/plugin.json`. 선택이며, 없으면 기본 위치에서 구성요소를 찾는다 |
 | 출력 스타일 frontmatter | `name`, `description`, `keep-coding-instructions`, `force-for-plugin` |
-| `force-for-plugin: true` | 플러그인이 켜져 있으면 사용자 선택 없이 자동 적용. 사용자의 `outputStyle` 설정을 덮어씀 |
+| `force-for-plugin: true` | 플러그인이 켜져 있으면 사용자 선택 없이 자동 적용. 사용자의 `outputStyle` 설정을 덮어씀. **여러 플러그인이 켜 두면 먼저 로드된 것이 이긴다** — 사용자가 다른 force 플러그인을 쓰면 우리 정책이 걸리지 않을 수 있다 |
 | 플러그인 `settings.json` | `agent`와 `subagentStatusLine` 키만 지원. `agent`는 플러그인 에이전트를 **메인 스레드**로 올림 |
 | MCP | tools · resources · prompts 전부 |
-| hook | 33개 이벤트. 플러그인이 `hooks/hooks.json`으로 나름 |
+| hook | 33개 이벤트. 플러그인이 `hooks/hooks.json`으로 나름. 플러그인 에이전트는 `agent_type`에 `<플러그인>:<에이전트>` 꼴의 범위 이름으로 나타난다 |
+| 서브에이전트 중첩 | 기본으로 서브에이전트가 서브에이전트를 띄울 수 있다(메인 아래 3층까지). `sub-to-sub` 경로가 실제로 생긴다 |
 | 동작 평가 | `claude plugin eval` — 프롬프트 세트를 플러그인 on/off로 반복 실행해 기여도를 봄 |
 | 로컬 로드 | `claude --plugin-dir <dir>`, 변경 후 `/reload-plugins` |
 
@@ -54,12 +57,12 @@
 
 | 항목 | 확인된 것 |
 |---|---|
-| 플러그인 | 루트 `plugin.json`(Agent Plugins `$schema` 선언) + `skills/` + `mcp.json`. OpenAI 전용 설정은 루트 `plugin.json`의 `extensions.com.openai`. `.codex-plugin/plugin.json`은 호환용. 마켓플레이스 있음 |
-| skills | `.agents/skills/`, `$HOME/.agents/skills`, `/etc/codex/skills`. `SKILL.md` + frontmatter. CLI에서 `$`로 명시 호출 |
+| 플러그인 | 루트 `plugin.json`(Agent Plugins `$schema` 선언) + `skills/` + `mcp.json`. OpenAI 전용 설정은 루트 `plugin.json`의 `extensions.com.openai`이고 문서화된 키는 `apps`, `hooks`, `interface` 셋뿐이다 — **서브에이전트 정의는 플러그인에 실을 수 없다.** `.codex-plugin/plugin.json`은 호환용. 마켓플레이스 있음 |
+| skills | `.agents/skills/`(cwd·상위·저장소 루트), `$HOME/.agents/skills`, `/etc/codex/skills`, 시스템, 플러그인. `SKILL.md` frontmatter는 `name`·`description`(그 밖의 키는 문서에 없음). CLI에서 `$`로 명시 호출. 세션 시작에 싣는 스킬 목록은 컨텍스트의 2% 또는 8,000자 안 |
 | 서브에이전트 | `~/.codex/agents/` 또는 `.codex/agents/`의 TOML. `name`, `description`, `developer_instructions` 필수. `model`, `model_reasoning_effort`, `sandbox_mode`, `mcp_servers` 지정 가능 |
-| 상시 지시문 | `AGENTS.md`. 32 KiB 상한 |
-| hook | `~/.codex/hooks.json`, `<repo>/.codex/hooks.json`, `config.toml`의 `[hooks]`, **플러그인 번들**(`extensions.com.openai.hooks`, 없으면 기본 `hooks/hooks.json`). 플러그인 hook은 설치·활성화만으로 신뢰되지 않으며, 사용자가 정의를 검토하고 신뢰해야 실행된다(다른 비관리 hook과 같은 절차). hook 스크립트는 실행 환경에 있어야 한다 |
-| MCP | **tools 전용.** STDIO / Streamable HTTP / 서버 `instructions` 필드만 지원 목록에 있음 |
+| 상시 지시문 | `AGENTS.md`. 32 KiB 상한(`project_doc_max_bytes`). 전역(`~/.codex/AGENTS.md`, `AGENTS.override.md` 우선)과 프로젝트(루트에서 cwd까지) 두 범위. 그 밖에 `config.toml`의 `developer_instructions`(세션에 주입되는 추가 개발자 지시)와 `model_instructions_file`(내장 지시 대체)이 있다 |
+| hook | 기본 활성(`[features] hooks = false`로 끔. `codex_hooks`는 낡은 별칭). `~/.codex/hooks.json`, `<repo>/.codex/hooks.json`, `config.toml`의 `[hooks]`, **플러그인 번들**(`extensions.com.openai.hooks`, 없으면 기본 `hooks/hooks.json`). 플러그인 hook은 설치·활성화만으로 신뢰되지 않으며, 사용자가 정의를 검토하고 신뢰해야 실행된다(다른 비관리 hook과 같은 절차). hook 스크립트는 실행 환경에 있어야 한다. 공통 입력에 `model`(활성 모델 slug)이 있다 |
+| MCP | **tools 전용.** STDIO / Streamable HTTP / 서버 `instructions` 필드만 지원 목록에 있음. `instructions`는 "서버의 tools와 함께 서버 전역 지침으로 쓴다"고만 적혀 있어, tool이 없는 서버의 `instructions`가 모델에 닿는지는 문서에 없다 |
 
 **결정적 제약:** Codex의 MCP 클라이언트는 `tools/list`와 `tools/call`만 발행한다. **resources와 prompts가 도달하지 않는다.**
 
@@ -84,7 +87,7 @@
 
 - 구성요소는 **Agent Skills와 MCP 서버 둘뿐**이다. 에이전트 정의·hook·출력 스타일은 표준에 없다.
 - 표준 밖의 것은 역도메인 확장 자리에 싣는다. Codex는 hook을 `extensions.com.openai`에 싣는다 (§2.2).
-- Codex · Cursor · GitHub Copilot · Kiro · VS Code가 지원한다.
+- 사이트의 기술 운영 위원회는 Amazon · Cursor · Microsoft · OpenAI · Vercel이다. **지원 클라이언트 목록은 사이트에 없다.** 이전 판본이 적은 "Codex · Cursor · GitHub Copilot · Kiro · VS Code"는 확인되지 않은 목록이었다. 06이 실제로 시험하는 Agent Plugins 클라이언트는 Codex뿐이다 (§12).
 - **Claude Code는 참여하지 않고 자체 포맷을 유지한다.**
 
 ## 3. 층 구조
@@ -151,13 +154,15 @@ upstream을 dump로 쌓지 않고, 버전을 고정해 받아온 뒤 우리 규�
 lock.yaml ─ 받아오기 ─→ .cache/<name>@<commit>/
                             │ 추출기 (P1~P3은 손, P4부터 코드)
                             ↓
-                      normalized/<role>/<name>.yaml   ← 커밋
+                      normalized/<role>/<slot 또는 name>.yaml   ← 커밋
                             │ build/
                             ↓
                           dist/
 ```
 
 원본은 커밋하지 않는다. 대가는 upstream 저장소가 사라지면 재추출을 못 한다는 것이고, 정규화 산출물이 커밋돼 있으므로 도구는 계속 동작한다.
+
+**파일 이름.** `procedure/`와 `taxonomy/`는 슬롯 이름으로 둔다 (`rewrite.yaml`, `diagnose.yaml`, `grammar.yaml`). 슬롯당 공급자가 하나라 공급자 이름이 필요 없고, 하류가 역할만 알면 되기 때문이다. `policy/`는 공급자 이름으로 둔다 (`fluent-korean.yaml`). 조각 합성이 가능해 공급자가 여럿일 수 있다. §7과 §14의 경로가 이 규칙을 따른다.
 
 ### 5.3 역할
 
@@ -253,6 +258,10 @@ edit:     [rewrite, grammar]
 full:     [policy, rewrite, grammar, diagnose]
 ```
 
+`quick`은 06에서 비어 있다. 검증 단계에서 `gate`가 각 preset 끝에 들어오면 `quick = [gate]`가 된다 (§15).
+
+**`policy`가 preset 항목으로서 런타임에 뜻하는 바는 정해지지 않았다.** 정책은 빌드타임에 파일로 주입된다 (§9). `ko-route`가 실행 중에 `policy` 단계를 만나면 할 일이 없거나, 산출물 경계에서 정책 본문을 다시 읽어 넣는 재주입(02a)이 된다. 둘 중 무엇인지는 결정 ②와 함께 P5에서 정한다 (§16).
+
 `exempt`를 비운 이유: 이전 판본의 `[slop.cta_in_sns, slop.polite_email_ending]`는 stop-slop-ko의 규칙 id인데 공급자 목록에 stop-slop-ko가 없어 참조 대상이 없었다.
 
 04와 형식을 공유한다. `gate`, `baseline`, `on_final_fail`, `watch`는 검증 단계에서 더한다.
@@ -271,13 +280,16 @@ full:     [policy, rewrite, grammar, diagnose]
 |---|---|---|
 | `ko-route` | 없음 — 조립 쪽만 | 프로파일, 프리셋 |
 | `ko-rewrite` | `procedure/rewrite` (im-not-ai) | `taxonomy/rewrite` |
-| `ko-grammar` | `procedure/grammar` (korean-skills) | — |
-| `ko-diagnose` | `procedure/diagnose` (yoonmoon) | `taxonomy/diagnose` |
+| `ko-grammar` | `procedure/grammar` (korean-skills) | 미정. upstream에 `references/rules.md`·`common-errors.md`가 있으나 P0에서 본문을 읽지 않았다. P4에서 정한다 |
+| `ko-diagnose` | `procedure/diagnose` (yoonmoon) | `taxonomy/diagnose` + 역할이 정해지지 않은 참조 3종 (아래) |
+
+**절차가 taxonomy 밖의 자료를 참조한다.** yoonmoon detect는 `lread-rubric.md`(판정 틀), `katfishnet-research.md`(가중치 근거), `xdac-research.md`(단문 전용)를 읽고, im-not-ai 단일 호출판은 처방집 `rewriting-playbook.md`를 `## 참고`에 둔다 (06b P0 파일 지도). 이것들은 `procedure`도 `taxonomy`도 아니다. §5.3의 역할 셋에는 받을 자리가 없으므로, P1·P2에서 실물을 보고 역할을 더할지(예: `reference`) 정하고 P4에서 확정한다 (§13.2).
 
 **렌더 결과에서 upstream 문장과 우리 문장이 구분돼야 한다.** 구분 방식은 P1에서 정한다 (주석 마커 또는 절 분리).
 
 **작성 규칙.**
-- `SKILL.md` 본문은 절차와 invariant만. 100줄 이내.
+- `SKILL.md` 본문은 절차와 invariant만. 100줄 이내 (Claude Code 안내는 500줄 이내. 06이 더 엄격하다).
+- `description`은 짧게. Codex는 세션 시작에 싣는 스킬 목록 전체를 컨텍스트의 2% 또는 8,000자 안에 두므로, 우리 스킬 넷의 `description` 합이 다른 스킬의 자리를 잠식하지 않게 한다.
 - 패턴 목록은 `references/`로 내리고 본문에서 경로로만 가리킨다.
 - **두 taxonomy를 한 컨텍스트에 올리지 않는다.** `ko-rewrite`와 `ko-diagnose`는 서로의 참조 파일을 읽지 않는다.
 - `description`에 발동 조건을 쓴다. 모델이 이것만 보고 고르므로 언제 쓰고 언제 쓰지 않는가를 둘 다 적는다.
@@ -314,6 +326,8 @@ prompt:
 | Claude Code | `agents/<name>.md` — frontmatter + 시스템 프롬프트 본문 |
 | Codex | `.codex/agents/<name>.toml` — `name`, `description`, `developer_instructions` |
 
+**에이전트와 프로파일의 결합은 정해지지 않았다.** `compose`가 `profile.policy`를 가리키지만 어느 프로파일인지는 에이전트 YAML에 없다. 에이전트마다 프로파일 하나를 고정할지(`korean-reviewer` = agent-reply), 프로파일별로 렌더해 이름을 나눌지(`korean-reviewer-formal` 같은)는 §12 검사 3의 "같은 profile에 대해"가 무엇을 뜻하는지를 정하는 일이다. 결정 ②와 함께 P5에서 정한다 (§16).
+
 ## 9. 정책 주입
 
 **06에서 가장 중요한 절이다.**
@@ -324,15 +338,17 @@ prompt:
 
 | 주입 지점 | Claude Code | Codex |
 |---|---|---|
-| 메인 스레드 | `output-styles/<profile>.md` + `force-for-plugin: true` | `AGENTS.md` 절 |
+| 메인 스레드 | `output-styles/<profile>.md` + `force-for-plugin: true` | `AGENTS.md` 절 (전역 또는 프로젝트) — 대안: `config.toml`의 `developer_instructions` (§2.2). P6에서 정한다 |
 | 서브에이전트 | `agents/<name>.md` 본문에 정책 텍스트 포함 | `developer_instructions`에 포함 |
 | 보조 채널 | — | MCP 서버 `instructions` 필드 |
 
-**합성 규칙은 P3에서 확정한다** (§16 결정 ③). 정할 것: 선택 블록의 위치(README는 "지침 끝에 추가"하라고 안내한다), 블록 id, not-coding 정책에 서브에이전트 조항을 붙일지, `keep-coding-instructions` 값, 원본 frontmatter 보존 여부, Codex 32 KiB 안에서의 분량.
+**합성 규칙은 P3에서 확정한다** (§16 결정 ③). 정할 것: 선택 블록의 위치(README는 "지침 끝에 추가"하라고 안내한다), 블록 id, not-coding 정책에 서브에이전트 조항을 붙일지, `keep-coding-instructions` 값, 원본 frontmatter 보존 여부, **두 프로파일 중 어느 출력 스타일에 `force-for-plugin`을 켤지.** 출력 스타일은 하나만 활성이고 `force-for-plugin`이 여럿이면 먼저 로드된 것이 이긴다(§2.1). 프로파일 둘을 둘 다 강제할 수 없으므로 하나(agent-reply 예상)만 강제하고 다른 하나는 사용자 선택으로 둔다.
+
+**분량 실측 (2026-09-14).** fluent-korean 변형 본문은 coding 6,317바이트, not-coding 5,932바이트다. 선택 블록 7개를 다 붙여도 Codex `AGENTS.md` 상한 32 KiB의 1/4 안에 든다. 분량 때문에 정책을 줄일 이유는 없다.
 
 **메인 스레드 대안.** Claude Code는 플러그인 `settings.json`의 `agent` 키로 플러그인 에이전트를 메인 스레드로 올릴 수 있다. 출력 스타일보다 강하게 걸리지만 사용자의 메인 에이전트를 통째로 바꾸므로 기본값으로 쓰지 않는다. 설치 안내에 선택지로만 적는다.
 
-**Codex의 `instructions` 채널.** Codex는 MCP 서버의 `instructions` 필드를 서버 전역 지침으로 읽는다. 시스템 프롬프트는 아니지만 세션 내내 유지되므로 압축한 정책 요약을 싣는다. 이것은 요약이라 `adapted`에 해당하며 출처와 원문을 남긴다.
+**Codex의 `instructions` 채널.** Codex는 MCP 서버의 `instructions` 필드를 서버 전역 지침으로 읽는다. 시스템 프롬프트는 아니지만 세션 내내 유지된다. 이전 판본은 여기에 압축한 정책 요약(`adapted`)을 싣기로 했으나, 두 가지가 그 결정을 흔든다. fluent-korean README는 다른 환경에는 "파일 본문을 적절한 자리에 삽입"하라고 안내하고, 본문은 6 KB다(위). 요약을 새로 쓰지 않고 본문을 그대로(`verbatim`) 실을 수 있고, `AGENTS.md`가 이미 같은 본문을 나르므로 채널을 아예 두지 않을 수도 있다. 요약 / 본문 / 없음은 P6에서 정한다 (§16). 요약을 택하면 `adapted`이고 출처와 원문을 남긴다.
 
 ## 10. MCP 서버
 
@@ -340,7 +356,7 @@ prompt:
 
 - **tools**: 없음. 검증 단계에서 `ko.gate`, `ko.features`, `ko.change_rate`, `ko.preserve`가 들어온다.
 - **resources / prompts**: **쓰지 않는다.** Codex에 도달하지 않는다.
-- **`instructions`**: 정책 요약을 싣는다. 06에서 서버가 하는 유일한 일이다.
+- **`instructions`**: 정책을 싣는다. 06에서 서버가 하는 유일한 일이다. 요약인지 본문인지, 채널을 둘지는 P6에서 정한다 (§9).
 
 검증 단계에서 문서를 서빙하고 싶어지면 텍스트를 반환하는 tool로 만든다.
 
@@ -361,11 +377,11 @@ prompt:
 
 | 레코드 항목 | 출처 hook | 필드 |
 |---|---|---|
-| `policy_on`, `injection_point`, `model` | `SessionStart` | 설정 상태 |
+| `policy_on`, `injection_point`, `model` | `SessionStart` | 설정 상태. `model`은 Claude Code에서 선택 필드라 없으면 `unknown`. Codex는 공통 입력에 있다 |
 | `task`, `instruction_lang` | `UserPromptSubmit` | 프롬프트 원문 |
 | `task_type`, `tool_errors` | `PostToolUse` (누적) | 도구 이름·결과 |
 | `output`, `harness_position: main-to-user` | `Stop` | `last_assistant_message` |
-| `output`, `harness_position: sub-*`, 에이전트 | `SubagentStop` | `last_assistant_message`, `agent_type` |
+| `output`, `harness_position: sub-*`, 에이전트 | `SubagentStop` | `last_assistant_message`, `agent_type` (Claude Code 플러그인 에이전트는 `<플러그인>:<이름>` 꼴) |
 | 레코드 확정·append | `SessionEnd` | — |
 
 `profile`과 `upstream_versions`는 hook이 모르는 ko-quality 개념이다. **빌드가 `dist/`에 스탬프 파일을 남기고 로거가 그것을 읽는 방식**을 P7에서 확정한다.
@@ -390,7 +406,7 @@ task: string
 task_type: coding | writing | null
 task_type_method: rule
 output: string
-tokens: {output: int}
+tokens: {output: int, method: estimate}   # hook 입력에 토큰 수가 없다. 문자 수 기반 추정 (§13.1)
 upstream_report: string?
 usable: bool
 expect: null                           # 검증 단계에서 채움
@@ -426,14 +442,16 @@ assemble/ ────────────┤
 | 산출물 | 대상 | 담기는 것 |
 |---|---|---|
 | `dist/claude-code/` | Claude Code | `.claude-plugin/plugin.json`, `skills/`, `agents/`, `output-styles/`, `hooks/hooks.json`, `.mcp.json`, 빌드 스탬프 |
-| `dist/agent-plugin/` | Codex · Cursor · Copilot · Kiro · VS Code | `plugin.json`, `skills/`, `mcp.json`, `install/`, 빌드 스탬프 |
+| `dist/agent-plugin/` | Codex (Agent Plugins 클라이언트. 다른 클라이언트는 시험하지 않는다, §2.4) | `plugin.json`, `skills/`, `mcp.json`, `install/`, 빌드 스탬프 |
 
-`install/`에는 표준이 담지 못하는 것이 들어간다 — `.codex/agents/*.toml`, `AGENTS.md`에 붙일 절. hook을 플러그인에 번들하지 않기로 하면 `.codex/hooks.json`도 여기에 들어간다 (§11.5, P6).
+`install/`에는 표준이 담지 못하는 것이 들어간다 — `.codex/agents/*.toml`(Codex 플러그인은 서브에이전트를 싣지 못한다, §2.2), `AGENTS.md`에 붙일 절. hook을 플러그인에 번들하지 않기로 하면 `.codex/hooks.json`도 여기에 들어간다 (§11.5, P6).
+
+`.mcp.json`·`mcp.json`이 가리키는 서버는 06에서 tool이 없다. Claude Code도 서버 `instructions`를 세션 시작에 싣지만(§13.2) 정책은 출력 스타일과 에이전트 정의로 이미 받으므로, Claude Code 산출물에 서버를 실을지는 P7에서 정한다 (§16).
 
 **검사 (필수).**
 
 1. **출처:** 재추출 시 모든 조각의 `content_hash`가 일치한다. 불일치하면 빌드 중단.
-2. **정책 동일:** 같은 profile에 대해 두 산출물의 정책 텍스트가 문자열로 동일하다.
+2. **정책 동일:** 같은 profile에 대해 두 산출물의 정책 텍스트가 문자열로 동일하다. 비교 대상은 본문이다. 하네스별 frontmatter(`force-for-plugin` 등)와 감싸는 마커는 뺀다.
 3. **에이전트 동일:** 같은 profile에 대해 두 산출물의 에이전트 시스템 프롬프트가 동일하다.
 4. **스킬 동일:** `skills/`가 두 산출물에서 바이트 동일하다.
 
@@ -456,8 +474,10 @@ assemble/ ────────────┤
 | `instruction_lang` | `UserPromptSubmit`의 사용자 입력만 본다. 시스템 컨텍스트와 이전 턴의 언어는 반영되지 않는다 | 정의를 "직전 사용자 입력의 한글 비율"로 좁혀 적는다 |
 | `artifact_lang`의 mixed | 코드 + 한국어 주석 산출물에서 한국어 span 추출이 불완전하면 `output`이 오염된다 | 주석·문자열 리터럴·마크다운 문단만 추출하고 코드 토큰은 버린다. 추출 실패 시 `usable: false` |
 | `output`의 순도 | `last_assistant_message`는 모델 생성분이지만 사용자 입력 인용이나 도구 출력 붙여넣기가 섞일 수 있다 | 인용 블록과 코드 블록을 제거한 뒤 한국어 어절 20개 미만이면 버린다 |
+| `tokens.output` | **hook 입력에 토큰 수가 없다.** Claude Code·Codex 모두 `Stop`·`SubagentStop`·`SessionEnd` 입력에 usage가 없다. 예외는 Claude Code에서 `Agent` 도구의 `PostToolUse`가 그 서브에이전트 호출의 `usage`를 주는 것뿐 | `last_assistant_message`의 문자 수로 추정하고 `method: estimate`를 남긴다. 서브에이전트는 `Agent` 도구 `PostToolUse`의 `usage`를 쓸 수 있으면 `method: agent_tool` |
+| `harness_position`의 `sub-to-sub` | Claude Code는 서브에이전트 중첩을 허용하지만(§2.1) `SubagentStop` 입력에 부모가 없다. 같은 층의 병렬 서브에이전트와 중첩을 hook 순서만으로 가를 수 없다 | 06에서는 `sub-*`를 `sub-to-orchestrator`로 적고 `sub-to-sub`는 비워 둔다. 판별 방법은 P7에서 찾고, 없으면 값 자체를 뺀다 |
 | 변경률 | 모델이 im-not-ai 절차에 따라 스스로 낸 값이다. 우리가 계산한 것이 아니고, upstream의 Claude Code 경로도 이 값을 참고값으로만 본다(판정은 스크립트) | `upstream_report`에 원문 그대로 두고 별도 필드로 올리지 않는다. 코드 판정은 검증 단계 `ko.change_rate` (§15) |
-| Codex `instructions`의 정책 요약 | 원문이 아니라 요약이다 | `adapted`로 분류하고 원문과 출처를 남긴다 |
+| Codex `instructions`의 정책 요약 | 요약을 쓰기로 하면 원문이 아니다 | `adapted`로 분류하고 원문과 출처를 남긴다. 본문을 그대로 싣거나 채널을 빼면 이 행은 사라진다 (§9, P6) |
 
 ### 13.2 미확인 — 확인 시점이 정해져 있다
 
@@ -468,6 +488,9 @@ assemble/ ────────────┤
 | `adapted`가 필요한 양 | 모름 | 적음 | P1 |
 | Codex MCP resources | 문서 지원 목록에 없음. 이슈는 닫혔으나 문서 미반영 | 없음 | P6 재확인 |
 | Codex 플러그인의 hook 번들 | 문서에 있음 (2026-09-14). 사용자 신뢰 검토가 필요 | 가능 | P6 실측 |
+| 절차가 참조하는 rubric·연구 노트의 역할 | yoonmoon detect 참조 3종, im-not-ai 처방집. `procedure`·`taxonomy` 어느 쪽도 아님 (§7) | 새 역할이 필요할 수 있음 | P1·P2 실측, P4 확정 |
+| tool 없는 MCP 서버의 `instructions`가 모델에 닿는지 | Codex 문서는 tools와 함께 쓴다고만 적음. Claude Code는 세션 시작에 서버 instructions를 싣는다(2026-09-14 확인) | 닿지 않을 수 있음 | P6 (Codex), P7 (Claude Code) |
+| Codex 서브에이전트 중첩 | 문서에 없음 | 모름 | P6 |
 | Codex `injection_point` 구분 | `AGENTS.md`와 `developer_instructions`를 로거가 구분할 수 있는지 모름 | 못 읽으면 `unknown` | P7 |
 | 하네스 사양 전반 | 2026-09-14 재확인 (06b P0) | §2 그대로 | P6에서 Codex 재확인 |
 
@@ -477,6 +500,7 @@ assemble/ ────────────┤
 - **서브에이전트 조항은 여전히 조항이다.** 정책을 에이전트 정의에 써넣는 것으로 서브에이전트 **한 겹**은 해결되지만, 그 서브에이전트가 또 다른 에이전트를 띄울 때 정책을 넘기는 것은 여전히 모델에게 부탁하는 일이다. `sub-to-sub` 경로는 구조로 보장되지 않는다.
 - **프리셋 순서는 권고다.** `ko-route`가 모델에게 지시하는 것이라 실행 순서를 강제하지 못한다.
 - **초기 로그에는 `sub-*` 샘플이 적다.** 서브에이전트를 실제로 쓰는 작업에서만 생긴다.
+- **06의 로그에는 대조군이 없다.** 로거는 플러그인이 켜진 세션에서만 돌므로 `policy_on`은 사실상 항상 참이다. 04a가 로그의 조건으로 둔 "간헐적으로 policy를 끄고 돌린다"(off 교대)는 검증 단계에서 더한다 (§15). 그때까지 쌓이는 것은 on 표본뿐이고, 06의 레코드는 A/B가 아니라 분포와 형식의 재료다.
 
 ## 14. 프로토타입 계획
 
@@ -515,11 +539,12 @@ assemble/ ────────────┤
 - P1의 임시 형식을 그대로 써본다. **안 맞는 곳이 추상화 재료다** — 06b에 기록
 - `normalized/procedure/diagnose.yaml`, `taxonomy/diagnose.yaml`, `ko-diagnose` 스킬
 - 두 taxonomy가 서로 참조하지 않는지 확인
+- detect가 참조하는 rubric·연구 노트 3종을 어느 역할로 받을지 (§7). P1의 처방집과 함께 P4 추상화 재료
 - *끝나는 조건:* 진단 보고가 텍스트 수정 없이 나온다
 
 **P3 — 다른 성격의 역할: fluent-korean → `policy`**
 - `normalized/policy/fluent-korean.yaml` — 두 변형과 README 선택 블록 7종
-- **결정 ③ 확정:** 선택 블록 위치와 id, not-coding 정책의 서브에이전트 조항, `keep-coding-instructions`, 원본 frontmatter, `force-for-plugin`, 32 KiB 대비 분량
+- **결정 ③ 확정:** 선택 블록 위치와 id, not-coding 정책의 서브에이전트 조항, `keep-coding-instructions`, 원본 frontmatter, 두 프로파일 중 `force-for-plugin`을 켤 것 (§9)
 - `output-styles/agent-reply.md` + `agents/korean-reviewer.md`에 같은 정책 텍스트
 - *확인:* 메인 대화와 서브에이전트 **양쪽에** 정책이 걸리는가 (§2.1 제약 실측)
 - *끝나는 조건:* 결정 ③이 06b에 있고, 06 반영 여부를 사용자와 정했다
@@ -533,7 +558,7 @@ assemble/ ────────────┤
 - *끝나는 조건:* 네 번째 벤더가 들어갔고 §12 검사 1이 돈다
 
 **P5 — 조립과 Claude Code 빌드**
-- **결정 ② 확정** (빌드타임 예상)
+- **결정 ② 확정** (빌드타임 예상). 함께: 에이전트와 프로파일의 결합 (§8), presets의 `policy` 항목이 런타임에 뜻하는 것 (§6)
 - `assemble/` 완성: profiles 2, presets, agents 3, skills 템플릿 4
 - `build/claude_code.py` → `dist/claude-code/` 재생성, P1~P3 손 산출물과 diff 확인
 - §12 검사 2~4
@@ -545,6 +570,7 @@ assemble/ ────────────┤
 - `build/agent_plugin.py` → `dist/agent-plugin/` + `install/`
 - `AGENTS.md` 절 삽입·제거를 마커로 멱등하게
 - Codex MCP resources 재확인
+- **`instructions` 채널 확정:** 요약 / 본문 / 없음 (§9)
 - **hook 배포 확정:** 플러그인 번들(`extensions.com.openai.hooks`) 실측 — 신뢰 검토, 다른 클라이언트의 `extensions.com.openai` 처리, 제거 절차와의 관계. 안 되면 `install/`의 `.codex/hooks.json` (§11.5)
 - §12 검사 2~4 양쪽
 - *끝나는 조건:* Codex에서 정책이 메인과 서브에이전트에 걸리고 스킬이 호출된다
@@ -552,7 +578,8 @@ assemble/ ────────────┤
 **P7 — 서버와 최소 로거**
 - `server/` — `instructions`만
 - 빌드 스탬프 형식 확정, 로거가 `profile`과 `upstream_versions`를 읽는 방식
-- `logger/` — §11 조립, 양쪽 hook 배선
+- `logger/` — §11 조립, 양쪽 hook 배선. `tokens` 추정, `sub-to-sub` 판별 여부 (§13.1)
+- Claude Code 산출물에 tool 없는 서버를 실을지 (§12)
 - *끝나는 조건:* `~/.ko-quality/logs/`에 `usable: true` 레코드가 양쪽 하네스에서 쌓인다
 
 ### 14.3 완료 기준
@@ -572,6 +599,8 @@ assemble/ ────────────┤
 | `outcome` (작업 결과) | 레코드 |
 | `ko.gate` 외 MCP tool | `server/` — tools로만 |
 | `gate:` 절 | `assemble/profiles/*.yaml` — `watch:`에서 키 이름만 바꾼다 |
+| off 교대 (대조군) | `logger/` — 05a의 층화 축 2개 |
+| `gate` 단계 | `assemble/presets.yaml` 각 preset 끝. `quick: []`이 그 자리다 |
 | eval runner, cases | 새 디렉터리 |
 
 `05a_findings_measurement.md`가 검증 단계의 준비 문서다. 판정과 측정을 가르는 기준, 측정이 판정으로 새는 네 문, `watch:`의 승격 조건이 거기 있다.
@@ -610,7 +639,15 @@ assemble/ ────────────┤
 | ③ 정책 합성 규칙 | — | P3 |
 | ② 프로파일 런타임 / 빌드타임 | 빌드타임 | P5 |
 | `claude plugin eval` 도입 범위 | — | P5 |
+| Codex 메인 스레드 주입 지점 (`AGENTS.md` 전역 / 프로젝트 / `config.toml` `developer_instructions`) | — | P6 (§9) |
 | Codex 제거 절차 (마커) | — | P6 |
 | Codex hook 배포 (플러그인 번들 / 설치 단계) | 플러그인 번들 | P6 |
 | 빌드 스탬프 형식, 로거의 profile 인식 | 스탬프 파일 | P7 |
 | stop-slop-ko를 `policy` 조각 공급자로 넣을지 | — | P3 이후, `exempt` 복구와 함께 |
+| 두 프로파일 중 `force-for-plugin`을 켤 출력 스타일 | agent-reply | P3, 결정 ③ (§9) |
+| 에이전트와 프로파일의 결합 (고정 / 프로파일별 렌더) | — | P5 (§8) |
+| presets의 `policy` 항목이 런타임에 뜻하는 것 (없음 / 재주입) | — | P5 (§6) |
+| Codex `instructions` 채널 (요약 / 본문 / 없음) | — | P6 (§9) |
+| 절차가 참조하는 rubric·연구 노트의 역할 | — | P1·P2 실측, P4 (§7) |
+| Claude Code 산출물에 tool 없는 MCP 서버를 실을지 | — | P7 (§12) |
+| `sub-to-sub` 판별 방법 (없으면 값 삭제) | — | P7 (§13.1) |

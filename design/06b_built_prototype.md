@@ -6,7 +6,7 @@
 
 ## P0 — 사전 확인
 
-2026-09-14. 끝나는 조건을 충족했고 멈추는 조건(MIT가 아닌 upstream)에는 해당하지 않았다. 다만 06의 서술과 어긋나는 것이 upstream 쪽에서 12건, 하네스 쪽에서 2건 나왔다. 반영 검토 후보와, 그것을 다시 검토해 사용자와 정한 반영 결정은 이 절 끝에 있다.
+2026-09-14. 끝나는 조건을 충족했고 멈추는 조건(MIT가 아닌 upstream)에는 해당하지 않았다. 다만 06의 서술과 어긋나는 것이 upstream 쪽에서 13건(12건에 재검토에서 찾은 1건을 더함), 하네스 쪽에서 2건 나왔다. 반영 검토 후보와, 그것을 다시 검토해 사용자와 정한 반영 결정은 이 절 끝에 있다.
 
 ### 진행 방식
 
@@ -339,3 +339,63 @@
 - taxonomy 조각 앵커: 버전 태그가 섞인 제목 전체로 걸지, id 접두로 걸지 (06 §5.5의 규칙 3개 안에서)
 - invariant 목록: 고른 원천의 철칙 전부를 앵커와 함께 기록한다. 30/50 문구를 철칙판과 playbook판 중 어느 것으로 받을지는 원천 선택을 따른다 (반영 결정 c-2)
 - 과교정 관측: hjongc 원칙을 뺀 상태에서 과교정이 일어나는지 (반영 결정 c-3)
+
+## 검토 — P1 착수 전 문서 정리
+
+2026-09-14. P1에 들어가기 전에 문서 열셋을 통독해, 먼저 외부 사양과 무관하게 문서 안의 어긋남과 빈 곳을 찾고, 그다음 06 §2가 기대는 사양을 공식 문서로 다시 확인했다. 고친 것은 README와 06, 그리고 이 문서의 건수 하나다. 지난 단계 문서와 사이 문서는 개정 규칙대로 손대지 않았다.
+
+### 진행 방식
+
+- **내부 검토:** 주 작성자가 README·01~06b를 읽고 06 안의 절 사이, 06과 06b 사이, README와 나머지 사이의 어긋남을 모았다.
+- **로컬 확인:** `.cache/` 원본에서 fluent-korean 본문 크기와 README의 "다른 환경" 안내, im-not-ai 단일 호출판과 yoonmoon detect의 참조 목록을 직접 봤다.
+- **외부 검증:** 서브에이전트 둘(Sonnet)이 Claude Code(`code.claude.com/docs/en/`)와 Codex·Agent Plugins(`learn.chatgpt.com/docs/`, `developers.openai.com/plugins/`, `agent-plugins.org`) 공식 문서에서 06 §2·§11의 주장 26건을 인용과 함께 확인했다. 기억이 아니라 인용만 근거로 삼게 했다.
+
+### 문서 안에서 찾은 것
+
+| # | 위치 | 문제 | 처리 |
+|---|---|---|---|
+| 1 | 06 §5.2 vs §7·§14 | 정규화 파일 이름이 `<name>.yaml`(공급자)과 `rewrite.yaml`(슬롯)로 갈렸다 | §5.2에 규칙을 적음: `procedure`·`taxonomy`는 슬롯 이름, `policy`는 공급자 이름 |
+| 2 | 06 §2.4·§12 | "확인된 사실" 절에 P0가 확인하지 못했다고 적은 지원 클라이언트 목록이 그대로 있었다 | 외부 검증으로 확정(아래). 목록을 빼고 시험 대상은 Codex뿐이라고 적음 |
+| 3 | 06 §6 presets | `policy`는 빌드타임에 파일로 주입되는데 preset 항목으로도 있어, `ko-route`가 런타임에 만나면 뜻이 없다. `quick: []`은 빈 preset이다 | 뜻(없음 / 재주입)을 결정 ②와 함께 P5로. `quick`은 `gate`의 자리라고 적고 §15에 행 추가 |
+| 4 | 06 §7 | `ko-grammar` 참조가 `—`인데 upstream에 `references/` 둘이 있다. yoonmoon detect는 taxonomy 밖의 rubric·연구 노트 3종을, im-not-ai 단일 호출판은 처방집을 참조하는데 §5.3의 역할 셋에 받을 자리가 없다 | §7에 적고 §13.2·§16.2·P2에 넘김. P4 추상화 재료 |
+| 5 | 06 §8·§12 검사 3 | 에이전트 YAML에 프로파일이 없다. "같은 profile에 대해 에이전트 프롬프트가 동일"이 무엇을 비교하는지 정해지지 않았다 | 결합 방식(고정 / 프로파일별 렌더)을 P5로 |
+| 6 | 06 §9·§2.1 | 프로파일이 둘이면 출력 스타일도 둘인데 `force-for-plugin`은 하나만 이긴다. 06은 이 충돌을 몰랐다 | 결정 ③에 "어느 것을 강제할지"를 넣음. agent-reply 예상 |
+| 7 | 06 §9·§10·§13.1 | Codex `instructions`에 요약(`adapted`)을 싣기로 했으나, fluent-korean README가 다른 환경에는 본문 삽입을 안내하고 본문은 6 KB다. 요약을 쓸 이유가 약하다 | 요약 / 본문 / 없음을 P6으로 |
+| 8 | 06 §9 | "Codex 32 KiB 안에서의 분량"이 미결로 남아 있었다 | 실측 6,317 / 5,932바이트를 적음. 분량 문제 없음 |
+| 9 | 06 §11·§13.3 | 로거가 플러그인이 켜진 세션에서만 돌므로 `policy_on`이 항상 참이다. 04a가 로그의 조건으로 둔 off 교대가 06에 없고, 없다는 사실도 적혀 있지 않았다 | §13.3에 구조적 한계로 적고 §15에 "off 교대" 행 추가 |
+| 10 | 06 §11.2·§11.3 | `tokens.output`의 출처가 없다 | 외부 검증으로 hook 입력에 토큰 수가 없음을 확인(아래). 추정치로 바꿈 |
+| 11 | 06 §12 검사 2 | "정책 텍스트 동일"이 frontmatter를 포함하는지 불명 | 본문만 비교한다고 적음 |
+| 12 | 06 §12 | tool이 없는 서버를 Claude Code 산출물에도 싣는 이유가 없다 | P7로 |
+| 13 | 06b P0 머리말, README | 어긋난 것을 12건이라 적었는데 목록은 13건(재검토 추가분) | 13건으로 정정 |
+
+### 외부 검증 결과
+
+06 §2의 주장은 26건 중 23건이 그대로 확인됐다. 어긋난 것과 06이 몰랐던 것만 적는다.
+
+| 항목 | 결과 | 06 영향 |
+|---|---|---|
+| Agent Plugins 지원 클라이언트 | 사이트에는 기술 운영 위원회(Amazon · Cursor · Microsoft · OpenAI · Vercel)만 있고 지원 클라이언트 목록이 없다. Claude Code는 어디에도 없다 | §2.4·§12 고침 |
+| hook 입력의 토큰 수 | Claude Code·Codex 모두 `Stop`·`SubagentStop`·`SessionEnd`·`PostToolUse`에 usage가 없다. 유일한 예외는 Claude Code `Agent` 도구의 `PostToolUse`가 주는 그 호출의 `usage` | §11.3 `tokens`를 추정치로, §13.1에 행 추가 |
+| hook 입력의 `model` | Claude Code는 `SessionStart`에만 있고 선택 필드("생략될 수 있다"). Codex는 공통 필드(`model`, 활성 모델 slug) | §11.2에 적음 |
+| Claude Code 서브에이전트 중첩 | 기본 허용, 메인 아래 3층까지(`CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH`). 그런데 `SubagentStop` 입력에 부모 정보가 없다 | `sub-to-sub`가 실제로 생기지만 hook으로 가를 수 없다. §2.1·§13.1에 적고 판별은 P7 |
+| Claude Code 플러그인 에이전트 이름 | `agent_type`이 `<플러그인>:<에이전트>` 범위 이름으로 온다. hook matcher도 그 이름으로 건다 | §2.1·§11.2에 적음 |
+| Claude Code MCP `instructions` | 세션 시작에 tool 이름과 함께 실린다 | tool 없는 서버도 Claude Code에서 정책 사본이 된다. §12·§13.2에 적고 P7 |
+| Codex hook 활성 | 기본 활성. 끄는 키는 `[features] hooks = false`, `codex_hooks`는 낡은 별칭 | §2.2에 적음. 설치 안내에 활성화 단계가 필요 없다 |
+| Codex 플러그인 확장 키 | `extensions.com.openai`에 문서화된 키는 `apps` · `hooks` · `interface`뿐. 서브에이전트는 실을 수 없다 | `install/`의 `.codex/agents/*.toml`이 필수임을 §2.2·§12에 적음 |
+| Codex 메인 스레드 채널 | `AGENTS.md`는 전역(`~/.codex/`, `AGENTS.override.md` 우선)과 프로젝트 두 범위. 그 밖에 `config.toml`의 `developer_instructions`와 `model_instructions_file`이 있다 | §9의 Codex 메인 스레드 주입 지점에 대안으로 적고 P6 결정에 넣음 |
+| Codex MCP `instructions` | "서버의 tools와 함께 서버 전역 지침으로 쓴다"고만 적혀 있다. tool이 없는 서버의 `instructions`가 모델에 닿는지는 문서에 없다 | §2.2·§13.2에 적음. §9의 "없음" 선택지가 강해졌다 |
+| Codex 서브에이전트 중첩 | 문서에 없다 | §13.2 |
+| Codex 스킬 목록 예산 | 세션 시작에 싣는 스킬 목록은 컨텍스트의 2% 또는 8,000자 | §2.2·§7에 적음 |
+| Claude Code `SKILL.md` 길이 안내 | 500줄 이내 | §7의 100줄 규칙은 그보다 엄격. 충돌 없음 |
+| `claude plugin eval` 채점기 | `regex` · `tool_used` · `tool_order` · `file_exists` · `llm` · `baseline` 여섯 종 | 영향 없음. P5 재료 |
+
+확인된 것 중 06이 이미 맞게 적고 있던 것: 플러그인 구성요소와 선택적 매니페스트, 출력 스타일 frontmatter 넷과 서브에이전트 미적용, 플러그인 `settings.json`의 두 키, hook 33개와 `last_assistant_message`, transcript 경고(양쪽), Codex hook 이벤트 12종과 `SubagentStop`의 `agent_id`·`agent_type`, 플러그인 hook의 신뢰 검토, Codex 서브에이전트 TOML 필드, `mcp.json`(점 없음), Agent Plugins 구성요소.
+
+### 06에 반영한 것
+
+§머리말, §2.1, §2.2, §2.4, §5.2, §6, §7, §8, §9, §10, §11.2, §11.3, §12, §13.1, §13.2, §13.3, §14(P2·P3·P5·P6·P7), §15, §16.2. 설계를 바꾼 것은 없다. 어긋남을 고치고, 사실을 갱신하고, 정해지지 않은 것을 §16.2에 올렸다.
+
+### P1에 더 넘기는 것
+
+- im-not-ai 단일 호출판이 참조하는 처방집 `rewriting-playbook.md`를 어느 역할로 받을지 (P2의 yoonmoon rubric과 같은 문제)
+- 단일 호출판의 하네스 종속 문장 둘 — `_workspace/{run_id}/final.md` 쓰기 단계와 "정밀 검증은 Claude Code의 정밀 모드 권장" 안내 — 를 `selected`로 뺄지, 남길지
