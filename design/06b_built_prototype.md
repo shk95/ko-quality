@@ -6,7 +6,7 @@
 
 ## P0 — 사전 확인
 
-2026-09-14. 끝나는 조건을 충족했고 멈추는 조건(MIT가 아닌 upstream)에는 해당하지 않았다. 다만 06의 서술과 어긋나는 것이 upstream 쪽에서 12건 나왔다. 반영 검토 후보는 이 절 끝에 모았다.
+2026-09-14. 끝나는 조건을 충족했고 멈추는 조건(MIT가 아닌 upstream)에는 해당하지 않았다. 다만 06의 서술과 어긋나는 것이 upstream 쪽에서 12건, 하네스 쪽에서 2건 나왔다. 반영 검토 후보는 이 절 끝에 모았다.
 
 ### 진행 방식
 
@@ -166,6 +166,37 @@
 11. **im-not-ai 패턴 제목에는 버전 태그가 섞여 있어 앵커가 자주 바뀐다.** 85개 중 39개가 `· v2.7 신규` 같은 태그를 제목에 달고 있다. lock한 HEAD도 A-16 제목의 태그를 바꾼 머지다. 제목 전체 대신 id 접두(`A-16.`)로 앵커를 거는 방식을 P1에서 검토한다. 또 `## J. 시각 장식 남용 — S2~S3` 바로 아래에 내용 없는 `#` 한 줄이 있고, `## J-1. 과도한 **볼드**`만 H2이며(나머지 J는 H3), `## J.`와 J-1 사이에 패턴이 아닌 절이 두 개 끼어 있다. 제목 수준으로 계층을 잡으면 J-1이 대분류로 잡힌다.
 12. **korean-skills의 제목처럼 보이는 줄 일부는 코드블록 안에 있다.** (크로스체크 결과 참조)
 
+### 하네스 사양 재확인 (06 §2)
+
+확인일 2026-09-14. Claude Code는 `code.claude.com/docs/en/`의 `plugins-reference`, `output-styles`, `hooks`, `plugin-evals`를 봤다. hook 목록과 입력 필드는 원문 마크다운에서 직접 셌다. Codex는 `learn.chatgpt.com/docs/`의 MCP, subagents, hooks, build-skills, agents-md와 `developers.openai.com/plugins/build/plugins`를 봤고, Agent Plugins는 `agent-plugins.org`를 봤다. Codex와 Agent Plugins는 요약 도구를 거친 인용으로 확인했다.
+
+| 06 §2 항목 | 재확인 결과 | 영향 |
+|---|---|---|
+| **Claude Code** | | |
+| 플러그인 구성요소 | 06의 목록에 더해 `workflows/`, `themes/`(실험), `scripts/`가 있다. monitors는 `monitors/monitors.json`이다. 매니페스트는 선택이다 | 없음 |
+| 플러그인 `settings.json` | `agent`, `subagentStatusLine`만 지원. 같음 | 없음 |
+| 출력 스타일 frontmatter | 네 필드 같음. `force-for-plugin`은 여러 플러그인이 켜 두면 "먼저 로드된 것"을 쓴다 | 사용자가 다른 force 플러그인을 쓰면 우리 정책이 걸리지 않을 수 있다 (P3) |
+| 서브에이전트 미적용 | 같음. "Output styles apply to the main conversation and to a fork … Other subagents run their own system prompt" | 없음 |
+| 스타일 변경 적용 시점 | v2.1.251부터 다음 메시지에 적용. 그전에는 `/clear`나 새 세션 | 01a의 서술은 낡음. 06 영향 없음 |
+| hook 이벤트 수 | 원문 표 기준 **33개** (06은 32개) | 없음. 06이 쓰는 여섯 개는 모두 있음 |
+| `Stop`·`SubagentStop` | 둘 다 `last_assistant_message`. `SubagentStop`은 `agent_id`, `agent_type`, `agent_transcript_path`도 준다 | 없음 |
+| transcript 경고 | 같음. "written asynchronously and may lag" | 없음 |
+| `claude plugin eval` | 있음. no-plugin 기준선과 비교하고, 채점기는 정규식·도구 호출·루브릭(모델 판정). 실행마다 모델 호출 비용이 든다 | 없음 (P5 결정 재료) |
+| `--plugin-dir`, `/reload-plugins` | 같음 | 없음 |
+| **Codex** | | |
+| 문서 위치 | `developers.openai.com/codex/*`가 `learn.chatgpt.com/docs/*`로 308 이동 | 출처 URL만 |
+| **플러그인 매니페스트** | 루트 `plugin.json`(Agent Plugins `$schema` 선언)이 기본이고, `.codex-plugin/plugin.json`은 호환용이다 | **06 §2.2와 다름.** `dist/agent-plugin/` 한 벌이 Codex에도 그대로 맞을 가능성이 커짐 (P6) |
+| **플러그인 hook 번들** | **가능.** "Installed plugins can also bundle lifecycle config through their plugin manifest or a default `hooks/hooks.json` file." | **06 §11.5·§13.2의 "불가, 설치 단계" 가정과 반대.** P6 재확인 항목이 앞당겨 풀렸다. `install/`의 `.codex/hooks.json`이 필요 없을 수 있다 |
+| skills | `.agents/skills`(현재 디렉터리, 상위, 저장소 루트), `$HOME/.agents/skills`, `/etc/codex/skills`, 시스템, 플러그인. frontmatter `name`·`description`. `$이름`으로 호출 | 없음 |
+| 서브에이전트 TOML | 같음. 선택 필드에 `skills.config`가 추가됐고 그 밖의 `config.toml` 키도 허용 | 없음 |
+| `AGENTS.md` | 32 KiB(`project_doc_max_bytes`, 올릴 수 있음). 같음 | 없음 |
+| MCP | STDIO, Streamable HTTP, 서버 `instructions`. resources·prompts는 언급이 없다 | tools 전용 가정 유지 |
+| hook 이벤트 | `SessionStart`, `SessionEnd`, `PreToolUse`, `PostToolUse`, `PermissionRequest`, `PreCompact`, `PostCompact`, `UserPromptSubmit`, `SubagentStart`, `SubagentStop`, `Stop`, `Interrupt` | 06 §2.3의 여섯 개 모두 있음 |
+| transcript 불안정 | 같음. "the transcript format isn't a stable interface for hooks" | 없음 |
+| **Agent Plugins 1.0** | | |
+| 구성요소 | `plugin.json`, `skills/`, `mcp.json`, 역도메인 확장 네임스페이스. 같음 | 없음 |
+| 참여 | TSC는 Amazon, Cursor, Microsoft, OpenAI, Vercel이고 Google 합류가 발표됐다. Claude Code는 언급이 없다. **06이 적은 지원 클라이언트 목록은 이번에 확인하지 못했다** | 없음 |
+
 ### 끝나는 조건
 
 - [x] `upstream/lock.yaml`에 4종이 커밋·라이선스와 함께 있다
@@ -181,6 +212,7 @@
 | a | §5.3, §6 `blocks` | `subagent-propagation`을 선택 블록에서 빼고 coding 변형 본문으로 본다. 블록 목록을 README 실물 7종으로 바꾼다 | 위 1, 2 |
 | b | §5.5 | 앵커를 제목 텍스트에서 "제목, XML형 태그, id 접두, 표 행"으로 넓힌다. 코드블록 안 제목은 앵커로 치지 않는다 | 위 5, 6, 11, 12 |
 | c | §7 `ko-rewrite` invariant | 변경률 invariant가 모델 자기 보고라는 한계를 적는다. upstream의 추가 invariant 다섯 개를 받을지 정한다 | 위 8, 9 |
+| d | §2.2, §11.5, §12, §13.2 | Codex 루트 `plugin.json`과 플러그인 hook 번들을 반영하고, 확인일을 2026-09-14로 바꾼다 | 하네스 재확인 |
 | e | §5.3, 01a 인용 | yoonmoon "10대" → 11대 | 위 4 |
 
 ### P1에 넘기는 것
