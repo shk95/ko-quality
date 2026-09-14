@@ -36,7 +36,7 @@ concept → exploration → spec → plan → preflight → [build] → review
 
 ## Decisions during build
 
-- Do not stop to ask. If you feel the need to stop, first re-check your confidence: what could you have missed? Look again, then decide.
+- The build never halts. If you feel the need to stop, re-check your confidence: what could you have missed? Look again, then decide and continue. Whatever would have been a reason to stop — a mechanism that does not work as specified, a done-condition you cannot reach, a license or legal doubt — is handled by taking the cheapest-to-reverse path and marking the record **release-blocked** with the reason. Whether `dev` merges to `master` is decided in review, not during the build.
 - Minor decisions: take the recommended or conventional option.
 - Major decisions: weigh two candidates — the choice that is best for the build's goal, and the choice that is cheapest to reverse. Prefer the best choice. Because the best choice usually costs more now, first find out whether that cost is worth paying: delegate the exploration to an independent subagent, judge from its report, then pick the one that is worth it.
 - Attach a confidence level to every judgment. Low confidence means re-verify before acting, not proceed anyway.
@@ -61,7 +61,7 @@ Three tiers, named by role so the rules read the same in every harness.
 
 ## Git
 
-- `master` holds completed build stages. `dev` is the working branch.
+- `master` holds completed build stages. `dev` is the working branch. The merge to `master` is a review decision: every release-blocked mark in `6-build/` is resolved or accepted there.
 - Branch off `dev` for review, fixes, and parallel work; merge back to `dev`. At the end of a build stage, `dev` merges to `master`.
 - Commit messages in English, one step per commit.
 
