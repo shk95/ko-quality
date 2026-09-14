@@ -5,6 +5,8 @@
 > 05와의 차이: 05는 로거를 중심에 두고 도구를 뒤로 미뤘다. 06은 도구를 앞에 두고 로거를 최소형으로 남긴다. 05는 04와 나란히 보류로 남긴다.
 >
 > **개정됨 (06a 반영).** upstream과 우리 사이에 **공급 층**을 두고, 추상화(스키마)는 프로토타입 뒤로 미뤘다. 구현은 §14의 프로토타입 계획 P0부터 시작한다. 근거는 `06a_findings_supply.md`.
+>
+> **개정됨 (06b P0 반영, 2026-09-14).** 정책 조각의 단위(§5.3·§6·§9), 앵커 규칙(§5.5), `ko-rewrite` invariant의 범위와 변경률의 성격(§1·§7·§13.1), Codex 플러그인 사실(§2·§11.5·§12·§13.2). 근거와 기각한 선택지는 `06b_built_prototype.md`의 P0 "06 반영 결정".
 
 ## 1. 목적과 전제
 
@@ -12,7 +14,7 @@
 
 **전제.**
 - upstream은 설치되고 하라는 대로 동작한다.
-- upstream이 스스로 내는 수치(변경률, 등급)는 그대로 받아들인다.
+- upstream이 스스로 내는 수치(변경률, 등급)는 그대로 받아들인다. 단 upstream이 스크립트로 계산하는 값은 06이 받지 못한다. 06이 받는 변경률은 모델의 자기 보고다 (§7, §13.1).
 - **upstream의 문장을 신뢰한다. 그러므로 문장을 고치지 않는다.** 구조는 우리 규격으로 바꿔도 된다 (§5).
 - **효과의 검증은 다음 단계의 일이다.** 06은 재료만 남긴다.
 
@@ -30,19 +32,19 @@
 
 ## 2. 확인된 사실
 
-이 스펙은 2026-09-12에 공식 문서로 확인한 아래 사실 위에 서 있다. **하네스 사양은 빠르게 바뀌므로 구현 착수 시(P0) 재확인한다.**
+이 스펙은 2026-09-12에 공식 문서로 확인하고 **2026-09-14(P0)에 재확인한** 아래 사실 위에 서 있다. 재확인 결과와 출처는 `06b` P0에 있다. **하네스 사양은 빠르게 바뀌므로 Codex 부분은 P6에서 한 번 더 확인한다 (§14).**
 
 ### 2.1 Claude Code
 
 | 항목 | 확인된 것 |
 |---|---|
-| 플러그인 구성요소 | `skills/`, `commands/`, `agents/`, `hooks/hooks.json`, `.mcp.json`, `.lsp.json`, `monitors/`, `bin/`, `settings.json`, `output-styles/` |
-| 매니페스트 | `.claude-plugin/plugin.json` |
+| 플러그인 구성요소 | `skills/`, `commands/`, `agents/`, `workflows/`, `hooks/hooks.json`, `.mcp.json`, `.lsp.json`, `monitors/monitors.json`, `bin/`, `scripts/`, `settings.json`, `output-styles/`, `themes/`(실험) |
+| 매니페스트 | `.claude-plugin/plugin.json`. 선택이며, 없으면 기본 위치에서 구성요소를 찾는다 |
 | 출력 스타일 frontmatter | `name`, `description`, `keep-coding-instructions`, `force-for-plugin` |
 | `force-for-plugin: true` | 플러그인이 켜져 있으면 사용자 선택 없이 자동 적용. 사용자의 `outputStyle` 설정을 덮어씀 |
 | 플러그인 `settings.json` | `agent`와 `subagentStatusLine` 키만 지원. `agent`는 플러그인 에이전트를 **메인 스레드**로 올림 |
 | MCP | tools · resources · prompts 전부 |
-| hook | 32개 이벤트. 플러그인이 `hooks/hooks.json`으로 나름 |
+| hook | 33개 이벤트. 플러그인이 `hooks/hooks.json`으로 나름 |
 | 동작 평가 | `claude plugin eval` — 프롬프트 세트를 플러그인 on/off로 반복 실행해 기여도를 봄 |
 | 로컬 로드 | `claude --plugin-dir <dir>`, 변경 후 `/reload-plugins` |
 
@@ -52,11 +54,11 @@
 
 | 항목 | 확인된 것 |
 |---|---|
-| 플러그인 | `.codex-plugin/plugin.json` + `skills/` + `.mcp.json`. 마켓플레이스 있음 |
+| 플러그인 | 루트 `plugin.json`(Agent Plugins `$schema` 선언) + `skills/` + `mcp.json`. OpenAI 전용 설정은 루트 `plugin.json`의 `extensions.com.openai`. `.codex-plugin/plugin.json`은 호환용. 마켓플레이스 있음 |
 | skills | `.agents/skills/`, `$HOME/.agents/skills`, `/etc/codex/skills`. `SKILL.md` + frontmatter. CLI에서 `$`로 명시 호출 |
 | 서브에이전트 | `~/.codex/agents/` 또는 `.codex/agents/`의 TOML. `name`, `description`, `developer_instructions` 필수. `model`, `model_reasoning_effort`, `sandbox_mode`, `mcp_servers` 지정 가능 |
 | 상시 지시문 | `AGENTS.md`. 32 KiB 상한 |
-| hook | `~/.codex/hooks.json`, `<repo>/.codex/hooks.json`, 또는 `config.toml`의 `[hooks]` |
+| hook | `~/.codex/hooks.json`, `<repo>/.codex/hooks.json`, `config.toml`의 `[hooks]`, **플러그인 번들**(`extensions.com.openai.hooks`, 없으면 기본 `hooks/hooks.json`). 플러그인 hook은 설치·활성화만으로 신뢰되지 않으며, 사용자가 정의를 검토하고 신뢰해야 실행된다(다른 비관리 hook과 같은 절차). hook 스크립트는 실행 환경에 있어야 한다 |
 | MCP | **tools 전용.** STDIO / Streamable HTTP / 서버 `instructions` 필드만 지원 목록에 있음 |
 
 **결정적 제약:** Codex의 MCP 클라이언트는 `tools/list`와 `tools/call`만 발행한다. **resources와 prompts가 도달하지 않는다.**
@@ -81,6 +83,7 @@
 벤더 중립 패키징 표준. `plugin.json` + `skills/` + `mcp.json` + `com.example.client/` 네임스페이스.
 
 - 구성요소는 **Agent Skills와 MCP 서버 둘뿐**이다. 에이전트 정의·hook·출력 스타일은 표준에 없다.
+- 표준 밖의 것은 역도메인 확장 자리에 싣는다. Codex는 hook을 `extensions.com.openai`에 싣는다 (§2.2).
 - Codex · Cursor · GitHub Copilot · Kiro · VS Code가 지원한다.
 - **Claude Code는 참여하지 않고 자체 포맷을 유지한다.**
 
@@ -168,7 +171,8 @@ lock.yaml ─ 받아오기 ─→ .cache/<name>@<commit>/
 | (검증 단계) `ruleset` | 결정론 규칙 | 미정 | 미정 |
 
 - 형식을 맞추는 것이지 내용을 합치는 게 아니다. rewrite taxonomy와 diagnose taxonomy는 별개 슬롯이고 한 컨텍스트에 함께 올리지 않는다.
-- `policy-blocks`(subagent-propagation, honorific, think-in-korean)는 **fluent-korean README의 문장**이다. `normalized/policy/`의 선택 블록으로 둔다. 조립 쪽은 프로파일별로 어느 블록을 켤지만 고른다.
+- **`policy`의 정규화 단위는 upstream이 배포한 단위와 같다.** 변형 파일 2개(`fluent-korean` = coding, `fluent-korean-not-coding`)와 README `## 세부 동작` 절의 **선택 블록 7개**다. 블록은 fluent-korean README의 문장이고 `normalized/policy/`에 둔다. 조립 쪽은 프로파일별로 어느 블록을 켤지만 고른다.
+- **서브에이전트 조항은 블록이 아니다.** coding 변형 본문의 `## 추가 사항` 절이고 not-coding 변형에는 없다. not-coding 정책에도 이 조항을 붙일지는 P3 합성 규칙에서 정한다(붙이면 `selected`).
 
 ### 5.4 변환 등급
 
@@ -189,12 +193,16 @@ provenance:
   upstream: im-not-ai
   commit: <sha>
   path: <upstream 안의 파일>
-  anchor: "<제목 텍스트>"
+  anchor: <구조적 위치 표지>          # 형식은 P1~P3에서 써 보고 P4에서 확정
   content_hash: sha256:<조각 해시>
   transform: verbatim | selected | adapted
 ```
 
-앵커로 찾고 해시로 확인한다. 줄 번호는 쓰지 않는다. 재추출 때 앵커를 못 찾거나 해시가 다르면 빌드가 멈춘다.
+앵커로 찾고 해시로 확인한다. 앵커는 줄 번호가 아닌 **구조적 위치 표지**다. upstream마다 조각을 가르는 표지가 달라서(제목, XML형 태그, 패턴 id, 굵은 라벨, 표 행 — 06b P0) **형식은 P1~P3에서 써 보고 P4에서 확정한다.** 지금 정해진 규칙은 셋이다.
+
+1. 코드블록 안의 줄은 제목으로 치지 않는다.
+2. 앵커는 파일 안에서 유일해야 한다. 유일하지 않으면 상위 위치까지 적는다.
+3. 재추출 때 "앵커 없음"과 "해시 다름"을 다른 실패로 보고한다. 둘 다 빌드를 멈춘다.
 
 ### 5.6 lock
 
@@ -219,7 +227,7 @@ provenance:
 id: agent-reply
 register: 에이전트가 사용자에게 하는 보고·설명
 policy: policy/fluent-korean#coding          # normalized 참조
-blocks: [subagent-propagation]               # normalized 의 선택 블록 id
+blocks: []                                   # normalized 의 선택 블록 id. 서브에이전트 조항은 coding 본문에 있다 (§5.3)
 default_preset: standard
 intensity: default
 exempt: []
@@ -230,7 +238,7 @@ exempt: []
 id: formal-report
 register: 사용자에게 전달되는 문서
 policy: policy/fluent-korean#not-coding
-blocks: [honorific]
+blocks: [honorific]                          # 블록 id는 P3에서 정한다
 default_preset: full
 intensity: conservative
 exempt: []            # stop-slop-ko 공급 여부 결정 전까지 비움 (§16)
@@ -257,7 +265,7 @@ full:     [policy, rewrite, grammar, diagnose]
 |---|---|---|
 | `upstream/normalized/procedure/<role>.yaml` | 절차 단계, upstream invariant | upstream |
 | `upstream/normalized/taxonomy/<role>.yaml` | `references/taxonomy-<role>.md`로 렌더 | upstream |
-| `assemble/skills/<name>.md` | `description` frontmatter, 호출 규약, 우리 invariant | 우리 |
+| `assemble/skills/<name>.md` | `description` frontmatter, 호출 규약 | 우리 |
 
 | skill | 절차 원천 | 참조 |
 |---|---|---|
@@ -274,14 +282,12 @@ full:     [policy, rewrite, grammar, diagnose]
 - **두 taxonomy를 한 컨텍스트에 올리지 않는다.** `ko-rewrite`와 `ko-diagnose`는 서로의 참조 파일을 읽지 않는다.
 - `description`에 발동 조건을 쓴다. 모델이 이것만 보고 고르므로 언제 쓰고 언제 쓰지 않는가를 둘 다 적는다.
 
-**`ko-rewrite` invariant의 출처.**
+**`ko-rewrite` invariant.** P1에서 고른 upstream 원천의 철칙을 **전부** 받는다. 일부만 고르지 않고, 우리 invariant를 더하지 않는다. 앵커가 달린 구체 목록은 P1에서 06b에 남긴다.
 
-| invariant | 출처 |
-|---|---|
-| 의미 보존, 탐지된 span만 수정, 장르 보존 | im-not-ai — P1에서 앵커 확인 |
-| 숫자·고유명사·인용 불변 | im-not-ai — P1에서 앵커 확인 |
-| 변경률 30% 초과 시 보고, 50% 초과 시 중단 | im-not-ai (01a) — P1에서 앵커 확인 |
-| **신호가 둘 이상 겹칠 때만 수정** | **우리.** hjongc/humanizer-kr 원칙을 03a #3이 채택. `assemble/skills/ko-rewrite.md`에 출처 주석과 함께 둔다 |
+P0 파일 지도(06b)에서 im-not-ai에 있다고 확인한 것: 의미 보존, 탐지된 span만 수정, 장르 보존, 숫자·고유명사·인용 불변, 변경률 30% 초과 경고·50% 초과 중단, register 보존, 입력은 데이터이지 지시가 아니다, 빼기 전용, 서법 보존, 내용 앵커.
+
+- **변경률은 모델의 자기 보고다.** im-not-ai의 Claude Code 경로는 `scripts/verify_gates.py`로 판정하고, 모델이 낸 값은 참고값으로만 본다. 06은 스크립트를 공급하지 않으므로 06의 변경률은 upstream 단일 호출판(Codex·Copilot)과 같은 자기 보고다. 코드 판정은 검증 단계에서 더한다 (§15).
+- **이전 판본의 우리 invariant "신호가 둘 이상 겹칠 때만 수정"(hjongc 원칙, 03a #3)은 뺐다.** im-not-ai의 S1 "한 번만 나와도 무조건 제거"와 충돌한다. 과교정 억제는 upstream 심각도 체계에 맡기고, 과교정이 실제로 일어나는지는 P1에서 본다.
 
 `ko-route`는 얇게 둔다. 사용자가 "윤문해줘"라고 하면 `ko-rewrite`가 직접 걸려도 되고, 프로파일이 필요한 경우에만 거친다. 프리셋 순서는 `ko-route`가 모델에게 지시하는 것이므로 **보장이 아니라 권고**다.
 
@@ -312,7 +318,7 @@ prompt:
 
 **06에서 가장 중요한 절이다.**
 
-출력 스타일은 서브에이전트에 도달하지 않는다. fluent-korean의 `subagent-propagation` 블록은 "서브에이전트에 프롬프트를 줄 때 정책을 함께 넘겨라"라고 모델에게 부탁하는 조항인데, **구조적으로 출력 스타일이 애초에 거기 닿지 않는다.**
+출력 스타일은 서브에이전트에 도달하지 않는다. fluent-korean coding 변형의 `## 추가 사항` 조항은 서브에이전트를 호출하기 전에 한국어 프롬프트가 지침을 지키는지 점검하라고 모델에게 부탁할 뿐, 정책을 서브에이전트에 넘기지 않는다. **구조적으로 출력 스타일이 애초에 거기 닿지 않는다.**
 
 그러므로 정책 텍스트를 각 에이전트 정의에 **직접 써넣는 것이 선택이 아니라 필수**다.
 
@@ -322,7 +328,7 @@ prompt:
 | 서브에이전트 | `agents/<name>.md` 본문에 정책 텍스트 포함 | `developer_instructions`에 포함 |
 | 보조 채널 | — | MCP 서버 `instructions` 필드 |
 
-**합성 규칙은 P3에서 확정한다** (§16 결정 ③). 정할 것: 선택 블록의 위치, `keep-coding-instructions` 값, 원본 frontmatter 보존 여부, Codex 32 KiB 안에서의 분량.
+**합성 규칙은 P3에서 확정한다** (§16 결정 ③). 정할 것: 선택 블록의 위치(README는 "지침 끝에 추가"하라고 안내한다), 블록 id, not-coding 정책에 서브에이전트 조항을 붙일지, `keep-coding-instructions` 값, 원본 frontmatter 보존 여부, Codex 32 KiB 안에서의 분량.
 
 **메인 스레드 대안.** Claude Code는 플러그인 `settings.json`의 `agent` 키로 플러그인 에이전트를 메인 스레드로 올릴 수 있다. 출력 스타일보다 강하게 걸리지만 사용자의 메인 에이전트를 통째로 바꾸므로 기본값으로 쓰지 않는다. 설치 안내에 선택지로만 적는다.
 
@@ -404,9 +410,9 @@ expect: null                           # 검증 단계에서 채움
 | 하네스 | 방법 |
 |---|---|
 | Claude Code | 플러그인이 `hooks/hooks.json`으로 나른다 |
-| Codex | **설치 단계.** Agent Plugins 규격에 hook이 없으므로 설치 안내가 `.codex/hooks.json`을 쓰게 한다 |
+| Codex | **플러그인 번들이 1순위 후보다** (`extensions.com.openai.hooks`). 대안은 설치 안내가 `.codex/hooks.json`을 쓰게 하는 설치 단계다. 어느 쪽이든 사용자의 hook 신뢰 검토가 필요하다. P6 실측 후 확정한다 |
 
-> **미확인.** Codex 플러그인이 hook을 번들할 수 있는지는 공식 문서에 없다. 설치 단계로 가정한다.
+> **확인됨 (2026-09-14).** Codex 플러그인은 hook을 번들할 수 있다 (§2.2). 신뢰 검토가 설치 흐름과 로거 가동에 주는 영향, 다른 Agent Plugins 클라이언트가 `extensions.com.openai`를 무시하는지, 제거 절차와의 관계는 P6에서 실측한다.
 
 ## 12. 빌드와 배포
 
@@ -422,7 +428,7 @@ assemble/ ────────────┤
 | `dist/claude-code/` | Claude Code | `.claude-plugin/plugin.json`, `skills/`, `agents/`, `output-styles/`, `hooks/hooks.json`, `.mcp.json`, 빌드 스탬프 |
 | `dist/agent-plugin/` | Codex · Cursor · Copilot · Kiro · VS Code | `plugin.json`, `skills/`, `mcp.json`, `install/`, 빌드 스탬프 |
 
-`install/`에는 표준이 담지 못하는 것이 들어간다 — `.codex/agents/*.toml`, `.codex/hooks.json`, `AGENTS.md`에 붙일 절.
+`install/`에는 표준이 담지 못하는 것이 들어간다 — `.codex/agents/*.toml`, `AGENTS.md`에 붙일 절. hook을 플러그인에 번들하지 않기로 하면 `.codex/hooks.json`도 여기에 들어간다 (§11.5, P6).
 
 **검사 (필수).**
 
@@ -450,25 +456,25 @@ assemble/ ────────────┤
 | `instruction_lang` | `UserPromptSubmit`의 사용자 입력만 본다. 시스템 컨텍스트와 이전 턴의 언어는 반영되지 않는다 | 정의를 "직전 사용자 입력의 한글 비율"로 좁혀 적는다 |
 | `artifact_lang`의 mixed | 코드 + 한국어 주석 산출물에서 한국어 span 추출이 불완전하면 `output`이 오염된다 | 주석·문자열 리터럴·마크다운 문단만 추출하고 코드 토큰은 버린다. 추출 실패 시 `usable: false` |
 | `output`의 순도 | `last_assistant_message`는 모델 생성분이지만 사용자 입력 인용이나 도구 출력 붙여넣기가 섞일 수 있다 | 인용 블록과 코드 블록을 제거한 뒤 한국어 어절 20개 미만이면 버린다 |
-| 변경률 | im-not-ai가 자기 기준으로 낸 값을 그대로 받는다. 우리가 계산한 것이 아니다 | `upstream_report`에 원문 그대로 두고 별도 필드로 올리지 않는다 |
+| 변경률 | 모델이 im-not-ai 절차에 따라 스스로 낸 값이다. 우리가 계산한 것이 아니고, upstream의 Claude Code 경로도 이 값을 참고값으로만 본다(판정은 스크립트) | `upstream_report`에 원문 그대로 두고 별도 필드로 올리지 않는다. 코드 판정은 검증 단계 `ko.change_rate` (§15) |
 | Codex `instructions`의 정책 요약 | 원문이 아니라 요약이다 | `adapted`로 분류하고 원문과 출처를 남긴다 |
 
 ### 13.2 미확인 — 확인 시점이 정해져 있다
 
 | 항목 | 상태 | 가정 | 확인 시점 |
 |---|---|---|---|
-| upstream 저장소 URL과 라이선스 | 03a #12가 "전부 MIT"라 했으나 재확인 안 함 | MIT | **P0. 확인 전 추출 금지** |
-| upstream 파일 구조 | 역할별 내용이 어느 파일·제목 아래 있는지 모름 | 제목 앵커로 찾을 수 있음 | P0 지도, P1 실측 |
+| upstream 저장소 URL과 라이선스 | **확인됨.** 4종 모두 MIT (2026-09-14, 06b P0) | — | P0 완료 |
+| upstream 파일 구조 | P0 지도 완료(06b). 제목으로 찾을 수 없는 조각이 있음 | 구조적 위치 표지로 찾을 수 있음 (§5.5) | P1~P3 실측, P4 확정 |
 | `adapted`가 필요한 양 | 모름 | 적음 | P1 |
 | Codex MCP resources | 문서 지원 목록에 없음. 이슈는 닫혔으나 문서 미반영 | 없음 | P6 재확인 |
-| Codex 플러그인의 hook 번들 | 문서에 없음 | 불가 | P6 재확인 |
+| Codex 플러그인의 hook 번들 | 문서에 있음 (2026-09-14). 사용자 신뢰 검토가 필요 | 가능 | P6 실측 |
 | Codex `injection_point` 구분 | `AGENTS.md`와 `developer_instructions`를 로거가 구분할 수 있는지 모름 | 못 읽으면 `unknown` | P7 |
-| 하네스 사양 전반 | 2026-09-12 기준 | §2 그대로 | P0 재확인 |
+| 하네스 사양 전반 | 2026-09-14 재확인 (06b P0) | §2 그대로 | P6에서 Codex 재확인 |
 
 ### 13.3 구조적 한계 — 고칠 수 없다
 
 - **정책 효과는 06에서 측정되지 않는다.** 결함이 아니라 범위다.
-- **`subagent-propagation`은 여전히 조항이다.** 정책을 에이전트 정의에 써넣는 것으로 서브에이전트 **한 겹**은 해결되지만, 그 서브에이전트가 또 다른 에이전트를 띄울 때 정책을 넘기는 것은 여전히 모델에게 부탁하는 일이다. `sub-to-sub` 경로는 구조로 보장되지 않는다.
+- **서브에이전트 조항은 여전히 조항이다.** 정책을 에이전트 정의에 써넣는 것으로 서브에이전트 **한 겹**은 해결되지만, 그 서브에이전트가 또 다른 에이전트를 띄울 때 정책을 넘기는 것은 여전히 모델에게 부탁하는 일이다. `sub-to-sub` 경로는 구조로 보장되지 않는다.
 - **프리셋 순서는 권고다.** `ko-route`가 모델에게 지시하는 것이라 실행 순서를 강제하지 못한다.
 - **초기 로그에는 `sub-*` 샘플이 적다.** 서브에이전트를 실제로 쓰는 작업에서만 생긴다.
 
@@ -495,13 +501,14 @@ assemble/ ────────────┤
 - *멈추는 조건:* MIT가 아닌 upstream이 있으면 그 역할의 공급 방식을 사용자와 정한다
 
 **P1 — 수직 슬라이스: im-not-ai → `ko-rewrite`**
+- **절차 원천 선택:** 오케스트레이터(`skills/humanize-korean/SKILL.md`)에서 골라낼지, 단일 호출판(`codex/skills/humanize-korean/SKILL.md`)을 쓸지 (06b P0)
 - 스키마 없이 임시 YAML로 손 추출 → `upstream/normalized/procedure/rewrite.yaml`, `taxonomy/rewrite.yaml`. 모든 조각에 §5.5 출처
-- `assemble/skills/ko-rewrite.md` — `description`, 호출 규약, hjongc 원칙(우리 문장, 출처 주석)
+- `assemble/skills/ko-rewrite.md` — `description`, 호출 규약
 - 손으로 `dist/claude-code/` 최소형: `.claude-plugin/plugin.json` + `skills/ko-rewrite/SKILL.md` + `references/taxonomy-rewrite.md`
 - upstream 문장과 우리 문장의 구분 방식 정하기
 - `claude --plugin-dir dist/claude-code`로 로드하고 윤문 요청 3~5건
 - *확인:* 스킬이 걸리는가 / 절차를 따르는가 / 참조 파일을 필요할 때만 읽는가 / 변경률 보고가 나오는가
-- *06b 기록:* `adapted` 개수와 위치, 앵커가 버텼는지, 임시 YAML에서 불편했던 필드, 100줄 제한
+- *06b 기록:* `adapted` 개수와 위치, 앵커가 버텼는지, 임시 YAML에서 불편했던 필드, 100줄 제한, 받은 invariant 목록과 앵커, 과교정이 관측됐는지 (§7)
 - *끝나는 조건:* 한 건 이상 실제 윤문이 절차대로 수행된다
 
 **P2 — 같은 역할, 다른 벤더: yoonmoon → `ko-diagnose`**
@@ -511,8 +518,8 @@ assemble/ ────────────┤
 - *끝나는 조건:* 진단 보고가 텍스트 수정 없이 나온다
 
 **P3 — 다른 성격의 역할: fluent-korean → `policy`**
-- `normalized/policy/fluent-korean.yaml` — 두 변형과 선택 블록 3종
-- **결정 ③ 확정:** 선택 블록 위치, `keep-coding-instructions`, 원본 frontmatter, `force-for-plugin`, 32 KiB 대비 분량
+- `normalized/policy/fluent-korean.yaml` — 두 변형과 README 선택 블록 7종
+- **결정 ③ 확정:** 선택 블록 위치와 id, not-coding 정책의 서브에이전트 조항, `keep-coding-instructions`, 원본 frontmatter, `force-for-plugin`, 32 KiB 대비 분량
 - `output-styles/agent-reply.md` + `agents/korean-reviewer.md`에 같은 정책 텍스트
 - *확인:* 메인 대화와 서브에이전트 **양쪽에** 정책이 걸리는가 (§2.1 제약 실측)
 - *끝나는 조건:* 결정 ③이 06b에 있고, 06 반영 여부를 사용자와 정했다
@@ -537,7 +544,8 @@ assemble/ ────────────┤
 **P6 — Codex 빌드**
 - `build/agent_plugin.py` → `dist/agent-plugin/` + `install/`
 - `AGENTS.md` 절 삽입·제거를 마커로 멱등하게
-- Codex MCP resources, 플러그인 hook 번들 재확인
+- Codex MCP resources 재확인
+- **hook 배포 확정:** 플러그인 번들(`extensions.com.openai.hooks`) 실측 — 신뢰 검토, 다른 클라이언트의 `extensions.com.openai` 처리, 제거 절차와의 관계. 안 되면 `install/`의 `.codex/hooks.json` (§11.5)
 - §12 검사 2~4 양쪽
 - *끝나는 조건:* Codex에서 정책이 메인과 서브에이전트에 걸리고 스킬이 호출된다
 
@@ -586,17 +594,23 @@ assemble/ ────────────┤
 | 출처는 앵커 + 해시 | §5.5, 06a |
 | 추상화는 프로토타입 뒤. 네 번째 벤더가 시험 | §14, 06a |
 | ① upstream 텍스트 복사/동봉/참조 → 공급 층으로 해소 | 06a |
-| hjongc 원칙은 우리 문장. `policy-blocks`는 fluent-korean 문장 | §5.3, §7, 06a |
+| `policy` 정규화 단위는 upstream 배포 단위: 변형 2개 + README 선택 블록 7개. 서브에이전트 조항은 coding 본문 | §5.3, 06b P0 |
+| 앵커는 구조적 위치 표지. 규칙 3개만 확정, 형식은 P4 | §5.5, 06b P0 |
+| `ko-rewrite` invariant는 upstream 원천의 철칙 전부. 우리 invariant 없음(hjongc 원칙 제외) | §7, 06b P0 |
+| 06의 변경률은 모델 자기 보고. 코드 판정은 검증 단계 | §1, §7, §13.1, 06b P0 |
 | upstream 4종 URL·커밋·라이선스 — 모두 MIT, `upstream/lock.yaml`에 고정 (2026-09-14) | 06b P0 |
 
 ### 16.2 열린 것
 
 | 결정 | 기울기 | 정하는 곳 |
 |---|---|---|
+| im-not-ai 절차 원천 (오케스트레이터 / 단일 호출판) | — | P1 |
 | upstream 문장과 우리 문장의 렌더 구분 방식 | — | P1 |
+| 앵커 형식 | — | P1~P3 시험, P4 확정 |
 | ③ 정책 합성 규칙 | — | P3 |
 | ② 프로파일 런타임 / 빌드타임 | 빌드타임 | P5 |
 | `claude plugin eval` 도입 범위 | — | P5 |
 | Codex 제거 절차 (마커) | — | P6 |
+| Codex hook 배포 (플러그인 번들 / 설치 단계) | 플러그인 번들 | P6 |
 | 빌드 스탬프 형식, 로거의 profile 인식 | 스탬프 파일 | P7 |
 | stop-slop-ko를 `policy` 조각 공급자로 넣을지 | — | P3 이후, `exempt` 복구와 함께 |
