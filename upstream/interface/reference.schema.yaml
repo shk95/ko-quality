@@ -4,7 +4,13 @@ top_level:
   role: {const: reference}
   slot: {required: true, note: "the procedure slot that reads it"}
   name: {required: true, note: "file stem; one file per upstream reference file"}
-  kind: {required: true, enum: [rubric, research, recipes, derived]}
+  kind:
+    required: true
+    enum:
+      rubric: "criteria or rules the procedure judges against (yoonmoon lread-rubric, korean-skills rules)"
+      research: "cited findings that ground weights or signals (yoonmoon katfishnet-research, xdac-research)"
+      recipes: "known problem → fix lookups (im-not-ai rewriting-playbook, not supplied; korean-skills common-errors)"
+      derived: "generated from another upstream file (im-not-ai quick-rules; supplied as a selection instead)"
 file_name: "upstream/normalized/reference/<slot>/<name>.yaml"
 fragment_kinds_seen:
   whole_file: [heading, paragraph, item, quote, row, table-header, table-sep]

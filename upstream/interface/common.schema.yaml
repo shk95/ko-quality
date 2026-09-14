@@ -24,6 +24,7 @@ fragment:
     note: {required: false, format: "JSON string; why a selection was made"}
 excluded:
   item: {path: string, anchor: string, reason: string}
+  typical: ["frontmatter keys (harness metadata; assemble/ supplies name and description)", "titles and headings (structure)", "bold-label-only paragraphs that group following items (structure, like headings)"]
   note: "Record of what a selection left out and why. Not checked against upstream."
 anchor:
   rules:   # 06 §5.5
@@ -39,5 +40,7 @@ anchor:
     id_prefix: "id prefix <ID> | id prefix <C>."                # patterns and categories with upstream ids
     numbered_in_section: "<heading line> > <N> | <heading line> > bullet <N>"
     sub_selection: "<anchor> > sentence <N> | <anchor> > <N> > bold label **label** | <anchor> > code block"
+    repeated: "<anchor> > <N>"                                   # second and later occurrence of the same anchor in one file (e.g. two tables under one heading)
+    frontmatter: "frontmatter | frontmatter > <key>"            # used in excluded entries; frontmatter is never a fragment
 hash:
   input: fragment text exactly as stored (no normalization beyond LF line endings)

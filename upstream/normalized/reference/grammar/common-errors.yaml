@@ -1,0 +1,2315 @@
+role: reference
+slot: grammar
+name: common-errors
+kind: recipes
+fragments:
+  - id: common-errors.001
+    kind: heading
+    text: "# 흔한 한국어 오류 패턴"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "# 흔한 한국어 오류 패턴"
+      content_hash: sha256:d3dcc75958818677e2f81ee73cd89293f37ab0e000f521ec96a671cdf1d54c20
+      transform: verbatim
+  - id: common-errors.002
+    kind: paragraph
+    text: "이 문서는 자주 발생하는 한국어 오류 패턴과 교정 방법을 정리한 것입니다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "# 흔한 한국어 오류 패턴 > paragraph 1"
+      content_hash: sha256:278ad41bce1b2a6c63230d1814dd5020b55244dee63ef68c16007a624e1ce19e
+      transform: verbatim
+  - id: common-errors.003
+    kind: heading
+    text: "## 목차"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 목차"
+      content_hash: sha256:7b31b651872f799c61852ac86f609dcab2c149fa90e1dd62af69928abceb154f
+      transform: verbatim
+  - id: common-errors.004
+    kind: item
+    text: "1. [헷갈리기 쉬운 단어](#헷갈리기-쉬운-단어)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 목차 > item 1"
+      content_hash: sha256:4a3a53bb8d871c2556d70c40b99716bccaf508633a5915058826cb8f811e4393
+      transform: verbatim
+  - id: common-errors.005
+    kind: item
+    text: "2. [띄어쓰기 오류 패턴](#띄어쓰기-오류-패턴)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 목차 > item 2"
+      content_hash: sha256:1c5aaa9bb8539b780fb6eeb996f280084bf43ebf15300994fb2c66d8d37cc541
+      transform: verbatim
+  - id: common-errors.006
+    kind: item
+    text: "3. [조사 사용 오류](#조사-사용-오류)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 목차 > item 3"
+      content_hash: sha256:fc3443e465345140b56f83893389bf26d5ba8eaed3d26f38510aff3709e73771
+      transform: verbatim
+  - id: common-errors.007
+    kind: item
+    text: "4. [어미 사용 오류](#어미-사용-오류)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 목차 > item 4"
+      content_hash: sha256:dfa6ab07aae96a53cdfc60c4dacfc53148605d20e00fbef3b1c0874e225fe492
+      transform: verbatim
+  - id: common-errors.008
+    kind: item
+    text: "5. [문장 부호 오류](#문장-부호-오류)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 목차 > item 5"
+      content_hash: sha256:2ccaabffba4940827bf5207468ccb264803acfbb0d025555bd3dec90cca01249
+      transform: verbatim
+  - id: common-errors.009
+    kind: paragraph
+    text: "---"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 목차 > paragraph 1"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: common-errors.010
+    kind: heading
+    text: "## 헷갈리기 쉬운 단어"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 헷갈리기 쉬운 단어"
+      content_hash: sha256:1ff510048d06904e6a9f8f56e41841701920264cfb33959150229d36f01e8929
+      transform: verbatim
+  - id: common-errors.011
+    kind: heading
+    text: "### 1. 되/돼"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 되/돼"
+      content_hash: sha256:b8116781d9ed22860715eec7586fb3b27a0cd323fc5519b54e972b239fd15aeb
+      transform: verbatim
+  - id: common-errors.012
+    kind: paragraph
+    text: "**규칙**: \"되어\"의 준말이 \"돼\""
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 되/돼 > bold label **규칙**"
+      content_hash: sha256:3e07a7aa515f064bbe703a0ecc1c5cdc83e1c1c475f5b974cac9fc40e04a17f8
+      transform: verbatim
+  - id: common-errors.013
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 되/돼 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.014
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 되/돼 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.015
+    kind: row
+    text: "| 되요 | 돼요 | \"되어요\"의 준말 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 되/돼 > row \"되요\""
+      content_hash: sha256:8a4d36bbc913d3022afc66f1b8f4307a345724c51b8eb40ec7112bb7969aff00
+      transform: verbatim
+  - id: common-errors.016
+    kind: row
+    text: "| 됬어요 | 됐어요 | \"되었어요\"의 준말 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 되/돼 > row \"됬어요\""
+      content_hash: sha256:c3fdc64394b05f9ed4c75751eb2e6f337190ea3fcd8dd955fca97ef0908cd048
+      transform: verbatim
+  - id: common-errors.017
+    kind: row
+    text: "| 안되요 | 안 돼요 | \"안 되어요\"의 준말 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 되/돼 > row \"안되요\""
+      content_hash: sha256:f754420800df9237c2df52f4d3502aceb4127eed3761ce4aebcd00e32f12477e
+      transform: verbatim
+  - id: common-errors.018
+    kind: row
+    text: "| 어떻게되요? | 어떻게 돼요? | \"어떻게 되어요?\"의 준말 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 되/돼 > row \"어떻게되요?\""
+      content_hash: sha256:bf70fc16785d521d0f9d1295a508b07506b356cf88942f72b7bd1a823eb86d10
+      transform: verbatim
+  - id: common-errors.019
+    kind: paragraph
+    text: "**확인 방법**: \"하다\"를 \"해\"로 바꾸는 것처럼, \"되다\"는 \"돼\"로 바꿈"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 되/돼 > bold label **확인 방법**"
+      content_hash: sha256:eaa9763acfdeeb16ecc816cf705e73c871089348f12604a9eccea79de460f704
+      transform: verbatim
+  - id: common-errors.020
+    kind: heading
+    text: "### 2. -ㄴ지/-는지"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -ㄴ지/-는지"
+      content_hash: sha256:836e4f1683166683d3231140fcd83f3df47e41c8e8a59882f259714de26b74f8
+      transform: verbatim
+  - id: common-errors.021
+    kind: paragraph
+    text: "**규칙**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -ㄴ지/-는지 > bold label **규칙**"
+      content_hash: sha256:24ef81728cc9931d6ee35d5cb94f0888f7ae8795ad1ecd9b391908f40407ca5a
+      transform: verbatim
+  - id: common-errors.022
+    kind: item
+    text: "- 형용사 + -ㄴ지"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -ㄴ지/-는지 > item 1"
+      content_hash: sha256:a0f965a8e6377652e0e553367295322bd057be2163c0602401f837c79d3657f2
+      transform: verbatim
+  - id: common-errors.023
+    kind: item
+    text: "- 동사 + -는지"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -ㄴ지/-는지 > item 2"
+      content_hash: sha256:5fac07f8774c5ed08c9cd7ea51fe1babb8232db731ba4c7cdacb536a5883f028
+      transform: verbatim
+  - id: common-errors.024
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -ㄴ지/-는지 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.025
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -ㄴ지/-는지 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.026
+    kind: row
+    text: "| 좋는지 | 좋은지 | 형용사 \"좋다\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -ㄴ지/-는지 > row \"좋는지\""
+      content_hash: sha256:770448ded997c249937dc13bb4e3c089f8e7ce21e58a09d59d1d5483664581a7
+      transform: verbatim
+  - id: common-errors.027
+    kind: row
+    text: "| 가는지 | 가는지 | ✅ 동사 \"가다\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -ㄴ지/-는지 > row \"가는지\""
+      content_hash: sha256:6b9f0ad1d88774d36aa43a7c9969254d5380f8caa3125ca6160dd23d57951675
+      transform: verbatim
+  - id: common-errors.028
+    kind: row
+    text: "| 많는지 | 많은지 | 형용사 \"많다\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -ㄴ지/-는지 > row \"많는지\""
+      content_hash: sha256:8fa3e8105ea48ee9a2e04110288efdbafc9d2beba17880db1de85875bdd00c54
+      transform: verbatim
+  - id: common-errors.029
+    kind: row
+    text: "| 하는지 | 하는지 | ✅ 동사 \"하다\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -ㄴ지/-는지 > row \"하는지\""
+      content_hash: sha256:e0b8ecf7793caa9349cee31ba581309f198ec48661e4283751dd648432359660
+      transform: verbatim
+  - id: common-errors.030
+    kind: heading
+    text: "### 3. -ㄹ게/-를게"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ게/-를게"
+      content_hash: sha256:f5363f6b93043fb6be97e0004c383a0700c3d88f5a4ff311d7eda5007474f12d
+      transform: verbatim
+  - id: common-errors.031
+    kind: paragraph
+    text: "**규칙**: 항상 \"-ㄹ게\"만 사용 (받침 유무 관계없음)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ게/-를게 > bold label **규칙**"
+      content_hash: sha256:85e5e37a1e36390bc523b9b63320402784cfc681e3e59ebcaed4363ee11731b6
+      transform: verbatim
+  - id: common-errors.032
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ게/-를게 > table header \"틀린 표현\""
+      content_hash: sha256:67eed0e7f6bc3ac7ba617d615fe08c2762605d0fd0cc5a47c7bfc9d3743684f2
+      transform: verbatim
+  - id: common-errors.033
+    kind: table-sep
+    text: "|---------|----------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ게/-를게 > table separator"
+      content_hash: sha256:948414208f9fd7a0bf0112e4729bc481813b8a5cfcf5397a4c51d2a9371787f4
+      transform: verbatim
+  - id: common-errors.034
+    kind: row
+    text: "| 하를게요 | 할게요 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ게/-를게 > row \"하를게요\""
+      content_hash: sha256:ffb31410315385ab9a7e6981fb69a374c19214978e9bad6799d4d5683eca60a0
+      transform: verbatim
+  - id: common-errors.035
+    kind: row
+    text: "| 먹을게요 | 먹을게요 ✅ |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ게/-를게 > row \"먹을게요\""
+      content_hash: sha256:dad77f159c783ff508f007d9aac60d626c93784b36f9d19135e0f6fe2451051d
+      transform: verbatim
+  - id: common-errors.036
+    kind: row
+    text: "| 갈게요 | 갈게요 ✅ |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ게/-를게 > row \"갈게요\""
+      content_hash: sha256:0c8cc2e0b74cf698b642d56bb833443598e521953e95979d6144f59fa7074b8d
+      transform: verbatim
+  - id: common-errors.037
+    kind: row
+    text: "| 볼게요 | 볼게요 ✅ |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ게/-를게 > row \"볼게요\""
+      content_hash: sha256:9282b3c427fc4f55f7aa7ad23d5357252e92e25da955f56fd9107959bb220345
+      transform: verbatim
+  - id: common-errors.038
+    kind: heading
+    text: "### 4. 던/든"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 던/든"
+      content_hash: sha256:acf9d0d7f23c5f3ef03bacc241d3aeedf9b4e497eeae9516324609aaaf1e5f9f
+      transform: verbatim
+  - id: common-errors.039
+    kind: paragraph
+    text: "**던**: 과거 회상\n**든**: 선택"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 던/든 > bold label **던**"
+      content_hash: sha256:64775209e9d9cf878920327d9747a1640b3a31359add3d07de857e8b27304325
+      transform: verbatim
+  - id: common-errors.040
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 던/든 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.041
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 던/든 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.042
+    kind: row
+    text: "| 그때 먹든 음식 | 그때 먹던 음식 | 과거 회상 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 던/든 > row \"그때 먹든 음식\""
+      content_hash: sha256:1c1a28d74e0865de4975773bf6721e628e9e154198f066ee7c33a5c3f54fc529
+      transform: verbatim
+  - id: common-errors.043
+    kind: row
+    text: "| 뭐던 좋아요 | 뭐든 좋아요 | 선택 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 던/든 > row \"뭐던 좋아요\""
+      content_hash: sha256:a747c1cf919cf30764ce45fabeae74aa27817d93ba98d3446d6e3db506383468
+      transform: verbatim
+  - id: common-errors.044
+    kind: row
+    text: "| 갔든 곳 | 갔던 곳 | 과거 회상 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 던/든 > row \"갔든 곳\""
+      content_hash: sha256:6678dc8ad183cb9b8f7982cf0a3dfa246d5dfcb1a7e568ab78ede4f20820cbb2
+      transform: verbatim
+  - id: common-errors.045
+    kind: row
+    text: "| 어디던지 | 어디든지 | 선택 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 던/든 > row \"어디던지\""
+      content_hash: sha256:b141af44300ebc39fe4832b1cd098941205f0d8871baf59500b2fe5ec64e0881
+      transform: verbatim
+  - id: common-errors.046
+    kind: heading
+    text: "### 5. -로써/-로서"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. -로써/-로서"
+      content_hash: sha256:e9e420850a52de1e145c481028410dc0190ca75301172caab5097a31c14a8814
+      transform: verbatim
+  - id: common-errors.047
+    kind: paragraph
+    text: "**-로써**: 수단, 도구 (with)\n**-로서**: 자격, 지위 (as)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. -로써/-로서 > bold label **-로써**"
+      content_hash: sha256:b68c6295c40436dfd5d957ee17302ffe5f8e6284c86291176105d87decd2b341
+      transform: verbatim
+  - id: common-errors.048
+    kind: table-header
+    text: "| 올바른 예 | 의미 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. -로써/-로서 > table header \"올바른 예\""
+      content_hash: sha256:5e230f6e21c5797bd14204aef729001301b052d0f6e670465ceece820e041713
+      transform: verbatim
+  - id: common-errors.049
+    kind: table-sep
+    text: "|---------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. -로써/-로서 > table separator"
+      content_hash: sha256:12c6daad56d326ff08b3191d04dabf2623c40fe359a568e3c223cf287ac527ec
+      transform: verbatim
+  - id: common-errors.050
+    kind: row
+    text: "| 칼로써 자른다 | 수단 (칼을 사용하여) |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. -로써/-로서 > row \"칼로써 자른다\""
+      content_hash: sha256:014a545a69368a3c78249421bcdf53a6607799e4aca46d3ff9995d25faa7fcbf
+      transform: verbatim
+  - id: common-errors.051
+    kind: row
+    text: "| 학생으로서 | 자격 (학생의 자격으로) |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. -로써/-로서 > row \"학생으로서\""
+      content_hash: sha256:b28223716118f40eaf4c3430214b1887579302765d237cb1047485774484e5b9
+      transform: verbatim
+  - id: common-errors.052
+    kind: row
+    text: "| 이것으로써 | 수단 (이것을 사용하여) |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. -로써/-로서 > row \"이것으로써\""
+      content_hash: sha256:ccaa116b5a377c750898f3b85c6d0d09b2a02d7ca2b31115fc057243f0318d9c
+      transform: verbatim
+  - id: common-errors.053
+    kind: row
+    text: "| 대표로서 | 자격 (대표의 자격으로) |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. -로써/-로서 > row \"대표로서\""
+      content_hash: sha256:fc9ae460caa61c91fb52168e0b0513fbad7208e220ffbb425b94d2134c4ed115
+      transform: verbatim
+  - id: common-errors.054
+    kind: heading
+    text: "### 6. 안/않"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 6. 안/않"
+      content_hash: sha256:c03eef90ae8a9291224ae03b74dacb3dd05eb8be2db13d3885f8153df861264d
+      transform: verbatim
+  - id: common-errors.055
+    kind: paragraph
+    text: "**안**: 부정 부사 (동사/형용사 앞)\n**않**: 보조 형용사 (-지 않다)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 6. 안/않 > bold label **안**"
+      content_hash: sha256:47ce7b1942435028e987feaebaa97482f41a1711055c554d0c0b4376712e0918
+      transform: verbatim
+  - id: common-errors.056
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 6. 안/않 > table header \"틀린 표현\""
+      content_hash: sha256:67eed0e7f6bc3ac7ba617d615fe08c2762605d0fd0cc5a47c7bfc9d3743684f2
+      transform: verbatim
+  - id: common-errors.057
+    kind: table-sep
+    text: "|---------|----------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 6. 안/않 > table separator"
+      content_hash: sha256:948414208f9fd7a0bf0112e4729bc481813b8a5cfcf5397a4c51d2a9371787f4
+      transform: verbatim
+  - id: common-errors.058
+    kind: row
+    text: "| 하지 안다 | 하지 않다 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 6. 안/않 > row \"하지 안다\""
+      content_hash: sha256:33beb2382c4c6685582b7066a9241f84dfbcdd26b034d903d8e4a93f3663a657
+      transform: verbatim
+  - id: common-errors.059
+    kind: row
+    text: "| 않 해요 | 안 해요 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 6. 안/않 > row \"않 해요\""
+      content_hash: sha256:560da88f5d37a98ff4e777698ba956ce7f0dd9c92bc0891e52020e5c38d82f17
+      transform: verbatim
+  - id: common-errors.060
+    kind: row
+    text: "| 좋지 안아요 | 좋지 않아요 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 6. 안/않 > row \"좋지 안아요\""
+      content_hash: sha256:f33e2606ac3f08f1772d7afa99987b0734ace654bb53edb68bcbcc9cef12381e
+      transform: verbatim
+  - id: common-errors.061
+    kind: row
+    text: "| 않 가요 | 안 가요 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 6. 안/않 > row \"않 가요\""
+      content_hash: sha256:36a32c7cc4a41f0ec116323eae90015cedf06690fddcea6ed6d245ea8aba681d
+      transform: verbatim
+  - id: common-errors.062
+    kind: heading
+    text: "### 7. 웬/왠"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 7. 웬/왠"
+      content_hash: sha256:b5610247595be6b388e9cf354b7ba1622901f6f932e59067fd7702fd7da29825
+      transform: verbatim
+  - id: common-errors.063
+    kind: paragraph
+    text: "**웬**: \"어찌 된\" (what)\n**왠**: \"왜 그런\" (why) → 거의 \"왠지\"에만 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 7. 웬/왠 > bold label **웬**"
+      content_hash: sha256:861b21ece6c7c924c54839a20e86dda53bb3a9135b4146d6b10187cf8fc7f689
+      transform: verbatim
+  - id: common-errors.064
+    kind: table-header
+    text: "| 올바른 예 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 7. 웬/왠 > table header \"올바른 예\""
+      content_hash: sha256:bc4065883c22c08369e997d970368e9974a2bfc92c7c06dcfeba5a7d62619aca
+      transform: verbatim
+  - id: common-errors.065
+    kind: table-sep
+    text: "|---------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 7. 웬/왠 > table separator"
+      content_hash: sha256:12c6daad56d326ff08b3191d04dabf2623c40fe359a568e3c223cf287ac527ec
+      transform: verbatim
+  - id: common-errors.066
+    kind: row
+    text: "| 웬 일이야? | 어찌 된 일이야? |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 7. 웬/왠 > row \"웬 일이야?\""
+      content_hash: sha256:e08c42b49b5fb682d946033a5b9ef562562b4000d91599fc0ef6d2976104c6e5
+      transform: verbatim
+  - id: common-errors.067
+    kind: row
+    text: "| 왠지 모르게 | 왜 그런지 모르게 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 7. 웬/왠 > row \"왠지 모르게\""
+      content_hash: sha256:b2e86c6038fd2a9395c90bb7f203186533f600b19e4d54351fdbf5d5c68dce6f
+      transform: verbatim
+  - id: common-errors.068
+    kind: row
+    text: "| 웬만하면 | 어찌 되든 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 7. 웬/왠 > row \"웬만하면\""
+      content_hash: sha256:44b3f34a0709215946869d4a6d0bc8b2d03db2ae05f558872fb8e9fe4722f99b
+      transform: verbatim
+  - id: common-errors.069
+    kind: paragraph
+    text: "**기억법**: \"왠\"은 거의 \"왠지\"에만 사용, 나머지는 \"웬\""
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 7. 웬/왠 > bold label **기억법**"
+      content_hash: sha256:029999ad97de45230828af36bbff82374b4527511c98ed0fb06014ef919a8fa9
+      transform: verbatim
+  - id: common-errors.070
+    kind: heading
+    text: "### 8. 어떻게/어떡해"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 8. 어떻게/어떡해"
+      content_hash: sha256:28ef075d7d6ac5228df1898e37120e5105e01428d459370b014e6817d09e3728
+      transform: verbatim
+  - id: common-errors.071
+    kind: paragraph
+    text: "**어떻게**: 방법, 상태 (how)\n**어떡해**: \"어떻게 해\"의 준말"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 8. 어떻게/어떡해 > bold label **어떻게**"
+      content_hash: sha256:cd5dc25bf2f07f6b63ca24c27ed34a5617d0b194a856979ce52b95a7e2283acf
+      transform: verbatim
+  - id: common-errors.072
+    kind: table-header
+    text: "| 올바른 예 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 8. 어떻게/어떡해 > table header \"올바른 예\""
+      content_hash: sha256:bc4065883c22c08369e997d970368e9974a2bfc92c7c06dcfeba5a7d62619aca
+      transform: verbatim
+  - id: common-errors.073
+    kind: table-sep
+    text: "|---------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 8. 어떻게/어떡해 > table separator"
+      content_hash: sha256:12c6daad56d326ff08b3191d04dabf2623c40fe359a568e3c223cf287ac527ec
+      transform: verbatim
+  - id: common-errors.074
+    kind: row
+    text: "| 어떻게 했어? | 방법 질문 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 8. 어떻게/어떡해 > row \"어떻게 했어?\""
+      content_hash: sha256:99eb336cda0429638d1de86209e78eccc3435601645307bfbbd306e1950ee5ea
+      transform: verbatim
+  - id: common-errors.075
+    kind: row
+    text: "| 어떡해? | \"어떻게 해?\"의 준말 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 8. 어떻게/어떡해 > row \"어떡해?\""
+      content_hash: sha256:1a45feccf715cc86d6b19d6084c4f82c8905aabf84aebe0b4e92a165301717de
+      transform: verbatim
+  - id: common-errors.076
+    kind: row
+    text: "| 어떻게 가요? | 방법 질문 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 8. 어떻게/어떡해 > row \"어떻게 가요?\""
+      content_hash: sha256:a27ece67b3c309edeff890e6584e6e617aa252884bcccd65d571745e48404248
+      transform: verbatim
+  - id: common-errors.077
+    kind: row
+    text: "| 어떡하지? | \"어떻게 하지?\"의 준말 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 8. 어떻게/어떡해 > row \"어떡하지?\""
+      content_hash: sha256:b49d12699a57006ab63ec12a28f7ae1c9eeb72ed38990faf33faeabb83325979
+      transform: verbatim
+  - id: common-errors.078
+    kind: paragraph
+    text: "---"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 8. 어떻게/어떡해 > paragraph 2"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: common-errors.079
+    kind: heading
+    text: "## 띄어쓰기 오류 패턴"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 띄어쓰기 오류 패턴"
+      content_hash: sha256:9e11c8fb5f5f760bcd86f9124416920f23da8338452b3e84c70a76d41a6710ca
+      transform: verbatim
+  - id: common-errors.080
+    kind: heading
+    text: "### 1. 의존명사 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 의존명사 오류"
+      content_hash: sha256:4061a5bb5746d417896fa404fadf4867225e7735645e487fa426edf35adc0b67
+      transform: verbatim
+  - id: common-errors.081
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 의존명사 오류 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.082
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 의존명사 오류 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.083
+    kind: row
+    text: "| 할수있다 | 할 수 있다 | \"수\"는 의존명사 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 의존명사 오류 > row \"할수있다\""
+      content_hash: sha256:ca110482fd419898632509cc6c8c28abae2fa8c0499c4848a886f83ed149a48f
+      transform: verbatim
+  - id: common-errors.084
+    kind: row
+    text: "| 먹을만큼 | 먹을 만큼 | \"만큼\"은 의존명사 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 의존명사 오류 > row \"먹을만큼\""
+      content_hash: sha256:45bf9a46f8b1fde9e9945facf893fa5219c9c3a3a5663cfe192cbe1580a58330
+      transform: verbatim
+  - id: common-errors.085
+    kind: row
+    text: "| 하는것 | 하는 것 | \"것\"은 의존명사 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 의존명사 오류 > row \"하는것\""
+      content_hash: sha256:c64ec64841c2df5058919327f34159be34b83a84d8c7b343af88a9027e8e0c26
+      transform: verbatim
+  - id: common-errors.086
+    kind: row
+    text: "| 갈뿐이다 | 갈 뿐이다 | \"뿐\"은 의존명사 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 의존명사 오류 > row \"갈뿐이다\""
+      content_hash: sha256:1656990cc550225a0e2cc3b3de3b0feb3ee149b65a1078345fa065a40c30df5c
+      transform: verbatim
+  - id: common-errors.087
+    kind: row
+    text: "| 하는데 | 하는 데 | \"데\"는 의존명사 (장소) |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 의존명사 오류 > row \"하는데\""
+      content_hash: sha256:076e11cfb840e939eda2f5d1ce9c0df73a92b7d1cac8b2bc8f9007b0573649eb
+      transform: verbatim
+  - id: common-errors.088
+    kind: row
+    text: "| 먹을줄알다 | 먹을 줄 알다 | \"줄\"은 의존명사 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 의존명사 오류 > row \"먹을줄알다\""
+      content_hash: sha256:2b77d911ce1215ae6b98a27da6be9952cd01dd707aaa99ff1b18b8003a59efbf
+      transform: verbatim
+  - id: common-errors.089
+    kind: heading
+    text: "### 2. 보조용언 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 보조용언 오류"
+      content_hash: sha256:cc808d4d040aa417c3593fa3edd4ae98ae18ba6e5dd01062a1b2a28a32fbba0b
+      transform: verbatim
+  - id: common-errors.090
+    kind: paragraph
+    text: "**원칙**: 띄어 쓰기 (하지만 붙여 쓰기도 허용)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 보조용언 오류 > bold label **원칙**"
+      content_hash: sha256:bed900e5f0d6d2a62ffd530b1f84dce14f125b69c88f1b4f2a3de94d6d34712b
+      transform: verbatim
+  - id: common-errors.091
+    kind: table-header
+    text: "| 원칙 | 허용 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 보조용언 오류 > table header \"원칙\""
+      content_hash: sha256:31cac85a0627310592e4ef0d761427a37889f6a0a7f4148a0f083582afc9f56c
+      transform: verbatim
+  - id: common-errors.092
+    kind: table-sep
+    text: "|-----|------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 보조용언 오류 > table separator"
+      content_hash: sha256:988d158f1cfc02ca0b216af12cd9fc98651cd750fc17613160f3a23548dc8e04
+      transform: verbatim
+  - id: common-errors.093
+    kind: row
+    text: "| 해 주세요 | 해주세요 | 보조용언 \"-아/어 주다\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 보조용언 오류 > row \"해 주세요\""
+      content_hash: sha256:9da35bc639f7d951dd3184acd5e5ac9f82999266294de3f9370bfd877325c5d2
+      transform: verbatim
+  - id: common-errors.094
+    kind: row
+    text: "| 하고 있습니다 | 하고있습니다 | 보조용언 \"-고 있다\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 보조용언 오류 > row \"하고 있습니다\""
+      content_hash: sha256:c5d58a4fef3c4e3abbc6b44503999c2fd7de4df5745e7259c1c6699fda3273ba
+      transform: verbatim
+  - id: common-errors.095
+    kind: row
+    text: "| 해 보세요 | 해보세요 | 보조용언 \"-아/어 보다\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 보조용언 오류 > row \"해 보세요\""
+      content_hash: sha256:f91a200b4fcec9bd27ab6cd4d48f332f50254da60c778c49d798669bd9975ecb
+      transform: verbatim
+  - id: common-errors.096
+    kind: row
+    text: "| 하게 하다 | 하게하다 | 보조용언 \"-게 하다\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 보조용언 오류 > row \"하게 하다\""
+      content_hash: sha256:8d2fc74d0125c758669495ab3ecae023bf6a885fe189065ac4d32fd9e5c00816
+      transform: verbatim
+  - id: common-errors.097
+    kind: paragraph
+    text: "**권장**: 격식체에서는 띄어 쓰기"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 보조용언 오류 > bold label **권장**"
+      content_hash: sha256:b50fed2d178f1b5518c651a107b35e18ecb87203c92c00474db9f08f0e188437
+      transform: verbatim
+  - id: common-errors.098
+    kind: heading
+    text: "### 3. 단위명사 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 단위명사 오류"
+      content_hash: sha256:3747373e872b8cbff5c16baad3756835f8b07d1751abda7466f40414d5db2cb7
+      transform: verbatim
+  - id: common-errors.099
+    kind: table-header
+    text: "| 격식체 (권장) | 비격식체 (허용) |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 단위명사 오류 > table header \"격식체 (권장)\""
+      content_hash: sha256:b9efb8944fd5e6036b5d7ad5dc3ef236e723bccb1397a32f98d1f3016dc3dc5b
+      transform: verbatim
+  - id: common-errors.100
+    kind: table-sep
+    text: "|-----------|-------------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 단위명사 오류 > table separator"
+      content_hash: sha256:04fdcedd271e265378e92e74db27d363550f6c3a432e457fad94b12f0982e2f3
+      transform: verbatim
+  - id: common-errors.101
+    kind: row
+    text: "| 10 개 | 10개 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 단위명사 오류 > row \"10 개\""
+      content_hash: sha256:ed410ddd84ca6c4a7b295f843a4f29065a42843a8620a5276a4b1d331efc83b3
+      transform: verbatim
+  - id: common-errors.102
+    kind: row
+    text: "| 5 명 | 5명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 단위명사 오류 > row \"5 명\""
+      content_hash: sha256:b807895346fc68f6f03faad8e005d782d6607fb1396313b81613145bfc3b03e5
+      transform: verbatim
+  - id: common-errors.103
+    kind: row
+    text: "| 3 권 | 3권 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 단위명사 오류 > row \"3 권\""
+      content_hash: sha256:388eb082c918488d28cd910d23cd5cbf6a1e8f57598ee6d94af98e79f623d896
+      transform: verbatim
+  - id: common-errors.104
+    kind: row
+    text: "| 100 원 | 100원 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 단위명사 오류 > row \"100 원\""
+      content_hash: sha256:c405e72cf91e9bd52068dc086ab0ee45e5932f1cdb85693ac1bb4e7a6256c8fc
+      transform: verbatim
+  - id: common-errors.105
+    kind: heading
+    text: "### 4. 합성어 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 합성어 오류"
+      content_hash: sha256:7581e79ee2cb135487a3031adf8b783e37a3fed4cc1a684acf4762502cf89185
+      transform: verbatim
+  - id: common-errors.106
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 합성어 오류 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.107
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 합성어 오류 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.108
+    kind: row
+    text: "| 사과 나무 | 사과나무 | 합성어 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 합성어 오류 > row \"사과 나무\""
+      content_hash: sha256:2a31d1bdb928cb27543d42b56059bbdca2a9bedd74126c7f5ee239ac931400aa
+      transform: verbatim
+  - id: common-errors.109
+    kind: row
+    text: "| 손 목 시계 | 손목시계 | 합성어 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 합성어 오류 > row \"손 목 시계\""
+      content_hash: sha256:54852df38fb1c388aa8b901004417fbba16ba181d211a6024bd529147d1c2485
+      transform: verbatim
+  - id: common-errors.110
+    kind: row
+    text: "| 먹 거리 | 먹거리 | 합성어 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 합성어 오류 > row \"먹 거리\""
+      content_hash: sha256:dd6f8f6b5bd09a6d79f52e6f4b46fe65f2b0324c19c2636e25ed3099ff8d0786
+      transform: verbatim
+  - id: common-errors.111
+    kind: row
+    text: "| 읽을 거리 | 읽을거리 | 합성어 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 합성어 오류 > row \"읽을 거리\""
+      content_hash: sha256:31f2ec2613527bb44786439d234c75a267694b5303eaa901610f10bdfbf62ceb
+      transform: verbatim
+  - id: common-errors.112
+    kind: heading
+    text: "### 5. 부사 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 부사 오류"
+      content_hash: sha256:19cd8a075d51e5301d48dbabe5c419748ea53ee38a92750c1f16aef5fae37ee2
+      transform: verbatim
+  - id: common-errors.113
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 부사 오류 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.114
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 부사 오류 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.115
+    kind: row
+    text: "| 아주 | 아주 ✅ | 부사는 띄어 쓰기 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 부사 오류 > row \"아주\""
+      content_hash: sha256:aa4c2425f5258a8c2546f599bcc8eab9728e51d29d3a400a56428e9bbc1ed138
+      transform: verbatim
+  - id: common-errors.116
+    kind: row
+    text: "| 매우좋다 | 매우 좋다 | 부사 \"매우\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 부사 오류 > row \"매우좋다\""
+      content_hash: sha256:33b5f9fb7b57a5484856d1848157565f5f40028aa95d8db75d65a86b327c3725
+      transform: verbatim
+  - id: common-errors.117
+    kind: row
+    text: "| 너무나빨리 | 너무나 빨리 | 부사 띄어 쓰기 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 부사 오류 > row \"너무나빨리\""
+      content_hash: sha256:24d2b7454c2d13211e7bdb4bbacb134250d24ab5d9f3b8f6f4e3e8b80adf9bba
+      transform: verbatim
+  - id: common-errors.118
+    kind: row
+    text: "| 정말로좋다 | 정말로 좋다 | 부사 \"정말로\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 부사 오류 > row \"정말로좋다\""
+      content_hash: sha256:1ce20890dcfdaefdaebbb88e73dda520b4e808c65d6a036eed986d30fb594ec3
+      transform: verbatim
+  - id: common-errors.119
+    kind: paragraph
+    text: "---"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 부사 오류 > paragraph 1"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: common-errors.120
+    kind: heading
+    text: "## 조사 사용 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 조사 사용 오류"
+      content_hash: sha256:3a35076e4f9802c8c33b62d5f93b76947c2059694c011bcf70732ee2a30700ab
+      transform: verbatim
+  - id: common-errors.121
+    kind: heading
+    text: "### 1. -을/를 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -을/를 오류"
+      content_hash: sha256:18e82986654baab474336dfa9489d43ab9522e6dc4510959c101cb9069fcc916
+      transform: verbatim
+  - id: common-errors.122
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -을/를 오류 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.123
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -을/를 오류 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.124
+    kind: row
+    text: "| 사과을 | 사과를 | 받침 X → \"-를\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -을/를 오류 > row \"사과을\""
+      content_hash: sha256:75857378e05b1c1c77ff77564ca8f9957065feeb5cbbea0ef5059077085e0dbf
+      transform: verbatim
+  - id: common-errors.125
+    kind: row
+    text: "| 책를 | 책을 | 받침 O → \"-을\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -을/를 오류 > row \"책를\""
+      content_hash: sha256:efd3e412b83968e54953b564eebe0603a3e92a054abaf6d74c61e95f20e5b90f
+      transform: verbatim
+  - id: common-errors.126
+    kind: row
+    text: "| 물을 | 물을 ✅ | 받침 O → \"-을\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -을/를 오류 > row \"물을\""
+      content_hash: sha256:fe210e18a0edda8e74eaa6864647d92d0f407f54f7bc5145724c6929ab5403f2
+      transform: verbatim
+  - id: common-errors.127
+    kind: row
+    text: "| 차을 | 차를 | 받침 X → \"-를\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -을/를 오류 > row \"차을\""
+      content_hash: sha256:065370028690ce8560231cbbb54124c61b52849795b4d8f5877590045674df1d
+      transform: verbatim
+  - id: common-errors.128
+    kind: heading
+    text: "### 2. -이/가 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -이/가 오류"
+      content_hash: sha256:57fdde19f6b61bd2990fd8ad894604e850281f8c5e4da08845881ca17bfafe5a
+      transform: verbatim
+  - id: common-errors.129
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -이/가 오류 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.130
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -이/가 오류 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.131
+    kind: row
+    text: "| 사과이 | 사과가 | 받침 X → \"-가\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -이/가 오류 > row \"사과이\""
+      content_hash: sha256:32d868d2680e81ab8459bae9a8d6ce03e70f1ca20004866f04d1c24ce7e23395
+      transform: verbatim
+  - id: common-errors.132
+    kind: row
+    text: "| 책가 | 책이 | 받침 O → \"-이\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -이/가 오류 > row \"책가\""
+      content_hash: sha256:c48b68dff5493ac10ad606495a167da1c520154c0cfedec5c703fc1692c1cd11
+      transform: verbatim
+  - id: common-errors.133
+    kind: row
+    text: "| 물이 | 물이 ✅ | 받침 O → \"-이\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -이/가 오류 > row \"물이\""
+      content_hash: sha256:aa42fb65e1081c156f1eb6021179ec661bcc9330e44a8401c85d0e60e16ede4a
+      transform: verbatim
+  - id: common-errors.134
+    kind: row
+    text: "| 차이 | 차가 | 받침 X → \"-가\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -이/가 오류 > row \"차이\""
+      content_hash: sha256:c496950d8bef4bf4a6b436a532d7b7b2ca742438a0e348ff0e7d3df3fdf306b4
+      transform: verbatim
+  - id: common-errors.135
+    kind: heading
+    text: "### 3. -은/는 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -은/는 오류"
+      content_hash: sha256:b1532b599fd0c687c3a9c2cb6bf0819d6f72124273ce15dd60a9b53af0290e84
+      transform: verbatim
+  - id: common-errors.136
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -은/는 오류 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.137
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -은/는 오류 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.138
+    kind: row
+    text: "| 사과은 | 사과는 | 받침 X → \"-는\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -은/는 오류 > row \"사과은\""
+      content_hash: sha256:235af6d01750f7877ddf07828c4ff5bf17a6b40fff7268fbed3c090eb44b5d4a
+      transform: verbatim
+  - id: common-errors.139
+    kind: row
+    text: "| 책는 | 책은 | 받침 O → \"-은\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -은/는 오류 > row \"책는\""
+      content_hash: sha256:0e346fb3f0945144bda2b0cf14d1a5fbbe0357a98dd0ac0f24c42dbc2b4e0382
+      transform: verbatim
+  - id: common-errors.140
+    kind: row
+    text: "| 물은 | 물은 ✅ | 받침 O → \"-은\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -은/는 오류 > row \"물은\""
+      content_hash: sha256:f3b07d7c7d5ac7bfc72bec35deb397242650ffca40d454e6c91b384d83a20683
+      transform: verbatim
+  - id: common-errors.141
+    kind: row
+    text: "| 차은 | 차는 | 받침 X → \"-는\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -은/는 오류 > row \"차은\""
+      content_hash: sha256:ae8a83b854f8dbf5f13f9c912cdb1071a967d2f1134e4d7f05a3098a0b7dc242
+      transform: verbatim
+  - id: common-errors.142
+    kind: heading
+    text: "### 4. -와/과 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. -와/과 오류"
+      content_hash: sha256:bae535f2a11c1f938dec1a14dec5331b5398d0c13ced27dc89355a79ed93db94
+      transform: verbatim
+  - id: common-errors.143
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. -와/과 오류 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.144
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. -와/과 오류 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.145
+    kind: row
+    text: "| 사과과 | 사과와 | 받침 X → \"-와\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. -와/과 오류 > row \"사과과\""
+      content_hash: sha256:2d3e048410d46d5d6e185f6058f651c49f6a6c40b40dc746b3dff38786145a67
+      transform: verbatim
+  - id: common-errors.146
+    kind: row
+    text: "| 책와 | 책과 | 받침 O → \"-과\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. -와/과 오류 > row \"책와\""
+      content_hash: sha256:a775a22eeac72a2972f4e206f5d87fdd2dabe4d7e2d380a25a28cd4ff1261a53
+      transform: verbatim
+  - id: common-errors.147
+    kind: row
+    text: "| 물과 | 물과 ✅ | 받침 O → \"-과\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. -와/과 오류 > row \"물과\""
+      content_hash: sha256:13f34d59ead1b3d6b9398b91631b762ca3f20595fc35666ed6aa0ff697a56491
+      transform: verbatim
+  - id: common-errors.148
+    kind: row
+    text: "| 차과 | 차와 | 받침 X → \"-와\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. -와/과 오류 > row \"차과\""
+      content_hash: sha256:97c2a47d1f58f5899ebfbcc71332486c77d31216f6d13e171ba66af808665cfb
+      transform: verbatim
+  - id: common-errors.149
+    kind: paragraph
+    text: "---"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. -와/과 오류 > paragraph 1"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: common-errors.150
+    kind: heading
+    text: "## 어미 사용 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 어미 사용 오류"
+      content_hash: sha256:c564cdaa9f3675ae3e1255fa58db14f662c1ff8603718b7e884f1164cff2269a
+      transform: verbatim
+  - id: common-errors.151
+    kind: heading
+    text: "### 1. -ㅂ니다/습니다 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -ㅂ니다/습니다 오류"
+      content_hash: sha256:34d3cd2b393bc550cd321f2d9646d1c494e0e1a7867b45aba0ab8dd1d8d8e734
+      transform: verbatim
+  - id: common-errors.152
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -ㅂ니다/습니다 오류 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.153
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -ㅂ니다/습니다 오류 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.154
+    kind: row
+    text: "| 먹읍니다 | 먹습니다 | 받침 O → \"-습니다\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -ㅂ니다/습니다 오류 > row \"먹읍니다\""
+      content_hash: sha256:d67fe608a9a7b67c7a06e7b38577d01a253662d2a2a37dcfff926c2c3f525cf2
+      transform: verbatim
+  - id: common-errors.155
+    kind: row
+    text: "| 갑니다 | 갑니다 ✅ | 받침 X → \"-ㅂ니다\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -ㅂ니다/습니다 오류 > row \"갑니다\""
+      content_hash: sha256:026d5cf011bdbf181b90ee0e5bce34418542814945b89705a8cafbd9fe5c59a0
+      transform: verbatim
+  - id: common-errors.156
+    kind: row
+    text: "| 있읍니다 | 있습니다 | 받침 O → \"-습니다\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. -ㅂ니다/습니다 오류 > row \"있읍니다\""
+      content_hash: sha256:7fcbcf20173711b47c5d11b584e0a2f5cea69b4e3e60036383962f55a82ce1ee
+      transform: verbatim
+  - id: common-errors.157
+    kind: heading
+    text: "### 2. -아요/-어요 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -아요/-어요 오류"
+      content_hash: sha256:54c4546b94854024ee91b339f3f032f9d5770a73acd6c870ddf7ebe8004f6423
+      transform: verbatim
+  - id: common-errors.158
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -아요/-어요 오류 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.159
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -아요/-어요 오류 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.160
+    kind: row
+    text: "| 가아요 | 가요 | \"가+아요\" → \"가요\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -아요/-어요 오류 > row \"가아요\""
+      content_hash: sha256:06232850cb4e2157390567a2dda1e99dacc5e0968ff886417fe82da2660d0ab8
+      transform: verbatim
+  - id: common-errors.161
+    kind: row
+    text: "| 서어요 | 서요 | \"서+어요\" → \"서요\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -아요/-어요 오류 > row \"서어요\""
+      content_hash: sha256:190ef4e0499df7ae04b158ba0d20c56fd9fbfb4200c2d8ffd36885e536f55613
+      transform: verbatim
+  - id: common-errors.162
+    kind: row
+    text: "| 하아요 | 해요 | \"하+아요\" → \"해요\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -아요/-어요 오류 > row \"하아요\""
+      content_hash: sha256:878a01e9f696c436bddad4b2aaa0e1d14834d23ebf9ca1e90f0386a2d9124e2c
+      transform: verbatim
+  - id: common-errors.163
+    kind: row
+    text: "| 오아요 | 와요 | \"오+아요\" → \"와요\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. -아요/-어요 오류 > row \"오아요\""
+      content_hash: sha256:edb46a4977477791918d535fa575df9a9c16b3db580b34dc229993d8f2cc32a9
+      transform: verbatim
+  - id: common-errors.164
+    kind: heading
+    text: "### 3. -ㄹ까요/-을까요 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ까요/-을까요 오류"
+      content_hash: sha256:c26027329d3348597aba24556ee41a1f5904e879a58f75f1b7c099da36d9bbdf
+      transform: verbatim
+  - id: common-errors.165
+    kind: table-header
+    text: "| 틀린 표현 | 올바른 표현 | 설명 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ까요/-을까요 오류 > table header \"틀린 표현\""
+      content_hash: sha256:f11e96349799b4bbb4e26a9763f17d267d7f6f247ef84c0dcdede17c9e21bf5f
+      transform: verbatim
+  - id: common-errors.166
+    kind: table-sep
+    text: "|---------|----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ까요/-을까요 오류 > table separator"
+      content_hash: sha256:ae3aa655692a9b86d3e7796d139b5a63a82795c4748c208d8c1d4cb13f5b4cf0
+      transform: verbatim
+  - id: common-errors.167
+    kind: row
+    text: "| 먹을까요 | 먹을까요 ✅ | 받침 O → \"-을까요\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ까요/-을까요 오류 > row \"먹을까요\""
+      content_hash: sha256:603a1ce7f49e327dd58ba55bf591ef72dd5467825d9456d6e43d07f4b9f6f66c
+      transform: verbatim
+  - id: common-errors.168
+    kind: row
+    text: "| 갈까요 | 갈까요 ✅ | 받침 X → \"-ㄹ까요\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ까요/-을까요 오류 > row \"갈까요\""
+      content_hash: sha256:5b33b45fa7a36b557c7d0c96e994e9fa038557259a1e90240f7f7d120f532ab3
+      transform: verbatim
+  - id: common-errors.169
+    kind: row
+    text: "| 읽을까요 | 읽을까요 ✅ | 받침 O → \"-을까요\" |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ까요/-을까요 오류 > row \"읽을까요\""
+      content_hash: sha256:b72fb734a3a5c5ee3b4a388553e2c03e6198a59f1d23c6bf92641d1edda808d0
+      transform: verbatim
+  - id: common-errors.170
+    kind: paragraph
+    text: "---"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. -ㄹ까요/-을까요 오류 > paragraph 1"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: common-errors.171
+    kind: heading
+    text: "## 문장 부호 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 문장 부호 오류"
+      content_hash: sha256:c8c8cf31833542381c6cb9dd929b8ec176a339de3313ae30b6d8bd4590f87ad2
+      transform: verbatim
+  - id: common-errors.172
+    kind: heading
+    text: "### 1. 과도한 쉼표 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 과도한 쉼표 사용"
+      content_hash: sha256:c71a581f8b5a4f552a0fe60ad09ac5b58d4bca4f82370b2ed08521fca15876a4
+      transform: verbatim
+  - id: common-errors.173
+    kind: paragraph
+    text: "**오류 패턴**: 영어식 쉼표 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 과도한 쉼표 사용 > bold label **오류 패턴**"
+      content_hash: sha256:91e01356e6240928c3350c838bbc0115475ba30cd331d6154038540334d405b0
+      transform: verbatim
+  - id: common-errors.174
+    kind: table-header
+    text: "| 틀린 예 | 올바른 예 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 과도한 쉼표 사용 > table header \"틀린 예\""
+      content_hash: sha256:ce17f3c12895946f5bc13b0de7ac97a1935230223b8eee99f76e27b08a129664
+      transform: verbatim
+  - id: common-errors.175
+    kind: table-sep
+    text: "|--------|----------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 과도한 쉼표 사용 > table separator"
+      content_hash: sha256:51f7d6beba6c67b505e153f05b401d35737902a5db7c51d21faeffc98e01c78b
+      transform: verbatim
+  - id: common-errors.176
+    kind: row
+    text: "| 나는, 학교에 갔다. | 나는 학교에 갔다. |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 과도한 쉼표 사용 > row \"나는, 학교에 갔다.\""
+      content_hash: sha256:72aed749633fa685d46f12883e96db7689c09c0b804101952f4a340b0a0fa786
+      transform: verbatim
+  - id: common-errors.177
+    kind: row
+    text: "| 사과, 배, 그리고 포도 | 사과, 배, 포도 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 과도한 쉼표 사용 > row \"사과, 배, 그리고 포도\""
+      content_hash: sha256:c3f74751b6f450412bb20bbdb17143b1d4b6dec36da9b5596471b407540e6ca7
+      transform: verbatim
+  - id: common-errors.178
+    kind: row
+    text: "| 만약 비가 오면, 우산을 가져가세요. | 만약 비가 오면 우산을 가져가세요. |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 과도한 쉼표 사용 > row \"만약 비가 오면, 우산을 가져가세요.\""
+      content_hash: sha256:b54d930a574ebe38d7ac7716b62201746bdaeb29823fa01d4589664946cb04d3
+      transform: verbatim
+  - id: common-errors.179
+    kind: paragraph
+    text: "**규칙**: 한국어는 영어보다 쉼표를 적게 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 1. 과도한 쉼표 사용 > bold label **규칙**"
+      content_hash: sha256:62c14ef5d94fdd5931f23ed456254d635cd932cc730efb876ec7bef87283d538
+      transform: verbatim
+  - id: common-errors.180
+    kind: heading
+    text: "### 2. 불필요한 느낌표 과다 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 불필요한 느낌표 과다 사용"
+      content_hash: sha256:209f732c0be07ce04177e8aefdac171a5f0870b9fb057721b9a9b57e9d0bbd9f
+      transform: verbatim
+  - id: common-errors.181
+    kind: paragraph
+    text: "**오류 패턴**: 과도한 강조"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 불필요한 느낌표 과다 사용 > bold label **오류 패턴**"
+      content_hash: sha256:caae0f78ca1ce6a243b097ad3e2dda531ccf665fe6813f5e928e12aeda670b3c
+      transform: verbatim
+  - id: common-errors.182
+    kind: table-header
+    text: "| 틀린 예 | 올바른 예 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 불필요한 느낌표 과다 사용 > table header \"틀린 예\""
+      content_hash: sha256:ce17f3c12895946f5bc13b0de7ac97a1935230223b8eee99f76e27b08a129664
+      transform: verbatim
+  - id: common-errors.183
+    kind: table-sep
+    text: "|--------|----------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 불필요한 느낌표 과다 사용 > table separator"
+      content_hash: sha256:51f7d6beba6c67b505e153f05b401d35737902a5db7c51d21faeffc98e01c78b
+      transform: verbatim
+  - id: common-errors.184
+    kind: row
+    text: "| 안녕하세요!!! | 안녕하세요! |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 불필요한 느낌표 과다 사용 > row \"안녕하세요!!!\""
+      content_hash: sha256:3d847bdb34311e4e4509e1aecb4a195daa42954a52e8648d7d6ea9c23000def3
+      transform: verbatim
+  - id: common-errors.185
+    kind: row
+    text: "| 좋아요!!! 정말 좋아요!!! | 좋아요! 정말 좋아요. |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 불필요한 느낌표 과다 사용 > row \"좋아요!!! 정말 좋아요!!!\""
+      content_hash: sha256:9e411e08ad1bfb1c461f1ac3432784c11708b5e783cf515d3485d4f2ee4e4d9e
+      transform: verbatim
+  - id: common-errors.186
+    kind: paragraph
+    text: "**규칙**: 격식체 문서에서는 느낌표를 최소화"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 2. 불필요한 느낌표 과다 사용 > bold label **규칙**"
+      content_hash: sha256:44cdacae2b2a52a48d617f962f15df4995891cac03ca7a534254283519fb17de
+      transform: verbatim
+  - id: common-errors.187
+    kind: heading
+    text: "### 3. 따옴표 혼용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 따옴표 혼용"
+      content_hash: sha256:81ff3eacb7109ee5ede5c95ccdf2fa611f5a6949d17493e17aad9aa4a1653b6e
+      transform: verbatim
+  - id: common-errors.188
+    kind: paragraph
+    text: "**규칙**: 큰따옴표와 작은따옴표를 일관되게 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 따옴표 혼용 > bold label **규칙**"
+      content_hash: sha256:f87d44832736ea35fa35fa5772f6811eeecd838e69143f2b148cd77a049f0d06
+      transform: verbatim
+  - id: common-errors.189
+    kind: table-header
+    text: "| 혼란스러운 예 | 올바른 예 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 따옴표 혼용 > table header \"혼란스러운 예\""
+      content_hash: sha256:d85456a4268db0cdf67971393af33d23f75f147f3da9a043ffa7a4eda5d498a0
+      transform: verbatim
+  - id: common-errors.190
+    kind: table-sep
+    text: "|-----------|----------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 따옴표 혼용 > table separator"
+      content_hash: sha256:a4f48525fe126f67167ca16caa0aeeaeb3fcf1cbe7573d0643d947c82790fffd
+      transform: verbatim
+  - id: common-errors.191
+    kind: row
+    text: "| 그는 '안녕\"이라고 했다. | 그는 \"안녕\"이라고 했다. |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 따옴표 혼용 > row \"그는 '안녕\"이라고 했다.\""
+      content_hash: sha256:cea3f9363c16654a5172cc4ca0a9cf6e1ceaca7278e70be0187d6c9d54c15e8d
+      transform: verbatim
+  - id: common-errors.192
+    kind: row
+    text: "| \"hello'라고 썼다. | \"hello\"라고 썼다. |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 3. 따옴표 혼용 > row \"\"hello'라고 썼다.\""
+      content_hash: sha256:62600f1dce65308bf9d4dbf61653375604df19e68b6ad0a688b285a8000eed2f
+      transform: verbatim
+  - id: common-errors.193
+    kind: heading
+    text: "### 4. 마침표 누락"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 마침표 누락"
+      content_hash: sha256:f2c1563f4ab3647db346c8743b36f3b3563ec98cd708a3e4aa2614270c09a8f9
+      transform: verbatim
+  - id: common-errors.194
+    kind: paragraph
+    text: "**오류 패턴**: 문장 끝 마침표 생략"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 마침표 누락 > bold label **오류 패턴**"
+      content_hash: sha256:878c53a8cac768c378638427122a75560b270ff6b1813f56e21938d334155eef
+      transform: verbatim
+  - id: common-errors.195
+    kind: table-header
+    text: "| 틀린 예 | 올바른 예 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 마침표 누락 > table header \"틀린 예\""
+      content_hash: sha256:ce17f3c12895946f5bc13b0de7ac97a1935230223b8eee99f76e27b08a129664
+      transform: verbatim
+  - id: common-errors.196
+    kind: table-sep
+    text: "|--------|----------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 마침표 누락 > table separator"
+      content_hash: sha256:51f7d6beba6c67b505e153f05b401d35737902a5db7c51d21faeffc98e01c78b
+      transform: verbatim
+  - id: common-errors.197
+    kind: row
+    text: "| 오늘은 날씨가 좋다 그래서 산책을 갔다 | 오늘은 날씨가 좋다. 그래서 산책을 갔다. |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 4. 마침표 누락 > row \"오늘은 날씨가 좋다 그래서 산책을 갔다\""
+      content_hash: sha256:648461054cca1accee7a33b64ad13f948ae47649944a5ab88c6988296d13736d
+      transform: verbatim
+  - id: common-errors.198
+    kind: heading
+    text: "### 5. 가운뎃점(·) 오남용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용"
+      content_hash: sha256:13e0fa81ed133662a5a7035a95347e4b11d63b73bf9629aed23d84e949cab027
+      transform: verbatim
+  - id: common-errors.199
+    kind: paragraph
+    text: "**오류 패턴**: 단순 열거나 독립적인 대안 나열에 가운뎃점 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > bold label **오류 패턴**"
+      content_hash: sha256:447bb832c184be4889d294737cf8894fdd660764bf589d00d00d2f0ca474c887
+      transform: verbatim
+  - id: common-errors.200
+    kind: paragraph
+    text: "가운뎃점은 한글 맞춤법 부록 「문장 부호」에서 **\"짝을 이루거나 공통 성분으로 묶이는 어구\"**를 표시할 때만 사용합니다. 단순 나열에는 쉼표를 씁니다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > paragraph 2"
+      content_hash: sha256:9301bd729124ac9b1246be235cb7500c3dc5091138e107a9e5b1e546d066031b
+      transform: verbatim
+  - id: common-errors.201
+    kind: table-header
+    text: "| 부적절한 예 | 권장 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > table header \"부적절한 예\""
+      content_hash: sha256:1b0cf2137ff24f2eacb6898a49b29ef015deda5058c03d5b81e4d08981af2212
+      transform: verbatim
+  - id: common-errors.202
+    kind: table-sep
+    text: "|-----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > table separator"
+      content_hash: sha256:9057fc619719fceec4168115450972b5a1a7e9816156342e47d7250563853bea
+      transform: verbatim
+  - id: common-errors.203
+    kind: row
+    text: "| 쿠키·세션·JWT | 쿠키, 세션, JWT |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > row \"쿠키·세션·JWT\""
+      content_hash: sha256:229cf823e157343c34cc2dd6c78e1a2e3f646a21f31cf4c6cc499c24c61fead8
+      transform: verbatim
+  - id: common-errors.204
+    kind: row
+    text: "| React·Vue·Svelte 중 선택 | React, Vue, Svelte 중 선택 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > row \"React·Vue·Svelte 중 선택\""
+      content_hash: sha256:4035990534c9f7d5c48d68d8f09bf7c5fb4addb50247f4a8368db7bd6691d0fb
+      transform: verbatim
+  - id: common-errors.205
+    kind: row
+    text: "| 프론트엔드·데브옵스·QA | 프론트엔드, 데브옵스, QA |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > row \"프론트엔드·데브옵스·QA\""
+      content_hash: sha256:a338c149da60a1268e19ebde4aa743697f2f6b0c5f432bcefa0af88388efa139
+      transform: verbatim
+  - id: common-errors.206
+    kind: row
+    text: "| DNS·TTL·CDN 개념 | DNS, TTL, CDN 개념 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > row \"DNS·TTL·CDN 개념\""
+      content_hash: sha256:1175aa4d6ca1f6d66e08a943650e4040fd747dfb179271c94846eefab30d7761
+      transform: verbatim
+  - id: common-errors.207
+    kind: paragraph
+    text: "**가운뎃점이 적절한 예** (대조):"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > bold label **가운뎃점이 적절한 예**"
+      content_hash: sha256:8187aa3e0157bc975396a291c8d467a24756eed7b8894e663dc35a5ff70e7f22
+      transform: verbatim
+  - id: common-errors.208
+    kind: table-header
+    text: "| 적절한 예 | 이유 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > table header \"적절한 예\""
+      content_hash: sha256:bf27957b69ff66d00a78fdda0ee7f014734348cfaba350d749032d77b74e1123
+      transform: verbatim
+  - id: common-errors.209
+    kind: table-sep
+    text: "|---------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > table separator > 2"
+      content_hash: sha256:12c6daad56d326ff08b3191d04dabf2623c40fe359a568e3c223cf287ac527ec
+      transform: verbatim
+  - id: common-errors.210
+    kind: row
+    text: "| 금·은·동메달 | 공통 성분 `메달` 축약 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > row \"금·은·동메달\""
+      content_hash: sha256:51f23de0d92e4a42318113aa5d3cea496632177dc0199fdd51a1f921010a8db5
+      transform: verbatim
+  - id: common-errors.211
+    kind: row
+    text: "| 한·미·일 회담 | 짝/그룹으로 묶임 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > row \"한·미·일 회담\""
+      content_hash: sha256:db1e21ee391d932976d44e1045bf05ccbde661eb112804a0d90add73e7f42e75
+      transform: verbatim
+  - id: common-errors.212
+    kind: row
+    text: "| 읽기·쓰기 권한 | 짝을 이루는 권한 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > row \"읽기·쓰기 권한\""
+      content_hash: sha256:b2ef29dd3cd7293b91ff35a78fb60b455be1cc1c3916c042562d7a3871992694
+      transform: verbatim
+  - id: common-errors.213
+    kind: row
+    text: "| 3·1 운동 | 특정 의미 있는 날짜 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > row \"3·1 운동\""
+      content_hash: sha256:1e486fee4a7875caae0b3e11425d46b4445a08d79fe9fbb66fdb8cff3a6099d7
+      transform: verbatim
+  - id: common-errors.214
+    kind: paragraph
+    text: "**판별 질문**: \"이 항목들은 서로 짝을 이루는가, 아니면 단순한 대안 나열인가?\" 후자라면 가운뎃점이 아니라 쉼표를 사용하세요."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > bold label **판별 질문**"
+      content_hash: sha256:b9418d2fa7e833d9897ab5ee76f7afe0ccc6c723ca46ea7ed31c1535c0462495
+      transform: verbatim
+  - id: common-errors.215
+    kind: paragraph
+    text: "**확신도**: ⚠️ 권장 사항 (가운뎃점 사용 자체는 어문 규정상 허용되나, 짝/그룹 관계가 없는 단순 나열에는 쉼표가 더 적절)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > bold label **확신도**"
+      content_hash: sha256:33c5337a4e4aaacace3f110d710b929f01184422ed8eae0b6b049ceebe7ef19b
+      transform: verbatim
+  - id: common-errors.216
+    kind: paragraph
+    text: "---"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 5. 가운뎃점(·) 오남용 > paragraph 6"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: common-errors.217
+    kind: heading
+    text: "## 검사 전략"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "## 검사 전략"
+      content_hash: sha256:91037838672edba4ced234007c685e37708d2249fa25e5e842ff44984d297bd8
+      transform: verbatim
+  - id: common-errors.218
+    kind: heading
+    text: "### 우선순위"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 우선순위"
+      content_hash: sha256:fb43eb356e29d86a4e2e104a26fe0a2c7a7c2092697a79d1d7bd4538785e4cf6
+      transform: verbatim
+  - id: common-errors.219
+    kind: item
+    text: "1. **최우선**: 명백한 맞춤법 오류 (되요 → 돼요)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 우선순위 > item **최우선**"
+      content_hash: sha256:4190b46323538ca460f8f9a4198e7a57d5c22d281851800e4f6ab40a726026f1
+      transform: verbatim
+  - id: common-errors.220
+    kind: item
+    text: "2. **높음**: 띄어쓰기 오류 (할수있다 → 할 수 있다)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 우선순위 > item **높음**"
+      content_hash: sha256:fdf9d3e5445b40ad4e8bec94e2dcea48437dc726b6e563c33adf84503d38cd10
+      transform: verbatim
+  - id: common-errors.221
+    kind: item
+    text: "3. **중간**: 조사 사용 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 우선순위 > item **중간**"
+      content_hash: sha256:8b83ab38934bd745dd91c2808b3fb170a0a855fd526a330940339a16ae4aedfb
+      transform: verbatim
+  - id: common-errors.222
+    kind: item
+    text: "4. **낮음**: 스타일 개선 제안"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 우선순위 > item **낮음**"
+      content_hash: sha256:be2751b609927bc041cb1bb09de45dc831809c72e0710bffafcb7b39bd7715a7
+      transform: verbatim
+  - id: common-errors.223
+    kind: heading
+    text: "### 문맥 고려 사항"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 문맥 고려 사항"
+      content_hash: sha256:0a1677d5981f44080ab3cd6bac55f660736b381df4874f7be052bf9d4ab7661d
+      transform: verbatim
+  - id: common-errors.224
+    kind: item
+    text: "- **비격식체**: 일부 규칙을 느슨하게 적용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 문맥 고려 사항 > item **비격식체**"
+      content_hash: sha256:653a2d7d691718e575f81c53eb24ebfe471b6fc544535f914ba28ec63acaa52d
+      transform: verbatim
+  - id: common-errors.225
+    kind: item
+    text: "- **구어체**: 줄임말이나 생략 허용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 문맥 고려 사항 > item **구어체**"
+      content_hash: sha256:04a8360b28463a8605b5acf89ec49d86166105d5c59bd94f802544685046ce90
+      transform: verbatim
+  - id: common-errors.226
+    kind: item
+    text: "- **기술 문서**: 전문 용어와 외래어 주의"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 문맥 고려 사항 > item **기술 문서**"
+      content_hash: sha256:1154b1f57c40c1d9d026450744af387aa3ab92d22eabed4b33572e70538d692f
+      transform: verbatim
+  - id: common-errors.227
+    kind: item
+    text: "- **코드 주석**: 간결함을 우선"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 문맥 고려 사항 > item **코드 주석**"
+      content_hash: sha256:c5798dec658a40060b5508bf456a9dca26b45d5046fbdee6a8c1dea13f36f6f4
+      transform: verbatim
+  - id: common-errors.228
+    kind: heading
+    text: "### 확신도 표시"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 확신도 표시"
+      content_hash: sha256:89d5de553ff2c362970b486cf8bac6e16aac4de8075650e8db3123c4445eb2f6
+      transform: verbatim
+  - id: common-errors.229
+    kind: item
+    text: "- ✅ **확실한 오류**: 규칙 명백히 위반"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 확신도 표시 > item 1"
+      content_hash: sha256:5cd763bd2d32adb64bf02a68d86fc9545999e5ca36634647ea077d80ed195e09
+      transform: verbatim
+  - id: common-errors.230
+    kind: item
+    text: "- ⚠️ **권장 사항**: 더 나은 표현 존재"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 확신도 표시 > item 2"
+      content_hash: sha256:1cce9c050834a2fd5855d13cf6fffc7b9dbbd474fa5ebf896e60e689348b4b7f
+      transform: verbatim
+  - id: common-errors.231
+    kind: item
+    text: "- 💡 **제안**: 선택적 개선 사항"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/common-errors.md
+      anchor: "### 확신도 표시 > item 3"
+      content_hash: sha256:0ed37217f3e5c1c7fe5879ccab6adceb914c77ebd147865049cd2256e8377a1f
+      transform: verbatim

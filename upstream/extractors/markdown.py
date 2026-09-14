@@ -6,6 +6,7 @@ Anchor forms produced (context is the tag path, else the last heading, else `top
   <context> > paragraph N | quote N | item N     ordinal within context and kind
   <context> > item **label** | bold label **label**
   <context> > table header "<first cell>" | table separator | row "<first cell>"
+  <any of the above> > N                         second and later occurrence of the same anchor in one file
 """
 import re
 
@@ -15,10 +16,18 @@ ITEM = re.compile(r"^(\d+\.|-) ")
 
 
 def split_frontmatter(text):
+    """Top-level `key: value` pairs only; a bare `key:` with indented children keeps its raw child lines as the value."""
     lines = text.split("\n")
     if lines and lines[0] == "---":
         end = lines.index("---", 1)
-        fm = dict(l.split(": ", 1) for l in lines[1:end])
+        fm, key = {}, None
+        for l in lines[1:end]:
+            if l.startswith((" ", "\t")) and key is not None:
+                fm[key] = (fm[key] + "\n" + l) if fm[key] else l
+            elif ": " in l:
+                key, value = l.split(": ", 1); fm[key] = value
+            elif l.endswith(":"):
+                key = l[:-1]; fm[key] = ""
         return fm, lines[end + 1:]
     return {}, lines
 
@@ -96,6 +105,14 @@ def parse(text, top="(top)"):
         label = re.match(r"^(\*\*[^*]+\*\*)", l)
         add("paragraph", "\n".join(lines[i:j]), f"bold label {label.group(1)}" if label else None)
         blanks = 0; i = j
+    # 06 §5.5 rule 2: an anchor repeated in one file gets its occurrence number (" > 2", " > 3")
+    seen = {}
+    for blk in blocks:
+        if blk["kind"] == "tag":
+            continue
+        seen[blk["anchor"]] = seen.get(blk["anchor"], 0) + 1
+        if seen[blk["anchor"]] > 1:
+            blk["anchor"] = f"{blk['anchor']} > {seen[blk['anchor']]}"
     return blocks
 
 

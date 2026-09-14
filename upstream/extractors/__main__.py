@@ -95,14 +95,14 @@ def main(argv=None):
             print(f"NEW FILE          {rel}"); continue
         missing, changed, added = compare(committed[rel], files[rel])
         for f in missing:
-            print(f"ANCHOR NOT FOUND  {rel} {f['id']}  {f['anchor']}"); bad += 1
+            print(f"ANCHOR NOT FOUND  {rel} {f['id']}  {f['anchor']}  (committed anchor absent from the extracted commit)"); bad += 1
         for old, new in changed:
             k = next((i for i, (x, y) in enumerate(zip(old["text"], new["text"])) if x != y), min(len(old["text"]), len(new["text"])))
             start = max(0, k - 20)
             print(f"HASH DIFFERS      {rel} {old['id']}  {old['anchor']}  (first difference at char {k})\n"
-                  f"    was: …{short(old['text'][start:])}\n    now: …{short(new['text'][start:])}"); bad += 1
+                  f"    committed: …{short(old['text'][start:])}\n    extracted: …{short(new['text'][start:])}"); bad += 1
         for f in added:
-            print(f"NEW FRAGMENT      {rel} {f['id']}  {f['anchor']}\n    text: {short(f['text'])}")
+            print(f"NEW FRAGMENT      {rel} {f['id']}  {f['anchor']}  (only in the extracted commit)\n    text: {short(f['text'])}")
         if a.cmd == "check" and committed[rel] != files[rel] and not (missing or changed or added):
             print(f"BYTES DIFFER      {rel} (ids, order or file-level fields; fragments equal)"); bad += 1
     total = sum(len(load(t)[1]) for r, t in files.items())
