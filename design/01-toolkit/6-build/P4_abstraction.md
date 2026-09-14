@@ -106,8 +106,8 @@ Exploration cap: 1 of 4 used.
 | # | Tier | Purpose | Tokens | Result |
 |---|---|---|---|---|
 | 1 | mid (Sonnet 5) | Abstraction test: korean-skills grammar from the schema and conventions only | 134.5k | Passed without a schema change; 2 parser defects, 5 documentation gaps; one out-of-scope file read (disclosed) |
-| V | mid (Sonnet 5) | Verification of the done-condition (outside the cap) | _pending_ | _pending_ |
+| V | mid (Sonnet 5) | Verification of the done-condition (outside the cap) | 114.0k | Both clauses and the check **met**. Demonstrated ANCHOR NOT FOUND vs HASH DIFFERS on a scratch upstream commit; reproduced hand vs code (7 files 0 diff, 25 anchor-only lines); confirmed no heading fragment from the fenced template. Found two issues, both fixed: `update-test.txt`'s forward line was captured before korean-skills (8 files) — regenerated (11 files, 988 fragments, 0 failures); korean-skills was registered under `except ImportError: pass` — now imported directly, and every command fails if an upstream in the lock has no extractor |
 
 ## Release-blocked
 
-_(Updated after the verification run.)_
+None. Every done-condition clause was verified met.

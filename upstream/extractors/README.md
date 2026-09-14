@@ -28,4 +28,4 @@ python3 -m upstream.extractors validate           # upstream/interface/ 규칙 �
 1. `upstream/interface/`의 스키마에서 역할을 고릅니다. 스키마는 고치지 않습니다.
 2. `upstream/extractors/<이름>.py`에 `NAME`과 `extract(commit)`을 둡니다. 파일 전체를 블록으로 받으면 `markdown.parse`, 일부만 고르면 제목·번호·굵은 라벨로 찾는 함수를 씁니다. 찾지 못하면 `AnchorNotFound`를 올리지 말고 실패 목록에 `(id, 이유)`를 넣습니다.
 3. 조각마다 `normalized.fragment_lines`로 출처를 붙입니다. 문장을 바꾸면 `adapted`와 `original`이 필요합니다.
-4. `__main__.py`의 `MODULES`에 등록하고 `extract`, `validate`, `check`을 돌립니다.
+4. `__main__.py`의 `MODULES`에 등록하고 `extract`, `validate`, `check`을 돌립니다. lock.yaml에 있는데 `MODULES`에 없는 upstream이 있으면 모든 명령이 실패합니다.

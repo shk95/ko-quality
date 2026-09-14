@@ -8,17 +8,12 @@
 import argparse
 import sys
 
-from . import fluent_korean, im_not_ai, yoonmoon
+from . import fluent_korean, im_not_ai, korean_skills, yoonmoon
 from .normalized import load, sha
 from .source import ROOT, lock
 from .validate import validate_all
 
-MODULES = {"im-not-ai": im_not_ai, "yoonmoon": yoonmoon, "fluent-korean": fluent_korean}
-try:
-    from . import korean_skills
-    MODULES["korean-skills"] = korean_skills
-except ImportError:
-    pass
+MODULES = {"im-not-ai": im_not_ai, "yoonmoon": yoonmoon, "fluent-korean": fluent_korean, "korean-skills": korean_skills}
 NORM = ROOT / "upstream/normalized"
 
 
@@ -62,6 +57,10 @@ def main(argv=None):
     d = sub.add_parser("diff"); d.add_argument("--upstream", required=True); d.add_argument("--commit", required=True)
     sub.add_parser("validate")
     a = ap.parse_args(argv)
+    missing = sorted(set(lock()) - set(MODULES))
+    if missing:
+        print(f"NO EXTRACTOR      {', '.join(missing)} (in lock.yaml, not in MODULES)")
+        return 1
 
     if a.cmd == "extract":
         names = [a.upstream] if a.upstream else list(MODULES)

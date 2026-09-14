@@ -1,5 +1,5 @@
 # P4 update test (flow.md §3 P4 step 5). Upstreams had not moved since the lock (git ls-remote, 2026-09-14),
-# so im-not-ai was moved back 10 commits and forward again.
+# so im-not-ai was moved back 10 commits and forward again. Regenerated after korean-skills was added.
 # back:    python3 -m upstream.extractors diff --upstream im-not-ai --commit 0df19680ad888d08ef4e0dafe0303fb22da96db4
 
 HASH DIFFERS      procedure/rewrite.yaml check.5  ## 자체검증 체크리스트 (monolith 윤문 후 자가 점검) > 5  (first difference at char 81)
@@ -21,5 +21,5 @@ HASH DIFFERS      taxonomy/rewrite.yaml pattern.D-14  id prefix D-14  (first dif
     extracted: …하다/경고는 아프다") **1회+**, 생성형 개념 은유(잠식·청구서·과실·청사진) 문서 3회+, **같은 은유 어근 3회+ …
 diff: 2 files, 109 fragments, 7 failures
 
-# forward: python3 -m upstream.extractors check   (lock commits)
-check: 8 files, 474 fragments, 0 failures
+# forward: python3 -m upstream.extractors check   (lock commits, all four upstreams)
+check: 11 files, 988 fragments, 0 failures
