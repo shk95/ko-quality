@@ -6,7 +6,7 @@ For every upstream span in SKILL.provenance.yaml:
   2. the rendered span (minus prefix) equals the fragment text (quick-line spans: re-rendered from the fragment);
   3. the fragment text is present in the upstream file at the lock commit
      (selected fragments: each line is a substring of the file).
-Exit 1 on any mismatch. Usage: tests/check_provenance.py dist/claude-code/skills/<skill>
+Exit 1 on any mismatch. Usage: tests/check_provenance.py dist/claude-code/skills/<skill> | dist/claude-code/provenance/<name>.yaml
 """
 import glob, hashlib, json, re, sys
 from pathlib import Path
@@ -40,12 +40,18 @@ def parse_sidecar(path):
 PAT = re.compile(r"^#+ ([A-J]-\d+)\.\s+(.+?)\s*(?:\[([^\]]+)\])?\s*$")
 QM = re.compile(r"_quick:\s*(true|false)(?:\s*·\s*quick_pattern:\s*(.*?))?(?:\s*·\s*quick_fix:\s*(.*?))?_\s*$")
 
-def main(skill_dir):
-    skill_dir = ROOT / skill_dir
+def main(target):
+    # target: a skill directory (reads SKILL.provenance.yaml) or a sidecar .yaml with a `base:` line
+    target = ROOT / target
+    if target.suffix == ".yaml":
+        sidecar = target
+        base = ROOT / re.search(r"^base: (.*)$", target.read_text(encoding="utf-8"), re.M).group(1)
+    else:
+        sidecar, base = target / "SKILL.provenance.yaml", target
     errors, checked = [], 0
     cache = {}
-    for rel, spans in parse_sidecar(skill_dir / "SKILL.provenance.yaml").items():
-        rendered = (skill_dir / rel).read_text(encoding="utf-8").split("\n")
+    for rel, spans in parse_sidecar(sidecar).items():
+        rendered = (base / rel).read_text(encoding="utf-8").split("\n")
         for s in spans:
             if s["owner"] != "upstream": continue
             checked += 1
