@@ -13,7 +13,7 @@
 
 ## Next (resume here)
 
-1. **Close P6 first.** Its verification run was started before the stop, and its result is not recorded. Rerun the P6 verification (`P6_codex-build.md` row V), then fill in V and the release-blocked section.
+1. **P6 is closed.** Its verification finished after the stop and is recorded, including one more release-blocked reservation. **Codex cannot be run in this build**, so step 3's Codex half is deferred; the Claude Code half is not.
 2. **Ship logger, hooks and stamp in both builds.** A patch was drafted outside the tree and not applied:
    - In `build/claude_code.py`, add `stamp(profile, harness, injection_point)`. It returns tool, version, profile, plugin name, harness, `injection_point` and `upstream_versions` (name → commit from `upstream/lock.yaml`), with no timestamps, so builds stay reproducible.
    - Add `ship_logger(pdir, …)`. It copies `logger/ko_quality_log.py` → `<plugin>/logger/`, copies `assemble/hooks/hooks.json` → `<plugin>/hooks/`, and writes `<plugin>/ko-quality.stamp.json`. Call it per profile: Claude Code with `"claude-code", "output-style"`, Codex with `"codex", "agents-md"`.

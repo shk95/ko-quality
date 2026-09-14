@@ -6,9 +6,9 @@
 
 > 새 세션은 여기서 시작합니다.
 
-**현재 위치:** 시대 `01-toolkit`, **6-build 진행 중 — P1~P5 완료(검증 통과), P6 기록 완료·검증 결과 미기록, P7 일부.** 사용자 요청으로 멈춤(2026-09-14). 구현 흐름 정의는 `5-preflight/flow.md`, 단계별 기록은 `01-toolkit/6-build/P<n>_*.md`. release-blocked 표시: P6(Codex에서 이름 붙은 커스텀 에이전트 호출 불안정). upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT). 프로세스(`AGENTS.md`)와 저장소 구성은 끝났습니다.
+**현재 위치:** 시대 `01-toolkit`, **6-build 진행 중 — P1~P5 완료(검증 통과), P6 완료(검증: 서브에이전트 근거에 유보), P7 일부.** 사용자 요청으로 멈춤(2026-09-14). 구현 흐름 정의는 `5-preflight/flow.md`, 단계별 기록은 `01-toolkit/6-build/P<n>_*.md`. release-blocked 표시: P6(Codex에서 이름 붙은 커스텀 에이전트 호출 불안정). upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT). 프로세스(`AGENTS.md`)와 저장소 구성은 끝났습니다.
 
-**다음 작업:** `01-toolkit/6-build/P7_server-logger.md`의 "Next (resume here)"부터 — P6 검증 재실행과 기록, 로거·hook·빌드 스탬프를 두 빌드에 싣기, 양쪽 하네스 실측, P7 검증. 그 뒤 7-review.
+**다음 작업:** `01-toolkit/6-build/P7_server-logger.md`의 "Next (resume here)"부터 — 로거·hook·빌드 스탬프를 두 빌드에 싣기, 양쪽 하네스 실측, P7 검증. 그 뒤 7-review.
 
 **읽는 순서 (최소):**
 

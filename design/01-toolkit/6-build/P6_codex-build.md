@@ -85,9 +85,11 @@ Exploration cap: 1 of 4 used.
 | # | Tier | Purpose | Tokens | Result |
 |---|---|---|---|---|
 | 1 | mid (Sonnet 5) | Codex docs: manifest, custom agents and `multi_agent_v2`, AGENTS.md, `developer_instructions`, plugin hooks and trust, MCP resources, removal | 142.1k | Root `plugin.json` documented as primary, but installed OpenAI plugins use `.codex-plugin/`; custom agents in `~/.codex/agents` and `.codex/agents`, spawn parameters undocumented; hook events, env vars (`PLUGIN_ROOT`, `CLAUDE_PLUGIN_ROOT`), payload fields and per-hash trust documented; MCP resources not listed |
-| V | mid (Sonnet 5) | Verification of the done-condition (outside the cap) | _pending_ | _pending_ |
+| V | mid (Sonnet 5) | Verification of the done-condition (outside the cap) | 142.5k | Main **met**, skill invoked **met**, subagent **met with a reservation**: the agent marker inside the `wait` result (no shell commands in that run) supports the subagent receiving `developer_instructions`, but terra-global shows the agent marker in the main reply with no recorded spawn — the orchestrator may see agent instructions in its own context. Could not rerun Codex. Confirmed installer behavior and that check 2/3 trimming hides no interior difference. Noted: per-run `codex exec` command lines are not in the batch logs; `plugin.json` has no `$schema` (06 §2.2 describes one); no `mcp.json` (06 §12; decision 2 closes it as none) |
 
 ## Release-blocked
 
 - **`korean-reviewer` (and any named custom agent) is not reliably invoked in Codex.** 1 of 6 delegation attempts clearly reached the custom agent (`tests/runs/P6/channel.json` subagent-default). Other attempts did not spawn, spawned without attribution, or failed (`channel.json`, `channel-rerun.json`). Path taken: agents stay in the install (removable), policy for subagents relies on AGENTS.md. To resolve in 7-review: retest with a later Codex release, interactive sessions, or a documented agent selector.
-- _(Verification result pending.)_
+- **Subagent policy evidence is weaker than it looks** (verification reservation). The marker test cannot separate "the subagent received the agent's instructions" from "the orchestrator saw them and relayed". To resolve in 7-review: a run whose subagent output is captured separately from the orchestrator's context.
+
+All other done-condition clauses were verified met. Codex could not be run again during verification; the retest is deferred.
