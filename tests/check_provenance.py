@@ -51,7 +51,13 @@ def main(target):
     errors, checked = [], 0
     cache = {}
     for rel, spans in parse_sidecar(sidecar).items():
-        rendered = (base / rel).read_text(encoding="utf-8").split("\n")
+        if "#" in rel:  # a string field inside a TOML file, e.g. install/.codex/agents/x.toml#developer_instructions
+            sys.path.insert(0, str(ROOT))
+            from build.mini_toml import loads
+            path, field = rel.split("#")
+            rendered = loads((base / path).read_text(encoding="utf-8"))[field].split("\n")
+        else:
+            rendered = (base / rel).read_text(encoding="utf-8").split("\n")
         for s in spans:
             if s["owner"] != "upstream": continue
             checked += 1

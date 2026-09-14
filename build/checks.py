@@ -33,8 +33,9 @@ def harness_dists():
 
 
 def policy_body(harness, pdir):
+    # blank lines at either end are layout (the output style starts with the blank line after its frontmatter), not policy text
     if harness == "claude-code":
-        return body(next((pdir / "output-styles").glob("*.md"))).rstrip("\n")
+        return body(next((pdir / "output-styles").glob("*.md"))).strip("\n")
     section = (pdir / "install" / "AGENTS.section.md").read_text(encoding="utf-8")
     lines = [l for l in section.split("\n") if not l.startswith("<!-- ko-quality")]
     return "\n".join(lines).strip("\n")
@@ -42,12 +43,12 @@ def policy_body(harness, pdir):
 
 def agent_prompts(harness, pdir):
     if harness == "claude-code":
-        return {p.stem: body(p).rstrip("\n") for p in sorted((pdir / "agents").glob("*.md"))}
+        return {p.stem: body(p).strip("\n") for p in sorted((pdir / "agents").glob("*.md"))}
     from build.mini_toml import loads
     out = {}
     for p in sorted((pdir / "install" / ".codex" / "agents").glob("*.toml")):
         data = loads(p.read_text(encoding="utf-8"))
-        out[data["name"]] = data["developer_instructions"].rstrip("\n")
+        out[data["name"]] = data["developer_instructions"].strip("\n")
     return out
 
 

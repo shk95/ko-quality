@@ -1,0 +1,32 @@
+{
+  "name": "ko-quality",
+  "interface": {
+    "displayName": "ko-quality"
+  },
+  "plugins": [
+    {
+      "name": "ko-quality",
+      "source": {
+        "source": "local",
+        "path": "./agent-reply"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "ko-quality-formal",
+      "source": {
+        "source": "local",
+        "path": "./formal-report"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
