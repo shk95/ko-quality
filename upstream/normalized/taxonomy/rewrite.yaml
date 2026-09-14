@@ -1,0 +1,815 @@
+# Temporary format (P1, flow.md). Schema is derived in P4. Text values are exact upstream bytes; JSON-quoted strings are valid YAML.
+role: taxonomy
+slot: rewrite
+fragments:
+  - id: severity.S1
+    kind: severity
+    text: "**S1 결정적(critical)**: 한 번만 나와도 \"이건 AI\"라고 거의 확신하게 되는 패턴. 무조건 제거."
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "## 심각도 기준 > bullet 1"
+      content_hash: sha256:31a087676c2eadcc5f136ac7fd4bf9e7b33d8f2d4f18dc00d83e4aaeefef4c6f
+      transform: verbatim
+  - id: severity.S2
+    kind: severity
+    text: "**S2 강함(high)**: 1~2회는 자연스러울 수 있으나 문서에서 3회 이상 반복되면 티 남. 밀도 기반 제거."
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "## 심각도 기준 > bullet 2"
+      content_hash: sha256:8baab21bfbdc7899e70c91a613f550bb07ff275142df5add9f96e7ca26c7bb85
+      transform: verbatim
+  - id: severity.S3
+    kind: severity
+    text: "**S3 약함(low)**: 개별로는 문제 아님. 다른 패턴과 중첩될 때 AI 인상을 강화. 리듬 조정 수준."
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "## 심각도 기준 > bullet 3"
+      content_hash: sha256:f17595904b6b0acf5b521430b17cb4544112151f430568b89d64ec605de67db9
+      transform: verbatim
+  - id: do-not
+    kind: exclusion
+    text: "**Do-NOT (탐지·윤문 모두 제외):** 고유명사·제품명·모델명·기관명, 수치·날짜·단위, **발화자가 있는 직접 인용**(말했다·밝혔다·따르면 등 발화 표지가 붙은 큰따옴표), 법률 조문, 수학·화학·통계 표기, 영어 약어(LLM·GPU·MCP·API 등 업계 표준). 단 필자가 자문(自問)·강조를 따옴표로 감싼 수사 장치(발화 표지 없음)는 필자 자신의 문장이므로 윤문 대상이다(v2.6.2)."
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/quick-rules.header.md
+      anchor: "bold label **Do-NOT (탐지·윤문 모두 제외):**"
+      content_hash: sha256:bfd2d32b396fc7760b01b091d60805573ae332273ee36e24052af0d6418cb1d4
+      transform: verbatim
+  - id: category.A
+    kind: category
+    text: "## A. 번역투 (Translation-ese) — S1~S2"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A."
+      content_hash: sha256:421a7821ac2baaa6eb8b58d348beae7a6c476e02106c729d7bdb7c4d591c4278
+      transform: verbatim
+  - id: category.B
+    kind: category
+    text: "## B. 영어 인용·용어 과다 — S2"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix B."
+      content_hash: sha256:908e1a27d4682c3397f909654b3f2fae46032393fc41034c1c3892cf5404297a
+      transform: verbatim
+  - id: category.C
+    kind: category
+    text: "## C. 구조적 AI 패턴 (서식·레이아웃) — S1~S2"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix C."
+      content_hash: sha256:f49469f48454fb00b23063e4345be9710c57e1d39151c3b0dc99ad5489ed2d93
+      transform: verbatim
+  - id: category.D
+    kind: category
+    text: "## D. AI 특유의 관용구 (Signature Phrases) — S1"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D."
+      content_hash: sha256:1db6fdae1754f530de98ea55479a70d5fdea3db40b977bd784d8247c18ea5208
+      transform: verbatim
+  - id: category.E
+    kind: category
+    text: "## E. 리듬·문장 길이 균일성 — S2"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix E."
+      content_hash: sha256:b476f36d6a3cadbcbbde9ade45cbaabcd843b2c026283509ed996f19fc8e8131
+      transform: verbatim
+  - id: category.F
+    kind: category
+    text: "## F. 과도한 수식·중복 — S2"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix F."
+      content_hash: sha256:f2b8acee8be800c84d2ac38ebd5258e7cf952f0c8827159809711c42b99d0b2f
+      transform: verbatim
+  - id: category.G
+    kind: category
+    text: "## G. 과도한 Hedging (완곡) — S2"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix G."
+      content_hash: sha256:6975b4c2fc296a1b6cf12947b1f3e6da31e05e5ae752355d2971527bd33abb2c
+      transform: verbatim
+  - id: category.H
+    kind: category
+    text: "## H. 접속사 남발 — S2"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix H."
+      content_hash: sha256:56a3dd75bf3e181b37368a5ef0e2d3aba9c74f47e8abfcf58a7ae5df6619401e
+      transform: verbatim
+  - id: category.I
+    kind: category
+    text: "## I. 형식명사·의존명사 과다 — S2"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix I."
+      content_hash: sha256:3ff5e854e97c430339d080b596ce6934256e8c19cfad3f94ecb3fcd0357258e7
+      transform: verbatim
+  - id: category.J
+    kind: category
+    text: "## J. 시각 장식 남용 — S2~S3"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix J."
+      content_hash: sha256:b58ae2bcd1fbaaa13523c950eedb02ba0411738772217152facc8171f0b4b6aa
+      transform: verbatim
+  - id: pattern.A-1
+    kind: pattern
+    text: "### A-1. \"~에 대하여/대해서\" 남발 [S1]\n- _quick: true · quick_pattern: \"~에 대해(서)\" **한 문단 3회+ 밀집**(사람이 3배 더 쓰는 표현 — 기본 보존) · quick_fix: 목적격 조사로 직결(\"X에 대해 논의\" → \"X를 논의\")_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-1"
+      content_hash: sha256:63a18f7297933d0a682d2bb29c44c9679c481fb5a0fd0d1686c67f91ce30a6ad
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-2
+    kind: pattern
+    text: "### A-2. \"~를 통하여/통해\" 남발 [S2]\n- _quick: true · quick_pattern: \"~를 통해/통하여\" **문단 3회+ 반복** · quick_fix: 일부만 \"~로\", \"~해서\", \"~함으로써\"로 분산(1~2회 보존)_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-2"
+      content_hash: sha256:834f6ec537615b99accfc0a73f754991c5e74181ab1121d5bdc675f02f00ae51
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-3
+    kind: pattern
+    text: "### A-3. \"~에 있어(서)\" [S1]\n- _quick: true · quick_pattern: \"~에 있어(서)\" · quick_fix: \"~에서\" 또는 \"~을 볼 때\"_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-3"
+      content_hash: sha256:662c52378385f9b1003e9dfb1556fdf92edb9c80009173c12b19279baa89c4fd
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-4
+    kind: pattern
+    text: "### A-4. \"~라는 점에서\" [S2]\n- _quick: true · quick_pattern: \"~라는 점에서\" 3회+ · quick_fix: \"~서\", \"~라는 이유로\"_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-4"
+      content_hash: sha256:fd3c96488d6a327c6d0113c08d757efd4d8b479ea0f6a71b24a3adb19b31bb72
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-5
+    kind: pattern
+    text: "### A-5. \"~와 관련하여\" / \"~와 관련된\" [S2]\n- _quick: true · quick_pattern: \"~와 관련하여/관련된\" · quick_fix: \"~에\", \"~의\"_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-5"
+      content_hash: sha256:0b1b1bc52718a3d0230f48915e2819072e633e8f29c2bffed5bf0e728fd97c76
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-6
+    kind: pattern
+    text: "### A-6. \"~에 기반하여\" / \"~을 바탕으로\" 남발 [S2]\n- _quick: true · quick_pattern: \"~에 기반하여/바탕으로\" 남발 · quick_fix: \"~로\", \"~을 보고\"_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-6"
+      content_hash: sha256:e9e38a3a782c57df72c2ecfaf7ccc31f32545d4a9ca30bc969a60e8bf57f7f11
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-7
+    kind: pattern
+    text: "### A-7. \"가지고 있다\" [S1]\n- _quick: true · quick_pattern: \"가지고 있다\", have/make/take/give+명사 직역 · quick_fix: 형용사-동사 환원 또는 이중주어(\"강한 경쟁력을 가지고 있다\" → \"경쟁력이 강하다\")_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-7"
+      content_hash: sha256:1a5088f826d58765d4f444c4e1c5eba0703f68e2cb304e53dfc1c9438ca89eba
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-8
+    kind: pattern
+    text: "### A-8. 이중 피동 \"~되어진다\" / \"~지게 된다\" [S1]\n- _quick: true · quick_pattern: 이중 피동 \"~되어진다/~지게 된다\" · quick_fix: 능동 또는 단일 피동(\"판단되어진다\" → \"판단된다\")_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-8"
+      content_hash: sha256:b13688bfebd70658bc9e50bd1684261463e7760156376e8c383281ecd838cdc1
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-9
+    kind: pattern
+    text: "### A-9. \"~에 의해\" 피동문 [S2]\n- _quick: true · quick_pattern: \"~에 의해\" 피동 · quick_fix: 행위자를 주어로(\"AI에 의해 생성\" → \"AI가 만든\")_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-9"
+      content_hash: sha256:ea55c158796f891e05b92edfd501c56dcd1ce6d0c194c6e312dc0daa176be65c
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-10
+    kind: pattern
+    text: "### A-10. \"~할 수 있다\" 남발 · v2.4 처방 전환 [S2]\n- _quick: true · quick_pattern: 같은 \"~할 수 있다\"가 4회+ 반복 · quick_fix: **단정 전환 금지**. 일부만 다른 완곡 표현(\"~할 여지가 있다·~할 수도 있다\")으로 분산해 리듬만 깬다_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-10"
+      content_hash: sha256:9f3b73e70c43c7a9da280a130860b1527a16c80d3b1466c0dcd88aac33faf970
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-11
+    kind: pattern
+    text: "### A-11. \"~을 위해\" 목적절 남발 [S2]\n- _quick: true · quick_pattern: \"~을 위해\" 목적절 남발 · quick_fix: \"~려고\", \"~도록\", \"~위한\"_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-11"
+      content_hash: sha256:95f09a44ad9a74ca9cee521fc0c0c3f9f23d76491132aa033ee59282172d766f
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-15
+    kind: pattern
+    text: "### A-15. 추상 주어 + 만능 동사 [S2] · v1.1 신규\n- _quick: true · quick_pattern: 추상 주어 + 만능 동사(보여준다/제공한다/가져온다), 사역-인지 동사 직역 · quick_fix: 구체 주어로 환원, 사역은 \"X 때문에/덕분에/로 인해\" 부사절, 인지 동사(suggest/show/indicate)는 \"~에 따르면 ~이다\"_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-15"
+      content_hash: sha256:bbf1e60ac6690ed074e0227fc23fb4c76f438ca95f964239808afd0bcbf18d7d
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-16
+    kind: pattern
+    text: "### A-16. 문맥이 허락하지 않는 지시·인칭 대명사 [S1] · v2.0 신규 · **v2.7 조준 교체**\n- _quick: true · quick_pattern: 대명사(그/그녀/그것/그들/이것/이는) 출현마다 **직전 2문장에 선행 명사구 후보가 몇 개인가** — 0개(받을 대상 없음)·1개(영형 자리)가 후보 · quick_fix: 0개 → 명사구 복원(확정 불가면 유지) / 1개 → 영형 / 2개+ → 명사구 되짚기. **삭제 비율 목표 없음. 불확실하면 유지**_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-16"
+      content_hash: sha256:31a5f7782a83107e5605c5d847739914245ceca98f0580e30baeea792bd4c8b7
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-18
+    kind: pattern
+    text: "### A-18. 관계대명사절 직역 — 긴 좌향 수식 (관형구 3중 이상 중첩) [S2] · v2.0 신규\n- _quick: true · quick_pattern: 명사 앞 3어절 이상 관형구/관계절 좌향 수식 · quick_fix: 문장 분리 또는 후치 동격절(\"X를 만났는데, 그 X는 ~\")_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-18"
+      content_hash: sha256:5c362161675b6378e75e5582214078f2caa15c2f0c85e58cc64495436ff5a6e8
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-19
+    kind: pattern
+    text: "### A-19. 이중 조사 결합 (-에서의·-에로의·-으로의·-에의·-으로부터의·-로부터의) [S2] · v2.0 신규\n- _quick: true · quick_pattern: 이중 조사 \"~에서의/~에로의/~으로의/~에의/~으로부터의\" · quick_fix: 절-구로 풀어쓰기, 단순 \"~의\"는 비대상_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-19"
+      content_hash: sha256:8b053fa34c37c8de55768dbc172f0fb76f3cc946b4bc4c671091bc33a06f610a
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-20
+    kind: pattern
+    text: "### A-20. 피동 진행 \"~되고 있다 / ~지고 있다\" 남발 · v2.6 신규 (팀 채굴) [S2]\n- _quick: true · quick_pattern: \"~되고 있다/~지고 있다\"가 한 문단 3회+ · quick_fix: 일부만 추세 단언(\"심해졌다\")으로 — 고립 사용은 보존_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-20"
+      content_hash: sha256:b8f67db675f6f45cfb27605c2bd60803700291907ff1fac84f388b986da8944a
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-21
+    kind: pattern
+    text: "### A-21. 범위 상승 \"단순한 X를 넘어 Y\" · v2.6 신규 (팀 채굴) [S2]\n- _quick: true · quick_pattern: \"단순한 X를 넘어 Y\" 범위 상승 (사람 글 실측 0건) · quick_fix: \"X만이 아니라 Y다\"로 풀거나 넘어-구 삭제_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-21"
+      content_hash: sha256:0ad1c99e78b96f165e45ca48f6449a1e58e155f215b130320548bc8ce82a9464
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-22
+    kind: pattern
+    text: "### A-22. 평가 술어 얹기 \"~은 명확하다 / 분명하다\" [S2] · v2.7 신규\n- _quick: true · quick_pattern: \"~은/는 명확하다·분명하다\"(부사 \"분명히\"·동사구 \"명확히 하다\" 제외) · quick_fix: 평가 술어를 걷고 명제를 단언으로. 확신 강도는 부사로 보존. 앞에서 논증한 결론이면 유지_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-22"
+      content_hash: sha256:afd07ea24d74af3ca55adc0705ce2feafb568212f0ed5175fb303efbc1a40546
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.A-24
+    kind: pattern
+    text: "### A-24. \"더 이상 ~ 않다/아니다\" (no longer) [S2] · v2.7 신규\n- _quick: true · quick_pattern: \"더 이상 ~ 않다/아니다\" 문서 2회+ 또는 결말부 재정의 문장 · quick_fix: \"더 이상\"을 \"이제\"로 환원하거나 변화 동사로 편다. 부정 명제를 긍정 단언으로 올리지 마라. **윤문 중 \"더 이상 A가 아니라 B\"를 새로 만들지 마라**_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix A-24"
+      content_hash: sha256:fd2e09a4c7c664207d2bfca6c257fdd80681f2a27243a51de785f9185185297e
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.B-1
+    kind: pattern
+    text: "### B-1. 괄호 병기 관습 [S2]\n- _quick: true · quick_pattern: 한글 + 괄호 영어 병기 매번 반복(\"~(Sovereign AI)\" 식) · quick_fix: 첫 등장만 병기, 이후 한글만_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix B-1"
+      content_hash: sha256:40d5db474e2ec70054c5c2405bf8e8cb928401d4837f6d349d991ada2a9f138e
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.B-2
+    kind: pattern
+    text: "### B-2. 불필요한 영어 장식·일회성 jargon [S2]\n- _quick: true · quick_pattern: 설명 없이 낀 광고성 buzzword(seamless·robust·leverage 등) · quick_fix: 광고성만 한국어로 풀고 표준 technical term(API·prompt·token 등)은 원어 보존, 기계적 직역 금지_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix B-2"
+      content_hash: sha256:734e6629205613d3804a0f32bc0dd0a2d414e3837bf819402d3770a4e45c0154
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.C-2
+    kind: pattern
+    text: "### C-2. 과도한 불릿 리스트 [S2]\n- _quick: true · quick_pattern: 칼럼-리포트에서 3개 이상 연속 불릿 블록 · quick_fix: 문단 산문으로 통합, 나열이 의미 있는 지점만 유지_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix C-2"
+      content_hash: sha256:b7b658dadd14c097958343d93b3beaf7c928aa9402289b18b575ac32c2e3c646
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.C-5
+    kind: pattern
+    text: "### C-5. 이모지 남발 [S1]\n- _quick: true · quick_pattern: 이모지 남발(리스트 머리, 헤딩, 강조) · quick_fix: 칼럼-리포트 장르면 전부 삭제_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix C-5"
+      content_hash: sha256:96f9c45800b64a6c90d426124759b6a14646931411a7b670437f88aa464c7985
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.C-7
+    kind: pattern
+    text: "### C-7. 문단 간 기계적 \"먼저·반면·결국\" 3단 공식 [S2] · v1.1 신규\n- _quick: true · quick_pattern: 문단 문두 \"먼저-반면-결국\" 3단 공식 · quick_fix: 접속사 1~2개로 줄이거나 본문에 녹여 제거_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix C-7"
+      content_hash: sha256:3aed23385de5ead0b37d114687c1e09e0aae918d19c3c7cea6e5590041e04a9d
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.C-8
+    kind: pattern
+    text: "### C-8. 대칭 대구 공식 \"A인가, B인가\" 반복 [S1] · v1.1 신규 · v2.3 실측 최강 신호\n- _quick: true · quick_pattern: \"A인가, B인가\"·\"A가 아니라 B\"·\"~것이 아니라\"·\"~것은 아니다\" 대구 **2회+** 반복 · quick_fix: 한 번만 살리고 나머지는 비대칭 평서문·직접 단언으로. 전멸 금지. 사람 필자도 다용하는 수사이므로(532편 중 31편 실측) 연쇄로 몰려 있지 않으면 보존 우선_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix C-8"
+      content_hash: sha256:26675d14c8cb6545fd34738cc79474fa581a1b7817742253e2c7788a13f20afd
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.C-9
+    kind: pattern
+    text: "### C-9. 숫자 괄호 인덱싱 \"1) 2) 3)\" [S2] · v1.3 신규\n- _quick: true · quick_pattern: 숫자 괄호 인덱싱 \"1) 2) 3)\" 나열 · quick_fix: 본문에 녹이거나 \"우선~\", \"다음으로~\"로 어휘 변주_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix C-9"
+      content_hash: sha256:14e5012a8ee2263fbcd2f9c3c0b689b1d5e48c113bb6fd194ebf3d71bca7a08b
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.C-10
+    kind: pattern
+    text: "### C-10. 콜론 부제 헤딩 공식 \"X: Y\" 또는 \"X: A에서 B로\" [S2] · v1.3.1 신규\n- _quick: true · quick_pattern: 콜론 부제 헤딩 \"X: Y\" 반복 · quick_fix: 헤딩을 단일 명사구로 압축, 단 학술-보고서의 실제 절 제목은 보존_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix C-10"
+      content_hash: sha256:b5de3d9449f95bcc6d4049eed6f481449517cceeb84ecd373d4690374ee8e4e4
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.C-11
+    kind: pattern
+    text: "### C-11. 연결어미 뒤 쉼표 [S1] · v1.6 신규\n- _quick: true · quick_pattern: 연결어미(-고/-며/-지만/-면서/-아서/-어서) 직후 쉼표 · quick_fix: 쉼표 제거, 6회+ = 강한 신호(KatFish 4.84배 분리도). **윤문이 새 연결어미 쉼표를 만들지 말 것 — 윤문 후 개수가 원문보다 늘면 실패**_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix C-11"
+      content_hash: sha256:fdd8aff72afe6998034310f8474fe61a01db7054025c444823e786cd69e8058b
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-1
+    kind: pattern
+    text: "### D-1. 종결·요약류\n- _quick: true · quick_pattern: 결산 lexicon \"결론적으로/따라서/이를 통해/그러므로/요약하면/정리하자면\" · quick_fix: 3회 초과 시 1~2건만 남기고 삭제-치환_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-1"
+      content_hash: sha256:62e5437f36835e6b680bebf534b5b4dbc107ba4bab987e35004d1cc1b2161385
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-2
+    kind: pattern
+    text: "### D-2. 의의·중요성 과장\n- _quick: true · quick_pattern: \"시사하는 바가 크다/주목할 만하다/매우 중요하다\" 류 의의 과장 · quick_fix: 삭제 또는 구체 결론으로_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-2"
+      content_hash: sha256:017c28e6aa4f1781ab912024c21198d3ec2e6a121906723bb3d61f0e0799d9ba
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-3
+    kind: pattern
+    text: "### D-3. 열거 도입\n- _quick: true · quick_pattern: 열거 도입 \"크게 세 가지로 나눌 수 있다/다음과 같은\" · quick_fix: 도입구 삭제하고 바로 본론 서술로_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-3"
+      content_hash: sha256:753e8220961cb2cb7d19e9cab93a971720e38bf9f41c42de5541adb192acb0bb
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-4
+    kind: pattern
+    text: "### D-4. AI 티 특화\n- _quick: true · quick_pattern: hype 어휘(혁신적/획기적/압도적/파격적/폭발적/전례 없는) 3회+ · quick_fix: 구체 수치-사실로 환원_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-4"
+      content_hash: sha256:edb77ee746183dcd09f5adcaf3c2fc4ba234f1286acbe816a609b23c46f255e4
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-5
+    kind: pattern
+    text: "### D-5. 의인화된 추상 주어 [S2] · v1.1 신규\n- _quick: true · quick_pattern: 의인화 추상 주어(\"기술이 묻는다\", \"시대가 부른다\") · quick_fix: 사람-기관 주어로 교체 또는 의인화 동사 약화_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-5"
+      content_hash: sha256:7c1dec3ea3292bc95e98f3ed29b318a4f90535df88f90c2a26f50dbc681e2b56
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-6
+    kind: pattern
+    text: "### D-6. 완결 공식형 결말 \"~할 때입니다 / 시점입니다\" [S2] · v1.1 신규\n- _quick: true · quick_pattern: 결말 공식 \"~할 때입니다/~시점입니다/~할 순간입니다\" · quick_fix: 구체 동사 단언으로, 문서당 1회 이하_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-6"
+      content_hash: sha256:83ce06ed5f63bac76f32f4ddedaf8c3f8f9abada6e65115e86c7bb80fb579f84
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-7
+    kind: pattern
+    text: "### D-7. 변환 공식 \"X에서 Y로 / X을 넘어 Y로\" [S2] · v1.3.1 신규\n- _quick: true · quick_pattern: 변환 공식 \"X에서 Y로/X을 넘어 Y로\" 반복 · quick_fix: 직접 단언으로, 문서당 1회 이하_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-7"
+      content_hash: sha256:5d97db75d88201cb23d5897e29ee9d6c32585447d0087531ece3f27e044d8cc9
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-8
+    kind: pattern
+    text: "### D-8. 분열문 공식 \"필요한/중요한 것은 X이다\" [S2] · v2.5 신규 (코퍼스 채굴)\n- _quick: true · quick_pattern: 분열문 \"필요한/중요한 것은 ~이다\" + 명사 변종 \"문제는/핵심은/관건은/답은 ~다·~는 점이다·~데 있다\" · quick_fix: 주어-서술 직결로(\"필요한 것은 방향이다\" → \"방향이 필요하다\" / \"논쟁의 핵심은 생산성이다\" → \"논쟁은 생산성을 둘러싼 것이다\")_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-8"
+      content_hash: sha256:5e0d7f0e5ecca075eff052fec08e506f54d1b2809643fab218e39f8a998c4d75
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-9
+    kind: pattern
+    text: "### D-9. 인과 결산 \"결국 ~로 이어진다\" [S2] · v2.5 신규 (코퍼스 채굴)\n- _quick: true · quick_pattern: \"(으)로 이어진다\"·\"~에 직결된다\" 결산 + 논리 결산용 \"결국\" 문서 2회+ · quick_fix: 인과 경로를 구체로 쓰거나 단문 단언으로. \"결국\"은 1회만 남긴다. **결말을 다듬으며 \"결국·이유다\"를 새로 만들지 마라(주입 금지)**_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-9"
+      content_hash: sha256:76451c9abbca04a4602dc8d52b9352c1197f1a654a454834ec45c3f70273e159
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-10
+    kind: pattern
+    text: "### D-10. 역방향 결산 \"~하는 이유다\" · v2.6 신규 (팀 채굴) [S2]\n- _quick: true · quick_pattern: 문장 말미 \"~하는 이유다\" 도치 결산 · quick_fix: 순방향 단언(\"그래서 ~다\")으로, 문서당 1회 이하. **결말을 다듬으며 이 도치를 새로 만들지 마라(주입 금지)**_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-10"
+      content_hash: sha256:d709ed9c92f367b5c6c3b04710010ef05b73acf1796ffcb57189bef17cffaac6
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-11
+    kind: pattern
+    text: "### D-11. 결말부 막연한 시간지평 \"향후·앞으로·중장기적으로\" · v2.6 신규 (팀 채굴) [S2]\n- _quick: true · quick_pattern: 결말부(후반 30%) 문두 \"향후/앞으로/중장기적으로\" · quick_fix: 시간어 삭제 또는 원문에 있는 실제 시점·조건으로 교체(날조 금지)_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-11"
+      content_hash: sha256:f61c2c0ac8bb0faa9b4018ca9907132a8defa94bd73e1459474cc51ff560cf4f
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-12
+    kind: pattern
+    text: "### D-12. 내용 없는 반론 슬롯 \"과제도 남아 있다\" · v2.6 신규 (팀 채굴·blader §6 수렴) [S2]\n- _quick: true · quick_pattern: 독립 문장 \"과제도 남아 있다/한계도 분명하다/아쉬운 점도 있다\" · quick_fix: 문패 삭제, 실제 과제를 첫 문장으로_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-12"
+      content_hash: sha256:4d2e42b7a4a8d2a59d49cdfe35e911713d2bdb4298a0c55d7aa1d624d2433281
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-13
+    kind: pattern
+    text: "### D-13. 에세이 성찰 부사 공식 \"어쩌면·비로소·천천히\" · v2.6 신규 (팀 채굴·장르 한정) [S2]\n- _quick: true · quick_pattern: 에세이 결말의 \"어쩌면 ~일 것이다/비로소/천천히 ~이 됐다\" · quick_fix: 성찰 부사를 빼고 구체 서술로(에세이 장르 한정)_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-13"
+      content_hash: sha256:ab890da06af8d1aeb642156dcda79befc64161c3bf547eba2ab206959b9ba1b9
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.D-14
+    kind: pattern
+    text: "### D-14. 생성형 은유 남용 (가족 판정) · v2.6.1 신규 (사용자 통점 실증) [S2]\n- _quick: true · quick_pattern: 감각 술어 평가문(\"진단은 서늘하다/경고는 아프다\") **1회+** · 사람 0건 사전 은유(잠식·청사진·적신호·경고등·신호탄·움켜쥐다·뿌리내리다·짓누르다) **1회+** · 그 외 개념 은유(청구서·과실·주춧돌 등) 문서 3회+ · **같은 은유 어근 3회+ 관통 반복(중심 은유여도 발동)** · quick_fix: 직역화 — 감각 술어는 관용구·구체 서술로(\"서늘하다\"→\"정곡을 찌른다\"), 사전 은유는 명제로(\"잠식한다\"→\"점유율을 뺏는다\"). 관통 은유는 가장 효과적인 1회만 남김(\"쥐다\"→\"가지다\"). 명제 불명이면 보존, 주입 금지_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix D-14"
+      content_hash: sha256:3516f9ce2363144a6dc97c4fc47a9ea2fe88a6fdccbb7516f43b2c32189b05ba
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.E-1
+    kind: pattern
+    text: "### E-1. 문장 길이 표준편차 낮음 — 특히 장문 부재\n- _quick: true · quick_pattern: 문장 길이 균일 + 100자+ 장문 부재 · quick_fix: 단문 1~2개 + 인접 문장을 이어 만든 장문 1개를 문단마다(내용 추가 금지)_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix E-1"
+      content_hash: sha256:891dd727b3c6588d08b0404e865a5f5620e4f5160cf37eacba4b7acf56df9327
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.E-2
+    kind: pattern
+    text: "### E-2. 동일 종결어미 반복\n- _quick: true · quick_pattern: 동일 종결어미 4문장+ 연속, 진행형 \"~고 있다\" 자동 매핑 · quick_fix: 종결어미 다양화, \"~고 있다\"는 단순 시제로 환원 가능 시 환원(\"읽고 있다\" → \"읽는다\")_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix E-2"
+      content_hash: sha256:837872d187c0406d4211fdb3ce987c3a04aba3ce080f283cf193bc3ff462b1c3
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.E-7
+    kind: pattern
+    text: "### E-7. 청자 경어법 일관성 손실 (해라/하게/하오/해요/합쇼체) [S2 · estimated] · v2.0 신규\n- _quick: true · quick_pattern: 청자 경어법 단계(해라/하게/하오/해요/합쇼) 한 문서 내 혼재(대화-구어 한정) · quick_fix: 격식 등급 하나로 일관 유지_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix E-7"
+      content_hash: sha256:087be11529bd8ac9e649ef86a25f2e7ff6a67d6911264df6825f877423ca992f
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.F-4
+    kind: pattern
+    text: "### F-4. 과잉 접두·접미\n- _quick: true · quick_pattern: 한자어 명사화 -성/-적/-화 + 영어 명사화 -tion/-ment/-ness/-ity 직역 누적(문서 12회+) · quick_fix: 동사-형용사 어근으로 환원(\"the implementation of the policy\" → \"정책 시행\")_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix F-4"
+      content_hash: sha256:6995ea02e7b33e374cfd961b78032068bc4971da1aaa0a4a9333636faeaa2961
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.F-5
+    kind: pattern
+    text: "### F-5. \"~적 N\" 복합 추상어 체인 [S2] · v1.1 신규\n- _quick: true · quick_pattern: \"~적 N\" 추상 체인(\"전략적 함의\", \"실천적 기반\") 3회+ · quick_fix: 명사+명사 또는 풀어쓰기(\"전략 함의\", \"실천의 기반\")_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix F-5"
+      content_hash: sha256:b993aafb9a6f56763b75bc7a261c8401488b6a25292faef1003e4c61853e6da3
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.F-7
+    kind: pattern
+    text: "### F-7. 범용 정책동사 수렴 (확대·강화·개선 + 만능 \"설계\") · v2.6 신규 (팀 채굴) [S2]\n- _quick: true · quick_pattern: 범용 정책동사(확대·강화·개선·확보·마련·구축 등) 문서 밀집 + 추상 목적어의 \"설계\" · quick_fix: 구체 행위 동사로 해체(당위 표지 증폭 금지)_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix F-7"
+      content_hash: sha256:0a8835d3e0b8a6d3b6244370e17d39a241ee93f2a59a4d33aa860484039795f2
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.G-1
+    kind: pattern
+    text: "### G-1. 추측·관측형 종결 · v2.4 처방 전환\n- _quick: true · quick_pattern: 같은 추측 종결(\"~로 보인다/~로 판단된다/~라고 여겨진다\")의 반복 · quick_fix: **단정 전환 금지**. 유보 강도는 유지한 채 종결 형태만 변주. 부정·이중부정이 낀 문장은 극성 확인 후 손대고 애매하면 원문 보존_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix G-1"
+      content_hash: sha256:02457eb4ff5c95be93baace0ca155f569b88621e7574980616cf2701a509ecdb
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.G-2
+    kind: pattern
+    text: "### G-2. 이중·삼중 완곡\n- _quick: true · quick_pattern: 이중-삼중 완곡 \"~할 가능성이 있을 수 있다/~로 보여질 수 있다\" · quick_fix: 완곡 하나만 남김 — 남긴 완곡은 원문 극성·확신도 유지. 부정 낀 중첩과 협상·계약 문서는 접지 말고 원문 보존_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix G-2"
+      content_hash: sha256:cc8e1c28fe063d11bf900a169941bc33ff415612dc6af7f01ebaea226312c96e
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.G-3
+    kind: pattern
+    text: "### G-3. 안전 균형 lexicon (Safe Balance Score) [S2] · v1.6 신규\n- _quick: true · quick_pattern: 균형 lexicon \"양쪽 모두/두 가지 모두/장점도 있지만/신중하게/균형\" 4회+ (**실증 부족 — hold**) · quick_fix: 한쪽 단언, 구체 비교, 조건부로 치환_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix G-3"
+      content_hash: sha256:7899347117c6e856fb9b68a345fd8211567bca73a054b9c281f2c99e2bf12a09
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.H-1
+    kind: pattern
+    text: "### H-1. 문두 접속사 과다 · v2.5 근거 재검토(모델 의존)\n- _quick: true · quick_pattern: 문두 접속사 \"또한/따라서/즉/나아가/아울러/게다가/더욱이\"가 **한 문단 3회+** 반복 · quick_fix: 그 문단에서 절반가량만 덜어낸다(문서 일괄 제거 금지 — 모델 의존 신호)_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix H-1"
+      content_hash: sha256:0e9c682dd1b5b60724a7a3cc865dec32b8a8e9cc5d3d85f95aed56cbbce2d5ae
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.H-3
+    kind: pattern
+    text: "### H-3. \"이는 ~\" 지시 반복\n- _quick: true · quick_pattern: 메타 진입 \"이는 ~/이 점에서/이 관점에서/이 말은\"이 **한 문단 3회+** 반복 · quick_fix: 그중 일부만 본 서술로 직진(문서 단위 일괄 삭제 금지 — 사람도 쓰는 패턴)_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix H-3"
+      content_hash: sha256:8144d1243bd118a38e89371717af6e8034938e8ad52aefc669db710cae0a3cb8
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.H-4
+    kind: pattern
+    text: "### H-4. 재정의 접속사 \"즉\" 남발 [S2] · v1.1 신규\n- _quick: true · quick_pattern: \"즉\" 남발 · quick_fix: \"곧\", \"말하자면\" 등으로 변주 또는 생략, 문서당 2회 이하_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix H-4"
+      content_hash: sha256:926e92d5a53a5aa8ec3e2cc53662b4d04fecee1a513d684a02bd5b5fe555039b
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.I-1
+    kind: pattern
+    text: "### I-1. \"것이다\" 종결 남발\n- _quick: true · quick_pattern: \"~한 것이다/~일 것이다\" **연속 3회+ 남발** · quick_fix: 일부만 확정 서술 \"~다\"로(기본 보존)_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix I-1"
+      content_hash: sha256:041597148448417c3b53fed1b43006416b809ec146a76a9363b7b2fa0740a57b
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.I-2
+    kind: pattern
+    text: "### I-2. \"점\", \"바\", \"수\", \"데\" 반복\n- _quick: true · quick_pattern: \"주목할 점은/X은 ~라는 점에 있다\" 형식명사 강조 · quick_fix: \"X는 ~다\" 직설로_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix I-2"
+      content_hash: sha256:31401e1c1ad6482d39cc822dc2bf60062fddaf74f18ebe4df294be754f745c9b
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.I-3
+    kind: pattern
+    text: "### I-3. \"~라는 것\"\n- _quick: true · quick_pattern: \"~다는 것이다/~다는 뜻이다\" 결말 · quick_fix: \"~다\" 직접 종결로, 합산 2회 이하_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix I-3"
+      content_hash: sha256:4302cf719602e7f187dd91ae45dbe3eb09746c4e87b1e69d78b5494057861338
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.I-4
+    kind: pattern
+    text: "### I-4. \"~할 필요가 있다\" + 정책 보고서 권고형 결말\n- _quick: true · quick_pattern: 당위로 끝나는 문단 2개+ (첫 번째 제외) · quick_fix: 당위 문장을 문단 끝에서 앞·중간으로 이동해 결말 자리를 비움. 병합·삭제·서법 치환·명사화 금지. 전후 의무 표지 총수 동일_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix I-4"
+      content_hash: sha256:c065df64ac59be265413461ab53147e5e6e5d0da0c51b01d59798f647cbd8361
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.I-7
+    kind: pattern
+    text: "### I-7. 무주체 판정 \"~다는 분석이다·평가다\" · v2.6 신규 (팀 채굴·장르 조건) [S2]\n- _quick: true · quick_pattern: 출처 없는 \"~다는 분석이다/평가다\" 종결 · quick_fix: 앞뒤에 출처 있으면 보존, 없으면 직접 서술로(출처 날조 금지)_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix I-7"
+      content_hash: sha256:bd9b33fbd271e0329a5ab151c755db80b98d2e5392c3dd458f1c7aca16bf74b1
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.J-2
+    kind: pattern
+    text: "### J-2. 따옴표 과다\n- _quick: true · quick_pattern: 따옴표 강조 5회+ · quick_fix: 진짜 인용만 남기고 평어로_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix J-2"
+      content_hash: sha256:7b31f4791ee3274d2f7f720b943bd45157df0871ba68a082e48743f229ed12e9
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"
+  - id: pattern.J-3
+    kind: pattern
+    text: "### J-3. 대시(—) 남용\n- _quick: true · quick_pattern: 대시(—) 부가 설명이 문장마다 반복 · quick_fix: 쉼표, 괄호, 별도 문장으로 분해 — 단 원문에 이미 있던 대시는 보존_"
+    provenance:
+      upstream: im-not-ai
+      commit: 9747f036cdc28a1a8aea4dc71fef1f7846eb96f7
+      path: skills/humanize-korean/references/ai-tell-taxonomy.md
+      anchor: "id prefix J-3"
+      content_hash: sha256:3dc940aaa16cad10363b09ab632aa69f0ef8f6af2a617e55cf5eed2ff8681192
+      transform: selected
+      note: "heading line + quick meta line only (quick_pattern, quick_fix)"

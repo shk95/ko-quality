@@ -1,0 +1,6 @@
+{
+  "name": "ko-quality",
+  "version": "0.0.1",
+  "description": "Korean writing quality toolkit: rewrite, diagnose and policy for Korean output (prototype, hand-built in P1)",
+  "license": "MIT"
+}
