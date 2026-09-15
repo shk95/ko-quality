@@ -6,9 +6,9 @@
 
 > 새 세션은 여기서 시작합니다.
 
-**현재 위치:** 시대 `01-toolkit`, **6-build 끝 — P1~P5 완료(검증 통과), P6 완료(검증: 서브에이전트 근거에 유보), P7 완료(검증: Claude Code 쪽 통과, Codex 쪽 미실측)** (2026-09-15). 구현 흐름 정의는 `5-preflight/flow.md`, 단계별 기록은 `01-toolkit/6-build/P<n>_*.md`. release-blocked 표시: P6(Codex에서 이름 붙은 커스텀 에이전트 호출 불안정), P7(Codex 로거 레코드 미생성, 실측을 미룸). upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT). 프로세스(`AGENTS.md`)와 저장소 구성은 끝났습니다.
+**현재 위치:** 시대 `01-toolkit` **닫힘** (2026-09-15). 6-build P1~P7 완료, 7-review 끝. `dev`는 `master`에 머지됐습니다. release-blocked 3건(모두 Codex 쪽, 실측을 미룸)은 리뷰에서 받아들이고 다음 시대로 넘겼습니다. upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT).
 
-**다음 작업:** 7-review. 입력은 각 P 기록의 release-blocked·Found 절과 Subagent runs 표입니다. P7의 Codex 실측(미뤄 둠)은 `P7_server-logger.md`의 "Release-blocked" 절에 절차가 있고, 가장 먼저 확인할 것은 Codex hook 환경에 `CLAUDE_PLUGIN_ROOT`가 있는지입니다.
+**다음 작업:** 시대 `02` 열기 — 주제는 **검증 단계**(06 §15: gate·features·watch·eval). 입력은 `01-toolkit/7-review/review.md` §G입니다. 02의 첫 단계는 미뤄 둔 Codex 재시험(A1~A3, C1, C4)입니다.
 
 **읽는 순서 (최소):**
 
@@ -84,8 +84,8 @@ design/
 | | `P4_abstraction.md` | 스키마, 추출기 코드, 네 번째 벤더, 업데이트 실측 |
 | | `P5_claude-code-build.md` | 조립, 프로파일별 Claude Code 플러그인, 설치·eval |
 | | `P6_codex-build.md` | Codex 빌드, 설치기, 채널 실측, 커스텀 에이전트 release-blocked |
-| | `P7_server-logger.md` | 로거(진행 중), 재개 지점 |
-| 7-review | — | |
+| | `P7_server-logger.md` | 로거·hook·스탬프 싣기, Claude Code 실측, Codex 쪽 release-blocked |
+| 7-review | `review.md` | release-blocked 수용과 머지, 스펙 개정 후보 B1~B8, 결정 재검토, preflight가 놓친 것, 등급 규칙, 다음 시대(검증 단계) |
 
 ## 단계 요약
 
@@ -110,7 +110,8 @@ design/
    ↓ 프로세스    시대 / 7단계 일방향으로 재배치. 판단 규칙은 AGENTS.md로 분리
    ↓ 탐색        열린 결정 6건 독립 보고, B가 낡았는지 후속 탐색, Codex 헤드리스 실측(커스텀 에이전트 닿지 않음)
    ↓ preflight   flow.md — 결정 D1~D7, P1~P7 흐름. 수락
-   ↓ build       P1~P5 완료(추출·스키마·Claude Code 빌드), P6 Codex 빌드(커스텀 에이전트 release-blocked), P7 로거 진행 중 — 사용자 요청으로 멈춤
+   ↓ build       P1~P5 완료(추출·스키마·Claude Code 빌드), P6 Codex 빌드(커스텀 에이전트 release-blocked), P7 로거(Codex 쪽 release-blocked)
+   ↓ review      Codex 3건 수용 후 master 머지. 스펙 입력 B1~B8. LLM 판정기가 믿을 만하지 않음(C3). 다음 시대: 검증 단계
 ```
 
 조사에서 나온 제약 셋이 06 의 형태를 결정했습니다.

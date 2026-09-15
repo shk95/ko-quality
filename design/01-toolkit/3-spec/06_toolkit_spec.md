@@ -10,6 +10,8 @@
 >
 > **개정됨 (P1 착수 전 문서 검토, 2026-09-14).** 문서 안의 어긋남과 빈 곳을 고치고(§5.2 파일 이름, §6 presets, §7 참조, §8 결합, §9 분량·`force-for-plugin`·`instructions`, §12 검사 2, §13.3 대조군, §15·§16), 공식 문서로 다시 확인한 사실을 반영했다(§2.1 `force-for-plugin` 충돌, §2.2 Codex `developer_instructions`·플러그인 확장 키·hook 기본 활성, §2.4 참여사, §11.2 `model`·에이전트 이름, §13.1 `tokens`·`sub-to-sub`). 기록은 `06b_built_prototype.md`의 "검토 — P1 착수 전 문서 정리".
 >
+> **→ 구현 후 리뷰 (2026-09-15).** 구현이 뒤집거나 스펙이 몰랐던 것 8건(B1~B8)은 이 문서를 고치지 않고 다음 시대의 스펙 입력으로 넘겼다: `../7-review/review.md` §B.
+
 > **개정됨 (preflight, 2026-09-14).** 멈추지 않는 구현 규칙에 맞춰 §14.1의 마지막 규칙과 P3의 끝나는 조건을 고치고, §16.2의 기울기에 preflight 결정을 적었다. 결정과 근거는 `5-preflight/flow.md` §1, 탐색은 `5-preflight/explorations.md`.
 
 ## 1. 목적과 전제
