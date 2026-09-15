@@ -52,8 +52,10 @@ Three tiers, named by role so the rules read the same in every harness.
 | small | Mechanical work: file maps, counting, diffing, extraction checks | Haiku 4.5 | `gpt-5.6-luna` |
 | mid | Exploration and verification: compare two options, check a claim against sources, verify a stage's done-condition | Sonnet 5 | `gpt-5.6-terra`, effort `high` |
 | large | Escalation only (below) | Opus 5 | `gpt-5.6`, effort `high` |
+| docs | Documentation lookups about a harness (flags, file formats, documented behavior) | `claude-code-guide` agent | — |
 
 - Default to `mid` for exploration and verification, `small` for mechanical work.
+- `docs` answers what a harness documents, not what it does; a live run settles behavior. A `docs` run counts like `mid` against the cap (01-toolkit review, E).
 - `large` is allowed only when: two `mid` reports disagree on a major decision (one `large` run breaks the tie instead of a third `mid` run); or the exploration must weigh four or more sources across vendors with judgment, such as deriving the schema in P4 or the record shape in P7. A `large` run counts as two runs against the cap. At most one per stage. These conditions are a starting point: review re-evaluates them after the first era from the recorded runs (did `large` reach a different conclusion than `mid`, and did it matter).
 - **Cap: 4 exploration runs per build stage (P).** When the cap is reached, remaining decisions in that stage take the cheapest-to-reverse option and are recorded as such. One verification run per stage, for the stage's done-condition, is outside the cap.
 - Verification subagents are independent: they receive the question and the sources, never your conclusion or leaning. Ask for both sides in one report: the cost of the best option, and where it breaks.

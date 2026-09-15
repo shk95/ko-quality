@@ -1,6 +1,6 @@
 # 7-review — era 01-toolkit
 
-2026-09-15. Branch `review/01-toolkit` off `dev` (`13ebced`). Input: `6-build/P1`–`P7`. **Status: agenda drafted, decisions pending with the user.**
+2026-09-15. Branch `review/01-toolkit` off `dev` (`13ebced`). Input: `6-build/P1`–`P7`. **Status: closed. All items decided (2026-09-15); A4 and C3 run in review.** The era's documents close here; era 02 starts from section G.
 
 Each item has a recommendation and a confidence. A decision is written into the item's "Decided" line when the user settles it; nothing here is decided by the agent alone.
 
@@ -21,7 +21,9 @@ Merge options:
 2. **Wait for the Codex retest**, retest A1–A3, then merge. Blocks `master` until Codex can be run.
 3. **Merge Claude Code only**, keep `dist/agent-plugin/` off `master`. Splits the build and breaks checks 2–4's cross-harness scope on `master`.
 
-Decided: —
+Decided (user, 2026-09-15): **option 1, merge now.** A1–A3 accepted with Codex marked unverified; retests are the first work of era 02.
+
+**A4 result (resolved).** `ko-quality-formal` went through the full cycle on Claude Code 2.1.272: marketplace add → `install --scope local` → headless run without `--plugin-dir` loaded `ko-quality-formal`, replied to 사용자님 in 하십시오체, and left one `usable: true` record for profile `formal-report` → uninstall → marketplace remove. The same two traces as P5 remained (`"extraKnownMarketplaces": {}` in user settings, orphaned cache copy); both cleaned and settings restored from the snapshot. `tests/runs/review/formal-install-test.txt`.
 
 ## B. Spec 06 items the build overturned
 
@@ -38,7 +40,7 @@ Each is either a spec revision (next era's spec) or a build error. All below rea
 | B7 | §11 | `model` absent from Claude Code hook input headless; `preset` has no hook source; `task_type` rule cannot see writing-through-`Write`; stamp shape | §11.2–11.3: mark `preset` and `model` as possibly unknown; stamp fields | P7 |
 | B8 | §5.5 | Positional anchors held over 10 upstream commits; repeated anchors need ` > N`; fence-aware parsing | §5.5: add the `repeated` form and fence rule | P4 |
 
-Decided: —
+Decided (user, 2026-09-15): **all eight go to era 02's spec as input.** Spec 06 is not edited; it gets a forward pointer to this file.
 
 ## C. Decisions to revisit
 
@@ -46,10 +48,22 @@ Decided: —
 |---|---|---|---|---|
 | C1 | ko-rewrite path note instead of shipping `references/quick-rules.md` (P1 d1, P6 d6) | Held 7/7 on Claude Code; Codex luna tried the upstream path first and recovered with two extra calls | Keep for now; if the next era's Codex retest shows failures, ship the file under upstream's name in both harnesses (spec deviation, no `adapted`) | medium |
 | C2 | Normalized format kept as built (P4 d1): provenance repeated per fragment, text as JSON strings, whole-file references fragmented | P5 was the first consumer and did not need a new shape; the renderer added layout (+1134 lines) | Redesign in the next era only if it is also the era that touches extractors; otherwise keep. Readability of Korean in review is the real cost | medium |
-| C3 | `claude plugin eval` at runs 1 (P5 d4) | Trigger cases always delta 1 under ablation; only policy cases informative | Rerun only the two policy cases at runs 3 (~$1) now, or fold into the validation era's eval | medium |
+| C3 | `claude plugin eval` at runs 1 (P5 d4); **user: rerun the policy cases at runs 3 in review** | Trigger cases always delta 1 under ablation; only policy cases informative | Rerun only the two policy cases at runs 3 (~$1) now, or fold into the validation era's eval | medium |
 | C4 | Root `plugin.json` for Codex (P6 d4) | Works; installed OpenAI plugins use `.codex-plugin/` | Keep; add `.codex-plugin/plugin.json` only if a Codex release stops reading root | medium |
 
-Decided: —
+Decided (user, 2026-09-15): **C1, C2, C4 kept as recommended.** C1 and C4 are re-judged from era 02's Codex retests; C2 when the validation stage needs to read normalized data.
+
+**C3 result.** Policy cases at runs 3 (Claude Code 2.1.272, $1.40; `tests/runs/review/policy-eval-runs3.json`):
+
+| Profile | Judge pass, with / without | Mechanical, with / without |
+|---|---|---|
+| agent-reply | 0/3 / 0/3 | em dash in 0/3 / 2/3 replies |
+| formal-report | 2/3 / 1/3 | 사용자님 in 2/3 / 0/3 replies |
+
+- **The LLM judge is not a reliable instrument here.** It failed all three agent-reply replies with the plugin, which carry no em dash and end prose in 합니다체; it gave no reason. It passed one formal-report baseline reply that never says 사용자님, which its own rubric names as FAIL. P5's 1/1 passes (runs 1, 2.1.270) do not survive runs 3.
+- **The policy effect is visible mechanically** on both markers the rubrics name.
+- **The formal policy lapsed once:** one with-plugin reply kept 하십시오체 but never addressed 사용자님.
+- For era 02: prefer mechanical graders for mechanical rules (em dash, address term), and measure judge agreement before trusting an `llm` grader.
 
 ## D. What preflight missed (input to the next era's preflight)
 
@@ -79,7 +93,7 @@ Exploration cap use: 3 of 28 (P1–P7 × 4). Total ≈1.26M tokens.
 
 Recommendation: keep the tiers and the verification rule; lower nothing; add the docs-lookup agent as an allowed `mid`-equivalent for documentation questions; keep the `large` conditions unchanged and re-evaluate after an era that actually uses one. Confidence medium (small sample).
 
-Decided: —
+Decided (user, 2026-09-15): **keep tiers, cap and verification rule; add the docs-lookup agent** as an allowed tier for documentation questions, counted like `mid`. `large` conditions are re-evaluated after an era that uses one. Applied to `AGENTS.md`.
 
 ## F. Next era
 
@@ -89,4 +103,12 @@ Candidates:
 2. **Codex channel follow-up** (A1–A3 retests, C1, C4, deferred). Small; could be the first stage of era 02 rather than an era of its own.
 3. **Format redesign** (C2). Only worth an era if validation needs readable normalized data.
 
-Decided: —
+Decided (user, 2026-09-15): **validation stage** (candidate 1), with the deferred Codex retests (A1–A3, C1, C4) as its first stage.
+
+## G. Handed to era 02
+
+- **Concept:** the validation stage (06 §15: gate, `features`, `watch:`, eval), on top of the records the logger now accumulates on Claude Code.
+- **First stage:** the deferred Codex retests: named custom agent route (A1), subagent output captured apart from the orchestrator (A2), logger records and `CLAUDE_PLUGIN_ROOT` in the hook environment (A3), path note (C1), manifest location (C4).
+- **Spec input:** B1–B8.
+- **Preflight input:** section D, plus C3's judge finding.
+- **Open findings from the build:** `task_type` rule cannot see writing done through `Write`; `preset` has no hook source; ko-rewrite grade rule caps unchanged text at B; upstream generator drops J-1 (P1).

@@ -1,0 +1,174 @@
+{
+  "stage": "7-review C3",
+  "tool": "claude plugin eval (Claude Code 2.1.272)",
+  "command": "claude plugin eval <scratch copy of dist/claude-code/<profile> + tests/evals/claude-code/policy-<profile>> --runs 3 -j 3 --max-cost-usd 4 --no-publish --trust-plugin --threshold 0 (ablation with-without)",
+  "mechanical": "emdash = count of U+2014 in the reply; sayongjanim = count of 사용자님. Computed from the grader evidence (the final reply).",
+  "profiles": {
+    "agent-reply": {
+      "case": "policy-agent-reply",
+      "grader": "PASS if the reply is in Korean, ends its prose sentences with a predicate and a sentence-final ending (noun-phrase endings are fine only in headings, lists and table cells), and contains no em dash character (—).\nFAIL if any prose sentence ends in a bare noun phrase or connective ending, or if an em dash (—) appears.",
+      "cost_usd": 0.73,
+      "arms": {
+        "with": [
+          {
+            "judge_passed": false,
+            "judge_votes": [
+              false,
+              false,
+              false
+            ],
+            "emdash": 0,
+            "sayongjanim": 0,
+            "reply_chars": 1751,
+            "cost_usd": 0.139
+          },
+          {
+            "judge_passed": false,
+            "judge_votes": [
+              false,
+              false,
+              false
+            ],
+            "emdash": 0,
+            "sayongjanim": 0,
+            "reply_chars": 1670,
+            "cost_usd": 0.144
+          },
+          {
+            "judge_passed": false,
+            "judge_votes": [
+              false,
+              false,
+              false
+            ],
+            "emdash": 0,
+            "sayongjanim": 0,
+            "reply_chars": 1714,
+            "cost_usd": 0.15
+          }
+        ],
+        "without": [
+          {
+            "judge_passed": false,
+            "judge_votes": [
+              false,
+              false,
+              false
+            ],
+            "emdash": 3,
+            "sayongjanim": 0,
+            "reply_chars": 1407,
+            "cost_usd": 0.094
+          },
+          {
+            "judge_passed": false,
+            "judge_votes": [
+              false,
+              true,
+              false
+            ],
+            "emdash": 0,
+            "sayongjanim": 0,
+            "reply_chars": 1932,
+            "cost_usd": 0.104
+          },
+          {
+            "judge_passed": false,
+            "judge_votes": [
+              false,
+              false,
+              false
+            ],
+            "emdash": 1,
+            "sayongjanim": 0,
+            "reply_chars": 1431,
+            "cost_usd": 0.099
+          }
+        ]
+      }
+    },
+    "formal-report": {
+      "case": "policy-formal-report",
+      "grader": "PASS if the reply addresses the user as \"사용자님\" at least once and speaks to the user in honorific Korean (높임말) throughout.\nFAIL if \"사용자님\" never appears or any sentence addressed to the user uses 반말.",
+      "cost_usd": 0.67,
+      "arms": {
+        "with": [
+          {
+            "judge_passed": true,
+            "judge_votes": [
+              true,
+              true,
+              true
+            ],
+            "emdash": 0,
+            "sayongjanim": 1,
+            "reply_chars": 581,
+            "cost_usd": 0.138
+          },
+          {
+            "judge_passed": true,
+            "judge_votes": [
+              true,
+              true,
+              true
+            ],
+            "emdash": 0,
+            "sayongjanim": 2,
+            "reply_chars": 493,
+            "cost_usd": 0.131
+          },
+          {
+            "judge_passed": false,
+            "judge_votes": [
+              false,
+              false,
+              false
+            ],
+            "emdash": 0,
+            "sayongjanim": 0,
+            "reply_chars": 572,
+            "cost_usd": 0.136
+          }
+        ],
+        "without": [
+          {
+            "judge_passed": false,
+            "judge_votes": [
+              false,
+              false,
+              false
+            ],
+            "emdash": 0,
+            "sayongjanim": 0,
+            "reply_chars": 290,
+            "cost_usd": 0.087
+          },
+          {
+            "judge_passed": false,
+            "judge_votes": [
+              false,
+              false,
+              false
+            ],
+            "emdash": 1,
+            "sayongjanim": 0,
+            "reply_chars": 315,
+            "cost_usd": 0.092
+          },
+          {
+            "judge_passed": true,
+            "judge_votes": [
+              true,
+              true,
+              true
+            ],
+            "emdash": 1,
+            "sayongjanim": 0,
+            "reply_chars": 389,
+            "cost_usd": 0.09
+          }
+        ]
+      }
+    }
+  }
+}
