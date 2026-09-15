@@ -1,0 +1,117 @@
+{
+  "stage": "P7",
+  "harness": "claude-code 2.1.270",
+  "setup": "KO_QUALITY_HOME = empty scratch dir; cwd = empty scratch dir per run; plugin = dist/claude-code/agent-reply unchanged (build 72bf8fc). Records below drop id, ts and output text (output_chars kept), task truncated.",
+  "command": "claude -p <prompt> --plugin-dir dist/claude-code/agent-reply --output-format stream-json --verbose --max-turns <12|16> --allowedTools <Skill Read [Agent Task]> --setting-sources project,local --no-session-persistence",
+  "runs": {
+    "rewrite": {
+      "cost_usd": 0.199,
+      "num_turns": 1,
+      "is_error": false,
+      "subagents_spawned": 0,
+      "korean_reviewer_mentions_in_stream": 0
+    },
+    "delegate": {
+      "cost_usd": 0.446,
+      "num_turns": 2,
+      "is_error": false,
+      "subagents_spawned": 1,
+      "korean_reviewer_mentions_in_stream": 16
+    }
+  },
+  "files_under_home_after_runs": [
+    "logs/agent-reply/2026-09.jsonl"
+  ],
+  "records": [
+    {
+      "profile": "agent-reply",
+      "preset": null,
+      "policy_on": true,
+      "injection_point": "output-style",
+      "upstream_versions": {
+        "fluent-korean": "ce8683f0eba8cddb91de4dcd151425ff73e60498",
+        "im-not-ai": "9747f036cdc28a1a8aea4dc71fef1f7846eb96f7",
+        "korean-skills": "ae12ba27982ebeff03b46dc738365aaa34260d9a",
+        "yoonmoon": "c88853106c8fa8448447136f5aa3fc8bb9650303"
+      },
+      "model": "unknown",
+      "instruction_lang": "ko",
+      "artifact_lang": "ko",
+      "harness": "claude-code",
+      "harness_position": "main-to-user",
+      "agent_type": null,
+      "task": "다음 문단을 자연스러운 한국어로 윤문해 주세요. 결과 문단만 주세요.\n\n본 시스템은 사용자의 편의성 증대를 …",
+      "task_type": "writing",
+      "task_type_method": "rule",
+      "tokens": {
+        "output": 56,
+        "method": "estimate"
+      },
+      "upstream_report": null,
+      "usable": true,
+      "masked": false,
+      "expect": null,
+      "output_chars": 141
+    },
+    {
+      "profile": "agent-reply",
+      "preset": null,
+      "policy_on": true,
+      "injection_point": "agent-definition",
+      "upstream_versions": {
+        "fluent-korean": "ce8683f0eba8cddb91de4dcd151425ff73e60498",
+        "im-not-ai": "9747f036cdc28a1a8aea4dc71fef1f7846eb96f7",
+        "korean-skills": "ae12ba27982ebeff03b46dc738365aaa34260d9a",
+        "yoonmoon": "c88853106c8fa8448447136f5aa3fc8bb9650303"
+      },
+      "model": "unknown",
+      "instruction_lang": "ko",
+      "artifact_lang": "ko",
+      "harness": "claude-code",
+      "harness_position": "sub-to-orchestrator",
+      "agent_type": "ko-quality:korean-reviewer",
+      "task": "korean-reviewer 에이전트에게 아래 글의 검토를 맡기고, 에이전트가 돌려준 결과를 한국어로 짧게 …",
+      "task_type": "writing",
+      "task_type_method": "rule",
+      "tokens": {
+        "output": 1090,
+        "method": "estimate"
+      },
+      "upstream_report": null,
+      "usable": true,
+      "masked": false,
+      "expect": null,
+      "output_chars": 2726
+    },
+    {
+      "profile": "agent-reply",
+      "preset": null,
+      "policy_on": true,
+      "injection_point": "output-style",
+      "upstream_versions": {
+        "fluent-korean": "ce8683f0eba8cddb91de4dcd151425ff73e60498",
+        "im-not-ai": "9747f036cdc28a1a8aea4dc71fef1f7846eb96f7",
+        "korean-skills": "ae12ba27982ebeff03b46dc738365aaa34260d9a",
+        "yoonmoon": "c88853106c8fa8448447136f5aa3fc8bb9650303"
+      },
+      "model": "unknown",
+      "instruction_lang": "ko",
+      "artifact_lang": "ko",
+      "harness": "claude-code",
+      "harness_position": "main-to-user",
+      "agent_type": null,
+      "task": "korean-reviewer 에이전트에게 아래 글의 검토를 맡기고, 에이전트가 돌려준 결과를 한국어로 짧게 …",
+      "task_type": "writing",
+      "task_type_method": "rule",
+      "tokens": {
+        "output": 275,
+        "method": "estimate"
+      },
+      "upstream_report": null,
+      "usable": true,
+      "masked": false,
+      "expect": null,
+      "output_chars": 688
+    }
+  ]
+}
