@@ -46,11 +46,13 @@ All three records carry `profile: agent-reply`, `harness: claude-code`, the four
 
 - **`model` is absent from Claude Code hook input in headless runs** (2.1.270): every record reads `unknown` (decision 6).
 - **`task_type` rule:** both runs read `writing`, since no edit tool ran. The rule cannot tell a writing task done through `Write` from a coding task; left for the validation stage.
+- **`preset` is always `null`.** No hook carries the preset in use (06 §11.2 names no source); left for the validation stage.
+- **Codex hook command depends on `CLAUDE_PLUGIN_ROOT`** (verification run). The shared `hooks.json` runs `python3 "${CLAUDE_PLUGIN_ROOT}/…"`. Codex docs say it sets `CLAUDE_PLUGIN_ROOT` for compatibility (P6 run 1), but no Codex run has exercised this command. If Codex set only `PLUGIN_ROOT`, the hook would not start at all, not merely miss the stamp. Kept as is (confidence medium): changing the command now would reopen the verified Claude Code path without a Codex run to test the change against. It is the first thing to check when the Codex test runs.
 - **Codex payloads unmeasured.** Whether Codex `Stop`/`SubagentStop` input carries `last_assistant_message` and `agent_type` is still open. P6 saw only `SessionStart` (`session_id, transcript_path, cwd, hook_event_name, model, permission_mode, source`). If `last_assistant_message` is missing, the logger writes nothing for that event (it never fails).
 
 ## Release-blocked
 
-- **Codex logger records not produced** (flow §5, P7). Not measured: Codex could not be run in this build; not a known mechanism failure. To resolve: in a throwaway `CODEX_HOME` with `auth.json` symlinked, install `dist/agent-plugin/agent-reply`, run `codex exec --dangerously-bypass-hook-trust` once plainly and once delegating to `korean-reviewer`, with a scratch `KO_QUALITY_HOME`; record the `Stop`/`SubagentStop` payload keys and whether `usable: true` records appear.
+- **Codex logger records not produced** (flow §5, P7). Not measured: Codex could not be run in this build; not a known mechanism failure. To resolve: in a throwaway `CODEX_HOME` with `auth.json` symlinked, install `dist/agent-plugin/agent-reply`, run `codex exec --dangerously-bypass-hook-trust` once plainly and once delegating to `korean-reviewer`, with a scratch `KO_QUALITY_HOME`; record the `Stop`/`SubagentStop` payload keys, whether the hook command resolved (`CLAUDE_PLUGIN_ROOT` set in Codex hook env), and whether `usable: true` records appear. If the variable is missing, build a Codex-specific `hooks.json` using `PLUGIN_ROOT`.
 
 ## Subagent runs
 
@@ -58,3 +60,4 @@ Exploration cap: 0 of 4 used.
 
 | # | Tier | Purpose | Tokens | Verdict |
 |---|---|---|---|---|
+| V | mid (Sonnet 5) | Verification of the done-condition (outside the cap); did not read 6-build | 101.8k | Clauses 1 (dists ship logger, hooks, stamp; rebuild clean; checks 0; validate passes), 2 (§11 record, masking, exits 0; `context_en_ratio` dropped per §13.1; `preset` always null noted), 3 (Claude Code done-condition, **reproduced independently**: `main-to-user` and `sub-to-orchestrator`, both `usable: true`, stamp fields, no error log or state) and 5 (no server) **met**. Clause 4: no Codex records; release-blocked is the correct handling per flow §5. Weakest point: the shared hook command's `CLAUDE_PLUGIN_ROOT` in Codex (Found) |

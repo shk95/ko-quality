@@ -6,9 +6,9 @@
 
 > 새 세션은 여기서 시작합니다.
 
-**현재 위치:** 시대 `01-toolkit`, **6-build 진행 중 — P1~P5 완료(검증 통과), P6 완료(검증: 서브에이전트 근거에 유보), P7 일부.** 사용자 요청으로 멈춤(2026-09-14). 구현 흐름 정의는 `5-preflight/flow.md`, 단계별 기록은 `01-toolkit/6-build/P<n>_*.md`. release-blocked 표시: P6(Codex에서 이름 붙은 커스텀 에이전트 호출 불안정). upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT). 프로세스(`AGENTS.md`)와 저장소 구성은 끝났습니다.
+**현재 위치:** 시대 `01-toolkit`, **6-build 끝 — P1~P5 완료(검증 통과), P6 완료(검증: 서브에이전트 근거에 유보), P7 완료(검증: Claude Code 쪽 통과, Codex 쪽 미실측)** (2026-09-15). 구현 흐름 정의는 `5-preflight/flow.md`, 단계별 기록은 `01-toolkit/6-build/P<n>_*.md`. release-blocked 표시: P6(Codex에서 이름 붙은 커스텀 에이전트 호출 불안정), P7(Codex 로거 레코드 미생성, 실측을 미룸). upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT). 프로세스(`AGENTS.md`)와 저장소 구성은 끝났습니다.
 
-**다음 작업:** `01-toolkit/6-build/P7_server-logger.md`의 "Next (resume here)"부터 — 로거·hook·빌드 스탬프를 두 빌드에 싣기, 양쪽 하네스 실측, P7 검증. 그 뒤 7-review.
+**다음 작업:** 7-review. 입력은 각 P 기록의 release-blocked·Found 절과 Subagent runs 표입니다. P7의 Codex 실측(미뤄 둠)은 `P7_server-logger.md`의 "Release-blocked" 절에 절차가 있고, 가장 먼저 확인할 것은 Codex hook 환경에 `CLAUDE_PLUGIN_ROOT`가 있는지입니다.
 
 **읽는 순서 (최소):**
 
