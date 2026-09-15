@@ -4,7 +4,8 @@
 Run from the repository root:  python3 -m build.agent_plugin
 
 Per profile:
-  plugin.json                          Agent Plugins manifest (skills; hooks come in P7)
+  plugin.json                          Agent Plugins manifest (skills; hooks under extensions.com.openai)
+  hooks/, logger/, ko-quality.stamp.json  minimal logger and its build stamp (P7), shared with Claude Code
   skills/                              rendered from the same templates as Claude Code (06 §12 check 4: byte-identical)
   install/AGENTS.section.md            the profile's policy body between ko-quality markers, for AGENTS.md
   install/.codex/agents/<name>.toml    agents with developer_instructions = policy + blocks + append (check 3)
@@ -19,7 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from build.claude_code import Out, norm, render_policy, render_template, sidecar  # noqa: E402
+from build.claude_code import Out, norm, render_policy, render_template, ship_logger, sidecar  # noqa: E402
 from build.mini_toml import dumps as toml_dumps  # noqa: E402
 from build.mini_yaml import load as load_yaml  # noqa: E402
 
@@ -70,7 +71,8 @@ def build():
         pdir = DIST / profile["id"]
         pdir.mkdir(parents=True)
         manifest = {"name": profile["plugin"]["name"], "version": "0.1.0", "description": profile["plugin"]["description"],
-                    "author": {"name": "ko-quality"}, "license": "MIT", "skills": "./skills/"}
+                    "author": {"name": "ko-quality"}, "license": "MIT", "skills": "./skills/",
+                    "extensions": {"com.openai": {"hooks": "./hooks/hooks.json"}}}
         (pdir / "plugin.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         market["plugins"].append({"name": profile["plugin"]["name"], "source": {"source": "local", "path": f"./{profile['id']}"},
                                   "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"}, "category": "Productivity"})
@@ -106,6 +108,7 @@ def build():
             "# Provenance for AGENTS.section.md and agent developer_instructions (flow.md D3). Built by build/agent_plugin.py; do not edit.\n"
             "# A path ending in #developer_instructions counts lines inside that TOML string.",
             pol, base=f"dist/agent-plugin/{profile['id']}"), encoding="utf-8")
+        ship_logger(pdir, profile, "codex", "agents-md")
         print(f"built dist/agent-plugin/{profile['id']} ({profile['plugin']['name']})")
     (DIST / ".agents" / "plugins").mkdir(parents=True)
     (DIST / ".agents/plugins/marketplace.json").write_text(json.dumps(market, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

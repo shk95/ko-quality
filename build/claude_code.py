@@ -235,6 +235,33 @@ def sidecar(header, files, base=None):
     return "\n".join(lines) + "\n"
 
 
+def lock_versions():
+    """name → commit from upstream/lock.yaml (a list of maps; mini_yaml reads maps only)."""
+    out, name = {}, None
+    for line in (ROOT / "upstream/lock.yaml").read_text(encoding="utf-8").split("\n"):
+        m = re.match(r"^(?:- |  )(name|commit): (\S+)\s*$", line)
+        if m and m.group(1) == "name":
+            name = m.group(2)
+        elif m and name:
+            out[name] = m.group(2)
+    return dict(sorted(out.items()))
+
+
+def stamp(profile, harness, injection_point):
+    """Build stamp the logger reads (06 §11.2, P7). No timestamps or build commit, so rebuilds are byte-identical."""
+    return {"tool": "ko-quality", "version": "0.1.0", "profile": profile["id"], "plugin": profile["plugin"]["name"],
+            "harness": harness, "injection_point": injection_point, "upstream_versions": lock_versions()}
+
+
+def ship_logger(pdir, profile, harness, injection_point):
+    (pdir / "logger").mkdir()
+    shutil.copyfile(ROOT / "logger/ko_quality_log.py", pdir / "logger/ko_quality_log.py")
+    (pdir / "hooks").mkdir()
+    shutil.copyfile(ASM / "hooks/hooks.json", pdir / "hooks/hooks.json")
+    (pdir / "ko-quality.stamp.json").write_text(json.dumps(stamp(profile, harness, injection_point), ensure_ascii=False, indent=2) + "\n",
+                                                encoding="utf-8")
+
+
 def build():
     presets = load_yaml(ASM / "presets.yaml")
     profiles = [load_yaml(p) for p in sorted((ASM / "profiles").glob("*.yaml"))]
@@ -281,6 +308,7 @@ def build():
         (pdir / "provenance/policy.yaml").write_text(sidecar(
             "# Provenance for plugin files outside skills/ (flow.md D3). Built by build/claude_code.py; do not edit.",
             pol, base=f"dist/claude-code/{profile['id']}"), encoding="utf-8")
+        ship_logger(pdir, profile, "claude-code", "output-style")
         print(f"built dist/claude-code/{profile['id']} ({profile['plugin']['name']})")
     (DIST / ".claude-plugin").mkdir()
     (DIST / ".claude-plugin/marketplace.json").write_text(json.dumps(market, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
