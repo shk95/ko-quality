@@ -23,17 +23,23 @@ Two of those four were never tested. This document tests them.
 
 So a gate is enforceable on **the reply**, not only on a file write. That is more than 04 assumed — its design leans on an MCP tool the model must choose to call, which is advice of the same kind 06 §13.3 already conceded about preset order. The hook is not advice.
 
-### But the loop guard is advisory
+### The harness does cap the loop — and what it does at the cap is worse than stopping
 
-The `Stop` payload carries `stop_hook_active`: `false` on the first Stop of a turn, `true` on every retry. That is the whole guard. In a probe where the hook blocked five times in a row, **the harness capped nothing** — six turns ran and the loop ended only because the hook relented.
+A first draft of this section concluded that **the harness caps nothing** and that a forgetful gate is "an unbounded loop on the user's account". That was wrong, and it was wrong for a bad reason: the probe's hook relented after five blocks, which is *below* the cap, so the cap never fired and its absence was inferred from a run that could not have shown it.
 
-So 04's `최대 N=2` is not something the harness enforces. **It is a counter the gate has to keep itself**, and a gate that forgets it is an unbounded loop on the user's account.
+Re-run with a hook that never relents: **it fired nine times and the turn ended anyway.** Documentation gives the default as eight consecutive blocks, raisable with `CLAUDE_CODE_STOP_HOOK_BLOCK_CAP`.
+
+**But the result was empty.** `num_turns: 10`, `subtype: success`, `terminal_reason: completed`, and `result: ""`. The documentation describes the cap as ending the turn with a warning and letting the output through; what the caller actually received was nothing at all.
+
+That matters more than the cap itself. A gate that never passes does not degrade into `emit_with_flag` — **it degrades into no answer.** Which means `on_final_fail` is not a choice between two behaviours; it is a choice between two behaviours and a third one the harness imposes if the gate forgets to choose.
+
+`stop_hook_active` — `false` on the first Stop, `true` on every retry — is still the gate's own signal, and 04's `최대 N=2` is still a counter the gate keeps. What changes is the consequence of forgetting: bounded and silent, not unbounded.
 
 ### Three costs the design did not price
 
 | | Observed |
 |---|---|
-| **Money** | Six turns and **$0.14** for the prompt `1+1은?`. A retry re-runs the whole turn — tools, context, everything — not just the check |
+| **Money** | Ten turns and **$0.20** for the prompt `1+1은?` — but the breakdown is 625 output tokens against **137,688 cache-read** tokens. The cost is per-turn context, not the retry's own work. The first draft quoted the headline as if it measured retry overhead; it does not |
 | **The gate becomes visible** | By the fourth retry the model was explaining the hook to the user: *"Stop hook(gate.py)이 계속 번호만 올려서 응답을 막고 있어요."* A gate that keeps firing stops being infrastructure and becomes part of the product |
 | **Latency** | Every retry is a full turn of generation |
 
@@ -51,11 +57,31 @@ The second is the one to take seriously. A gate is supposed to be invisible when
 
 > fail이면 **실패 항목만 고쳐** 재호출한다
 
-Telling the model which items failed *is* showing it the values. There is no way to run 04's retry without opening 05a's third door, and the `reason` string measured above is the door — it is the only channel a `Stop` hook has, and it goes straight into the model's context.
+Telling the model which items failed *is* showing it categories of the measurement. Neither document noticed: 05a was written about the logger and 04 about the gate, and nothing compared them.
 
-Neither document noticed. 05a was written about the logger and 04 about the gate, and nothing compared them.
+**Two channels, and the first draft merged them.** 04's retry runs through the model calling the `ko.gate` MCP tool and reading its own tool result — ordinary function calling, where the caller sees the result by construction. The `Stop` hook is a *second*, harness-enforced route, and it is the one probed here. The probe is evidence about the hook, not about the tool path, which was never exercised. The leak in 04's design is structural to any tool-result self-check and is reasoned from the spec text, not measured.
+
+**And "the only channel" was wrong.** Three routes block a `Stop`, all measured: a JSON `reason`, a `block` with no `reason` at all, and exit code 2 with stderr. Documentation adds a fourth field, `systemMessage`, described as going to the user's transcript rather than to the model — a user-only channel the first draft did not know about and this probe did not exercise.
 
 **This is not a reason to abandon the gate.** It is a reason to state what a firing gate costs: **every record produced after a gate fires is a record of a model that was told what it was being measured on.** Those records are not comparable with records from an unaided turn, and an era that mixes them silently has lost the thing it was measuring.
+
+### Blind blocking is a real third option, and it does not work
+
+`systemMessage` being user-only means a gate can block with a deliberately uninformative `reason` — *does not meet the bar, try again* — telling the model nothing about which check failed, while telling the user something specific. That is neither 04's targeted retry nor `emit_with_flag`: it is **rejection sampling**, and it looked like the clean answer.
+
+It was probed. It is not clean.
+
+| Block mode | Final reply |
+|---|---|
+| `reason: ""` | `대한민국의 수도는 서울입니다.` **+ "종료 훅 g.py가 응답을 막았지만 이유는 알려주지 않았습니다. 답변 자체는 바뀌지 않으…"** |
+| no `reason` key | `…` **+ 'Stop 훅이 "Blocked by hook"…'** |
+| exit 2 + stderr | `대한민국의 수도는 서울입니다.` — clean |
+
+**The model notices being blocked and tells the user about it.** In the empty-reason case it also reported that its answer had not changed — it re-emitted the same text with commentary attached. So a blind block does not produce an unaided second sample; it produces a sample from a model that knows it was rejected and is now speculating about why, out loud, to the user.
+
+The exit-2 run was not narrated, but its stderr text was uninteresting, and one sample cannot show that the channel differs.
+
+So rejection sampling is available, is cheaper in leaked information than a diagnostic retry, and still does not give an untainted record. It is worth naming and it does not rescue the design.
 
 ### What follows for semantics
 
@@ -70,25 +96,30 @@ The resolution is not to soften the message but to **mark the records**.
 | Site | Enforces | Verdict |
 |---|---|---|
 | `Stop` hook | the reply | **Works, measured.** The only site that can hold a reply back |
-| `PreToolUse(Write)` | a file write | Works by the same mechanism, and is the right site for artifacts |
+| `PreToolUse(Write)` | a file write | The right site for artifacts. **Asserted, not probed** — and not the same mechanism: its deny is `hookSpecificOutput.permissionDecision` with `permissionDecisionReason`, a different shape from `Stop`'s top-level `decision` |
 | MCP tool `ko.gate` | nothing | The model must choose to call it. Useful as a *service* the model can consult, not as a gate |
-| The logger | — | **Forbidden.** 06 §2.3 and 05a: it does not judge and does not block |
+| The logger | — | **Forbidden.** 06 §11.1 and 05a: it does not judge and does not block |
 
 **And the last row is thinner than it looks.** The logger already runs on `Stop`. It already receives `last_assistant_message`. It already parses the payload. What makes it not a gate is that it prints nothing and always exits 0 — **one `print` statement.** The separation between "the logger never judges" and "the gate blocks" is currently a convention inside one file, not a boundary.
 
 **So: if a gate is built, it is a separate executable, registered as its own `Stop` hook.** Not a mode of the logger, not a flag. The logger's guarantee — that a logging failure can never change a session — is only checkable if the file that makes the guarantee contains nothing that could break it.
+
+**One print statement is the wiring, not the gate.** What the logger already has is the plumbing: registered on `Stop`, receives `last_assistant_message`, parses the payload, always exits 0. What it does not have is any judgement — it computes `usable` (a 20-어절 count) and `masked` (a secret regex), neither of which is one of 04's checks. And 04's five capability modules — `features.py`, `change_rate.py`, `preserve.py`, `lint.py`, `spell.py` — **do not exist anywhere in the repository.** The engine is unbuilt; the socket it would plug into is already live. That is the actual shape of the risk, and it is not "nearly done".
+
+**All of this was probed with `--plugin-dir`, not an installed plugin.** E7's run showed the install path changes other behaviours — namespace resolution, `--scope local` visibility — and confirmed the *logger's* `Stop` hook fires identically under a marketplace install. Nothing confirms that a *blocking* hook behaves the same once installed through the real distribution path. The verdict above is "works, measured" for the scratch load and unmeasured for the shipped one.
 
 ## What this era does
 
 `gate:` is not opened, and nothing here changes that. What it hands forward:
 
 - **Semantics.** `on_final_fail: block | emit_with_flag` survives as 04 wrote it. `block` is now known to be implementable on replies, which 04 assumed without evidence.
-- **The retry counter belongs to the gate**, because `stop_hook_active` is advisory and the harness caps nothing.
+- **The retry counter belongs to the gate**, but forgetting it is bounded: the harness overrides after eight consecutive blocks (`CLAUDE_CODE_STOP_HOOK_BLOCK_CAP`) — and delivers an **empty result**, which is a third `on_final_fail` behaviour imposed rather than chosen.
 - **A firing gate contaminates the record it produces**, and those records are marked and never pooled.
 - **The gate is its own executable**, even though it shares `Stop` with the logger.
-- **The `reason` string is a measurement leak by construction.** There is no version of a corrective gate that does not tell the model what it failed. The choice is to accept that and mark the records, or to use `emit_with_flag` and correct nothing.
+- **Blocking leaks whether or not it explains.** Three modes were measured and a fourth channel (`systemMessage`, user-only) is documented. A diagnostic `reason` teaches the model the metric; a blank one still tells it that it was rejected, and it says so to the user.
+- **PreToolUse(Write) is asserted, not probed**, and its deny contract is a different shape.
 
-The last point deserves its own line, because it is the era's honest answer to "what does a gate do when it fires": **a gate that corrects teaches, and a model that has been taught is no longer a sample.** `emit_with_flag` is the only mode that leaves the measurement intact, and it is also the mode that fixes nothing. Choosing between them is a decision about what the tool is for, not a tuning parameter, and it belongs in the era that opens `gate:`.
+The last point deserves its own line, because it is the era's honest answer to "what does a gate do when it fires": **a gate that corrects teaches, and a model that has been taught is no longer a sample.** Rejection sampling looked like the way out and is not — the model notices. `emit_with_flag` is the only mode that leaves the measurement intact, and it is also the mode that fixes nothing. Choosing between them is a decision about what the tool is for, not a tuning parameter, and it belongs in the era that opens `gate:`.
 
 ## One thing confirmed for E4
 
@@ -96,4 +127,8 @@ The `Stop` payload carries `session_id`. E4 found the record has none and propos
 
 ## Subagent runs
 
-None. Two live probes, $0.16 in total, settled the questions that mattered; the rest is a comparison between two documents already in the tree. Exploration runs used in this stage remain 8.
+| # | Tier | Purpose | Verdict |
+|---|---|---|---|
+| E6-v | `mid` (Sonnet 5) | Adversarial check of the first draft against the hooks documentation | Found the central empirical claim false — the harness caps a stuck Stop hook at eight blocks — plus the missing `systemMessage` channel, the conflation of 04's MCP-tool retry with the Stop-hook route, the cache-dominated cost figure, the unprobed `PreToolUse` assertion with its different schema, and a wrong section citation. 112.6k tokens |
+
+Four live probes, about $0.40 in total. The cap was then measured directly rather than taken from the documentation. Exploration runs used in this stage: 9.
