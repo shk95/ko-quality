@@ -12,10 +12,11 @@
 
 **읽는 순서 (최소):**
 
-1. [`02-validation/2-exploration/02_scope.md`](02-validation/2-exploration/02_scope.md) — 이 시대의 범위와 시대 03과의 경계, 조사 의제
-2. [`02-validation/1-concept/01_idea.md`](02-validation/1-concept/01_idea.md) — 이 시대가 무엇을 하려는가
-3. [`01-toolkit/7-review/review.md`](01-toolkit/7-review/review.md) §B·§D·§G — 물려받은 스펙 입력과 preflight 입력
-4. 필요할 때만 — [`01-toolkit/3-spec/06_toolkit_spec.md`](01-toolkit/3-spec/06_toolkit_spec.md) §15(검증 단계로 가는 길)·§16(결정 현황), [`01-toolkit/3-spec/05a_findings_measurement.md`](01-toolkit/3-spec/05a_findings_measurement.md)(판정/측정의 선)
+1. [`02-validation/2-exploration/README.md`](02-validation/2-exploration/README.md) — **여기서 시작합니다.** 읽는 순서, 3-spec에 넘길 것, 실측 기록 색인
+2. [`02-validation/2-exploration/02_scope.md`](02-validation/2-exploration/02_scope.md) — 이 시대의 범위와 시대 03과의 경계, 조사 의제
+3. [`02-validation/1-concept/01_idea.md`](02-validation/1-concept/01_idea.md) — 이 시대가 무엇을 하려는가
+4. [`01-toolkit/7-review/review.md`](01-toolkit/7-review/review.md) §B·§D·§G — 물려받은 스펙 입력과 preflight 입력
+5. 필요할 때만 — [`01-toolkit/3-spec/06_toolkit_spec.md`](01-toolkit/3-spec/06_toolkit_spec.md) §15(검증 단계로 가는 길)·§16(결정 현황), [`01-toolkit/3-spec/05a_findings_measurement.md`](01-toolkit/3-spec/05a_findings_measurement.md)(판정/측정의 선)
 
 ## 구조: 시대와 일곱 단계
 
