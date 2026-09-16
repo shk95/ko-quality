@@ -1,0 +1,35 @@
+{
+  "probe": "can a gate actually stop an assistant reply, and what happens when it keeps firing?",
+  "era": "02-validation", "stage": "2-exploration", "item": "E6",
+  "date": "2026-09-16", "harness": "Claude Code 2.1.273",
+  "method": "A throwaway plugin whose only content is a Stop hook. The hook writes {\"decision\":\"block\",\"reason\":...} to stdout and logs every invocation. Loaded with --plugin-dir in a scratch directory; nothing installed.",
+  "run_1_single_block": {
+    "prompt": "한국의 수도는 어디입니까? 한 문장으로 답하십시오.",
+    "hook": "block on the first Stop, allow afterwards",
+    "invocations": [
+      {"n": 1, "last_assistant_message": "대한민국(한국)의 수도는 서울입니다."},
+      {"n": 2, "last_assistant_message": "GATE-RETRY 대한민국(한국)의 수도는 서울입니다."}
+    ],
+    "finding": "The block worked and the model obeyed the reason string, prepending the token it was told to. A gate on the reply is enforceable - not only on Write."
+  },
+  "run_2_repeated_block": {
+    "prompt": "1+1은?",
+    "hook": "block five times, then relent",
+    "invocations": [
+      {"n": 1, "stop_hook_active": false, "last": "1+1은 2예요. ..."},
+      {"n": 2, "stop_hook_active": true,  "last": "RETRY1 1+1은 2예요."},
+      {"n": 3, "stop_hook_active": true,  "last": "RETRY2 1+1은 2예요."},
+      {"n": 4, "stop_hook_active": true,  "last": "RETRY3 1+1은 2예요."},
+      {"n": 5, "stop_hook_active": true,  "last": "RETRY4 1+1은 2예요. 참고로, Stop hook(gate.py)이 응답할 때마다 번호만 올려서..."},
+      {"n": 6, "stop_hook_active": true,  "last": "RETRY5 1+1은 2예요. Stop hook(gate.py)이 계속 번호만 올려서 응답을 막고 있어요..."}
+    ],
+    "num_turns": 6, "cost_usd": 0.1443,
+    "findings": [
+      "stop_hook_active is false on the first Stop and true on every retry. That is the loop guard - and it is ADVISORY. The harness hands the flag to the hook and caps nothing itself; the loop ended only because the hook relented. 04's 'max N=2' has to be the hook's own counter.",
+      "Cost: six turns and $0.14 for a one-line question. A retry re-runs the whole turn, not just the check.",
+      "By the fourth retry the model began explaining the hook to the user - 'Stop hook(gate.py)이 계속 번호만 올려서 응답을 막고 있어요'. A gate that keeps firing makes itself part of the product."
+    ]
+  },
+  "payload_keys_on_stop": ["background_tasks", "cwd", "effort", "hook_event_name", "last_assistant_message", "permission_mode", "prompt_id", "session_crons", "session_id", "stop_hook_active", "transcript_path"],
+  "note_for_e4": "session_id IS present in the Stop payload, which confirms E4's fix (add it to the record) is a one-line change."
+}
