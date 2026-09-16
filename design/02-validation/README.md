@@ -2,7 +2,7 @@
 
 넣은 것이 효과가 있는지 아는 장치를 짓는 시대입니다. 시대 01이 "설치하면 쓰이는 도구"를 짓고 미뤄 둔 질문을 받습니다.
 
-**현재 위치:** `2-exploration` 끝 (2026-09-16). E1~E7 완료. 다음은 `3-spec`입니다.
+**현재 위치:** `3-spec` 진행 중 (2026-09-17). 구현 대상 스펙 [`09_toolkit_spec.md`](3-spec/09_toolkit_spec.md) 네 묶음 초안 완료, 독립 검증 중. 다음은 `4-plan`입니다.
 
 ## 문서 지도
 
@@ -14,7 +14,7 @@
 | 2-exploration | [`2-exploration/02_scope.md`](2-exploration/02_scope.md) | 전제 교정(레코드 0건), E1 결정(오프라인 대조 코퍼스), 강제 없는 스타일 선택 실측(B9), 시대 02/03 경계, 의제 E2~E7, `register`가 기제와 어긋나는 건(E4) | 작성됨 |
 | 2-exploration | [`2-exploration/03_features.md`](2-exploration/03_features.md) | **E2** — 네 원천의 규칙 209개를 mechanical/llm/human으로 분류하고, 중복을 걷어 측정 단위 28개로 정리. 3단 구성(표준 라이브러리 / 형태소 분석기 / 입력+출력), 제외 패스, `kiwipiepy` 의존성. 태그셋은 실측으로 통과, 레시피 둘은 깨져 있었고 수정안까지 실측 | 작성됨 |
 | 2-exploration | `04_*.md`~`08_*.md` | E3~E7 조사 결과. 목록은 [단계 README](2-exploration/README.md) | 작성됨 |
-| 3-spec | — | 스펙. B1~B8을 반영한 06의 후속 판본이 여기 들어옵니다 | 비어 있음 |
+| 3-spec | [`3-spec/09_toolkit_spec.md`](3-spec/09_toolkit_spec.md) | **구현 대상.** 06을 대체하는 자기완결 스펙(영어). B1~B9, E2~E7, 시대 99 결과, 결정 S1~S3 | 초안, 검증 중 |
 | 4-plan | — | 무엇을 어떤 순서로 짓는가. 이 시대부터 계획은 독립 문서입니다 | 비어 있음 |
 | 5-preflight | — | 구현 흐름 정의. 시대 01의 §D가 입력입니다 | 비어 있음 |
 | 6-build | — | 자율 구현 기록 | 비어 있음 |

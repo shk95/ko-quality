@@ -6,13 +6,14 @@
 
 > 새 세션은 여기서 시작합니다.
 
-**현재 위치:** 시대 `02-validation`, `2-exploration` 끝 (2026-09-16). 범위가 정해졌습니다 — 이 시대는 headless 대조 실행으로 **임시 코퍼스**를 만들어 측정 장치를 짓고, 실사용 레코드 기반 재측정은 시대 03이 받습니다. E1~E7이 모두 끝났고 다음은 `3-spec`입니다.
+**현재 위치:** 시대 `02-validation`, `3-spec` 진행 중 (2026-09-17). 범위가 정해졌습니다 — 이 시대는 headless 대조 실행으로 **임시 코퍼스**를 만들어 측정 장치를 짓고, 실사용 레코드 기반 재측정은 시대 03이 받습니다. 조사는 끝났고, 구현 대상 스펙 `09_toolkit_spec.md`가 06을 대체합니다.
 
 **같이 도는 것:** 임시 시대 `99-codex-retest`는 재시험을 마쳤습니다 (2026-09-16). 결과는 시대 02의 3-spec이 받습니다.
 
 **읽는 순서 (최소):**
 
-1. [`02-validation/2-exploration/README.md`](02-validation/2-exploration/README.md) — **여기서 시작합니다.** 읽는 순서, 3-spec에 넘길 것, 실측 기록 색인
+1. [`02-validation/3-spec/09_toolkit_spec.md`](02-validation/3-spec/09_toolkit_spec.md) — **여기서 시작합니다.** 구현 대상 스펙. §22가 결정 현황
+1. [`02-validation/2-exploration/README.md`](02-validation/2-exploration/README.md) — 스펙의 근거. 읽는 순서, 실측 기록 색인
 2. [`02-validation/2-exploration/02_scope.md`](02-validation/2-exploration/02_scope.md) — 이 시대의 범위와 시대 03과의 경계, 조사 의제
 3. [`02-validation/1-concept/01_idea.md`](02-validation/1-concept/01_idea.md) — 이 시대가 무엇을 하려는가
 4. [`01-toolkit/7-review/review.md`](01-toolkit/7-review/review.md) §B·§D·§G — 물려받은 스펙 입력과 preflight 입력
@@ -50,7 +51,7 @@ design/
 
 **일방향.** 앞 단계 문서는 그 시점의 기록이라 고치지 않습니다. 나중에 틀린 것이 드러나면 전방 포인터나 상태 표시만 답니다. 구현 중 발견은 6-build에 쌓이고, 스펙을 바꿀 만한 것은 7-review를 거쳐 다음 시대를 엽니다. 시대 안에서 되돌아가지 않습니다.
 
-**예외 하나.** 3-spec의 구현 대상 스펙(지금은 06)은 5-preflight까지는 개정할 수 있습니다. 개정 근거는 사이 문서나 실측 기록에 있고 스펙 머리말이 그것을 가리킵니다. 6-build에 들어가면 그것도 멈춥니다.
+**예외 하나.** 3-spec의 구현 대상 스펙(지금은 시대 02의 09)은 5-preflight까지는 개정할 수 있습니다. 개정 근거는 사이 문서나 실측 기록에 있고 스펙 머리말이 그것을 가리킵니다. 6-build에 들어가면 그것도 멈춥니다.
 
 ## 문서의 종류
 
@@ -67,7 +68,7 @@ design/
 | 시대 | 주제 | 상태 | 문서 |
 |---|---|---|---|
 | `01-toolkit` | 툴킷 — 공급 층, Skill, 하네스별 렌더, 최소 로거 | 닫힘 (2026-09-15). `master`에 있음 | [README](01-toolkit/README.md) |
-| `02-validation` | 검증 단계 — 측정, 판정기 검증, `watch:` 후보값, eval. 임시 코퍼스로 | 열림 (2026-09-16). 2-exploration 끝, 다음은 3-spec | [README](02-validation/README.md) |
+| `02-validation` | 검증 단계 — 측정, 판정기 검증, `watch:` 후보값, eval. 임시 코퍼스로 | 열림 (2026-09-16). 3-spec 진행 중 | [README](02-validation/README.md) |
 | `03` (미개설) | 실사용 레코드로 재측정, `watch:`→`gate:` 승격, 대조군 교대 | 02의 `7-review`에서 엽니다 | — |
 | `99-codex-retest` | Codex 채널 재시험 (임시) | 재시험 끝 (2026-09-16). 결과는 02의 3-spec으로 | [README](99-codex-retest/README.md) |
 
