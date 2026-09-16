@@ -264,4 +264,4 @@ A later round of verification found three more:
 |---|---|---|---|
 | E4-v | `mid` (Sonnet 5) | Adversarial check of the first draft against the runs, `logger/ko_quality_log.py` and 06 §13.1 | Confirmed items 3–5, 8, 9 and the thinking-token catch. Found the `policy_on` rename's blast radius, the Korean-only scope of the token conclusion, the Codex gap and the three undefined cases in `task_type`, the unspecified `tool_response` handling, the inherited hook half of `sub-to-sub`, and that the summary did not separate tested from reasoned. 88.2k tokens |
 
-Two live runs settled items 6 and 7; three more were added after the check to measure the token ratio on code and English. Exploration runs used in this stage: 5.
+Two live runs settled items 6 and 7; three more were added after the check to measure the token ratio on code and English. **This document used one subagent run**; the stage's running total is in [`README.md`](README.md).

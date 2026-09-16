@@ -151,4 +151,4 @@ Worth noting that C3 satisfied the first half by accident: the judge defaulted t
 |---|---|---|---|
 | E5-v | `mid` (Sonnet 5) | Adversarial check of the first draft | Found that §3 contradicted `04_judge.md` about `em_dash_count`; that `--ablation with-without` and `arm:` were never mentioned though they are the flags closest to this era's question; that `baseline` was listed and never investigated; that "positions" undersold korean-report-skills against a battery that is 100 % unimplemented; and that the `expect` shape was demonstrated rather than defined. 121.2k tokens |
 
-The grader types, field names, `arm:` values and regex engine behaviour came from the tool's own validator and error messages — no model run, no cost. Exploration runs used in this stage: 8.
+The grader types, field names, `arm:` values and regex engine behaviour came from the tool's own validator and error messages — no model run, no cost. **This document used one subagent run**; the stage's running total is in [`README.md`](README.md).

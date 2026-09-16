@@ -171,4 +171,4 @@ The `Stop` payload carries `session_id`. E4 found the record has none and propos
 |---|---|---|---|
 | E6-v | `mid` (Sonnet 5) | Adversarial check of the first draft against the hooks documentation | Found the central empirical claim false — the harness caps a stuck Stop hook at eight blocks — plus the missing `systemMessage` channel, the conflation of 04's MCP-tool retry with the Stop-hook route, the cache-dominated cost figure, the unprobed `PreToolUse` assertion with its different schema, and a wrong section citation. 112.6k tokens |
 
-Four live probes, about $0.40 in total. The cap was then measured directly rather than taken from the documentation. Exploration runs used in this stage: 9.
+Four live probes, about $0.40 in total. The cap was then measured directly rather than taken from the documentation. **This document used one subagent run**; the stage's running total is in [`README.md`](README.md).

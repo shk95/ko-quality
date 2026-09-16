@@ -249,6 +249,8 @@ B9's measurement supplies the missing arm at no cost. With unforced styles, the 
 
 This makes B9 a prerequisite for E1's corpus design, not just a packaging preference. It is recorded in [`02_scope.md`](02_scope.md) as a spec decision; this is the reason it cannot be deferred past `4-plan`.
 
+**All three arms run with the gate off**, because `gate:` is not opened this era. E6 adds a second dimension — `policy {on, off} × gate {on, off}` — and the era that opens `gate:` inherits arms A–C as its gate-off column ([`07_gate.md`](07_gate.md)).
+
 ### Third: the `usable` flag sits on top of the defect
 
 The logger marks a record `usable: false` when the reply has fewer than 20 Korean 어절 after stripping code and quoted lines. It does not drop the record.
@@ -407,4 +409,4 @@ The rest are not reference material: a ratio with a false-positive class attache
 | E2-b | `mid` (Sonnet 5) | Classify the ko-grammar references (rules, common-errors, guidelines) | 50 rows: 22 `mechanical`, 26 `llm`, 2 `human`. Found one upstream rule with no stable target (주어와 서술어 호응). 83.4k tokens |
 | E2-c | `docs` (`claude-code-guide`) | Where Claude Code reads agent definitions from, and what `--scope` scopes (its undocumented answers were then measured, `tests/runs/02-E7/`) | Five locations, project `.claude/agents/` documented and meant for version control. Plugin agent namespacing and whether `--scope` limits visibility are **undocumented**. 39.7k tokens |
 
-E2-a and E2-b were given the question, the sources and the classification scheme, never a leaning. Exploration runs used in this stage: 3 (the `docs` run counts like `mid`, review §E). Total ≈205k tokens.
+E2-a and E2-b were given the question, the sources and the classification scheme, never a leaning. **This document used four runs** (E2-a, E2-b, E2-c, E2-v); the stage's running total is in [`README.md`](README.md).
