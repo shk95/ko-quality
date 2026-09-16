@@ -10,8 +10,8 @@
 > Each section names its sources in a closing **Basis** line. Section numbers are 09's own. §23 maps 06's sections to 09's.
 >
 > **Status: draft, written in four bundles and reviewed with the user bundle by bundle.**
-> - **Bundle 1** (§1–§10, §13): supply and distribution. **Written.**
-> - **Bundle 2** (§11–§12, §14): hooks, logger, and the record.
+> - **Bundle 1** (§1–§10, §13): supply and distribution. **Reviewed (S1 decided).**
+> - **Bundle 2** (§11–§12, §14): hooks, logger, and the record. **Written.**
 > - **Bundle 3** (§15–§18): measurement, judge, eval, and corpus.
 > - **Bundle 4** (§19–§23): gate semantics, log data, self-application, decision status, and the section map.
 
@@ -62,7 +62,9 @@ This spec rests on the facts below. **Each carries its evidence: a run record (m
 | **Project settings are read only from the launch directory**, not by walking up to a parent or git root | E7 review measured |
 | `env` in project settings (local or committed) reaches plugin hooks. **Values are passed literally**: `~` and `$HOME` are not expanded | 02-E7; E7 review measured |
 | Plugin agents are namespaced `<plugin.json name>:<agent>` and **coexist** with a project agent of the same bare name. `SubagentStop.agent_type` is exactly the invoked name | P3; E7 review measured |
-| Hook payloads carry `session_id` and `cwd`. `Stop`/`SubagentStop` carry `last_assistant_message`. **`model` is absent from headless `SessionStart`**. No hook payload carries token usage, except the `Agent` tool's `PostToolUse` | P7; 02-E4; 02-E6 |
+| Hook payloads carry `session_id`, `cwd` and `prompt_id`. **No payload carries the selected output style or `model`.** No payload carries token usage | P7; 02-E4; 02-E6; [`hook-payloads.json`](../../../tests/runs/02-spec/hook-payloads.json) measured |
+| Tool events fired **inside a subagent** carry `agent_id` and `agent_type` under the parent's `session_id`. `SubagentStart` exists | `hook-payloads.json` measured |
+| **A subagent report can travel through a `SubagentHandback` tool call.** Its `PostToolUse` input holds the report. `SubagentStop.last_assistant_message` is then a stub, and the orchestrator receives the report as a `UserPromptSubmit` beginning `<agent-message from=`. The `Agent` tool's `PostToolUse` input holds the delegation prompt | `hook-payloads.json` measured, 2.1.273, once. Era 01 on 2.1.270 saw real text in `SubagentStop` |
 | A `Stop` hook that returns `decision: block` sends the model back with `reason` as an instruction. **After 8 consecutive blocks the turn ends with an empty result** (`CLAUDE_CODE_STOP_HOOK_BLOCK_CAP`) | 02-E6 measured |
 | Removing a plugin leaves traces: an empty `extraKnownMarketplaces` and an orphaned cache marked `.orphaned_at` | P5 measured (B6) |
 | `claude plugin eval` graders: `regex` (presence only; negation only by lookahead; JavaScript `RegExp`), `tool_order`, `tool_used`, `file_exists`, `llm`, `baseline`. No code grader. `--runs` is generations, not judgments. Ablation compares plugin on with plugin off | 02-E5 validator; E3 |
@@ -315,6 +317,159 @@ An MCP tool that helps the model **write** (a spelling lookup, say) would be a p
 
 **Basis:** 06 §10; P6, P7; E4 item 8; E5; E6; 05a.
 
+## 11. Hooks and the logger
+
+The logger is still the minimal, out-of-harness recorder that 06 §11 specified. What changes is **what it is allowed to believe**. Era 01's logger wrote down what the build stamp implied. Era 02's logger writes down what the hook actually saw, and it leaves every other field empty, to be filled by someone who saw more.
+
+### 11.1 Principles
+
+- It runs outside the harness. The model does not know it exists.
+- **It never judges and never blocks.** It prints nothing and always exits 0. A gate is a separate executable (§19).
+- **Standard library only.** Era 01 had zero non-stdlib imports, and the logger runs on every turn of a user's session.
+- It does not read transcripts. It assembles from hook payloads.
+- It spends no tokens.
+- **New: it records only what a hook payload establishes.** A field the hook cannot establish is written as `null`, never guessed from the stamp. Other writers fill it, and each writer keeps to its own file (§11.4).
+- **New (decision S2, proposed): values that need the exclusion pass are not computed in the hook.** These are `instruction_lang`, `artifact_lang` and `usable`. They move to the measurement runner (§15), where the one exclusion pass lives.
+
+**Why S2.** E4 resolved `instruction_lang` and `artifact_lang` as consumers of E2's exclusion pass. E2 made that pass the first thing to build and validate, and it has twelve zones, some of which (proper nouns, product names) need more than a regex. Computing these fields in the hook would force one of two bad outcomes. Either there is a second, weaker exclusion pass in stdlib inside the logger, or the logger imports the analyser that the rest of the design keeps out of the session. With S2, the record carries the raw text, and the derived values come from one implementation, with a version, recomputable whenever the pass improves. **Cost:** a record alone no longer says whether it is usable. The derived store has to be joined, and a live consumer in era 03 would need the runner.
+
+### 11.2 Assembly
+
+State is kept per session, and **within a session per agent** (`agent_id`, or `main`). Both harnesses fire a subagent's tool events under the parent's `session_id`, with `agent_id` set. Era 01's per-session accumulation mixed a subagent's edits into the main thread's `task_type` (era 99 R2; [`hook-payloads.json`](../../../tests/runs/02-spec/hook-payloads.json)).
+
+| Event | What the logger takes | Notes |
+|---|---|---|
+| `SessionStart` | `session_id`, `cwd`, `model` if present | `model` is present on Codex. **It is absent on Claude Code**, where no hook carries it |
+| `UserPromptSubmit` | `prompt` → the turn's `task`, and the turn key (`prompt_id` on Claude Code, `turn_id` on Codex) | **A harness-injected prompt is not a task.** Claude Code delivers a subagent's hand-back to the orchestrator as a `UserPromptSubmit` whose prompt begins `<agent-message from=`. Such prompts are counted in `injected_prompts` and do not overwrite `task` |
+| `PostToolUse`, main or per `agent_id` | edit tools and their `file_path`; skills invoked; tool errors; Hangul and Latin character counts of `tool_response` string leaves | Skills: the Claude Code `Skill` tool's input. On Codex, a shell read of `skills/<name>/SKILL.md` (`skills_method: path-read`) |
+| `PostToolUse`, `Agent` tool (Claude Code) | `tool_input.prompt` keyed by the returned `agentId` | The delegation prompt. `coding.19` governs this text, and it is the sub-record's input |
+| `PostToolUse`, `SubagentHandback` (Claude Code) | `tool_input.message` keyed by `agent_id` | **The subagent's actual report** where the harness routes it this way |
+| `SubagentStop` | sub record: `agent_id`, `agent_type`, output | Output is the captured hand-back message if one exists for that `agent_id`, else `last_assistant_message`. On 2.1.273 the latter was a stub ("I sent my report to the agent that started me.") whenever hand-back was used. On Codex it is the real report (era 99) |
+| `Stop` | main record | `last_assistant_message` |
+| `SessionEnd` | delete session state | — |
+
+### 11.3 `policy_on`, `injection_point`, `profile`: what a hook can establish
+
+**Measured:** no Claude Code hook payload carries the selected output style or the model ([`hook-payloads.json`](../../../tests/runs/02-spec/hook-payloads.json)). A hook therefore cannot know whether the main-thread policy applied. Under B9 that is exactly the difference between arm B and arm C.
+
+| Record | `plugin_present` | `policy_on` | `injection_point` | `profile` |
+|---|---|---|---|---|
+| any, stamp found | `true` | — | — | — |
+| sub, `agent_type` is a shipped agent (Claude Code: `ko-quality:` namespace; Codex: a name the installer wrote, per `ko_quality_codex.py status`) | — | `true` | `agent-definition` | `null`. Agents carry agent-reply policy under S1, but that is not the session's profile |
+| sub, any other `agent_type` | — | `false` | `none` | `null` |
+| main, Codex, a `ko-quality:begin profile=…` marker in the effective `AGENTS.md` (global, or project from `cwd` up to the repository root) | — | `true` | `agents-md` | the marker's profile (`policy_method: agents-md-marker`) |
+| main, Codex, no marker | — | `false` | `none` | `null` |
+| **main, Claude Code** | — | **`null`** | **`null`** | **`null`** |
+
+- **`policy_on` keeps its name** (E4). The design's falsifiability argument is written around it. `plugin_present` is added beside it for what the stamp establishes.
+- **Era 02 fills the Claude Code main-thread nulls from outside**: the corpus generator knows the arm it ran and annotates the session (§12.2).
+- **Era 03 cannot**, and this is its blocker, now measured rather than suspected. Before era 03 samples real Claude Code sessions, it needs a way to know the effective style. The candidates are reading the settings chain from `cwd`, which is fragile, or a harness field. Neither exists in this spec.
+
+### 11.4 Storage
+
+```text
+$KO_QUALITY_HOME  (expanduser applied; default ~/.ko-quality)
+├── logs/<yyyy-mm>.jsonl          # logger only. Append-only
+├── state/<session_id>.json       # logger only. Deleted at SessionEnd
+├── annotations/<yyyy-mm>.jsonl   # corpus generator only (§18). Joined on session_id
+└── derived/<yyyy-mm>.jsonl       # measurement runner only (§15). Joined on record id
+```
+
+- **One writer per file kind.** No program edits another's records. The logger's file stays append-only.
+- **`logs/` is no longer split by profile.** Under B9 the hook does not know the profile (§11.3).
+- **`expanduser`** on `KO_QUALITY_HOME`. Claude Code passes settings `env` values literally, so a committed `~/…` value only works if the logger expands it (§2.1, E7-d).
+- Never inside a work tree. Retention and use rules are in §20.
+
+### 11.5 Installation
+
+| Harness | How |
+|---|---|
+| Claude Code | The plugin carries `hooks/hooks.json`. Command: `python3 "${CLAUDE_PLUGIN_ROOT}/logger/ko_quality_log.py" <Event>` |
+| Codex | The plugin bundles the same `hooks.json` through `extensions.com.openai.hooks`. **Codex sets both `PLUGIN_ROOT` and `CLAUDE_PLUGIN_ROOT`**, so the command works unchanged (era 99 A3). The user must trust the hooks once |
+
+The event list does not change. `PreToolUse` and `SubagentStart` exist and add nothing the logger needs: `PostToolUse` carries the tool input, and `SubagentStop` carries `agent_id`.
+
+**Basis:** 06 §11; B7; E2 (exclusion pass, stdlib constraint); E4 items 2–7 and additions; E7-d; era 99 A2, A3, R2; [`hook-payloads.json`](../../../tests/runs/02-spec/hook-payloads.json).
+
+## 12. The record, and what joins it
+
+### 12.1 Log record (written by the logger)
+
+```yaml
+id: uuid4
+ts: datetime
+session_id: string                     # NEW — every payload has it; the join key (E4)
+turn_key: string?                      # NEW — Claude Code prompt_id / Codex turn_id
+project: string?                       # NEW — sha256 of the git root above cwd, else of cwd; first 16 hex (E7-d)
+harness: claude-code | codex
+harness_position: main-to-user | sub-to-orchestrator
+agent_type: string?
+agent_id: string?                      # NEW
+plugin_present: bool                   # NEW — stamp found
+build_id: string?                      # NEW — from the stamp (§13)
+tool_version: string?                  # stamp version
+upstream_versions: {name: commit}
+policy_on: bool?                       # §11.3; null = not established by the hook
+injection_point: output-style | agents-md | agent-definition | none | null
+profile: string?                       # §11.3
+policy_method: string?                 # agents-md-marker | agent-type | null
+model: string?                         # null on Claude Code
+task: string                           # masked; for sub records, the delegation prompt if captured
+output: string                         # masked
+injected_prompts: int                  # NEW — harness-injected UserPromptSubmit count this turn
+skills_invoked: [string]               # NEW — replaces preset
+skills_method: tool | path-read | null
+task_type: coding | document | conversation      # Claude Code (E4 item 2)
+         | coding | conversation                  # Codex: apply_patch paths unverified
+task_type_method: rule | rule-nopath | rule-codex
+tool_output_chars: {hangul: int, latin: int}      # NEW — replaces context_en_ratio (E4 item 1)
+tool_errors: int
+tokens: {output: int, method: estimate-v2}        # E4 item 6; never read by a threshold
+masked: bool
+# reserved, absent in era 02 (§19): gate_on, gate_fired, gate_retries, gate_fired_on
+```
+
+**Removed from 06 §11.3, and why.**
+
+| Field | Why |
+|---|---|
+| `preset` | No hook source (B7). A preset's order is advice. What can be observed is which skills ran: `skills_invoked` |
+| `instruction_lang`, `artifact_lang`, `usable` | Need the exclusion pass: derived store (S2) |
+| `upstream_report` | Never filled in era 01. A skill's self-reported change rate stays inside `output`, where it was written, and is never promoted to a field (E4 item 8) |
+| `expect` | Belongs to eval cases (§17), not to session records |
+| `task_type_method: rule` alone | Split to show the fallback (E4 item 2) |
+
+**Masking** gains phone numbers, 주민등록번호, card numbers, and the home directory in paths (E7-b). Names stay unmasked. The mask runs at capture, before anything is written.
+
+### 12.2 Annotation record (written by the corpus generator, era 02)
+
+```yaml
+session_id: string                     # join key
+corpus_prompt_id: string
+arm: A | B | C                         # §18
+profile_selected: agent-reply | formal-report | null
+model: string                          # from the result document
+tokens: {output: int, thinking: int, method: usage}   # thinking subtracted (E4 item 6)
+sub_to_sub_present: bool
+sub_to_sub_method: session-stats       # subagent_stats.spawned_by_subagents (E4 item 7)
+generator_version: string
+```
+
+When an annotation exists, its values **override** the log record's nulls for analysis, and **never overwrite** the log file. Estimated and measured token counts are never pooled (E4 item 6).
+
+### 12.3 Derived record (written by the measurement runner)
+
+```yaml
+record_id: uuid                        # log record id
+exclusion_version: string
+instruction_lang: ko | en | mixed      # on task after exclusion (E4 item 3)
+artifact_lang: ko | en | mixed         # on output after exclusion (E4 item 4)
+usable: bool                           # >= 20 Korean 어절 after exclusion — a flag, never a filter (E2)
+features: {name: value}                # §15
+```
+
+**Basis:** 06 §11.3; B7; E2; E4; E6 (reserved gate fields); E7-b, E7-d; `tests/logger_test.py`, which asserts 06's keys and changes with this schema.
+
 ## 13. Build and distribution
 
 ```text
@@ -359,3 +514,45 @@ dist/claude-code/
 **Removal (B6).** Claude Code: `claude plugin uninstall`, then remove the marketplace. Two traces remain and are documented: an empty `extraKnownMarketplaces` and an orphaned cache under `~/.claude/plugins/cache/<marketplace>/`. **Also remove the style selection** from each project's `settings.local.json`, or the next session asks for a style that no longer exists. That line is new under B9 and not yet measured. Codex: the installer's `uninstall` restores `AGENTS.md` byte for byte (P6).
 
 **Basis:** 06 §12; B4, B6; B9; P5, P6, P7; E7-c, E7-d.
+
+## 14. Approximations, unknowns and structural limits
+
+**This section is part of the spec.** 06 §13.1 said to revisit each approximation before a threshold is set. E4 did that, and this is the result.
+
+### 14.1 Approximations — a value exists, and it is not exact
+
+| Item | Disposition in 09 | Where | Evidence |
+|---|---|---|---|
+| `context_en_ratio` | Returns as `tool_output_chars` counts, string leaves only. A covariate for English exposure, not the model's English | §12.1 | reasoned |
+| `task_type` | Three values on Claude Code, path-aware, source edit wins, `rule-nopath` fallback. Codex keeps two. A stratifying covariate, never an outcome | §12.1 | reasoned; subagent split measured |
+| `instruction_lang` | Last user prompt only (injected prompts excluded), after the exclusion pass | §12.3 | E7 records |
+| `artifact_lang` mixed | After the exclusion pass. **The contamination rate on code-plus-Korean output is measured on the corpus before any grader reads this field** | §12.3, §15 | E7 records |
+| `output` purity / `usable` | Flag kept, **never a filter** for measurements whose defect shortens text. The rate at which quoted user input survives into graded text is measured on the corpus | §12.3, §15 | E2, E7 |
+| `tokens.output` | Era 02: actual usage, thinking subtracted, from the generator. Hook: `estimate-v2` = 1.51 × Hangul + 0.34 × other, an order-of-magnitude label (held-out error 19%, 47% on path-heavy Korean). Never pooled with usage | §12.1–§12.2 | run-verified, 10 samples |
+| `sub-to-sub` | Session-level `sub_to_sub_present` from `subagent_stats`, generator only. Per-record attribution stays absent. The ordering heuristic is **not adopted** | §12.2 | run-verified (session half) |
+| Change rate | Self-report stays in `output`. `ko.preserve` is built (§15). **`ko.change_rate` has no procedure** and is an open obligation (§15) | §15 | E4 item 8 |
+| Codex `instructions` | Channel stays closed | — | P6; era 99 did not reopen it |
+
+### 14.2 Unknowns — with the point at which each is checked
+
+| Item | Status | Checked when |
+|---|---|---|
+| Effective output style visible to any hook or harness field (Claude Code) | **Not available** in 2.1.273 payloads | **Before era 03 samples real sessions**: era 03's blocker |
+| Whether Claude Code always routes a subagent report through `SubagentHandback` | Observed once on 2.1.273. Era 01 (2.1.270) saw real text in `SubagentStop` | First corpus batch: count sub records whose output is the stub |
+| Codex `apply_patch` payload paths | Untested | When Codex `task_type` needs three values |
+| Codex custom agents interactively, project-scope agents | Untested (era 99) | When a Codex arm is added |
+| `PreToolUse(Write)` as a gate site | Asserted, not probed; different deny shape (E6) | The era that opens `gate:` |
+| A blocking `Stop` hook under a marketplace install | Probed only with `--plugin-dir` (E6) | Same |
+| Relative or `github` marketplace source declared in committed settings | Relative `directory` not loaded headlessly; interactive trust untested | `4-plan`, for self-application (§21) |
+| `ruleset` provider licence | Unchecked | Before any extraction (§5.6) |
+
+### 14.3 Structural limits — not fixable here
+
+- **A preset's order is advice.** `ko-route` tells the model the order, and nothing enforces it.
+- **The subagent clause is still a clause.** Writing the policy into agent definitions covers one layer. A subagent that spawns another passes the policy on only if the model chooses to.
+- **The hook cannot see the main-thread policy on Claude Code** (§11.3). Era 02 fills it in from the generator. Era 03 has no such source yet.
+- **Reply length defeats document thresholds.** Upstream thresholds (`문단 3회+`, `4문장+ 연속`) cannot fire in a two-sentence reply, so per-record verdicts carry no variance. Measurements are emitted as raw counts and rates, and aggregated within a stratum (§15).
+- **Tier 2 (input + output) exists only where the original was pasted into the prompt.** When the model reads the text from a file, the pair never enters the record. The corpus includes paste-in cases on purpose (§18).
+- **A record produced after a gate fires is a record of a taught model** (E6). No gate runs in era 02. The fields are reserved (§12.1).
+
+**Basis:** 06 §13; E2; E4; E6; E7; era 99; [`hook-payloads.json`](../../../tests/runs/02-spec/hook-payloads.json).

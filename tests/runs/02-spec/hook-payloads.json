@@ -1,0 +1,235 @@
+{
+  "probe": "what Claude Code hook payloads carry for the logger's record: selected output style, model, subagent attribution, and the subagent's report",
+  "era": "02-validation",
+  "stage": "3-spec",
+  "item": "09 bundle 2 (§11-§12)",
+  "date": "2026-09-16",
+  "harness": "Claude Code 2.1.273",
+  "method": "Scratch project, .claude/settings.local.json with outputStyle Explanatory and command hooks on SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, SubagentStart, SubagentStop, Stop, SessionEnd dumping raw payloads. One claude -p run delegating `echo hi` to a general-purpose subagent. $0.18.",
+  "events": [
+    {
+      "event": "SessionStart",
+      "keys": [
+        "cwd",
+        "hook_event_name",
+        "session_id",
+        "source",
+        "transcript_path"
+      ],
+      "source": "startup"
+    },
+    {
+      "event": "UserPromptSubmit",
+      "keys": [
+        "cwd",
+        "hook_event_name",
+        "permission_mode",
+        "prompt",
+        "prompt_id",
+        "session_id",
+        "transcript_path"
+      ],
+      "prompt_head": "Use the Agent tool with subagent_type general-purpose, and t"
+    },
+    {
+      "event": "PreToolUse",
+      "keys": [
+        "cwd",
+        "effort",
+        "hook_event_name",
+        "permission_mode",
+        "prompt_id",
+        "session_id",
+        "tool_input",
+        "tool_name",
+        "tool_use_id",
+        "transcript_path"
+      ],
+      "tool_name": "Agent"
+    },
+    {
+      "event": "SubagentStart",
+      "keys": [
+        "agent_id",
+        "agent_type",
+        "cwd",
+        "hook_event_name",
+        "prompt_id",
+        "session_id",
+        "transcript_path"
+      ],
+      "agent_type": "general-purpose"
+    },
+    {
+      "event": "PreToolUse",
+      "keys": [
+        "agent_id",
+        "agent_type",
+        "cwd",
+        "effort",
+        "hook_event_name",
+        "permission_mode",
+        "prompt_id",
+        "session_id",
+        "tool_input",
+        "tool_name",
+        "tool_use_id",
+        "transcript_path"
+      ],
+      "agent_type": "general-purpose",
+      "tool_name": "Bash"
+    },
+    {
+      "event": "PostToolUse",
+      "keys": [
+        "agent_id",
+        "agent_type",
+        "cwd",
+        "duration_ms",
+        "effort",
+        "hook_event_name",
+        "permission_mode",
+        "prompt_id",
+        "session_id",
+        "tool_input",
+        "tool_name",
+        "tool_response",
+        "tool_use_id",
+        "transcript_path"
+      ],
+      "agent_type": "general-purpose",
+      "tool_name": "Bash"
+    },
+    {
+      "event": "PreToolUse",
+      "keys": [
+        "agent_id",
+        "agent_type",
+        "cwd",
+        "effort",
+        "hook_event_name",
+        "permission_mode",
+        "prompt_id",
+        "session_id",
+        "tool_input",
+        "tool_name",
+        "tool_use_id",
+        "transcript_path"
+      ],
+      "agent_type": "general-purpose",
+      "tool_name": "SubagentHandback"
+    },
+    {
+      "event": "PostToolUse",
+      "keys": [
+        "agent_id",
+        "agent_type",
+        "cwd",
+        "duration_ms",
+        "effort",
+        "hook_event_name",
+        "permission_mode",
+        "prompt_id",
+        "session_id",
+        "tool_input",
+        "tool_name",
+        "tool_response",
+        "tool_use_id",
+        "transcript_path"
+      ],
+      "agent_type": "general-purpose",
+      "tool_name": "SubagentHandback",
+      "tool_input_message_head": "I ran `echo hi` with the Bash tool. It worked and printed ex"
+    },
+    {
+      "event": "SubagentStop",
+      "keys": [
+        "agent_id",
+        "agent_transcript_path",
+        "agent_type",
+        "background_tasks",
+        "cwd",
+        "effort",
+        "hook_event_name",
+        "last_assistant_message",
+        "permission_mode",
+        "prompt_id",
+        "session_crons",
+        "session_id",
+        "stop_hook_active",
+        "transcript_path"
+      ],
+      "agent_type": "general-purpose",
+      "last_assistant_message": "I sent my report to the agent that started me."
+    },
+    {
+      "event": "PostToolUse",
+      "keys": [
+        "cwd",
+        "duration_ms",
+        "effort",
+        "hook_event_name",
+        "permission_mode",
+        "prompt_id",
+        "session_id",
+        "tool_input",
+        "tool_name",
+        "tool_response",
+        "tool_use_id",
+        "transcript_path"
+      ],
+      "tool_name": "Agent"
+    },
+    {
+      "event": "UserPromptSubmit",
+      "keys": [
+        "cwd",
+        "hook_event_name",
+        "permission_mode",
+        "prompt",
+        "prompt_id",
+        "session_id",
+        "transcript_path"
+      ],
+      "prompt_head": "<agent-message from=\"af7aa24de59d28313\">\n[Subagent hand-back"
+    },
+    {
+      "event": "Stop",
+      "keys": [
+        "background_tasks",
+        "cwd",
+        "effort",
+        "hook_event_name",
+        "last_assistant_message",
+        "permission_mode",
+        "prompt_id",
+        "session_crons",
+        "session_id",
+        "stop_hook_active",
+        "transcript_path"
+      ],
+      "last_assistant_message": "The subagent ran `echo hi`, and the output was `hi`. (The \"claude.ai Adobe for c"
+    },
+    {
+      "event": "SessionEnd",
+      "keys": [
+        "cwd",
+        "hook_event_name",
+        "prompt_id",
+        "reason",
+        "session_id",
+        "transcript_path"
+      ]
+    }
+  ],
+  "findings": [
+    "No hook payload carries the selected output style, and none carries `model` (SessionStart keys: cwd, hook_event_name, session_id, source, transcript_path). A hook cannot establish main-thread policy_on or profile from its input.",
+    "Every event carries `prompt_id`; tool events carry `tool_use_id`. SubagentStart exists and carries agent_id and agent_type.",
+    "Tool events fired INSIDE a subagent carry agent_id and agent_type and share the parent's session_id — same as Codex (era 99 A2). Per-session tool accumulation mixes subagent tools into the main thread unless split by agent_id.",
+    "SubagentStop.last_assistant_message was a stub ('I sent my report to the agent that started me.'). The subagent's report travelled through a `SubagentHandback` tool call: its PostToolUse tool_input.message holds the report, with agent_id.",
+    "The report then reached the orchestrator as a second UserPromptSubmit whose prompt begins '<agent-message from=…>'. The current logger would overwrite `task` with it.",
+    "The Agent tool's PostToolUse tool_input.prompt is the delegation prompt (coding.19's subject); tool_response also echoes it with agentId and agentType.",
+    "Whether the handback route is always taken, or depends on this build or account configuration, was not established. Era 01 (2.1.270) recorded real subagent text in SubagentStop."
+  ],
+  "cleanup": "Scratch directory only; ~/.ko-quality absent."
+}
