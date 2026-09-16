@@ -36,7 +36,7 @@ One execution constraint comes with it: a forced output style is exclusive and s
 
 ## Measured while scoping: unforced plugin styles are selectable
 
-One plugin can carry several output styles and let the user pick one, as long as none of them is forced. Five headless runs, Claude Code 2.1.273, $0.26. Record: [`tests/runs/02-E1/unforced-style-selection.json`](../../../tests/runs/02-E1/unforced-style-selection.json).
+One plugin can carry several output styles and let the user pick one, and switch between them mid-session, as long as none of them is forced. Seven headless runs, Claude Code 2.1.273, $0.47. Record: [`tests/runs/02-E1/unforced-style-selection.json`](../../../tests/runs/02-E1/unforced-style-selection.json).
 
 | # | Plugin | `outputStyle` | agent-reply canary | formal-report canary |
 |---|---|---|---|---|
@@ -49,7 +49,9 @@ One plugin can carry several output styles and let the user pick one, as long as
 - **B and E:** two styles inside **one** plugin each applied when selected, each showing only its own canary. P3's "formal-report is unreachable" holds only *while another style is forced*. Drop `force-for-plugin` and both profiles are reachable from a single plugin.
 - **C is new.** The bare name does not resolve; `<plugin>:<style>` is required. P3 recorded both forms as "accepted", but a forced style won every P3 run, so the two forms were never told apart.
 - **A is the price.** Installing alone does nothing. That breaks 06 §1's "a tool that is used once installed", which is exactly why `force-for-plugin` was set in the first place.
-- **Not observed:** switching mid-session through `/output-style`. Headless cannot reproduce it. Selection through a setting is measured; the interactive path is inferred.
+- **Switching works, both ways, and persists.** A multi-turn run through `--input-format stream-json`: turn 1 `default`, no canary; turn 2 `/output-style ko-quality:formal-report`; turn 3 CANARY-FORMAL. A second process in the same directory, given no setting on the command line, still answered CANARY-FORMAL, switched to `ko-quality:agent-reply` and answered CANARY-AGENTREPLY.
+- **The choice is stored per project**, in `<project>/.claude/settings.local.json`. `~/.claude/settings.json` was unchanged (sha1 identical to the pre-run snapshot). Under forcing the profile is a property of the *installation*; unforced, it becomes a property of the *project*.
+- **P3 still holds.** P3 found `init.output_style` echoes the configured value rather than the style in effect. Here the two agree, because nothing is forced. The side effect is that in an unforced design the field becomes usable as evidence again, which reopens P7's `injection_point`.
 
 This reopens a decision era 01 closed. Decision ② (P5) chose one plugin per profile because a forced style is exclusive — which is true, and was the only option *given* forcing.
 
@@ -57,12 +59,15 @@ This reopens a decision era 01 closed. Decision ② (P5) chose one plugin per pr
 |---|---|---|
 | After install | Works immediately | The user must select once |
 | Adding a profile | Another plugin (440K, 84% of it byte-identical skills) | Another style file (~2KB) |
-| Switching mid-session | Impossible | Appears possible; not yet observed |
+| Switching mid-session | Impossible | `/output-style`, effective from the next turn |
+| Scope of the choice | Per installation | Per project, kept in `.claude/settings.local.json` |
 | This era's ablation corpus | A separate run per profile | Profiles can alternate inside one session |
 
-The last row is why this belongs to E1 and not only to the spec: under the current build the corpus must be run once per profile, and that doubles it.
+The last two rows are why this belongs to E1 and not only to the spec. Under the current build the corpus must be run once per profile, which doubles it; with switching, one process can alternate profiles across turns — and the `--input-format stream-json` shape used for this probe is already the skeleton of the corpus generator.
 
-**Not decided here.** This is a 06 §9 (policy channel) and §12 (distribution layout) revision candidate — **B9**, alongside review §B's B1–B8 — and it is settled in `3-spec`, not in this document. Two things must land first: the interactive `/output-style` observation, and E4's reading of whether the profile distinction survives at all (the `register` mismatch below). If E4 drops or restates the distinction, B9's premise changes with it.
+The per-project scope also blunts the objection. "Installing does nothing" becomes "choose once per project, and it stays chosen", and a per-project profile fits the distinction the toolkit was after better than a per-installation one: formal-report in a docs repository, agent-reply in a code repository.
+
+**Not decided here.** This is a 06 §9 (policy channel) and §12 (distribution layout) revision candidate — **B9**, alongside review §B's B1–B8 — and it is settled in `3-spec`, not in this document. It still waits on E4's reading of whether the profile distinction survives at all (the `register` mismatch below): if E4 drops or restates the distinction, B9's premise changes with it. What is left unmeasured is the marketplace install path — the probe used `--plugin-dir`, not `claude plugin install`.
 
 ## Era boundary
 
@@ -124,5 +129,4 @@ I investigate directly, and delegate to a `mid` subagent when a judgment is clos
 ## What this stage left open
 
 - **Concept open question 7 (Codex arrives late).** The offline route is Claude Code only. Whether the instrument stands up on Codex is re-judged when era 99 runs; it does not hold up era 02.
-- **Whether `/output-style` switches a profile mid-session.** The probe above measured selection through a setting, not through the interactive command. One interactive session settles it, and B9 waits on it.
 - **Whether the synthetic prompt set is representative.** By construction it is not a sample of real use. The defence is that era 02 produces candidate values and era 03 confirms them — but a prompt set that misses a whole kind of task would also hide a whole feature. E2 has to say what the prompt set covers and admit what it does not.
