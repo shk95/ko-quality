@@ -698,7 +698,7 @@ A judge between the true difference and the reported one scales it by `Se + Sp โ
 
 ### 16.3 What era 02 runs
 
-- **Tier A with a stronger judge model** (`claude plugin eval --judge-model`, above the Haiku default) on the two existing policy cases. It costs almost nothing, and it is the experiment C3 never ran. The verdict is recorded against the (judge model, rubric wording, tool version) triple and not generalised.
+- **Tier A with a stronger judge model** (`claude plugin eval --judge-model`, above the Haiku default) on the two policy cases C3 used. It costs almost nothing, and it is the experiment C3 never ran. Because a case cannot select a style (ยง17.2), it runs on a **scratch copy with the style forced**. The experiment is about the judge, not about the shipped layout. The verdict is recorded against the (judge model, rubric wording, tool version) triple and not generalised.
 - **Every judge run record keeps** the judged text, the verdict, the judge's stated reason, and the judge model (E3). Without these the run validates nothing. That is why C3's most-quoted claim cannot be reproduced.
 - Any `llm` verdict produced is an **annotation no threshold reads**, tagged so it can be discarded wholesale.
 
