@@ -1,11 +1,21 @@
 {
   "probe": "what claude plugin eval can and cannot score, and where the measurement runner has to live",
-  "era": "02-validation", "stage": "2-exploration", "item": "E5",
-  "date": "2026-09-16", "harness": "Claude Code 2.1.273",
+  "era": "02-validation",
+  "stage": "2-exploration",
+  "item": "E5",
+  "date": "2026-09-16",
+  "harness": "Claude Code 2.1.273",
   "method": "A throwaway plugin under /tmp with a one-case eval suite. Grader types and field names were discovered by submitting invalid values and reading the validator's own error messages. No model runs; validation only, so the cost was nil.",
   "grader_types": {
     "discovered_from": "graders.0.type: Invalid discriminator value. Expected 'regex' | 'tool_order' | 'tool_used' | 'file_exists' | 'llm' | 'baseline'",
-    "types": ["regex", "tool_order", "tool_used", "file_exists", "llm", "baseline"],
+    "types": [
+      "regex",
+      "tool_order",
+      "tool_used",
+      "file_exists",
+      "llm",
+      "baseline"
+    ],
     "required_fields": {
       "regex": "pattern; also accepts flags and weight. No required field beyond type",
       "baseline": "baseline_file",
@@ -15,9 +25,35 @@
       "tool_used": "tool, input_match"
     },
     "regex_negation": {
-      "tested": ["negate", "must_not_match", "expect"],
+      "tested": [
+        "negate",
+        "must_not_match",
+        "expect"
+      ],
       "result": "all three rejected as unrecognized keys",
       "consequence": "A regex grader passes when its pattern matches. 'Must not contain' has to be written as a negative lookahead inside the pattern itself."
+    },
+    "regex_engine": {
+      "question": "The document claimed 'must not contain' is expressible as a negative lookahead. That assumed an engine that supports lookahead, which was never checked - a Rust regex engine would not.",
+      "probes": [
+        {
+          "pattern": "hello",
+          "result": "accepted"
+        },
+        {
+          "pattern": "^(?!.*world).*$",
+          "result": "'pattern not found in last_message' - a normal non-match, NOT a syntax error, so lookahead parses"
+        },
+        {
+          "pattern": "(?i)HELLO",
+          "result": "'Invalid regular expression: unrecognized character after (?'"
+        },
+        {
+          "pattern": "(?:.*—){3}",
+          "result": "'pattern not found' - repetition counts parse"
+        }
+      ],
+      "finding": "It is JavaScript's RegExp: lookahead is supported, inline flags like (?i) are not. So negation via negative lookahead works and the `flags` field is the way to set case-insensitivity. The document's claim was right; it had no evidence for it until now."
     }
   },
   "findings": [
@@ -28,6 +64,7 @@
   ],
   "other": {
     "bare_template": "claude plugin eval init --bare writes prompt.md + graders/criteria.md with type: llm and weight: 1",
-    "existing_suite": "tests/evals/claude-code/ uses 4 tool_used graders and 2 llm graders; the llm ones are the two policy cases C3 re-ran"
+    "existing_suite": "tests/evals/claude-code/ uses 4 tool_used graders and 2 llm graders; the llm ones are the two policy cases C3 re-ran",
+    "tests_cases_runner": "Verified: nothing parses tests/cases/*.yaml. No reference in build/, tests/ or build/checks.py; only design documents mention it. The 'nobody reads checks' claim holds."
   }
 }
