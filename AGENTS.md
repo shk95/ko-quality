@@ -14,7 +14,7 @@ This file never holds state. Where the project is and what comes next lives in
 | `assemble/` | Ours. Profiles, presets, agent definitions, skill templates |
 | `build/`, `dist/` | Generated. Never hand-edit `dist/` after the build step exists |
 | `server/`, `logger/` | MCP server (instructions only for now) and the hook logger |
-| `tests/` | Test cases, run summaries, and temporary checks (`check_provenance.py` until P4's extractors). Raw run logs stay outside the tree |
+| `tests/` | Test cases, run summaries, and the provenance recomputation check (`check_provenance.py`, called by `build/checks.py` as part of check 1). Raw run logs stay outside the tree |
 
 ## Language
 
@@ -61,6 +61,13 @@ Three tiers, named by role so the rules read the same in every harness.
 - Verification subagents are independent: they receive the question and the sources, never your conclusion or leaning. Ask for both sides in one report: the cost of the best option, and where it breaks.
 - Every run is recorded in the stage's build record: tier, purpose, tokens, verdict. The record is the measurement; no separate tooling.
 - Never report a subagent's result before it arrives.
+
+## Shell
+
+- Long text never goes through an unquoted heredoc. Backticks and `$(...)` in the
+  text are executed by the shell, and a half-written command hangs the step with
+  nothing written (era 01, P4 and P5). Write long text with a file-writing tool,
+  or from a script file, or through a quoted heredoc (`<<'EOF'`).
 
 ## Git
 

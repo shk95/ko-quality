@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Recompute provenance for a hand-built skill (P1-P3, flow.md D3). Temporary until P4's extractors.
+"""Recompute provenance for a rendered skill or policy file (flow.md D3). Called by build/checks.py as part of 06 §12 check 1.
 
 For every upstream span in SKILL.provenance.yaml:
   1. the fragment in upstream/normalized/<role>/<slot>.yaml hashes to its content_hash;
   2. the rendered span (minus prefix) equals the fragment text (quick-line spans: re-rendered from the fragment);
   3. the fragment text is present in the upstream file at the lock commit
      (selected fragments: each line is a substring of the file).
-Exit 1 on any mismatch. Usage: tests/check_provenance.py dist/claude-code/skills/<skill> | dist/claude-code/provenance/<name>.yaml
+Exit 1 on any mismatch. Usage: tests/check_provenance.py dist/<harness>/<profile>/skills/<skill> | dist/<harness>/<profile>/provenance/<name>.yaml
 """
 import glob, hashlib, json, re, sys
 from pathlib import Path
