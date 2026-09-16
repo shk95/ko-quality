@@ -237,6 +237,7 @@ steps:   {policy: null, rewrite: ko-rewrite, grammar: ko-grammar, diagnose: ko-d
 - A sidecar `SKILL.provenance.yaml` marks which spans are upstream's (P1 D3).
 - `description` states when to use and when not to use the skill, briefly. Codex's skill list budget is 2% of context or 8,000 characters.
 - `ko-rewrite`'s invariants are **all** of the chosen upstream source's rules, and none of ours.
+- **A redirect for an upstream path sits directly under the upstream sentence that names the path**, not only in the header. Upstream step 1 names `references/quick-rules.md`, which this skill ships as `taxonomy-rewrite.md`. With the note only in the header, Codex read the missing path first in 3/3 runs. With one ours line under the step, it read the right file 3/3 (era 99, R3). The upstream sentence is unchanged, so `adapted` stays at 0.
 
 **Basis:** 06 §7; B1, B2; P1, P2, P4 decision 8.
 
@@ -247,7 +248,7 @@ Rendered from neutral YAML in `assemble/agents/`: `korean-writer`, `korean-revie
 | Harness | Format |
 |---|---|
 | Claude Code | `agents/<name>.md` in the one plugin, invoked as `ko-quality:<name>` |
-| Codex | `install/.codex/agents/<name>.toml` per profile dist. Reached only with `multi_agent_v2` and without `--ephemeral` (§2.2); the install doc says so (R1) |
+| Codex | `install/.codex/agents/<name>.toml` per profile dist. Reached only with `multi_agent_v2` and without `--ephemeral` (§2.2). **The install doc requires `[features] multi_agent_v2 = true`**, and the installer does not write it. This lifts era 01's A1 release-blocked mark for that configuration (R1, user 2026-09-16) |
 
 ### Agent–profile binding under B9: **decision S1 — option A** (user, 2026-09-16)
 

@@ -8,7 +8,7 @@
 - **The version did not move.** codex-cli 0.154.0 and model `gpt-5.6-luna`, the same as era 01. So this is the same test, and the open question of the concept ("what is the baseline if the version changes") does not arise.
 - **Environment:** a throwaway `CODEX_HOME` with `auth.json` symlinked, and a scratch `KO_QUALITY_HOME`. The user's `~/.codex` was never the home.
 - **Artifact:** a copy of `dist/agent-plugin/agent-reply` with canaries: `MAIN` in the `AGENTS.md` section, and `AGENT` in every agent's `developer_instructions`. A raw-payload dump hook sat beside the logger.
-- **Runs:** 11 `codex exec` runs.
+- **Runs:** 14 `codex exec` runs, three of them on a copy with the C1 note moved.
 
 ## Verdicts
 
@@ -71,7 +71,7 @@ Both retest runs took the same path: `SKILL.md`, `references/quick-rules.md` (ex
 
 | # | For | Proposed | Confidence |
 |---|---|---|---|
-| R1 | Codex install doc and 09 §2.2 | Require `[features] multi_agent_v2 = true` for the agents, and state that `--ephemeral` breaks delegation. Lift the release-blocked mark on A1 for that configuration | high (3/3, and the failure modes reproduced) |
+| R1 | Codex install doc and 09 §2.2 | Require `[features] multi_agent_v2 = true` for the agents, and state that `--ephemeral` breaks delegation. Lift the release-blocked mark on A1 for that configuration | high (3/3, and the failure modes reproduced). **Accepted by the user, 2026-09-16** |
 | R2 | 09 §11 logger | Keep subagent tool calls out of the main thread's accumulation by `agent_id`. Derive `policy_on`/`injection_point` from what took effect, on both harnesses | high |
 | R3 | 09 §7, ko-rewrite | Keep `taxonomy-rewrite.md` and put the redirect as an ours line **directly under upstream step 1**, in both harnesses (check 4). Shipping the file under upstream's name is the fallback, not needed | high (3/3 on the failing harness; Claude Code already followed the note) |
 | R4 | C4 | No action. Re-check when the CLI version moves | — |
