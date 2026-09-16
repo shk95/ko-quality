@@ -22,6 +22,8 @@ The corpus comes from plain headless `claude -p` runs, with the plugin installed
 
 The consequence is the point of the decision. Era 02's corpus is **real records with a synthetic prompt distribution**. Era 03 swaps the distribution — not the record schema, not the features code, not the graders. Era 03 is a re-measurement, not a rebuild.
 
+The corpus is written somewhere of its own. The logger honours `KO_QUALITY_HOME`, so the runs point it at a corpus directory instead of `~/.ko-quality/`. That keeps era 03's real-session home clean and keeps the synthetic records identifiable by where they live rather than by a flag inside them.
+
 `claude plugin eval` is not the corpus generator. It is not established that its runner fires hooks, and C3 found its judge unreliable. It keeps the regression-gate role instead (E5).
 
 **What the offline route buys**
@@ -85,6 +87,7 @@ Scope decided with the user, 2026-09-16: era 02 covers E2–E7 (the measuring in
 | gate semantics | Specified and designed. `gate:` is not opened |
 | `ruleset` role | A supply-layer question, not a data question |
 | stop-slop-ko + `exempt` | Decided here; whether it helps is measured with the instrument |
+| **B9** — forced two plugins vs. unforced one plugin | Measured above. It has to close before `4-plan`, because the corpus generator's shape depends on it |
 
 ### Era 03 settles
 
@@ -94,14 +97,14 @@ Scope decided with the user, 2026-09-16: era 02 covers E2–E7 (the measuring in
 | off rotation scheduler, control-group ethics | Offline "off" is a run configuration; there is no scheduler to build and no user cost to weigh |
 | `outcome` field | A task result is only observable in a real session |
 | `preset` source, `instruction_lang` (§13.1) | With synthetic prompts these values are the ones we wrote |
-| `tokens.output` estimate error (§13.1) | The char/2.5 estimate can be calibrated offline; whether the calibration holds against real output lengths cannot |
+| `tokens.output` estimate error (§13.1) | Calibrating char/2.5 against actual usage does close offline; whether the calibration survives real output lengths does not |
 | `sub-to-sub`, Codex `instructions` (§13.1) | Already waiting on era 99 |
 
 ## Exploration agenda
 
 | # | Question | Sources | Output |
 |---|---|---|---|
-| E2 | Which rules are mechanically countable, which need an LLM, which need a person? | `upstream/normalized/policy/`, `taxonomy/`, `reference/grammar/`; C3 | The `features` list, each entry marked `mechanical` / `llm` / `human`. This is also where the concept's open question 1 ("what counts as better") gets answered |
+| E2 | Which rules are mechanically countable, which need an LLM, which need a person? | `upstream/normalized/policy/`, `taxonomy/`, `reference/grammar/`; C3; and what already exists — `logger/ko_quality_log.py` computes `instruction_lang`, `artifact_lang`, `usable` and `tokens.output`; 05a lists the axes; 06 §13.1 marks which of them are approximations | The `features` list, each entry marked `mechanical` / `llm` / `human`. Not a blank sheet: it starts from the fields the record already carries. This is also where the concept's open question 1 ("what counts as better") gets answered |
 | E3 | How much must a judge be measured before it is used? | C3; 05a | Agreement statistic, sample size, reference standard, and the bar below which an `llm` grader is not used |
 | E4 | Which of 06 §13.1's nine approximations close offline? | 06 §13.1; the concept's table; `assemble/profiles/*.yaml`, P3 | Per item: resolve now / era 03 / era 99 / delete. Includes the `task_type` rule not seeing writing done through `Write`, and the `register` mismatch below |
 | E5 | `ruleset` role and eval case format | 06 §15; 04 §13.1 draft; `tests/evals/`, `tests/cases/` | Whether a ruleset provider is adopted upstream or written here; case format; where the runner lives |
@@ -121,6 +124,11 @@ B1–B8 from review §B are spec input, not exploration questions. They are carr
 So what actually separates the two profiles is a conversational register (coding-terse vs. 하십시오체 with an address term), not an artifact kind. This is the same wall as the `task_type` rule not seeing writing done through `Write` (review §G, 06 §13.1): every attempt to tell artifact kinds apart runs into a mechanism that only sees the session's register.
 
 E4 decides one of three: fix the rule so artifact kind is observable, restate `register` in 06 §6 to describe what the mechanism does, or drop the distinction. It is a 06 §6 revision candidate either way.
+
+## Conventions this era adds
+
+- **Run records are era-prefixed.** Era 01 wrote `tests/runs/P1`…`P7` and `tests/runs/review`. With more than one era those names stop being unique, so this era writes `tests/runs/02-<item>/` — `02-E1/` for the probe above. Era 01's directories are left as they are.
+- **The temporary corpus lives outside `~/.ko-quality/`**, under a `KO_QUALITY_HOME` the corpus runs set for themselves. Raw logs stay outside the tree either way (`AGENTS.md`).
 
 ## Method
 
