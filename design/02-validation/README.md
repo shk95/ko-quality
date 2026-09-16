@@ -2,18 +2,18 @@
 
 넣은 것이 효과가 있는지 아는 장치를 짓는 시대입니다. 시대 01이 "설치하면 쓰이는 도구"를 짓고 미뤄 둔 질문을 받습니다.
 
-**현재 위치:** `2-exploration` 진행 중 (2026-09-16). E1~E6 완료. 다음은 마지막 의제 E7입니다.
+**현재 위치:** `2-exploration` 끝 (2026-09-16). E1~E7 완료. 다음은 `3-spec`입니다.
 
 ## 문서 지도
 
-2-exploration은 문서가 여섯이라 그 단계의 [README](2-exploration/README.md)가 읽는 순서, 실측 기록 색인, 서브에이전트 누계를 갖고 있습니다.
+2-exploration은 문서가 일곱이라 그 단계의 [README](2-exploration/README.md)가 읽는 순서, 실측 기록 색인, 서브에이전트 누계를 갖고 있습니다.
 
 | 단계 | 파일 | 내용 | 상태 |
 |---|---|---|---|
 | 1-concept | [`1-concept/01_idea.md`](1-concept/01_idea.md) | 문제 의식, 리뷰가 바꾼 전제(판정기를 먼저 검증), 물려받은 입력(06 §13.1 근사치 재검토 목록 포함), 초기 가설, 열린 질문 | 작성됨 |
 | 2-exploration | [`2-exploration/02_scope.md`](2-exploration/02_scope.md) | 전제 교정(레코드 0건), E1 결정(오프라인 대조 코퍼스), 강제 없는 스타일 선택 실측(B9), 시대 02/03 경계, 의제 E2~E7, `register`가 기제와 어긋나는 건(E4) | 작성됨 |
 | 2-exploration | [`2-exploration/03_features.md`](2-exploration/03_features.md) | **E2** — 네 원천의 규칙 209개를 mechanical/llm/human으로 분류하고, 중복을 걷어 측정 단위 28개로 정리. 3단 구성(표준 라이브러리 / 형태소 분석기 / 입력+출력), 제외 패스, `kiwipiepy` 의존성. 태그셋은 실측으로 통과, 레시피 둘은 깨져 있었고 수정안까지 실측 | 작성됨 |
-| 2-exploration | — | E3~E7 조사 결과 (`04_*.md` 이후) | 비어 있음 |
+| 2-exploration | `04_*.md`~`08_*.md` | E3~E7 조사 결과. 목록은 [단계 README](2-exploration/README.md) | 작성됨 |
 | 3-spec | — | 스펙. B1~B8을 반영한 06의 후속 판본이 여기 들어옵니다 | 비어 있음 |
 | 4-plan | — | 무엇을 어떤 순서로 짓는가. 이 시대부터 계획은 독립 문서입니다 | 비어 있음 |
 | 5-preflight | — | 구현 흐름 정의. 시대 01의 §D가 입력입니다 | 비어 있음 |
