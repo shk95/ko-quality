@@ -1,14 +1,27 @@
 {
   "probe": "two of 06 §13.1's approximations, settled by running the corpus generator's own output format",
-  "era": "02-validation", "stage": "2-exploration", "item": "E4",
-  "date": "2026-09-16", "harness": "Claude Code 2.1.273",
+  "era": "02-validation",
+  "stage": "2-exploration",
+  "item": "E4",
+  "date": "2026-09-16",
+  "harness": "Claude Code 2.1.273",
   "method": "claude -p --output-format json in a throwaway directory. No plugin, no logger; the point was what the headless result document carries.",
   "sub_to_sub": {
     "question": "06 §13.1 item 7: is there now a way to tell a nested subagent from a sibling? P7 found none in the hook payload and the spec says to delete the value if none appears.",
     "run": "a prompt asking the main thread to spawn a subagent which itself spawns another",
     "result": {
-      "num_turns": 2, "cost_usd": 0.24,
-      "subagent_stats": {"spawned": 2, "max_depth": 2, "spawned_by_subagents": 1, "completed": 2, "failed": 0, "by_type": {"general-purpose": 2}}
+      "num_turns": 2,
+      "cost_usd": 0.24,
+      "subagent_stats": {
+        "spawned": 2,
+        "max_depth": 2,
+        "spawned_by_subagents": 1,
+        "completed": 2,
+        "failed": 0,
+        "by_type": {
+          "general-purpose": 2
+        }
+      }
     },
     "finding": "Nesting IS observable - at session level, in the headless result document, not in the hook payload. P7's conclusion still holds for the hook. max_depth and spawned_by_subagents say whether nesting happened and how much; they do not say WHICH SubagentStop record was the nested one."
   },
@@ -16,11 +29,92 @@
     "question": "06 §13.1 item 6: how far is the char/2.5 estimate from actual usage?",
     "note": "usage.output_tokens INCLUDES thinking tokens. Comparing it to the visible reply without subtracting output_tokens_details.thinking_tokens makes the estimate look far worse than it is; that subtraction is what reconciles the three samples.",
     "samples": [
-      {"case": "사계절, two sentences",      "chars": 103, "output_tokens": 118,  "thinking_tokens": 0,   "visible_tokens": 118, "tokens_per_char": 1.15},
-      {"case": "rebase vs merge, five",      "chars": 478, "output_tokens": 1080, "thinking_tokens": 604, "visible_tokens": 476, "tokens_per_char": 1.00},
-      {"case": "조사의 역할, ten sentences",  "chars": 789, "output_tokens": 816,  "thinking_tokens": 0,   "visible_tokens": 816, "tokens_per_char": 1.03}
+      {
+        "case": "사계절, two sentences",
+        "chars": 103,
+        "output_tokens": 118,
+        "thinking_tokens": 0,
+        "visible_tokens": 118,
+        "tokens_per_char": 1.15
+      },
+      {
+        "case": "rebase vs merge, five",
+        "chars": 478,
+        "output_tokens": 1080,
+        "thinking_tokens": 604,
+        "visible_tokens": 476,
+        "tokens_per_char": 1.0
+      },
+      {
+        "case": "조사의 역할, ten sentences",
+        "chars": 789,
+        "output_tokens": 816,
+        "thinking_tokens": 0,
+        "visible_tokens": 816,
+        "tokens_per_char": 1.03
+      }
     ],
-    "pooled": {"chars": 1370, "visible_tokens": 1410, "tokens_per_char": 1.03},
-    "finding": "Korean prose runs at about 1.03 tokens per character, consistently across the three samples once thinking is excluded. The spec's chars/2.5 assumes 0.4 tokens per character - it understates by roughly 2.6x. Ground truth is available in the corpus generator's own JSON (usage.output_tokens minus thinking), so era 02 does not need to estimate at all for its own corpus."
+    "pooled": {
+      "chars": 1370,
+      "visible_tokens": 1410,
+      "tokens_per_char": 1.03
+    },
+    "finding": "Korean prose runs at about 1.03 tokens per character, consistently across the three samples once thinking is excluded. The spec's chars/2.5 assumes 0.4 tokens per character - it understates by roughly 2.6x. Ground truth is available in the corpus generator's own JSON (usage.output_tokens minus thinking), so era 02 does not need to estimate at all for its own corpus.",
+    "samples_by_content": {
+      "note": "Added after an independent check found the first three samples were all pure Korean prose. The characters-per-token ratio is strongly content-dependent, so a single divisor cannot serve.",
+      "rows": [
+        {
+          "content": "Korean prose",
+          "chars": 103,
+          "hangul": 74,
+          "visible_tokens": 118,
+          "chars_per_token": 0.87
+        },
+        {
+          "content": "Korean prose",
+          "chars": 478,
+          "hangul": 283,
+          "visible_tokens": 476,
+          "chars_per_token": 1.0
+        },
+        {
+          "content": "Korean prose",
+          "chars": 789,
+          "hangul": 506,
+          "visible_tokens": 816,
+          "chars_per_token": 0.97
+        },
+        {
+          "content": "Korean prose + code block",
+          "chars": 1005,
+          "hangul": 304,
+          "visible_tokens": 793,
+          "chars_per_token": 1.27
+        },
+        {
+          "content": "code (English/Python)",
+          "chars": 247,
+          "hangul": 0,
+          "visible_tokens": 89,
+          "chars_per_token": 2.78
+        },
+        {
+          "content": "English prose",
+          "chars": 943,
+          "hangul": 0,
+          "visible_tokens": 269,
+          "chars_per_token": 3.51
+        }
+      ],
+      "finding": "0.87 to 3.51 chars per token, a 4x range. The spec's 2.5 is close for code (2.78) and English (3.51) and wrong by about -60% for Korean prose (0.97). It was a compromise for mixed content, not a bad guess - but a compromise that is worst on exactly the content this project measures.",
+      "fitted_fallback": {
+        "form": "tokens ~ 1.51 * hangul_chars + 0.34 * other_chars",
+        "mean_absolute_relative_error": {
+          "spec_chars_over_2.5": "48%",
+          "fitted": "8%"
+        },
+        "caveat": "Six samples, two parameters, fitted in-sample. The structure (Hangul tokenises about 4x denser than Latin) is a real property; the constants are not settled."
+      }
+    }
   }
 }
