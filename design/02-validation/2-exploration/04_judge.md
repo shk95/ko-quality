@@ -1,7 +1,7 @@
 # 04. E3 — how much a judge must be measured before it is used
 
 > Stage document. `2-exploration`, agenda item E3 (see [`02_scope.md`](02_scope.md)).
-> Inputs: C3's raw output (`tests/runs/review/policy-eval-runs3.json`), `claude plugin eval --help` (Claude Code 2.1.273), 05a, and E2's reference-grade measurements ([`03_features.md`](03_features.md)).
+> Inputs: C3's raw output (`tests/runs/review/policy-eval-runs3.json`), `claude plugin eval --help` (Claude Code 2.1.273), 05a, and E2's measurements ([`03_features.md`](03_features.md)).
 >
 > The concept asked: 일치도 몇 퍼센트, 표본 몇 건이 기준인가. This document answers with a statistic, a bar derived rather than chosen, a sample size, and a cost — and revises C3's reading of its own result.
 >
@@ -160,14 +160,31 @@ The honest unit is **$0.117 per generate-and-judge sample**, not $0.039 per judg
 | Naturally sampled at a 5 % violation rate | ~$140 per direction |
 | Per-arm error rates (the differential-error defence) | double again |
 
-Against E2's six reference-grade measurements, a constructed-set Tier B is roughly **$90**. Affordable — and six times the first draft's figure, which was used to argue that adding a judge later is nearly free.
+Against the four reference measurements that survive the criterion below, a constructed-set Tier B is roughly **$60**. Affordable — and six times the first draft's figure, which was used to argue that adding a judge later is nearly free.
+
+## The reference: four measurements, not six
+
+A judge is scored against something, and the criterion is strict — a disagreement has to be the judge's fault, which means the reference must have no interpretive room of its own.
+
+**A first draft of this document named six candidates and then, in a wholesale rewrite, dropped the list while keeping three references to "E2's six".** The list is restored here, and an independent check applied the criterion to each: two fail it, one of them by this document's own stated rule.
+
+| Candidate | Verdict | Why |
+|---|---|---|
+| honorific `사용자님` present | **use** | A literal substring test. No exception class is named against it anywhere in the sources, and C3 already used it to separate the arms |
+| `spelling_denylist` — 되요, 됬, 왠 outside 왠지, `!!!` | **use** | A closed banned-string list with no named exceptions |
+| `quote_balance` | **use once the exclusion pass exists** | A stack parse with one answer, but code spans have to be stripped first and 2 of 12 exclusion zones are built |
+| `allomorph_errors` | **use once scope is declared** | Jamo arithmetic with two admitted exception classes — ㄹ-irregular stems, and numerals or acronyms whose 받침 follows pronunciation rather than the glyph. Two implementers diverge exactly there unless the spec says whether those are in scope |
+| `em_dash_count` | **do not use** | [`03_features.md`](03_features.md)'s own false-positive table says it fires on correct text when an em dash sits inside a quoted sentence or a table. That is precisely the condition this section uses to exclude a candidate, and C3's two adjudicable cases say nothing about that failure mode |
+| `speech_level` | **do not use** | Two disqualifiers. The tagset behind it is now verified but no recipe for it has been run — and the two Tier 1 recipes that *were* run both turned out broken as written. And the project's own sources disagree on its direction: the 보존 원칙 require register consistency while the LREAD rubric treats excessive consistency as an AI signal, with no boundary stated. Using it here would launder an unsettled proxy's errors into the judge's column |
+
+**"Reference-grade" is a property of the recipe, not evidence about its behaviour.** None of the four has had its false-positive rate measured against real text. The term means the recipe admits one answer.
 
 ## The procedure: three tiers
 
 | Tier | Question | Reference | n | Outcome |
 |---|---|---|---|---|
 | **A — disqualify** | Does the judge contradict a deterministic clause of its own rubric? | The rubric | as low as 1 | A unanimous contradiction disqualifies. A split one triggers a rerun |
-| **B — screen** | Does it agree with a mechanical measurement where one exists? | E2's six reference-grade measurements, on a **constructed, label-balanced** set | ~60–70 per direction, per arm where differential error is a concern | Every upper bound under 10 % |
+| **B — screen** | Does it agree with a mechanical measurement where one exists? | The four reference measurements above, on a **constructed, label-balanced** set | ~60–70 per direction, per arm where differential error is a concern | Every upper bound under 10 % |
 | **C — qualify** | Does it agree with a person on rules with no mechanical reference? | Human labels | budget-bound | The only thing that licenses use on `llm`-class rules |
 
 The unanimous-versus-split distinction in Tier A is what the data supports: the contradicting verdict was 3 votes to 0, a reproducible state rather than a tail draw.
@@ -205,6 +222,7 @@ The first draft closed by saying the cheapest-to-reverse path and the best path 
 - The bar is a 95 % upper bound under 10 % per direction, from the Youden attenuation `Se + Sp − 1`.
 - n ≈ 60–70 per direction — one graded reply with known ground truth, not one judgment — on a **constructed, label-balanced** set. State the interval method; Wilson is used here and is conservative at zero errors.
 - Tier A first: it can cost a single case, and its verdict attaches to a (judge model, rubric, tool version) triple, not to LLM judging.
+- **Four reference measurements, not six.** `em_dash_count` and `speech_level` do not qualify, and none of the four has had its false-positive rate measured.
 - Before concluding anything about LLM judging in this project, run the one-flag experiment C3 never did: `--judge-model` above the Haiku default.
 
 ## Corrections to the first draft
@@ -222,6 +240,7 @@ The first draft closed by saying the cheapest-to-reverse path and the best path 
 
 | # | Tier | Purpose | Verdict |
 |---|---|---|---|
+| E3-v2 | `mid` (Sonnet 5) | Apply this document's own criterion to the reference candidates, and check E4's `ko.change_rate` claim | Two candidates fail: `em_dash_count` by `03_features.md`'s own false-positive table, `speech_level` on an unrun recipe and a contested direction. Also found that E4 discharged `ko.change_rate` with `ko.preserve`, which 04 §6 specifies as a different capability. 101.2k tokens |
 | E3-v | `mid` (Sonnet 5) | Adversarial check of the first draft against the raw data — recompute every number, find what is overstated | Confirmed the arithmetic (self-consistency, adjudication, Wilson bounds, the $1.40 sum). Found the cost contradiction, the undeclared interval method, the missing unit of n, the natural-sampling gap, the differential-error assumption and the unsupported independence claim. 82.5k tokens |
 
 The tool facts (`--runs`, `-j`, the internal voting, the Haiku default) were then read directly from `claude plugin eval --help` rather than taken from any report. Exploration runs used in this stage: 4.
