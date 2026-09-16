@@ -18,7 +18,7 @@
 | 5 | `output` purity | **resolve now** (mechanism) / **era 02 corpus** (the rate) | E7's records, E2 |
 | 6 | `tokens.output` | **resolve now** — no estimate needed; the fallback estimator is language-branched | **run-verified**, 6 samples |
 | 7 | `sub-to-sub` | **resolve now, partially** — not deleted. Session level, not per record | **run-verified** (result doc); hook half inherited |
-| 8 | 변경률 | **resolve now** — `ko.change_rate` is E2's Tier 2 | E2 |
+| 8 | 변경률 | **half.** `ko.preserve` resolves now; `ko.change_rate` is still unspecified | E2; reopened by verification |
 | 9 | Codex `instructions` | **era 99** | unchanged |
 | + | `register` (06 §6) | **resolve now** — restate, do not drop | E2, B9 |
 | + | `policy_on`, `injection_point` | **fix, do not rename.** Era 02 from the generator; **era 03 blocked** | E7's records |
@@ -118,7 +118,18 @@ The spec estimates output tokens as characters ÷ 2.5, i.e. 0.4 tokens per chara
 tokens ≈ 1.51 × hangul_chars + 0.34 × other_chars
 ```
 
-Fitted on the six samples above, this cuts mean absolute relative error from **48 % to 8 %**. Six samples and two parameters, fitted in-sample — the constants are not settled and are marked `method: estimate-v2` so a later era can refit. The *structure* is not curve-fitting: Hangul syllables tokenise roughly four times denser than Latin text, which is why no single divisor can cover both.
+Fitted on the six samples above it cuts mean absolute relative error from 48 % to 8 % — in sample. **Checked on four further replies it had never seen: 48 % → 19 %.** Better by a factor of 2.5, and still not good.
+
+| Held-out sample | Actual | ÷ 2.5 | Fitted |
+|---|---|---|---|
+| Korean prose, long | 712 | −60 % | **−3 %** |
+| English + bash | 209 | −2 % | −16 % |
+| **Korean with many file paths** | 910 | −74 % | **−47 %** |
+| Korean + markdown table | 353 | −58 % | −10 % |
+
+The worst case is the one that matters: 600 characters of Korean containing directory names and paths came to 910 tokens — **0.66 characters per token, denser than Korean prose itself**, because `.claude/agents/` splits into five tokens. The two-term model treats non-Hangul as English-prose density, and punctuation-heavy text is far denser than that. That shape is exactly what an agent's replies about a codebase look like.
+
+**So the estimator is labelled for what it is: an order-of-magnitude indicator, `method: estimate-v2`, never a quantity a threshold reads.** A third term for punctuation would help and would be three parameters fitted on ten samples, which is not a measurement. The real answer stays the first one: era 02 uses actual usage and does not estimate.
 
 ## 7. `sub-to-sub` — not deleted. Partly observable
 
@@ -140,13 +151,29 @@ A run in which the main thread spawned a subagent that spawned another reported 
 
 This is also the first item where era 02's offline architecture buys something the in-hook design could not have had.
 
-## 8. 변경률 — `ko.change_rate` is already specified
+## 8. 변경률 — half discharged, and the first draft said "resolved"
 
-06 kept the model's self-reported change rate verbatim in `upstream_report` and assigned the code judgment to this era.
+06 kept the model's self-reported change rate verbatim in `upstream_report` and assigned the code judgment to this era under the name `ko.change_rate`.
 
-E2 found the material: the diagnose taxonomy's 보존 원칙 are mechanical and `input+output` — proper nouns, numbers, units, dates, currency, quotations, code, URLs, paths, register level. They are not style measurements; they are this judgment.
+**The first draft answered with the wrong capability.** It found that the diagnose taxonomy's 보존 원칙 are mechanical and `input+output`, and concluded that building them *is* the assigned judgment. It is not. 04 §6 specifies two capabilities, not one:
 
-**Decision: `ko.change_rate` is built here from E2's Tier 2.** The self-report stays in `upstream_report`, untouched and un-promoted; the two never share a field. The constraint E2 attached carries over: the pair only exists when the original text was pasted into the prompt, so the corpus has to include paste-in cases deliberately.
+| Capability | Input | Output | Note |
+|---|---|---|---|
+| `ko.change_rate` | before, after, **preserve_spans** | **ratio** | 형태소 단위. 보존 span은 분모 제외 |
+| `ko.preserve` | before, after, kinds | **{violations[]}** | 숫자·고유명사·코드·경로·URL·인용 추출 후 집합 비교 |
+
+They are separate conjuncts in `gate`'s own pass condition — `pass = preserve ∧ change_rate<fail ∧ …` — and separate keys with independent thresholds in the profile config. Upstream's own skill keeps them apart too: `ko-rewrite`'s self-check lists "고유명사·수치·날짜·인용 100% 보존" and "변경률 30% 이하" as two different items.
+
+**A change rate is a quantity; a preservation check is a set of invariants.** They are related in one direction only — the preservation extraction supplies the `preserve_spans` that `change_rate` removes from its denominator. That makes `ko.preserve` a **necessary input, not a substitute**.
+
+**Decision, corrected.**
+
+- **`ko.preserve` resolves now.** E2's Tier 2 has it: extract proper nouns, numbers, units, dates, currency, quotations, code, URLs and paths from both texts and compare the sets. This is real and it is ready.
+- **`ko.change_rate` is not resolved.** No edit-distance or similarity procedure is specified anywhere in E2 or E4. 04 says 형태소 단위 — morpheme-level — which makes it a **Tier 1** measurement depending on the unverified analyser, not the Tier 0 one E2 listed it as. That contradiction is E2's and is corrected there too.
+- The self-report stays in `upstream_report`, untouched and un-promoted; the two never share a field.
+- E2's pairing constraint carries over: the pair only exists when the original text was pasted into the prompt.
+
+**What is owed and by whom.** `ko.change_rate` needs a procedure — what unit, what distance, how preserved spans are excluded — and that is spec work, not exploration. It is named here as an open obligation rather than left inside a claim that the item is closed.
 
 ## 9. Codex `instructions` — era 99
 
@@ -184,7 +211,15 @@ Under the current build the error is mostly invisible, because installing the pl
 - **`plugin_present` is added** for what the stamp establishes, which is genuinely useful — it is what separates arm A from arms B and C.
 - **`tests/logger_test.py` asserts `policy_on` as a required key** and will need the new field alongside it. Named here so the build does not discover it.
 
-**Era 02 supplies the truth from outside the hook.** The corpus generator knows which arm it ran and writes it, joined to the hook's records by `session_id`, which every record already carries. The generator does not author records; it annotates them after the run.
+**Era 02 supplies the truth from outside the hook** — but the join key does not exist yet.
+
+The corpus generator knows which arm it ran. Attaching that to the hook's records needs a key, and **the record has none.** `06 §11.3`'s schema and the logger both emit `id` (a fresh uuid4 per record) and no `session_id`; the session id exists only as the name of the state file, which is deleted at `SessionEnd`. An earlier draft of this section said the records already carry it. They do not.
+
+**So: add `session_id` to the record.** It is present in every hook payload, the logger already reads it to find its state file, and it is a uuid rather than anything personal. One line in `record()` and one row in `06 §11.3`.
+
+**This blocks two of this page's resolutions, not one.** The session-level `sub_to_sub_present` flag from item 7 needs exactly the same key to reach the records it describes. Without `session_id` neither the arm label nor the nesting flag can be attached to anything, and both were written as though the plumbing existed.
+
+The generator does not author records; it annotates them after the run, joining on `session_id`.
 
 **Era 03 does not have that.** A live session would need the harness to tell a hook which output style is in effect, and P3 showed `init.output_style` reports the configured value rather than the effective one. Whether any hook payload carries it is unmeasured. **It is the one thing on this page that era 03 cannot start without.**
 
@@ -214,6 +249,14 @@ An independent `mid` run checked this document against the raw runs, the logger 
 | 4 | `task_type` reads the file path | Scoped to Claude Code. Codex's `apply_patch` shape is unverified; the check is deferred to era 99. Precedence and missing-path fallback now defined; the field is named a covariate, not an answer |
 | 5 | `tool_output_en_ratio` "accumulate counts, O(1)" | O(1) in state, not per call. `tool_response` shapes, what to count and what the field means are now specified |
 | 6 | Eleven dispositions reading as equally settled | Two were run-verified; the evidence column says which |
+
+A later round of verification found three more:
+
+| | Was | Is |
+|---|---|---|
+| 7 | Item 8 "resolve now — `ko.change_rate` is E2's Tier 2" | **Half.** `ko.preserve` resolves; `ko.change_rate` is a different capability in 04 §6, is 형태소 단위, and has no procedure. The first draft discharged an obligation by substituting an easier measurement |
+| 8 | "joined by `session_id`, which every record already carries" | **The record has no `session_id`.** It has to be added, and it blocks the `sub_to_sub_present` flag as well |
+| 9 | The token fallback estimator, fitted in-sample | Checked out of sample on four more replies: mean absolute error 48 % → 19 %, but **47 % on path-heavy Korean**, which is what an agent's replies about a codebase look like. It is an order-of-magnitude indicator, not a quantity |
 
 ## Subagent runs
 

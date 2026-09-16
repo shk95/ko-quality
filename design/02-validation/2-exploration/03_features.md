@@ -308,7 +308,11 @@ Regular expressions, counting, Hangul jamo arithmetic. No analyzer, no third-par
 
 ### Tier 2 — input and output together (the `change_rate` family)
 
-These are the 보존 원칙 from the diagnose taxonomy. They are not style measurements: they are **the code judgment 06 §13.1 assigned to this era**, replacing the model's self-reported 변경률.
+These are the 보존 원칙 from the diagnose taxonomy, plus one row that is not.
+
+**The 보존 원칙 give `ko.preserve`** (04 §6): extract the protected kinds from both texts and compare the sets. Mechanical, and ready.
+
+**`ko.change_rate` is a different capability and is not specified here.** 04 §6 lists it separately — `before, after, preserve_spans → ratio`, 형태소 단위, with preserved spans excluded from the denominator — and `gate` takes both as separate conjuncts. A quantity of change is not a set of invariants; the preservation extraction is an *input* to the ratio, not a replacement for it. An earlier draft of this table listed `change_rate` as needing no analyser and treated the two as one obligation. Both were wrong. See [`05_approximations.md`](05_approximations.md) item 8.
 
 | Measurement | Needs an analyzer | Emits |
 |---|---|---|
@@ -317,7 +321,7 @@ These are the 보존 원칙 from the diagnose taxonomy. They are not style measu
 | `code_url_path_preservation` | no | bool |
 | `proper_noun_preservation` — `NNP` multiset diff | yes | bool, diff |
 | `register_preservation` — speech level of input vs output | yes | bool |
-| `change_rate` — edit distance over comparable spans | no | ratio |
+| `change_rate` — see below; **not specified** | **yes** — 04 §6 says 형태소 단위 | ratio |
 
 **These measurements need a pair, and the record usually does not have one.** The logger stores `task` (the user's prompt) and `output` (the reply). When the user pastes the text to be rewritten into the prompt, the original is in `task` and the pair exists. When the model read the text from a file, the original never enters the record, and every measurement in this tier is unavailable. So Tier 2 is measurable on **paste-in-prompt cases only** unless the logger starts capturing the read. That is a corpus-design constraint — the prompt set has to include paste-in cases deliberately — and it is also why `ko.change_rate` can be built here but cannot be evaluated on arbitrary records.
 
