@@ -710,17 +710,18 @@ A judge between the true difference and the reported one scales it by `Se + Sp �
 
 | Runner | Job | Graders | Arms |
 |---|---|---|---|
-| `claude plugin eval` | **triggers and regressions**: does the skill fire, does the plugin load, does the policy reach the reply | `tool_used`; `regex` with `arm: both` under `--ablation with-without` | A vs C only (plugin off vs on) |
-| `measure/` (ours) | **measurement**: ratios, Tier 1, Tier 2, three arms | §15 | A, B, C |
+| `claude plugin eval` | **triggers and skill regressions**: does the skill fire, does the plugin load | `tool_used`; `regex` with `arm: both` under `--ablation with-without` | A vs B only: plugin off vs on, and **no style can be selected** (§17.2) |
+| `measure/` (ours) | **measurement and policy regression**: ratios, Tier 1, Tier 2, three arms | §15 | A, B, C |
 
 A regex-expressible rule runs through the tool's ablation and is **not** duplicated offline. A ratio cannot be expressed in the tool, and neither can a morpheme or a pair.
 
 ### 17.2 Changes to the existing suite (`tests/evals/claude-code/`)
 
-- **The two `llm` graders stop scoring.** They stay as annotations.
-- `agent-reply` policy case: a `regex` grader on the em dash, `arm: both`. **It is fit as a regression signal even though E3 disqualifies it as a judge reference**, because a false positive that fires in both arms cancels in the delta. The rubric's other half (sentence endings) has no expression here and moves to `noun_ending_ratio`.
-- `formal-report` policy case: a `regex` grader on `사용자님`, `arm: both`.
-- **Under B9 the suite must select the style.** The ablation's plugin-on arm loads the plugin, and after B9 loading no longer applies a style. Each policy case sets its output style explicitly. **How `claude plugin eval` selects a style for a case is untested**, and it is the first thing checked when the suite is rebuilt. If it cannot, the policy cases move to `measure/` and the tool keeps triggers only.
+**Measured: a case cannot select an output style** ([`eval-style-selection.json`](../../../tests/runs/02-spec/eval-style-selection.json)). The frontmatter has no settings key. `env` accepts only `EVAL_*` keys. Runs use a temporary home, and plugin `settings.json` cannot set a style. So under B9 the tool's plugin-on arm is **arm B**: installed, no style.
+
+- **The two policy cases leave the tool.** Their em-dash and `사용자님` checks move to `measure/`, as arm B-vs-C comparisons (§18), where the sentence-ending half (`noun_ending_ratio`) already had to go. Their `llm` graders are retired, not kept as annotations: they would grade replies with no policy applied.
+- **The tool keeps the four trigger cases** (`tool_used`) under `--ablation with-without`. Its A-vs-B delta is exactly the skills' contribution, which is what a trigger case tests.
+- A future regression grader that belongs in the tool must be one whose subject is a skill or an agent, not the main-thread policy.
 - Judge model ≠ generating model, and human labels on a subset (04 §13.3, carried).
 
 ### 17.3 Case format for `measure/`
