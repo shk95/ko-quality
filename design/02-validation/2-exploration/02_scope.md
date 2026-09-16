@@ -109,7 +109,7 @@ Scope decided with the user, 2026-09-16: era 02 covers E2–E7 (the measuring in
 | E4 | Which of 06 §13.1's nine approximations close offline? | 06 §13.1; the concept's table; `assemble/profiles/*.yaml`, P3 | Per item: resolve now / era 03 / era 99 / delete. Includes the `task_type` rule not seeing writing done through `Write`, and the `register` mismatch below |
 | E5 | `ruleset` role and eval case format | 06 §15; 04 §13.1 draft; `tests/evals/`, `tests/cases/` | Whether a ruleset provider is adopted upstream or written here; case format; where the runner lives |
 | E6 | What does a gate do when it fires? | 04 `on_final_fail`; 06 §15 MCP tools; 05a's four leak gates | Gate semantics and where a gate can live, given the logger sits outside the harness and must not judge |
-| E7 | Scope decisions | 06 §16.2; concept open questions 5–6 | stop-slop-ko as a `policy` fragment provider together with restoring `exempt`; what log text may be used for evaluation and for how long |
+| E7 | Scope decisions | 06 §16.2; concept open questions 5–6; the section below | stop-slop-ko as a `policy` fragment provider together with restoring `exempt`; what log text may be used for evaluation and for how long; where agent definitions live, and whether this repository runs the toolkit on itself |
 
 B1–B8 from review §B are spec input, not exploration questions. They are carried into `3-spec` unchanged.
 
@@ -124,6 +124,27 @@ B1–B8 from review §B are spec input, not exploration questions. They are carr
 So what actually separates the two profiles is a conversational register (coding-terse vs. 하십시오체 with an address term), not an artifact kind. This is the same wall as the `task_type` rule not seeing writing done through `Write` (review §G, 06 §13.1): every attempt to tell artifact kinds apart runs into a mechanism that only sees the session's register.
 
 E4 decides one of three: fix the rule so artifact kind is observable, restate `register` in 06 §6 to describe what the mechanism does, or drop the distinction. It is a 06 §6 revision candidate either way.
+
+### E7 carries two more items: where agent definitions live, and self-application
+
+**What is settled.** The three agents are real definitions, not instructions — P3 saw `subagent_type: ko-quality:korean-reviewer` in the stream, and that subagent went on to invoke `ko-diagnose`. The clause that *is* only an instruction is `coding.19`, which asks the main thread to check a delegation prompt; 06 §13.3 already records that the sub-to-sub hop is not structurally guaranteed.
+
+**What the documentation says** (a `docs` run, 2026-09-16). Claude Code reads agent definitions from five places, in this precedence: managed settings, `--agents`, project `.claude/agents/`, user `~/.claude/agents/`, then `<plugin-root>/agents/`. **Project agents outrank plugin agents**, and the documentation says project agents "should be checked into version control for team collaboration". The frontmatter supports far more than the three fields in use — `model`, `effort`, `permissionMode`, `maxTurns`, `isolation`, `skills`, `hooks`, `memory` among them, which means `AGENTS.md`'s tier rules could be written into the files rather than left to the caller.
+
+**What the documentation does not say**, and is therefore measured rather than assumed: whether plugin agents are namespaced (our own P3 run says they are), and whether `claude plugin install --scope local` limits *visibility* of the plugin's agents, skills, hooks and output style, or only records the install in `.claude/settings.local.json`.
+
+**Development agents do not belong in the shipped plugin.** A plugin described as a Korean writing-quality toolkit should not install agents for working on source code; whoever installs it did not ask for them. If this repository wants them, they go in its own `.claude/agents/`, which is version-controlled and outranks the plugin anyway.
+
+**Self-application breaks four things**, and the era should decide deliberately rather than drift into it:
+
+| | What happens |
+|---|---|
+| Language rule | `AGENTS.md` puts code, commits, agent-facing documents and stages 2–7 in English. The policy tells the model to apply the guidelines whenever it writes Korean, and `formal-report` would put every reply in 하십시오체 addressed to 사용자님 |
+| Corpus | The logger would record these sessions into the same home era 03 wants clean. They are meta-sessions — designing a Korean toolkit in English — and represent no real usage distribution |
+| 05a's third leak gate, one level up | The gate is "show the values to the agent". A developer who knows what is being measured and whose own sessions enter the corpus is the same failure with a person in the loop |
+| B9's per-project scope | `/output-style` writes `.claude/settings.local.json`, so one choice in this repository applies to every later development session in it |
+
+**The disposition proposed to E7, not decided here:** allow self-application, but point `KO_QUALITY_HOME` at a separate directory — the same device E1 already uses, for the same reason — and write into era 03's sample definition that records originating in this repository are excluded. The reason to allow it at all is that this repository is the only place where `coding.06` (the policy is not an instruction to translate) and `coding.07` (code-adjacent text follows the project's convention) are actually under pressure, and whether they hold is worth observing.
 
 ## Conventions this era adds
 
