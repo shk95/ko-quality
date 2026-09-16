@@ -9,7 +9,7 @@
 >
 > Each section names its sources in a closing **Basis** line. Section numbers are 09's own. §23 maps 06's sections to 09's.
 >
-> **Status: draft, written in four bundles and reviewed with the user bundle by bundle.**
+> **Status: draft, written in four bundles and reviewed with the user bundle by bundle. Verified 2026-09-17** by an independent `mid` run over the whole document. It found one unexplained reversal of an E5 handoff (§17), one dropped E4 detail (§11.2 scan cap), and one unassigned field value (§11.3). All three are fixed, and no measured fact was wrong. Supporting probes made during this stage are in `tests/runs/02-spec/`.
 > - **Bundle 1** (§1–§10, §13): supply and distribution. **Reviewed (S1 decided).**
 > - **Bundle 2** (§11–§12, §14): hooks, logger, and the record. **Reviewed (S2 decided).**
 > - **Bundle 3** (§15–§18): measurement, judge, eval, and corpus. **Reviewed (S3 decided).**
@@ -341,7 +341,7 @@ State is kept per session, and **within a session per agent** (`agent_id`, or `m
 |---|---|---|
 | `SessionStart` | `session_id`, `cwd`, `model` if present | `model` is present on Codex. **It is absent on Claude Code**, where no hook carries it |
 | `UserPromptSubmit` | `prompt` → the turn's `task`, and the turn key (`prompt_id` on Claude Code, `turn_id` on Codex) | **A harness-injected prompt is not a task.** Claude Code delivers a subagent's hand-back to the orchestrator as a `UserPromptSubmit` whose prompt begins `<agent-message from=`. Such prompts are counted in `injected_prompts` and do not overwrite `task` |
-| `PostToolUse`, main or per `agent_id` | edit tools and their `file_path`; skills invoked; tool errors; Hangul and Latin character counts of `tool_response` string leaves | Skills: the Claude Code `Skill` tool's input. On Codex, a shell read of `skills/<name>/SKILL.md` (`skills_method: path-read`) |
+| `PostToolUse`, main or per `agent_id` | edit tools and their `file_path`; skills invoked; tool errors; Hangul and Latin character counts of `tool_response` string leaves, **scanning at most a fixed number of characters per call** (the cap is set in `4-plan`), with truncated calls counted | Skills: the Claude Code `Skill` tool's input. On Codex, a shell read of `skills/<name>/SKILL.md` (`skills_method: path-read`) |
 | `PostToolUse`, `Agent` tool (Claude Code) | `tool_input.prompt` keyed by the returned `agentId` | The delegation prompt. `coding.19` governs this text, and it is the sub-record's input |
 | `PostToolUse`, `SubagentHandback` (Claude Code) | `tool_input.message` keyed by `agent_id` | **The subagent's actual report** where the harness routes it this way |
 | `SubagentStop` | sub record: `agent_id`, `agent_type`, output | Output is the captured hand-back message if one exists for that `agent_id`, else `last_assistant_message`. On 2.1.273 the latter was a stub ("I sent my report to the agent that started me.") whenever hand-back was used. On Codex it is the real report (era 99) |
@@ -352,14 +352,14 @@ State is kept per session, and **within a session per agent** (`agent_id`, or `m
 
 **Measured:** no Claude Code hook payload carries the selected output style or the model ([`hook-payloads.json`](../../../tests/runs/02-spec/hook-payloads.json)). A hook therefore cannot know whether the main-thread policy applied. Under B9 that is exactly the difference between arm B and arm C.
 
-| Record | `plugin_present` | `policy_on` | `injection_point` | `profile` |
-|---|---|---|---|---|
-| any, stamp found | `true` | — | — | — |
-| sub, `agent_type` is a shipped agent (Claude Code: `ko-quality:` namespace; Codex: a name the installer wrote, per `ko_quality_codex.py status`) | — | `true` | `agent-definition` | `null`. Agents carry agent-reply policy under S1, but that is not the session's profile |
-| sub, any other `agent_type` | — | `false` | `none` | `null` |
-| main, Codex, a `ko-quality:begin profile=…` marker in the effective `AGENTS.md` (global, or project from `cwd` up to the repository root) | — | `true` | `agents-md` | the marker's profile (`policy_method: agents-md-marker`) |
-| main, Codex, no marker | — | `false` | `none` | `null` |
-| **main, Claude Code** | — | **`null`** | **`null`** | **`null`** |
+| Record | `plugin_present` | `policy_on` | `injection_point` | `profile` | `policy_method` |
+|---|---|---|---|---|---|
+| any, stamp found | `true` | — | — | — | — |
+| sub, `agent_type` is a shipped agent (Claude Code: `ko-quality:` namespace; Codex: a name the installer wrote, per `ko_quality_codex.py status`) | — | `true` | `agent-definition` | `null`. Agents carry agent-reply policy under S1, but that is not the session's profile | `agent-type` |
+| sub, any other `agent_type` | — | `false` | `none` | `null` | `agent-type` |
+| main, Codex, a `ko-quality:begin profile=…` marker in the effective `AGENTS.md` (global, or project from `cwd` up to the repository root) | — | `true` | `agents-md` | the marker's profile | `agents-md-marker` |
+| main, Codex, no marker | — | `false` | `none` | `null` | `agents-md-marker` |
+| **main, Claude Code** | — | **`null`** | **`null`** | **`null`** | `null` |
 
 - **`policy_on` keeps its name** (E4). The design's falsifiability argument is written around it. `plugin_present` is added beside it for what the stamp establishes.
 - **Era 02 fills the Claude Code main-thread nulls from outside**: the corpus generator knows the arm it ran and annotates the session (§12.2).
@@ -422,7 +422,7 @@ skills_method: tool | path-read | null
 task_type: coding | document | conversation      # Claude Code (E4 item 2)
          | coding | conversation                  # Codex: apply_patch paths unverified
 task_type_method: rule | rule-nopath | rule-codex
-tool_output_chars: {hangul: int, latin: int}      # NEW — replaces context_en_ratio (E4 item 1)
+tool_output_chars: {hangul: int, latin: int, truncated_calls: int}   # NEW — replaces context_en_ratio (E4 item 1); per-call scan capped
 tool_errors: int
 tokens: {output: int, method: estimate-v2}        # E4 item 6; never read by a threshold
 masked: bool
@@ -714,13 +714,13 @@ A judge between the true difference and the reported one scales it by `Se + Sp �
 | `claude plugin eval` | **triggers and skill regressions**: does the skill fire, does the plugin load | `tool_used`; `regex` with `arm: both` under `--ablation with-without` | A vs B only: plugin off vs on, and **no style can be selected** (§17.2) |
 | `measure/` (ours) | **measurement and policy regression**: ratios, Tier 1, Tier 2, three arms | §15 | A, B, C |
 
-A regex-expressible rule runs through the tool's ablation and is **not** duplicated offline. A ratio cannot be expressed in the tool, and neither can a morpheme or a pair.
+A regex-expressible rule **whose subject is a skill or an agent** runs through the tool's ablation and is **not** duplicated offline. A main-thread policy rule cannot, even when it is a regex (§17.2). A ratio cannot be expressed in the tool, and neither can a morpheme or a pair.
 
 ### 17.2 Changes to the existing suite (`tests/evals/claude-code/`)
 
 **Measured: a case cannot select an output style** ([`eval-style-selection.json`](../../../tests/runs/02-spec/eval-style-selection.json)). The frontmatter has no settings key. `env` accepts only `EVAL_*` keys. Runs use a temporary home, and plugin `settings.json` cannot set a style. So under B9 the tool's plugin-on arm is **arm B**: installed, no style.
 
-- **The two policy cases leave the tool.** Their em-dash and `사용자님` checks move to `measure/`, as arm B-vs-C comparisons (§18), where the sentence-ending half (`noun_ending_ratio`) already had to go. Their `llm` graders are retired, not kept as annotations: they would grade replies with no policy applied.
+- **The two policy cases leave the tool, and this reverses one E5 handoff.** E5 kept the em dash as an in-tool `regex` grader, because a false positive that fires in both arms cancels in the delta. That reasoning still holds, but under B9 the tool's two arms are A and B, and **neither arm applies the main-thread style**. An em-dash delta between them would measure nothing about the policy. So the em-dash and `사용자님` checks move to `measure/`, as arm B-vs-C comparisons (§18), where the sentence-ending half (`noun_ending_ratio`) already had to go. Their `llm` graders are retired, not kept as annotations: they would grade replies with no policy applied.
 - **The tool keeps the four trigger cases** (`tool_used`) under `--ablation with-without`. Its A-vs-B delta is exactly the skills' contribution, which is what a trigger case tests.
 - A future regression grader that belongs in the tool must be one whose subject is a skill or an agent, not the main-thread policy.
 - Judge model ≠ generating model, and human labels on a subset (04 §13.3, carried).
@@ -898,7 +898,7 @@ The per-machine steps go in the repository's Korean `README.md`. **Whether a `gi
 | `register` restated; `policy_on` kept and fixed; `plugin_present` added | §6, §11.3 | E4 |
 | No MCP server | §10 | P6, P7, E5, E6 |
 | No `llm` grader value recorded in era 02; judge bar and procedure fixed | §16 | E3 |
-| Two runners; policy cases leave `claude plugin eval` | §17 | E5; eval-style-selection probe |
+| Two runners; policy cases leave `claude plugin eval`, including the em-dash regex E5 kept there | §17 | E5; eval-style-selection probe |
 | `ruleset` deferred (Apache-2.0 noted) | §17.4 | E5 |
 | `ko.change_rate` deferred to the gate era | §15.5 | E4 item 8 |
 | Gate: a separate `Stop` executable; four arms; not opened | §19 | E6 |
@@ -908,6 +908,7 @@ The per-machine steps go in the repository's Korean `README.md`. **Whether a `gi
 | Decision | Leaning | Settled in |
 |---|---|---|
 | Directory names `measure/`, `corpus/`, `gate/` | as written | 4-plan |
+| Per-call scan cap for `tool_output_chars` | — | 4-plan (§11.2) |
 | Sessions per arm | from pilot variance | 6-build, after the pilot (§18.4) |
 | `github` marketplace source for self-application | — | 4-plan (§21.2) |
 | Whether subagent reports always use hand-back on Claude Code | count in pilot | 6-build (§14.2) |
