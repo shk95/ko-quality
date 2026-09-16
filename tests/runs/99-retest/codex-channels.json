@@ -853,6 +853,24 @@
         "CODEX-CANARY-MAIN-7071\n\n이를 통해 우리는 다양한 측면에서 혁신적인 변화를 경험할 수 있을 것으로 보입니다. 또한 이러한 변화에는 향후 지속적인 관심이 필요해 보입니다.\n\n완료. 변경률 18% / "
       ],
       "commands": "same four commands, same exits"
+    },
+    {
+      "id": "c1n-1",
+      "flags": "--enable multi_agent_v2",
+      "variant": "copy of SKILL.md with one ours line directly under upstream step 1: 'In this skill that file is `references/taxonomy-rewrite.md`. `references/quick-rules.md` does not exist here.'",
+      "commands": "SKILL.md exit 0; references/taxonomy-rewrite.md exit 0"
+    },
+    {
+      "id": "c1n-2",
+      "flags": "--enable multi_agent_v2",
+      "variant": "copy of SKILL.md with one ours line directly under upstream step 1: 'In this skill that file is `references/taxonomy-rewrite.md`. `references/quick-rules.md` does not exist here.'",
+      "commands": "SKILL.md exit 0; references/taxonomy-rewrite.md exit 0"
+    },
+    {
+      "id": "c1n-3",
+      "flags": "--enable multi_agent_v2",
+      "variant": "copy of SKILL.md with one ours line directly under upstream step 1: 'In this skill that file is `references/taxonomy-rewrite.md`. `references/quick-rules.md` does not exist here.'",
+      "commands": "SKILL.md exit 0; references/taxonomy-rewrite.md exit 0"
     }
   ],
   "logger_records": [
@@ -949,7 +967,7 @@
     "A1": "RESOLVED WITH A CONDITION. Named custom agents are reached 3/3 under `--enable multi_agent_v2` without `--ephemeral`. With default multi_agent (v1) no spawn tool exists in codex exec; with `--ephemeral` v2 spawn fails ('no thread with id'). Era 01's 1-of-6 mixed these configurations.",
     "A2": "RESOLVED. SubagentStop carries agent_id, agent_type, agent_transcript_path and the subagent's own last_assistant_message, which held the AGENT canary and not the MAIN canary. The subagent's output is captured apart from the orchestrator's. PostToolUse inside a subagent also carries agent_id and agent_type.",
     "A3": "RESOLVED. Codex sets both PLUGIN_ROOT and CLAUDE_PLUGIN_ROOT for plugin hooks; the shipped hooks.json works unchanged. 8 records written, usable true, harness codex, model from the payload, sub-to-orchestrator records with agent_type korean-reviewer.",
-    "C1": "UNCHANGED. 2/2 rewrite runs tried references/quick-rules.md first (exit 1), then found taxonomy-rewrite.md with two extra calls. Era 01 saw the same once. The note works as recovery, not as direction.",
+    "C1": "CAUSE FOUND. Era 01 did not succeed on Codex either: its one Codex run also read quick-rules.md first (exit 2) and recovered (P6 decision 6); 'success' there meant the rewrite completed. Claude Code followed the note 7/7. The note sits in the header, 19 lines above upstream step 1, which names the literal path; luna executes the step's path. With the same note repeated as one ours line directly under step 1, 3/3 runs read taxonomy-rewrite.md directly, no failed read.",
     "C4": "NOT RETESTED MEANINGFULLY. Same CLI version (0.154.0); the root plugin.json was accepted again by codex plugin add."
   }
 }
