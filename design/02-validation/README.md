@@ -10,7 +10,7 @@
 |---|---|---|---|
 | 1-concept | [`1-concept/01_idea.md`](1-concept/01_idea.md) | 문제 의식, 리뷰가 바꾼 전제(판정기를 먼저 검증), 물려받은 입력(06 §13.1 근사치 재검토 목록 포함), 초기 가설, 열린 질문 | 작성됨 |
 | 2-exploration | [`2-exploration/02_scope.md`](2-exploration/02_scope.md) | 전제 교정(레코드 0건), E1 결정(오프라인 대조 코퍼스), 강제 없는 스타일 선택 실측(B9), 시대 02/03 경계, 의제 E2~E7, `register`가 기제와 어긋나는 건(E4) | 작성됨 |
-| 2-exploration | [`2-exploration/03_features.md`](2-exploration/03_features.md) | **E2** — 네 원천의 규칙 209개를 mechanical/llm/human으로 분류하고, 중복을 걷어 측정 단위 28개로 정리. 3단 구성(표준 라이브러리 / 형태소 분석기 / 입력+출력), 제외 패스, `kiwipiepy` 의존성 문제 | 작성됨 |
+| 2-exploration | [`2-exploration/03_features.md`](2-exploration/03_features.md) | **E2** — 네 원천의 규칙 209개를 mechanical/llm/human으로 분류하고, 중복을 걷어 측정 단위 28개로 정리. 3단 구성(표준 라이브러리 / 형태소 분석기 / 입력+출력), 제외 패스, `kiwipiepy` 의존성. 태그셋은 실측으로 통과, 레시피 둘은 깨져 있었고 수정안까지 실측 | 작성됨 |
 | 2-exploration | — | E3~E7 조사 결과 (`04_*.md` 이후) | 비어 있음 |
 | 3-spec | — | 스펙. B1~B8을 반영한 06의 후속 판본이 여기 들어옵니다 | 비어 있음 |
 | 4-plan | — | 무엇을 어떤 순서로 짓는가. 이 시대부터 계획은 독립 문서입니다 | 비어 있음 |

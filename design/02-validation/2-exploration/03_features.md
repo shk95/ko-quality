@@ -291,7 +291,42 @@ Regular expressions, counting, Hangul jamo arithmetic. No analyzer, no third-par
 
 ### Tier 1 — needs a morphological analyzer, output-only
 
-> **The tag names below are unverified.** `EF`, `JKG`, `NNB`, `ETM`, `XSN`, `MAG`, `NNP`, `EP`, `VA`/`VV`, `J*` are used throughout this document and in both subagent reports, on the assumption that `kiwipiepy` exposes the 세종 tagset. Nobody checked: the package is not installed, and no recipe here has been run. If the tagset differs, roughly half of this tier's recipes are wrong. **Verifying the tagset is the first task of whatever builds this**, and it is cheap — install the package and print the tag list.
+> **Verified** (kiwipiepy 0.23.2 on Python 3.9.6, [`tests/runs/02-E2/kiwipiepy-recipes.json`](../../../tests/runs/02-E2/kiwipiepy-recipes.json)). All twenty tags this document names exist and mean what it assumed. One caution nothing here said: irregular stems carry subtype tags (`VV-I`, `VV-R`), so `tag == "VV"` silently misses them and prefix matching is required.
+>
+> **The tagset was fine. Two of the recipes were not.** They were run against correct Korean, telegraphic Korean and markdown, and the results are below. Both bugs are fixable and both fixes are specified.
+
+### `noun_ending_ratio` — as written it fires on everything
+
+kiwipiepy emits sentence-final punctuation as a trailing `SF` morpheme **after** the `EF` token: `이 기능은 값을 검증합니다.` ends `['XSV', 'EF', 'SF']`. A literal "is the final morpheme `EF`" test is therefore false for every period-terminated sentence in the language.
+
+| | Correct prose | Telegraphic | Separation |
+|---|---|---|---|
+| As written | 1.00 | 1.00 | **0.00** |
+| Popping trailing `SF`/`SP`/`SS`/`SE`/`SO`/`SW` first | **0.00** | **1.00** | **1.00** |
+
+Unfixed it separates nothing. Fixed it separates perfectly on this corpus, which makes it the strongest measurement in the battery — and it was one line from being useless.
+
+### `particle_absence_ratio` — the recipe counts the wrong nouns
+
+`N + XSV` — the 하다 verbalizing suffix — puts a non-`J*` tag directly after the noun, and that is *the* dominant verb-formation pattern in formal Korean. Correct prose scored **0.50**; correct honorific prose scored **0.80**, because `XSN` (님) also sits between a noun and its particle: `사용자님께서` is `사용자/NNG 님/XSN 께서/JKS`.
+
+Every noun flagged in the correct sample — 입력, 검증, 저장, 실패, 표시, 중단 — was a verb stem, not a dropped 조사.
+
+| Variant | Correct (mean) | Defective (mean) | Gap |
+|---|---|---|---|
+| As written | 0.66 | 0.94 | +0.28 |
+| Skip `XSN`/`XSM` when looking ahead | 0.59 | 0.94 | +0.35 |
+| **Also drop verbalized 체언 from the denominator** | **0.17** | **0.96** | **+0.79** |
+
+The third variant is the right one and the reason is not a tuning choice: **a 체언 followed by `XSV`/`XSA` is a verb stem, not a noun awaiting a particle**, so it does not belong in the denominator at all. With it, the two classes stop overlapping — correct 0.00–0.40, defective 0.88–1.00.
+
+The residual is the false positive this document predicted: the technical-compound sample sits at 0.40, the closest of the correct cases to the defective range. Predicted, and now measured.
+
+### Three more things the recipes did not say
+
+- **The exclusion pass runs on raw text lines *before* the sentence splitter, not after.** kiwipiepy's splitter is paragraph-aware and knows nothing of markdown: consecutive bullets merge into one "sentence" and a three-line table into another, after which individual lines cannot be attributed back. This document's phrasing implied the reverse order and was wrong.
+- **`noun_run_length`'s "no `J*` between" is ambiguous** — strict consecutive `NN*` versus bridging over intervening non-noun, non-particle tags give very different numbers. Undecided; the spec has to pick one.
+- **`genitive_ui_ratio`'s predicted false positive is still untested.** No test case contained 의 at all, so the prediction is neither confirmed nor refuted.
 
 | Measurement | Serves | Emits |
 |---|---|---|
@@ -358,7 +393,7 @@ The rest are not reference material: a ratio with a false-positive class attache
 
 ### One thing this document did not do
 
-**Nothing here was run against real text.** Every false-positive risk listed is predicted from the recipe, not measured. The first job after E2 is to implement the exclusion pass plus a handful of Tier 0 measurements and run them over the corpus — including deliberately correct Korean — to find out which of these predictions were right. A feature whose false-positive rate has never been observed is not ready to carry a `watch:` value, however well upstream documented its threshold.
+**Most of this was never run against real text.** Two Tier 1 measurements have now been (above), and the result argues for doing the rest: the tagset assumption held, and the recipes built on it were broken in ways no amount of reading would have found. Every remaining false-positive risk listed is predicted from the recipe, not measured. The first job after E2 is to implement the exclusion pass plus a handful of Tier 0 measurements and run them over the corpus — including deliberately correct Korean — to find out which of these predictions were right. A feature whose false-positive rate has never been observed is not ready to carry a `watch:` value, however well upstream documented its threshold.
 
 ## What this means for the feature list
 
