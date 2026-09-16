@@ -1,0 +1,12 @@
+# assemble/presets.yaml — 06 §6. A preset is an ordered list of steps; ko-route tells the model to run them (advice, not a guarantee, 06 §13.3).
+presets:
+  quick: []
+  standard: [policy]
+  review: [diagnose]
+  edit: [rewrite, grammar]
+  full: [policy, rewrite, grammar, diagnose]
+steps:
+  policy: null          # nothing to run: the policy is injected at build time (P5 decision)
+  rewrite: ko-rewrite
+  grammar: ko-grammar
+  diagnose: ko-diagnose

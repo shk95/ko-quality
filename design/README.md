@@ -1,20 +1,20 @@
 # ko-quality 설계 기록
 
-`ko-quality` 프로젝트의 설계 문서와, 그 설계를 지으면서 내린 판단과 실제로 지어보니 달라진 것을 함께 두는 디렉터리입니다. 구현 코드는 저장소 루트에 있고, 이 디렉터리는 **왜 그렇게 지었는가**와 **지금 어디까지 왔는가**만 담습니다. 에이전트의 판단 규칙은 여기 없고 루트 `CLAUDE.md`에 있습니다.
+`ko-quality` 프로젝트의 설계 문서와, 그 설계를 지으면서 내린 판단과 실제로 지어보니 달라진 것을 함께 두는 디렉터리입니다. 구현 코드는 저장소 루트에 있고, 이 디렉터리는 **왜 그렇게 지었는가**와 **지금 어디까지 왔는가**만 담습니다. 에이전트의 판단 규칙은 여기 없고 루트 `AGENTS.md`에 있습니다.
 
 ## 지금 할 일
 
 > 새 세션은 여기서 시작합니다.
 
-**현재 위치:** 시대 `01-toolkit`, **5-preflight 진행 중.** P0 사전 확인과 문서 검토는 끝났고, 구현 흐름 정의(`flow.md`)를 아직 쓰지 않았습니다. 구현 코드는 없습니다. upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT).
+**현재 위치:** 시대 `01-toolkit` **닫힘** (2026-09-15). 6-build P1~P7 완료, 7-review 끝. `dev`는 `master`에 머지됐습니다. release-blocked 3건(모두 Codex 쪽, 실측을 미룸)은 리뷰에서 받아들이고 다음 시대로 넘겼습니다. upstream 4종은 `upstream/lock.yaml`에 고정돼 있습니다(모두 MIT).
 
-**다음 작업:** `01-toolkit/5-preflight/flow.md` 작성. 사용자와 깊이를 맞춰 가며 씁니다. 받아들여지면 `dev`에서 P1(im-not-ai → `ko-rewrite`)을 자율 구현으로 시작합니다.
+**다음 작업:** 시대 `02` 열기 — 주제는 **검증 단계**(06 §15: gate·features·watch·eval). 입력은 `01-toolkit/7-review/review.md` §G입니다. 02의 첫 단계는 미뤄 둔 Codex 재시험(A1~A3, C1, C4)입니다.
 
 **읽는 순서 (최소):**
 
 1. `01-toolkit/3-spec/06_toolkit_spec.md` — §1 목적, §3 층, §5 공급 층, **§14 프로토타입 계획**, **§16 결정 현황**
 2. `01-toolkit/5-preflight/06b_built_prototype.md` — P0 파일 지도, 06 반영 결정, 문서 검토, **P1에 넘기는 것**
-3. `01-toolkit/5-preflight/README.md` — preflight가 만들어야 하는 것
+3. `01-toolkit/5-preflight/flow.md` — preflight 결정 D1~D7과 P1~P7 흐름
 4. 필요할 때만 — `3-spec/06a`(공급 층 근거), `3-spec/05a`(검증 단계 준비), `1-concept/01a`(upstream 조사)
 
 ## 구조: 시대와 일곱 단계
@@ -28,7 +28,7 @@ design/
     ├── 2-exploration/     조사와 구체화. 요구의 뜻이 바로잡히는 곳
     ├── 3-spec/            스펙. 여러 판본이 나란히 있을 수 있고 구현 대상은 하나
     ├── 4-plan/            무엇을 어떤 순서로 짓는가
-    ├── 5-preflight/       구현 흐름 정의. 사전 검증, 미리 정한 결정, 멈추는 조건. 마지막 상호작용 단계
+    ├── 5-preflight/       구현 흐름 정의. 사전 검증, 미리 정한 결정, release를 막는 조건. 마지막 상호작용 단계
     ├── 6-build/           자율 구현의 기록. 스펙을 고치지 않는다
     └── 7-review/          구현 후 리뷰. 다음 시대의 입력
 ```
@@ -40,7 +40,7 @@ design/
 | 3 spec | 설계 결과물. 사이 문서(`a`)가 판단 근거를 남김 | 상호작용 |
 | 4 plan | 구현 순서와 단계 | 상호작용 |
 | 5 preflight | 흐름을 실행 가능한 수준으로 구체화하고, 가정을 검증하고, 결정을 미리 내림 | 상호작용. 깊이를 함께 조절 |
-| 6 build | 구현. 멈추지 않고 끝까지. 판단은 `CLAUDE.md` 기준 | **자율** |
+| 6 build | 구현. 멈추지 않고 끝까지. 판단은 `AGENTS.md` 기준 | **자율** |
 | 7 review | 스펙과 달랐던 것을 읽고 다음 시대를 정함 | 상호작용 |
 
 **일방향.** 앞 단계 문서는 그 시점의 기록이라 고치지 않습니다. 나중에 틀린 것이 드러나면 전방 포인터나 상태 표시만 답니다. 구현 중 발견은 6-build에 쌓이고, 스펙을 바꿀 만한 것은 7-review를 거쳐 다음 시대를 엽니다. 시대 안에서 되돌아가지 않습니다.
@@ -76,9 +76,16 @@ design/
 | | `prompt-flow.html`, `diagrams/` | 06 기준 작동 구조. 루트 README가 같은 그림을 씀 |
 | 4-plan | `README.md` | 계획은 06 §14·§16 안에 있음 |
 | 5-preflight | `06b_built_prototype.md` | P0 사전 확인(lock, 파일 지도, 하네스 재확인, 06 반영 결정), 문서 검토 |
-| | `flow.md` | 구현 흐름 정의 — **다음 작업** |
-| 6-build | — | P1부터 |
-| 7-review | — | |
+| | `explorations.md` | 열린 결정 탐색 보고 6건(절차 원천, 앵커 형식, 렌더 구분, 합성 규칙, 참조 역할, Codex 로컬 플러그인), E1 후속, Codex 헤드리스 실측, 환경 확인 |
+| | `flow.md` | 구현 흐름 정의 — 결정 D1~D7, P1~P7, release를 막는 조건. 수락됨 |
+| 6-build | `P1_ko-rewrite.md` | im-not-ai → ko-rewrite 손 추출, 헤드리스 실행 |
+| | `P2_ko-diagnose.md` | yoonmoon → ko-diagnose, 참조 역할 |
+| | `P3_policy.md` | fluent-korean 정책, 결정 ③, 채널 실측 |
+| | `P4_abstraction.md` | 스키마, 추출기 코드, 네 번째 벤더, 업데이트 실측 |
+| | `P5_claude-code-build.md` | 조립, 프로파일별 Claude Code 플러그인, 설치·eval |
+| | `P6_codex-build.md` | Codex 빌드, 설치기, 채널 실측, 커스텀 에이전트 release-blocked |
+| | `P7_server-logger.md` | 로거·hook·스탬프 싣기, Claude Code 실측, Codex 쪽 release-blocked |
+| 7-review | `review.md` | release-blocked 수용과 머지, 스펙 개정 후보 B1~B8, 결정 재검토, preflight가 놓친 것, 등급 규칙, 다음 시대(검증 단계) |
 
 ## 단계 요약
 
@@ -100,9 +107,11 @@ design/
    ↓ P0 사전 확인 upstream 4종 MIT 고정. 파일 지도에서 06과 어긋난 것 13건, 하네스 재확인에서 2건 (06b)
    ↓ P0 반영     06 개정: 정책 조각 단위, 앵커 규칙, rewrite invariant(hjongc 원칙 제외), Codex 플러그인 사실
    ↓ 문서 검토   문서 안 어긋남 13건 정정, 사양 재검증 26건(어긋남 없음, 몰랐던 것 9건). 열린 결정 8건 추가
-   ↓ 프로세스    시대 / 7단계 일방향으로 재배치. 판단 규칙은 CLAUDE.md로 분리
-   ⋯ preflight   구현 흐름 정의 (다음)
-   ⋯ build       P1 부터 자율 구현 (06 §14)
+   ↓ 프로세스    시대 / 7단계 일방향으로 재배치. 판단 규칙은 AGENTS.md로 분리
+   ↓ 탐색        열린 결정 6건 독립 보고, B가 낡았는지 후속 탐색, Codex 헤드리스 실측(커스텀 에이전트 닿지 않음)
+   ↓ preflight   flow.md — 결정 D1~D7, P1~P7 흐름. 수락
+   ↓ build       P1~P5 완료(추출·스키마·Claude Code 빌드), P6 Codex 빌드(커스텀 에이전트 release-blocked), P7 로거(Codex 쪽 release-blocked)
+   ↓ review      Codex 3건 수용 후 master 머지. 스펙 입력 B1~B8. LLM 판정기가 믿을 만하지 않음(C3). 다음 시대: 검증 단계
 ```
 
 조사에서 나온 제약 셋이 06 의 형태를 결정했습니다.
@@ -132,5 +141,6 @@ design/
 
 ## 참고
 
-- 설계 세션에서 만든 페이지 [ko-quality 작동 구조](01-toolkit/3-spec/composition-structure.html)는 **05 기준**이라 06과 다릅니다. 06 기준 그림은 `01-toolkit/3-spec/prompt-flow.html`과 루트 README에 있습니다.
+- 06 기준 작동 구조 그림은 `01-toolkit/3-spec/prompt-flow.html`과 루트 README에 있습니다. 05 기준 그림은 `01-toolkit/3-spec/composition-structure.html`입니다.
+- **언어.** 시대 02부터 `1-concept/`는 한국어, 2~7단계 문서는 영어로 씁니다. 시대 01은 이 규칙 이전의 기록이라 한국어 그대로 둡니다. 영어 문서 안에서 한국어 고유의 용어(조사, 어미, 윤문 등)와 고유명사는 한국어를 섞어 써도 됩니다 (`AGENTS.md`).
 - 시대가 둘 이상이 되면 이 파일의 "01-toolkit 문서 지도"는 각 시대 디렉터리의 README로 내려가고, 여기에는 시대 목록과 현재 위치만 남깁니다.

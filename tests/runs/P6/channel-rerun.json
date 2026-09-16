@@ -1,0 +1,166 @@
+{
+  "stage": "P6",
+  "harness": "codex-cli 0.154.0",
+  "setup": "Each run: a throwaway CODEX_HOME (auth.json symlinked), a local marketplace pointing at a marked copy of dist/agent-plugin (a marker line appended to install/AGENTS.section.md: CODEX-CANARY-MAIN-7071, and to every agent's developer_instructions: CODEX-CANARY-AGENT-8081; a SessionStart hook in plugin.json extensions.com.openai.hooks), codex plugin add ko-quality@ko-quality, ko_quality_codex.py install.",
+  "meta": {
+    "luna-global-repeat": {
+      "rc": 0,
+      "stderr_tail": "Reading additional input from stdin...\n"
+    },
+    "terra-global": {
+      "rc": 0,
+      "stderr_tail": "Reading additional input from stdin...\n"
+    },
+    "luna-global-v2": {
+      "rc": 1,
+      "stderr_tail": "Reading additional input from stdin...\n"
+    },
+    "luna-project": {
+      "rc": 0,
+      "stderr_tail": "Reading additional input from stdin...\n"
+    }
+  },
+  "runs": {
+    "luna-global-repeat": {
+      "markers": {
+        "CODEX-CANARY-MAIN-7071": 1,
+        "CODEX-CANARY-AGENT-8081": 0
+      },
+      "agent_marker_seen": [],
+      "collab_calls": [],
+      "commands": [
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills/ko-quality/ko-route/SKILL.md'\"",
+          "exit_code": 2
+        },
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills' -maxdepth 3 -name SKILL.md -print\"",
+          "exit_code": 0
+        },
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills/ko-route/SKILL.md'\"",
+          "exit_code": 0
+        },
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills/ko-diagnose/SKILL.md'\"",
+          "exit_code": 0
+        },
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills/ko-diagnose/references/lread-rubric.md'\"",
+          "exit_code": 0
+        }
+      ],
+      "usage": {
+        "input_tokens": 101855,
+        "cached_input_tokens": 65024,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1768,
+        "reasoning_output_tokens": 356
+      },
+      "final_message": "AI 가능성: 중간 / 신뢰도: 낮음 / 번역문 가능성: 낮음 / 장르: 논설문·보고서 서론\n\n근거 요약: `결론적으로`, `또한`, `~할 수 있다`와 같은 정형적인 표현이 사용되었고, 내용이 매우 일반적이며 구체적인 근거와 개성이 부족합니다. 다만 두 문장으로 짧고 격식적인 문어체이므로, 이 특징만으로 AI 작성 여부를 판단하기는 어렵습니다.\n\n| 신호 | 정도 |\n|---|---|\n| 정형적 접속어 사용 | 보통 |\n| 추상적·일반적 내용 | 보통 |\n| 표현과 문장 구조의 반복성 | 약함 |\n| 창의성·비정형성 | 거의 없음 |\n| 번역투 | 약함 |\n| 신뢰도 제한 요인 | 짧은 문어체 |\n\n의심 구간 하이라이트: `결론적으로`, `매우 혁신적인 변화를 가져오고 있다고 할 수 있다`, `또한, 이러한 변화는 교육을 통해 더욱 가속화되고 있다`는 보고서형 AI 문장에서 자주 보이는 상투적이고 추상적인 표현입니다. 다만 사람이 작성한 격식체 문장에서도 충분히 나타날 수 있습니다.\n\nCODEX-CANARY-MAIN-7071"
+    },
+    "luna-global-v2": {
+      "markers": {
+        "CODEX-CANARY-MAIN-7071": 0,
+        "CODEX-CANARY-AGENT-8081": 0
+      },
+      "agent_marker_seen": [],
+      "collab_calls": [
+        {
+          "tool": "wait",
+          "status": "completed",
+          "receivers": 0,
+          "agent_states": []
+        }
+      ],
+      "commands": [
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills/ko-diagnose/SKILL.md'",
+          "exit_code": 1
+        },
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills | head -50'",
+          "exit_code": 0
+        },
+        {
+          "command": "<shell> -lc \"find <path> -path '*ko-diagnose*SKILL.md' 2>/dev/null | head\"",
+          "exit_code": 0
+        },
+        {
+          "command": "<shell> -lc \"find <path> -path '*<scratch home>*ko-diagnose/SKILL.md' -print\"",
+          "exit_code": 0
+        },
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills/ko-diagnose/SKILL.md'",
+          "exit_code": 0
+        }
+      ],
+      "usage": null,
+      "final_message": "요청하신 검토를 위해 `ko-quality:ko-diagnose` 지침을 먼저 확인한 뒤, `korean-reviewer` 에이전트를 호출하겠습니다. 에이전트의 답변은 수정하거나 요약하지 않고 그대로 전달하겠습니다."
+    },
+    "luna-project": {
+      "markers": {
+        "CODEX-CANARY-MAIN-7071": 1,
+        "CODEX-CANARY-AGENT-8081": 0
+      },
+      "agent_marker_seen": [],
+      "collab_calls": [],
+      "commands": [
+        {
+          "command": "<scratch>/skills/plugins/cache/ko-quality/ko-quality/local/skills/ko-route/SKILL.md\"",
+          "exit_code": 2
+        },
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills/ko-route/SKILL.md\"",
+          "exit_code": 0
+        },
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills/ko-diagnose/SKILL.md\"",
+          "exit_code": 0
+        },
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills/ko-rewrite/references/ai-tell-taxonomy.md\"",
+          "exit_code": 2
+        },
+        {
+          "command": "plugins/cache/ko-quality/ko-quality/local/skills -path '*ai-tell-taxonomy.md' -o -path '*katfishnet-research.md' | sort\"",
+          "exit_code": 0
+        }
+      ],
+      "usage": {
+        "input_tokens": 103833,
+        "cached_input_tokens": 78336,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1708,
+        "reasoning_output_tokens": 411
+      },
+      "final_message": "현재 `korean-reviewer` 에이전트를 호출할 수 있는 도구가 없어, 에이전트의 답변을 그대로 전달할 수는 없습니다. 대신 검토 결과는 다음과 같습니다.\n\nAI 가능성: 중간 / 신뢰도: 낮음 / 번역문 가능성: 낮음 / 장르: 논설문·보고서\n\n근거 요약: `결론적으로`, `또한`, `이러한 변화`와 같은 정형적인 연결 표현이 반복되고, 구체적인 근거 없이 추상적인 주장을 이어 갑니다. 다만 글이 매우 짧아 판단 신뢰도는 낮습니다.\n\n의심 구간: “매우 혁신적인 변화를 가져오고 있다고 할 수 있다”는 의미가 중복되고 상투적인 표현입니다.\n\nCODEX-CANARY-MAIN-7071"
+    },
+    "terra-global": {
+      "markers": {
+        "CODEX-CANARY-MAIN-7071": 1,
+        "CODEX-CANARY-AGENT-8081": 1
+      },
+      "agent_marker_seen": [
+        "agent marker in main reply"
+      ],
+      "collab_calls": [
+        {
+          "tool": "wait",
+          "status": "completed",
+          "receivers": 0,
+          "agent_states": []
+        }
+      ],
+      "commands": [],
+      "usage": {
+        "input_tokens": 50639,
+        "cached_input_tokens": 38144,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 733,
+        "reasoning_output_tokens": 101
+      },
+      "final_message": "AI 가능성: 중간 / 신뢰도: 낮음 / 번역문 가능성: 중간 / 장르: 짧은 논설문 결론\n\n근거 요약: “결론적으로”, “매우 혁신적인”, “~이라고 할 수 있다”처럼 상투적 표현과 완충 표현이 겹칩니다. “또한,”의 접속부사 뒤 쉼표와 “교육을 통해”라는 경로 표현도 AI 문장에서 자주 보이는 신호입니다. 다만 문어체 텍스트가 매우 짧아 표본이 부족하므로 판정 신뢰도는 낮습니다.\n\n| 신호 | 정도 |\n| --- | --- |\n| 쉼표 과용(접속부사 뒤) | 강함 |\n| 상투적 결론 도입·완충 표현 | 보통 |\n| 과장 수식어 | 강함 |\n| 번역투 가능성 | 보통 |\n| POS·구조 다양성 | 판단 어려움 |\n| 창의성·비정형성 | 거의 없음 |\n| register 안정성 | 일정함 |\n\n의심 구간 하이라이트:\n\n- “결론적으로”는 내용을 추가하지 않는 정형적 결론 도입 표현입니다.\n- “매우 혁신적인 변화”는 구체적 근거 없이 강한 평가를 더하는 과장 수식으로 보입니다.\n- “~이라고 할 수 있다”는 단정을 완화하는 상투적 헤지 표현입니다.\n- “또한,”은 한국어 문어에서 접속부사 뒤 쉼표를 습관적으로 쓰는 AI 신호에 해당할 수 있습니다.\n- “교육을 통해”는 영어식 경로 표현을 직역한 듯한 번역투 신호로 볼 여지가 있습니다.\n\n이 결과는 확률적 추정이며, AI 작성 여부를 단정하거나 부정행위 판단의 단독 근거로 사용할 수 없습니다.\nCODEX-CANARY-AGENT-8081\nCODEX-CANARY-MAIN-7071"
+    }
+  }
+}

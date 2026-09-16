@@ -1,0 +1,1056 @@
+# Temporary format (P1 shape, used unchanged in P2 — flow.md). Schema is derived in P4. Text values are exact upstream bytes.
+role: procedure
+slot: diagnose
+fragments:
+  - id: diagnose.001
+    kind: tag
+    blanks: 1
+    text: "<role>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "role > open"
+      content_hash: sha256:92c7c3982bf4e54536aefa9215b322f933a25fdba5bedd825d464087e35dbf8d
+      transform: verbatim
+  - id: diagnose.002
+    kind: paragraph
+    blanks: 0
+    text: "한글 텍스트가 LLM이 쓴 것인지 **진단**한다. 윤문(humanize) 스킬이 *고쳐 쓰는* 도구라면, 이 스킬은\n*판별·설명*하는 도구다. 같은 AI 티 분류를 쓰되, 고치지 않고 **AI 가능성·신뢰도·근거**만 보고한다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "role > paragraph 1"
+      content_hash: sha256:0c3f7dbab461a1701e2cb8786986e7b3aa162fdf9008808e70dff17076f3c921
+      transform: verbatim
+  - id: diagnose.003
+    kind: tag
+    blanks: 0
+    text: "</role>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "role > close"
+      content_hash: sha256:0efe6f4185463fb6cbe96aa3ad3811e811680ac4dc316c5e33a418d74dc172dd
+      transform: verbatim
+  - id: diagnose.004
+    kind: tag
+    blanks: 1
+    text: "<resources>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "resources > open"
+      content_hash: sha256:65919771d5a3eb3081f3d7f283af6b9f403254c9202d3f34e853f52f9c3dbcfc
+      transform: verbatim
+  - id: diagnose.005
+    kind: paragraph
+    blanks: 0
+    text: "필요할 때 아래 파일을 읽어 기준으로 삼는다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "resources > paragraph 1"
+      content_hash: sha256:6aa3ba43cde1139b8f8c271fd6cdcfdfcb05f19cbc2b12090253e43a86bcad19
+      transform: verbatim
+  - id: diagnose.006
+    kind: item
+    blanks: 1
+    text: "- `references/lread-rubric.md` — 사람의 한국어 AI 글 판별 루브릭(LREAD, ACL 2025 후속). **Phase 1~2**의 판정 틀. fluency trap 경고 포함."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "resources > item 1"
+      content_hash: sha256:b49c77d0a1b60f46be78b72f981ed67003ff2e814bcb5ff91199c99ab19e3203
+      transform: verbatim
+  - id: diagnose.007
+    kind: item
+    blanks: 0
+    text: "- `../humanize/references/ai-tell-taxonomy.md` — 11대 카테고리 AI 티 분류(탐지할 신호 목록). **Phase 1**에서 읽는다(같은 플러그인의 humanize 스킬 공유)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "resources > item 2"
+      content_hash: sha256:491818bce0eaea92fce3076fe83dd7f88aca6697c466d98c6871c6e64bdc8fdf
+      transform: verbatim
+  - id: diagnose.008
+    kind: item
+    blanks: 0
+    text: "- `../humanize/references/katfishnet-research.md` — 정량 특징의 학술 근거(KatFishNet, ACL 2025). 가중치 판단 근거."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "resources > item 3"
+      content_hash: sha256:265a02ff199638b4adebcaf3310f59f03ba2a6f0e8e01677855ff6da96452f13
+      transform: verbatim
+  - id: diagnose.009
+    kind: item
+    blanks: 0
+    text: "- `references/xdac-research.md` — **단문/SNS·댓글** AI 탐지 신호(XDAC, ACL 2025). 입력이 단문·구어체일 때만 **Phase 1-S**에서 읽는다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "resources > item 4"
+      content_hash: sha256:62b2a7207ca188ae2d6e9b017239bd86ba073c75ea69de8cc66135212a18bc35
+      transform: verbatim
+  - id: diagnose.010
+    kind: tag
+    blanks: 0
+    text: "</resources>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "resources > close"
+      content_hash: sha256:66a18b1d2742023f878a41e8cab4162a2cc0d7c880f04ca5b88936d40d49d7ea
+      transform: verbatim
+  - id: diagnose.011
+    kind: tag
+    blanks: 1
+    text: "<workflow>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow > open"
+      content_hash: sha256:9b1696159388c1494524beb71cac80f9ea8535a87335e61ec40234d8d85ebdb2
+      transform: verbatim
+  - id: diagnose.012
+    kind: tag
+    blanks: 1
+    text: "<phase n=\"0\" name=\"입력·장르\">"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=0] > open"
+      content_hash: sha256:5918a3c3b95bf8f9071d13078a9b80c7a102a9f48a8452d081618b08e6568123
+      transform: verbatim
+  - id: diagnose.013
+    kind: item
+    blanks: 0
+    text: "1. 판별할 한글 텍스트를 확보한다(붙여넣기 또는 파일)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=0] > item 1"
+      content_hash: sha256:c73799100ccaa49ef626dd152b787596677c341334ddf6bb618ca7f44a670704
+      transform: verbatim
+  - id: diagnose.014
+    kind: item
+    blanks: 0
+    text: "2. 첫 ~300자로 장르를 추정한다(칼럼/리포트/블로그/공식문서/시 등). 장르는 신뢰도 보정에 쓴다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=0] > item 2"
+      content_hash: sha256:73cbc5ef359e610e2440bb27cb8ea9768989b9225dde64c3e481263373634720
+      transform: verbatim
+  - id: diagnose.015
+    kind: item
+    blanks: 0
+    text: "3. **단문/SNS 게이트** — 입력이 짧고 구어체(댓글·SNS·채팅·리뷰 등 비격식 단문)면 **단문 모드**를 켠다.\n   켜지면 Phase 1-S(단문 신호축)를 추가 적용한다. 문어체(칼럼·리포트·공식문서)면 켜지 않는다 — 적용 시 위양성."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=0] > item **단문/SNS 게이트**"
+      content_hash: sha256:9c902cf34699a78a015b736fb80dd4e64972557b653913b98273e70afbdaf296
+      transform: verbatim
+  - id: diagnose.016
+    kind: tag
+    blanks: 0
+    text: "</phase>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=0] > close"
+      content_hash: sha256:189db377ea7c7cafa2c6e9948f9be8dc318d5b159e0a9cbd337078ef12f0eede
+      transform: verbatim
+  - id: diagnose.017
+    kind: tag
+    blanks: 1
+    text: "<phase n=\"1\" name=\"신호 스캔\">"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > open"
+      content_hash: sha256:a04be80e743a715a46a4bfac68208330a88c4e61bd664faa7d3f9fb9d932e234
+      transform: verbatim
+  - id: diagnose.018
+    kind: paragraph
+    blanks: 0
+    text: "`ai-tell-taxonomy.md`의 11대 카테고리 패턴을 스캔하고, 각 탐지의 심각도(강/중/약)와 빈도를 센다.\n더해 `katfishnet-research.md` 기반 **정량 신호**를 살핀다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > paragraph 1"
+      content_hash: sha256:ab83e9d246caee1a2cff6056f4976581e82728303a28ec99d0df181975a24f21
+      transform: verbatim
+  - id: diagnose.019
+    kind: item
+    blanks: 1
+    text: "- **쉼표 과용** — 연결어미·접속부사 뒤 쉼표 빈도(한국어는 본래 쉼표가 드묾). _가장 강한 신호._"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > item **쉼표 과용**"
+      content_hash: sha256:ca2b7dc4269487be93d65473fdd772c7abb85150233196e2eba0b704679db51a
+      transform: verbatim
+  - id: diagnose.020
+    kind: item
+    blanks: 0
+    text: "- **POS·구조 다양성 저하** — 종결어미·문장 구조·문두의 단조로운 반복."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > item **POS·구조 다양성 저하**"
+      content_hash: sha256:e0ebc52273e5dce118af575b3c9bdd1c0bbf5a74178e6d929794fa598339010e
+      transform: verbatim
+  - id: diagnose.021
+    kind: item
+    blanks: 0
+    text: "- **의존명사·보조용언 정형 반복** — \"할 수 있다 / 하는 것 / 것이다\"의 기계적 반복."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > item **의존명사·보조용언 정형 반복**"
+      content_hash: sha256:85626bbb3a46675f2a540a2da6424161b192222aea24a11275b057e94689ec48
+      transform: verbatim
+  - id: diagnose.022
+    kind: item
+    blanks: 0
+    text: "- **균일한 리듬** — 비슷한 길이·구조의 문장 연속."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > item **균일한 리듬**"
+      content_hash: sha256:f73a932ef6722c68293f3376d69faaf13d1d5c9746ae569531c51a211290a795
+      transform: verbatim
+  - id: diagnose.023
+    kind: item
+    blanks: 0
+    text: "- **과소 서술·개조식**(_약한 보조 신호_) — 성분·조사·어미 생략, 명사구·연결어미 종결, 일반 어휘를 밀어낸 비유(카테고리 11).\n  요약·보고 맥락의 LLM 출력에 잦지만 사람이 쓴 메모·실무 문서에도 흔하므로 **단독 판단 금지**, 다른 신호와 겹칠 때만 가산."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > item **과소 서술·개조식**"
+      content_hash: sha256:4e35840b9aa555026fc92aff71acd5368da84629dfff2840088bf51bc89aef27
+      transform: verbatim
+  - id: diagnose.024
+    kind: item
+    blanks: 0
+    text: "- **경동사·대동사 군더더기**(_약한 보조 신호_) — '명사+을 실시/수행/진행하다'(→'명사+하다') 같은 한자어 대동사 분리(카테고리 6 번역투). 격식·공문서체 사람 글에도 흔하므로 **단독 판단 금지**, 다른 신호와 겹칠 때만 가산(`<cautions>` 참조)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > item **경동사·대동사 군더더기**"
+      content_hash: sha256:4fa0cb4edd9bae5559a523a8e59e91fff555404299bad7b612769053227837de
+      transform: verbatim
+  - id: diagnose.025
+    kind: paragraph
+    blanks: 1
+    text: "이어 `references/lread-rubric.md`의 **LREAD 루브릭 3대 차원**으로 다시 본다(`<fluencyTrap>` 적용)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > paragraph 2"
+      content_hash: sha256:0e7403261d7fb37f7098a11e9106846807ba3af5446ba8a099c614bcf5b407fb
+      transform: verbatim
+  - id: diagnose.026
+    kind: item
+    blanks: 1
+    text: "- **내용(Content)** — **창의성·발달적 비정형성**이 있는가. *부재*가 AI 단서, 존재가 사람 단서."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > item **내용(Content)**"
+      content_hash: sha256:c8941a47539a1b6aaebda883f298a57cad550492afa791cfb0f78c69f2e53c46
+      transform: verbatim
+  - id: diagnose.027
+    kind: item
+    blanks: 0
+    text: "- **조직(Organization)** — 서–본–결 구조 완결성·템플릿 충실. **높을수록 오히려 AI 의심**(역설 신호)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > item **조직(Organization)**"
+      content_hash: sha256:865ac9548382bdd66ca2d87b3b681e182b3db3ea3211b01028801473c9f515e1
+      transform: verbatim
+  - id: diagnose.028
+    kind: item
+    blanks: 0
+    text: "- **표현(Expression)** — 자연스러운 우리말(번역투 단서), 어색함·중의성, 띄어쓰기·구두점 정형성,\n  register 안정성이 _부자연스럽게 과도하게_ 일정한가, 페르소나(주장된 작성자 수준)와의 정합성."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > item **표현(Expression)**"
+      content_hash: sha256:04471982bf083496b2feb000f45ce957eb0c2731a0e76188527208f97c209fe3
+      transform: verbatim
+  - id: diagnose.029
+    kind: tag
+    blanks: 0
+    text: "</phase>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1] > close"
+      content_hash: sha256:189db377ea7c7cafa2c6e9948f9be8dc318d5b159e0a9cbd337078ef12f0eede
+      transform: verbatim
+  - id: diagnose.030
+    kind: tag
+    blanks: 1
+    text: "<phase n=\"1S\" name=\"단문/SNS 신호 (조건부)\">"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1S] > open"
+      content_hash: sha256:3f1ba23f49add3d548ffb81bb8a061bcf396eddfc7715171efd7b682e473e439
+      transform: verbatim
+  - id: diagnose.031
+    kind: paragraph
+    blanks: 0
+    text: "**Phase 0에서 단문 모드일 때만 수행.** `references/xdac-research.md`를 읽어 단문/구어체 신호를 본다.\n문어체 입력에는 적용하지 않는다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1S] > bold label **Phase 0에서 단문 모드일 때만 수행.**"
+      content_hash: sha256:b8660927a928541ae59a6470790f09c5097a8eeb5fc221af8ea726a3edd1801f
+      transform: verbatim
+  - id: diagnose.032
+    kind: item
+    blanks: 1
+    text: "- **반복문자 부재** — 구어 맥락인데 ㅋㅋ/ㅎㅎ/ㅠㅠ가 전무 → AI 단서(가장 강함)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1S] > item **반복문자 부재**"
+      content_hash: sha256:ad8f48523e98595f72dafdae5cace23bf64d696f938d3b8af00c189a0ea81cdb
+      transform: verbatim
+  - id: diagnose.033
+    kind: item
+    blanks: 0
+    text: "- **포맷팅 부재** — 줄바꿈·이중공백이 거의 없음 → AI 단서."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1S] > item **포맷팅 부재**"
+      content_hash: sha256:212c684a2b33e32522e715056df57bce9e40692e9d82bd6a9cf68624a3407f6f
+      transform: verbatim
+  - id: diagnose.034
+    kind: item
+    blanks: 0
+    text: "- **격식·정형 과다·중립 어조** — 짧은 댓글인데 격식체·헤지 정형구(\"것 같다\")·감정 중립."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1S] > item **격식·정형 과다·중립 어조**"
+      content_hash: sha256:e90634d83a10b2276be230a0911478f6ffd3c5a6d353443509b0d268aa770b94
+      transform: verbatim
+  - id: diagnose.035
+    kind: item
+    blanks: 0
+    text: "- **길이 일관성** — 문장/댓글 길이 분산이 부자연스럽게 작음."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1S] > item **길이 일관성**"
+      content_hash: sha256:f4373a460e5866c53c2746b520410a7e5628f216a925c21d294a58012b62b03b
+      transform: verbatim
+  - id: diagnose.036
+    kind: item
+    blanks: 0
+    text: "- **이모지·특수문자 획일성** — 유무가 아니라 표준·공통기호만 획일적으로 쓰는지(유무로 판단 금지)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1S] > item **이모지·특수문자 획일성**"
+      content_hash: sha256:ec921010a394961d78db6b8c318e3bd25089fb61435f233796e0e476ae7ae07c
+      transform: verbatim
+  - id: diagnose.037
+    kind: paragraph
+    blanks: 1
+    text: "**방향 주의:** 카테고리 8(시각 장식)은 문어체에서 _장식 과잉_=AI지만, 단문에서는 _포맷팅·반복문자 결핍_=AI로\n**신호 방향이 반대**다. 단문 모드에서는 결핍 쪽을 본다. 개별 신호는 약하므로 **여러 축이 겹칠 때만** 가중한다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1S] > bold label **방향 주의:**"
+      content_hash: sha256:ff75ba33042da5889fbc41d8a7bba3ee9baba8b960766c0ec1ab14933c3de75c
+      transform: verbatim
+  - id: diagnose.038
+    kind: tag
+    blanks: 0
+    text: "</phase>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=1S] > close"
+      content_hash: sha256:189db377ea7c7cafa2c6e9948f9be8dc318d5b159e0a9cbd337078ef12f0eede
+      transform: verbatim
+  - id: diagnose.039
+    kind: tag
+    blanks: 1
+    text: "<phase n=\"2\" name=\"점수·판정\">"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=2] > open"
+      content_hash: sha256:c32f62ea03c1b0004bfdd6d91559f55f080c8262796a2809880dd281e18b44e3
+      transform: verbatim
+  - id: diagnose.040
+    kind: paragraph
+    blanks: 0
+    text: "신호를 합산해 **AI 가능성**과 **신뢰도**를 산정한다(`<scoringRubric>`·`<fluencyTrap>`). 확정이 아니라 추정임을 유지한다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=2] > paragraph 1"
+      content_hash: sha256:fbd40bd876dc14e7e440603cd4756b4b8529e83180d3f4166404ef889fbd3111
+      transform: verbatim
+  - id: diagnose.041
+    kind: tag
+    blanks: 0
+    text: "</phase>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow/phase[n=2] > close"
+      content_hash: sha256:189db377ea7c7cafa2c6e9948f9be8dc318d5b159e0a9cbd337078ef12f0eede
+      transform: verbatim
+  - id: diagnose.042
+    kind: tag
+    blanks: 1
+    text: "</workflow>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "workflow > close"
+      content_hash: sha256:adeeaa6ac68a3cf2c62454eeff8b308a32d3a3a023adb7e989714a4cb54c253c
+      transform: verbatim
+  - id: diagnose.043
+    kind: tag
+    blanks: 1
+    text: "<fluencyTrap>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "fluencytrap > open"
+      content_hash: sha256:8bbe47454212d74389452478a83d7b225dd03915d1ced3e31a7bcec31dc88a2a
+      transform: verbatim
+  - id: diagnose.044
+    kind: paragraph
+    blanks: 0
+    text: "**유창성 함정(fluency trap) — 가장 중요한 원칙.** 매끄럽고 규범에 맞고 구조가 완결된 글일수록\n사람이 쓴 것처럼 *느껴지지만*, LLM 글은 바로 그 형식 차원(특히 **조직**)에서 사람만큼/더 높은 점수를 받는다.\nLREAD 연구에서 사람이 직관만으로 판별하면 정확도 60%·일치도 κ −0.09(우연 수준)에 그쳤고, LLM을\n사람으로 오판하는 false-negative가 많았다. 따라서:"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "fluencytrap > bold label **유창성 함정(fluency trap) — 가장 중요한 원칙.**"
+      content_hash: sha256:eb9d6a5192e9f45da51500b55dcfb8e8011cc7c5b8e17a254fab64ec7a62e9e1
+      transform: verbatim
+  - id: diagnose.045
+    kind: item
+    blanks: 1
+    text: "- **표면 유창성·구조 완결성을 '사람' 증거로 쓰지 않는다.** 오히려 _지나친_ 정형성·완결성은 AI 의심 신호다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "fluencytrap > item **표면 유창성·구조 완결성을 '사람' 증거로 쓰지 않는다.**"
+      content_hash: sha256:7cc915327ea6456422b0e94be923ddf337ca7bb2fa27f235ace7acc7388ba6d1
+      transform: verbatim
+  - id: diagnose.046
+    kind: item
+    blanks: 0
+    text: "- 판별의 무게는 **표현(번역투·과규범화·register)·내용(창의성·발달적 비정형성)·페르소나 충실도**에 둔다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "fluencytrap > item 2"
+      content_hash: sha256:d71359877a7a5857dd4f0f4020889b8a6ea6455735d08f271415cef937c4295d
+      transform: verbatim
+  - id: diagnose.047
+    kind: item
+    blanks: 0
+    text: "- 사람 글은 변이가 크다 — 국소적 창의성, 비정형 실현, (학생 글이라면) 발달 수준에 맞는 불규칙성. 이 *부재*가 단서다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "fluencytrap > item 3"
+      content_hash: sha256:9143bfe0da9fa5169134ac34c9adc34e8c9c704c7ab0cb711f053d93b156901e
+      transform: verbatim
+  - id: diagnose.048
+    kind: tag
+    blanks: 0
+    text: "</fluencyTrap>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "fluencytrap > close"
+      content_hash: sha256:bedb2813e6013f9fb2ac3e593768cf95aa9244c360e4b8a4ca3a3003ca46a510
+      transform: verbatim
+  - id: diagnose.049
+    kind: tag
+    blanks: 1
+    text: "<scoringRubric>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > open"
+      content_hash: sha256:b8a312591b22baf999a11624d72d79eb6fa9cba3e642cf50564a55ff6200c8d7
+      transform: verbatim
+  - id: diagnose.050
+    kind: paragraph
+    blanks: 0
+    text: "신호를 종합한 휴리스틱 추정이다. 정확한 알고리즘이 아니라 판단 기준이다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > paragraph 1"
+      content_hash: sha256:5cc887f6e609a6fa5847b3efa0ae1dbb2aac867f2f75caaee45c82aaa1a923ed
+      transform: verbatim
+  - id: diagnose.051
+    kind: table-header
+    blanks: 1
+    text: "| AI 가능성 | 기준                                                                                                                                                  |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > table header \"AI 가능성\""
+      content_hash: sha256:63cf8ccc06ae29f70fe23ed8e307dc2abc96df53b55ab2ffee9771092e0e8b3b
+      transform: verbatim
+  - id: diagnose.052
+    kind: table-sep
+    blanks: 0
+    text: "| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > table separator"
+      content_hash: sha256:cf6e88a110e67d4dcc632c1ad901326e2f9349cb1ac64f02611d447c66640184
+      transform: verbatim
+  - id: diagnose.053
+    kind: row
+    blanks: 0
+    text: "| **높음**  | 심각도 '강' 신호 여러 건 + 쉼표 과용·다양성 저하 등 정량 신호 다수 일치 + 번역투·과규범화가 보이는데 **창의성·비정형성은 거의 없음**(형식만 매끄러움) |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > row \"**높음**\""
+      content_hash: sha256:321ea8c68b5a26ebfc9646415496d3f92ce0f53ccfa97249c374b246dee74b04
+      transform: verbatim
+  - id: diagnose.054
+    kind: row
+    blanks: 0
+    text: "| **중간**  | 강 신호 1~2건 또는 중 신호가 여럿이나 정량 신호는 약함. 창의성·비정형성 단서가 일부 존재                                                              |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > row \"**중간**\""
+      content_hash: sha256:1a407e16c681c1d3029fa021f510768fe658c722f0ee91e59b10935bf4df84b9
+      transform: verbatim
+  - id: diagnose.055
+    kind: row
+    blanks: 0
+    text: "| **낮음**  | 뚜렷한 신호가 거의 없고, 국소적 창의성·자연스러운 변이·페르소나 정합성이 보임                                                                         |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > row \"**낮음**\""
+      content_hash: sha256:dac990ccd3ef261885cd5ce64196e06b776eb8e07837fc7874b64cd0f6d7cd15
+      transform: verbatim
+  - id: diagnose.056
+    kind: quote
+    blanks: 1
+    text: "> 형식 점수(유창성·구조 완결성)는 **그 자체로 사람 증거가 아니다**(`<fluencyTrap>`)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > quote 1"
+      content_hash: sha256:98d434ce12d2a3626554989e08d050423a7fbfd3ce9ea1221ae5ba44a1ddfad2
+      transform: verbatim
+  - id: diagnose.057
+    kind: paragraph
+    blanks: 1
+    text: "**신뢰도 보정** — 아래에 해당하면 신뢰도를 낮춘다:"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > bold label **신뢰도 보정**"
+      content_hash: sha256:3c81830c3b48aca5ab9b580b0db67ba2b35433552001d086d34b72b88437a78a
+      transform: verbatim
+  - id: diagnose.058
+    kind: item
+    blanks: 1
+    text: "- **짧은 문어체 텍스트**(대략 300자 미만) — 신호 표본이 부족. **단문 모드에는 적용하지 않는다** —\n  단문은 Phase 1-S의 전용 신호축(XDAC)으로 판정하며, 길이 자체는 감점 사유가 아니다. 대신 **최소 증거\n  기준**을 쓴다 — 서로 다른 신호축이 2개 미만이면 신뢰도를 '낮음'으로 묶는다. 단문 축은 개별로는 약해서\n  하나만으로는 격식 있게 쓴 사람 댓글과 구분되지 않는다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > item **짧은 문어체 텍스트**"
+      content_hash: sha256:5c37ffce9b6eb1115b108b3eb3a21751de66ee13a2940e158f8e1afb510ae6d5
+      transform: verbatim
+  - id: diagnose.059
+    kind: item
+    blanks: 0
+    text: "- **이미 사람이 손본 글** — 편집된 LLM 텍스트는 신호가 옅어짐."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > item **이미 사람이 손본 글**"
+      content_hash: sha256:a28552143a1a9aed1bd9814657f5ab630ad7ca51520a2d38e90d85f00053e6a7
+      transform: verbatim
+  - id: diagnose.060
+    kind: item
+    blanks: 0
+    text: "- **창작·시 장르** — 연구에서도 판별이 가장 어려웠던 영역(시 평균 정확도가 가장 낮음)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > item **창작·시 장르**"
+      content_hash: sha256:66da165f47593d06ca36d3b72bb2b91fbc20bc9129ecf5d053246b2caf7d4f98
+      transform: verbatim
+  - id: diagnose.061
+    kind: item
+    blanks: 0
+    text: "- **격식 보고·정형 문서** — 사람이 써도 정형성이 높아 _위양성_(사람 글을 AI로 오판) 위험."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > item **격식 보고·정형 문서**"
+      content_hash: sha256:165fa46232865c26f663891dea0eebbe5c5887c2384413c902f2f102108a6bd4
+      transform: verbatim
+  - id: diagnose.062
+    kind: item
+    blanks: 0
+    text: "- **장르 불일치** — LREAD 루브릭은 논증 에세이(초·중·고) 기준이므로 다른 장르엔 가중치를 조정해 적용."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > item **장르 불일치**"
+      content_hash: sha256:0a028be3936cc0da99daca670b2f411a2116168c0e71634bae2ec2ef627a715e
+      transform: verbatim
+  - id: diagnose.063
+    kind: tag
+    blanks: 0
+    text: "</scoringRubric>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "scoringrubric > close"
+      content_hash: sha256:5501c1f6db7e00b5218d1ef52fd8e014362c8fc38d3b540ec0d5ea28332db8ff
+      transform: verbatim
+  - id: diagnose.064
+    kind: tag
+    blanks: 1
+    text: "<outputFormat>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > open"
+      content_hash: sha256:6912efce9b269502237fed531b77de7407506f6e43d1b83b6278d0f77000963d
+      transform: verbatim
+  - id: diagnose.065
+    kind: item
+    blanks: 0
+    text: "1. **한 줄 판정** — `AI 가능성: {높음|중간|낮음} / 신뢰도: {높음|중간|낮음} / 번역문 가능성: {높음|중간|낮음} / 장르: {추정 장르}`\n   번역문 가능성은 카테고리 1·2·6(번역투)에 더해 **시제·서법 직역**(`~해 왔다`·`~하고 있는 중`)과\n   **문두 접속어 명시화 과잉**까지 함께 보고 판정한다. 시제·서법 직역은 humanize 분류에 없어서, 빠뜨리면\n   그것이 주된 신호인 번역문이 실제보다 낮게 나온다. 반면 문두 접속어는 카테고리 4(접속사·연결어 남발)에도\n   있으므로 **같은 문장을 두 축에 이중 계상하지 않는다** — AI 가능성에 이미 셌다면 번역문 가능성에서는\n   보조 신호로만 본다. **번역문 가능성과 장르**는 `polish-all` 파이프라인의 라우팅 입력이므로 단독\n   실행에서도 항상 채운다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > item **한 줄 판정**"
+      content_hash: sha256:ac08e7361b21a58b5fca929cbcc5d5ea7361769a615e009880501e8f7ad14603
+      transform: verbatim
+  - id: diagnose.066
+    kind: item
+    blanks: 0
+    text: "2. **근거 요약** — 어떤 신호가 강하게 나왔는지."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > item **근거 요약**"
+      content_hash: sha256:8c56b8401f3a0b7e395641555c1bf056cedbc5f42082b53757e94656c15ac400
+      transform: verbatim
+  - id: diagnose.067
+    kind: item
+    blanks: 0
+    text: "3. **신호 표**"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > item **신호 표**"
+      content_hash: sha256:3754e24fdb78a1ca25e05d83eee51820b8fbad6f4b37a0a81951b53f5112b997
+      transform: verbatim
+  - id: diagnose.068
+    kind: table-header
+    blanks: 1
+    text: "| 신호                                    | 정도          |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > table header \"신호\""
+      content_hash: sha256:e239bd5bd9b1a3b86d6a4c93526fcd663071e9a58bdc38e729e2add1ffc0bd08
+      transform: verbatim
+  - id: diagnose.069
+    kind: table-sep
+    blanks: 0
+    text: "| --------------------------------------- | ------------- |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > table separator"
+      content_hash: sha256:4fc788153253165c8170bc4c446ceb2251b4ad948c9054166860420cbb64957e
+      transform: verbatim
+  - id: diagnose.070
+    kind: row
+    blanks: 0
+    text: "| 쉼표 과용(연결어미 뒤)                  | 강함          |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > row \"쉼표 과용(연결어미 뒤)\""
+      content_hash: sha256:648adbf5052456e13e7d8e7592ee61de9314a2f3fb1be2cd2d0025e7ba8d03d0
+      transform: verbatim
+  - id: diagnose.071
+    kind: row
+    blanks: 0
+    text: "| 번역투(카테고리 1·2·6)                  | 보통          |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > row \"번역투(카테고리 1·2·6)\""
+      content_hash: sha256:c7ab73c915606b8061f4bfa2df2981b6ac3a7f9c8b4f09a15d9f870c528e5fe1
+      transform: verbatim
+  - id: diagnose.072
+    kind: row
+    blanks: 0
+    text: "| 과소 서술·개조식(카테고리 11, 보조)     | 약함          |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > row \"과소 서술·개조식(카테고리 11, 보조)\""
+      content_hash: sha256:29a3fb7cd027fb15c2ce2761564470fc2f96e73805741b560c504221f2ff753f
+      transform: verbatim
+  - id: diagnose.073
+    kind: row
+    blanks: 0
+    text: "| POS·구조 다양성                         | 낮음(반복적)  |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > row \"POS·구조 다양성\""
+      content_hash: sha256:dd787e3dfb9d432dd1949c022eeb002cbf88eb66f8200f3dc9a38bbff3c4a484
+      transform: verbatim
+  - id: diagnose.074
+    kind: row
+    blanks: 0
+    text: "| 창의성·비정형성                         | 거의 없음     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > row \"창의성·비정형성\""
+      content_hash: sha256:7f16ac6e23fddff863fc9272bc377cfc98f697347fea83f8d5e78faee21ea466
+      transform: verbatim
+  - id: diagnose.075
+    kind: row
+    blanks: 0
+    text: "| register 안정성                         | 과도하게 일정 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > row \"register 안정성\""
+      content_hash: sha256:8a4d0a7183b51cb48dfdd54c2694856ae0fdb666226d67dbc584174762af3a57
+      transform: verbatim
+  - id: diagnose.076
+    kind: row
+    blanks: 0
+    text: "| (형식 완결성은 사람 증거 아님 — 참고만) | 높음          |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > row \"(형식 완결성은 사람 증거 아님 — 참고만)\""
+      content_hash: sha256:6d2590ca40b47ef087810e514fdf77eedd328f2add53444eab7a24b6c9a80ae3
+      transform: verbatim
+  - id: diagnose.077
+    kind: paragraph
+    blanks: 1
+    text: "단문 모드면 '포맷팅·반복문자 결핍', '격식·중립 과다' 행을 추가한다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > paragraph 1"
+      content_hash: sha256:ce0795f0ca16e7e45114da7cf5d006decb9a156a5105a173dcbb3b852395f55f
+      transform: verbatim
+  - id: diagnose.078
+    kind: item
+    blanks: 1
+    text: "4. **의심 구간 하이라이트** — AI 티가 짙은 문장을 이유와 함께. 뚜렷한 구간이 없으면 없다고 적는다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > item **의심 구간 하이라이트**"
+      content_hash: sha256:d6ba99aaaf99fa0ec4eb8985db4f6b104e6f0ce6ddd5d7f0acb62e685a09ea2d
+      transform: verbatim
+  - id: diagnose.079
+    kind: item
+    blanks: 0
+    text: "5. (선택) \"사람 글처럼 다듬으려면 **humanize** 스킬로 윤문할 수 있다\" 안내."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > item 5"
+      content_hash: sha256:a5756f1b463dd22511b9cc84d35035af110f7b3158746a24496700bfdbd0dd88
+      transform: verbatim
+  - id: diagnose.080
+    kind: tag
+    blanks: 0
+    text: "</outputFormat>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outputformat > close"
+      content_hash: sha256:a1c32b607a161409867c9d91e067bfcb82a9ad5a2a931e7c11cbed880598c2e1
+      transform: verbatim
+  - id: diagnose.081
+    kind: tag
+    blanks: 1
+    text: "<cautions>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "cautions > open"
+      content_hash: sha256:eb14c29f12858eaae7d87337804f874da249afaff258d0d47544fe48ddae8a18
+      transform: verbatim
+  - id: diagnose.082
+    kind: paragraph
+    blanks: 0
+    text: "**단정하지 말 것.**"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "cautions > bold label **단정하지 말 것.**"
+      content_hash: sha256:9ad618a6bc2ca07ffb7ce608ca1af59d7e40dd110e5f4e7cb691586202394fe8
+      transform: verbatim
+  - id: diagnose.083
+    kind: item
+    blanks: 1
+    text: "- 이 판별은 **확률적 추정**이다. \"AI가 썼다\"고 단정하지 말고 \"AI 티 신호가 강하다/약하다\"로 표현한다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "cautions > item 1"
+      content_hash: sha256:71fafca4c43cb026bd9887de8d88eebc3a9189bef776477634d0f33d980cf3d9
+      transform: verbatim
+  - id: diagnose.084
+    kind: item
+    blanks: 0
+    text: "- **유창성 함정**(`<fluencyTrap>`)을 기억한다 — 매끄럽다고 사람, 어설프다고 AI가 아니다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "cautions > item **유창성 함정**"
+      content_hash: sha256:05958388d883e82406a99325bdff66f48accdb064145eae951a3674b729cac7d
+      transform: verbatim
+  - id: diagnose.085
+    kind: item
+    blanks: 0
+    text: "- 사람도 번역투·상투어·쉼표 습관을 쓸 수 있다. **위양성**을 항상 경계한다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "cautions > item 3"
+      content_hash: sha256:8e6cff75953c8a40690c3d2496998bc2a96f834d6211155c9e62dc01b692334b
+      transform: verbatim
+  - id: diagnose.086
+    kind: item
+    blanks: 0
+    text: "- **경동사·대동사 군더더기('~을 실시/수행/진행하다')는 약한 신호다** — 격식·보도·공문서체 사람 글에도 매우 흔하다(공공언어 가이드가 _사람의_ 과용을 교정하려 존재). 학술 1차 근거도 없고 실무·규범 처방 기반이다. **단독으로 'AI'라 판정하지 말 것** — 다축이 겹칠 때만 가산."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "cautions > item **경동사·대동사 군더더기('~을 실시/수행/진행하다')는 약한 신호다**"
+      content_hash: sha256:d6cb97057f236dc092343dd4a1da5d75511524179a8a9ec86348417f190d5aff
+      transform: verbatim
+  - id: diagnose.087
+    kind: item
+    blanks: 0
+    text: "- **단문/SNS 축(Phase 1-S)은 단문·구어체에만** 적용한다. 문어체에 \"반복문자 없으니 AI\"를 들이대면 위양성이다(장르 게이트 필수)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "cautions > item **단문/SNS 축(Phase 1-S)은 단문·구어체에만**"
+      content_hash: sha256:e0a93f44621d5ba9fa7f845a44f6cca501460f638eb77908f2ba1a4600168467
+      transform: verbatim
+  - id: diagnose.088
+    kind: item
+    blanks: 0
+    text: "- **이모지 유무로 판단 금지** — 사람·AI 모두 이모지를 쓴다. 신호는 사용의 *획일성/표준화 정도*지 유무가 아니다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "cautions > item **이모지 유무로 판단 금지**"
+      content_hash: sha256:435b6c1d897865b40f13c1fa7dc6d40e2e0a9c81e25aef587cae4ce82e8e6b52
+      transform: verbatim
+  - id: diagnose.089
+    kind: item
+    blanks: 0
+    text: "- 표절·부정행위·학사 징계 등 **불이익 판정의 단독 근거로 쓰지 않는다**. 보조 참고 자료일 뿐이다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "cautions > item 7"
+      content_hash: sha256:b5d50aa446208b1a3bdc37e934dc9a841185c779c135d43972598047524a7ad4
+      transform: verbatim
+  - id: diagnose.090
+    kind: item
+    blanks: 0
+    text: "- 탐지기를 속이기 위한 용도가 아니다(그건 윤문의 목적도 아니다)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "cautions > item 8"
+      content_hash: sha256:e29bf40e8ffa80bfe54d87c764446d3a688b37077d7662a8564727ffa776e147
+      transform: verbatim
+  - id: diagnose.091
+    kind: tag
+    blanks: 0
+    text: "</cautions>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "cautions > close"
+      content_hash: sha256:532cb543f76907372ff17f504f87baa5fd81b12afda6403fb822aad55f720c7d
+      transform: verbatim
+  - id: diagnose.092
+    kind: tag
+    blanks: 1
+    text: "<outOfScope>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outofscope > open"
+      content_hash: sha256:c6a9b4d940f0548a6c8ea32ffa453df54e5e69561b5205b128052a121f0dc1f2
+      transform: verbatim
+  - id: diagnose.093
+    kind: item
+    blanks: 0
+    text: "- 글을 사람처럼 고쳐쓰기 → **humanize** 스킬(윤문)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outofscope > item 1"
+      content_hash: sha256:3044ee497a77e1555b4ca2c60e450f93afb743a8f70b23dd8898125b1413ea17
+      transform: verbatim
+  - id: diagnose.094
+    kind: item
+    blanks: 0
+    text: "- 맞춤법·오탈자 교정, 번역, 사실 검증(팩트체크)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outofscope > item 2"
+      content_hash: sha256:fb4d4404949884b3034cd64bcbe4fe0f47de71660216c95804166b43b32b07db
+      transform: verbatim
+  - id: diagnose.095
+    kind: tag
+    blanks: 0
+    text: "</outOfScope>"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/SKILL.md
+      anchor: "outofscope > close"
+      content_hash: sha256:f9edd01d4581668041a50e422eee6de8d4471fb25448d99ff2ddce04d35350ac
+      transform: verbatim
+excluded:
+  - path: skills/detect/SKILL.md
+    anchor: "frontmatter"
+    reason: "name/description are ours (assemble/skills/ko-diagnose.md)"
+  - path: skills/detect/SKILL.md
+    anchor: "# 윤문 탐지(detect) — AI 한글 글 판별"
+    reason: "title is ours"

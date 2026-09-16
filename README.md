@@ -2,9 +2,21 @@
 
 코딩 에이전트의 한국어를 믿을 수 있게 만드는 툴킷입니다. 이미 있는 한국어 품질 upstream 넷([fluent-korean](https://github.com/snflkd/fluent-korean), [im-not-ai](https://github.com/epoko77-ai/im-not-ai), [yoonmoon](https://github.com/amondnet/yoonmoon), [korean-skills](https://github.com/DaleSeo/korean-skills))을 하나의 플러그인으로 묶어, 설치하면 사용자가 손대지 않아도 정책이 메인 대화와 서브에이전트 양쪽에 걸리고, 윤문·진단·맞춤법은 스킬로 부르며, 그 결과가 하네스 밖에 기록됩니다. Claude Code와 Codex를 대상으로 합니다.
 
-> 아직 설계 단계입니다. 아래 그림은 설계 스펙(06) 기준이고 구현 전입니다. 진행 상태와 설계 기록은 [`design/README.md`](design/README.md)에 있습니다.
+> 시대 01(툴킷)이 지어져 `master`에 있습니다. Claude Code 쪽은 설치·정책 주입·스킬·서브에이전트·로거까지 실측으로 확인했고, Codex 쪽은 스킬과 메인 스레드 정책, 설치기까지 확인했습니다. Codex의 커스텀 에이전트 호출과 로거는 아직 확인하지 못했습니다(재시험은 미뤄 두었습니다). 아래 그림은 설계 스펙(06) 기준이라 지어진 결과와 다른 곳이 있습니다 — 플러그인은 프로파일마다 하나씩입니다. 진행 상태와 설계 기록은 [`design/README.md`](design/README.md)에 있습니다.
 
 **원칙 둘.** upstream 문장은 그들의 것이고 형식만 우리의 것입니다. 문장을 고치지 않고 역할별 규격으로 정규화하며 출처를 답니다. 효과의 검증은 다음 단계의 일이고, 지금은 재료만 남깁니다.
+
+## 설치
+
+프로파일마다 플러그인이 하나씩입니다. **둘 중 하나만 켭니다** — 강제 출력 스타일은 먼저 로드된 하나만 적용됩니다.
+
+| 프로파일 | 플러그인 | 정책 | 쓰임 |
+|---|---|---|---|
+| `agent-reply` | `ko-quality` | fluent-korean 코딩판 | 에이전트가 사용자에게 하는 보고·설명 |
+| `formal-report` | `ko-quality-formal` | fluent-korean 비코딩판 + 존대 블록 | 사용자에게 전달되는 문서 |
+
+- Claude Code: [`dist/claude-code/README.md`](dist/claude-code/README.md) — 로컬 마켓플레이스 등록 후 `claude plugin install`
+- Codex: [`dist/agent-plugin/README.md`](dist/agent-plugin/README.md) — 플러그인 설치 후 `install/ko_quality_codex.py install` (정책 절과 에이전트 파일은 플러그인이 나르지 못합니다)
 
 ## 사용자가 할 수 있는 것
 
@@ -65,7 +77,7 @@
 | 서브에이전트 | `agents/<name>.md` 본문 | `.codex/agents/<name>.toml`의 `developer_instructions` |
 | 스킬 | `skills/<name>/SKILL.md` — 양쪽 바이트 동일 | 같음 |
 | 로거 | 플러그인 `hooks/hooks.json` | 플러그인 번들 (사용자 신뢰 검토 필요) |
-| 보조 채널 | — | MCP 서버 `instructions` (둘지 미정) |
+| 보조 채널 | — | 없음 — tool 없는 MCP 서버는 싣지 않기로 했습니다 (P6·P7) |
 
 ## 보장하지 않는 것
 
@@ -74,6 +86,21 @@
 - **프리셋 순서는 권고다.** ko-route가 모델에게 지시할 뿐 실행 순서를 강제하지 못한다.
 - **sub-to-sub는 구조로 보장되지 않는다.** 서브에이전트가 또 띄우는 에이전트에 정책을 넘기는 것은 여전히 모델의 몫이고, 로거도 그 경로를 가리지 못한다.
 - **force-for-plugin은 먼저 로드된 플러그인이 이긴다.** 다른 강제 스타일 플러그인이 있으면 우리 정책이 밀릴 수 있다.
+- **Codex에서 이름 붙은 서브에이전트 호출은 불안정하다.** 0.154.0 실측에서 위임 6회 중 1회만 `korean-reviewer`에 닿았고, 프로젝트 범위 에이전트는 도구로 제시되지 않았다. 정책 자체는 `AGENTS.md` 절로 메인과 서브에이전트에 닿는다.
+- **Codex 로거는 아직 실측되지 않았다.** 레코드가 실제로 쌓이는지, hook 명령이 쓰는 `CLAUDE_PLUGIN_ROOT`가 Codex에서 설정되는지 확인하지 못했다(재시험은 미뤄 둠).
+
+## 의존하는 upstream
+
+문장은 전부 아래 네 프로젝트의 것입니다. ko-quality는 이들을 고정된 커밋에서 받아와 역할별 규격으로 정규화하고, 조각마다 출처를 답니다. 문장을 고치지 않고, 두 taxonomy를 한 컨텍스트에 올리지 않습니다.
+
+| 프로젝트 | 역할 | 가져오는 것 | 라이선스 | 고정 커밋 |
+|---|---|---|---|---|
+| [snflkd/fluent-korean](https://github.com/snflkd/fluent-korean) | `policy` — 생성 시점 정책 | 출력 스타일 본문 2종(coding / not-coding)과 README의 선택 블록 7종 | MIT | `ce8683f` |
+| [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) | `procedure.rewrite`, `taxonomy.rewrite` — 윤문 | 절차와 철칙, AI 티 분류 체계(10대 분류, upstream 85 패턴 중 생성기가 고른 61개) | MIT | `9747f03` |
+| [amondnet/yoonmoon](https://github.com/amondnet/yoonmoon) | `procedure.diagnose`, `taxonomy.diagnose` — 진단 | detect 절차(수정 없이 신호 보고), 11대 분류 | MIT | `c888531` |
+| [DaleSeo/korean-skills](https://github.com/DaleSeo/korean-skills) | `procedure.grammar` — 맞춤법·띄어쓰기 | grammar-checker 절차 | MIT | `ae12ba2` |
+
+정확한 커밋·확인일은 [`upstream/lock.yaml`](upstream/lock.yaml)에 있습니다. 원본은 저장소에 커밋하지 않고(`upstream/.cache/`), 정규화 산출물(`upstream/normalized/`)만 커밋합니다. 검증 단계에서 결정론 규칙(`ruleset`) 공급자가 더해질 수 있습니다.
 
 ## 저장소
 
@@ -84,7 +111,8 @@ ko-quality/
 ├── assemble/   우리의 것. 프로파일·프리셋·에이전트·스킬 템플릿
 ├── build/ dist/  만들어진 것
 ├── server/ logger/
-└── CLAUDE.md   에이전트 규칙. 상태 없음
+├── AGENTS.md   에이전트 규칙. 상태 없음. Codex는 직접, Claude Code는 CLAUDE.md의 import로 읽음
+└── CLAUDE.md   `@AGENTS.md` 한 줄
 ```
 
 같은 그림을 한 페이지로 본 것: [`design/01-toolkit/3-spec/prompt-flow.html`](design/01-toolkit/3-spec/prompt-flow.html).

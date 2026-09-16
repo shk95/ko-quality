@@ -1,0 +1,1672 @@
+# Temporary format (P1 shape, used unchanged in P2 — flow.md). Schema is derived in P4. Text values are exact upstream bytes.
+role: taxonomy
+slot: diagnose
+fragments:
+  - id: diagnose.001
+    kind: paragraph
+    blanks: 1
+    text: "AI(ChatGPT·Claude·Gemini 등)가 쓴 한글 텍스트에서 반복적으로 나타나는 \"AI 티\"를 11대 카테고리로\n정리한 탐지 기준이다. 각 항목은 **정의 · 패턴/예시 · 심각도 · 보존 주의**로 구성된다.\n1~10번은 말이 **넘쳐서** 생기는 티이고, 11번은 말이 **모자라서** 생기는 티다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "# 윤문 AI 티 분류 (humanize AI-tell taxonomy) > paragraph 1"
+      content_hash: sha256:d8f53c064b1305b767b6b1f6c82181aa89270d58377b1085651b7187a4cd02fb
+      transform: verbatim
+  - id: diagnose.002
+    kind: heading
+    blanks: 1
+    text: "## 심각도 등급"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 심각도 등급"
+      content_hash: sha256:7ecc88c29b3349a21b1aed2f805177de55a2c31ac9becb01bd8511006c5b54b9
+      transform: verbatim
+  - id: diagnose.003
+    kind: table-header
+    blanks: 1
+    text: "| 등급   | 의미                                           | 처리                     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 심각도 등급 > table header \"등급\""
+      content_hash: sha256:b15b4f4ef3a36c0cf7fb4c6922a94f2362705aeebe50b989891700d0fb5e0aa7
+      transform: verbatim
+  - id: diagnose.004
+    kind: table-sep
+    blanks: 0
+    text: "| ------ | ---------------------------------------------- | ------------------------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 심각도 등급 > table separator"
+      content_hash: sha256:99f38b4154b36e96374065bcab2997e0df9f387386f4d2a1092b5e968a2e66f2
+      transform: verbatim
+  - id: diagnose.005
+    kind: row
+    blanks: 0
+    text: "| **강** | 한 번만 나와도 AI 티가 뚜렷함                  | 원칙적으로 모두 제거     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 심각도 등급 > row \"**강**\""
+      content_hash: sha256:bf11992fd1042e72845ee27ca839dbd5095d4004c376428d341144c5b1ee7792
+      transform: verbatim
+  - id: diagnose.006
+    kind: row
+    blanks: 0
+    text: "| **중** | 1~2회는 자연스러우나 반복되면 티가 남          | 문서당 3회 이상이면 제거 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 심각도 등급 > row \"**중**\""
+      content_hash: sha256:8fecd5655b54cbcd67545463eba431ab88dbc9c6d72ff0b68194ce783fbc2466
+      transform: verbatim
+  - id: diagnose.007
+    kind: row
+    blanks: 0
+    text: "| **약** | 단독으로는 문제없고 다른 패턴과 겹칠 때만 부각 | 중첩 시에만 손봄         |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 심각도 등급 > row \"**약**\""
+      content_hash: sha256:9bbc982776f2edf012caf50e6bb2289422abcfa994fb1196ba96eeb4a5b67e49
+      transform: verbatim
+  - id: diagnose.008
+    kind: paragraph
+    blanks: 1
+    text: "심각도는 **장르·문맥에 따라 조정**한다. 예: 불릿·이모지는 블로그에서는 약, 공식문서·리포트에서는 강."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 심각도 등급 > paragraph 1"
+      content_hash: sha256:ebe8b0a48ac08260b343398ef5033122fa288aa99431c91fc76cf4fef90df377
+      transform: verbatim
+  - id: diagnose.023
+    kind: heading
+    blanks: 1
+    text: "## 1. 번역투"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투"
+      content_hash: sha256:129aa3d64e07e5d885247323ae743e9199a0513c8c321ad2013acf13d0b5793c
+      transform: verbatim
+  - id: diagnose.024
+    kind: paragraph
+    blanks: 1
+    text: "영어·일본어 구문을 그대로 옮긴 듯한 어색한 구조. AI 글의 가장 흔한 티."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > paragraph 1"
+      content_hash: sha256:ab3b40e5911cb7dad102933bfe1c19a81f801bd1d194d5b6aba00734d580e409
+      transform: verbatim
+  - id: diagnose.025
+    kind: table-header
+    blanks: 1
+    text: "| 패턴                            | 예시 (티 → 자연)                                                  | 심각도 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > table header \"패턴\""
+      content_hash: sha256:5f858abf3eda3a88f4492d47f9c15f525b01a279962eb58d86e139c0c0926fc3
+      transform: verbatim
+  - id: diagnose.026
+    kind: table-sep
+    blanks: 0
+    text: "| ------------------------------- | ----------------------------------------------------------------- | ------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > table separator"
+      content_hash: sha256:9b65d031b6dae18e5a8f28509e26264ff16951f4ff951e957e050b3af70b8bed
+      transform: verbatim
+  - id: diagnose.027
+    kind: row
+    blanks: 0
+    text: "| `~에 대해/~에 관해` 남용        | 환경 문제에 대해 논의한다 → 환경 문제를 논의한다                  | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > row \"`~에 대해/~에 관해` 남용\""
+      content_hash: sha256:be693625145de0a8cc8624b2fffa65ad9064a868e3be5dff94d0d57780ac57ca
+      transform: verbatim
+  - id: diagnose.028
+    kind: row
+    blanks: 0
+    text: "| `~을 통해/~를 통하여` 경로 도식 | 교육을 통해 성장한다 → 교육으로 성장한다 / 교육받으며 성장한다    | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > row \"`~을 통해/~를 통하여` 경로 도식\""
+      content_hash: sha256:4b75f87dcd5e30923f2666b46d0ec2a878b6318447fbc9da249af547f4f890a6
+      transform: verbatim
+  - id: diagnose.029
+    kind: row
+    blanks: 0
+    text: "| 무생물 주어 + 타동사            | 이 연구는 ~을 보여준다 → 이 연구로 ~을 알 수 있다                 | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > row \"무생물 주어 + 타동사\""
+      content_hash: sha256:6e11df77a8a296a0644729b74cfc1ca4f2542709cf9eef9992b725eccb9dccef
+      transform: verbatim
+  - id: diagnose.030
+    kind: row
+    blanks: 0
+    text: "| 직역 대명사 `그/그녀/그것/그들` | 그것은 중요하다. 그들은… → (반복 대명사 생략 또는 지시 대상 명시) | 강     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > row \"직역 대명사 `그/그녀/그것/그들`\""
+      content_hash: sha256:4bc07b25f84263a684052a27166555bed4c9e248918184e17ea726166e9c34fd
+      transform: verbatim
+  - id: diagnose.031
+    kind: row
+    blanks: 0
+    text: "| `가지다/갖다` 직역(have)        | 중요성을 가진다 → 중요하다                                        | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > row \"`가지다/갖다` 직역(have)\""
+      content_hash: sha256:3620be25be3a412a49af8b84a6e9dfea918aec711ae5ed3b84ce8f3b67f5f45c
+      transform: verbatim
+  - id: diagnose.032
+    kind: row
+    blanks: 0
+    text: "| `~중 하나` (one of the)         | 가장 중요한 요소 중 하나 → 특히 중요한 요소                       | 약     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > row \"`~중 하나` (one of the)\""
+      content_hash: sha256:f79cbf6f9d2c36ec7529321a59cd393fa3674639b76f052aef18baf9e05fb0b2
+      transform: verbatim
+  - id: diagnose.033
+    kind: row
+    blanks: 0
+    text: "| 무생물 복수 `-들`               | 정보들·문제들·결과들 → 정보·문제·결과                             | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > row \"무생물 복수 `-들`\""
+      content_hash: sha256:b444c1609f9aec33554ce1992acbf7aba2371f86f72fb29abc8b8c965e19b812
+      transform: verbatim
+  - id: diagnose.034
+    kind: row
+    blanks: 0
+    text: "| 우향 분기 관계절 중첩           | ~하는, ~인, ~한 X → 절을 끊어 문장 분할                           | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > row \"우향 분기 관계절 중첩\""
+      content_hash: sha256:e2b806d852f17ac317cdd3d4e525d884832005a1dbdc9096e47e9722429caf7e
+      transform: verbatim
+  - id: diagnose.035
+    kind: quote
+    blanks: 1
+    text: "> **근거:** 한국 번역학은 직역 대명사·무생물 복수 '-들'·무생물 주어를 영한 번역투의 핵심 유형으로 분류한다\n> (김도훈 2009; 이영옥 2001; 최서영 2022). 이론적으로는 Toury(1995)의 간섭 법칙·Baker(1996)의 명시화로 설명되며,\n> Toral(2019)은 MT/AI 산출물에서 이 번역투가 오히려 *악화*됨을 보였다. **관형절 중첩·긴 전치수식**도 영한 번역문의\n> 대표 문제로, 영어 어순 모사·관형격 '의' 반복·다중 내포가 용인성·가독성을 떨어뜨린다(김혜영 2011; 성승은 2011 —\n> 번역서가 비번역서보다 관형절이 더 김). 단 좌분지는 한국어의 **정상** 특징이므로 '개수·길이'가 아니라 **번역투\n> 구조**일 때만 손본다(과교정 금지) → [`translationese-research.md`](../../translate-polish/references/translationese-research.md)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > quote 1"
+      content_hash: sha256:0b80b64797212bd4d42e31be94186de109722b1fd247ef64d0c4afb433bc685a
+      transform: verbatim
+  - id: diagnose.036
+    kind: paragraph
+    blanks: 1
+    text: "**주의:** 직역 대명사라도 인물 인용·대화에서 꼭 필요한 경우는 보존. \"그\"가 특정 인물을 명확히 가리키며\n생략 시 모호해지면 유지."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > bold label **주의:**"
+      content_hash: sha256:ac30b5a5ddb3fe59e08937a58cea652a68694f0e2fb05a64eedc00df74e0ebd9
+      transform: verbatim
+  - id: diagnose.037
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 1. 번역투 > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: diagnose.038
+    kind: heading
+    blanks: 1
+    text: "## 2. 피동·사동 남용"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 2. 피동·사동 남용"
+      content_hash: sha256:41f4756078714392256886160a9e7e7320c8030f01c19982c50e17f96afe1c9d
+      transform: verbatim
+  - id: diagnose.039
+    kind: paragraph
+    blanks: 1
+    text: "영어 수동태의 잔재. 능동으로 바꾸면 대부분 또렷해진다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 2. 피동·사동 남용 > paragraph 1"
+      content_hash: sha256:2935d0c197e22b9d90c46864e2b4de5d3eb434e631feb0d76effec6255cfed81
+      transform: verbatim
+  - id: diagnose.040
+    kind: table-header
+    blanks: 1
+    text: "| 패턴                             | 예시 (티 → 자연)                                                                             | 심각도 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 2. 피동·사동 남용 > table header \"패턴\""
+      content_hash: sha256:a4e1f3b7b163b831795dbae0b39b26b710a7267a5465058dfb6080c1ff031420
+      transform: verbatim
+  - id: diagnose.041
+    kind: table-sep
+    blanks: 0
+    text: "| -------------------------------- | -------------------------------------------------------------------------------------------- | ------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 2. 피동·사동 남용 > table separator"
+      content_hash: sha256:edf469105c5b7d9536082d7427cb008009e2a6f9a4bf34f2184efeb3b9015289
+      transform: verbatim
+  - id: diagnose.042
+    kind: row
+    blanks: 0
+    text: "| 이중 피동                        | 되어진다 / 보여진다 / 생각되어진다 / 이루어지게 된다 → 된다 / 보인다 / 생각된다 / 이루어진다 | 강     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 2. 피동·사동 남용 > row \"이중 피동\""
+      content_hash: sha256:b9e0e57545fc1c975ff355c07048ce8afac958317a63ede6aff1c4bdda2e4253
+      transform: verbatim
+  - id: diagnose.043
+    kind: row
+    blanks: 0
+    text: "| `~에 의해` 수동                  | 전문가에 의해 작성되었다 → 전문가가 작성했다                                                 | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 2. 피동·사동 남용 > row \"`~에 의해` 수동\""
+      content_hash: sha256:43e4183551162bdd70ee0c0a04cd1d63c82efd857e7d207500b7b35786817af2
+      transform: verbatim
+  - id: diagnose.044
+    kind: row
+    blanks: 0
+    text: "| 불필요한 `~로 보여진다/여겨진다` | 효과적으로 보여진다 → 효과적이다 / 효과적으로 보인다                                         | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 2. 피동·사동 남용 > row \"불필요한 `~로 보여진다/여겨진다`\""
+      content_hash: sha256:d9124be59688f28fdc33e28767e454c18335437ac7e59c8772786f921bf979c4
+      transform: verbatim
+  - id: diagnose.045
+    kind: row
+    blanks: 0
+    text: "| 상태 피동 남발 `~되어 있다`      | 구성되어 있다(반복) → 구성된다 / ~이다                                                       | 약     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 2. 피동·사동 남용 > row \"상태 피동 남발 `~되어 있다`\""
+      content_hash: sha256:e791a8d99b9b2bc551417241321da7a026eb8602369fe5d653e94b358ca84098
+      transform: verbatim
+  - id: diagnose.046
+    kind: quote
+    blanks: 1
+    text: "> **근거:** 피동·이중피동 남용은 일한·영한 번역투의 대표 유형으로 보고된다(오경순 2010; 최유숙 2023).\n> 영-한 MT 품질평가는 이런 부자연성을 fluency 오류(\"Unnaturalness\")로 코딩한다(Park & Padó, LREC-COLING 2024)\n> → [`translationese-research.md`](../../translate-polish/references/translationese-research.md)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 2. 피동·사동 남용 > quote 1"
+      content_hash: sha256:c1ae4fca8b22c4bc466eccb7ee0e6e6e46676c486e877d89568a7312bd669cae
+      transform: verbatim
+  - id: diagnose.047
+    kind: paragraph
+    blanks: 1
+    text: "**주의:** 행위자가 불분명하거나 의도적으로 감추는 공식·법률 문체의 피동은 보존 가능\n(예: \"본 약관은 다음과 같이 정한다\"는 그대로)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 2. 피동·사동 남용 > bold label **주의:**"
+      content_hash: sha256:475b69d32d0a4d39dedeb05da496b39e013fb9e237e28b92fc482340d7573a08
+      transform: verbatim
+  - id: diagnose.048
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 2. 피동·사동 남용 > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: diagnose.049
+    kind: heading
+    blanks: 1
+    text: "## 3. 상투적 표현·hedging"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging"
+      content_hash: sha256:73e6a4c99eeb1637d5996330eb4825418866d0153a958b4c5cfbb22f166de955
+      transform: verbatim
+  - id: diagnose.050
+    kind: paragraph
+    blanks: 1
+    text: "내용 없이 자리만 채우는 정형구와 과도한 완충 표현, 홍보성 과장어."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging > paragraph 1"
+      content_hash: sha256:ac9e4e893cef6e9aaed8f528c46dd5cef1e39fc9ae13fe10537a83de78ccc25a
+      transform: verbatim
+  - id: diagnose.051
+    kind: table-header
+    blanks: 1
+    text: "| 패턴                    | 예시 (티 → 자연)                                                                         | 심각도 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging > table header \"패턴\""
+      content_hash: sha256:03f52005aa80379246bc2629b3ef03bf16d02e37d95a7848331be5291b2c52e5
+      transform: verbatim
+  - id: diagnose.052
+    kind: table-sep
+    blanks: 0
+    text: "| ----------------------- | ---------------------------------------------------------------------------------------- | ------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging > table separator"
+      content_hash: sha256:1643f79ec653ea259ae466e09be39410d2ab2b2336257287bc17f7c031025366
+      transform: verbatim
+  - id: diagnose.053
+    kind: row
+    blanks: 0
+    text: "| 정형 결론 도입          | 결론적으로 / 종합하면 / 요컨대 / 정리하자면 → (삭제하거나 본론에 녹임)                   | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging > row \"정형 결론 도입\""
+      content_hash: sha256:7f00e9e313b1c4d9831e20d0849085b33a2601ee2b5fc2415f3ad34a8b933297
+      transform: verbatim
+  - id: diagnose.054
+    kind: row
+    blanks: 0
+    text: "| 메타 진입구             | ~라는 점에서 주목할 만하다 / 흥미로운 점은 ~이다 / 여기서 중요한 것은 → (바로 본론 진술) | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging > row \"메타 진입구\""
+      content_hash: sha256:53bca6a7625df2001d1529b73c3703dd303378cbbe43d4114c7f8b65bab771f7
+      transform: verbatim
+  - id: diagnose.055
+    kind: row
+    blanks: 0
+    text: "| hedging 중첩            | ~라고 할 수 있다 / ~인 것으로 보인다 / ~일 수 있다(연쇄) → 단정 또는 1회로 축약          | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging > row \"hedging 중첩\""
+      content_hash: sha256:cf80585c0ce05251ca59941411867495a5f298ce26592c857733d11a90f732d2
+      transform: verbatim
+  - id: diagnose.056
+    kind: row
+    blanks: 0
+    text: "| 홍보·과장 어휘          | 혁신적인 / 획기적인 / 강력한 / 놀라운 / 필수적인 → 구체적 서술로 대체                    | 강     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging > row \"홍보·과장 어휘\""
+      content_hash: sha256:6db7e70372810a6ebb057569245cc08b5b22ba1412a690242749639d7d26a97e
+      transform: verbatim
+  - id: diagnose.057
+    kind: row
+    blanks: 0
+    text: "| `중요한 역할을 한다` 류 | ~에서 중요한 역할을 한다 → ~을 좌우한다 / 구체 동사                                      | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging > row \"`중요한 역할을 한다` 류\""
+      content_hash: sha256:7b610655124f7f7ff5c56ed264715818d2da789f976ba79687662a06f6c8fa95
+      transform: verbatim
+  - id: diagnose.058
+    kind: row
+    blanks: 0
+    text: "| 균형 강박               | 장점과 단점이 모두 존재한다 / 한편으로는~다른 한편으로는 → 핵심만 진술                   | 약     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging > row \"균형 강박\""
+      content_hash: sha256:a819f10789afa29ab49d962e36ba06520651d1bd539c9d8139e199501f32561e
+      transform: verbatim
+  - id: diagnose.059
+    kind: paragraph
+    blanks: 1
+    text: "**주의:** 학술·리포트에서 근거가 제한적일 때의 정당한 hedging(예: \"예비 결과로는\")은 보존.\n모든 단정을 강제로 만들지 말 것 — 의미가 바뀐다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging > bold label **주의:**"
+      content_hash: sha256:236a21df6428ea4a06239c06ad41c2a239fa840e1f338cb6d79c63c5f6298a19
+      transform: verbatim
+  - id: diagnose.060
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 3. 상투적 표현·hedging > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: diagnose.061
+    kind: heading
+    blanks: 1
+    text: "## 4. 접속사·연결어 남발"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 4. 접속사·연결어 남발"
+      content_hash: sha256:5118a4b084f919b7384d8234c96a442b85c0622fbba1ea29e9d0f498217ef2bd
+      transform: verbatim
+  - id: diagnose.062
+    kind: paragraph
+    blanks: 1
+    text: "문장마다 접속사로 시작하거나 연결어미 뒤에 쉼표를 찍는 기계적 습관."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 4. 접속사·연결어 남발 > paragraph 1"
+      content_hash: sha256:728b6fcf7c472417a182c89035f7b9075e9e2f3ed182c932593683ab5ef473f2
+      transform: verbatim
+  - id: diagnose.063
+    kind: table-header
+    blanks: 1
+    text: "| 패턴                             | 예시 (티 → 자연)                                                      | 심각도 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 4. 접속사·연결어 남발 > table header \"패턴\""
+      content_hash: sha256:f9156b05ab89bc00b280efc0c1700b7553106a42d9cef74f0a5e097aa0311e92
+      transform: verbatim
+  - id: diagnose.064
+    kind: table-sep
+    blanks: 0
+    text: "| -------------------------------- | --------------------------------------------------------------------- | ------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 4. 접속사·연결어 남발 > table separator"
+      content_hash: sha256:915fecad9ae81ac8c3ea9e31cd82503c4fc93354612ee3459487c641592be6e4
+      transform: verbatim
+  - id: diagnose.065
+    kind: row
+    blanks: 0
+    text: "| 연결어미 뒤 쉼표                 | 그리고, ~ / 하지만, ~ / 또한, ~ → 쉼표 제거 또는 접속사 자체 삭제     | 강     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 4. 접속사·연결어 남발 > row \"연결어미 뒤 쉼표\""
+      content_hash: sha256:3fdb6f000315f1acf741a037686ebe9e96b0f4d12366b457aacce449a1f88474
+      transform: verbatim
+  - id: diagnose.066
+    kind: row
+    blanks: 0
+    text: "| 문두 접속사 반복                 | 모든 문장이 또한/따라서/그러므로로 시작 → 일부만 남기고 흐름으로 연결 | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 4. 접속사·연결어 남발 > row \"문두 접속사 반복\""
+      content_hash: sha256:1c9e04a546c62afeb0788f5bf9d79f12d2f9652b8da2dfc82a1a199e90244fd4
+      transform: verbatim
+  - id: diagnose.067
+    kind: row
+    blanks: 0
+    text: "| `즉` 재정의 남발                 | 즉, ~. 즉, ~ → 1회로 제한 또는 삭제                                   | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 4. 접속사·연결어 남발 > row \"`즉` 재정의 남발\""
+      content_hash: sha256:affcbf374d3086d886d6f2178aeacc47d9b0945287345cd517839456696b830e
+      transform: verbatim
+  - id: diagnose.068
+    kind: row
+    blanks: 0
+    text: "| `뿐만 아니라/더 나아가/무엇보다` | (반복 시) → 빈도 축소                                                 | 약     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 4. 접속사·연결어 남발 > row \"`뿐만 아니라/더 나아가/무엇보다`\""
+      content_hash: sha256:2aff2bfc790f4225d9917690abd24944ed34e91f5a1a3964d27da28138b37cc4
+      transform: verbatim
+  - id: diagnose.069
+    kind: quote
+    blanks: 1
+    text: "> **근거:** 한국어는 영어보다 쉼표를 덜 쓰는데 LLM은 연결어미·접속부사 뒤에 쉼표를 과용한다.\n> 쉼표 기반 특징은 KatFishNet(ACL 2025)에서 가장 강력한 LLM 판별자였다(에세이 AUC-ROC 94.88%)\n> → [`katfishnet-research.md`](katfishnet-research.md)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 4. 접속사·연결어 남발 > quote 1"
+      content_hash: sha256:88da4b899c7d2033b201c3f5ceb2f32780a10a1607b8c2c84af41b43a68acbe8
+      transform: verbatim
+  - id: diagnose.070
+    kind: paragraph
+    blanks: 1
+    text: "**주의:** 논리 전환이 꼭 필요한 지점의 접속사(역접 \"하지만\", 인과 \"따라서\")는 보존.\n접속사를 0으로 만들면 오히려 비약이 생긴다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 4. 접속사·연결어 남발 > bold label **주의:**"
+      content_hash: sha256:2574dfe9075f01617a897b80c67214860c1ecf40ca77e8df60d42755eadb0e2b
+      transform: verbatim
+  - id: diagnose.071
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 4. 접속사·연결어 남발 > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: diagnose.072
+    kind: heading
+    blanks: 1
+    text: "## 5. 기계적 구조·병렬"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 5. 기계적 구조·병렬"
+      content_hash: sha256:632e30e362615eab7a7c0d5f959deb902e5955210c007644ddfc0709ae93860b
+      transform: verbatim
+  - id: diagnose.073
+    kind: paragraph
+    blanks: 1
+    text: "내용과 무관하게 형식이 지나치게 규칙적이어서 기계가 찍어낸 인상을 주는 경우."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 5. 기계적 구조·병렬 > paragraph 1"
+      content_hash: sha256:4487f775bf9b3bc894436040203fa3f254f83f4614b63aadc7f865e06f724aef
+      transform: verbatim
+  - id: diagnose.074
+    kind: table-header
+    blanks: 1
+    text: "| 패턴                       | 예시 (티 → 자연)                                          | 심각도 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 5. 기계적 구조·병렬 > table header \"패턴\""
+      content_hash: sha256:8a98ace44cba2d1cf97a1cbaebd02f20d062cb70c8d08d4aff44b48ea904c428
+      transform: verbatim
+  - id: diagnose.075
+    kind: table-sep
+    blanks: 0
+    text: "| -------------------------- | --------------------------------------------------------- | ------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 5. 기계적 구조·병렬 > table separator"
+      content_hash: sha256:8c1d605df4c13f736afdaceecff66a785d824d49dcbbeb5a995944d74fa6ed55
+      transform: verbatim
+  - id: diagnose.076
+    kind: row
+    blanks: 0
+    text: "| `첫째/둘째/셋째` 정형 나열 | (짧은 글에서) → 산문으로 자연스럽게 연결                  | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 5. 기계적 구조·병렬 > row \"`첫째/둘째/셋째` 정형 나열\""
+      content_hash: sha256:7bc4a2d24418311797545637138f1c7cad6a355ac99800dac30d3a71979e8577
+      transform: verbatim
+  - id: diagnose.077
+    kind: row
+    blanks: 0
+    text: "| 불릿 과다                  | 모든 항목을 •로 나열 → 설명형 산문 전환(또는 핵심만 불릿) | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 5. 기계적 구조·병렬 > row \"불릿 과다\""
+      content_hash: sha256:059f5feb28552b820fd79def63c29add3fe7d2aa62005b8e2576fd2ee3d490e9
+      transform: verbatim
+  - id: diagnose.078
+    kind: row
+    blanks: 0
+    text: "| 정형 헤더 남발             | ## 서론 / ## 본론 / ## 결론 → 내용 기반 제목 또는 제거    | 약     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 5. 기계적 구조·병렬 > row \"정형 헤더 남발\""
+      content_hash: sha256:0184e0cc88c128566794640b8c85ad3abd9f867b262d3ee0b351f02eca196f9c
+      transform: verbatim
+  - id: diagnose.079
+    kind: row
+    blanks: 0
+    text: "| 균일 문장 길이·구조        | 비슷한 길이의 평서문 연속 → 장단 변주                     | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 5. 기계적 구조·병렬 > row \"균일 문장 길이·구조\""
+      content_hash: sha256:ae4085c0e246e56e1f6146db4566c6bf43c682eb7a8418c9d4d337d7a541ca03
+      transform: verbatim
+  - id: diagnose.080
+    kind: row
+    blanks: 0
+    text: "| `X에서 Y로` 변환 도식      | 단순한 도구에서 필수 파트너로 → 구체 진술                 | 약     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 5. 기계적 구조·병렬 > row \"`X에서 Y로` 변환 도식\""
+      content_hash: sha256:3b32c690e15bfdbb0c61e869f5d0b35e2197c30a707c705822441587bd27617a
+      transform: verbatim
+  - id: diagnose.081
+    kind: paragraph
+    blanks: 1
+    text: "**주의:** 절차·체크리스트·사양처럼 **불릿/번호가 본질적으로 적합한 장르**는 유지.\n구조 자체가 정보인 표·목록을 산문으로 풀지 말 것."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 5. 기계적 구조·병렬 > bold label **주의:**"
+      content_hash: sha256:1088f71d6235a5d191946f0218cc684b135d562abebb117993af095d2818bb71
+      transform: verbatim
+  - id: diagnose.082
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 5. 기계적 구조·병렬 > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: diagnose.083
+    kind: heading
+    blanks: 1
+    text: "## 6. 형식명사·명사화"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화"
+      content_hash: sha256:b0a8b9e182b6c1951c4ca45c95cd98f2a60b231d48f1ada5b0278b95e3d069c4
+      transform: verbatim
+  - id: diagnose.084
+    kind: paragraph
+    blanks: 1
+    text: "동사로 쓰면 될 것을 명사로 굳혀 문장을 늘어지게 만드는 습관."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화 > paragraph 1"
+      content_hash: sha256:7a86aa14023d05e73ada14f52b950bbf281a1f222a9c6812c588decea09f6490
+      transform: verbatim
+  - id: diagnose.085
+    kind: table-header
+    blanks: 1
+    text: "| 패턴                      | 예시 (티 → 자연)                                            | 심각도 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화 > table header \"패턴\""
+      content_hash: sha256:7fdf42eb554583169e868811ab7a64f9e18a2b82b0af8b20b07120651c21dc47
+      transform: verbatim
+  - id: diagnose.086
+    kind: table-sep
+    blanks: 0
+    text: "| ------------------------- | ----------------------------------------------------------- | ------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화 > table separator"
+      content_hash: sha256:73aa5e5fb2fd2e57ccb5c6838a5deed3380135e9fbd9da43ff00e32c072560ce
+      transform: verbatim
+  - id: diagnose.087
+    kind: row
+    blanks: 0
+    text: "| `것이다` 종결 남발        | ~할 것이다 / ~인 것이다(반복) → ~한다 / ~이다               | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화 > row \"`것이다` 종결 남발\""
+      content_hash: sha256:88a9e00493622a3875e6038384027bcb56c2c5a646d7e35159467d5e60dd31fa
+      transform: verbatim
+  - id: diagnose.088
+    kind: row
+    blanks: 0
+    text: "| `~하는 것` 명사화         | 이해하는 것이 중요하다 → 이해가 중요하다 / 이해해야 한다    | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화 > row \"`~하는 것` 명사화\""
+      content_hash: sha256:2f6ea006bdfc4dd00265d31e3ce84a0f1d3a145f872a5db0eb80659f4e948bd1
+      transform: verbatim
+  - id: diagnose.089
+    kind: row
+    blanks: 0
+    text: "| `~한다는 점/~라는 점에서` | 효율적이라는 점에서 → 효율적이어서                          | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화 > row \"`~한다는 점/~라는 점에서`\""
+      content_hash: sha256:f59d5d5e2d77dcdf23fc25d3e9f1eae942a489db5cccafa75535985cf1f2e313
+      transform: verbatim
+  - id: diagnose.090
+    kind: row
+    blanks: 0
+    text: "| 한자어 명사화 + 하다      | 활용을 하다 → 활용하다 / ~의 구현·제공·활용 → 동사화        | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화 > row \"한자어 명사화 + 하다\""
+      content_hash: sha256:ec6c83f1cb6292c2e081551738d4ea6299f593f35bae4b329e0649c62a07e586
+      transform: verbatim
+  - id: diagnose.091
+    kind: row
+    blanks: 0
+    text: "| 의존명사 체인             | ~할 필요가 있다 / ~할 수 있는 바 → ~해야 한다 / ~할 수 있다 | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화 > row \"의존명사 체인\""
+      content_hash: sha256:a1e7cc5984e8dc00f611c0b99137a99f5431da9437eb7b40ae2f09b1afc6f791
+      transform: verbatim
+  - id: diagnose.092
+    kind: quote
+    blanks: 1
+    text: "> **근거:** 한국어 명사화는 체계기능언어학의 **문법적 은유**로, 학술·격식 텍스트의 정보밀도·객관적 문체를 만드는\n> 어휘문법 자원이다(정려란 2018; 소지영·주세형 2017 — 명사화는 고학년·학술 텍스트일수록 증가). 학술 문어가 절 확장이\n> 아니라 **명사구 압축**으로 복잡해진다는 영어권 정설과도 합치한다(Biber & Gray 2010). 따라서 명사화 과잉은\n> \"AI=격식·문어체 편향\"의 표지다. 단 **경동사 분리('활용을 하다'·한자어 대동사 '실시·수행·진행하다')를 번역투/AI 티로 규정한\n> 학술 1차 문헌은 미발굴**(2026-06 재조사 확인) → 홍성호(2020, 한국경제 '서술어 3종 세트')·이오덕·이수열\n> 글쓰기서·국립국어원 「쉬운 공문서 쓰기 길잡이」 등 **군더더기 간결화** 처방을 따른다.\n> [`translationese-research.md`](../../translate-polish/references/translationese-research.md) 참조."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화 > quote 1"
+      content_hash: sha256:0035e31ec20f8855333576385894bc93a84dc0b440ce046f9b3fc8369e3ed95a
+      transform: verbatim
+  - id: diagnose.093
+    kind: paragraph
+    blanks: 1
+    text: "**주의:** 의미상 명사화가 더 정확한 전문·법률 표현은 보존. 무조건 동사화하면 어색해질 수 있다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화 > bold label **주의:**"
+      content_hash: sha256:608eca37dea184722fe9bc59eb87ae3c9c5baaa3608e1ba12603eebd5664fb9a
+      transform: verbatim
+  - id: diagnose.094
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 6. 형식명사·명사화 > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: diagnose.095
+    kind: heading
+    blanks: 1
+    text: "## 7. 과잉 수식"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 7. 과잉 수식"
+      content_hash: sha256:9d740840b89d262585ead3fca3241c84004ca18570417d394ec734d8747ce331
+      transform: verbatim
+  - id: diagnose.096
+    kind: paragraph
+    blanks: 1
+    text: "강조를 남발해 오히려 힘이 빠지는 경우. 군더더기 부사·접미사·동의어 중첩."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 7. 과잉 수식 > paragraph 1"
+      content_hash: sha256:6dc0d34e7141111dac3cd1e06aa176fd0cf9eed5db85a53e92ba54ec90ea8f29
+      transform: verbatim
+  - id: diagnose.097
+    kind: table-header
+    blanks: 1
+    text: "| 패턴          | 예시 (티 → 자연)                                                             | 심각도 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 7. 과잉 수식 > table header \"패턴\""
+      content_hash: sha256:847021d28fce89728b7e7802aa5b2acab9fd5e31ffed6a41d574e75b406369a7
+      transform: verbatim
+  - id: diagnose.098
+    kind: table-sep
+    blanks: 0
+    text: "| ------------- | ---------------------------------------------------------------------------- | ------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 7. 과잉 수식 > table separator"
+      content_hash: sha256:eaaf0d2df506ad67dda01bfe9cbb030e661d6c80adccc2c569fe1c8d318f7541
+      transform: verbatim
+  - id: diagnose.099
+    kind: row
+    blanks: 0
+    text: "| 강조부사 남발 | 매우 / 정말 / 너무 / 굉장히 / 대단히(빈발) → 대부분 삭제                     | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 7. 과잉 수식 > row \"강조부사 남발\""
+      content_hash: sha256:ae255d23d33cc0dbeec73e1fbb6e323e6e918cce6724d3ebbb6bcf7deaff9fed
+      transform: verbatim
+  - id: diagnose.100
+    kind: row
+    blanks: 0
+    text: "| `-적` 연쇄    | 기술적 토대 / 사회적 측면 / 효율적 방식 → 기술 기반 / 사회 측면 / 효율적으로 | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 7. 과잉 수식 > row \"`-적` 연쇄\""
+      content_hash: sha256:8df7f9380594e8a007f74d3354676a607194f67816f4927c3a3e9b7aea8f2372
+      transform: verbatim
+  - id: diagnose.101
+    kind: row
+    blanks: 0
+    text: "| 동의어 중첩   | 도움과 지원을 / 빠르고 신속하게 → 하나로 축약                                | 약     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 7. 과잉 수식 > row \"동의어 중첩\""
+      content_hash: sha256:c7e88844ebbf8ffa33e3dabfed930ab6e7511c2991dbd5d304e865d681490966
+      transform: verbatim
+  - id: diagnose.102
+    kind: row
+    blanks: 0
+    text: "| 군더더기 부사 | 기본적으로 / 사실상 / 본질적으로(의미 없는 자리) → 삭제                      | 약     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 7. 과잉 수식 > row \"군더더기 부사\""
+      content_hash: sha256:c2a0b6f355ab1e2c6c934dbdf2ddceb3ef6ec2b130a1f57e0d7a585b37abf831
+      transform: verbatim
+  - id: diagnose.103
+    kind: paragraph
+    blanks: 1
+    text: "**주의:** 정도를 정확히 전달해야 하는 곳의 부사(예: \"거의 두 배\")는 보존. 수치·정도 부사는 함부로 지우지 말 것."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 7. 과잉 수식 > bold label **주의:**"
+      content_hash: sha256:21308c65596b272a7a11bcfe6f9f909a5be6021c8bab0ee3ac685ebcb0eddb92
+      transform: verbatim
+  - id: diagnose.104
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 7. 과잉 수식 > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: diagnose.105
+    kind: heading
+    blanks: 1
+    text: "## 8. 시각 장식"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 8. 시각 장식"
+      content_hash: sha256:c303040e04974b1ecf11634f6576a77f91f01359e98ce859abd348787d3f596a
+      transform: verbatim
+  - id: diagnose.106
+    kind: paragraph
+    blanks: 1
+    text: "마크다운·이모지·대시로 글을 과하게 꾸며 기계 출력처럼 보이게 하는 경우."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 8. 시각 장식 > paragraph 1"
+      content_hash: sha256:52b721067a3ccd785a4d16ae7ec4be3938d82c0755ea64f77cb97b36ff3311a4
+      transform: verbatim
+  - id: diagnose.107
+    kind: table-header
+    blanks: 1
+    text: "| 패턴                   | 예시 (티 → 자연)                                 | 심각도                       |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 8. 시각 장식 > table header \"패턴\""
+      content_hash: sha256:bd9cd7151092811fb3a50031680b58aa67eb6ad6f21154bb011b6511ae069e0f
+      transform: verbatim
+  - id: diagnose.108
+    kind: table-sep
+    blanks: 0
+    text: "| ---------------------- | ------------------------------------------------ | ---------------------------- |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 8. 시각 장식 > table separator"
+      content_hash: sha256:8c221c7cf6e3fb845b7be56d321c1ef9d81885bc9014a5ebb839ab74950bc52b
+      transform: verbatim
+  - id: diagnose.109
+    kind: row
+    blanks: 0
+    text: "| 과도한 볼드            | 문장 곳곳 **강조** → 정말 핵심 1~2곳만 또는 제거 | 중                           |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 8. 시각 장식 > row \"과도한 볼드\""
+      content_hash: sha256:f132b3f5a3b3fa75403d408785bb1da387c48d7dcb706dbe9df02658a9637f3f
+      transform: verbatim
+  - id: diagnose.110
+    kind: row
+    blanks: 0
+    text: "| 이모지                 | 🚀 ✨ 🔥 등 본문 삽입 → 제거(블로그는 일부 허용) | 강(공식·리포트) / 약(블로그) |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 8. 시각 장식 > row \"이모지\""
+      content_hash: sha256:1e68bea729c9cef0c02929b36e39ff65be4528f88dac67b960e6979d2f6ece26
+      transform: verbatim
+  - id: diagnose.111
+    kind: row
+    blanks: 0
+    text: "| em-dash(—) 영어식 남용 | A — B → 쉼표·괄호·연결어로 전환                  | 중                           |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 8. 시각 장식 > row \"em-dash(—) 영어식 남용\""
+      content_hash: sha256:f2bcf3d6191165e60c00e336af1b84a7f587c546a0c4421e97a09602b87811f9
+      transform: verbatim
+  - id: diagnose.112
+    kind: row
+    blanks: 0
+    text: "| 따옴표 강조 남용       | 불필요한 '강조' 따옴표 → 제거                    | 약                           |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 8. 시각 장식 > row \"따옴표 강조 남용\""
+      content_hash: sha256:37a80a79241c8dad3007732d852d4fe128e09e5d5de5487b14d79d4f0e372395
+      transform: verbatim
+  - id: diagnose.113
+    kind: paragraph
+    blanks: 1
+    text: "**주의:** 코드·표·실제 인용 부호·정식 명칭의 따옴표는 보존. 마크다운이 요구되는 문서(README 등)의\n구조적 강조는 장르에 맞게 유지."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 8. 시각 장식 > bold label **주의:**"
+      content_hash: sha256:ff2e9fdcc3cdd23b382dfec1224e954e2b423b4c500ca22f1d05b7773a135f87
+      transform: verbatim
+  - id: diagnose.114
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 8. 시각 장식 > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: diagnose.115
+    kind: heading
+    blanks: 1
+    text: "## 9. 리듬 균일성"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 9. 리듬 균일성"
+      content_hash: sha256:1cb5e7e28d2297a5ce99581432ff9e766dec34e3e4fd048c3d6ec2dff60b8d8c
+      transform: verbatim
+  - id: diagnose.116
+    kind: paragraph
+    blanks: 1
+    text: "문장의 길이와 종결, 문두가 단조롭게 반복돼 사람 글 특유의 리듬이 없는 경우."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 9. 리듬 균일성 > paragraph 1"
+      content_hash: sha256:ed0954aed9b00ef19c059e74fe86a1b8f6a4fe1a395c1cfbfe183443dd8eb6a8
+      transform: verbatim
+  - id: diagnose.117
+    kind: table-header
+    blanks: 1
+    text: "| 패턴           | 예시 (티 → 자연)                                      | 심각도 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 9. 리듬 균일성 > table header \"패턴\""
+      content_hash: sha256:cfff248cf9e2c3c6fc55660de4f1c2ea638b3529380bf8464f38153e520e227e
+      transform: verbatim
+  - id: diagnose.118
+    kind: table-sep
+    blanks: 0
+    text: "| -------------- | ----------------------------------------------------- | ------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 9. 리듬 균일성 > table separator"
+      content_hash: sha256:6edbb0bd07bd6173d3367449d0e13684a40f93943702a1b5a3ad0d4eb7c54bdc
+      transform: verbatim
+  - id: diagnose.119
+    kind: row
+    blanks: 0
+    text: "| 종결어미 단조  | ~이다.~이다.~이다. → ~다 / ~ㄴ다 / 의문형 등으로 변주 | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 9. 리듬 균일성 > row \"종결어미 단조\""
+      content_hash: sha256:e99239376fd8e0b25ab8d85c11f76f9efa498d3b69467864183336feced23b43
+      transform: verbatim
+  - id: diagnose.120
+    kind: row
+    blanks: 0
+    text: "| 문장 길이 균일 | 비슷한 길이 연속 → 짧은 문장과 긴 문장 교차           | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 9. 리듬 균일성 > row \"문장 길이 균일\""
+      content_hash: sha256:eff75cab2cac5f5d7f828f546635df41ee9d425c304b726687e7ccf3db64062d
+      transform: verbatim
+  - id: diagnose.121
+    kind: row
+    blanks: 0
+    text: "| 동일 문두 반복 | 이러한~ / 이는~ / 이를 통해~ 반복 → 문두 다양화       | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 9. 리듬 균일성 > row \"동일 문두 반복\""
+      content_hash: sha256:05fd7296ff1dc73faf921e47b32a7892b281dbdb869f31290b433e9fdb9de0d0
+      transform: verbatim
+  - id: diagnose.122
+    kind: quote
+    blanks: 1
+    text: "> **근거:** 사람 글은 품사 n-gram(통사 구조)이 다양한 반면 LLM은 흔한 구조를 반복한다.\n> POS 다양성 저하는 KatFishNet(ACL 2025)의 핵심 판별 특징 중 하나다 → [`katfishnet-research.md`](katfishnet-research.md)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 9. 리듬 균일성 > quote 1"
+      content_hash: sha256:c2b428b9d1ede8de503c008e2ad91f968db2986dda5468c418b009937b163275
+      transform: verbatim
+  - id: diagnose.123
+    kind: paragraph
+    blanks: 1
+    text: "**주의:** 리듬 변주는 **의미를 바꾸지 않는 선**에서만. 격식체(하십시오체/해요체) 일관성은 유지하고\n종결을 섞느라 register를 흩뜨리지 말 것. **명사구 종결로는 변주하지 않는다** — 카테고리 11이 결함으로 잡으므로,\n리듬을 살리려다 방금 고친 개조식을 되살리게 된다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 9. 리듬 균일성 > bold label **주의:**"
+      content_hash: sha256:6aba0acc2036aa288bd30c22893c2fa55a54f1bd082ca8e78f4a71ca1a10522a
+      transform: verbatim
+  - id: diagnose.124
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 9. 리듬 균일성 > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: diagnose.125
+    kind: heading
+    blanks: 1
+    text: "## 10. 영어 인용 과다"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 10. 영어 인용 과다"
+      content_hash: sha256:48ff4d0c69a324656e679bd7815f198a2e3ff053dbdd4e81164577577fbab7fa
+      transform: verbatim
+  - id: diagnose.126
+    kind: paragraph
+    blanks: 1
+    text: "한국어로 충분한데 영어를 병기하거나 번역하지 않고 남겨 번역기 인상을 주는 경우."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 10. 영어 인용 과다 > paragraph 1"
+      content_hash: sha256:bc8d91ea4b2f115e9aa141e48bea888f7a9e969346a67a26bae24c7b85a2d07b
+      transform: verbatim
+  - id: diagnose.127
+    kind: table-header
+    blanks: 1
+    text: "| 패턴               | 예시 (티 → 자연)                                                             | 심각도 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 10. 영어 인용 과다 > table header \"패턴\""
+      content_hash: sha256:9a82228e1ec82430edb73fa8ec279d340f169369a7bb8606ab74af724ac8b86f
+      transform: verbatim
+  - id: diagnose.128
+    kind: table-sep
+    blanks: 0
+    text: "| ------------------ | ---------------------------------------------------------------------------- | ------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 10. 영어 인용 과다 > table separator"
+      content_hash: sha256:2c7aa3158b8b688c99e13831270852de8e6732a30d36935428a7b7c157c7743e
+      transform: verbatim
+  - id: diagnose.129
+    kind: row
+    blanks: 0
+    text: "| 불필요한 영어 병기 | 프레임워크(framework)·확장성(scalability) 남발 → 첫 등장만 병기, 이후 한국어 | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 10. 영어 인용 과다 > row \"불필요한 영어 병기\""
+      content_hash: sha256:51e5a701c0d68453a519f9cc496efb5c3f259ff489bf69474a6a65099eca4a1b
+      transform: verbatim
+  - id: diagnose.130
+    kind: row
+    blanks: 0
+    text: "| 미번역 용어        | leverage / seamless / robust 그대로 → 활용 / 매끄러운 / 견고한               | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 10. 영어 인용 과다 > row \"미번역 용어\""
+      content_hash: sha256:9a814a78256b71501a8a46d090931d85f043a99ade1ad4123e5d0a0e722e0553
+      transform: verbatim
+  - id: diagnose.131
+    kind: row
+    blanks: 0
+    text: "| 괄호 영어 중복     | 모든 명사마다 (English) → 꼭 필요한 전문어만                                 | 약     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 10. 영어 인용 과다 > row \"괄호 영어 중복\""
+      content_hash: sha256:cdafcb629cae5a8c000bcbd25aecad8a68f95ab3750858b859ffdf62f31c3519
+      transform: verbatim
+  - id: diagnose.132
+    kind: paragraph
+    blanks: 1
+    text: "**주의:** 고유명사·제품명·정식 학술 용어·코드 식별자는 원형 보존. 처음 등장하는 핵심 전문어의\n1회 병기는 오히려 친절하므로 유지."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 10. 영어 인용 과다 > bold label **주의:**"
+      content_hash: sha256:4ed8f7eae2fa8729150aaec3219e5a91372debe761d2c238a1e22c2b1d4c67cf
+      transform: verbatim
+  - id: diagnose.133
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 10. 영어 인용 과다 > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: diagnose.134
+    kind: heading
+    blanks: 1
+    text: "## 11. 과소 서술·의미 불명확"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확"
+      content_hash: sha256:e08a3426270548bf0c25b8d6baf0bdfd22e208baaf2f1acb120ce0f86cfedfc0
+      transform: verbatim
+  - id: diagnose.135
+    kind: paragraph
+    blanks: 1
+    text: "문장 성분·조사·어미를 과하게 눌러 담아 정보가 미달하거나, 일반 어휘 자리에 비유를 넣어 의미가 흐려지는 경우.\n앞의 3·6·7번이 **말이 많아서** 생기는 티라면, 이 카테고리는 **말이 모자라서** 생기는 티다. 요약·보고·에이전트\n응답처럼 압축 압력이 걸린 LLM 출력에서 특히 잦고, 군더더기를 덜어내는 윤문 과정에서 새로 만들어내기도 쉽다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > paragraph 1"
+      content_hash: sha256:e59409f8d67604fa98f25906294ed3d03ccaf2c4c3e159d1340f3fec658ca23a
+      transform: verbatim
+  - id: diagnose.136
+    kind: table-header
+    blanks: 1
+    text: "| 패턴                         | 예시 (티 → 자연)                                                                      | 심각도 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > table header \"패턴\""
+      content_hash: sha256:250cbb826d38e0cced3682fe89f3fc65eaca3ef9528e3df6f53ba74d5d22c5e4
+      transform: verbatim
+  - id: diagnose.137
+    kind: table-sep
+    blanks: 0
+    text: "| ---------------------------- | ------------------------------------------------------------------------------------- | ------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > table separator"
+      content_hash: sha256:0ba9c1fa6b364877282e4c6ff6211d1736b9bf83e231a38c040b51516cd20540
+      transform: verbatim
+  - id: diagnose.138
+    kind: row
+    blanks: 0
+    text: "| 성분 생략(맥락 미달)         | 그러면 경고가 붙습니다 → (앞 문장이 대상을 밝혔다면) 그러면 그 파일에 경고가 붙습니다 | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > row \"성분 생략(맥락 미달)\""
+      content_hash: sha256:77350b5c2fa0e846ea1d411ab7b59498336d903f3f379e3bc3a102feedf278ac
+      transform: verbatim
+  - id: diagnose.139
+    kind: row
+    blanks: 0
+    text: "| 조사·어미 생략(전보체)       | 이 결정은 이후 중요 정책이 갈리는 자리. → 이 결정은 이후 중요한 정책의 갈림길이 된다. | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > row \"조사·어미 생략(전보체)\""
+      content_hash: sha256:c7ca092ffe63eb748499802adfdfc737df770915d06f354450aa559180ff544d
+      transform: verbatim
+  - id: diagnose.140
+    kind: row
+    blanks: 0
+    text: "| 명사구·연결어미 종결(개조식) | 성능 개선 필요. / ~을 확인했고, → 성능을 개선해야 한다. / ~을 확인했다.               | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > row \"명사구·연결어미 종결(개조식)\""
+      content_hash: sha256:c8417fc14cdf19c44a390f0d9ea18ef63786cbc07fb079211ba8b65d78c320ef
+      transform: verbatim
+  - id: diagnose.141
+    kind: row
+    blanks: 0
+    text: "| 비유 어휘가 일반 어휘를 대체 | 문제의 뿌리 / 코드로 박는 자리 → 문제의 원인 / 코드에 명시하는 부분                   | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > row \"비유 어휘가 일반 어휘를 대체\""
+      content_hash: sha256:47cf5c8549d3da499f92471c98e18955f4f989f5866c9a8d0fd9cfa4ec935fc7
+      transform: verbatim
+  - id: diagnose.142
+    kind: row
+    blanks: 0
+    text: "| 관형격 '의' 압축             | 사본의 문구는 작업의 상황을 알린다 → 사본에 적힌 문구는 작업 상황을 알린다            | 중     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > row \"관형격 '의' 압축\""
+      content_hash: sha256:2e9ac16fe9384507f917c4c6eac1b36cdaab6594cbfd2828d69be180c9249918
+      transform: verbatim
+  - id: diagnose.143
+    kind: row
+    blanks: 0
+    text: "| 막연한 어휘로 대치           | 쓴 비용을 구하는 함수 → 지출한 비용을 구하는 함수                                     | 약     |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > row \"막연한 어휘로 대치\""
+      content_hash: sha256:8520904bc38c3bdf5464140889d7e26327f8f57ea35b59f5c482e019427677b0
+      transform: verbatim
+  - id: diagnose.144
+    kind: quote
+    blanks: 1
+    text: "> **근거:** 이 카테고리는 output-style 플러그인 [`snflkd/fluent-korean`](https://github.com/snflkd/fluent-korean)(MIT)이\n> 정리한 LLM 한국어 출력 특징을 윤문 관점으로 옮긴 것이다. 1~10번이 KatFishNet·번역학 연구에서 온 **과잉** 축이라면,\n> 이 축은 **과소**를 다룬다. 두 축은 반대 방향이므로 한쪽만 밀면 다른 쪽으로 넘어간다\n> → [보존 원칙의 '삭제 과교정 금지'](#삭제-과교정-금지).\n>\n> **전제 차이에 주의:** fluent-korean은 Claude가 **자기 글**을 쓸 때의 지침이라 필자가 맥락을 안다는 전제가 깔려 있다.\n> 윤문은 **남의 글**을 다루므로 그 전제가 없다. 아래 주의의 복원 한계가 그 차이를 메운다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > quote 1"
+      content_hash: sha256:87bfc4f6196c5ba57ea8bf14b36a43b6139381b42b2ed22300c28d26207be7f7
+      transform: verbatim
+  - id: diagnose.145
+    kind: paragraph
+    blanks: 1
+    text: "**주의 — 복원할 정보가 글 안에 없으면 손대지 않는다.** 이 카테고리는 생략된 성분을 *지어내라*는 뜻이 아니다.\n앞뒤 문맥에서 확실히 복원되는 성분만 채우고, 글 어디에도 근거가 없으면 원문 그대로 두고 '확인 요망'으로 보고한다.\n없던 대상·행위·정도를 만들어 넣으면 보존 원칙 위반이며, 이 카테고리를 고치려다 더 큰 잘못을 범하는 것이다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > bold label **주의 — 복원할 정보가 글 안에 없으면 손대지 않는다.**"
+      content_hash: sha256:d784eaf57ca266eae5833f4a6a888d7a10d751cdae7532cd7b32a9928d15a846
+      transform: verbatim
+  - id: diagnose.146
+    kind: paragraph
+    blanks: 1
+    text: "**주의:** 헤더·표·목록 항목의 명사구 종결은 정상이므로 손대지 않는다. 개조식이 규범인 장르(회의록·보고 개요·\n발표 자료)도 그대로 둔다. 비유 어휘도 해당 분야에서 관용으로 정착했으면(예: \"병목\", \"롤백\") 유지한다.\n**detect에서는 약한 보조 신호로만 쓴다** — 사람이 쓴 메모·실무 문서에도 흔해서 단독으로 판단하면 위양성이 크다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > bold label **주의:**"
+      content_hash: sha256:1d4ac20441f67f90009397b5e938c004a1b9f1479d73a51d3d60729bfa6905c2
+      transform: verbatim
+  - id: diagnose.147
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 11. 과소 서술·의미 불명확 > paragraph 4"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: diagnose.148
+    kind: heading
+    blanks: 1
+    text: "## 보존 원칙 (Do-NOT)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 보존 원칙 (Do-NOT)"
+      content_hash: sha256:586e7d259bc55d6f19a5bcf3ea55b2c451f24f55150d62da01aa28526c68c72f
+      transform: verbatim
+  - id: diagnose.149
+    kind: paragraph
+    blanks: 1
+    text: "윤문은 **문체만 다듬고 내용은 건드리지 않는다.** 아래는 어떤 경우에도 변경·삭제하지 않는다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 보존 원칙 (Do-NOT) > paragraph 1"
+      content_hash: sha256:90c4bbdeb8c7080ae83d160c5f8027e506735ef33ae2901df7b76ef7ae65d18c
+      transform: verbatim
+  - id: diagnose.150
+    kind: item
+    blanks: 1
+    text: "- **고유명사**: 인명·지명·기관명·제품명·브랜드명"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 보존 원칙 (Do-NOT) > item **고유명사**"
+      content_hash: sha256:99b9b67384852c0437af92cb5f2316d74ab4b28838a4093b13cf8688f0d7367b
+      transform: verbatim
+  - id: diagnose.151
+    kind: item
+    blanks: 0
+    text: "- **수치·단위·날짜·시각·통화**: 12.5%, 2026년 6월, 3,000원 등 한 글자도 바꾸지 않음"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 보존 원칙 (Do-NOT) > item **수치·단위·날짜·시각·통화**"
+      content_hash: sha256:01a0137e6c9c79aace099b2f47e40366515e920d2b2df37520b9c86af1d479e3
+      transform: verbatim
+  - id: diagnose.152
+    kind: item
+    blanks: 0
+    text: "- **인용**: 따옴표 안 직접 인용문, 출처 표기"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 보존 원칙 (Do-NOT) > item **인용**"
+      content_hash: sha256:c04fbbb04d7650488aa9b5a0f09a3a1c8d0aad2cd4fc4c9233efd9e6f8839786
+      transform: verbatim
+  - id: diagnose.153
+    kind: item
+    blanks: 0
+    text: "- **코드·식별자·URL·경로·파일명·명령어**"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 보존 원칙 (Do-NOT) > item **코드·식별자·URL·경로·파일명·명령어**"
+      content_hash: sha256:6636856151e5be7e4fdbadbc50e5a376b95b8c011d839209043340717797f3eb
+      transform: verbatim
+  - id: diagnose.154
+    kind: item
+    blanks: 0
+    text: "- **전문 용어의 의미**: 윤문으로 뜻이 달라지면 안 됨"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 보존 원칙 (Do-NOT) > item **전문 용어의 의미**"
+      content_hash: sha256:d1cc4be9d795dae4ea18e57aadcdd73873b8e2b5128dfeb2c0f66d93c1f10c7c
+      transform: verbatim
+  - id: diagnose.155
+    kind: item
+    blanks: 0
+    text: "- **주장의 방향·강도·인과·수량 관계**: \"증가\"를 \"감소\"로, \"대부분\"을 \"일부\"로 바꾸지 않음"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 보존 원칙 (Do-NOT) > item **주장의 방향·강도·인과·수량 관계**"
+      content_hash: sha256:6c28698760a81741176e341ec0308373bc71ece13fe1b82a5aa657783ae9a6c6
+      transform: verbatim
+  - id: diagnose.156
+    kind: item
+    blanks: 0
+    text: "- **격식체(register)**: 하십시오체·해요체·해라체 등 입력의 높임 수준을 일관되게 유지"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 보존 원칙 (Do-NOT) > item **격식체(register)**"
+      content_hash: sha256:30ad5ae54f8686f158c9f589b4d72650ff41a2058644e974aa345f0afd4a9374
+      transform: verbatim
+  - id: diagnose.157
+    kind: paragraph
+    blanks: 1
+    text: "내용 추가·삭제를 동반한 재작성, 맞춤법/오탈자 단순 교정, 번역은 윤문의 범위가 아니다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "## 보존 원칙 (Do-NOT) > paragraph 2"
+      content_hash: sha256:ebcb1831bc6ecbb8b7caa23e13368a47535f4036ea2b6bf4a88ef56f07b31027
+      transform: verbatim
+  - id: diagnose.158
+    kind: heading
+    blanks: 1
+    text: "### 삭제 과교정 금지"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "### 삭제 과교정 금지"
+      content_hash: sha256:98d58d52f1a8bfad37567d9226f82875095c0c3cf7e8d610803d8631140c88f5
+      transform: verbatim
+  - id: diagnose.159
+    kind: paragraph
+    blanks: 1
+    text: "3번(상투어)·6번(명사화)·7번(과잉 수식)은 모두 **덜어내는** 처방이라, 지나치면 11번(과소 서술)을 새로 만든다.\n아래를 지운 결과 문장이 정보 미달이 되면 그 편집은 되돌린다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "### 삭제 과교정 금지 > paragraph 1"
+      content_hash: sha256:678d8868cadfb807b3ee75a0e06b511e6a5244d80e338958964acb4b07a9f3f0
+      transform: verbatim
+  - id: diagnose.160
+    kind: item
+    blanks: 1
+    text: "- **의미를 지닌 문장 성분** — 서술어·목적어·부사어를 압축하다 빠뜨리지 않는다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "### 삭제 과교정 금지 > item **의미를 지닌 문장 성분**"
+      content_hash: sha256:e705ca41053611959108bf51cdcb93bb2e7e7ab168920dc00082d902f38fe9ec
+      transform: verbatim
+  - id: diagnose.161
+    kind: item
+    blanks: 0
+    text: "- **필수 조사·어미** — 생략하면 성분 사이의 관계가 흐려지는 자리."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "### 삭제 과교정 금지 > item **필수 조사·어미**"
+      content_hash: sha256:7adc067133971f1253882ba75afa288e8e35cae568882cdfc8ca663b6649fa9f
+      transform: verbatim
+  - id: diagnose.162
+    kind: item
+    blanks: 0
+    text: "- **정도·범위를 특정하는 부사** — \"거의 두 배\", \"사흘 안에\"는 군더더기가 아니다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "### 삭제 과교정 금지 > item **정도·범위를 특정하는 부사**"
+      content_hash: sha256:826878d4d17129317644c4c6d42f4c0e16d90cccc299dc644f00845db109312d
+      transform: verbatim
+  - id: diagnose.163
+    kind: item
+    blanks: 0
+    text: "- **지시 대상이 모호해지는 대명사** — 지울 거라면 명사로 복원한다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "### 삭제 과교정 금지 > item **지시 대상이 모호해지는 대명사**"
+      content_hash: sha256:7bbd11e2c5c2b1a5a063cf591b547490f9467dcbc493cd7d28e0496fc13420df
+      transform: verbatim
+  - id: diagnose.164
+    kind: item
+    blanks: 0
+    text: "- **완결된 종결** — 명사구·연결어미로 문장을 끝내지 않는다(헤더·목록은 예외)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "### 삭제 과교정 금지 > item **완결된 종결**"
+      content_hash: sha256:5d4e51f576cac11863ad6bb22f3d6b7df3590fbde1e300c64de237dd933d8966
+      transform: verbatim
+  - id: diagnose.165
+    kind: paragraph
+    blanks: 1
+    text: "간결함은 목표가 아니라 **명확함의 수단**이다. 짧지만 무슨 말인지 모르는 문장은 윤문 실패다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/humanize/references/ai-tell-taxonomy.md
+      anchor: "### 삭제 과교정 금지 > paragraph 2"
+      content_hash: sha256:1876d5d687c65920fec6fbd5d23eca62a53e4b46f540a5354858035a8f4746d8
+      transform: verbatim
+excluded:
+  - path: skills/humanize/references/ai-tell-taxonomy.md
+    anchor: "# 윤문 AI 티 분류 (humanize AI-tell taxonomy)"
+    reason: "title is ours"
+  - path: skills/humanize/references/ai-tell-taxonomy.md
+    anchor: "## 목차"
+    reason: "navigation links into the upstream file"

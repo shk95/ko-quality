@@ -9,6 +9,10 @@
 > **개정됨 (06b P0 반영, 2026-09-14).** 정책 조각의 단위(§5.3·§6·§9), 앵커 규칙(§5.5), `ko-rewrite` invariant의 범위와 변경률의 성격(§1·§7·§13.1), Codex 플러그인 사실(§2·§11.5·§12·§13.2). 근거와 기각한 선택지는 `06b_built_prototype.md`의 P0 "06 반영 결정".
 >
 > **개정됨 (P1 착수 전 문서 검토, 2026-09-14).** 문서 안의 어긋남과 빈 곳을 고치고(§5.2 파일 이름, §6 presets, §7 참조, §8 결합, §9 분량·`force-for-plugin`·`instructions`, §12 검사 2, §13.3 대조군, §15·§16), 공식 문서로 다시 확인한 사실을 반영했다(§2.1 `force-for-plugin` 충돌, §2.2 Codex `developer_instructions`·플러그인 확장 키·hook 기본 활성, §2.4 참여사, §11.2 `model`·에이전트 이름, §13.1 `tokens`·`sub-to-sub`). 기록은 `06b_built_prototype.md`의 "검토 — P1 착수 전 문서 정리".
+>
+> **→ 구현 후 리뷰 (2026-09-15).** 구현이 뒤집거나 스펙이 몰랐던 것 8건(B1~B8)은 이 문서를 고치지 않고 다음 시대의 스펙 입력으로 넘겼다: `../7-review/review.md` §B.
+
+> **개정됨 (preflight, 2026-09-14).** 멈추지 않는 구현 규칙에 맞춰 §14.1의 마지막 규칙과 P3의 끝나는 조건을 고치고, §16.2의 기울기에 preflight 결정을 적었다. 결정과 근거는 `5-preflight/flow.md` §1, 탐색은 `5-preflight/explorations.md`.
 
 ## 1. 목적과 전제
 
@@ -510,8 +514,8 @@ assemble/ ────────────┤
 
 - **각 P를 시작하기 전에** 이 절, `5-preflight/flow.md`, `6-build/`의 최신 기록을 읽는다.
 - **각 P가 끝나면** 발견을 `6-build/P<n>_<이름>.md`에 남긴다. 스펙과 달랐던 것, 스펙이 몰랐던 것, 임시 형식에서 불편했던 것, 구현이 내린 판단과 확신 수준. (P0의 기록은 `5-preflight/06b_built_prototype.md`에 있다. 프로세스 재배치 전의 규칙은 06b에 덧붙이는 것이었다.)
-- **실측 문서는 스펙을 고치지 않는다.** 구현(6-build)에 들어가면 06은 개정하지 않는다. 스펙을 바꿀 만한 발견은 7-review를 거쳐 다음 시대로 간다. 구현 중 판단은 `CLAUDE.md`의 기준으로 자율적으로 내린다.
-- 각 P의 끝나는 조건을 넘기지 못하면 다음 P로 가지 않는다.
+- **실측 문서는 스펙을 고치지 않는다.** 구현(6-build)에 들어가면 06은 개정하지 않는다. 스펙을 바꿀 만한 발견은 7-review를 거쳐 다음 시대로 간다. 구현 중 판단은 `AGENTS.md`의 기준으로 자율적으로 내린다.
+- 각 P의 끝나는 조건을 넘기지 못해도 구현은 멈추지 않는다. 되돌리기 싼 경로로 다음 P로 가고, 넘기지 못한 조건을 release-blocked로 기록한다 (`AGENTS.md`).
 
 ### 14.2 단계
 
@@ -547,7 +551,7 @@ assemble/ ────────────┤
 - **결정 ③ 확정:** 선택 블록 위치와 id, not-coding 정책의 서브에이전트 조항, `keep-coding-instructions`, 원본 frontmatter, 두 프로파일 중 `force-for-plugin`을 켤 것 (§9)
 - `output-styles/agent-reply.md` + `agents/korean-reviewer.md`에 같은 정책 텍스트
 - *확인:* 메인 대화와 서브에이전트 **양쪽에** 정책이 걸리는가 (§2.1 제약 실측)
-- *끝나는 조건:* 결정 ③이 06b에 있고, 06 반영 여부를 사용자와 정했다
+- *끝나는 조건:* 결정 ③이 6-build P3 기록에 근거와 함께 있고, 06 반영 제안이 7-review 항목으로 적혀 있다
 
 **P4 — 추상화**
 - P1~P3 실물에서 `upstream/interface/{policy,procedure,taxonomy}.schema.yaml` 역산
@@ -633,21 +637,21 @@ assemble/ ────────────┤
 
 | 결정 | 기울기 | 정하는 곳 |
 |---|---|---|
-| im-not-ai 절차 원천 (오케스트레이터 / 단일 호출판) | — | P1 |
-| upstream 문장과 우리 문장의 렌더 구분 방식 | — | P1 |
-| 앵커 형식 | — | P1~P3 시험, P4 확정 |
-| ③ 정책 합성 규칙 | — | P3 |
+| im-not-ai 절차 원천 (오케스트레이터 / 단일 호출판) | 단일 호출판 골격 + monolith 철칙 + 보강 (flow D1) | P1 |
+| upstream 문장과 우리 문장의 렌더 구분 방식 | 사이드카 `SKILL.provenance.yaml` (flow D3) | P1 |
+| 앵커 형식 | 파일 유형별 조합 (flow D2) | P1~P3 시험, P4 확정 |
+| ③ 정책 합성 규칙 | 블록은 끝에, adapted 0 (flow D4) | P3 |
 | ② 프로파일 런타임 / 빌드타임 | 빌드타임 | P5 |
 | `claude plugin eval` 도입 범위 | — | P5 |
 | Codex 메인 스레드 주입 지점 (`AGENTS.md` 전역 / 프로젝트 / `config.toml` `developer_instructions`) | — | P6 (§9) |
 | Codex 제거 절차 (마커) | — | P6 |
-| Codex hook 배포 (플러그인 번들 / 설치 단계) | 플러그인 번들 | P6 |
+| Codex hook 배포 (플러그인 번들 / 설치 단계) | 플러그인 번들. 자동화 실측에 신뢰 우회 권한 필요 (flow §4) | P6 |
 | 빌드 스탬프 형식, 로거의 profile 인식 | 스탬프 파일 | P7 |
 | stop-slop-ko를 `policy` 조각 공급자로 넣을지 | — | P3 이후, `exempt` 복구와 함께 |
-| 두 프로파일 중 `force-for-plugin`을 켤 출력 스타일 | agent-reply | P3, 결정 ③ (§9) |
+| 두 프로파일 중 `force-for-plugin`을 켤 출력 스타일 | agent-reply. formal-report 도달은 P5의 ②로 (flow D4) | P3, 결정 ③ (§9) |
 | 에이전트와 프로파일의 결합 (고정 / 프로파일별 렌더) | — | P5 (§8) |
 | presets의 `policy` 항목이 런타임에 뜻하는 것 (없음 / 재주입) | — | P5 (§6) |
 | Codex `instructions` 채널 (요약 / 본문 / 없음) | — | P6 (§9) |
-| 절차가 참조하는 rubric·연구 노트의 역할 | — | P1·P2 실측, P4 (§7) |
+| 절차가 참조하는 rubric·연구 노트의 역할 | 임시 역할 `reference` + `kind` (flow D5) | P1·P2 실측, P4 (§7) |
 | Claude Code 산출물에 tool 없는 MCP 서버를 실을지 | — | P7 (§12) |
 | `sub-to-sub` 판별 방법 (없으면 값 삭제) | — | P7 (§13.1) |

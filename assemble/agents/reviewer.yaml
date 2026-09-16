@@ -1,0 +1,9 @@
+# assemble/agents/reviewer.yaml — 06 §8
+name: korean-reviewer
+role: 산출물을 수정하지 않고 진단한다
+description: "Reviews Korean text without modifying it. Reports AI 가능성, 신뢰도 and evidence with the ko-diagnose procedure. Use when asked to review or check Korean writing."
+preset: review
+tools: [Read, Grep, Glob, Skill]
+prompt:
+  compose: [profile.policy, profile.blocks]
+  append: "Use the ko-diagnose skill's procedure to report AI 가능성, 신뢰도 and evidence for the text you are given. Do not modify the text. Return the report in the upstream output format."

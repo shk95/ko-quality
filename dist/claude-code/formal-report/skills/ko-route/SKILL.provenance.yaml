@@ -1,0 +1,31 @@
+# Which spans are upstream, structure or ours (flow.md D3). Built by build/claude_code.py; do not edit.
+skill: ko-route
+files:
+  SKILL.md:
+    - lines: [1, 6]
+      owner: "ours"
+      source: "assemble/skills/ko-route/SKILL.md"
+    - lines: [8, 8]
+      owner: "ours"
+      source: "assemble/skills/ko-route/SKILL.md"
+    - lines: [10, 10]
+      owner: "ours"
+      source: "assemble/skills/ko-route/SKILL.md"
+    - lines: [12, 16]
+      owner: "ours"
+      source: "assemble/presets.yaml"
+    - lines: [18, 18]
+      owner: "ours"
+      source: "assemble/profiles/agent-reply.yaml"
+    - lines: [19, 19]
+      owner: "ours"
+      source: "assemble/profiles/formal-report.yaml"
+    - lines: [21, 21]
+      owner: "ours"
+      source: "assemble/skills/ko-route/SKILL.md"
+    - lines: [23, 25]
+      owner: "ours"
+      source: "assemble/skills/ko-route/SKILL.md"
+    - lines: [27, 27]
+      owner: "ours"
+      source: "assemble/skills/ko-route/SKILL.md"

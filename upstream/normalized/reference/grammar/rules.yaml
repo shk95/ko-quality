@@ -1,0 +1,2095 @@
+role: reference
+slot: grammar
+name: rules
+kind: rubric
+fragments:
+  - id: rules.001
+    kind: heading
+    blanks: 0
+    text: "# 한국어 문법 및 맞춤법 규칙"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "# 한국어 문법 및 맞춤법 규칙"
+      content_hash: sha256:78e749c15cc4b2da781589bb000ac8f21cf8820fccdb81d8210fd366183807dd
+      transform: verbatim
+  - id: rules.002
+    kind: paragraph
+    blanks: 1
+    text: "이 문서는 한국어 문법 검사 시 참조할 표준 규칙을 정리한 것입니다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "# 한국어 문법 및 맞춤법 규칙 > paragraph 1"
+      content_hash: sha256:69fe1e5a64d0e08be7b8c0abf1ab6ef7cdc4b937d5990b355b0b52900194e28a
+      transform: verbatim
+  - id: rules.003
+    kind: heading
+    blanks: 1
+    text: "## 목차"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "## 목차"
+      content_hash: sha256:7b31b651872f799c61852ac86f609dcab2c149fa90e1dd62af69928abceb154f
+      transform: verbatim
+  - id: rules.004
+    kind: item
+    blanks: 1
+    text: "1. [맞춤법 규칙](#맞춤법-규칙)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "## 목차 > item 1"
+      content_hash: sha256:04f59390a6cf4fc2acdadaa083a1313b66ff2fd666e39739b52e1533a0c7ba0e
+      transform: verbatim
+  - id: rules.005
+    kind: item
+    blanks: 0
+    text: "2. [띄어쓰기 규칙](#띄어쓰기-규칙)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "## 목차 > item 2"
+      content_hash: sha256:9e53e17054db3a4d2a80776f7ee321cac443fd50a91d8dc732e5f024bb8a3925
+      transform: verbatim
+  - id: rules.006
+    kind: item
+    blanks: 0
+    text: "3. [문법 구조 규칙](#문법-구조-규칙)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "## 목차 > item 3"
+      content_hash: sha256:720adf4ceb9a4530b4d83d61ceb66b25f2b360d6e7da5338233e2da397060f40
+      transform: verbatim
+  - id: rules.007
+    kind: item
+    blanks: 0
+    text: "4. [구두점 규칙](#구두점-규칙)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "## 목차 > item 4"
+      content_hash: sha256:edaa3bd2787a2b573760da816094a34f72039492f2271854124c88521914cdf2
+      transform: verbatim
+  - id: rules.008
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "## 목차 > paragraph 1"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: rules.009
+    kind: heading
+    blanks: 1
+    text: "## 맞춤법 규칙"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "## 맞춤법 규칙"
+      content_hash: sha256:f5cbc84b194bd602eed84295eebac7822b1d770db3efa35f4e196e733231694f
+      transform: verbatim
+  - id: rules.010
+    kind: heading
+    blanks: 1
+    text: "### 1. 사이시옷 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 사이시옷 사용"
+      content_hash: sha256:42e1f7a035317985037bef029953a4d1fd15bfaf6fa1d5b94450cfd4ae233480
+      transform: verbatim
+  - id: rules.011
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 순우리말 + 순우리말, 순우리말 + 한자어, 한자어 + 순우리말 조합에서 사이시옷 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 사이시옷 사용 > bold label **규칙**"
+      content_hash: sha256:fe15f9aa87c3e41f935975f7a0541c7b546a0b074159f25e7886b70d5d86b21c
+      transform: verbatim
+  - id: rules.012
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 사이시옷 사용 > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.013
+    kind: item
+    blanks: 0
+    text: "- 나뭇잎, 나뭇가지, 나뭇결"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 사이시옷 사용 > item 1"
+      content_hash: sha256:3d41347d3246db33346fa77d47ded8f00983c5f0b80eebc5dd57fbb436e19b21
+      transform: verbatim
+  - id: rules.014
+    kind: item
+    blanks: 0
+    text: "- 곳간, 숫자, 찻잔, 툇마루"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 사이시옷 사용 > item 2"
+      content_hash: sha256:0ae50909be1de3dc9d5b751206fceefad0ad718be855888c37f61fd25086a2a3
+      transform: verbatim
+  - id: rules.015
+    kind: item
+    blanks: 0
+    text: "- 횟수, 댓수"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 사이시옷 사용 > item 3"
+      content_hash: sha256:7a899782534562405c28f183b338ef6fc08629a420b96ed18904978dec0777ad
+      transform: verbatim
+  - id: rules.016
+    kind: paragraph
+    blanks: 1
+    text: "**틀린 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 사이시옷 사용 > bold label **틀린 예**"
+      content_hash: sha256:ee3a09ea920c82f4ffa1aee9a6d82404b01c7fda55cde9c883b8d604dd2fad6b
+      transform: verbatim
+  - id: rules.017
+    kind: item
+    blanks: 0
+    text: "- ❌ 나무잎 → ✅ 나뭇잎"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 사이시옷 사용 > item 4"
+      content_hash: sha256:77a69b434cf66e8c09b0216b500963d0eaedb526a7c5bf5aadfa17449a205e4b
+      transform: verbatim
+  - id: rules.018
+    kind: item
+    blanks: 0
+    text: "- ❌ 차잔 → ✅ 찻잔"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 사이시옷 사용 > item 5"
+      content_hash: sha256:710bc6f039aad8bea31851e3e1e8dbfee15cc9af9b22dc6ccdd5f18d78dfe24a
+      transform: verbatim
+  - id: rules.019
+    kind: item
+    blanks: 0
+    text: "- ❌ 회수 (횟수의 의미) → ✅ 횟수"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 사이시옷 사용 > item 6"
+      content_hash: sha256:0acde9ed7a2131272a71a546b0f292c1750c871771265fe9009024381bbd142c
+      transform: verbatim
+  - id: rules.020
+    kind: paragraph
+    blanks: 1
+    text: "**예외**: 한자어 + 한자어는 사이시옷을 쓰지 않음 (예: 회사일, 차고지)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 사이시옷 사용 > bold label **예외**"
+      content_hash: sha256:77722c33050ae9ad756befbc3a3c33ccfc4b8bdb3669f742bdb96ade9fb32f34
+      transform: verbatim
+  - id: rules.021
+    kind: heading
+    blanks: 1
+    text: "### 2. 준말과 원말"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말"
+      content_hash: sha256:68e5a01ba4834e80bb7d08005c2950645f0134a4182cbd4d1af9f8ccf3e02f11
+      transform: verbatim
+  - id: rules.022
+    kind: paragraph
+    blanks: 1
+    text: "**-ㄴ/는 것, -ㄹ/을 것**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말 > bold label **-ㄴ/는 것, -ㄹ/을 것**"
+      content_hash: sha256:bf7c3134550516f2d14fa4491b9426f22c1e45d88ac4748da3d9afa3321ddf99
+      transform: verbatim
+  - id: rules.023
+    kind: item
+    blanks: 0
+    text: "- ❌ ~ㄴ걸 → ✅ ~ㄴ 걸 또는 ~ㄴ 것을"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말 > item 1"
+      content_hash: sha256:f1d02fa328627727fc41cf1391b3f3064a539d33bdb0a4778da378276fef87e8
+      transform: verbatim
+  - id: rules.024
+    kind: item
+    blanks: 0
+    text: "- ❌ ~ㄹ껄 → ✅ ~ㄹ 걸 또는 ~ㄹ 것을"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말 > item 2"
+      content_hash: sha256:fe7ac4b40237035abc2e3470a9452100f7b216260e2b938dd75cc0f7c28134dd
+      transform: verbatim
+  - id: rules.025
+    kind: paragraph
+    blanks: 1
+    text: "**되/돼**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말 > bold label **되/돼**"
+      content_hash: sha256:92f90db7ede073edc61991f44bf96095b3f43b2ecf2c61a14efc60bc56f1379f
+      transform: verbatim
+  - id: rules.026
+    kind: item
+    blanks: 0
+    text: "- \"되어\"의 준말 → \"돼\""
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말 > item 3"
+      content_hash: sha256:0183f28ab4a50450a47078570e00f03e148762eb16a76350c73a56a1769a36c6
+      transform: verbatim
+  - id: rules.027
+    kind: item
+    blanks: 0
+    text: "- ✅ 돼요, 됐어요, 될 거예요"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말 > item 4"
+      content_hash: sha256:3c431f36e9d1b2beadfeb448a44317c7b0b0ed0b1ca8d50d170c1ce837100f1d
+      transform: verbatim
+  - id: rules.028
+    kind: item
+    blanks: 0
+    text: "- ❌ 되요 → ✅ 돼요"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말 > item 5"
+      content_hash: sha256:ac06154f8666b325b1df117a9f949f402fa2f793a41ee747812d34438b4c9405
+      transform: verbatim
+  - id: rules.029
+    kind: item
+    blanks: 0
+    text: "- ❌ 됬어요 → ✅ 됐어요"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말 > item 6"
+      content_hash: sha256:9bde631fbfb1ed5f98a2bade3f37818fa5ca5cd1c79dec7f4aafd9064ed9d8c2
+      transform: verbatim
+  - id: rules.030
+    kind: paragraph
+    blanks: 1
+    text: "**-ㄹ게/를게**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말 > bold label **-ㄹ게/를게**"
+      content_hash: sha256:4111fda69583a68026d3251360cfb805588a1778deeb1cd985771a0f9c019512
+      transform: verbatim
+  - id: rules.031
+    kind: item
+    blanks: 0
+    text: "- ❌ ~를게요 → ✅ ~ㄹ게요"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말 > item 7"
+      content_hash: sha256:28a424fdbfb40129ae9a25fb2aa792d561d437d95d52f70493644a5a7c12a726
+      transform: verbatim
+  - id: rules.032
+    kind: item
+    blanks: 0
+    text: "- 예: 할게요, 먹을게요, 갈게요"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 준말과 원말 > item 8"
+      content_hash: sha256:a4a20b41067267f7b2331ae71efffc252b5769a02bfbd6c94e3bf26162bd91e2
+      transform: verbatim
+  - id: rules.033
+    kind: heading
+    blanks: 1
+    text: "### 3. 외래어 표기"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 외래어 표기"
+      content_hash: sha256:f0178bfe35dad01e30d2c0e2211ec85f7962263465e9124b0f92fd6a46857857
+      transform: verbatim
+  - id: rules.034
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 국립국어원 외래어 표기법 준수"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 외래어 표기 > bold label **규칙**"
+      content_hash: sha256:03e30f325ff281878d5733b5f8764c3a1fc7685e9e865329e81eb858ece85990
+      transform: verbatim
+  - id: rules.035
+    kind: paragraph
+    blanks: 1
+    text: "**흔한 오류**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 외래어 표기 > bold label **흔한 오류**"
+      content_hash: sha256:d82882f675eed30adac753f8d78a50c1569414684e91a74d89d604d95dffd491
+      transform: verbatim
+  - id: rules.036
+    kind: item
+    blanks: 0
+    text: "- ❌ 캐릭터 → ✅ 캐릭터 (character)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 외래어 표기 > item 1"
+      content_hash: sha256:1fc9acfd2deb3fed9b4692328a2e61e5770d8765c4a7b96aedbe21f67cd20c8c
+      transform: verbatim
+  - id: rules.037
+    kind: item
+    blanks: 0
+    text: "- ❌ 쉐어 → ✅ 셰어 (share)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 외래어 표기 > item 2"
+      content_hash: sha256:d49329d6ef6a719ee15f2f31b65ff765769032d6b5323660840fc712d5a8875b
+      transform: verbatim
+  - id: rules.038
+    kind: item
+    blanks: 0
+    text: "- ❌ 디바이스 → ✅ 디바이스 (device)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 외래어 표기 > item 3"
+      content_hash: sha256:977ee10ca9bf8abfa8dcef04a3c18e26c173e54cfdffe279167977cc9fab29d5
+      transform: verbatim
+  - id: rules.039
+    kind: item
+    blanks: 0
+    text: "- ❌ 어플 → ✅ 앱 (app)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 외래어 표기 > item 4"
+      content_hash: sha256:cca6d5bafa8c0b46559d709a25ac02d091dfc182aa383e4db6e5ce10296a7152
+      transform: verbatim
+  - id: rules.040
+    kind: heading
+    blanks: 1
+    text: "### 4. 두음법칙"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 두음법칙"
+      content_hash: sha256:335fcff74327a0e049255965696a950cda267235b12733b4bf2dbc203c39539f
+      transform: verbatim
+  - id: rules.041
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 단어 첫머리에서 \"ㄹ\"이 발음되지 않는 경우"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 두음법칙 > bold label **규칙**"
+      content_hash: sha256:9000e0e210caed720ac4b1549c7247dc699490472aa1a1b84296a97b0f827fbe
+      transform: verbatim
+  - id: rules.042
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 두음법칙 > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.043
+    kind: item
+    blanks: 0
+    text: "- ✅ 여자, 요일, 양심, 역사"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 두음법칙 > item 1"
+      content_hash: sha256:55eb18653e5af78000bcb16d7e12583ecf007e2425227582c4d445a9275a1823
+      transform: verbatim
+  - id: rules.044
+    kind: item
+    blanks: 0
+    text: "- ❌ 녀자, 료일, 량심, 력사"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 두음법칙 > item 2"
+      content_hash: sha256:14643e78d7877bba1b1e7a442c03642b8924af96003bda89e721ad1aa8d0986a
+      transform: verbatim
+  - id: rules.045
+    kind: paragraph
+    blanks: 1
+    text: "**예외**: 성(姓)과 단어 중간에는 두음법칙을 적용하지 않음"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 두음법칙 > bold label **예외**"
+      content_hash: sha256:22506876a82e218f903a559ee9e60912abdea998baa0af3df12aef21fabccf28
+      transform: verbatim
+  - id: rules.046
+    kind: item
+    blanks: 0
+    text: "- 이순신, 신라, 광한루"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 두음법칙 > item 3"
+      content_hash: sha256:7b03d6f5c7b0077f707e0f92aaeeaa4087187bcf0c60898019ec0c1db2608b4e
+      transform: verbatim
+  - id: rules.047
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 두음법칙 > paragraph 4"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: rules.048
+    kind: heading
+    blanks: 1
+    text: "## 띄어쓰기 규칙"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "## 띄어쓰기 규칙"
+      content_hash: sha256:7aa178a3d6cd25f8f2f09353d4d0c289e724cf6306e5d8d13b9dd14661c19a77
+      transform: verbatim
+  - id: rules.049
+    kind: heading
+    blanks: 1
+    text: "### 1. 의존명사"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 의존명사"
+      content_hash: sha256:94fca83ef79c39269c87464dfb983af5be9754651ffd63fe8d746dcc07d3f432
+      transform: verbatim
+  - id: rules.050
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 의존명사는 앞말과 띄어 씀"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 의존명사 > bold label **규칙**"
+      content_hash: sha256:25f6e82579def218c6cb65821fa87a3d558d651443c6eb7a868c46d0ad5f8427
+      transform: verbatim
+  - id: rules.051
+    kind: paragraph
+    blanks: 1
+    text: "**흔한 의존명사**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 의존명사 > bold label **흔한 의존명사**"
+      content_hash: sha256:1bebe47bc5c1720f1a42e81bc54789c55b347cfeaab2fc353baec73e9df21131
+      transform: verbatim
+  - id: rules.052
+    kind: item
+    blanks: 0
+    text: "- 것, 수, 만큼, 뿐, 데, 바, 지, 듯, 따름, 줄"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 의존명사 > item 1"
+      content_hash: sha256:aeddb1d1152a0099c4322d71719eab9951aae79a95727d66fd21d9ae0b14dcd8
+      transform: verbatim
+  - id: rules.053
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 의존명사 > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.054
+    kind: item
+    blanks: 0
+    text: "- ✅ 할 수 있다, 먹을 만큼, 공부하는 것"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 의존명사 > item 2"
+      content_hash: sha256:6919bb47f3a117306123837637e0707efd734505c7cddddc1125b3393a357009
+      transform: verbatim
+  - id: rules.055
+    kind: item
+    blanks: 0
+    text: "- ❌ 할수있다, 먹을만큼, 공부하는것"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 의존명사 > item 3"
+      content_hash: sha256:558997a7044f4306329ce177ccc81fdaf0383dd173f46c6a107506fcbb4509d1
+      transform: verbatim
+  - id: rules.056
+    kind: paragraph
+    blanks: 1
+    text: "**예외**: \"것\"이 대명사로 쓰일 때는 띄어 쓰지만, 자주 쓰여 붙여 쓰는 것도 허용되는 경우 있음"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 의존명사 > bold label **예외**"
+      content_hash: sha256:b238f2d76a4858da4dd1a5325284d6fb51fec26cdb55283414e44eb8c82d206b
+      transform: verbatim
+  - id: rules.057
+    kind: heading
+    blanks: 1
+    text: "### 2. 보조용언"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 보조용언"
+      content_hash: sha256:6bc336ab9e5fd984097153bf877995126345f85b47d730a9735e8d618687aa4a
+      transform: verbatim
+  - id: rules.058
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 보조용언은 앞말과 띄어 씀 (원칙상), 하지만 붙여 쓰는 것도 허용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 보조용언 > bold label **규칙**"
+      content_hash: sha256:4240ae1acadc7308641df4f72cbb1e61cea0c30b8bab1f5c2616049ccf103612
+      transform: verbatim
+  - id: rules.059
+    kind: paragraph
+    blanks: 1
+    text: "**주요 보조용언**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 보조용언 > bold label **주요 보조용언**"
+      content_hash: sha256:b5991e71b5521c84faa798c0bf8e1ef6b97ed989f1409bb3bf921d166f3cff68
+      transform: verbatim
+  - id: rules.060
+    kind: item
+    blanks: 0
+    text: "- -아/어 주다, -고 있다, -아/어 보다, -게 하다, -지 않다"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 보조용언 > item 1"
+      content_hash: sha256:28df5e897c25a9fed1e32888c6ea5115d407768c4fc284c1a80909e97b5ad806
+      transform: verbatim
+  - id: rules.061
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예** (둘 다 가능):"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 보조용언 > bold label **올바른 예**"
+      content_hash: sha256:050e2eadcfa58dd39b56461a314359edd7c744a3375d08de904459f7664d3daf
+      transform: verbatim
+  - id: rules.062
+    kind: item
+    blanks: 0
+    text: "- ✅ 해 주세요 / 해주세요"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 보조용언 > item 2"
+      content_hash: sha256:367398817471ee82b46a1a4162e0cbd183ccb562849fa647f6b16922f95cbe13
+      transform: verbatim
+  - id: rules.063
+    kind: item
+    blanks: 0
+    text: "- ✅ 하고 있습니다 / 하고있습니다"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 보조용언 > item 3"
+      content_hash: sha256:b7cbf27cf9ee522969d167acbaa9eecd2dfd5d1929fb07f698728de25ae448ef
+      transform: verbatim
+  - id: rules.064
+    kind: item
+    blanks: 0
+    text: "- ✅ 해 보세요 / 해보세요"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 보조용언 > item 4"
+      content_hash: sha256:2b781e6c994853ecbc22e46c8d302de01753655552573242ef0545c453ed6d03
+      transform: verbatim
+  - id: rules.065
+    kind: paragraph
+    blanks: 1
+    text: "**권장**: 격식체 문서에서는 띄어 쓰기, 비격식체에서는 자유롭게"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 보조용언 > bold label **권장**"
+      content_hash: sha256:e201c5571671f18fa283d56cd10616269c34ad2644f44d217e01fb257aa8f8f7
+      transform: verbatim
+  - id: rules.066
+    kind: heading
+    blanks: 1
+    text: "### 3. 단위명사"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 단위명사"
+      content_hash: sha256:b5a169f8ba365492712503485e2af737f22688a20f98d4f81785903723f0af58
+      transform: verbatim
+  - id: rules.067
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 수를 나타내는 말 뒤에 오는 단위명사는 띄어 씀"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 단위명사 > bold label **규칙**"
+      content_hash: sha256:5727a543026029df87581368e007827b6148d603f871bab71417a8b09d1cf969
+      transform: verbatim
+  - id: rules.068
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 단위명사 > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.069
+    kind: item
+    blanks: 0
+    text: "- ✅ 10 개, 5 명, 3 권, 20 년"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 단위명사 > item 1"
+      content_hash: sha256:1db911a3a777fe9520c8d7ed389665438138f91968eff481d242a429f5a0e200
+      transform: verbatim
+  - id: rules.070
+    kind: item
+    blanks: 0
+    text: "- ❌ 10개, 5명, 3권, 20년 (비격식체에서는 허용)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 단위명사 > item 2"
+      content_hash: sha256:2c9d34a5bade655fb7084e32997e3141215907f9eb4d6ed1b9ddeb2889bcf208
+      transform: verbatim
+  - id: rules.071
+    kind: paragraph
+    blanks: 1
+    text: "**예외**: 비격식체나 일상 대화에서는 붙여 쓰는 것도 허용됨"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 단위명사 > bold label **예외**"
+      content_hash: sha256:d22baf75b372fb920a7e6fc51883e631e3fe6f9a2000b5e527de644f5406822b
+      transform: verbatim
+  - id: rules.072
+    kind: heading
+    blanks: 1
+    text: "### 4. 합성어와 연결어"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 합성어와 연결어"
+      content_hash: sha256:915fc8ab1dc532d3611509b90d68c6c07bc1ddf9bfbf1862ea03ce691fb2613f
+      transform: verbatim
+  - id: rules.073
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 두 개 이상의 단어가 결합하여 하나의 의미를 이루는 합성어는 붙여 씀"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 합성어와 연결어 > bold label **규칙**"
+      content_hash: sha256:5a12ed8cef4d38dc44388c5152e530181800c6e470a8a51ddca2c025d6dcb340
+      transform: verbatim
+  - id: rules.074
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 합성어와 연결어 > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.075
+    kind: item
+    blanks: 0
+    text: "- ✅ 먹거리, 볼거리, 읽을거리"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 합성어와 연결어 > item 1"
+      content_hash: sha256:04465a89c5e6a5dd582a586163d134bf7761456a06bca422690959707470214c
+      transform: verbatim
+  - id: rules.076
+    kind: item
+    blanks: 0
+    text: "- ✅ 사과나무, 강아지, 손목시계"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 합성어와 연결어 > item 2"
+      content_hash: sha256:76be391f1d61c23b6254da60ab62986a183d34337c85c6048655b5d48a7be9f5
+      transform: verbatim
+  - id: rules.077
+    kind: item
+    blanks: 0
+    text: "- ❌ 사과 나무, 강 아지, 손목 시계"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 합성어와 연결어 > item 3"
+      content_hash: sha256:69d7587ba45017d9d24cf6a14d548ac9deed07b919e29700acbd43674d0ab486
+      transform: verbatim
+  - id: rules.078
+    kind: heading
+    blanks: 1
+    text: "### 5. 조사"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 조사"
+      content_hash: sha256:83faec5b6b7afef4a43f25a7090cc61c8a1c7923f20656ca6cbe72ee5daa18fc
+      transform: verbatim
+  - id: rules.079
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 조사는 앞말에 붙여 씀"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 조사 > bold label **규칙**"
+      content_hash: sha256:5e3995d9b701b798c74a80fbf24b518b58fe27817347aa3cbc87ee35ae2a0687
+      transform: verbatim
+  - id: rules.080
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 조사 > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.081
+    kind: item
+    blanks: 0
+    text: "- ✅ 나는, 너를, 그가, 집에서"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 조사 > item 1"
+      content_hash: sha256:1a69968f000e04c159a80a8586b4d4fe06a43ee7ac38062c96aaf1990b64ab0c
+      transform: verbatim
+  - id: rules.082
+    kind: item
+    blanks: 0
+    text: "- ❌ 나 는, 너 를, 그 가, 집 에서"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 조사 > item 2"
+      content_hash: sha256:76f384edb85689f392ffe5b271c9c3298672d2fc5a0c04545c7f2dbf3c03b9ac
+      transform: verbatim
+  - id: rules.083
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 조사 > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: rules.084
+    kind: heading
+    blanks: 1
+    text: "## 문법 구조 규칙"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "## 문법 구조 규칙"
+      content_hash: sha256:24c3bfda8c86ac962fbbb959180af3b35cd532690f78e1229003f1fa2d8fcc77
+      transform: verbatim
+  - id: rules.085
+    kind: heading
+    blanks: 1
+    text: "### 1. 시제 일치"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 시제 일치"
+      content_hash: sha256:b02759b6bdd0ea5def96850d86849f705dd7e6e9fee0f5249c4b6908db123170
+      transform: verbatim
+  - id: rules.086
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 문장 내에서 시제는 일관되게 유지"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 시제 일치 > bold label **규칙**"
+      content_hash: sha256:0097da573a8ac67bce9f1cb2d57dc98d1cef7d936539d8e66d7f246b532a60a6
+      transform: verbatim
+  - id: rules.087
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 시제 일치 > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.088
+    kind: item
+    blanks: 0
+    text: "- ✅ 나는 어제 학교에 갔고, 친구를 만났다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 시제 일치 > item 1"
+      content_hash: sha256:afcdf6c5bc810650b06c133677bc6f39ef33cdf10f4ad9a9f6fa16937d1ab43b
+      transform: verbatim
+  - id: rules.089
+    kind: item
+    blanks: 0
+    text: "- ❌ 나는 어제 학교에 가고, 친구를 만났다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 시제 일치 > item 2"
+      content_hash: sha256:96c0654d2bb1b721b80f614f61d37094a60fa2308eda12ed8f1d14ccd93cb5ca
+      transform: verbatim
+  - id: rules.090
+    kind: heading
+    blanks: 1
+    text: "### 2. 주어와 서술어 호응"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 주어와 서술어 호응"
+      content_hash: sha256:a2f8142635f2a72986b20abf0c66095a30e1c562321c565b370faa4a44c7513a
+      transform: verbatim
+  - id: rules.091
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 주어와 서술어는 수와 인칭에서 호응해야 함"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 주어와 서술어 호응 > bold label **규칙**"
+      content_hash: sha256:f7e5d32241cb73fcbfe55b4c87d95ac50462788258a9c5ffd20f480d59563b11
+      transform: verbatim
+  - id: rules.092
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 주어와 서술어 호응 > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.093
+    kind: item
+    blanks: 0
+    text: "- ✅ 학생들이 공부를 한다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 주어와 서술어 호응 > item 1"
+      content_hash: sha256:28a97c6708e11d8e78cf7b61481a986b42dbb4a1503ea9faba9e6e7af76cb568
+      transform: verbatim
+  - id: rules.094
+    kind: item
+    blanks: 0
+    text: "- ❌ 학생들이 공부를 합니다. (존대 불일치 - 문맥에 따라 허용 가능)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 주어와 서술어 호응 > item 2"
+      content_hash: sha256:f2f12695e297139952cd53dac3b0f2a54ef0f1c2af0b99f6bc6032a2a1e8777a
+      transform: verbatim
+  - id: rules.095
+    kind: heading
+    blanks: 1
+    text: "### 3. 이중 부정 피하기"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 이중 부정 피하기"
+      content_hash: sha256:5e7d4676798d46cab413c542aacd74f97d1b56f1d7a501412824a09ec5ff53a2
+      transform: verbatim
+  - id: rules.096
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 불필요한 이중 부정은 피함"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 이중 부정 피하기 > bold label **규칙**"
+      content_hash: sha256:9014c11b4e5322fbff0f3edd48cc8d99bdf5bac28cb7407bec0a2c770a6c11e3
+      transform: verbatim
+  - id: rules.097
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 이중 부정 피하기 > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.098
+    kind: item
+    blanks: 0
+    text: "- ✅ 가능합니다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 이중 부정 피하기 > item 1"
+      content_hash: sha256:b21d0a411808d62cf1bb4a4e52b47fe2cc22311a47f4193cf99a4aa4e461eaba
+      transform: verbatim
+  - id: rules.099
+    kind: item
+    blanks: 0
+    text: "- ❌ 불가능하지 않습니다. (의도적 강조가 아니라면)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 이중 부정 피하기 > item 2"
+      content_hash: sha256:25150d7cc48934c4d876b1404ce4e4979bfdda2f053ae6ffbea8840296184f4c
+      transform: verbatim
+  - id: rules.100
+    kind: heading
+    blanks: 1
+    text: "### 4. 조사 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용"
+      content_hash: sha256:9c4ef3030725b46604b0cac2cd3da109be7af77939236949d7b635451ed53f98
+      transform: verbatim
+  - id: rules.101
+    kind: paragraph
+    blanks: 1
+    text: "**-을/를**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > bold label **-을/를**"
+      content_hash: sha256:0f98248e955a065ddef9ad83ba97162be4f87234aa1d5f50f865ebc58a848457
+      transform: verbatim
+  - id: rules.102
+    kind: item
+    blanks: 0
+    text: "- 받침 O + 을: 책을, 밥을"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > item 1"
+      content_hash: sha256:3e604ef569a0f90717ac8a7a969f7b8b338f48559159b8a86ae7a3e913077759
+      transform: verbatim
+  - id: rules.103
+    kind: item
+    blanks: 0
+    text: "- 받침 X + 를: 사과를, 차를"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > item 2"
+      content_hash: sha256:098e6b68cf6a51d660505e20161744f8442439d643b29219bf71aea2f705ed50
+      transform: verbatim
+  - id: rules.104
+    kind: paragraph
+    blanks: 1
+    text: "**-이/가**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > bold label **-이/가**"
+      content_hash: sha256:cf3c043ebced38d7a1fa7764d363e1258b354da817cf9c03799331e0ce587d1e
+      transform: verbatim
+  - id: rules.105
+    kind: item
+    blanks: 0
+    text: "- 받침 O + 이: 책이, 밥이"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > item 3"
+      content_hash: sha256:424d84880292336895e3515dcb9f6741675fd2b54c70a5d6e4409a4fa6665351
+      transform: verbatim
+  - id: rules.106
+    kind: item
+    blanks: 0
+    text: "- 받침 X + 가: 사과가, 차가"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > item 4"
+      content_hash: sha256:e347f9bff94e3493b568d9e071d91dbb65911087a57a4b34f3235f311b79aaee
+      transform: verbatim
+  - id: rules.107
+    kind: paragraph
+    blanks: 1
+    text: "**-은/는**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > bold label **-은/는**"
+      content_hash: sha256:0337c8d187550768bf4657f1ae4614f10e9d72cf104d9af60e6951bb65d3b5c9
+      transform: verbatim
+  - id: rules.108
+    kind: item
+    blanks: 0
+    text: "- 받침 O + 은: 책은, 밥은"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > item 5"
+      content_hash: sha256:56abf6abb07a3adbec8723f1b76c4bf01c5e54e6461693af441266402ba98d51
+      transform: verbatim
+  - id: rules.109
+    kind: item
+    blanks: 0
+    text: "- 받침 X + 는: 사과는, 차는"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > item 6"
+      content_hash: sha256:0dde01a0709c8d3ecc3a5d22dc0d7d79c0fdef77c380b4ea3053f2bd5aa87adb
+      transform: verbatim
+  - id: rules.110
+    kind: paragraph
+    blanks: 1
+    text: "**-와/과**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > bold label **-와/과**"
+      content_hash: sha256:8adff5614ed1cd497190f06b974d2683dfc3bc713a52d5bfb3fd4ad6e3555e6a
+      transform: verbatim
+  - id: rules.111
+    kind: item
+    blanks: 0
+    text: "- 받침 O + 과: 책과, 밥과"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > item 7"
+      content_hash: sha256:161e733a9edba9476a59c7940727356df56719aa02e9cafea202f6b0d73527cc
+      transform: verbatim
+  - id: rules.112
+    kind: item
+    blanks: 0
+    text: "- 받침 X + 와: 사과와, 차와"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 조사 사용 > item 8"
+      content_hash: sha256:578468354d84bdc0187b8a764012a077f60a8d59d5669a172a66cd4bedefbbcb
+      transform: verbatim
+  - id: rules.113
+    kind: heading
+    blanks: 1
+    text: "### 5. 높임법"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 높임법"
+      content_hash: sha256:72d34a59aca534bc192186e35fa88971fdb818f0ce148a80bcc8ceed40132692
+      transform: verbatim
+  - id: rules.114
+    kind: paragraph
+    blanks: 1
+    text: "**규칙**: 문장 내에서 높임법은 일관되게 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 높임법 > bold label **규칙**"
+      content_hash: sha256:71359d73b6a04b953d8137e552614bc9f144c0c22fd01e3627cdf345a3588dad
+      transform: verbatim
+  - id: rules.115
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 높임법 > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.116
+    kind: item
+    blanks: 0
+    text: "- ✅ 선생님께서 말씀하셨습니다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 높임법 > item 1"
+      content_hash: sha256:917aef2650b912d0523cbc71f5fcebeaa01b5e4a6e036077f6ffdca036fb2a6a
+      transform: verbatim
+  - id: rules.117
+    kind: item
+    blanks: 0
+    text: "- ❌ 선생님이 말했습니다. (높임 불일치)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 높임법 > item 2"
+      content_hash: sha256:aae25504237455e93b47489543ed3c04b344de6b284f06b219b9c86546298e7a
+      transform: verbatim
+  - id: rules.118
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 높임법 > paragraph 3"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: rules.119
+    kind: heading
+    blanks: 1
+    text: "## 구두점 규칙"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "## 구두점 규칙"
+      content_hash: sha256:4026c1d0cea37002a11a7633c4e60aa7cc5ab7993430680499f46c080441282c
+      transform: verbatim
+  - id: rules.120
+    kind: heading
+    blanks: 1
+    text: "### 1. 쉼표(,)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 쉼표(,)"
+      content_hash: sha256:b25e8a4c083b336136b070a92131d192d8f522e70b47ddd1abc0b43148d38107
+      transform: verbatim
+  - id: rules.121
+    kind: paragraph
+    blanks: 1
+    text: "**사용 시점**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 쉼표(,) > bold label **사용 시점**"
+      content_hash: sha256:72ce43c13789231125fb1e87bcc94cf26d8f297519d9c2f62ee5a9e1bca2c5fd
+      transform: verbatim
+  - id: rules.122
+    kind: item
+    blanks: 0
+    text: "- 같은 자격의 어구를 나열할 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 쉼표(,) > item 1"
+      content_hash: sha256:9d5d9010c2576718a806899a8a73124726cbfbb02f7550dea0d256a090c20759
+      transform: verbatim
+  - id: rules.123
+    kind: item
+    blanks: 0
+    text: "- 짧은 문장을 이어 줄 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 쉼표(,) > item 2"
+      content_hash: sha256:eb77c6dea417adffc2bca341d81aca8c3b9b77fe59fc01a942f3d62222e73204
+      transform: verbatim
+  - id: rules.124
+    kind: item
+    blanks: 0
+    text: "- 문장의 연결 관계를 분명히 할 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 쉼표(,) > item 3"
+      content_hash: sha256:d73de58aa10300743c3d20d21e7268c36538673d4d2a2b1a2e289a58aca4f778
+      transform: verbatim
+  - id: rules.125
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 쉼표(,) > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.126
+    kind: item
+    blanks: 0
+    text: "- 사과, 배, 포도를 샀다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 쉼표(,) > item 4"
+      content_hash: sha256:1a9bab2594502796dbeb698580e55ab730e8b591ed3877e483d9d995b0c3a109
+      transform: verbatim
+  - id: rules.127
+    kind: item
+    blanks: 0
+    text: "- 날씨가 좋으면, 산책을 가겠다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 쉼표(,) > item 5"
+      content_hash: sha256:6baaaeee273ff344a499ebf8155e6d048248305951c276b2d7f5f2a8ab3912bf
+      transform: verbatim
+  - id: rules.128
+    kind: paragraph
+    blanks: 1
+    text: "**주의**: 한국어는 영어보다 쉼표를 덜 사용함. 과도한 쉼표는 피하기"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 1. 쉼표(,) > bold label **주의**"
+      content_hash: sha256:130978d66fe055a3ea6597af52d353c83643bf17eb578d1dd09b0b361bd5d733
+      transform: verbatim
+  - id: rules.129
+    kind: heading
+    blanks: 1
+    text: "### 2. 마침표(.)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 마침표(.)"
+      content_hash: sha256:213f31b08cdae80372023db5617d4fff4aeb0ee30710768aeb9371341a2eed79
+      transform: verbatim
+  - id: rules.130
+    kind: paragraph
+    blanks: 1
+    text: "**사용 시점**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 마침표(.) > bold label **사용 시점**"
+      content_hash: sha256:72ce43c13789231125fb1e87bcc94cf26d8f297519d9c2f62ee5a9e1bca2c5fd
+      transform: verbatim
+  - id: rules.131
+    kind: item
+    blanks: 0
+    text: "- 서술, 명령, 청유의 문장 끝"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 마침표(.) > item 1"
+      content_hash: sha256:a4b0583f1992a7727dade2f5d74a4dd2c26aa042aa9278599915bd53562c75d3
+      transform: verbatim
+  - id: rules.132
+    kind: item
+    blanks: 0
+    text: "- 완결된 문장의 끝"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 마침표(.) > item 2"
+      content_hash: sha256:de83a8e6584c0d50c3406844c0038e55a113d9e830d98b795d1392a5fb080fb7
+      transform: verbatim
+  - id: rules.133
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 마침표(.) > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.134
+    kind: item
+    blanks: 0
+    text: "- 나는 학교에 갔다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 마침표(.) > item 3"
+      content_hash: sha256:4c4cbcd6152bbd478b7003a6cd1047147c63e58dd2d99d3e1f8563fc4b58db6e
+      transform: verbatim
+  - id: rules.135
+    kind: item
+    blanks: 0
+    text: "- 공부하자."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 2. 마침표(.) > item 4"
+      content_hash: sha256:4df534c8d00d21e2fc1c855192d7c91edf0a6e3819f4dc7517263d8d058e1438
+      transform: verbatim
+  - id: rules.136
+    kind: heading
+    blanks: 1
+    text: "### 3. 물음표(?)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 물음표(?)"
+      content_hash: sha256:d3a47e7000090a1afef96cadb95bfd344b4738cd5c3b552f6e31a748508886d2
+      transform: verbatim
+  - id: rules.137
+    kind: paragraph
+    blanks: 1
+    text: "**사용 시점**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 물음표(?) > bold label **사용 시점**"
+      content_hash: sha256:72ce43c13789231125fb1e87bcc94cf26d8f297519d9c2f62ee5a9e1bca2c5fd
+      transform: verbatim
+  - id: rules.138
+    kind: item
+    blanks: 0
+    text: "- 의문문의 끝"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 물음표(?) > item 1"
+      content_hash: sha256:3aa4c200b43fd6c4361c6969150fc63803ae86694e3a941715a32c2c916ab0a2
+      transform: verbatim
+  - id: rules.139
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 물음표(?) > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.140
+    kind: item
+    blanks: 0
+    text: "- 너는 어디에 가니?"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 물음표(?) > item 2"
+      content_hash: sha256:e93bad5ca0c4b1aaae8071b30e7a062506bdf27db0fbfd505d64fbd374187b10
+      transform: verbatim
+  - id: rules.141
+    kind: item
+    blanks: 0
+    text: "- 이것이 맞나요?"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 3. 물음표(?) > item 3"
+      content_hash: sha256:13a551c82cb3691b4558d84f8033d2a81278a4c0351dc6c5da34ce7f609ed35a
+      transform: verbatim
+  - id: rules.142
+    kind: heading
+    blanks: 1
+    text: "### 4. 느낌표(!)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 느낌표(!)"
+      content_hash: sha256:9a6b5f06a595548e7b953a15818d63372b8059197f5f6b5ce5aa7d99daa92437
+      transform: verbatim
+  - id: rules.143
+    kind: paragraph
+    blanks: 1
+    text: "**사용 시점**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 느낌표(!) > bold label **사용 시점**"
+      content_hash: sha256:72ce43c13789231125fb1e87bcc94cf26d8f297519d9c2f62ee5a9e1bca2c5fd
+      transform: verbatim
+  - id: rules.144
+    kind: item
+    blanks: 0
+    text: "- 감탄이나 강한 느낌을 나타낼 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 느낌표(!) > item 1"
+      content_hash: sha256:5125885d654aa91d38294f1c21838ad613ba89a78262cda757755fd9992f9ba7
+      transform: verbatim
+  - id: rules.145
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 느낌표(!) > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.146
+    kind: item
+    blanks: 0
+    text: "- 와! 정말 아름답다!"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 느낌표(!) > item 2"
+      content_hash: sha256:b4323a362c1820a9e7d915b1a17e4f77a6bf30d2c761450975f40cb3f00f7f45
+      transform: verbatim
+  - id: rules.147
+    kind: item
+    blanks: 0
+    text: "- 조용히 하세요!"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 느낌표(!) > item 3"
+      content_hash: sha256:687f60dd647f220248fdda25813bb7721c1d033cc418451af8c5bb90c686995a
+      transform: verbatim
+  - id: rules.148
+    kind: paragraph
+    blanks: 1
+    text: "**주의**: 과도한 느낌표 사용은 피하기 (특히 격식체 문서)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 4. 느낌표(!) > bold label **주의**"
+      content_hash: sha256:e380bc210500df6d359fc346ddfed424b9e4b2bb6eeaada87d6aeaa3000c570a
+      transform: verbatim
+  - id: rules.149
+    kind: heading
+    blanks: 1
+    text: "### 5. 따옴표(\" \", ' ')"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 따옴표(\" \", ' ')"
+      content_hash: sha256:0995b3e01202569f7fb849a384557e6ddeb5bcfc64f532f878379445faf3a9e6
+      transform: verbatim
+  - id: rules.150
+    kind: paragraph
+    blanks: 1
+    text: "**사용 시점**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 따옴표(\" \", ' ') > bold label **사용 시점**"
+      content_hash: sha256:72ce43c13789231125fb1e87bcc94cf26d8f297519d9c2f62ee5a9e1bca2c5fd
+      transform: verbatim
+  - id: rules.151
+    kind: item
+    blanks: 0
+    text: "- 직접 인용할 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 따옴표(\" \", ' ') > item 1"
+      content_hash: sha256:70670a330bb76d19312156577eb45818b34bccf5e4d57c7df6f6d98e00ee61fd
+      transform: verbatim
+  - id: rules.152
+    kind: item
+    blanks: 0
+    text: "- 강조할 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 따옴표(\" \", ' ') > item 2"
+      content_hash: sha256:6821cfb9fd7f9bd7a6dc619c001f493b2e22cdc0a6ee7f707903b1cbff9faead
+      transform: verbatim
+  - id: rules.153
+    kind: item
+    blanks: 0
+    text: "- 특별한 의미를 나타낼 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 따옴표(\" \", ' ') > item 3"
+      content_hash: sha256:67ce9635a3290dabc5098c58d66321bae5160683893fb965e147c35a013a6304
+      transform: verbatim
+  - id: rules.154
+    kind: paragraph
+    blanks: 1
+    text: "**올바른 예**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 따옴표(\" \", ' ') > bold label **올바른 예**"
+      content_hash: sha256:eb039729c51f90d751ddd85a75036d337c9f9a8661360a928b4e0d2758d7db96
+      transform: verbatim
+  - id: rules.155
+    kind: item
+    blanks: 0
+    text: "- 그는 \"안녕\"이라고 말했다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 따옴표(\" \", ' ') > item 4"
+      content_hash: sha256:e5584d09bf1d8710ded38d6a554e06dca932a1f15b805b4281f3006629831af9
+      transform: verbatim
+  - id: rules.156
+    kind: item
+    blanks: 0
+    text: "- 이 '특별한' 순간을 기억하세요."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 5. 따옴표(\" \", ' ') > item 5"
+      content_hash: sha256:1936cff94e7aa2a50e11a5ad81a6fec781813b02e4b7c12fdd106f11ff6b5560
+      transform: verbatim
+  - id: rules.157
+    kind: heading
+    blanks: 1
+    text: "### 6. 가운뎃점(·)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·)"
+      content_hash: sha256:92dd1076786febb8d7f79a750e736c555bc951e566dde6db548f523afd1303af
+      transform: verbatim
+  - id: rules.158
+    kind: paragraph
+    blanks: 1
+    text: "**근거**: 한글 맞춤법 부록 「문장 부호」(국립국어원). 가운뎃점은 서양 문장 부호에는 없는 한국어 고유의 부호로, **단순 열거가 아니라 \"짝을 이루거나 한 묶음으로 묶이는\" 어구**를 표시합니다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > bold label **근거**"
+      content_hash: sha256:86eca8770df9aa84946311ebc7b0da4d114ffb39b4814957d9ba1a1f675635b6
+      transform: verbatim
+  - id: rules.159
+    kind: paragraph
+    blanks: 1
+    text: "**사용 시점** (3가지 용법):"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > bold label **사용 시점**"
+      content_hash: sha256:79d79d48deceba39cd55cbddace99b48abbab49278018ace606716d72efa687a
+      transform: verbatim
+  - id: rules.160
+    kind: item
+    blanks: 1
+    text: "1. **짝을 이루는 어구·공통 성분 축약**: 두 항목이 한 쌍을 이루거나, 공통되는 부분(접미사·접두사)을 줄여서 묶을 때\n   - 예: `금·은·동메달` (공통 성분 `메달` 축약)\n   - 예: `시·도지사` (공통 성분 `지사` 축약)\n   - 예: `한·미 정상회담` (한국과 미국이 짝)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > item **짝을 이루는 어구·공통 성분 축약**"
+      content_hash: sha256:8f3bd0b30fcf319b6a7f117dd03be119a58f92d11c504e0f10579233e597ac05
+      transform: verbatim
+  - id: rules.161
+    kind: item
+    blanks: 1
+    text: "2. **같은 묶음 안의 항목 표시**: 일정 기준으로 묶었을 때, 묶음 안의 항목 사이\n   - 예: `상·중·하위권`\n   - 예: `읽기·쓰기 권한`"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > item **같은 묶음 안의 항목 표시**"
+      content_hash: sha256:3a91dcb818ccca74082ed29c5da118e1c9b86dfaa53c96884a9887e8b5e3e6f6
+      transform: verbatim
+  - id: rules.162
+    kind: item
+    blanks: 1
+    text: "3. **특정 의미가 있는 날짜**: 역사적 사건이나 약식 날짜 표기\n   - 예: `3·1 운동`, `8·15 광복`\n   - 예: `2026·4·26` (마침표 대신 허용)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > item **특정 의미가 있는 날짜**"
+      content_hash: sha256:2b82f488ff0b5b14a94d498f222ad9abed3f4ade344157d40b878feef4491611
+      transform: verbatim
+  - id: rules.163
+    kind: paragraph
+    blanks: 1
+    text: "**가운뎃점 대신 쉼표(,)를 쓰는 것도 모두 허용됩니다.** 가운뎃점은 의무가 아니라 선택지입니다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > bold label **가운뎃점 대신 쉼표(,)를 쓰는 것도 모두 허용됩니다.**"
+      content_hash: sha256:1076086c59a33488eec09cae2f1d464a5b91069150eaf603d2518d4956ded1a7
+      transform: verbatim
+  - id: rules.164
+    kind: paragraph
+    blanks: 1
+    text: "**부적절한 사용** (흔한 오용):"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > bold label **부적절한 사용**"
+      content_hash: sha256:cde0c9ffb7fd07eafdbc9a00d1f1bd73303f0763cdfbda931d1836ef8801a7e4
+      transform: verbatim
+  - id: rules.165
+    kind: paragraph
+    blanks: 1
+    text: "가운뎃점은 **단순 열거나 독립적인 대안**을 나열하는 데 쓰는 부호가 **아닙니다**. 다음 패턴은 규정상 부적절합니다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > paragraph 5"
+      content_hash: sha256:7797ab7227356854718b4213c95659494cad12afea91e64ac7fb4f2750cc9e93
+      transform: verbatim
+  - id: rules.166
+    kind: table-header
+    blanks: 1
+    text: "| 부적절한 예 | 권장 |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > table header \"부적절한 예\""
+      content_hash: sha256:1b0cf2137ff24f2eacb6898a49b29ef015deda5058c03d5b81e4d08981af2212
+      transform: verbatim
+  - id: rules.167
+    kind: table-sep
+    blanks: 0
+    text: "|-----------|------|"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > table separator"
+      content_hash: sha256:9057fc619719fceec4168115450972b5a1a7e9816156342e47d7250563853bea
+      transform: verbatim
+  - id: rules.168
+    kind: row
+    blanks: 0
+    text: "| `쿠키·세션·JWT` (독립적 대안 나열) | `쿠키, 세션, JWT` 또는 `쿠키 / 세션 / JWT` |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > row \"`쿠키·세션·JWT` (독립적 대안 나열)\""
+      content_hash: sha256:fad076788ad072c0181aca8438209166d4b07fb035eebeda96e1e961ce1294fc
+      transform: verbatim
+  - id: rules.169
+    kind: row
+    blanks: 0
+    text: "| `React·Vue·Svelte` (독립적 프레임워크 나열) | `React, Vue, Svelte` |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > row \"`React·Vue·Svelte` (독립적 프레임워크 나열)\""
+      content_hash: sha256:c9b4fda015f12d36110101b2dd2d343ceb29948c7bc80e10863a387c720b6d48
+      transform: verbatim
+  - id: rules.170
+    kind: row
+    blanks: 0
+    text: "| `DNS·TTL·CDN` (서로 다른 개념 나열) | `DNS, TTL, CDN` |"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > row \"`DNS·TTL·CDN` (서로 다른 개념 나열)\""
+      content_hash: sha256:cec14c1aa2c7ab0e657f3c365d32d07b77b108075abc3b708870191efce20e2f
+      transform: verbatim
+  - id: rules.171
+    kind: paragraph
+    blanks: 1
+    text: "**판별 기준**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > bold label **판별 기준**"
+      content_hash: sha256:3009bf6cb5509573eaa08707681ab7ef095647b2b307cdbc4c3b4e5094828f9d
+      transform: verbatim
+  - id: rules.172
+    kind: item
+    blanks: 1
+    text: "- 항목들이 **공통 성분을 공유**하거나 **짝을 이루는가**? → 가운뎃점 가능"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > item 4"
+      content_hash: sha256:ab72eddd6e54582e70b712b9a68a41e1e5c20b32949d6c194462454aff199384
+      transform: verbatim
+  - id: rules.173
+    kind: item
+    blanks: 0
+    text: "- 항목들이 단순히 **같은 범주의 독립적 대안**인가? → 쉼표 권장"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > item 5"
+      content_hash: sha256:0cff977c2cbb3df14f7fe664c95a633f2fa8a62292f457772b49bf8fb8b1e1cf
+      transform: verbatim
+  - id: rules.174
+    kind: item
+    blanks: 0
+    text: "- IT 기술 용어 나열에서는 **쉼표 또는 슬래시(/)가 관례**"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > item 6"
+      content_hash: sha256:07308e4c861424c0269c631e3ff25995d30503797929fd57eb53eea376798b55
+      transform: verbatim
+  - id: rules.175
+    kind: paragraph
+    blanks: 1
+    text: "**검사 시 주의**:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > bold label **검사 시 주의**"
+      content_hash: sha256:119b1e0e10e4457cfa18a22e5095d3ec7077a8971d0b5e2b0bda0172cbf1995a
+      transform: verbatim
+  - id: rules.176
+    kind: item
+    blanks: 1
+    text: "- 같은 문서 안에서 `A와 B`(연결어미)와 `A·B`(가운뎃점)를 섞어 쓰면 **문체 일관성**이 깨집니다. style-guide 영역의 일관성 문제로도 다룰 수 있습니다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > item 7"
+      content_hash: sha256:48c4f2b515e619be94938ab2d100cd744a7afbbd3919c83d16a072284844612a
+      transform: verbatim
+  - id: rules.177
+    kind: item
+    blanks: 0
+    text: "- `John F. Kennedy`처럼 **외국 인명의 미들네임 표기**는 가운뎃점이 아니라 마침표(`.`)를 사용합니다. 한국어 표기 시에도 `존 F. 케네디`가 일반적입니다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > item 8"
+      content_hash: sha256:f61e076fecd4a84ddf6c406b8435b79d63e05587860eb0eea21c67015eaa516e
+      transform: verbatim
+  - id: rules.178
+    kind: paragraph
+    blanks: 1
+    text: "---"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 6. 가운뎃점(·) > paragraph 8"
+      content_hash: sha256:cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b
+      transform: verbatim
+  - id: rules.179
+    kind: heading
+    blanks: 1
+    text: "## 검사 시 주의사항"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "## 검사 시 주의사항"
+      content_hash: sha256:c04496760190fa3bf3515c43bd5f383d864ef63f721cb0c44c1ae61f385d6a92
+      transform: verbatim
+  - id: rules.180
+    kind: heading
+    blanks: 1
+    text: "### 문맥 고려"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 문맥 고려"
+      content_hash: sha256:c5b743abfd3c362d5f199720f1f642db5334050b033d02825acedfea565f3f77
+      transform: verbatim
+  - id: rules.181
+    kind: paragraph
+    blanks: 1
+    text: "문법 규칙이 항상 절대적이지는 않습니다. 다음 상황에서는 유연하게 적용:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 문맥 고려 > paragraph 1"
+      content_hash: sha256:5a9fbd0e03ec0876e249adbf594ca72fde52260e4acbd6dd56ea404091ca2e52
+      transform: verbatim
+  - id: rules.182
+    kind: item
+    blanks: 1
+    text: "1. **비격식체 문서**: 구어체나 블로그 글에서는 일부 규칙을 느슨하게 적용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 문맥 고려 > item **비격식체 문서**"
+      content_hash: sha256:8271faef700e2822c5604a5dfd0e9a9f6b5090f7fec7c398fac0838fbb6d73b8
+      transform: verbatim
+  - id: rules.183
+    kind: item
+    blanks: 0
+    text: "2. **강조 목적**: 의도적인 반복이나 변형"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 문맥 고려 > item **강조 목적**"
+      content_hash: sha256:8a9a08a009c17095a64a51ba0fdcac42d089b3a9b0ff1cc68e45cc42cd69bc05
+      transform: verbatim
+  - id: rules.184
+    kind: item
+    blanks: 0
+    text: "3. **고유명사**: 브랜드명이나 특별한 표기"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 문맥 고려 > item **고유명사**"
+      content_hash: sha256:acff52c6a39bf88aaa2fd0c384db8e03b4291a3a22959a013291be2ca52c1662
+      transform: verbatim
+  - id: rules.185
+    kind: item
+    blanks: 0
+    text: "4. **기술 용어**: IT 용어나 전문 용어"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 문맥 고려 > item **기술 용어**"
+      content_hash: sha256:b786c074442a6955335dab46c21cfe1455b8c1cacb29c29f94f788724166f6a4
+      transform: verbatim
+  - id: rules.186
+    kind: heading
+    blanks: 1
+    text: "### 확신 수준"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 확신 수준"
+      content_hash: sha256:3abf51aa17b2ce324b2ac9cd886a2da14d4e2ab390b65013a4cf2ae24fa25573
+      transform: verbatim
+  - id: rules.187
+    kind: paragraph
+    blanks: 1
+    text: "오류를 지적할 때 확신 수준을 표시:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 확신 수준 > paragraph 1"
+      content_hash: sha256:34b51a4c432ebc9a9f39752f05d5e1a51626b197af70ac7bdb79d6eee7aff3d5
+      transform: verbatim
+  - id: rules.188
+    kind: item
+    blanks: 0
+    text: "- **확실한 오류**: 맞춤법/띄어쓰기 규칙 위반"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 확신 수준 > item **확실한 오류**"
+      content_hash: sha256:fd5fd27e4c9ecde3e664c3d7b56396de18965777bdba9284bd114d8f9262bb2f
+      transform: verbatim
+  - id: rules.189
+    kind: item
+    blanks: 0
+    text: "- **권장 사항**: 더 나은 표현이 있을 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 확신 수준 > item **권장 사항**"
+      content_hash: sha256:310bdeb47b3141aaeeadefe11bbb3de115ec7b21c90edf1b3ba6d08e3b43220b
+      transform: verbatim
+  - id: rules.190
+    kind: item
+    blanks: 0
+    text: "- **스타일 제안**: 선택의 문제일 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/references/rules.md
+      anchor: "### 확신 수준 > item **스타일 제안**"
+      content_hash: sha256:372606e29be4805c41fed21e29d3bd126df214333ec8e013f5cbda6e5fbb87df
+      transform: verbatim

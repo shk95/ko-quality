@@ -1,0 +1,47 @@
+# Common rules for every file under upstream/normalized/ (P4, derived from the P1-P3 files).
+# Enforced by upstream/extractors/validate.py. Role files add their own top-level fields.
+file:
+  encoding: UTF-8, LF
+  top_level:
+    role: {required: true, enum: [procedure, taxonomy, reference, policy]}
+  sections_in_order: [top-level fields, "data: (policy only)", "fragments:", "excluded: (optional)"]
+fragment:
+  id: {required: true, unique_in_file: true, note: "Stable only within one extraction. Selections name ids by meaning (invariant.3); whole-file extraction numbers them by block position (diagnose.017). Checks compare by anchor, not id."}
+  kind:
+    required: true
+    enum:
+      structural: [heading, paragraph, item, quote, row, table-header, table-sep, tag]   # block parser, whole-file extraction; tag = an XML-style tag line (P5)
+      semantic: [summary, invariant, step, output, check, grade, input, severity, exclusion, category, pattern, block]  # hand-written selection
+  blanks: {required: false, format: "non-negative integer", note: "blank lines before the block in the upstream file; whole-file extraction only; layout for renderers (P5)"}
+  text: {required: true, format: "JSON string (exact upstream bytes)"}
+  provenance:
+    upstream: {required: true, must_be: "a name in upstream/lock.yaml"}
+    commit: {required: true, must_be: "the lock commit of that upstream"}
+    path: {required: true, note: "path inside the upstream repository"}
+    anchor: {required: true, unique_in_file_per_path: true, grammar: "see anchor below"}
+    content_hash: {required: true, format: "sha256:<hex> of text as UTF-8"}
+    transform: {required: true, enum: [verbatim, selected, adapted]}
+    original: {required_when: "transform == adapted", format: "JSON string"}
+    note: {required: false, format: "JSON string; why a selection was made"}
+excluded:
+  item: {path: string, anchor: string, reason: string}
+  typical: ["frontmatter keys (harness metadata; assemble/ supplies name and description)", "titles and headings (structure)", "bold-label-only paragraphs that group following items (structure, like headings)"]
+  note: "Record of what a selection left out and why. Not checked against upstream."
+anchor:
+  rules:   # 06 §5.5
+    - Lines inside code fences are never headings.
+    - An anchor is unique within its file; when a form is not unique, add the enclosing position.
+    - Re-extraction reports "anchor not found" and "hash differs" as different failures.
+  forms:   # flow.md D2; which form a file uses is decided by its extractor
+    heading: "<heading line>"                                   # full heading text, depth-agnostic
+    block_in_context: "<context> > paragraph N | item N | quote N"   # context = tag path, else last heading, else (top)/(intro)
+    labeled: "<context> > item **label** | <context> > bold label **label** | bold label **label**"
+    table: '<context> > table header "<first cell>" | table separator | row "<first cell>"'
+    tag_context: "tag/tag[n=<attr n>]"                          # lower-cased, underscores removed
+    id_prefix: "id prefix <ID> | id prefix <C>."                # patterns and categories with upstream ids
+    numbered_in_section: "<heading line> > <N> | <heading line> > bullet <N>"
+    sub_selection: "<anchor> > sentence <N> | <anchor> > <N> > bold label **label** | <anchor> > code block"
+    repeated: "<anchor> > <N>"                                   # second and later occurrence of the same anchor in one file (e.g. two tables under one heading)
+    frontmatter: "frontmatter | frontmatter > <key>"            # used in excluded entries; frontmatter is never a fragment
+hash:
+  input: fragment text exactly as stored (no normalization beyond LF line endings)

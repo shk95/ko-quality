@@ -1,0 +1,19 @@
+# role: policy — variant bodies, selection blocks, original frontmatter (06 §5.3). Named by supplier; composable.
+extends: common.schema.yaml
+top_level:
+  role: {const: policy}
+  name: {required: true, note: "supplier name"}
+data:
+  "<variant id>":
+    path: {required: true}
+    frontmatter: {required: true, note: "original frontmatter as data (JSON-string values); not a fragment"}
+  blocks: {required: true, format: "[block id, ...] in upstream order"}
+file_name: "upstream/normalized/policy/<name>.yaml"
+fragment_ids:
+  variant_block: "<variant id>.<NN>"      # whole-file blocks of the variant body
+  selection_block: "block.<block id>"     # kind: block, transform: selected (fence content, list indent removed)
+fragment_kinds_seen:
+  whole_file: [heading, paragraph, item]
+  selection: [block]
+render_notes:
+  - "Composition (which blocks, in which order, per profile) lives in assemble/profiles/, not here (P5)."

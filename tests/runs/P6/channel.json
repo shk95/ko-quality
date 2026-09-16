@@ -1,0 +1,225 @@
+{
+  "stage": "P6",
+  "harness": "codex-cli 0.154.0",
+  "setup": "Each run: a throwaway CODEX_HOME (auth.json symlinked), a local marketplace pointing at a marked copy of dist/agent-plugin (a marker line appended to install/AGENTS.section.md: CODEX-CANARY-MAIN-7071, and to every agent's developer_instructions: CODEX-CANARY-AGENT-8081; a SessionStart hook in plugin.json extensions.com.openai.hooks), codex plugin add ko-quality@ko-quality, ko_quality_codex.py install.",
+  "meta": {
+    "main-policy": {
+      "rc": 0,
+      "stderr_tail": "Reading additional input from stdin...\n",
+      "setup": "led plugin root: <path>",
+      "agents_installed": [
+        "korean-editor.toml",
+        "korean-reviewer.toml",
+        "korean-writer.toml"
+      ]
+    },
+    "subagent-default": {
+      "rc": 0,
+      "stderr_tail": "Reading additional input from stdin...\n",
+      "setup": "lugin root: <path>",
+      "agents_installed": [
+        "korean-editor.toml",
+        "korean-reviewer.toml",
+        "korean-writer.toml"
+      ]
+    },
+    "subagent-v2": {
+      "rc": 0,
+      "stderr_tail": "<session>\n2026-09-14T14:32:10.018757Z ERROR codex_core::tools::router: error=collab spawn failed: no thread with id: <session>\n2026-09-14T14:32:17.578935Z ERROR codex_core::tools::router: error=collab spawn failed: no thread with id: <session>\n",
+      "setup": "led plugin root: <path>",
+      "agents_installed": [
+        "korean-editor.toml",
+        "korean-reviewer.toml",
+        "korean-writer.toml"
+      ]
+    },
+    "subagent-terra": {
+      "rc": 0,
+      "stderr_tail": "Reading additional input from stdin...\n2026-09-14T14:31:39.870338Z ERROR codex_core::tools::router: error=collab spawn failed: no thread with id: <session>\n",
+      "setup": " plugin root: <path>",
+      "agents_installed": [
+        "korean-editor.toml",
+        "korean-reviewer.toml",
+        "korean-writer.toml"
+      ]
+    },
+    "hook-bypass": {
+      "rc": 0,
+      "stderr_tail": "Reading additional input from stdin...\n",
+      "setup": "led plugin root: <path>",
+      "agents_installed": [
+        "korean-editor.toml",
+        "korean-reviewer.toml",
+        "korean-writer.toml"
+      ]
+    },
+    "hook_log_written": true
+  },
+  "runs": {
+    "hook-bypass": {
+      "markers": {
+        "CODEX-CANARY-MAIN-7071": 1,
+        "CODEX-CANARY-AGENT-8081": 0
+      },
+      "agent_marker_seen": [],
+      "collab_calls": [],
+      "commands": [],
+      "usage": {
+        "input_tokens": 13885,
+        "cached_input_tokens": 8960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 164,
+        "reasoning_output_tokens": 140
+      },
+      "final_message": "안녕하세요, 만나서 반갑습니다 CODEX-CANARY-MAIN-7071"
+    },
+    "main-policy": {
+      "markers": {
+        "CODEX-CANARY-MAIN-7071": 1,
+        "CODEX-CANARY-AGENT-8081": 0
+      },
+      "agent_marker_seen": [],
+      "collab_calls": [],
+      "commands": [],
+      "usage": {
+        "input_tokens": 13894,
+        "cached_input_tokens": 2816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 117,
+        "reasoning_output_tokens": 33
+      },
+      "final_message": "리스트와 튜플은 여러 값을 저장하는 자료형입니다.\n\n- 리스트 `[]`: 생성 후 값을 수정하거나 추가할 수 있습니다.\n- 튜플 `()`: 생성 후 값을 수정할 수 없습니다.\n\n따라서 변경이 필요한 데이터에는 리스트를, 변경하지 않을 데이터에는 튜플을 사용합니다.\n\nCODEX-CANARY-MAIN-7071"
+    },
+    "subagent-default": {
+      "markers": {
+        "CODEX-CANARY-MAIN-7071": 1,
+        "CODEX-CANARY-AGENT-8081": 2
+      },
+      "agent_marker_seen": [
+        "agent marker in main reply",
+        "agent marker inside wait result"
+      ],
+      "collab_calls": [
+        {
+          "tool": "spawn_agent",
+          "status": "completed",
+          "receivers": 1,
+          "agent_states": [
+            "pending_init"
+          ]
+        },
+        {
+          "tool": "wait",
+          "status": "completed",
+          "receivers": 1,
+          "agent_states": [
+            "completed"
+          ]
+        }
+      ],
+      "commands": [],
+      "usage": {
+        "input_tokens": 111003,
+        "cached_input_tokens": 85760,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1032,
+        "reasoning_output_tokens": 315
+      },
+      "final_message": "AI 가능성: **중간** / 신뢰도: **낮음** / 번역문 가능성: **낮음** / 장르: **논설문·보고서의 결론부**\n\n근거 요약: 문장이 짧아 판단 자료가 제한적입니다. 다만 문두 접속어 뒤의 쉼표 사용, 추상적이고 정형적인 표현, 유사한 문장 구조가 AI 작성에서 나타나는 특징과 일부 겹칩니다. 그러나 격식 있는 글에서 사람이 흔히 사용하는 표현이므로, 이것만으로 AI 작성 여부를 판단할 수는 없습니다.\n\n| 신호 | 정도 |\n|---|---|\n| 쉼표 과용 또는 문두 접속어 뒤 쉼표 | 보통 |\n| 정형적 표현과 추상적 서술 | 보통 |\n| 번역투 | 약함 |\n| 문장 구조의 다양성 | 낮음 |\n| 창의성·비정형성 | 거의 없음 |\n| 문체의 일관성 | 높음 |\n| 형식 완결성 | 높음. 다만 사람 글의 증거로 보기는 어렵습니다. |\n\n의심 구간: **“결론적으로, … 할 수 있다”**, **“또한, … 더욱 가속화되고 있다”**는 결론부에서 자주 사용되는 정형적 구성입니다. AI 특유의 표현일 수도 있지만, 사람이 작성한 논설문에서도 흔하게 나타납니다.\n\nCODEX-CANARY-AGENT-8081\n\nCODEX-CANARY-MAIN-7071"
+    },
+    "subagent-terra": {
+      "markers": {
+        "CODEX-CANARY-MAIN-7071": 1,
+        "CODEX-CANARY-AGENT-8081": 0
+      },
+      "agent_marker_seen": [],
+      "collab_calls": [
+        {
+          "tool": "wait",
+          "status": "completed",
+          "receivers": 0,
+          "agent_states": []
+        },
+        {
+          "tool": "wait",
+          "status": "completed",
+          "receivers": 0,
+          "agent_states": []
+        },
+        {
+          "tool": "wait",
+          "status": "completed",
+          "receivers": 0,
+          "agent_states": []
+        },
+        {
+          "tool": "wait",
+          "status": "completed",
+          "receivers": 0,
+          "agent_states": []
+        }
+      ],
+      "commands": [],
+      "usage": {
+        "input_tokens": 132009,
+        "cached_input_tokens": 104448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 840,
+        "reasoning_output_tokens": 238
+      },
+      "final_message": "AI 가능성: 중간 / 신뢰도: 낮음 / 번역문 가능성: 낮음 / 장르: 설명문 또는 에세이의 결론부\n\n근거 요약: 추상적인 평가 어휘와 상투적인 결론 표현이 연속되며, 구체적인 근거나 사례가 없습니다. 접속 부사 뒤의 쉼표와 “할 수 있다” 표현도 정형성을 높입니다. 다만 글이 매우 짧아 판정 신뢰도는 낮습니다.\n\n| 신호 | 정도 |\n|---|---|\n| 쉼표 과용(접속 부사 뒤) | 보통 |\n| 정형적 결론 표현 | 보통 |\n| 추상적·일반적 서술 | 보통 |\n| 구조 다양성 | 판단 곤란 |\n| 창의성·비정형성 | 거의 없음 |\n\n의심 구간: “결론적으로”, “매우 혁신적인 변화”, “가져오고 있다고 할 수 있다”, “또한”은 구체성이 낮고 정형적인 논설문 표현으로 이어집니다.\n\nCODEX-CANARY-MAIN-7071"
+    },
+    "subagent-v2": {
+      "markers": {
+        "CODEX-CANARY-MAIN-7071": 1,
+        "CODEX-CANARY-AGENT-8081": 1
+      },
+      "agent_marker_seen": [
+        "agent marker in main reply"
+      ],
+      "collab_calls": [
+        {
+          "tool": "wait",
+          "status": "completed",
+          "receivers": 0,
+          "agent_states": []
+        }
+      ],
+      "commands": [
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills/ko-diagnose/SKILL.md'",
+          "exit_code": 1
+        },
+        {
+          "command": "<scratch>/plugins/cache/ko-quality/ko-quality/local/skills/ko-diagnose/SKILL.md'",
+          "exit_code": 0
+        }
+      ],
+      "usage": {
+        "input_tokens": 168213,
+        "cached_input_tokens": 148224,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1850,
+        "reasoning_output_tokens": 404
+      },
+      "final_message": "한 줄 판정: AI 가능성: 중간 / 신뢰도: 낮음 / 번역문 가능성: 낮음~중간 / 장르: 짧은 논증문 또는 보고서 도입부\n\n근거 요약:  \n- `결론적으로`, `또한`과 같은 정형적 연결어가 연속으로 사용되었습니다.  \n- `매우 혁신적인 변화를 가져오고 있다고 할 수 있다`는 과장어와 완충 표현이 결합된 전형적 문장 구조입니다.  \n- 인공지능 기술과 교육의 관계를 일반론으로만 제시하며, 구체적 사례나 창의적 서술이 없습니다.  \n- 두 문장 모두 격식 있는 평서형으로 구성되어 구조와 문체가 일정합니다.  \n- 다만 분량이 매우 짧고, 보고서·논증문에서는 이러한 정형성이 사람의 글에서도 흔하므로 신뢰도는 낮게 판단합니다.\n\n| 신호 | 정도 |\n|---|---|\n| 정형적 연결어 및 상투적 표현 | 보통 |\n| 과장 어휘와 완충 표현 | 보통 |\n| 쉼표 과용 | 없음 |\n| POS·구조 다양성 | 낮음. 표본이 두 문장뿐임 |\n| 창의성·비정형성 | 거의 없음 |\n| 번역투 | 약함~보통. `변화를 가져오고 있다`, `할 수 있다`가 다소 직역·정형적으로 보일 수 있음 |\n| 문체(register) 안정성 | 일정함 |\n| 형식 완결성 | 높음. 단, 사람 글의 근거로 보지는 않음 |\n\n의심 구간 하이라이트:  \n- `결론적으로`: 정형적인 결론 도입 표현입니다.  \n- `매우 혁신적인 변화를 가져오고 있다고 할 수 있다`: `매우`, `혁신적인`, `~하고 있다고 할 수 있다`가 겹쳐 과장과 완충을 동시에 나타냅니다.  \n- `또한, 이러한 변화는`: 앞 문장을 기계적으로 이어 가는 연결 구조로 볼 여지가 있습니다.\n\n이 글만으로 AI가 작성했다고 단정할 수는 없습니다. 짧은 문어체 표본이므로, 같은 작성자가 쓴 더 긴 글을 함께 보아야 판별 신뢰도가 높아집니다.\n\nCODEX-CANARY-AGENT-8081\n\nCODEX-CANARY-MAIN-7071"
+    }
+  },
+  "hook": {
+    "note": "SessionStart hook from the plugin's extensions.com.openai.hooks wrote its stdin payload to a file. Its session_id equals the hook-bypass run's thread_id. The file was deleted before the batch; the other runs had no bypass flag.",
+    "payload_keys": [
+      "cwd",
+      "hook_event_name",
+      "model",
+      "permission_mode",
+      "session_id",
+      "source",
+      "transcript_path"
+    ],
+    "hook_event_name": "SessionStart",
+    "permission_mode": "bypassPermissions",
+    "source": "startup",
+    "session_id_matches_hook_bypass_run": true
+  },
+  "command": "codex exec --ephemeral --json -m <model> -C <empty git repo> -s read-only [extra] <prompt>"
+}

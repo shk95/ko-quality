@@ -1,0 +1,7 @@
+# assemble/agents/writer.yaml — 06 §8 (compose only, no preset)
+name: korean-writer
+role: 정책에 맞춰 한국어 산출물을 작성한다
+description: "Writes Korean documents, reports and messages following this build's Korean output policy. Use when Korean text needs to be drafted."
+tools: [Read, Grep, Glob, Write, Edit]
+prompt:
+  compose: [profile.policy, profile.blocks]

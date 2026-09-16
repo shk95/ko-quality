@@ -1,0 +1,11 @@
+# role: taxonomy — categories, patterns, severity (06 §5.3). One supplier per slot; two slots never share a context.
+extends: common.schema.yaml
+top_level:
+  role: {const: taxonomy}
+  slot: {required: true, examples: [rewrite, diagnose]}
+file_name: "upstream/normalized/taxonomy/<slot>.yaml"
+fragment_kinds_seen:
+  selection: [severity, exclusion, category, pattern]                     # im-not-ai (P1): pattern = heading line + quick meta line
+  whole_file: [heading, paragraph, item, quote, row, table-header, table-sep]   # yoonmoon (P2): pattern = table row
+render_notes:
+  - "Rendered into skills/<skill>/references/taxonomy-<slot>.md."

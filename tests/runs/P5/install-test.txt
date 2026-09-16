@@ -1,0 +1,37 @@
+# P5 install test (flow.md §3 P5): local marketplace, --scope local install in an empty project, one headless run without --plugin-dir, uninstall, marketplace remove, ~/.claude/settings.json compared with a snapshot.
+# Claude Code 2.1.270, 2026-09-14. Paths replaced with <repo>/<scratch>.
+
+== install help
+Usage: claude plugin install|i [options] <plugin>
+  -s, --scope <scope>   Installation scope: user, project, or local (default:
+== marketplace add
+Adding marketplace…✔ Successfully added marketplace: ko-quality (declared in user settings)
+== install
+Installing plugin "ko-quality@ko-quality"...✔ Successfully installed plugin: ko-quality@ko-quality (scope: local)
+== list
+  ❯ ko-quality@ko-quality
+    Version: 0.1.0
+    Scope: local
+    Status: ✔ enabled
+== run
+init plugins: ['ko-quality']
+tools: ['Skill:ko-quality:ko-rewrite', 'Read:']
+result: 결론적으로, 이러한 변화는 매우 중요한 의미가 있다고 할 수 있다.
+
+완료. 변경률 약 13% / 등급 C / 자체검증 5/6 통과
+
+**탐지한 패턴**
+- A-7 번역투 '가지고 있다': "중요한 의미를 가지고 있다" → "중요한 의미가 있다"
+- D-2 의의를 과장하는 표현: "매우 중요한 의미"는 그대로 두었습니다. 무엇이 중요한지 알려 주는 내용이 
+== uninstall
+✔ Successfully uninstalled plugin: ko-quality (scope: local)
+== marketplace remove
+✔ Successfully removed marketplace: ko-quality
+== settings diff (empty = restored)
+10a11
+>   "extraKnownMarketplaces": {},
+
+[exited with code 0]
+# after: the settings diff was exactly the added empty "extraKnownMarketplaces": {} key; the file was restored from the snapshot.
+# installed_plugins.json and known_marketplaces.json had no ko-quality entry. ~/.claude/plugins/cache/ko-quality/ko-quality/0.1.0/ remained,
+# marked .orphaned_at by Claude Code (for its own later sweep); it was moved to the Trash by hand.

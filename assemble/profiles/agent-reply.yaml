@@ -1,0 +1,15 @@
+# assemble/profiles/agent-reply.yaml — 06 §6. Build-time profile (decision ②, P5): one dist per profile.
+id: agent-reply
+register: 에이전트가 사용자에게 하는 보고·설명
+policy: policy/fluent-korean#coding
+blocks: []
+default_preset: standard
+intensity: default
+exempt: []
+plugin:
+  name: ko-quality
+  description: "Korean writing quality toolkit: rewrite, diagnose, grammar and the Korean output policy for an agent's replies (profile agent-reply)"
+output_style:
+  name: agent-reply
+  description: "Korean output policy for an agent's replies to the user (fluent-korean, coding variant). Keeps Claude Code's coding instructions."
+  force: true

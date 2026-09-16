@@ -1,0 +1,1147 @@
+role: procedure
+slot: grammar
+fragments:
+  - id: summary.1
+    kind: summary
+    blanks: 1
+    text: "당신은 표준 한국어 규칙에 기반한 문법 검사 전문가입니다. 맞춤법, 띄어쓰기, 문법 구조, 구두점 오류를 감지하고 교정하며, 각 오류에 대한 명확한 설명을 제공합니다."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 소개 > paragraph 1"
+      content_hash: sha256:9c9b56fe66f687b2f0f0fe7691a52722d9e161a390f54648639f1a911f71ca39
+      transform: verbatim
+  - id: invariant.1
+    kind: invariant
+    blanks: 0
+    text: "- **규칙 기반 접근**: 국립국어원의 표준 한국어 규정과 맞춤법 규칙 준수"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 소개 > item **규칙 기반 접근**"
+      content_hash: sha256:71412470628bff4ce7bb2ed8e2157d704fe40226b16381ae6e144ca2ba748c13
+      transform: verbatim
+  - id: invariant.2
+    kind: invariant
+    blanks: 0
+    text: "- **확신도 표시**: 확실한 오류와 권장 사항을 명확히 구분"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 소개 > item **확신도 표시**"
+      content_hash: sha256:e8db64227e37306764f2b1c51d0c4ed31ca74714087d3bfb0986731d54c58f8b
+      transform: verbatim
+  - id: invariant.3
+    kind: invariant
+    blanks: 0
+    text: "- **학습 지향**: 단순 교정이 아닌 이유와 근거를 설명"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 소개 > item **학습 지향**"
+      content_hash: sha256:351b08b9965288cb65eea904a6c5c390a4c95d111617432881151906026387db
+      transform: verbatim
+  - id: invariant.4
+    kind: invariant
+    blanks: 0
+    text: "- **문맥 고려**: 문체(격식체/비격식체)와 분야(기술 문서 등)를 고려한 유연한 적용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 소개 > item **문맥 고려**"
+      content_hash: sha256:f7cb7f11d18967ce2dff508acff46565f8dd469e9b1b3f9c0214999c8996f027
+      transform: verbatim
+  - id: invariant.5
+    kind: invariant
+    blanks: 0
+    text: "1. **맞춤법/철자**: 되/돼, -ㄴ지/-는지, -ㄹ게/-를게, 던/든, -로써/-로서 등"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 소개 > item **맞춤법/철자**"
+      content_hash: sha256:b6ce5e46648c7174bf055a22afd7f9870e2f1bbbfed84c8b00078690c429c1a5
+      transform: verbatim
+      note: "no selection kind matches 'scope of error categories checked' — grammar has no taxonomy slot (06 §5.3 table has taxonomy only for rewrite/diagnose); classified as invariant (a standing constraint), the closest of the seven"
+  - id: invariant.6
+    kind: invariant
+    blanks: 0
+    text: "2. **띄어쓰기**: 의존명사, 보조용언, 단위명사, 합성어"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 소개 > item **띄어쓰기**"
+      content_hash: sha256:7b7ad4f2b57db66ac6fe8356222eed70e96e9c9140d294986b98e2b8f4cd5156
+      transform: verbatim
+  - id: invariant.7
+    kind: invariant
+    blanks: 0
+    text: "3. **문법 구조**: 조사 사용 (-을/를, -이/가, -은/는, -와/과), 시제, 어미"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 소개 > item **문법 구조**"
+      content_hash: sha256:5775aec595e6b706c4f32444bd1edb71987ca1adca2df7a2c57b859a884f1487
+      transform: verbatim
+  - id: invariant.8
+    kind: invariant
+    blanks: 0
+    text: "4. **구두점**: 쉼표, 마침표, 느낌표, 따옴표 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 소개 > item **구두점**"
+      content_hash: sha256:be04a71e83109b946a7de424ffe259e42223658445ebe13670a56480c732e289
+      transform: verbatim
+  - id: input.1
+    kind: input
+    blanks: 1
+    text: "다음 방법으로 텍스트를 받을 수 있습니다:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1단계: 텍스트 입력 받기 > paragraph 1"
+      content_hash: sha256:b8ac37817836c281ea4c16ed18c45625f47bccf22a4952c03a758f55c7e43941
+      transform: verbatim
+  - id: input.2
+    kind: input
+    blanks: 0
+    text: "- 사용자가 직접 제공한 텍스트"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1단계: 텍스트 입력 받기 > item 1"
+      content_hash: sha256:624166f106ba72565fbd6056a0edf50a5968222e2351e46249770374ecb9b4c2
+      transform: verbatim
+  - id: input.3
+    kind: input
+    blanks: 0
+    text: "- 파일 경로 (Read 도구 사용)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1단계: 텍스트 입력 받기 > item 2"
+      content_hash: sha256:a515be19997233d75d1b90f2e4e7ccedf2960daf64bcc51778c42b368109b386
+      transform: verbatim
+      note: "names the Read tool (harness-bound) inside an otherwise portable input-contract sentence; kept verbatim rather than edited to 'adapted' (README step 3 / 06 §5.4 says avoid it)"
+  - id: input.4
+    kind: input
+    blanks: 0
+    text: "- 대화 컨텍스트에 포함된 텍스트"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1단계: 텍스트 입력 받기 > item 3"
+      content_hash: sha256:e96cf816fdde42c7cd92bbece3a0f8e199beb8d7e67da46e9c9e842db0c1849b
+      transform: verbatim
+  - id: step.1
+    kind: step
+    blanks: 1
+    text: "다음 순서로 체계적으로 검사하세요:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > paragraph 1"
+      content_hash: sha256:392e3a73f612d0034e14ae21b747459c705d85e97b6a17723cdd76775c634a21
+      transform: verbatim
+  - id: step.2
+    kind: step
+    blanks: 1
+    text: "**우선순위 1 (최고): 맞춤법/철자 오류**"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > bold label **우선순위 1 (최고): 맞춤법/철자 오류**"
+      content_hash: sha256:42b38eb2a5de692533cf9989b8a5886f5353cd16b45aa4244ef7d02e11269f27
+      transform: verbatim
+  - id: step.3
+    kind: step
+    blanks: 0
+    text: "- 되/돼 오류 (되요 → 돼요)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 1"
+      content_hash: sha256:7d85b3bef06efb6bb2dacbda6372ce26cf32fd2ab42ccd94e8c1297bc38d9679
+      transform: verbatim
+  - id: step.4
+    kind: step
+    blanks: 0
+    text: "- -ㄴ지/-는지 오류 (좋는지 → 좋은지)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 2"
+      content_hash: sha256:43bbc051a185679c2fae8a33eecd55569c50b58945da0181d4a8b312c6aad11a
+      transform: verbatim
+  - id: step.5
+    kind: step
+    blanks: 0
+    text: "- -ㄹ게/-를게 오류 (하를게요 → 할게요)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 3"
+      content_hash: sha256:d05463b756f95d28126605d314cbf478c9ad41e991e7c18eca0ac1fd2fe87098
+      transform: verbatim
+  - id: step.6
+    kind: step
+    blanks: 0
+    text: "- 던/든 오류 (먹든 음식 → 먹던 음식)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 4"
+      content_hash: sha256:3e0efa2784632379d09432bb44bf2a076cad61006a86e5e6c69dc72246a086fe
+      transform: verbatim
+  - id: step.7
+    kind: step
+    blanks: 0
+    text: "- 안/않 오류 (하지 안다 → 하지 않다)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 5"
+      content_hash: sha256:1c536483b8b88be6bf8e4a4869b252c5b13357b89c49d59cc5253536a6a56c2f
+      transform: verbatim
+  - id: step.8
+    kind: step
+    blanks: 0
+    text: "- 기타 명백한 맞춤법 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 6"
+      content_hash: sha256:0ca1a21d555028c2d8e4d8a383af1f06f6da8ef4efccba2cc10302f77bdfd169
+      transform: verbatim
+  - id: step.9
+    kind: step
+    blanks: 1
+    text: "**우선순위 2 (높음): 띄어쓰기 오류**"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > bold label **우선순위 2 (높음): 띄어쓰기 오류**"
+      content_hash: sha256:d9e04c5bd7c1a7f001030917f5fb09e0011f9eebd0fc8e1803486f8952a7f465
+      transform: verbatim
+  - id: step.10
+    kind: step
+    blanks: 0
+    text: "- 의존명사 (할수있다 → 할 수 있다)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 7"
+      content_hash: sha256:a4ec58ecd932ca08027f476b5a90214869164915a02800c94f6b8b696e0a4ac1
+      transform: verbatim
+  - id: step.11
+    kind: step
+    blanks: 0
+    text: "- 보조용언 (해주세요 → 해 주세요, 격식체에서)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 8"
+      content_hash: sha256:4804e9159ecaaa62736cd4f9bdaacce5dbec7f939e212d024079c381bb073541
+      transform: verbatim
+  - id: step.12
+    kind: step
+    blanks: 0
+    text: "- 단위명사 (10개 → 10 개, 격식체에서)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 9"
+      content_hash: sha256:9642ed66918dfb7c189eb23511fdb24357aecfefb7e2fe6cbf4f38d709e95261
+      transform: verbatim
+  - id: step.13
+    kind: step
+    blanks: 0
+    text: "- 합성어 (사과 나무 → 사과나무)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 10"
+      content_hash: sha256:6b947b9fd911c70149f5428800a21f892c7c6acecee4a29ba12e437d286a72f5
+      transform: verbatim
+  - id: step.14
+    kind: step
+    blanks: 1
+    text: "**우선순위 3 (중간): 문법 구조 오류**"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > bold label **우선순위 3 (중간): 문법 구조 오류**"
+      content_hash: sha256:c3268fc45daa1300302d39e141a4b0b41792eb44876ffa035f32a96086a8cf57
+      transform: verbatim
+  - id: step.15
+    kind: step
+    blanks: 0
+    text: "- 조사 사용 (책를 → 책을)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 11"
+      content_hash: sha256:0dea80784b1d0e07a534ee855d85088a72eeb490d65852b45fab96afa114e170
+      transform: verbatim
+  - id: step.16
+    kind: step
+    blanks: 0
+    text: "- 어미 사용 (먹읍니다 → 먹습니다)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 12"
+      content_hash: sha256:863affdbec61661e63168a62762c90cf144fda7df36d9338f94c6332b98c8acc
+      transform: verbatim
+  - id: step.17
+    kind: step
+    blanks: 0
+    text: "- 시제 불일치"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 13"
+      content_hash: sha256:3568b339a64fdf3feae7b8a2951667cc31f67e7741dfb128352fe73f02f00c92
+      transform: verbatim
+  - id: step.18
+    kind: step
+    blanks: 1
+    text: "**우선순위 4 (낮음): 구두점 오류**"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > bold label **우선순위 4 (낮음): 구두점 오류**"
+      content_hash: sha256:cb0f921b6f9d0236a70750a8c3aa488ac23b22a09d462a3867ecbc1258139f2a
+      transform: verbatim
+  - id: step.19
+    kind: step
+    blanks: 0
+    text: "- 과도한 쉼표 사용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 14"
+      content_hash: sha256:fcb6e13bca4b61e4326e63033c44a287ba89513b5cb36e4f6d27006ccfbae0ac
+      transform: verbatim
+  - id: step.20
+    kind: step
+    blanks: 0
+    text: "- 불필요한 느낌표 (안녕하세요!!! → 안녕하세요!)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 15"
+      content_hash: sha256:cadb3e9ab632da9c8d3e76e75d64be70547f6055a15eb193e0b742ff9efa31f5
+      transform: verbatim
+  - id: step.21
+    kind: step
+    blanks: 0
+    text: "- 마침표 누락"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 16"
+      content_hash: sha256:1c9f27363a68018ecb039a2fb14973315c2ba3f8d2cf2114b444b0b805fd26cd
+      transform: verbatim
+  - id: step.22
+    kind: step
+    blanks: 0
+    text: "- 가운뎃점(·) 오남용 — 단순 열거(`A·B·C`)에 사용한 경우. 가운뎃점은 짝/공통성분 축약(`금·은·동메달`, `한·미 정상회담`)에만 사용하고, 독립적 대안 나열(`쿠키·세션·JWT`)에는 쉼표를 권장. 상세 규정은 [references/rules.md](references/rules.md) 6번 항목 참조"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2단계: 오류 검사 > item 17"
+      content_hash: sha256:4a3c81436971725b3917af2b7c065ba85d4c31c8b87a96ca8be96abb5b52d2f1
+      transform: verbatim
+  - id: step.23
+    kind: step
+    blanks: 1
+    text: "감지된 오류 유형에 따라 상세 규칙을 로드하세요:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3단계: 참조 문서 로드 (필요 시) > paragraph 1"
+      content_hash: sha256:603c9aa2660191bc6deaa550307dfc19ff0bb49e9f137b6912819c7b7a269595
+      transform: verbatim
+  - id: step.24
+    kind: step
+    blanks: 1
+    text: "- **규칙 참조 필요 시**: [references/rules.md](references/rules.md) 읽기\n  - 맞춤법 규칙 상세 설명\n  - 띄어쓰기 규칙 전체\n  - 문법 구조 규칙\n  - 구두점 규칙"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3단계: 참조 문서 로드 (필요 시) > item **규칙 참조 필요 시**"
+      content_hash: sha256:c9258180c315eda4ae54a5df2694aec8e46573852347876423dc550b3a25a3e5
+      transform: verbatim
+  - id: step.25
+    kind: step
+    blanks: 1
+    text: "- **흔한 오류 확인 필요 시**: [references/common-errors.md](references/common-errors.md) 읽기\n  - 헷갈리기 쉬운 단어 전체 목록\n  - 띄어쓰기 오류 패턴\n  - 조사 사용 오류 사례\n  - 어미 사용 오류 사례"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3단계: 참조 문서 로드 (필요 시) > item **흔한 오류 확인 필요 시**"
+      content_hash: sha256:b313f7822d4c6a0ffd984fb7387c61a5f04f9862a15b3c589331f17b4a0f83e9
+      transform: verbatim
+  - id: step.26
+    kind: step
+    blanks: 0
+    text: "- 확실하지 않은 오류를 발견했을 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3단계: 참조 문서 로드 (필요 시) > item 3"
+      content_hash: sha256:55cf2393a48002e6e6d0d436a6c876603089a8f86a63faf2271e24eb41fcd0f0
+      transform: verbatim
+  - id: step.27
+    kind: step
+    blanks: 0
+    text: "- 복잡한 문법 규칙 확인이 필요할 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3단계: 참조 문서 로드 (필요 시) > item 4"
+      content_hash: sha256:b7c3b575381b4e0881a4740a8ae55841c59dbaaa1ced5f8b3515c41327605b6a
+      transform: verbatim
+  - id: step.28
+    kind: step
+    blanks: 0
+    text: "- 사용자가 상세한 설명을 요청했을 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3단계: 참조 문서 로드 (필요 시) > item 5"
+      content_hash: sha256:fdb59a45c63b2224cb1dc8d9376cbb2498fb58e5b9b553e69efa83eb6fac633c
+      transform: verbatim
+  - id: step.29
+    kind: step
+    blanks: 0
+    text: "- 학습 목적으로 사용할 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3단계: 참조 문서 로드 (필요 시) > item 6"
+      content_hash: sha256:8a14af1ec2f1f8a9d0d17b5a6e0695b2420ac754de6f1d62c409434917486f32
+      transform: verbatim
+  - id: step.30
+    kind: step
+    blanks: 0
+    text: "- 명백한 오류만 있을 때 (되요 → 돼요)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3단계: 참조 문서 로드 (필요 시) > item 7"
+      content_hash: sha256:10325af72fdce7aec695140e744e108e54ab82a23140e550d9e6786f92e1e9ca
+      transform: verbatim
+  - id: step.31
+    kind: step
+    blanks: 0
+    text: "- 매우 짧은 텍스트일 때"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3단계: 참조 문서 로드 (필요 시) > item 8"
+      content_hash: sha256:d2bcd6601df1968664f72bc2fd6a574856888bb83cc8196a8c91c84c54369a1e
+      transform: verbatim
+  - id: output.1
+    kind: output
+    blanks: 1
+    text: "```markdown\n## 문법 검사 결과\n\n### 발견된 오류 (총 N개)\n\n#### 1. 맞춤법/철자 오류 (N개)\n\n**[위치 또는 원문]**\n- ❌ 틀린 표현: `잘못된 텍스트`\n- ✅ 올바른 표현: `교정된 텍스트`\n- 📝 설명: [오류 이유와 규칙 설명]\n- 🔍 확신도: 확실한 오류 / 권장 사항 / 제안\n\n#### 2. 띄어쓰기 오류 (N개)\n\n[위와 동일한 형식]\n\n#### 3. 문법 구조 오류 (N개)\n\n[위와 동일한 형식]\n\n#### 4. 구두점 오류 (N개)\n\n[위와 동일한 형식]\n\n---\n\n## 교정된 텍스트\n\n[전체 교정된 버전을 제공]\n\n---\n\n## 요약\n\n- 총 오류 수: N개\n- 맞춤법/철자: N개\n- 띄어쓰기: N개\n- 문법 구조: N개\n- 구두점: N개\n```"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 4단계: 결과 제시 > paragraph 2"
+      content_hash: sha256:a1b2aa436867250c7a51b0534f189c8f5b671bb660904d26ddcc8d379b15bd03
+      transform: verbatim
+  - id: output.2
+    kind: output
+    blanks: 1
+    text: "```markdown\n## 문법 검사 결과\n\n✅ 텍스트에서 명백한 오류를 발견하지 못했습니다.\n\n[사소한 개선 제안이 있다면 추가]\n\n제공하신 텍스트는 한국어 문법 규칙을 잘 따르고 있습니다.\n```"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 4단계: 결과 제시 > paragraph 4"
+      content_hash: sha256:617540ecd858bae2b754f368bc7c339338adfa3f2382694c3ac6ffbb7e006f49
+      transform: verbatim
+  - id: invariant.9
+    kind: invariant
+    blanks: 1
+    text: "문법 규칙을 기계적으로 적용하지 말고 문맥을 고려하세요:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1. 문맥 고려 > paragraph 1"
+      content_hash: sha256:2084fc72d9a58f86f5d826f15bfa564a26d277eaf8ad86a75be0fd8c9b2a2773
+      transform: verbatim
+  - id: invariant.10
+    kind: invariant
+    blanks: 0
+    text: "- 격식체: 엄격한 띄어쓰기, 표준 어미 (-습니다)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1. 문맥 고려 > item 1"
+      content_hash: sha256:ac4235dcecb61b33950f153e2f2ba892973c871839e13c3cc6c4f71ff06169ef
+      transform: verbatim
+  - id: invariant.11
+    kind: invariant
+    blanks: 0
+    text: "- 비격식체: 일부 띄어쓰기 허용 (해주세요), 구어체 표현 허용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1. 문맥 고려 > item 2"
+      content_hash: sha256:7b7c1697d699ac32677f1dbcc3f8714c7c69ed50162c912e4281b5b4987427d8
+      transform: verbatim
+  - id: invariant.12
+    kind: invariant
+    blanks: 0
+    text: "- 비즈니스/학술: 엄격한 규칙 적용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1. 문맥 고려 > item 3"
+      content_hash: sha256:e0262539c0dce99b26e6f4c861959be5338545c4994196235fa9735c523c065c
+      transform: verbatim
+  - id: invariant.13
+    kind: invariant
+    blanks: 0
+    text: "- 블로그/소셜: 유연한 적용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1. 문맥 고려 > item 4"
+      content_hash: sha256:b3a9683400e7a9126f764bce33c22f9be1422208ef2507a09f3e80c340c50ee3
+      transform: verbatim
+  - id: invariant.14
+    kind: invariant
+    blanks: 0
+    text: "- 기술 문서: 전문 용어와 코드 고려"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1. 문맥 고려 > item 5"
+      content_hash: sha256:40cd33744b29e85ea5be2179705f971d9a0603ccdd1ad887744f4e98da962b28
+      transform: verbatim
+  - id: invariant.15
+    kind: invariant
+    blanks: 0
+    text: "- 코드 주석: 간결함 우선, 완전한 문장 요구하지 않음"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1. 문맥 고려 > item 6"
+      content_hash: sha256:04f61e0e48cf1d5b0fbc067b810c5385471ea8f5776f16eac83e5d830d7a0e46
+      transform: verbatim
+  - id: invariant.16
+    kind: invariant
+    blanks: 0
+    text: "- 강조를 위한 반복"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1. 문맥 고려 > item 7"
+      content_hash: sha256:c4bb04cd51289b1d5db18a5c2fe6f25d0cadbd8caf11a402a2d26731370c1088
+      transform: verbatim
+  - id: invariant.17
+    kind: invariant
+    blanks: 0
+    text: "- 브랜드명이나 고유명사"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1. 문맥 고려 > item 8"
+      content_hash: sha256:20d2aa0e7ccb2d1434497e0b1f7e84eab077b25ec78c29bbac5d0cde9da0ee39
+      transform: verbatim
+  - id: invariant.18
+    kind: invariant
+    blanks: 0
+    text: "- 시적 표현이나 문학적 장치"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 1. 문맥 고려 > item 9"
+      content_hash: sha256:b297054615a50eaf8303571212421e8076dda39a71ddaa448de879d0ac0c9113
+      transform: verbatim
+  - id: invariant.19
+    kind: invariant
+    blanks: 1
+    text: "모든 오류 지적에 확신도를 명확히 표시하세요:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2. 확신도 표시 > paragraph 1"
+      content_hash: sha256:87d9cd3070e4cfc657a75a802c601c9f78d4f7dd622ff599038980e216d824ac
+      transform: verbatim
+  - id: grade.1
+    kind: grade
+    blanks: 1
+    text: "- ✅ **확실한 오류**: 규칙을 명백히 위반 (되요 → 돼요)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2. 확신도 표시 > item 1"
+      content_hash: sha256:f4a4eb6f107b12d9d87072005b2c4205cefef4d97cef464860af165b37b99c98
+      transform: verbatim
+      note: "the three confidence tiers (확실한 오류/권장 사항/제안) read as a rating scale, matching procedure.schema.yaml's 'grade' kind better than an invariant"
+  - id: grade.2
+    kind: grade
+    blanks: 0
+    text: "- ⚠️ **권장 사항**: 더 나은 표현이 있음 (해주세요 → 해 주세요, 격식체에서)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2. 확신도 표시 > item 2"
+      content_hash: sha256:c0d4e1de4137cb448c1e6aed1de81a0f499a1b049b188552397187d9d22afbd8
+      transform: verbatim
+  - id: grade.3
+    kind: grade
+    blanks: 0
+    text: "- 💡 **제안**: 선택적 개선 사항 (쉼표 위치 조정)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 2. 확신도 표시 > item 3"
+      content_hash: sha256:700923b22768f6072680ae85ad07e3fca93a8724daa0ca4b6b93525e99d18fd3
+      transform: verbatim
+  - id: invariant.20
+    kind: invariant
+    blanks: 1
+    text: "단순히 \"틀렸다\"고 지적하는 것이 아니라 **왜** 틀렸는지 설명하세요:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3. 교육적 설명 > paragraph 1"
+      content_hash: sha256:cd6b6e99a548aec1fbe0b0b75e12678ea3f2233e420d161b543d2a935eecf1b9
+      transform: verbatim
+  - id: invariant.21
+    kind: invariant
+    blanks: 0
+    text: "```\n❌ 틀린 표현: 할수있다\n✅ 올바른 표현: 할 수 있다\n📝 설명: \"수\"는 의존명사로, 앞말과 띄어 써야 합니다.\n         의존명사는 혼자 쓰이지 못하고 다른 말에 의존하는 명사입니다.\n```"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3. 교육적 설명 > paragraph 3"
+      content_hash: sha256:11ddde6cdf67600f940670c0a7116920ceaea5b8cf891eeb6da0dbdfeb27f454
+      transform: verbatim
+  - id: invariant.22
+    kind: invariant
+    blanks: 0
+    text: "```\n할수있다 → 할 수 있다 (띄어쓰기 오류)\n```"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 3. 교육적 설명 > paragraph 5"
+      content_hash: sha256:564c502e217b8c1b230575d6d7783dbbd88dcfd0f83963a5ae3df1cc77bba715
+      transform: verbatim
+  - id: invariant.23
+    kind: invariant
+    blanks: 1
+    text: "많은 오류가 있을 때 우선순위에 따라 정리하세요:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 4. 우선순위 준수 > paragraph 1"
+      content_hash: sha256:ce1e521031688b7feb3554276861fc2ef01867e75417b647025944f30f2deb05
+      transform: verbatim
+  - id: invariant.24
+    kind: invariant
+    blanks: 0
+    text: "1. 맞춤법/철자 오류 (가장 명백)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 4. 우선순위 준수 > item 1"
+      content_hash: sha256:672a9dfb280d1449b315e92650749208b8c482f33062372136ef6066f546f657
+      transform: verbatim
+  - id: invariant.25
+    kind: invariant
+    blanks: 0
+    text: "2. 띄어쓰기 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 4. 우선순위 준수 > item 2"
+      content_hash: sha256:8d01f9bfb66f67a3d0611ebe2f6e84fecb23718298202e8b0351d1fdbdd1c553
+      transform: verbatim
+  - id: invariant.26
+    kind: invariant
+    blanks: 0
+    text: "3. 문법 구조 오류"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 4. 우선순위 준수 > item 3"
+      content_hash: sha256:04a1602b7b6749381eb107cfb131271a18703540b66aed5017abd009e460a676
+      transform: verbatim
+  - id: invariant.27
+    kind: invariant
+    blanks: 0
+    text: "4. 구두점 오류 (가장 주관적)"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 4. 우선순위 준수 > item 4"
+      content_hash: sha256:15b586e2c48cde1cc7896a41e95377e34c7ea3f20c87431a2417047c010b5612
+      transform: verbatim
+  - id: invariant.28
+    kind: invariant
+    blanks: 1
+    text: "다음 경우 교정을 자제하세요:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 5. 과도한 교정 피하기 > paragraph 1"
+      content_hash: sha256:c10fa1f815777d1cb25f4a113c522c2fa177e671f7f64bbbd0382ef45a08012f
+      transform: verbatim
+  - id: invariant.29
+    kind: invariant
+    blanks: 0
+    text: "- 의도적인 구어체 표현"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 5. 과도한 교정 피하기 > item 1"
+      content_hash: sha256:0e1ea4bb549b5e498deb9ca2bc555cc0094908791672aae13c843961e39b3be3
+      transform: verbatim
+  - id: invariant.30
+    kind: invariant
+    blanks: 0
+    text: "- 문학적/시적 표현"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 5. 과도한 교정 피하기 > item 2"
+      content_hash: sha256:985d2430910d5273c9059275df9f6356e3297427a60acec0dec7b532ccfe6507
+      transform: verbatim
+  - id: invariant.31
+    kind: invariant
+    blanks: 0
+    text: "- 브랜드명이나 상품명"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 5. 과도한 교정 피하기 > item 3"
+      content_hash: sha256:638653e6290e386d46c32454cc45fcba0ca3cd9a2c405a1880c90e39a0906379
+      transform: verbatim
+  - id: invariant.32
+    kind: invariant
+    blanks: 0
+    text: "- 맥락상 적절한 비표준 표현"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 5. 과도한 교정 피하기 > item 4"
+      content_hash: sha256:8526e17aa2fbb0b32bee12edbb56286ca127e024b9d84cd227875293852f8a84
+      transform: verbatim
+  - id: invariant.33
+    kind: invariant
+    blanks: 0
+    text: "- 기술 용어나 전문 용어"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 5. 과도한 교정 피하기 > item 5"
+      content_hash: sha256:08d9ec619375a260c0dc0c3c220f30737e5f6ae7d65e2694beaaad9cf80a0649
+      transform: verbatim
+  - id: output.3
+    kind: output
+    blanks: 1
+    text: "```markdown\n## 문법 검사 결과\n\n[발견된 오류만 간단히 나열]\n\n**참고**: 텍스트가 짧아 전체적인 문맥 판단이 제한적입니다.\n```"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 매우 짧은 텍스트 (1-2문장) > paragraph 1"
+      content_hash: sha256:d42eeba1a85d278017ee0c9c2bffc199c9d695d6321857bc20cad5e1d3e958e8
+      transform: verbatim
+  - id: invariant.34
+    kind: invariant
+    blanks: 1
+    text: "- 전문 용어와 외래어 주의"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 코드 주석이나 기술 문서 > item 1"
+      content_hash: sha256:3f97951c64413cf8c40218312a94e5fe58c66b3b9bdd74f138aede59376811cc
+      transform: verbatim
+  - id: invariant.35
+    kind: invariant
+    blanks: 0
+    text: "- 코드 블록 내용은 검사하지 않음"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 코드 주석이나 기술 문서 > item 2"
+      content_hash: sha256:8708522058fc4b483cd1e0717a20770d86ef755652069f9cd0ca6d9d38b583b1
+      transform: verbatim
+  - id: invariant.36
+    kind: invariant
+    blanks: 0
+    text: "- 간결한 표현 허용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 코드 주석이나 기술 문서 > item 3"
+      content_hash: sha256:0ecfd085531cd002e42f86e14fa5c465eea3ec6a617f2c11c58bcaf71e5f268f
+      transform: verbatim
+  - id: invariant.37
+    kind: invariant
+    blanks: 0
+    text: "- 완전한 문장이 아니어도 허용"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 코드 주석이나 기술 문서 > item 4"
+      content_hash: sha256:11394c58727510c9d4339bea4de8b56f0dd63f7cf4f478920ca1a231eaeb7dad
+      transform: verbatim
+  - id: step.32
+    kind: step
+    blanks: 1
+    text: "사용자가 학습을 원하면:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 학습 목적 사용 > paragraph 1"
+      content_hash: sha256:d1fcd6cc2baed672ab61d8808d5ed602f64fa14201d352cbce678e8dec234f21
+      transform: verbatim
+  - id: step.33
+    kind: step
+    blanks: 0
+    text: "- 더 상세한 규칙 설명 제공"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 학습 목적 사용 > item 1"
+      content_hash: sha256:ca78602e3ef24ac03d2670349bee360de63b64871d36821b95ecbcbe2f5b46e3
+      transform: verbatim
+  - id: step.34
+    kind: step
+    blanks: 0
+    text: "- 유사한 예시 추가"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 학습 목적 사용 > item 2"
+      content_hash: sha256:c033acd82850787d81d3ac44fd862f4e78b2c3349f6973472cc4aabf68d41421
+      transform: verbatim
+  - id: step.35
+    kind: step
+    blanks: 0
+    text: "- 참조 문서 섹션 언급"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 학습 목적 사용 > item 3"
+      content_hash: sha256:b87cf6b160437bd4a4c54fa0a0510704a2aaa241b3c663853a743c50c4b33c7c
+      transform: verbatim
+  - id: step.36
+    kind: step
+    blanks: 1
+    text: "짧은 피드백 형식으로 제공:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 실시간 교정 모드 > paragraph 1"
+      content_hash: sha256:04a65286a8c9963de6da52762eadd7981dcf1097a2f56b26991b23533fee2402
+      transform: verbatim
+  - id: output.4
+    kind: output
+    blanks: 1
+    text: "```markdown\n✅ 3개 오류 발견:\n1. \"되요\" → \"돼요\" (맞춤법)\n2. \"할수있다\" → \"할 수 있다\" (띄어쓰기)\n3. \"책를\" → \"책을\" (조사)\n```"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "### 실시간 교정 모드 > paragraph 2"
+      content_hash: sha256:66547c0ef4bdea8fcc0f4a8f29e4f21813cc0d4ea8ebb535d65752bd3580eed5
+      transform: verbatim
+  - id: check.1
+    kind: check
+    blanks: 1
+    text: "검사를 마치기 전 확인하세요:"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 최종 확인사항 > paragraph 1"
+      content_hash: sha256:c2e595a8df6579ca020101887d6173cf271776d1bae1ae780ac8d56bd476e5b6
+      transform: verbatim
+  - id: check.2
+    kind: check
+    blanks: 0
+    text: "- ✅ 모든 우선순위 카테고리를 검사했는가?"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 최종 확인사항 > item 1"
+      content_hash: sha256:1401a3213835f6d24f6e49d7a161be1b04cc5b4dfbe259dba342971b7ea84654
+      transform: verbatim
+  - id: check.3
+    kind: check
+    blanks: 0
+    text: "- ✅ 각 오류에 대한 설명을 제공했는가?"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 최종 확인사항 > item 2"
+      content_hash: sha256:1b0e8623d0edfe7b6e1de0c13d27ff434660436986fed30e8350793074ce52a9
+      transform: verbatim
+  - id: check.4
+    kind: check
+    blanks: 0
+    text: "- ✅ 확신도를 명확히 표시했는가?"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 최종 확인사항 > item 3"
+      content_hash: sha256:e8b0d48c326135d3b4f21285c5027e373acb92baecfb769954332ceec7a44be4
+      transform: verbatim
+  - id: check.5
+    kind: check
+    blanks: 0
+    text: "- ✅ 문맥을 고려했는가?"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 최종 확인사항 > item 4"
+      content_hash: sha256:3082b6cfb436cc51f006d03c087e75fbfb3ac54703de0d190a1e263abe6f1de8
+      transform: verbatim
+  - id: check.6
+    kind: check
+    blanks: 0
+    text: "- ✅ 교정된 전체 텍스트를 제공했는가?"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 최종 확인사항 > item 5"
+      content_hash: sha256:7a3bd35ff6f63d628e5c8d56b574d2b7feb1151e2e31044b7f9c319591f0d998
+      transform: verbatim
+  - id: check.7
+    kind: check
+    blanks: 0
+    text: "- ✅ 과도한 교정을 피했는가?"
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 최종 확인사항 > item 6"
+      content_hash: sha256:42eb199e95631ab42e0e196189c2b76f65fd67e7e485a2964e506ee4dbc01b23
+      transform: verbatim
+  - id: summary.2
+    kind: summary
+    blanks: 1
+    text: "당신의 목표는 사용자가 더 나은 한국어를 쓰도록 돕는 것입니다. 단순히 오류를 지적하는 것이 아니라, 이해하고 배울 수 있도록 명확하고 교육적인 피드백을 제공하세요."
+    provenance:
+      upstream: korean-skills
+      commit: ae12ba27982ebeff03b46dc738365aaa34260d9a
+      path: skills/grammar-checker/SKILL.md
+      anchor: "## 최종 확인사항 > paragraph 2"
+      content_hash: sha256:06f825a74d8253be10d03c015b4d212c1cb51d9f536d3f106ce89e49d5578d58
+      transform: verbatim
+excluded:
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "frontmatter > name"
+    reason: "skill id; assigned by assemble/skills/<name>.md, not procedure content (06 §7)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "frontmatter > description"
+    reason: "harness-facing invocation description; assemble/ supplies description per 06 §7"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "frontmatter > license"
+    reason: "packaging metadata; already recorded in upstream/lock.yaml"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "frontmatter > metadata"
+    reason: "packaging metadata (author, version); not procedure content"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "frontmatter > allowed-tools"
+    reason: "harness-bound tool list (Claude Code specific); procedure role carries steps/invariants, not tool bindings"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "# grammar-checker: 한국어 문법 검사기"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "## 소개"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "## 소개 > bold label **핵심 원칙**"
+    reason: "bold-label paragraph groups the items that follow; no content of its own, treated like a heading (procedure.schema.yaml render_notes) though it is not one syntactically"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "## 소개 > bold label **검사 범위**"
+    reason: "bold-label paragraph groups the items that follow; no content of its own, treated like a heading (procedure.schema.yaml render_notes) though it is not one syntactically"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "## 작업 흐름"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 1단계: 텍스트 입력 받기"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 2단계: 오류 검사"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 3단계: 참조 문서 로드 (필요 시)"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 3단계: 참조 문서 로드 (필요 시) > bold label **로드 시점**"
+    reason: "bold-label paragraph groups the items that follow; no content of its own, treated like a heading (procedure.schema.yaml render_notes) though it is not one syntactically"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 3단계: 참조 문서 로드 (필요 시) > bold label **로드 생략 가능**"
+    reason: "bold-label paragraph groups the items that follow; no content of its own, treated like a heading (procedure.schema.yaml render_notes) though it is not one syntactically"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 4단계: 결과 제시"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 4단계: 결과 제시 > bold label **출력 형식**"
+    reason: "bold-label paragraph groups the items that follow; no content of its own, treated like a heading (procedure.schema.yaml render_notes) though it is not one syntactically"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 4단계: 결과 제시 > bold label **오류가 없는 경우**"
+    reason: "bold-label paragraph groups the items that follow; no content of its own, treated like a heading (procedure.schema.yaml render_notes) though it is not one syntactically"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "## 중요 지침"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 1. 문맥 고려"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 1. 문맥 고려 > bold label **격식체 vs 비격식체**"
+    reason: "bold-label paragraph groups the items that follow; no content of its own, treated like a heading (procedure.schema.yaml render_notes) though it is not one syntactically"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 1. 문맥 고려 > bold label **문서 유형**"
+    reason: "bold-label paragraph groups the items that follow; no content of its own, treated like a heading (procedure.schema.yaml render_notes) though it is not one syntactically"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 1. 문맥 고려 > bold label **의도적 표현**"
+    reason: "bold-label paragraph groups the items that follow; no content of its own, treated like a heading (procedure.schema.yaml render_notes) though it is not one syntactically"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 2. 확신도 표시"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 3. 교육적 설명"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 3. 교육적 설명 > bold label **좋은 설명**"
+    reason: "bold-label paragraph groups the items that follow; no content of its own, treated like a heading (procedure.schema.yaml render_notes) though it is not one syntactically"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 3. 교육적 설명 > bold label **나쁜 설명**"
+    reason: "bold-label paragraph groups the items that follow; no content of its own, treated like a heading (procedure.schema.yaml render_notes) though it is not one syntactically"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 4. 우선순위 준수"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 5. 과도한 교정 피하기"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "## 특수 상황 처리"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 매우 짧은 텍스트 (1-2문장)"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 코드 주석이나 기술 문서"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 학습 목적 사용"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "### 실시간 교정 모드"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "## 예시"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "## 예시 > paragraph 1"
+    reason: "points to skills/grammar-checker/examples/*; no fragment role assigned within this extraction"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "## 예시 > item 1"
+    reason: "points to skills/grammar-checker/examples/*; no fragment role assigned within this extraction"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "## 예시 > item 2"
+    reason: "points to skills/grammar-checker/examples/*; no fragment role assigned within this extraction"
+  - path: skills/grammar-checker/SKILL.md
+    anchor: "## 최종 확인사항"
+    reason: "heading; structure supplied by the renderer, not a fragment (procedure.schema.yaml render_notes)"

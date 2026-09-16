@@ -1,0 +1,457 @@
+# Temporary format (P1 shape, used unchanged in P2 — flow.md). Schema is derived in P4. Text values are exact upstream bytes.
+role: reference
+slot: diagnose
+name: lread-rubric
+kind: rubric
+fragments:
+  - id: lread-rubric.000
+    kind: heading
+    blanks: 0
+    text: "# 학술 근거 — LREAD 루브릭 (사람의 한국어 AI 글 판별)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "# 학술 근거 — LREAD 루브릭 (사람의 한국어 AI 글 판별)"
+      content_hash: sha256:b62efbbe2f8b0703679447d55cf28946edbf1a03858528b2aa1c7d061f6995ae
+      transform: verbatim
+  - id: lread-rubric.001
+    kind: paragraph
+    blanks: 1
+    text: "윤문 탐지(detect)의 판정 절차는 **LREAD 루브릭**으로 보강된다. LREAD는 사람이 한국어 LLM 글을\n\"기준에 따라\" 판별하도록 만든 루브릭으로, 직관만으로는 놓치는 미시 단서를 표면화한다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "# 학술 근거 — LREAD 루브릭 (사람의 한국어 AI 글 판별) > paragraph 1"
+      content_hash: sha256:e48f87a6ac450edd9453c329ebb6afa44285af79ff34aec91327ded1dc74424b
+      transform: verbatim
+  - id: lread-rubric.002
+    kind: heading
+    blanks: 1
+    text: "## 출처"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 출처"
+      content_hash: sha256:a0c17e03e435692dc252647873f9ea3a50b4fd51e64e2aed9ffb0d7382e4afd0
+      transform: verbatim
+  - id: lread-rubric.003
+    kind: quote
+    blanks: 1
+    text: "> **From Intuition to Calibrated Judgment: A Rubric-Based Expert-Panel Study of Human Detection of\n> LLM-Generated Korean Text.** Shinwoo Park, Yo-Sub Han (Yonsei). arXiv:2601.19913 (2026, preprint).\n> https://arxiv.org/abs/2601.19913 · 루브릭·데이터 https://github.com/Shinwoo-Park/lread\n> KatFishNet(ACL 2025)과 동일 연구진. confidence: HIGH — arXiv `2601.19913`(v1~v3)·GitHub\n> `Shinwoo-Park/lread` 실재 검증(2026-06). 제목·핵심 수치(정확도 0.60→0.90, κ −0.09→0.24→0.82)·\n> 루브릭 배점(100점=내용40·조직10·표현50)을 본문과 대조 확인. preprint 주의."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 출처 > quote 1"
+      content_hash: sha256:4789abc4137d5f5e75626454676b994ef89a27b1fe550067896c6b7457b6d8c4
+      transform: verbatim
+  - id: lread-rubric.004
+    kind: heading
+    blanks: 1
+    text: "## 핵심 발견 — fluency trap (유창성 함정)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 핵심 발견 — fluency trap (유창성 함정)"
+      content_hash: sha256:f925c7552f4daf515c811a88525b5ea3828d765f4e80b8979c8b95be5f82b6b0
+      transform: verbatim
+  - id: lread-rubric.005
+    kind: item
+    blanks: 1
+    text: "- 사람의 **직관만** 판별: 다수결 정확도 60%, 평가자 일치도 Fleiss κ −0.09(우연 수준). **루브릭 적용 후**\n  일치도 κ 0.24→0.82로 급상승, 오탐(특히 LLM을 사람으로 오판하는 false-negative) 급감."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 핵심 발견 — fluency trap (유창성 함정) > item 1"
+      content_hash: sha256:2dade2bfb6f4896b277dd44a63465df292c250b2d18bbc4b87124949f5eb3349
+      transform: verbatim
+  - id: lread-rubric.006
+    kind: item
+    blanks: 0
+    text: "- **표면적 매끄러움·규범 준수·구조 완결성은 \"사람이 썼다\"는 증거가 아니다.** LLM 글은 형식 차원,\n  특히 **조직(Organization)** 에서 사람과 비슷하거나 더 높은 점수를 받는다(템플릿 충실·구조 완결)."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 핵심 발견 — fluency trap (유창성 함정) > item **표면적 매끄러움·규범 준수·구조 완결성은 \"사람이 썼다\"는 증거가 아니다.**"
+      content_hash: sha256:a597f8f191c762a124939538072b30646e287844262d4a53fc3b402d8355752c
+      transform: verbatim
+  - id: lread-rubric.007
+    kind: item
+    blanks: 0
+    text: "- 진짜 판별력은 **표현(Expression)**(과도한 규범화, register 안정성의 부자연스러운 과잉, 번역투)과\n  **내용(Content)**(창의성, 발달 수준에 맞는 비정형성)에 있다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 핵심 발견 — fluency trap (유창성 함정) > item 3"
+      content_hash: sha256:bd41e7c50fadc251aa1a48176842431873a8ff14e58eefbe89f44e12d3475f1d
+      transform: verbatim
+  - id: lread-rubric.008
+    kind: item
+    blanks: 0
+    text: "- 루브릭은 주의를 *전역적 유창성*에서 **띄어쓰기·구두점·register·페르소나 충실도** 같은 안정적 단서로 돌린다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 핵심 발견 — fluency trap (유창성 함정) > item 4"
+      content_hash: sha256:274caadb378efdd63041057467cd2e20ea5bafb7a93a6f3e4eb26dce87d9e822
+      transform: verbatim
+  - id: lread-rubric.009
+    kind: heading
+    blanks: 1
+    text: "## LREAD 루브릭 구조 (총 100점 · 3대 차원)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## LREAD 루브릭 구조 (총 100점 · 3대 차원)"
+      content_hash: sha256:0d62005260cbe5f6e4d4e8d1c4acaf077ff50ff5a54539178c897fa7a8309c4f
+      transform: verbatim
+  - id: lread-rubric.010
+    kind: paragraph
+    blanks: 1
+    text: "원래 한국어 **논증 에세이 작문 평가** 루브릭(국가 글쓰기 기준 기반)을 판별용으로 전용한 것. 항목별 3단계 채점."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## LREAD 루브릭 구조 (총 100점 · 3대 차원) > paragraph 1"
+      content_hash: sha256:5d732c6fb6acd1620f0fd08ff8303474260f2c787fd8269cf1877f4f8cc0a0be
+      transform: verbatim
+  - id: lread-rubric.011
+    kind: heading
+    blanks: 1
+    text: "### 내용 Content (40)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 내용 Content (40)"
+      content_hash: sha256:f524613a8798f28e54750a0f79a12f5b67f3a0096a2a28a98694de2b54d7f1d6
+      transform: verbatim
+  - id: lread-rubric.012
+    kind: item
+    blanks: 1
+    text: "- **논지 명확성(10)** — 논지가 논제와 부합·일관되는가"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 내용 Content (40) > item **논지 명확성(10)**"
+      content_hash: sha256:78c20ecdec6cbbd385fd601db1802d8bf5546b9189f835ef32c16aea1199a80d
+      transform: verbatim
+  - id: lread-rubric.013
+    kind: item
+    blanks: 0
+    text: "- **근거 적절성/충분성(15)** — 근거가 적절·충분·깊이 있는가"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 내용 Content (40) > item **근거 적절성/충분성(15)**"
+      content_hash: sha256:c4260a4e3fbab4afd021b632532b340385e13e3476e00d7eba877712fd1042aa
+      transform: verbatim
+  - id: lread-rubric.014
+    kind: item
+    blanks: 0
+    text: "- **반론 고려(5)** — 반론을 제시·평가하는가"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 내용 Content (40) > item **반론 고려(5)**"
+      content_hash: sha256:986fc3bdbbf6c1fdd1f7bd8412576ba8656fcd56d19c76310d3e1e12b3c98f33
+      transform: verbatim
+  - id: lread-rubric.015
+    kind: item
+    blanks: 0
+    text: "- **창의성(10)** — 내용상 창의적이라고 볼 부분이 있는가 (유/무)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 내용 Content (40) > item **창의성(10)**"
+      content_hash: sha256:9dffad3c330b9087ad2e4fca77c66ebbfa096a4e68d812e11185de2c98dadb42
+      transform: verbatim
+  - id: lread-rubric.016
+    kind: heading
+    blanks: 1
+    text: "### 조직 Organization (10) ← LLM이 높은 점수를 받는 구간(함정)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 조직 Organization (10) ← LLM이 높은 점수를 받는 구간(함정)"
+      content_hash: sha256:5d5fe26a41eb8da561d78f6c6054c87896f50bed9977f9cf6e3573557306f76f
+      transform: verbatim
+  - id: lread-rubric.017
+    kind: item
+    blanks: 1
+    text: "- **글(문단) 전체 조직(5)** — 문단이 서–본–결 구조의 완결성을 갖는가"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 조직 Organization (10) ← LLM이 높은 점수를 받는 구간(함정) > item **글(문단) 전체 조직(5)**"
+      content_hash: sha256:830df7f5758a778c976680bcdf51677210b2407da4cfb9e47fb1c61e5521ea6b
+      transform: verbatim
+  - id: lread-rubric.018
+    kind: item
+    blanks: 0
+    text: "- **문장 간 유기성(5)** — 문단 내 문장들이 논리적으로 연결되는가"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 조직 Organization (10) ← LLM이 높은 점수를 받는 구간(함정) > item **문장 간 유기성(5)**"
+      content_hash: sha256:e8639c47c1fe769dd59cb72cc1856fa2ee1fc9568e1332e86bd6604fbdb64103
+      transform: verbatim
+  - id: lread-rubric.019
+    kind: heading
+    blanks: 1
+    text: "### 표현 Expression (50) ← 판별력이 가장 큰 구간"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 표현 Expression (50) ← 판별력이 가장 큰 구간"
+      content_hash: sha256:83c84a2fc28f6dd7844be0bbe66f904d3af6166273517b0b6b8e7545c9ab1eb9
+      transform: verbatim
+  - id: lread-rubric.020
+    kind: item
+    blanks: 1
+    text: "- **어휘 사용(10)** — 어휘 적확성, 불필요한 어휘 중복성(어절 대비 오류율)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 표현 Expression (50) ← 판별력이 가장 큰 구간 > item **어휘 사용(10)**"
+      content_hash: sha256:0cb682f7852c63d9ea6b326ee8fcb06dc046229d4572711a8928bccb161b6005
+      transform: verbatim
+  - id: lread-rubric.021
+    kind: item
+    blanks: 0
+    text: "- **문장 구성(10)** — 정확하고 어색하지 않은 문장(문장 길이·필수 성분·문법 오류·중의성)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 표현 Expression (50) ← 판별력이 가장 큰 구간 > item **문장 구성(10)**"
+      content_hash: sha256:b6faaa3044cc11f549e86a7105fcbd363042aaf085d1f0fe00009f1fff69c07c
+      transform: verbatim
+  - id: lread-rubric.022
+    kind: item
+    blanks: 0
+    text: "- **어문 규범(10)** — 맞춤법·표준어·**띄어쓰기**(총 단어 대비 오류율) ← 구두점/정서법 단서"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 표현 Expression (50) ← 판별력이 가장 큰 구간 > item **어문 규범(10)**"
+      content_hash: sha256:9b2ae251dcd2bf6d1cce30b85003a775f75216cc0233a2ddeb7bee7ae9351888
+      transform: verbatim
+  - id: lread-rubric.023
+    kind: item
+    blanks: 0
+    text: "- **글쓰기 관습(10)** — 장르 적합 표현(구어체 등), **자연스러운 우리말 표현(번역투 등)** ← translationese 단서"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 표현 Expression (50) ← 판별력이 가장 큰 구간 > item **글쓰기 관습(10)**"
+      content_hash: sha256:f4a19a2f84bf0e5bd9f31454b3ae23a30d92b2d5addfe9d44e43ad6697c41791
+      transform: verbatim
+  - id: lread-rubric.024
+    kind: item
+    blanks: 0
+    text: "- **표현 창의성(10)** — 표현상 창의적이라고 볼 부분(2개 이상 / 1개 / 0개)"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "### 표현 Expression (50) ← 판별력이 가장 큰 구간 > item **표현 창의성(10)**"
+      content_hash: sha256:01fcddf990585fb4c2fab7613318fb9b8233a4705dd8916814b09abc4a7a21d8
+      transform: verbatim
+  - id: lread-rubric.025
+    kind: heading
+    blanks: 1
+    text: "## detect 신호 매핑"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## detect 신호 매핑"
+      content_hash: sha256:5554bda200bd821f708928bf63bb3a492173989a09dbad983b9a8c17761e05ee
+      transform: verbatim
+  - id: lread-rubric.026
+    kind: table-header
+    blanks: 1
+    text: "| LREAD 항목                              | detect 신호                   | 해석 방향                                              |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## detect 신호 매핑 > table header \"LREAD 항목\""
+      content_hash: sha256:e992f1824133e0b8829cfe4afe63efe56bb3fc74ed7d3a93779d64ce438e9af8
+      transform: verbatim
+  - id: lread-rubric.027
+    kind: table-sep
+    blanks: 0
+    text: "| --------------------------------------- | ----------------------------- | ------------------------------------------------------ |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## detect 신호 매핑 > table separator"
+      content_hash: sha256:2c8343e684f7e6b0391b55bfbf6f0ee4dfef90aeb26ef7c35daf62542f99a978
+      transform: verbatim
+  - id: lread-rubric.028
+    kind: row
+    blanks: 0
+    text: "| 글쓰기 관습 — 자연스러운 우리말(번역투) | taxonomy 카테고리 1·2·6       | 번역투 단서가 많을수록 AI 가능성↑                      |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## detect 신호 매핑 > row \"글쓰기 관습 — 자연스러운 우리말(번역투)\""
+      content_hash: sha256:3ccc743f851a3e145ba18f06d5f6e5e3e15d3065a41ab2a89bb8e3e6ba457561
+      transform: verbatim
+  - id: lread-rubric.029
+    kind: row
+    blanks: 0
+    text: "| 어문 규범 — 띄어쓰기·구두점             | KatFishNet 쉼표·띄어쓰기 신호 | 정형적 구두점/띄어쓰기 = AI 단서                       |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## detect 신호 매핑 > row \"어문 규범 — 띄어쓰기·구두점\""
+      content_hash: sha256:30b32ba6109c150dc14b0d2bd668b30413ff2d0b46f0bdbe6e29f9991e7fb820
+      transform: verbatim
+  - id: lread-rubric.030
+    kind: row
+    blanks: 0
+    text: "| 문장 구성 — 어색함·중의성               | taxonomy 4·7·9                | —                                                      |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## detect 신호 매핑 > row \"문장 구성 — 어색함·중의성\""
+      content_hash: sha256:1f118ea779d62350177feb828687d182e2540bc16b9b56870cd2fdfd8c738b06
+      transform: verbatim
+  - id: lread-rubric.031
+    kind: row
+    blanks: 0
+    text: "| 조직 — 구조 완결성                      | (역설 신호)                   | **높을수록** 오히려 AI 의심(함정 주의)                 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## detect 신호 매핑 > row \"조직 — 구조 완결성\""
+      content_hash: sha256:1cae65b7133ba357f783d6e3a66a98b93f6f269bf2abc935b720a7ae424a6cef
+      transform: verbatim
+  - id: lread-rubric.032
+    kind: row
+    blanks: 0
+    text: "| 창의성(내용·표현)                       | 인간 신호                     | **부재**가 AI 단서, 존재가 사람 단서                   |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## detect 신호 매핑 > row \"창의성(내용·표현)\""
+      content_hash: sha256:130e54558f3c0bc2ed9c57278f7a589f1be640c09506c2dca44a7320f1f618fb
+      transform: verbatim
+  - id: lread-rubric.033
+    kind: row
+    blanks: 0
+    text: "| register 안정성                         | taxonomy 9(리듬)·register     | 부자연스럽게 _과도하게_ 일정하면 AI 단서               |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## detect 신호 매핑 > row \"register 안정성\""
+      content_hash: sha256:e2ecc16b080167727793444d30b3334a09e9e56b8d6fd090925e5774eeed6754
+      transform: verbatim
+  - id: lread-rubric.034
+    kind: row
+    blanks: 0
+    text: "| 페르소나 충실도                         | (메타)                        | 주장된 작성자(연령·수준)와 글의 정교함이 어긋나면 단서 |"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## detect 신호 매핑 > row \"페르소나 충실도\""
+      content_hash: sha256:27534fcc1ab55c78784d5b208fa98149df2fcf256221d462e85d5f284db5c97a
+      transform: verbatim
+  - id: lread-rubric.035
+    kind: heading
+    blanks: 1
+    text: "## 주의"
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 주의"
+      content_hash: sha256:de9b95f9f64b179c35867c2053a3c2ccfb7d9c7ffee9db7567810e7c8bf1088c
+      transform: verbatim
+  - id: lread-rubric.036
+    kind: item
+    blanks: 1
+    text: "- **형식 점수가 높다고 사람이 아니다(그 반대일 수 있다).** 매끄러움·구조 완결성에 속지 말 것 — fluency trap."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 주의 > item **형식 점수가 높다고 사람이 아니다(그 반대일 수 있다).**"
+      content_hash: sha256:18bffa2bf303cf33a5002e7dfbffed126e84b788fa20ee041e2d78ad060cf791
+      transform: verbatim
+  - id: lread-rubric.037
+    kind: item
+    blanks: 0
+    text: "- 창의성·발달적 비정형성·페르소나 일치는 **사람** 신호다. 그 부재가 AI 단서다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 주의 > item 2"
+      content_hash: sha256:0002f0347d5021d5bbae81c38e7e48f85c01ad7f62fcea9a2bb56189da248182
+      transform: verbatim
+  - id: lread-rubric.038
+    kind: item
+    blanks: 0
+    text: "- 루브릭 기준은 **논증 에세이(초·중·고)** 에서 도출 — 다른 장르·성인 전문 글에는 가중치를 조정해 적용한다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 주의 > item 3"
+      content_hash: sha256:092f0a106c833d7433a3ccbe38e64617bf864bf0f7bdecfaffe9592738ada87c
+      transform: verbatim
+  - id: lread-rubric.039
+    kind: item
+    blanks: 0
+    text: "- preprint이며, 항목별 정확한 배점 세부는 repo의 `LREAD_Rubric_Korean.xlsx` 원본을 따른다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 주의 > item 4"
+      content_hash: sha256:00f403801dffcc55151f964ad288abfe3d9ba6ddcaa4531e4f5c016351808d2a
+      transform: verbatim
+  - id: lread-rubric.040
+    kind: item
+    blanks: 0
+    text: "- 이 단서는 **확률적 보조 판단**이다. 표절·부정행위 단정의 단독 근거로 쓰지 않는다."
+    provenance:
+      upstream: yoonmoon
+      commit: c88853106c8fa8448447136f5aa3fc8bb9650303
+      path: skills/detect/references/lread-rubric.md
+      anchor: "## 주의 > item 5"
+      content_hash: sha256:ba8a7aa20c6ce31da00b53a9543bb2476330690b7f9a0bd588c9fec14c77901b
+      transform: verbatim
