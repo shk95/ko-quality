@@ -136,7 +136,7 @@ E4 decides one of three: fix the rule so artifact kind is observable, restate `r
 **What the documentation does not say was then measured** (2026-09-16, Claude Code 2.1.273; [`tests/runs/02-E7/agent-scope-and-visibility.json`](../../../tests/runs/02-E7/agent-scope-and-visibility.json)):
 
 - **`--scope local` limits visibility, not just bookkeeping.** `claude plugin list` shows the plugin enabled in the installing project and *disabled* in every other directory, including this repository. A run elsewhere that selects its style gets no style.
-- **Project agents outrank plugin agents.** With `korean-writer` defined in both, delegation reached the project definition. Plugin agents are namespaced — the reply addressed the other one as `ko-quality:korean-writer`, matching P3.
+- **Project agents outrank plugin agents.** With `korean-writer` defined in both, delegation reached the project definition. *(Later corrected: they coexist under different names, and the bare name belongs to the project agent. See [`08_scope_decisions.md`](08_scope_decisions.md) E7-c.)* Plugin agents are namespaced — the reply addressed the other one as `ko-quality:korean-writer`, matching P3.
 - **The namespace comes from `plugin.json`'s `name`, not from the marketplace entry.** The entry was `koq`; `koq:agent-reply` did not resolve and `ko-quality:agent-reply` did.
 - **B9 holds through the marketplace install path**, not only under `--plugin-dir`. That closes B9's last unmeasured item.
 

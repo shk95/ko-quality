@@ -51,8 +51,8 @@
 
 - stop-slop-ko는 lock에도 팔에도 넣지 않습니다. `exempt`는 되살릴 참조 대상이 원래 없었으므로 06 §6에서 **삭제**합니다
 - 실제 원문은 커밋하지 않고, 판정기 사본도 `KO_QUALITY_HOME` 아래에 두며, `task`/`output`은 **90일**(월 파일 단위) 뒤 삭제합니다. 파생값은 만료되는 파일 밖에 저장합니다. 마스킹에 전화번호·주민등록번호·카드번호·홈 경로를 추가합니다
-- 개발용 에이전트 이름은 배포 에이전트 이름과 겹치면 안 됩니다. 빌드 검사로 막습니다
-- 자기 적용을 **저장소 기본값**으로 켭니다. 그 전에 격리가 먼저입니다 — 로거 `expanduser`, 커밋되는 `.claude/settings.json`, 레코드의 프로젝트 표지, 빌드 스탬프의 빌드 식별자
+- 서브에이전트 레코드의 `injection_point`는 스탬프가 아니라 `agent_type`의 네임스페이스로 정합니다. 개발용 에이전트 이름은 배포 이름과 겹치지 않게 빌드 검사로 막습니다(가독성 규칙)
+- 자기 적용을 **저장소 기본값**으로 켭니다. 그 전에 격리가 먼저입니다 — 로거 `expanduser`, 커밋되는 `.claude/settings.json`, 레코드의 프로젝트 표지(`cwd`의 git 루트 기준), 빌드 스탬프의 빌드 식별자. 마켓플레이스 등록과 로컬 스타일 제거는 커밋되지 않아 **기기마다 한 번** 해야 합니다
 
 ## 실측 기록
 
@@ -63,14 +63,15 @@
 | E4 | [`02-E4/approximations.json`](../../../tests/runs/02-E4/approximations.json) | `subagent_stats`로 중첩 관측 가능. 토큰 비율은 내용에 따라 4배 범위 |
 | E5 | [`02-E5/eval-grader-types.json`](../../../tests/runs/02-E5/eval-grader-types.json) | 채점기 타입 여섯, `regex`는 존재 매칭만, 코드 채점기 없음 |
 | E6 | [`02-E6/stop-hook-gate.json`](../../../tests/runs/02-E6/stop-hook-gate.json) | Stop hook이 답변을 되돌립니다. 하네스가 8회에서 끊고 **빈 결과**를 돌려줍니다 |
-| E7 | [`02-E7/agent-scope-and-visibility.json`](../../../tests/runs/02-E7/agent-scope-and-visibility.json) | `--scope local`은 가시성을 제한하고 프로젝트 에이전트가 플러그인보다 우선합니다. **E7 문서보다 먼저 나온 기록입니다** |
+| E7 | [`02-E7/agent-scope-and-visibility.json`](../../../tests/runs/02-E7/agent-scope-and-visibility.json) | `--scope local`은 가시성을 제한합니다. "프로젝트 에이전트가 우선"은 뒤의 리뷰에서 **공존**으로 바로잡혔습니다. **E7 문서보다 먼저 나온 기록입니다** |
 | E7 | [`02-E7/settings-env-isolation.json`](../../../tests/runs/02-E7/settings-env-isolation.json) | 프로젝트 설정의 `env`가 플러그인 hook까지 닿아 로거 홈을 격리합니다. 단 `settings.local.json`은 커밋되지 않습니다 |
+| E7 | [`02-E7/committed-settings-and-agent-names.json`](../../../tests/runs/02-E7/committed-settings-and-agent-names.json) | 커밋 설정의 `env`는 닿지만 `~`는 풀리지 않습니다. 마켓플레이스는 커밋되지 않고, 로컬 스타일이 커밋 스타일을 이깁니다. 설정은 실행 디렉터리에서만 읽힙니다. 에이전트는 이름이 달라 공존합니다 |
 
 `02-E7`의 첫 기록이 `08_*.md`보다 앞서 있는 것은 그 실측이 E2 단계에서 제기된 질문을 따라가다 나왔기 때문입니다. E7 문서를 쓸 때 입력으로 씁니다.
 
 ## 서브에이전트 실행
 
-이 단계 누계 **10회** (`mid` 9, `docs` 1). `docs`는 `mid`와 같게 셉니다 (시대 01 리뷰 §E).
+이 단계 누계 **11회** (`mid` 10, `docs` 1). `docs`는 `mid`와 같게 셉니다 (시대 01 리뷰 §E).
 
 | # | 목적 | 티어 | 토큰 |
 |---|---|---|---|
@@ -84,6 +85,7 @@
 | E5-v | E5 러너·`ruleset` 검증 | mid | 121.2k |
 | E6-v | E6 gate 검증 | mid | 112.6k |
 | E7-v | E7 결정 문서 검증 | mid | 92.8k |
+| E7-v2 | E7 확신 낮은 하네스 주장 실측 | mid | 105.2k |
 
 각 문서의 `## Subagent runs` 절이 그 문서가 쓴 실행만 적고, 누계는 여기입니다.
 
