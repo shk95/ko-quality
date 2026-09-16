@@ -6,7 +6,7 @@
 
 ## 문서 지도
 
-2-exploration은 문서가 여섯이라 그 단계의 [](2-exploration/README.md)가 읽는 순서·실측 기록 색인·서브에이전트 누계를 갖고 있습니다.
+2-exploration은 문서가 여섯이라 그 단계의 [README](2-exploration/README.md)가 읽는 순서, 실측 기록 색인, 서브에이전트 누계를 갖고 있습니다.
 
 | 단계 | 파일 | 내용 | 상태 |
 |---|---|---|---|
