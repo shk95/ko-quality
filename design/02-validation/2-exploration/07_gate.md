@@ -83,13 +83,46 @@ The exit-2 run was not narrated, but its stderr text was uninteresting, and one 
 
 So rejection sampling is available, is cheaper in leaked information than a diagnostic retry, and still does not give an untainted record. It is worth naming and it does not rescue the design.
 
-### What follows for semantics
+### What follows for semantics: split the arms, do not choose between the modes
 
-The resolution is not to soften the message but to **mark the records**.
+The first draft closed on a binary — block and accept the leak, or `emit_with_flag` and correct nothing. That framing is too narrow, and the correction came from asking the obvious question it had skipped: *if the gate removes the patterns we do not want, the output is better, and surely that difference is measurable?*
 
-- A record produced after a gate fired carries `gate_fired: true` and the count of retries.
-- Analysis **never pools** gated and ungated records for any measurement the gate's reason mentioned. That is the same rule E4 applied to estimated against measured token counts, for the same reason.
-- The control arm is ungated by construction, so an on/off comparison that includes gated records on one side is comparing two different things.
+**It is. The first draft confused "this measurement is spoiled" with "measurement is spoiled."** A gate-on against gate-off comparison measures something real — what the user actually receives — and that is arguably the number that matters most to a user. What it cannot do is answer the question *this* era is asking.
+
+| Question | Answered by gate on/off? |
+|---|---|
+| Is what the user receives better? | **yes** |
+| Does the **policy** work? | no |
+| Did the **model** get better? | no |
+
+The second row is the era's question, and a gate hides it: **with a gate running, a good policy and a bad one both produce clean output**, because the gate cleans up after either. That distinction has a price attached — the policy is injected at build time and costs nothing per turn, while a gate re-runs the whole turn every time it fires. Pooling them makes it impossible to know which one is doing the work.
+
+**So four arms, not two modes.**
+
+| | gate off | gate on |
+|---|---|---|
+| **policy off** | floor | the gate's effect alone |
+| **policy on** | **the policy's effect alone** — this era's question | what the product actually delivers |
+
+- Left column: does the policy do anything. That is era 02.
+- Bottom row: how much the gate adds on top. That is the era that opens `gate:`.
+- Bottom right: the product's real quality, which is the number a user cares about.
+
+### Two rules that make the gated arms readable
+
+**1. A gated measurement is tautological in its own arm.** If the gate blocks em dashes and retries until none remain, the em dash count goes to zero. That records that the gate worked, not that the writing improved — measuring whether a filter filtered. **In an arm where a gate fires on a measurement, that measurement is not read.**
+
+**2. Read what the gate was not watching.** Forcing the model to remove an em dash does not remove an em dash; it rewrites the sentence, and the rewrite can damage something nobody is checking.
+
+Upstream already knows this and says so throughout its own taxonomy: `전멸 금지`, `주입 금지`, a whole entry called `삭제 과교정 금지`, and D-9 and D-10's instruction that polishing an ending must not *create* `결국` or `~하는 이유다`. **Fixing one pattern manufactures another**, measured by the people who wrote the patterns.
+
+So the informative measurements in a gated arm are exactly the ones the gate is blind to. They are where displaced defects land.
+
+### And still mark the records
+
+- A record produced after a gate fired carries `gate_fired: true` and the retry count.
+- Analysis **never pools** gated with ungated records — the same rule E4 applied to estimated against measured token counts, for the same reason.
+- Which measurement the gate fired on is recorded too, because rule 1 above needs it: a reader has to know which column of that record is tautological.
 
 ## Where a gate can live
 
@@ -119,7 +152,14 @@ The resolution is not to soften the message but to **mark the records**.
 - **Blocking leaks whether or not it explains.** Three modes were measured and a fourth channel (`systemMessage`, user-only) is documented. A diagnostic `reason` teaches the model the metric; a blank one still tells it that it was rejected, and it says so to the user.
 - **PreToolUse(Write) is asserted, not probed**, and its deny contract is a different shape.
 
-The last point deserves its own line, because it is the era's honest answer to "what does a gate do when it fires": **a gate that corrects teaches, and a model that has been taught is no longer a sample.** Rejection sampling looked like the way out and is not — the model notices. `emit_with_flag` is the only mode that leaves the measurement intact, and it is also the mode that fixes nothing. Choosing between them is a decision about what the tool is for, not a tuning parameter, and it belongs in the era that opens `gate:`.
+- **Four arms, not two modes.** `policy {on, off} × gate {on, off}`. The left column is this era's question; the bottom right is the product's quality. They are different experiments and must not share an arm.
+- **In a gated arm, do not read the measurement the gate fired on** — it is tautological — **and do read the ones it was blind to**, because that is where a forced correction displaces the defect.
+
+The honest answer to "what does a gate do when it fires" is therefore two sentences rather than one.
+
+**A gate that corrects teaches, and a model that has been taught is no longer a sample of an untaught model.** Rejection sampling looked like the way out and is not — the model notices being blocked and says so. But that spoils one comparison, not all of them: **an arm with a gate is still a valid sample of a system with a gate**, and that is a real thing to measure. What cannot be done is running one gate configuration and reporting the result as though it answered both questions.
+
+Which mode to ship — corrective or `emit_with_flag` — stays a decision about what the tool is for, and it belongs in the era that opens `gate:`. What this era fixes is that the decision is now separable from the measurement instead of destroying it.
 
 ## One thing confirmed for E4
 
