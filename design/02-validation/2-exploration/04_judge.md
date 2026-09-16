@@ -35,7 +35,7 @@ This closes off the comfortable explanation. A noisy judge can be improved by vo
 
 So of twelve replies, **six are adjudicable and one is wrong** — a point estimate of 17 %, with a 95 % confidence interval of **[0.03, 0.56]**.
 
-This matters for how the earlier finding is stated. The review wrote that the judge "failed all three agent-reply replies with the plugin, which carry no em dash and end prose in 합니다체". The 합니타체 half of that came from reading the replies during the run; it is not in the record and cannot be re-checked. The claim may well be right. It is simply not evidence any more.
+This matters for how the earlier finding is stated. The review wrote that the judge "failed all three agent-reply replies with the plugin, which carry no em dash and end prose in 합니다체". The 합니다체 half of that came from reading the replies during the run; it is not in the record and cannot be re-checked. The claim may well be right. It is simply not evidence any more.
 
 **Requirement on any future judge run:** retain the judged text and the judge's stated reason. A verdict that cannot be re-examined cannot be used to validate anything, and C3's strongest published claim is currently unreproducible for exactly that reason.
 
