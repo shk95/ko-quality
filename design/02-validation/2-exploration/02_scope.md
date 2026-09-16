@@ -69,7 +69,9 @@ The last two rows are why this belongs to E1 and not only to the spec. Under the
 
 The per-project scope also blunts the objection. "Installing does nothing" becomes "choose once per project, and it stays chosen", and a per-project profile fits the distinction the toolkit was after better than a per-installation one: formal-report in a docs repository, agent-reply in a code repository.
 
-**Not decided here.** This is a 06 §9 (policy channel) and §12 (distribution layout) revision candidate — **B9**, alongside review §B's B1–B8 — and it is settled in `3-spec`, not in this document. It still waits on E4's reading of whether the profile distinction survives at all (the `register` mismatch below): if E4 drops or restates the distinction, B9's premise changes with it. What is left unmeasured is the marketplace install path — the probe used `--plugin-dir`, not `claude plugin install`.
+**Not decided here.** This is a 06 §9 (policy channel) and §12 (distribution layout) revision candidate — **B9**, alongside review §B's B1–B8 — and it is settled in `3-spec`, not in this document. It still waits on E4's reading of whether the profile distinction survives at all (the `register` mismatch below): if E4 drops or restates the distinction, B9's premise changes with it. The marketplace install path was measured afterwards under E7 and behaves the same ([`tests/runs/02-E7/`](../../../tests/runs/02-E7/agent-scope-and-visibility.json)), so B9 has no unmeasured item left; it waits only on E4.
+
+**One thing B9 breaks, found in that run.** The logger sets `policy_on` from the presence of the build stamp, not from what took effect, so it read `true` on three runs where no style was selected and the policy did not apply. `injection_point` is derived the same way. Under B9 both fields become false by construction, and **the three-arm control design is unmeasurable until they are fixed** — arm B (plugin installed, style unselected) would record itself as arm C. This is a logger change for the spec, and it is the cost side of B9 that the earlier table did not show.
 
 ## Era boundary
 
@@ -131,7 +133,14 @@ E4 decides one of three: fix the rule so artifact kind is observable, restate `r
 
 **What the documentation says** (a `docs` run, 2026-09-16). Claude Code reads agent definitions from five places, in this precedence: managed settings, `--agents`, project `.claude/agents/`, user `~/.claude/agents/`, then `<plugin-root>/agents/`. **Project agents outrank plugin agents**, and the documentation says project agents "should be checked into version control for team collaboration". The frontmatter supports far more than the three fields in use — `model`, `effort`, `permissionMode`, `maxTurns`, `isolation`, `skills`, `hooks`, `memory` among them, which means `AGENTS.md`'s tier rules could be written into the files rather than left to the caller.
 
-**What the documentation does not say**, and is therefore measured rather than assumed: whether plugin agents are namespaced (our own P3 run says they are), and whether `claude plugin install --scope local` limits *visibility* of the plugin's agents, skills, hooks and output style, or only records the install in `.claude/settings.local.json`.
+**What the documentation does not say was then measured** (2026-09-16, Claude Code 2.1.273; [`tests/runs/02-E7/agent-scope-and-visibility.json`](../../../tests/runs/02-E7/agent-scope-and-visibility.json)):
+
+- **`--scope local` limits visibility, not just bookkeeping.** `claude plugin list` shows the plugin enabled in the installing project and *disabled* in every other directory, including this repository. A run elsewhere that selects its style gets no style.
+- **Project agents outrank plugin agents.** With `korean-writer` defined in both, delegation reached the project definition. Plugin agents are namespaced — the reply addressed the other one as `ko-quality:korean-writer`, matching P3.
+- **The namespace comes from `plugin.json`'s `name`, not from the marketplace entry.** The entry was `koq`; `koq:agent-reply` did not resolve and `ko-quality:agent-reply` did.
+- **B9 holds through the marketplace install path**, not only under `--plugin-dir`. That closes B9's last unmeasured item.
+
+The same run put the logger through a marketplace install for the first time and produced five records. `KO_QUALITY_HOME` isolated them and `~/.ko-quality` was never created, which confirms the device E1 depends on.
 
 **Development agents do not belong in the shipped plugin.** A plugin described as a Korean writing-quality toolkit should not install agents for working on source code; whoever installs it did not ask for them. If this repository wants them, they go in its own `.claude/agents/`, which is version-controlled and outranks the plugin anyway.
 

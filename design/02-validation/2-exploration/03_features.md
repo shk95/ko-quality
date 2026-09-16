@@ -233,6 +233,8 @@ The tiers below are about *how a number is produced*. The layer is a separate at
 
 ### Second: what the control arm actually toggles
 
+> **The logger cannot tell the arms apart yet.** It sets `policy_on` and `injection_point` from the presence of the build stamp rather than from what applied, so a run with the plugin installed and its style unselected records `policy_on: true` (E7's run). Arm B below is indistinguishable from arm C until that is fixed.
+
 An ablation run with the plugin uninstalled removes the policy, the skills and the agents together. A difference between that and a full install cannot be attributed to any one of them.
 
 B9's measurement supplies the missing arm at no cost. With unforced styles, the plugin can be installed while its style is simply not selected:
@@ -255,13 +257,15 @@ That flag sits directly on the defect being measured. 전보체 — dropped 조�
 
 > `filter.py`가 features를 읽는다 … 재려는 변수로 표본을 거른다.
 
+**Observed, not predicted** (E7's run, five records): `usable` was `false` on three of five, and all three were short, correct Korean answers to a short question. The floor excludes ordinary replies, not only defective ones.
+
 Nothing filters on `usable` today, so the gate is closed. **The rule this era adds: the analysis must not drop `usable: false` records for any measurement whose defect makes text shorter.** If a length floor is needed at all, it is applied per measurement with a stated reason, never as a blanket filter, and the count of excluded records is reported alongside the result.
 
 ### Fourth: reply length versus document thresholds
 
 Upstream's thresholds assume a document: `한 문단 3회+`, `문서 2회+`, `5회+`, `4문장+ 연속`. An agent's reply is often two or three sentences, and a threshold of three per paragraph cannot fire in it at all.
 
-The consequence is not that the counts are wrong. It is that **most of them will be zero on most records, and a feature with no variance cannot show an on/off difference** however real the underlying effect is. This is more fundamental than the genre-transfer problem noted above, and it applies to the whole `phrase_battery`.
+The consequence is not that the counts are wrong. It is that **most of them will be zero on most records, and a feature with no variance cannot show an on/off difference** however real the underlying effect is. The same five records bear this out: replies of one or two sentences, on which a `문단 3회+` threshold cannot fire at all. This is more fundamental than the genre-transfer problem noted above, and it applies to the whole `phrase_battery`.
 
 Two ways out, both for the spec: emit raw counts and rates per 100 어절 rather than threshold verdicts, and aggregate across records within a stratum instead of deciding per record. Neither is chosen here.
 
@@ -362,6 +366,6 @@ The rest are not reference material: a ratio with a false-positive class attache
 |---|---|---|---|
 | E2-a | `mid` (Sonnet 5) | Classify the ko-diagnose references (taxonomy, rubric, scoring) | 85 rows: 46 `mechanical`, 35 `llm`, 4 `human`. Found the 보존 원칙 group, which closes 06 §13.1's change-rate item. 81.7k tokens |
 | E2-b | `mid` (Sonnet 5) | Classify the ko-grammar references (rules, common-errors, guidelines) | 50 rows: 22 `mechanical`, 26 `llm`, 2 `human`. Found one upstream rule with no stable target (주어와 서술어 호응). 83.4k tokens |
-| E2-c | `docs` (`claude-code-guide`) | Where Claude Code reads agent definitions from, and what `--scope` scopes | Five locations, project `.claude/agents/` documented and meant for version control. Plugin agent namespacing and whether `--scope` limits visibility are **undocumented**. 39.7k tokens |
+| E2-c | `docs` (`claude-code-guide`) | Where Claude Code reads agent definitions from, and what `--scope` scopes (its undocumented answers were then measured, `tests/runs/02-E7/`) | Five locations, project `.claude/agents/` documented and meant for version control. Plugin agent namespacing and whether `--scope` limits visibility are **undocumented**. 39.7k tokens |
 
 E2-a and E2-b were given the question, the sources and the classification scheme, never a leaning. Exploration runs used in this stage: 3 (the `docs` run counts like `mid`, review §E). Total ≈205k tokens.
