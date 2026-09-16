@@ -75,17 +75,85 @@ Everything else differs only in spacing and two words (`작업 중`/`작업중`,
 
 **1. Upstream already wrote the thresholds.** 24 of the 61 carry an explicit count — `한 문단 3회+`, `문서 2회+`, `5회+`, `4문장+ 연속`. Several cite measurements: C-8 says the 대구 pattern appears in 31 of 532 human-written pieces, C-11 cites a 4.84× separation from KatFish, A-21 says the 범위 상승 pattern was found 0 times in human writing. 05a's worry was that opening `watch:` means "직감으로 숫자를 박는다" — inventing thresholds by feel. For this battery we are not inventing them; we are inheriting numbers someone derived from a corpus.
 
-**2. Nearly all of it is countable.** Most entries are a fixed phrase or a small regex plus a density threshold.
+**2. Nearly all of it is countable.** Row by row, all 61 entries:
 
-| Shape | Count | Class |
-|---|---|---|
-| Fixed phrase or small regex + density threshold | ~47 | `mechanical` |
-| Needs a parse or document structure — 관형구 length (A-18), consecutive bullet blocks (C-2), paragraph-initial triads (C-7), sentence-length distribution (E-1), 종결어미 runs (E-2), 경어법 mixing (E-7), 당위 at paragraph end (I-4), final-30 % position (D-11) | ~8 | `mechanical`, with sentence/paragraph segmentation |
-| Countable core plus a judgment the count cannot make — 은유 beyond the fixed list (D-14), buzzword vs. standard term (B-2), abstract-subject personification (D-5), pronoun antecedent candidates (A-16), have/make/take calques (A-7) | ~6 | `llm` with a mechanical core |
+| id | Pattern | Upstream threshold | Class | Maps to | Note |
+|---|---|---|---|---|---|
+| A-1 | `~에 대해(서)` | 문단 3회+ | `mechanical` | `phrase_battery` | upstream says humans use it 3× more; the default is to keep it |
+| A-2 | `~를 통해/통하여` | 문단 3회+ | `mechanical` | `phrase_battery` | standard means-marker; only density is a signal |
+| A-3 | `~에 있어(서)` | — (S1, any) | `mechanical` | `phrase_battery` |  |
+| A-4 | `~라는 점에서` | 3회+ | `mechanical` | `phrase_battery` |  |
+| A-5 | `~와 관련하여/관련된` | — | `mechanical` | `phrase_battery` |  |
+| A-6 | `~에 기반하여/바탕으로` | 남발 | `mechanical` | `phrase_battery` | no number given; needs one from our corpus |
+| A-7 | `가지고 있다`; have/make/take/give calques | — | `llm` | `phrase_battery` (fixed part only) | the fixed string is countable; the calque judgment is not |
+| A-8 | 이중 피동 `~되어진다/~지게 된다` | — (S1, any) | `mechanical` | `phrase_battery` | also diagnose 2.1 — same measurement |
+| A-9 | `~에 의해` passive | — | `mechanical` | `phrase_battery` | legitimate agentless passive in formal register |
+| A-10 | `~할 수 있다` repeated | 4회+ | `mechanical` | `phrase_battery` | rule forbids converting to assertion; count only |
+| A-11 | `~을 위해` purpose clause | 남발 | `mechanical` | `phrase_battery` | no number given |
+| A-15 | abstract subject + 만능 동사 (보여준다/제공한다/가져온다) | — | `llm` | `phrase_battery` (verb list only) | needs to know the subject is abstract |
+| A-16 | pronoun with 0 / 1 / 2+ antecedent candidates in the previous 2 sentences | — | `llm` | — | needs candidate resolution; rule says keep when unsure |
+| A-18 | 관형구/관계절 of 3+ 어절 before a noun | 3어절+ | `mechanical` | `adnominal_chain_depth` | needs `ETM` chain length |
+| A-19 | 이중 조사 `~에서의/~으로의/~에의/~으로부터의` | — | `mechanical` | `phrase_battery` | plain `~의` explicitly excluded |
+| A-20 | `~되고 있다/~지고 있다` | 문단 3회+ | `mechanical` | `phrase_battery` | isolated use preserved |
+| A-21 | `단순한 X를 넘어 Y` | — (0 in human corpus) | `mechanical` | `phrase_battery` | upstream measured 0 occurrences in human writing |
+| A-22 | `~은/는 명확하다·분명하다` | — | `mechanical` | `phrase_battery` | excludes the adverb 분명히 and the verb phrase 명확히 하다 |
+| A-24 | `더 이상 ~ 않다/아니다` | 문서 2회+ | `mechanical` | `phrase_battery` | injection also forbidden — needs input+output to check that half |
+| B-1 | 한글 + (English) gloss repeated after first use | 매번 | `mechanical` | `english_gloss_repeat` | long documents may legitimately re-gloss |
+| B-2 | ad-copy buzzwords (seamless, robust, leverage) | — | `llm` | `phrase_battery` (seed list) | distinguishing ad-copy from a standard technical term needs judgment |
+| C-2 | 3+ consecutive bullet blocks | 3블록+ | `mechanical` | `bullet_density` | genre-bound: 칼럼-리포트 only |
+| C-5 | emoji in list heads, headings, emphasis | 남발 | `mechanical` | `emoji_count` | genre-bound: 칼럼-리포트 only |
+| C-7 | paragraph-initial 먼저–반면–결국 triad | 3단 | `mechanical` | `paragraph_initial_repeat` |  |
+| C-8 | `A인가, B인가` / `A가 아니라 B` 대구 | 2회+ | `mechanical` | `phrase_battery` | 31 of 532 human pieces use it; preserve unless clustered |
+| C-9 | numbered inline indexing `1) 2) 3)` | — | `mechanical` | `header_formula` |  |
+| C-10 | colon-subtitle headings `X: Y` repeated | 반복 | `mechanical` | `header_formula` | real section titles in academic reports preserved |
+| C-11 | comma right after a 연결어미 (-고/-며/-지만/-면서/-아서/-어서) | 6회+ = strong | `mechanical` | `comma_rate` | KatFish 4.84× separation; also diagnose 4.1 |
+| D-1 | 결산 lexicon 결론적으로/따라서/이를 통해/그러므로/요약하면/정리하자면 | 3회 초과 | `mechanical` | `phrase_battery` | also diagnose 3.1 |
+| D-2 | `시사하는 바가 크다/주목할 만하다/매우 중요하다` | — | `mechanical` | `phrase_battery` | also diagnose 3.2 |
+| D-3 | enumeration openers `크게 세 가지로 나눌 수 있다/다음과 같은` | — | `mechanical` | `phrase_battery` |  |
+| D-4 | hype 혁신적/획기적/압도적/파격적/폭발적/전례 없는 | 3회+ | `mechanical` | `phrase_battery` | also diagnose 3.4 |
+| D-5 | personified abstract subject (기술이 묻는다, 시대가 부른다) | — | `llm` | — | needs to know the subject is abstract and the verb animate |
+| D-6 | closing formula `~할 때입니다/~시점입니다/~할 순간입니다` | 문서 1회 이하 | `mechanical` | `phrase_battery` |  |
+| D-7 | transformation formula `X에서 Y로/X을 넘어 Y로` | 문서 1회 이하 | `mechanical` | `phrase_battery` | overlaps ordinary literal from/to — diagnose flags the same ambiguity |
+| D-8 | cleft `필요한/중요한 것은 ~이다`, `문제는/핵심은/관건은/답은 ~다` | — | `mechanical` | `phrase_battery` |  |
+| D-9 | `(으)로 이어진다`/`~에 직결된다` + 결산용 `결국` | 문서 2회+ | `mechanical` | `phrase_battery` | injection forbidden — that half needs input+output |
+| D-10 | `~하는 이유다` inverted close | 문서 1회 이하 | `mechanical` | `phrase_battery` | injection forbidden |
+| D-11 | `향후/앞으로/중장기적으로` at paragraph start in the final 30 % | 위치 조건 | `mechanical` | `phrase_battery` + document position | needs document segmentation |
+| D-12 | `과제도 남아 있다/한계도 분명하다/아쉬운 점도 있다` as a standalone sentence | — | `mechanical` | `phrase_battery` |  |
+| D-13 | essay close `어쩌면 ~일 것이다/비로소/천천히 ~이 됐다` | — | `mechanical` | `phrase_battery` | genre-bound: 에세이 only |
+| D-14 | sensory evaluation predicates 1회+; fixed dead-metaphor list (잠식·청사진·적신호…) 1회+; other conceptual metaphor 3회+; same metaphor root 3회+ | 1회+ / 3회+ | `llm` | `phrase_battery` (fixed list only) | the fixed list is countable; 'other conceptual metaphor' is not |
+| E-1 | uniform sentence length, no 100+ character sentence | 100자 | `mechanical` | `sentence_len_var` | also diagnose 5.4 / 9.2 |
+| E-2 | same 종결어미 4 sentences in a row; `~고 있다` auto-mapping | 4문장+ 연속 | `mechanical` | `ending_monotony` | also diagnose 9.1 |
+| E-7 | mixed 경어법 levels (해라/하게/하오/해요/합쇼) in one document | 혼재 | `mechanical` | `speech_level` | dialogue/spoken genre only; collides with the register-preservation rule |
+| F-4 | 한자어 -성/-적/-화 plus English -tion/-ment/-ness/-ity calques | 문서 12회+ | `mechanical` | `suffix_jeok_density` | also diagnose 7.2 |
+| F-5 | `~적 N` abstract chains (전략적 함의, 실천적 기반) | 3회+ | `mechanical` | `suffix_jeok_density` |  |
+| F-7 | generic policy verbs 확대·강화·개선·확보·마련·구축 + abstract-object 설계 | 밀집 | `mechanical` | `phrase_battery` | no number given |
+| G-1 | repeated speculative endings `~로 보인다/~로 판단된다/~라고 여겨진다` | 반복 | `mechanical` | `phrase_battery` | also diagnose 3.3; conversion to assertion forbidden |
+| G-2 | stacked hedges `~할 가능성이 있을 수 있다/~로 보여질 수 있다` | 이중~삼중 | `mechanical` | `phrase_battery` | polarity must be preserved — that check is input+output |
+| G-3 | balance lexicon 양쪽 모두/두 가지 모두/장점도 있지만/신중하게/균형 | 4회+ (**실증 부족 — hold**) | `mechanical` | `phrase_battery` | upstream marks this one as insufficiently evidenced and on hold |
+| H-1 | paragraph-initial conjunctions 또한/따라서/즉/나아가/아울러/게다가/더욱이 | 문단 3회+ | `mechanical` | `paragraph_initial_repeat` | also diagnose 4.2 |
+| H-3 | meta openers `이는 ~/이 점에서/이 관점에서/이 말은` | 문단 3회+ | `mechanical` | `paragraph_initial_repeat` |  |
+| H-4 | `즉` overuse | 문서 2회 이하 | `mechanical` | `phrase_battery` | also diagnose 4.3 |
+| I-1 | `~한 것이다/~일 것이다` | 연속 3회+ | `mechanical` | `phrase_battery` | also diagnose 6.1 |
+| I-2 | `주목할 점은/X은 ~라는 점에 있다` | — | `mechanical` | `phrase_battery` | also diagnose 6.3 |
+| I-3 | `~다는 것이다/~다는 뜻이다` | 합산 2회 이하 | `mechanical` | `phrase_battery` |  |
+| I-4 | paragraphs ending on an obligation (첫 번째 제외) | 2개+ | `mechanical` | `phrase_battery` + paragraph position | total obligation markers must stay equal — input+output |
+| I-7 | `~다는 분석이다/평가다` with no cited source | — | `llm` | `phrase_battery` (ending only) | whether a source appears nearby needs reading |
+| J-2 | quotation marks used for emphasis | 5회+ | `mechanical` | `quote_emphasis_count` | also diagnose 8.4 |
+| J-3 | em dash used for parenthetical asides | 문장마다 | `mechanical` | `em_dash_count` | dashes already in the source are preserved — input+output for that half |
+
+**Counts:** `mechanical` 54, `llm` 7. 44 of the 61 carry an explicit numeric threshold. 5 have a clause the count cannot check on its own, because it forbids the rewrite from *introducing* the pattern — that half is `input+output`.
+
+Six entries are `llm`, and each has a countable core that is written down but not promoted: A-7 (the fixed string `가지고 있다`, not the calque), A-15 and D-5 (the verb list, not the abstractness of the subject), A-16 (pronoun occurrences, not antecedent candidates), B-2 (a seed buzzword list), D-14 (the fixed dead-metaphor list, not "other conceptual metaphor"), I-7 (the ending, not whether a source is nearby).
+
+**Two entries carry upstream's own warnings.** G-3 is marked `실증 부족 — hold` in the source itself and must not be given a threshold here. E-7 (mixed 경어법) points the opposite way from the diagnose taxonomy's register-preservation rule, which is the same contradiction recorded below.
 
 **3. It is genre-bound, and the genre is not ours.** C-2 and C-5 name 칼럼-리포트 explicitly; D-13 restricts itself to 에세이; E-7 to 대화-구어. The counts were derived on published columns, not on an agent's replies in a terminal. Carrying a `문단 3회+` threshold across that gap is a transfer, not a measurement, and it has to be re-checked against our own corpus before any of it becomes a `watch:` value.
 
-**What makes it valuable anyway:** these features are computable on *any* Korean output, whether or not `ko-rewrite` ran. They are not a measure of the skill; they are a measure of the text. That makes them a general battery for "does this read like AI Korean", which is closer to the era's actual question than the policy's own rules are.
+**What makes it valuable — and the line it must not cross.** These features are computable on any Korean output, whether or not `ko-rewrite` ran. That is useful, and it is also the trap 05a named:
+
+> `policy_on`이 `noun_ending_ratio`를 안 움직이면 … 그건 한국어 품질 엔진이 아니라 일반 문체 린터이고, 다른 프로젝트다.
+
+The rewrite taxonomy describes patterns the **policy never undertook to change**. Running its battery against ordinary replies and finding no on/off difference would not be a finding about the policy; it would be a category error. The battery belongs to the skill layer and is compared within it.
 
 **The `Do-NOT` zones are the real engineering.** The taxonomy excludes proper nouns, numbers and units, attributed direct quotations, legal text, mathematical notation, and industry abbreviations — and it distinguishes an attributed quotation from a rhetorical one by whether a speech marker is present. Every count above is wrong by the size of those zones unless they are excluded first. The logger's current `korean_prose()` strips fenced code and quote-prefixed lines, which is a fraction of that list.
 
@@ -147,6 +215,56 @@ This is a spec decision, not an exploration one, but E2 cannot produce a `featur
 
 So the list is organised by **measurement**, not by rule id. Each measurement cites the rules it serves; a rule can appear under several measurements.
 
+**Names are inherited, not invented.** 04 §6 already named six: `comma_rate`, `pos_ngram_diversity`, `noun_ending_ratio`, `particle_absence_ratio`, `english_ratio`, `sentence_len_var`. Those names are kept for the same measurements rather than forked. `english_ratio` returns here in the form 06 §13.1 allowed — defined on the **output**, not on the context, since the system prompt is invisible to a hook and the old `context_en_ratio` was removed for that reason.
+
+### First: which layer does a measurement belong to?
+
+The four sources are not one layer, and the era's question is about one of them.
+
+| Layer | Always on? | Sources | What an on/off comparison means |
+|---|---|---|---|
+| **policy** | yes — injected at build time into the output style and the agent definitions | `output-styles/*.md` | This is the era's question. A difference here is the policy's effect |
+| **skill** | no — only when `ko-rewrite`, `ko-diagnose` or `ko-grammar` is invoked | the three `references/` sets | A difference means the skill did its job, and only in records where the skill ran |
+| **agent** | only when a subagent is spawned | `agents/*.md` (the policy text again) | Same as policy, on the `sub-to-orchestrator` records |
+
+**A measurement is compared only within the layer that was toggled.** Applying the skill layer's battery to ordinary replies and reporting "no on/off difference" would say nothing about the policy, because the policy never promised to move those patterns.
+
+The tiers below are about *how a number is produced*. The layer is a separate attribute, and every measurement carries both.
+
+### Second: what the control arm actually toggles
+
+An ablation run with the plugin uninstalled removes the policy, the skills and the agents together. A difference between that and a full install cannot be attributed to any one of them.
+
+B9's measurement supplies the missing arm at no cost. With unforced styles, the plugin can be installed while its style is simply not selected:
+
+| Arm | Policy | Skills and agents |
+|---|---|---|
+| A | — | — |
+| B — **only possible under B9** | — | present |
+| C | present | present |
+
+**B minus C is the policy's own effect.** A minus B is the skills'. Under the build as it stands only A and C exist, so era 02 would measure the toolkit, not the policy — which is not the question the concept asked.
+
+This makes B9 a prerequisite for E1's corpus design, not just a packaging preference. It is recorded in [`02_scope.md`](02_scope.md) as a spec decision; this is the reason it cannot be deferred past `4-plan`.
+
+### Third: the `usable` flag sits on top of the defect
+
+The logger marks a record `usable: false` when the reply has fewer than 20 Korean 어절 after stripping code and quoted lines. It does not drop the record.
+
+That flag sits directly on the defect being measured. 전보체 — dropped 조사 and 어미, noun-phrase endings — is what `coding.12` and `coding.14` target, and a reply written that way is short. 05a's second leak gate is exactly this shape:
+
+> `filter.py`가 features를 읽는다 … 재려는 변수로 표본을 거른다.
+
+Nothing filters on `usable` today, so the gate is closed. **The rule this era adds: the analysis must not drop `usable: false` records for any measurement whose defect makes text shorter.** If a length floor is needed at all, it is applied per measurement with a stated reason, never as a blanket filter, and the count of excluded records is reported alongside the result.
+
+### Fourth: reply length versus document thresholds
+
+Upstream's thresholds assume a document: `한 문단 3회+`, `문서 2회+`, `5회+`, `4문장+ 연속`. An agent's reply is often two or three sentences, and a threshold of three per paragraph cannot fire in it at all.
+
+The consequence is not that the counts are wrong. It is that **most of them will be zero on most records, and a feature with no variance cannot show an on/off difference** however real the underlying effect is. This is more fundamental than the genre-transfer problem noted above, and it applies to the whole `phrase_battery`.
+
+Two ways out, both for the spec: emit raw counts and rates per 100 어절 rather than threshold verdicts, and aggregate across records within a stratum instead of deciding per record. Neither is chosen here.
+
 ### Tier 0 — stdlib only, output-only
 
 Regular expressions, counting, Hangul jamo arithmetic. No analyzer, no third-party package, runs anywhere.
@@ -158,25 +276,28 @@ Regular expressions, counting, Hangul jamo arithmetic. No analyzer, no third-par
 | `bold_density`, `bullet_density`, `header_formula` | diagnose 8.1 / 5.2 / 5.3, rewrite C-2 / C-9 / C-10 | ratio |
 | `quote_emphasis_count` | rewrite J-2, diagnose 8.4 | count |
 | `phrase_battery` — one table of fixed phrases with per-entry scope (paragraph / document) and threshold | ~47 rewrite entries, diagnose categories 1–4, 6, 7, 10 | count per entry |
+| `english_ratio` (04 §6) — Latin characters as a share of the prose, **defined on the output**, not on the context | coding.08, diagnose 10.2 | ratio |
 | `english_gloss_repeat` | rewrite B-1, diagnose 10.1 / 10.3 | count |
-| `sentence_length_stats` — mean, stdev, coefficient of variation, longest | rewrite E-1, diagnose 5.4 / 9.2 | ratio |
+| `sentence_len_var` (04 §6) — mean, stdev, coefficient of variation, longest | rewrite E-1, diagnose 5.4 / 9.2 | ratio |
 | `paragraph_initial_repeat` — triads and repeated openers | rewrite C-7, diagnose 4.2 / 9.3 | ratio |
-| `connective_comma_count` | rewrite C-11, diagnose 4.1 | count |
+| `comma_rate` (04 §6) — overall, plus the connective-ending case | rewrite C-11, diagnose 4.1, grammar 과도한 쉼표 | ratio, count |
 | `spelling_denylist` — 되요, 됬, 왠 outside 왠지, `!!!` | grammar 되/돼, 웬/왠, 느낌표 | count |
 | `quote_balance` — stack parse | grammar 따옴표 혼용 | bool |
 | `allomorph_errors` — 을/를, 이/가, 은/는, 와/과, -ㅂ니다/습니다, -ㄹ까요 by 받침 | grammar 조사·어미 사용 오류 | count |
 
 ### Tier 1 — needs a morphological analyzer, output-only
 
+> **The tag names below are unverified.** `EF`, `JKG`, `NNB`, `ETM`, `XSN`, `MAG`, `NNP`, `EP`, `VA`/`VV`, `J*` are used throughout this document and in both subagent reports, on the assumption that `kiwipiepy` exposes the 세종 tagset. Nobody checked: the package is not installed, and no recipe here has been run. If the tagset differs, roughly half of this tier's recipes are wrong. **Verifying the tagset is the first task of whatever builds this**, and it is cheap — install the package and print the tag list.
+
 | Measurement | Serves | Emits |
 |---|---|---|
-| `non_ef_ending_ratio` — final morpheme is not `EF` | coding.12, diagnose 11.3 | ratio |
+| `noun_ending_ratio` (04 §6) — final morpheme is not `EF` | coding.12, diagnose 11.3 | ratio |
 | `speech_level` — 해라체 / 해체 / 해요체 / 합쇼체 distribution | coding.09, honorific, rewrite E-7, grammar 높임법 | label, ratio |
-| `josa_drop_ratio` — 체언 with no following `J*` | coding.14, diagnose 11.2 | ratio |
+| `particle_absence_ratio` (04 §6) — 체언 with no following `J*` | coding.14, diagnose 11.2 | ratio |
 | `noun_run_length` — consecutive `NN*` with no `J*` between | coding.15 | count |
 | `genitive_ui_ratio` — `JKG` density | coding.11b, diagnose 11.6 | ratio |
 | `ending_monotony` — `EF` distribution and run length | rewrite E-2, diagnose 9.1 | ratio |
-| `pos_ngram_diversity` | diagnose 9.4 (KatFishNet) | ratio |
+| `pos_ngram_diversity` (04 §6) | diagnose 9.4 (KatFishNet) | ratio |
 | `adnominal_chain_depth` — `ETM` chains | rewrite A-18, diagnose 1.8 | count |
 | `suffix_jeok_density` — `XSN` 적 | diagnose 7.2, rewrite F-4 / F-5 | ratio |
 | `spacing_errors` — 조사 spacing, 의존명사 spacing, 부사 spacing | grammar 띄어쓰기 | count |
@@ -193,6 +314,8 @@ These are the 보존 원칙 from the diagnose taxonomy. They are not style measu
 | `proper_noun_preservation` — `NNP` multiset diff | yes | bool, diff |
 | `register_preservation` — speech level of input vs output | yes | bool |
 | `change_rate` — edit distance over comparable spans | no | ratio |
+
+**These measurements need a pair, and the record usually does not have one.** The logger stores `task` (the user's prompt) and `output` (the reply). When the user pastes the text to be rewritten into the prompt, the original is in `task` and the pair exists. When the model read the text from a file, the original never enters the record, and every measurement in this tier is unavailable. So Tier 2 is measurable on **paste-in-prompt cases only** unless the logger starts capturing the read. That is a corpus-design constraint — the prompt set has to include paste-in cases deliberately — and it is also why `ko.change_rate` can be built here but cannot be evaluated on arbitrary records.
 
 Two preservation rules are **not** in this tier because they are not mechanical: "the meaning of a technical term must not shift" is `human`, and "the direction, strength, causality or quantity of a claim must not flip" is `llm` with a polarity-list proxy that misses inserted negation and modality shifts.
 
@@ -212,6 +335,19 @@ Six rows need a person: 창의성 and 표현 창의성 (no stable reference), "t
 
 E3 inherits this group. The question it has to answer is not whether an LLM can judge these — it is what agreement rate, against what reference, on how many samples, licenses using one.
 
+**E2 owes E3 the reference.** A judge is scored against something. The candidates are the measurements whose recipe leaves no room for interpretation, so that a disagreement is the judge's fault and not the metric's:
+
+| Candidate reference | Why it qualifies |
+|---|---|
+| `em_dash_count` | A character count. C3 already used it and it separated the arms |
+| honorific: `사용자님` present | A string test. C3 used it and it separated the arms |
+| `speech_level` | A closed classification over sentence enders, once the tagset is verified |
+| `allomorph_errors` | Jamo arithmetic with two named exception classes |
+| `spelling_denylist` (되요, 됬, 왠 outside 왠지) | Closed banned-string list |
+| `quote_balance` | A stack parse with one answer |
+
+The rest are not reference material: a ratio with a false-positive class attached cannot adjudicate a judge, because a disagreement is then ambiguous between the two.
+
 ### One thing this document did not do
 
 **Nothing here was run against real text.** Every false-positive risk listed is predicted from the recipe, not measured. The first job after E2 is to implement the exclusion pass plus a handful of Tier 0 measurements and run them over the corpus — including deliberately correct Korean — to find out which of these predictions were right. A feature whose false-positive rate has never been observed is not ready to carry a `watch:` value, however well upstream documented its threshold.
@@ -226,5 +362,6 @@ E3 inherits this group. The question it has to answer is not whether an LLM can 
 |---|---|---|---|
 | E2-a | `mid` (Sonnet 5) | Classify the ko-diagnose references (taxonomy, rubric, scoring) | 85 rows: 46 `mechanical`, 35 `llm`, 4 `human`. Found the 보존 원칙 group, which closes 06 §13.1's change-rate item. 81.7k tokens |
 | E2-b | `mid` (Sonnet 5) | Classify the ko-grammar references (rules, common-errors, guidelines) | 50 rows: 22 `mechanical`, 26 `llm`, 2 `human`. Found one upstream rule with no stable target (주어와 서술어 호응). 83.4k tokens |
+| E2-c | `docs` (`claude-code-guide`) | Where Claude Code reads agent definitions from, and what `--scope` scopes | Five locations, project `.claude/agents/` documented and meant for version control. Plugin agent namespacing and whether `--scope` limits visibility are **undocumented**. 39.7k tokens |
 
-Both were given the question, the sources and the classification scheme, never a leaning. Exploration runs used in this stage: 2. Total ≈165k tokens.
+E2-a and E2-b were given the question, the sources and the classification scheme, never a leaning. Exploration runs used in this stage: 3 (the `docs` run counts like `mid`, review §E). Total ≈205k tokens.
