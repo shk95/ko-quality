@@ -12,8 +12,8 @@
 > **Status: draft, written in four bundles and reviewed with the user bundle by bundle.**
 > - **Bundle 1** (§1–§10, §13): supply and distribution. **Reviewed (S1 decided).**
 > - **Bundle 2** (§11–§12, §14): hooks, logger, and the record. **Reviewed (S2 decided).**
-> - **Bundle 3** (§15–§18): measurement, judge, eval, and corpus. **Written.**
-> - **Bundle 4** (§19–§23): gate semantics, log data, self-application, decision status, and the section map.
+> - **Bundle 3** (§15–§18): measurement, judge, eval, and corpus. **Reviewed (S3 decided).**
+> - **Bundle 4** (§19–§23): gate semantics, log data, self-application, decision status, and the section map. **Written.**
 
 ## 1. Purpose and premises
 
@@ -508,8 +508,9 @@ dist/claude-code/
 3. **Agents identical.** For each agent, the system prompt is the same string in every dist, and it starts with the agent-reply policy body (S1-A).
 4. **Skills identical.** `skills/` is byte-identical across every dist.
 5. **NEW: agent names.** No `.claude/agents/*.md` in this repository has a `name` that is in `assemble/agents/` (E7-c).
+6. **NEW: dependency boundary.** No file under `logger/`, `build/`, `upstream/`, or `dist/` imports anything outside the standard library. Third-party imports are allowed only under `measure/` (S3).
 
-**Behaviour check.** Checks 1–5 see only the build. Whether it takes effect is `claude plugin eval`'s job, for triggers and regressions (§17).
+**Behaviour check.** Checks 1–6 see only the build. Whether it takes effect is `claude plugin eval`'s job, for triggers and regressions (§17).
 
 **Removal (B6).** Claude Code: `claude plugin uninstall`, then remove the marketplace. Two traces remain and are documented: an empty `extraKnownMarketplaces` and an orphaned cache under `~/.claude/plugins/cache/<marketplace>/`. **Also remove the style selection** from each project's `settings.local.json`, or the next session asks for a style that no longer exists. That line is new under B9 and not yet measured. Codex: the installer's `uninstall` restores `AGENTS.md` byte for byte (P6).
 
@@ -595,7 +596,7 @@ The **done-condition** for the pass: on a labelled set of correct and defective 
 | 1 | morphological analyser | `measure/` only |
 | 2 | input and output together (paste-in cases only) | `measure/` |
 
-**Decision S3 (open): the first third-party dependency.** Tier 1 needs `kiwipiepy` (0.23.2 verified in E2, LGPL-3.0). Era 01 took no third-party dependency at all.
+**Decision S3 — option A (user, 2026-09-16): the first third-party dependency.** Tier 1 needs `kiwipiepy` (0.23.2 verified in E2, LGPL-3.0). Era 01 took no third-party dependency at all.
 
 | Option | Consequence |
 |---|---|
@@ -799,3 +800,140 @@ Written by us, with coverage stated and gaps admitted (02_scope).
 
 **Basis:** E1 (`02_scope.md`); 02-E1; E2 (arms, layers); E4 (generator-supplied fields); E6 (gate dimension); S1.
 
+## 19. Gate semantics (designed, not opened)
+
+`gate:` is not opened in era 02. This section is here so that the era that opens it inherits decisions, not guesses. Nothing below is built now, except that `gate/` is reserved and the record reserves its fields.
+
+### 19.1 Where a gate can live
+
+| Site | Enforces | Status |
+|---|---|---|
+| **`Stop` hook, as its own executable** | the reply | **Works, measured** with `--plugin-dir` (E6). Unmeasured under a marketplace install |
+| `PreToolUse(Write)` | a file write | Asserted, not probed. Its deny is `hookSpecificOutput.permissionDecision`, not `Stop`'s top-level `decision` |
+| MCP tool | nothing | A tool the model must choose to call is advice. None ships (§10) |
+| The logger | — | **Forbidden.** Wiring a gate into it would be one `print` statement. That is why the gate must be a separate file |
+
+### 19.2 What a firing gate does
+
+- `on_final_fail: block | emit_with_flag` survives from 04. `block` is implementable on replies.
+- **The harness imposes a third behaviour.** After 8 consecutive blocks (`CLAUDE_CODE_STOP_HOOK_BLOCK_CAP`) the turn ends with an **empty result**. A gate therefore keeps its own retry counter, using `stop_hook_active`, and chooses `emit_with_flag` before the harness chooses for it.
+- **Blocking leaks, whether or not it explains.** A diagnostic `reason` teaches the model the metric (05a leak gate 3). A blank or absent `reason` still tells it that it was rejected, and it said so to the user in 2 of 3 measured modes. `systemMessage` is documented as user-only and unprobed.
+- **A gate that keeps firing becomes visible.** By the fourth retry, the model was explaining the hook to the user (E6).
+
+### 19.3 How gated records are read
+
+- **Four arms, not two modes:** `policy {off, on} × gate {off, on}`. `policy on, gate off` is era 02's question. `policy on, gate on` is the product's delivered quality. They never share an arm.
+- **In a gated arm, the measurement the gate fired on is not read**, because it is tautological. **The measurements it did not watch are read**, because a forced correction displaces defects there (upstream's own `삭제 과교정 금지`, D-9, D-10).
+- Records carry `gate_on`, `gate_fired`, `gate_retries`, and `gate_fired_on` (reserved in §12.1). Gated and ungated records are never pooled.
+
+**Basis:** 04 §4.4, §8; 05a; E6 (`07_gate.md`, `02-E6` record).
+
+## 20. Log text: use and retention
+
+A record holds the user's prompt and the reply **verbatim**, masked only for the patterns in §12.1. Era 02's corpus is synthetic, but era 02 builds the storage that era 03's real text will land in. These rules bind from the first real record, including this repository's own sessions (§21).
+
+| Rule | Detail |
+|---|---|
+| **Real text is never committed** | Not as a record, an eval case, a fixture, or a quote in a design document. Cases are written, not harvested. If a real record motivates a case, the case is rewritten to show the same defect |
+| **Every copy stays under `KO_QUALITY_HOME`** | Judge and grader copies, derived records, and exports included. One place to delete |
+| **No real text goes to an `llm` grader in era 02** | Sending real text to a model provider for grading is a decision era 03 makes with the user, and records |
+| **Text expires after 90 days** (E7-b, user) | `task` and `output` in `logs/`, and every copy of them. Deletion is by **whole monthly file**, once the file's last day is more than 90 days old, so text lives 90–~120 days. Derived values do not expire, which is why they live in `derived/` and never only in `logs/` (§11.4) |
+| **Retention is enforced by a program, not a habit** | The measurement runner (or a sibling command) deletes expired monthly files, and reports what it deleted, at the start of every run |
+| **Masking is best-effort and labelled so** | `masked: false` means none of the patterns matched, not that the text is clean. Names are never masked |
+
+**Basis:** E7-b; AGENTS.md (public repository); 06 §11.4.
+
+## 21. Self-application
+
+**Decided with the user, 2026-09-16: this repository runs the toolkit on itself, with `agent-reply`, as the repository default.** The purpose is to observe `coding.06` (the policy does not ask for translation) and `coding.07` (code-adjacent text follows the project's convention) under real pressure: an English codebase with Korean conversation.
+
+### 21.1 What makes it safe to switch on
+
+**Everything below is in place before the default is switched on.**
+
+| Requirement | Mechanism | Evidence |
+|---|---|---|
+| Records never reach the real home | Committed `.claude/settings.json` sets `env.KO_QUALITY_HOME: "~/.ko-quality-dev"`, and the logger expands `~` (§11.4) | settings `env` reaches plugin hooks, literally (§2.1) |
+| A leak is detectable afterwards | `project` in every record: a hash of the git root above `cwd` (§12.1) | Settings are read only from the launch directory. A session started in a subdirectory gets **no** isolation and **no** plugin, and only the marker catches it |
+| Records from different builds are not mixed | `build_id` in the stamp (§13) | The plugin under test is the plugin being built |
+| Development agents do not confuse delegation | Build check 5 (§13) | Agents coexist by name (§2.1) |
+
+### 21.2 What can be committed, and what each machine does once
+
+| Setting | Committed `.claude/settings.json` | Per machine, once |
+|---|---|---|
+| `KO_QUALITY_HOME` | yes | — |
+| `enabledPlugins: {"ko-quality@<marketplace>": true}` | yes (`--scope project` writes it there) | — |
+| The marketplace | **no**: it is recorded in user settings with an absolute path, and a relative path in project settings was not loaded headlessly | `claude plugin marketplace add <repo>/dist/claude-code` |
+| `outputStyle: "ko-quality:agent-reply"` | yes, as the default | **Remove any local `outputStyle`** (this repository's `settings.local.json` holds `Concise`), because a local selection beats the committed one |
+
+The per-machine steps go in the repository's Korean `README.md`. **Whether a `github` marketplace source removes the marketplace step is `4-plan`'s question** (§14.2).
+
+### 21.3 What it costs, accepted
+
+- `Concise`, the style this repository was developed under, is given up.
+- Every development session writes real text. §20 applies in full, including the 90 days.
+- **05a's third leak gate, one level up:** the developer knows what is measured and writes the sessions being recorded. That is acceptable only because **records from this repository never enter a sample.** They are excluded by `project`, and by location as a second guard.
+- The toolkit's own design documents are written under the policy they describe, in English. If `coding.06` fails, it fails visibly here first. That is the point.
+
+**Basis:** E7-d; E7 review ([`committed-settings-and-agent-names.json`](../../../tests/runs/02-E7/committed-settings-and-agent-names.json)); [`settings-env-isolation.json`](../../../tests/runs/02-E7/settings-env-isolation.json); B9.
+
+## 22. Decision status
+
+**Updated through 5-preflight. Frozen at 6-build** (design README).
+
+### 22.1 Decided
+
+| Decision | Where | Source |
+|---|---|---|
+| One unforced Claude Code plugin carrying both profiles (B9) | §9, §13 | user 2026-09-16 |
+| Agents always carry the agent-reply policy (S1) | §8 | user 2026-09-16 |
+| Exclusion-dependent fields are derived offline, not in the hook (S2) | §11.1, §12.3 | user 2026-09-16 |
+| `kiwipiepy` allowed in `measure/` only, with a build check (S3) | §15.3, §13 | user 2026-09-16 |
+| stop-slop-ko not in era 02; `exempt` removed | §1, §6 | E7-a, user |
+| 90-day text retention, by monthly file | §20 | E7-b, user |
+| Self-application as repository default, behind isolation | §21 | E7-d, user |
+| Codex agents need `multi_agent_v2`, no `--ephemeral`; A1 lifted for that configuration | §2.2, §8 | era 99 R1, user |
+| ko-rewrite redirect placed under upstream step 1 | §7 | era 99 R3 |
+| `register` restated; `policy_on` kept and fixed; `plugin_present` added | §6, §11.3 | E4 |
+| No MCP server | §10 | P6, P7, E5, E6 |
+| No `llm` grader value recorded in era 02; judge bar and procedure fixed | §16 | E3 |
+| Two runners; policy cases leave `claude plugin eval` | §17 | E5; eval-style-selection probe |
+| `ruleset` deferred (Apache-2.0 noted) | §17.4 | E5 |
+| `ko.change_rate` deferred to the gate era | §15.5 | E4 item 8 |
+| Gate: a separate `Stop` executable; four arms; not opened | §19 | E6 |
+
+### 22.2 Open
+
+| Decision | Leaning | Settled in |
+|---|---|---|
+| Directory names `measure/`, `corpus/`, `gate/` | as written | 4-plan |
+| Sessions per arm | from pilot variance | 6-build, after the pilot (§18.4) |
+| `github` marketplace source for self-application | — | 4-plan (§21.2) |
+| Whether subagent reports always use hand-back on Claude Code | count in pilot | 6-build (§14.2) |
+| Effective output style observable live on Claude Code | — | **era 03 blocker** (§11.3) |
+| Codex `task_type` third value | — | when a Codex arm is added |
+| `ruleset` adoption | revisit once Tier 0 exists | 6-build record → review |
+
+## 23. Map from 06
+
+| 06 | 09 |
+|---|---|
+| §1 purpose | §1 (validation added; "installed **and selected**") |
+| §2 facts | §2 (measured vs documented; Codex corrected by era 99) |
+| §3 layers | §3 (MCP layer removed) |
+| §4 directories | §4 (`measure/`, `corpus/`, `gate/`; `server/` removed) |
+| §5 supply | §5 (`reference` role, anchor forms B8) |
+| §6 profiles, presets | §6 (`register` restated, `exempt` removed) |
+| §7 skills | §7 (B1, B2, redirect placement) |
+| §8 agents | §8 (S1) |
+| §9 policy injection | §9 (decision ③ as built, B9) |
+| §10 MCP | §10 (none) |
+| §11 hooks, logger | §11 (what a hook can establish) |
+| §11.3 record | §12 (record, annotation, derived) |
+| §12 build | §13 (one plugin, `build_id`, checks 5–6, removal) |
+| §13 approximations | §14 |
+| §14 prototype plan | **not carried**: planning is `4-plan`'s document from this era on |
+| §15 road to validation | §15–§19 |
+| §16 decision status | §22 |
+| — | §20 log text, §21 self-application |
