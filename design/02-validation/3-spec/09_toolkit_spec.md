@@ -35,7 +35,7 @@
 **Out of scope.**
 - `gate:` in profiles, and `watch:` → `gate:` promotion. Era 03.
 - Off-rotation in real sessions, `outcome`, and the control-group ethics question. Era 03.
-- Codex channel retests (A1–A3, C1, C4). Era 99. **The Codex parts of this spec stay as era 01 built them until era 99 reports.**
+- Codex channel retests. **Era 99 reported on 2026-09-16** (§2.2). Its proposals R1–R4 are taken up in §8, §11, §13 and decision status.
 - stop-slop-ko as a policy provider (E7-a). Parked.
 - MCP tools. None is needed by anything above (§10).
 
@@ -69,13 +69,17 @@ This spec rests on the facts below. **Each carries its evidence: a run record (m
 
 ### 2.2 Codex (0.154.0)
 
-**Carried from 06 §2.2 unchanged, with one correction (B5).** Era 99 re-checks it.
+Carried from 06 §2.2 and **corrected by era 99's retest** ([`02_retest.md`](../../99-codex-retest/02_retest.md), 2026-09-16, same CLI version as era 01).
 
 | Fact | Evidence |
 |---|---|
-| Plugin: root `plugin.json` + `skills/` (no `$schema` needed). Installed OpenAI plugins use `.codex-plugin/plugin.json`. Hooks bundle under `extensions.com.openai.hooks` and run only after the user trusts them | P6 measured |
-| Main-thread policy: a marked section in global or project `AGENTS.md` reaches the main reply, and spawned subagents | P6 measured |
-| **Custom agents (`.codex/agents/*.toml`) are unreliable under `codex exec`.** A named agent was reached once in six attempts. Project-scope agents were not offered | P6 measured (B5); release-blocked, era 99 |
+| Plugin: root `plugin.json` + `skills/` (no `$schema` needed). Installed OpenAI plugins use `.codex-plugin/plugin.json`. Hooks bundle under `extensions.com.openai.hooks` and run only after the user trusts them | P6; era 99 (C4 not meaningfully retested) |
+| Main-thread policy: a marked section in global or project `AGENTS.md` reaches the main reply | P6; era 99 measured |
+| **Custom agents (`.codex/agents/*.toml`) are reached only with `multi_agent_v2` and a persisted thread.** Default `multi_agent` offers no spawn tool in `codex exec`. `--ephemeral` makes a v2 spawn fail with "no thread with id". With v2 and no `--ephemeral`: 3/3 | era 99 measured (A1). Interactive sessions and project-scope agents not tested |
+| Inside a spawned custom agent, its `developer_instructions` govern. The `AGENTS.md` section's canary instruction did not appear in the subagent's own message | era 99 measured |
+| Plugin hooks get **both `PLUGIN_ROOT` and `CLAUDE_PLUGIN_ROOT`**, so one `hooks.json` serves both harnesses | era 99 measured (A3) |
+| Hook payloads: `SessionStart` has `model`. `Stop` has `last_assistant_message`, `stop_hook_active`, `turn_id`. **`SubagentStop` has `agent_id`, `agent_type`, `agent_transcript_path` and the subagent's own `last_assistant_message`.** `PostToolUse` inside a subagent carries `agent_id`/`agent_type` and shares the parent `session_id` | era 99 measured (A2) |
+| A skill that points to a renamed reference is found only after a failed read: 3/3 runs tried upstream's `references/quick-rules.md` first | P6; era 99 measured (C1) |
 | MCP client issues only `tools/list` and `tools/call` | documented |
 
 ### 2.3 Agent Plugins 1.0
@@ -119,7 +123,7 @@ ko-quality/
 ├── tests/                       # cases, evals, run summaries, provenance check
 └── dist/                        # generated
     ├── claude-code/             # ONE plugin (B9) + marketplace
-    └── agent-plugin/<profile>/  # one per profile, unchanged until era 99
+    └── agent-plugin/<profile>/  # one per profile (Codex has no output styles)
 ```
 
 - `server/` is removed. It held only a README saying nothing is shipped (§10).
@@ -243,9 +247,9 @@ Rendered from neutral YAML in `assemble/agents/`: `korean-writer`, `korean-revie
 | Harness | Format |
 |---|---|
 | Claude Code | `agents/<name>.md` in the one plugin, invoked as `ko-quality:<name>` |
-| Codex | `install/.codex/agents/<name>.toml` per profile dist (unreliable, §2.2) |
+| Codex | `install/.codex/agents/<name>.toml` per profile dist. Reached only with `multi_agent_v2` and without `--ephemeral` (§2.2); the install doc says so (R1) |
 
-### Agent–profile binding under B9: **open decision S1**
+### Agent–profile binding under B9: **decision S1 — option A** (user, 2026-09-16)
 
 Era 01 rendered each agent once per plugin with that plugin's profile policy (P5 decision 2). **B9 leaves one plugin, so one set of agent names, and they need one policy.**
 
@@ -262,7 +266,7 @@ Era 01 rendered each agent once per plugin with that plugin's profile policy (P5
 
 **Still the most important section.** Output styles do not reach subagents, so the policy is written into every agent definition, and that is not optional.
 
-| Injection point | Claude Code | Codex (unchanged, era 99) |
+| Injection point | Claude Code | Codex |
 |---|---|---|
 | Main thread | `output-styles/agent-reply.md`, `output-styles/formal-report.md` in **one plugin, both unforced** (B9). The user selects `ko-quality:<profile>` | Marked section in global `AGENTS.md` (`--scope project` option) |
 | Subagents | `agents/<name>.md` body starts with the policy (§8) | `developer_instructions` in `.codex/agents/*.toml` |
@@ -316,7 +320,7 @@ An MCP tool that helps the model **write** (a spelling lookup, say) would be a p
 upstream/normalized/ ─┐
                       ├─ build/claude_code.py  ─→ dist/claude-code/            (one plugin, B9)
 assemble/ ────────────┤
-                      └─ build/agent_plugin.py ─→ dist/agent-plugin/<profile>/ (unchanged)
+                      └─ build/agent_plugin.py ─→ dist/agent-plugin/<profile>/
 ```
 
 **Claude Code layout (B4 as built, then B9).**

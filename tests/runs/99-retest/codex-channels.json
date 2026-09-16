@@ -1,0 +1,955 @@
+{
+  "era": "99-codex-retest",
+  "date": "2026-09-16",
+  "harness": "codex-cli 0.154.0 (unchanged from era 01)",
+  "model": "gpt-5.6-luna",
+  "method": "Throwaway CODEX_HOME (auth.json symlinked), scratch KO_QUALITY_HOME, a copy of dist/agent-plugin with canaries (CODEX-CANARY-MAIN-7071 in the AGENTS.md section, CODEX-CANARY-AGENT-8081 in every agent's developer_instructions) and a raw-payload dump hook added next to the logger in hooks.json. Plugin installed from a local marketplace; ko_quality_codex.py install --scope global. codex exec --json -s read-only in an empty git repo. Cleanup: installer uninstall, plugin and marketplace removed; the user's ~/.codex was never CODEX_HOME. The symlinked auth.json was refreshed in place by the CLI (mtime changed), as expected for a token refresh.",
+  "runs": [
+    {
+      "id": "r1",
+      "flags": "--ephemeral --dangerously-bypass-hook-trust",
+      "prompt": "plain Korean question",
+      "main_messages": [
+        "CODEX-CANARY-MAIN-7071\n\n1. 변수의 역할과 의미가 드러나도록 구체적인 이름을 사용합니다. `data`보다 `userProfile`처럼 실제로 저장하는 대상을 명확하게 표현하는 편이 좋습니다.\n\n2"
+      ],
+      "hook_payloads": [
+        {
+          "event": "SessionStart",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "source",
+            "transcript_path"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "UserPromptSubmit",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "prompt",
+            "session_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "Stop",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "last_assistant_message",
+            "model",
+            "permission_mode",
+            "session_id",
+            "stop_hook_active",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": "CODEX-CANARY-MAIN-7071\n\n1. 변수의 역할과 의미가 드"
+        },
+        {
+          "event": "SessionEnd",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "reason",
+            "session_id",
+            "transcript_path"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "flags": "--ephemeral --dangerously-bypass-hook-trust (multi_agent v1 default)",
+      "prompt": "delegate to korean-reviewer",
+      "main_messages": [
+        "CODEX-CANARY-MAIN-7071\n\n요청하신 `korean-reviewer` 에이전트는 현재 사용할 수 있는 에이전트 목록에 없습니다. 대신 한국어 검토용 `ko-quality:ko-route` 지침을 확인하",
+        "CODEX-CANARY-MAIN-7071\n\n`review` 프리셋은 문장을 수정하지 않고 진단 보고서만 작성하도록 정의되어 있습니다. 이제 그 지침에 따라 원문을 그대로 검토하겠습니다.",
+        "CODEX-CANARY-MAIN-7071\n\nAI 가능성: 중간 / 신뢰도: 낮음 / 번역문 가능성: 낮음 / 장르: 공식 보고서·홍보 문구\n\n근거 요약:  \n‘다양한 측면에서’, ‘혁신적인 변화’, ‘경험할 수 있을"
+      ],
+      "reading": "no spawn tool; main said korean-reviewer is not in its agent list and reviewed in the main thread"
+    },
+    {
+      "id": "r3",
+      "flags": "--ephemeral",
+      "prompt": "list spawn tools",
+      "main_messages": [
+        "CODEX-CANARY-MAIN-7071\n\nI have no tools available for spawning or delegating to sub-agents.\n\nTherefore, there are no age"
+      ]
+    },
+    {
+      "id": "r3b",
+      "flags": "--enable multi_agent (not ephemeral)",
+      "reading": "no spawn tool listed"
+    },
+    {
+      "id": "r3c",
+      "flags": "--enable multi_agent_v2 (not ephemeral)",
+      "reading": "collaboration.spawn_agent with agent_type in [korean-editor, korean-reviewer, korean-writer, default, explorer, worker]; followup_task, send_message, interrupt_agent, list_agents, wait_agent"
+    },
+    {
+      "id": "a1-1",
+      "flags": "--enable multi_agent_v2 --dangerously-bypass-hook-trust (not ephemeral)",
+      "prompt": "delegate to korean-reviewer",
+      "main_messages": [
+        "CODEX-CANARY-MAIN-7071\n\n요청하신 문장을 `ko-quality:ko-diagnose` 절차로 검토할 에이전트를 호출하겠습니다. 에이전트의 보고 내용은 수정하거나 요약하지 않고 그대로 전달하겠습니다.",
+        "CODEX-CANARY-MAIN-7071\n\nCODEX-CANARY-AGENT-8081\n\n1. **한 줄 판정** — AI 가능성: **중간** / 신뢰도: **낮음** / 번역문 가능성: **중간** / 장르: **"
+      ],
+      "hook_payloads": [
+        {
+          "event": "SessionStart",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "source",
+            "transcript_path"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "UserPromptSubmit",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "prompt",
+            "session_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": "collaborationspawn_agent",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "agent_id",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "agent_id",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "agent_id",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "agent_id",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "SubagentStop",
+          "keys": [
+            "agent_id",
+            "agent_transcript_path",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "last_assistant_message",
+            "model",
+            "permission_mode",
+            "session_id",
+            "stop_hook_active",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": null,
+          "last_assistant_message_head": "CODEX-CANARY-AGENT-8081\n\n1. **한 줄 판정** —"
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": "collaborationwait_agent",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "Stop",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "last_assistant_message",
+            "model",
+            "permission_mode",
+            "session_id",
+            "stop_hook_active",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": "CODEX-CANARY-MAIN-7071\n\nCODEX-CANARY-AGE"
+        },
+        {
+          "event": "SessionEnd",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "reason",
+            "session_id",
+            "transcript_path"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        }
+      ]
+    },
+    {
+      "id": "a1-2",
+      "flags": "--enable multi_agent_v2 --dangerously-bypass-hook-trust (not ephemeral)",
+      "prompt": "delegate to korean-reviewer",
+      "main_messages": [
+        "CODEX-CANARY-MAIN-7071  \nkorean-reviewer 에이전트를 호출하여 문장을 진단하도록 하겠습니다. 에이전트의 보고서는 수정하거나 요약하지 않고 그대로 전달하겠습니다.",
+        "CODEX-CANARY-MAIN-7071  \n에이전트가 문장의 장르와 AI 작성 신호를 분리해 평가하고 있습니다. 보고서가 도착하면 원문 그대로 전달하겠습니다.",
+        "CODEX-CANARY-MAIN-7071\n\nCODEX-CANARY-AGENT-8081\n\n**AI 가능성: 중간 / 신뢰도: 낮음 / 번역문 가능성: 중간 / 장르: 홍보·기획 보고서형 문장**\n\n**근거 요약**\n\n"
+      ],
+      "hook_payloads": [
+        {
+          "event": "SessionStart",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "source",
+            "transcript_path"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "UserPromptSubmit",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "prompt",
+            "session_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": "collaborationspawn_agent",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "agent_id",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "agent_id",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "agent_id",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "SubagentStop",
+          "keys": [
+            "agent_id",
+            "agent_transcript_path",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "last_assistant_message",
+            "model",
+            "permission_mode",
+            "session_id",
+            "stop_hook_active",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": null,
+          "last_assistant_message_head": "CODEX-CANARY-AGENT-8081\n\n**AI 가능성: 중간 / "
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": "collaborationwait_agent",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "Stop",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "last_assistant_message",
+            "model",
+            "permission_mode",
+            "session_id",
+            "stop_hook_active",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": "CODEX-CANARY-MAIN-7071\n\nCODEX-CANARY-AGE"
+        },
+        {
+          "event": "SessionEnd",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "reason",
+            "session_id",
+            "transcript_path"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        }
+      ]
+    },
+    {
+      "id": "a1-3",
+      "flags": "--enable multi_agent_v2 --dangerously-bypass-hook-trust (not ephemeral)",
+      "prompt": "delegate to korean-reviewer",
+      "main_messages": [
+        "CODEX-CANARY-MAIN-7071  \n요청하신 문장을 검토할 `korean-reviewer` 에이전트를 띄우기 전에 해당 검토 지침을 확인하겠습니다.",
+        "CODEX-CANARY-MAIN-7071  \n검토 에이전트가 문장을 진단하고 있습니다. 결과가 도착하면 보고 내용을 그대로 전달하겠습니다.",
+        "CODEX-CANARY-MAIN-7071\n\nCODEX-CANARY-AGENT-8081\n\nAI 가능성: 중간 / 신뢰도: 낮음 / 번역문 가능성: 중간 / 장르: 홍보문·기획서·보고서 문장\n\n근거 요약: ‘이를 통해’"
+      ],
+      "hook_payloads": [
+        {
+          "event": "SessionStart",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "source",
+            "transcript_path"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "UserPromptSubmit",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "prompt",
+            "session_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": "collaborationspawn_agent",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "agent_id",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "agent_id",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "agent_id",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "agent_id",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": "Bash",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "SubagentStop",
+          "keys": [
+            "agent_id",
+            "agent_transcript_path",
+            "agent_type",
+            "cwd",
+            "hook_event_name",
+            "last_assistant_message",
+            "model",
+            "permission_mode",
+            "session_id",
+            "stop_hook_active",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": "korean-reviewer",
+          "tool_name": null,
+          "last_assistant_message_head": "CODEX-CANARY-AGENT-8081\n\nAI 가능성: 중간 / 신뢰"
+        },
+        {
+          "event": "PostToolUse",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "model",
+            "permission_mode",
+            "session_id",
+            "tool_input",
+            "tool_name",
+            "tool_response",
+            "tool_use_id",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": "collaborationwait_agent",
+          "last_assistant_message_head": null
+        },
+        {
+          "event": "Stop",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "last_assistant_message",
+            "model",
+            "permission_mode",
+            "session_id",
+            "stop_hook_active",
+            "transcript_path",
+            "turn_id"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": "CODEX-CANARY-MAIN-7071\n\nCODEX-CANARY-AGE"
+        },
+        {
+          "event": "SessionEnd",
+          "keys": [
+            "cwd",
+            "hook_event_name",
+            "reason",
+            "session_id",
+            "transcript_path"
+          ],
+          "agent_type": null,
+          "tool_name": null,
+          "last_assistant_message_head": null
+        }
+      ]
+    },
+    {
+      "id": "a1-eph",
+      "flags": "--ephemeral --enable multi_agent_v2",
+      "prompt": "delegate to korean-reviewer",
+      "main_messages": [
+        "CODEX-CANARY-MAIN-7071\n\n요청하신 문장을 `korean-reviewer` 에이전트에게 그대로 검토하도록 전달하겠습니다.",
+        "CODEX-CANARY-MAIN-7071\n\nCODEX-CANARY-AGENT-8081\nAI 가능성: 중간 / 신뢰도: 낮음 / 번역문 가능성: 중간 / 장르: 홍보성 보고서·소개 문구\n\n근거 요약: 문장이 짧아 판별"
+      ],
+      "stderr": "collab spawn failed: no thread with id ×2",
+      "reading": "spawn failed, yet the final main message carries the AGENT canary: the orchestrator read the agent file and relayed it. Exactly the ambiguity A2 named; no SubagentStop fired"
+    },
+    {
+      "id": "c1-1",
+      "flags": "--enable multi_agent_v2",
+      "prompt": "$ko-rewrite on two sentences",
+      "main_messages": [
+        "CODEX-CANARY-MAIN-7071  \n`ko-quality:ko-rewrite` 스킬을 사용해 번역투와 불필요하게 기계적인 표현을 자연스럽게 다듬겠습니다.",
+        "CODEX-CANARY-MAIN-7071\n\n이를 통해 우리는 여러 측면에서 혁신적인 변화를 경험할 수 있을 것으로 보입니다. 이러한 변화에는 앞으로도 지속적인 관심이 필요합니다.\n\n완료. 변경률 24% / 등급 A "
+      ],
+      "commands": "SKILL.md exit 0; references/quick-rules.md exit 1; find skill dir exit 0; references/taxonomy-rewrite.md exit 0"
+    },
+    {
+      "id": "c1-2",
+      "flags": "--enable multi_agent_v2",
+      "prompt": "$ko-rewrite on two sentences",
+      "main_messages": [
+        "CODEX-CANARY-MAIN-7071  \nko-quality:ko-rewrite 기술을 사용해 번역투와 불필요하게 완곡한 표현을 덜어내고, 원래 의미를 유지한 채 자연스럽게 윤문하겠습니다.",
+        "CODEX-CANARY-MAIN-7071\n\n이를 통해 우리는 다양한 측면에서 혁신적인 변화를 경험할 수 있을 것으로 보입니다. 또한 이러한 변화에는 향후 지속적인 관심이 필요해 보입니다.\n\n완료. 변경률 18% / "
+      ],
+      "commands": "same four commands, same exits"
+    }
+  ],
+  "logger_records": [
+    {
+      "harness": "codex",
+      "harness_position": "main-to-user",
+      "agent_type": null,
+      "injection_point": "agents-md",
+      "policy_on": true,
+      "model": "gpt-5.6-luna",
+      "usable": true,
+      "task_type": "writing",
+      "output_head": "CODEX-CANARY-MAIN-7071\n\n1. 변수의"
+    },
+    {
+      "harness": "codex",
+      "harness_position": "main-to-user",
+      "agent_type": null,
+      "injection_point": "agents-md",
+      "policy_on": true,
+      "model": "gpt-5.6-luna",
+      "usable": true,
+      "task_type": "writing",
+      "output_head": "CODEX-CANARY-MAIN-7071\n\nAI 가능성"
+    },
+    {
+      "harness": "codex",
+      "harness_position": "sub-to-orchestrator",
+      "agent_type": "korean-reviewer",
+      "injection_point": "agent-definition",
+      "policy_on": true,
+      "model": "gpt-5.6-luna",
+      "usable": true,
+      "task_type": "writing",
+      "output_head": "CODEX-CANARY-AGENT-8081\n\n1. **"
+    },
+    {
+      "harness": "codex",
+      "harness_position": "main-to-user",
+      "agent_type": null,
+      "injection_point": "agents-md",
+      "policy_on": true,
+      "model": "gpt-5.6-luna",
+      "usable": true,
+      "task_type": "writing",
+      "output_head": "CODEX-CANARY-MAIN-7071\n\nCODEX-"
+    },
+    {
+      "harness": "codex",
+      "harness_position": "sub-to-orchestrator",
+      "agent_type": "korean-reviewer",
+      "injection_point": "agent-definition",
+      "policy_on": true,
+      "model": "gpt-5.6-luna",
+      "usable": true,
+      "task_type": "writing",
+      "output_head": "CODEX-CANARY-AGENT-8081\n\n**AI "
+    },
+    {
+      "harness": "codex",
+      "harness_position": "main-to-user",
+      "agent_type": null,
+      "injection_point": "agents-md",
+      "policy_on": true,
+      "model": "gpt-5.6-luna",
+      "usable": true,
+      "task_type": "writing",
+      "output_head": "CODEX-CANARY-MAIN-7071\n\nCODEX-"
+    },
+    {
+      "harness": "codex",
+      "harness_position": "sub-to-orchestrator",
+      "agent_type": "korean-reviewer",
+      "injection_point": "agent-definition",
+      "policy_on": true,
+      "model": "gpt-5.6-luna",
+      "usable": true,
+      "task_type": "writing",
+      "output_head": "CODEX-CANARY-AGENT-8081\n\nAI 가능"
+    },
+    {
+      "harness": "codex",
+      "harness_position": "main-to-user",
+      "agent_type": null,
+      "injection_point": "agents-md",
+      "policy_on": true,
+      "model": "gpt-5.6-luna",
+      "usable": true,
+      "task_type": "writing",
+      "output_head": "CODEX-CANARY-MAIN-7071\n\nCODEX-"
+    }
+  ],
+  "verdicts": {
+    "A1": "RESOLVED WITH A CONDITION. Named custom agents are reached 3/3 under `--enable multi_agent_v2` without `--ephemeral`. With default multi_agent (v1) no spawn tool exists in codex exec; with `--ephemeral` v2 spawn fails ('no thread with id'). Era 01's 1-of-6 mixed these configurations.",
+    "A2": "RESOLVED. SubagentStop carries agent_id, agent_type, agent_transcript_path and the subagent's own last_assistant_message, which held the AGENT canary and not the MAIN canary. The subagent's output is captured apart from the orchestrator's. PostToolUse inside a subagent also carries agent_id and agent_type.",
+    "A3": "RESOLVED. Codex sets both PLUGIN_ROOT and CLAUDE_PLUGIN_ROOT for plugin hooks; the shipped hooks.json works unchanged. 8 records written, usable true, harness codex, model from the payload, sub-to-orchestrator records with agent_type korean-reviewer.",
+    "C1": "UNCHANGED. 2/2 rewrite runs tried references/quick-rules.md first (exit 1), then found taxonomy-rewrite.md with two extra calls. Era 01 saw the same once. The note works as recovery, not as direction.",
+    "C4": "NOT RETESTED MEANINGFULLY. Same CLI version (0.154.0); the root plugin.json was accepted again by codex plugin add."
+  }
+}
