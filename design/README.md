@@ -6,15 +6,16 @@
 
 > 새 세션은 여기서 시작합니다.
 
-**현재 위치:** 시대 `02-validation` **열림** (2026-09-16). `1-concept` 작성됨. 다음은 `2-exploration`입니다.
+**현재 위치:** 시대 `02-validation`, `2-exploration` 진행 중 (2026-09-16). 범위가 정해졌습니다 — 이 시대는 headless 대조 실행으로 **임시 코퍼스**를 만들어 측정 장치를 짓고, 실사용 레코드 기반 재측정은 시대 03이 받습니다. 다음은 의제 E2~E7의 조사입니다.
 
 **같이 도는 것:** 임시 시대 `99-codex-retest`는 미뤄 둔 일로 대기 중입니다. 재시험할 때 Codex 다섯 항목(A1~A3, C1, C4)을 한 배치로 관측합니다.
 
 **읽는 순서 (최소):**
 
-1. [`02-validation/1-concept/01_idea.md`](02-validation/1-concept/01_idea.md) — 이 시대가 무엇을 하려는가
-2. [`01-toolkit/7-review/review.md`](01-toolkit/7-review/review.md) §B·§D·§G — 물려받은 스펙 입력과 preflight 입력
-3. 필요할 때만 — [`01-toolkit/3-spec/06_toolkit_spec.md`](01-toolkit/3-spec/06_toolkit_spec.md) §15(검증 단계로 가는 길)·§16(결정 현황), [`01-toolkit/3-spec/05a_findings_measurement.md`](01-toolkit/3-spec/05a_findings_measurement.md)(판정/측정의 선)
+1. [`02-validation/2-exploration/02_scope.md`](02-validation/2-exploration/02_scope.md) — 이 시대의 범위와 시대 03과의 경계, 조사 의제
+2. [`02-validation/1-concept/01_idea.md`](02-validation/1-concept/01_idea.md) — 이 시대가 무엇을 하려는가
+3. [`01-toolkit/7-review/review.md`](01-toolkit/7-review/review.md) §B·§D·§G — 물려받은 스펙 입력과 preflight 입력
+4. 필요할 때만 — [`01-toolkit/3-spec/06_toolkit_spec.md`](01-toolkit/3-spec/06_toolkit_spec.md) §15(검증 단계로 가는 길)·§16(결정 현황), [`01-toolkit/3-spec/05a_findings_measurement.md`](01-toolkit/3-spec/05a_findings_measurement.md)(판정/측정의 선)
 
 ## 구조: 시대와 일곱 단계
 
@@ -65,7 +66,8 @@ design/
 | 시대 | 주제 | 상태 | 문서 |
 |---|---|---|---|
 | `01-toolkit` | 툴킷 — 공급 층, Skill, 하네스별 렌더, 최소 로거 | 닫힘 (2026-09-15). `master`에 있음 | [README](01-toolkit/README.md) |
-| `02-validation` | 검증 단계 — 측정, 판정기 검증, `watch:`에서 `gate:`로, eval | 열림 (2026-09-16). 1-concept | [README](02-validation/README.md) |
+| `02-validation` | 검증 단계 — 측정, 판정기 검증, `watch:` 후보값, eval. 임시 코퍼스로 | 열림 (2026-09-16). 2-exploration | [README](02-validation/README.md) |
+| `03` (미개설) | 실사용 레코드로 재측정, `watch:`→`gate:` 승격, 대조군 교대 | 02의 `7-review`에서 엽니다 | — |
 | `99-codex-retest` | Codex 채널 재시험 (임시) | 대기. 미뤄 둔 일 | [README](99-codex-retest/README.md) |
 
 `99`는 임시 시대입니다. 새 설계를 열지 않고 미뤄 둔 실측만 담으며, 결과는 다른 시대의 입력으로 들어갑니다.
