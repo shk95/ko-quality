@@ -1,0 +1,33 @@
+{
+  "probe": "what claude plugin eval can and cannot score, and where the measurement runner has to live",
+  "era": "02-validation", "stage": "2-exploration", "item": "E5",
+  "date": "2026-09-16", "harness": "Claude Code 2.1.273",
+  "method": "A throwaway plugin under /tmp with a one-case eval suite. Grader types and field names were discovered by submitting invalid values and reading the validator's own error messages. No model runs; validation only, so the cost was nil.",
+  "grader_types": {
+    "discovered_from": "graders.0.type: Invalid discriminator value. Expected 'regex' | 'tool_order' | 'tool_used' | 'file_exists' | 'llm' | 'baseline'",
+    "types": ["regex", "tool_order", "tool_used", "file_exists", "llm", "baseline"],
+    "required_fields": {
+      "regex": "pattern; also accepts flags and weight. No required field beyond type",
+      "baseline": "baseline_file",
+      "tool_order": "before, after",
+      "file_exists": "path",
+      "llm": "rubric in the body",
+      "tool_used": "tool, input_match"
+    },
+    "regex_negation": {
+      "tested": ["negate", "must_not_match", "expect"],
+      "result": "all three rejected as unrecognized keys",
+      "consequence": "A regex grader passes when its pattern matches. 'Must not contain' has to be written as a negative lookahead inside the pattern itself."
+    }
+  },
+  "findings": [
+    "A `regex` grader exists. Mechanical scoring inside claude plugin eval is therefore possible without the llm grader E3 disqualified - which the first reading of C3 did not know.",
+    "But it is presence-matching only. There is no negation field, so every 'must not contain' rule becomes a lookahead; density thresholds become repetition counts; and a RATIO - the share of sentences ending without EF, the share of 체언 without a particle - cannot be expressed at all.",
+    "Tier 1 (morphological) and Tier 2 (input vs output) are outside what any of the six grader types can do.",
+    "So the tool covers trigger and regression checks, and cannot carry the measurement battery."
+  ],
+  "other": {
+    "bare_template": "claude plugin eval init --bare writes prompt.md + graders/criteria.md with type: llm and weight: 1",
+    "existing_suite": "tests/evals/claude-code/ uses 4 tool_used graders and 2 llm graders; the llm ones are the two policy cases C3 re-ran"
+  }
+}
