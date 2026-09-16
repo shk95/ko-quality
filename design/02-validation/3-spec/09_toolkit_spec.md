@@ -11,8 +11,8 @@
 >
 > **Status: draft, written in four bundles and reviewed with the user bundle by bundle.**
 > - **Bundle 1** (§1–§10, §13): supply and distribution. **Reviewed (S1 decided).**
-> - **Bundle 2** (§11–§12, §14): hooks, logger, and the record. **Written.**
-> - **Bundle 3** (§15–§18): measurement, judge, eval, and corpus.
+> - **Bundle 2** (§11–§12, §14): hooks, logger, and the record. **Reviewed (S2 decided).**
+> - **Bundle 3** (§15–§18): measurement, judge, eval, and corpus. **Written.**
 > - **Bundle 4** (§19–§23): gate semantics, log data, self-application, decision status, and the section map.
 
 ## 1. Purpose and premises
@@ -329,7 +329,7 @@ The logger is still the minimal, out-of-harness recorder that 06 §11 specified.
 - It does not read transcripts. It assembles from hook payloads.
 - It spends no tokens.
 - **New: it records only what a hook payload establishes.** A field the hook cannot establish is written as `null`, never guessed from the stamp. Other writers fill it, and each writer keeps to its own file (§11.4).
-- **New (decision S2, proposed): values that need the exclusion pass are not computed in the hook.** These are `instruction_lang`, `artifact_lang` and `usable`. They move to the measurement runner (§15), where the one exclusion pass lives.
+- **New (decision S2, user 2026-09-16): values that need the exclusion pass are not computed in the hook.** These are `instruction_lang`, `artifact_lang` and `usable`. They move to the measurement runner (§15), where the one exclusion pass lives.
 
 **Why S2.** E4 resolved `instruction_lang` and `artifact_lang` as consumers of E2's exclusion pass. E2 made that pass the first thing to build and validate, and it has twelve zones, some of which (proper nouns, product names) need more than a regex. Computing these fields in the hook would force one of two bad outcomes. Either there is a second, weaker exclusion pass in stdlib inside the logger, or the logger imports the analyser that the rest of the design keeps out of the session. With S2, the record carries the raw text, and the derived values come from one implementation, with a version, recomputable whenever the pass improves. **Cost:** a record alone no longer says whether it is usable. The derived store has to be joined, and a live consumer in era 03 would need the runner.
 
@@ -556,3 +556,245 @@ dist/claude-code/
 - **A record produced after a gate fires is a record of a taught model** (E6). No gate runs in era 02. The fields are reserved (§12.1).
 
 **Basis:** 06 §13; E2; E4; E6; E7; era 99; [`hook-payloads.json`](../../../tests/runs/02-spec/hook-payloads.json).
+
+## 15. Measurement
+
+The measurement runner is an offline program (`measure/`). It reads log records, applies one exclusion pass, computes measurements, and writes derived records (§12.3). **It never runs inside a session, and nothing it computes reaches a model** (05a leak gate 3).
+
+### 15.1 Principles
+
+- **A measurement is a number, not a verdict** (05a). A threshold is `watch:`'s business (§15.7), and a `watch:` value in era 02 is a candidate.
+- **Emit raw counts and rates per 100 어절, and aggregate within a stratum.** Do not decide per record. Upstream thresholds assume documents (`문단 3회+`), and on a two-sentence reply they cannot fire, so per-record verdicts have no variance (E2).
+- **A measurement is compared only within the layer that was toggled** (E2): `policy`, `skill`, or `agent`. Every measurement declares its layer and its tier.
+- **`usable` is a flag, never a filter,** for any measurement whose defect shortens text. If a measurement needs a length floor, it states why, and the excluded count is reported with the result.
+- **No false-positive rate, no `watch:` value.** A measurement whose false-positive rate has not been observed on correct Korean carries no threshold, however well upstream documented one.
+
+### 15.2 The exclusion pass (built first, validated first)
+
+One implementation, versioned (`exclusion_version`), shared by every tier and by `instruction_lang`/`artifact_lang`/`usable`. It works **on raw lines, before sentence splitting** (E2: the analyser's splitter merges bullets and table rows).
+
+| Zone | Method | Tier |
+|---|---|---|
+| fenced code, inline code | markdown parse | 0 |
+| URLs, paths, identifiers (`snake_case`, `camelCase`, dotted names) | regex | 0 |
+| attributed direct quotation (a quote plus a speech marker) vs rhetorical quotation | regex with marker list | 0 |
+| numbers, dates, units, currency | regex | 0 |
+| markdown headings, list items, table rows | markdown parse; **kept as separate spans**, since some measurements want them | 0 |
+| mathematical and chemical notation | regex | 0 |
+| legal text | marker list (`제N조`, `항`, `호`) | 0 |
+| industry abbreviations | Latin all-caps tokens | 0 |
+| proper nouns, product and model names | `NNP`, plus a Latin-capitalised token list | 1 |
+
+The **done-condition** for the pass: on a labelled set of correct and defective Korean replies that contain every zone, each zone's false-negative count is reported. The pass is not "complete" until it has been measured.
+
+### 15.3 Tiers and dependencies
+
+| Tier | Needs | Runs where |
+|---|---|---|
+| 0 | stdlib | `measure/` |
+| 1 | morphological analyser | `measure/` only |
+| 2 | input and output together (paste-in cases only) | `measure/` |
+
+**Decision S3 (open): the first third-party dependency.** Tier 1 needs `kiwipiepy` (0.23.2 verified in E2, LGPL-3.0). Era 01 took no third-party dependency at all.
+
+| Option | Consequence |
+|---|---|
+| **A. Allow it in `measure/` only** (recommended) | Pinned in `measure/requirements.txt` and installed in a virtualenv, never into system Python. **Never imported** by `logger/`, `build/`, `upstream/`, or anything under `dist/`, and a build check enforces that. It is a dependency of our offline tool, not of the shipped plugin, so the LGPL does not reach the distribution. The logger and plugin keep era 01's stdlib-only property |
+| B. Tier 0 and Tier 2 regex only; defer Tier 1 | No dependency. It loses `noun_ending_ratio` and `particle_absence_ratio`, the two measurements E2 found to separate correct from telegraphic Korean perfectly once fixed, and `coding.12`/`coding.14` go unmeasured |
+
+### 15.4 The measurements
+
+The list is organised by measurement, not by rule id. Each cites the rules it serves. Names from 04 §6 are kept.
+
+**Tier 0**
+
+| Measurement | Layer | Serves | Emits |
+|---|---|---|---|
+| `em_dash_count` | policy, skill | coding.17, J-3, diag 8.3 | count, per 100 어절 |
+| `emoji_count` | skill | C-5, diag 8.2 | count |
+| `bold_density`, `bullet_density`, `header_formula` | skill | diag 8.1/5.2/5.3, C-2/C-9/C-10 | ratio |
+| `quote_emphasis_count` | skill | J-2, diag 8.4 | count |
+| `phrase_battery`: one table, entries with scope (paragraph or document) | skill (and policy where a policy rule names the phrase) | ~47 rewrite entries (including **G-3, held by upstream as 실증 부족**), diag 1–4, 6, 7, 10 | **count per entry**; upstream thresholds are stored as data, not applied |
+| `english_ratio`: Latin share of prose after exclusion, **on the output** | policy | coding.08, diag 10.2 | ratio |
+| `english_gloss_repeat` | skill | B-1, diag 10.1/10.3 | count |
+| `sentence_len_var`: mean, stdev, CV, max | skill | E-1, diag 5.4/9.2 | ratio |
+| `paragraph_initial_repeat` | skill | C-7, diag 4.2/9.3 | ratio |
+| `comma_rate`: overall, plus after connective endings | skill | C-11, diag 4.1, grammar | ratio, count |
+| `spelling_denylist`: 되요, 됬, 왠 outside 왠지, `!!!` | skill | grammar | count |
+| `quote_balance` | skill | grammar | bool |
+| `allomorph_errors`: 을/를, 이/가, 은/는, 와/과, -ㅂ니다/습니다, -ㄹ까요 by 받침 | skill | grammar | count. **Scope: ㄹ-irregular stems and numerals or acronyms whose 받침 follows pronunciation are out of scope, and the count excludes them** (E3) |
+| `honorific_address`: `사용자님` present | policy (formal-report) | honorific block | bool |
+
+**Tier 1** (S3-A)
+
+| Measurement | Layer | Serves | Emits | Recipe notes |
+|---|---|---|---|---|
+| `noun_ending_ratio` | policy | coding.12, diag 11.3 | ratio | **Pop trailing `SF/SP/SS/SE/SO/SW` before testing for `EF`.** Headings and list items are excluded (the rule exempts them) |
+| `particle_absence_ratio` | policy | coding.14, diag 11.2 | ratio | **Skip `XSN`/`XSM` when looking ahead, and drop 체언 followed by `XSV`/`XSA` from the denominator** |
+| `speech_level` | policy | coding.09, honorific, E-7, grammar | label distribution | Tags matched **by prefix** (`VV-I`, `VV-R` exist). **Never a judge reference** (E3) |
+| `noun_run_length` | policy | coding.15 | mean, max | **Strict: consecutive `NN*` tokens with nothing between.** Bridging is not measured (E2 left it open; strict is the conservative reading) |
+| `genitive_ui_ratio` | policy | coding.11b, diag 11.6 | ratio | false positive on fixed expressions: predicted, not yet measured |
+| `ending_monotony` | skill | E-2, diag 9.1 | ratio | — |
+| `pos_ngram_diversity` | skill | diag 9.4 | ratio | — |
+| `adnominal_chain_depth` | skill | A-18, diag 1.8 | count | — |
+| `suffix_jeok_density` | skill | diag 7.2, F-4/F-5 | ratio | — |
+| `spacing_errors` | skill | grammar | count | — |
+
+**Tier 2** (paste-in cases only)
+
+| Measurement | Emits |
+|---|---|
+| `ko.preserve`: `number_unit_date`, `quote`, `code_url_path`, `proper_noun` (Tier 1), `register` (Tier 1) | `{violations[]}` per kind. A kind passes at zero violations |
+| `ko.change_rate` | **Not specified. Deferred** (§15.5) |
+
+**Capture-dependent**
+
+| Measurement | Source |
+|---|---|
+| `delegation_prompt_*`: the policy-layer Tier 0 and Tier 1 measurements applied to the delegation prompt | coding.19; the sub record's `task` (§11.2) |
+
+### 15.5 `ko.change_rate`: deferred, stated as a debt
+
+04 §6 defines it as `before, after, preserve_spans → ratio`, at morpheme level, with preserved spans excluded. No unit, distance, or alignment procedure exists anywhere (E4 item 8). **Nothing in era 02 consumes it:** the gate is closed, and the rewrite skill's self-report stays inside `output`. It is deferred to the era that opens `gate:`, which is where 04 put `max_change_rate`. `ko.preserve`, its necessary input, is built now.
+
+### 15.6 What the runner must report with every result
+
+The `exclusion_version` and measurement code version. The arm and stratum counts. The number of records excluded by any floor, and why. For a Tier 1 measurement, the analyser version.
+
+### 15.7 `watch:` candidates
+
+```yaml
+# assemble/profiles/<profile>.yaml — era 02 writes candidates only
+watch:
+  <measurement>: {max: float} | {min: float} | {min: float, max: float}
+  _meta: {source: "corpus <batch id>", arm: C, exclusion_version: "…", status: candidate}
+```
+
+A candidate is written only for a measurement that has (1) an observed false-positive rate on correct Korean, and (2) a non-zero **B − C difference** on the corpus (§18). Nothing reads `watch:` at runtime in era 02. Promotion to `gate:` is era 03, under 05a's three conditions.
+
+**Basis:** 04 §6; 05a; E2 (tiers, recipes, exclusion pass, layers, usable, reply length); E3 (reference scope); E4 items 3–5, 8; kiwipiepy licence (PyPI metadata, 2026-09-16).
+
+## 16. Judges
+
+**No `llm` grader produces a recorded value in era 02** (E3). This section fixes the procedure, so that the era that wants a judge does not have to invent one.
+
+### 16.1 The bar
+
+A judge between the true difference and the reported one scales it by `Se + Sp − 1`. The effect this toolkit chases is small, so **each error direction's 95% upper bound must be below 10%**. That keeps at least 80% of the difference. Intervals are Wilson, and the method is always stated.
+
+**The formula assumes the error rate is the same in both arms.** The arms differ by design (policy-on text is more polished), so error rates are measured **per arm**. A differential error can manufacture a difference, and no pooled bound rules that out.
+
+### 16.2 Procedure
+
+| Tier | Question | Reference | n | Outcome |
+|---|---|---|---|---|
+| **A: disqualify** | Does the judge contradict a deterministic clause of its own rubric? | the rubric | from 1 | a unanimous contradiction disqualifies; a split one triggers a rerun |
+| **B: screen** | Does it agree with a reference measurement? | the four below, on a **constructed, label-balanced** set | 60–70 replies per direction, per arm (2 errors need n ≥ 69) | every upper bound < 10% |
+| **C: qualify** | Does it agree with a person, on rules with no mechanical reference? | human labels | budget-bound | the only licence for `llm`-class rules |
+
+**Reference measurements** (a disagreement must be the judge's fault): `honorific_address`, `spelling_denylist`, `quote_balance` (once the exclusion pass is validated), and `allomorph_errors` (with §15.4's scope). Not `em_dash_count` and not `speech_level`.
+
+**The unit of n** is one graded reply with known ground truth, for one rule, in one direction. **Cost:** about $0.117 per generate-and-judge sample, so about $15 per rule for both directions on a constructed set. Double that for per-arm error rates.
+
+### 16.3 What era 02 runs
+
+- **Tier A with a stronger judge model** (`claude plugin eval --judge-model`, above the Haiku default) on the two existing policy cases. It costs almost nothing, and it is the experiment C3 never ran. The verdict is recorded against the (judge model, rubric wording, tool version) triple and not generalised.
+- **Every judge run record keeps** the judged text, the verdict, the judge's stated reason, and the judge model (E3). Without these the run validates nothing. That is why C3's most-quoted claim cannot be reproduced.
+- Any `llm` verdict produced is an **annotation no threshold reads**, tagged so it can be discarded wholesale.
+
+**Basis:** E3 (`04_judge.md`); review §C3; 05a.
+
+## 17. Eval and the two runners
+
+### 17.1 Two runners, because one cannot do both jobs
+
+| Runner | Job | Graders | Arms |
+|---|---|---|---|
+| `claude plugin eval` | **triggers and regressions**: does the skill fire, does the plugin load, does the policy reach the reply | `tool_used`; `regex` with `arm: both` under `--ablation with-without` | A vs C only (plugin off vs on) |
+| `measure/` (ours) | **measurement**: ratios, Tier 1, Tier 2, three arms | §15 | A, B, C |
+
+A regex-expressible rule runs through the tool's ablation and is **not** duplicated offline. A ratio cannot be expressed in the tool, and neither can a morpheme or a pair.
+
+### 17.2 Changes to the existing suite (`tests/evals/claude-code/`)
+
+- **The two `llm` graders stop scoring.** They stay as annotations.
+- `agent-reply` policy case: a `regex` grader on the em dash, `arm: both`. **It is fit as a regression signal even though E3 disqualifies it as a judge reference**, because a false positive that fires in both arms cancels in the delta. The rubric's other half (sentence endings) has no expression here and moves to `noun_ending_ratio`.
+- `formal-report` policy case: a `regex` grader on `사용자님`, `arm: both`.
+- **Under B9 the suite must select the style.** The ablation's plugin-on arm loads the plugin, and after B9 loading no longer applies a style. Each policy case sets its output style explicitly. **How `claude plugin eval` selects a style for a case is untested**, and it is the first thing checked when the suite is rebuilt. If it cannot, the policy cases move to `measure/` and the tool keeps triggers only.
+- Judge model ≠ generating model, and human labels on a subset (04 §13.3, carried).
+
+### 17.3 Case format for `measure/`
+
+`tests/cases/*.yaml` stays a human checklist and is not converted (nothing parses it). New cases, under `tests/measure-cases/`:
+
+```yaml
+id: string
+profile: agent-reply | formal-report
+arm: A | B | C | any
+layer: policy | skill | agent
+input: string              # or task: string; paste-in cases carry the original in input
+expect:
+  <measurement>: {max: float} | {min: float} | {min: float, max: float} | {equals: value}
+  preserve: [number_unit_date | quote | code_url_path | proper_noun | register]   # passes at zero violations
+```
+
+Dropped from 04 §13.1: `gate_pass` and `max_change_rate` (no gate, no procedure), and `trigger` (the tool's job). **A field nothing reads is not kept.** That is how `tests/cases`' `expect` became decorative.
+
+### 17.4 `ruleset`: deferred, with the blocker cleared
+
+`JangHyun-bin/korean-report-skills` is **Apache-2.0 with a NOTICE file** (checked 2026-09-16, HEAD `05ce76d`). It is not MIT, unlike the four locked upstreams, so adopting it means carrying its NOTICE and marking changes, which is compatible. **Adoption stays deferred** (E5). Revisit it once the exclusion pass and Tier 0 exist and the remaining battery's implementation cost is known. The comparison then is 115 implemented substitution rules against the rules not yet written.
+
+**Basis:** E5 (`06_ruleset_and_eval.md`); E3; 02-E5 validator record; GitHub API (licence).
+
+## 18. The corpus
+
+Era 02's material is **real records with a synthetic prompt distribution** (E1). Era 03 swaps the distribution, not the schema, the code, or the graders.
+
+### 18.1 Arms
+
+| Arm | Plugin | Style selected | Isolates |
+|---|---|---|---|
+| A | not installed | — | floor |
+| B | installed | **none** | skills and agents without the main-thread policy (B9 makes this constructible) |
+| C | installed | `ko-quality:<profile>` | everything |
+
+**B − C is the policy's own effect** on the main thread. A − B is the skills' and agents' effect. The gate is off in every arm, and the gate dimension (`policy × gate`, E6) belongs to the era that opens `gate:`.
+
+Sub-agent records are the same in B and C (S1-A), so **the agent layer is compared A against B/C**, not B against C.
+
+### 18.2 The generator
+
+- **Plain headless `claude -p`**, through the **shipped logger**, with `KO_QUALITY_HOME` pointed at a corpus home outside `~/.ko-quality` and outside the tree.
+- **`--output-format json`, or `stream-json` for multi-turn.** From the result it writes the annotation record (§12.2): the arm, the profile, the model, actual token usage with thinking subtracted, and `subagent_stats`.
+- **Profiles alternate within one session** with `/output-style` over `--input-format stream-json` (02-E1). One process yields both profiles' turns, which halves the corpus. The first turn after a switch is annotated as such.
+- **The style selection is written to the corpus project's `settings.local.json`** and reset between sessions, so no arm inherits another's selection (§2.1: the selection persists per project).
+- **An arm is verified, not assumed.** Each batch carries a canary run per arm, a copy of the plugin with a marker line, and the batch is rejected if a marker appears in the wrong arm. This is the device P3 and 02-E1 used.
+- `claude plugin eval` is not the generator (E1).
+
+### 18.3 The prompt set
+
+Written by us, with coverage stated and gaps admitted (02_scope).
+
+| Stratum | Why it must be there |
+|---|---|
+| conversation: short Korean questions | ordinary replies; the `usable` floor and reply-length effects |
+| coding reply: explain or review code, no edits | `coding.06`/`coding.07` pressure; Latin identifiers in Korean prose |
+| coding with edits | `task_type: coding`; artifacts outside the reply |
+| document: write Korean prose to a `.md` file | `task_type: document`; the reply-only measurement limit |
+| **paste-in rewrite** | Tier 2 exists only here |
+| delegation to a shipped agent | agent layer; `coding.19`; the hand-back capture (§11.2) |
+| **deliberately correct Korean**, and **deliberately defective Korean** | false-positive rates for every measurement (§15.1) |
+| English prompts | `instruction_lang` covariate; the policy must not force translation (`coding.06`) |
+
+**What the set does not cover** is recorded with each batch, and a stratum missing from the set is a measurement that cannot fire.
+
+### 18.4 Batches
+
+1. **Pilot:** a few prompts per stratum, all three arms, both profiles. Its purpose is to measure the exclusion pass, false-positive rates, the hand-back rate, and each measurement's variance, **not** to estimate the effect.
+2. **Size from the pilot.** The number of sessions per arm is computed from the pilot's observed variance for the measurements that have `watch:` candidates. It is not fixed in this spec, because no variance has been observed yet.
+3. Every batch has an id. Records, annotations and derived values carry it, and batches are never pooled across different plugin `build_id`s.
+
+**Cost reference:** about $0.12 per headless run (C3, E1).
+
+**Basis:** E1 (`02_scope.md`); 02-E1; E2 (arms, layers); E4 (generator-supplied fields); E6 (gate dimension); S1.
+
