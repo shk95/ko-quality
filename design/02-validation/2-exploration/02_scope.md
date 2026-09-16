@@ -32,6 +32,38 @@ The consequence is the point of the decision. Era 02's corpus is **real records 
 
 **What it does not buy:** a real distribution. Anything whose answer depends on how the tool is actually used moves to era 03.
 
+One execution constraint comes with it: a forced output style is exclusive and set at session start, so under the build as it stands the two profiles cannot alternate inside one session — every ablation run has to be made once per profile. The probe below reopens that.
+
+## Measured while scoping: unforced plugin styles are selectable
+
+One plugin can carry several output styles and let the user pick one, as long as none of them is forced. Five headless runs, Claude Code 2.1.273, $0.26. Record: [`tests/runs/02-E1/unforced-style-selection.json`](../../../tests/runs/02-E1/unforced-style-selection.json).
+
+| # | Plugin | `outputStyle` | agent-reply canary | formal-report canary |
+|---|---|---|---|---|
+| A | two styles, unforced | none | 0 | 0 |
+| B | two styles, unforced | `ko-quality:formal-report` | 0 | **1** |
+| C | two styles, unforced | `formal-report` | 0 | 0 |
+| D | formal-report only, forced (control) | none | 0 | 1 |
+| E | two styles, unforced | `ko-quality:agent-reply` | **1** | 0 |
+
+- **B and E:** two styles inside **one** plugin each applied when selected, each showing only its own canary. P3's "formal-report is unreachable" holds only *while another style is forced*. Drop `force-for-plugin` and both profiles are reachable from a single plugin.
+- **C is new.** The bare name does not resolve; `<plugin>:<style>` is required. P3 recorded both forms as "accepted", but a forced style won every P3 run, so the two forms were never told apart.
+- **A is the price.** Installing alone does nothing. That breaks 06 §1's "a tool that is used once installed", which is exactly why `force-for-plugin` was set in the first place.
+- **Not observed:** switching mid-session through `/output-style`. Headless cannot reproduce it. Selection through a setting is measured; the interactive path is inferred.
+
+This reopens a decision era 01 closed. Decision ② (P5) chose one plugin per profile because a forced style is exclusive — which is true, and was the only option *given* forcing.
+
+| | Now: forced, two plugins | Alternative: unforced, one plugin |
+|---|---|---|
+| After install | Works immediately | The user must select once |
+| Adding a profile | Another plugin (440K, 84% of it byte-identical skills) | Another style file (~2KB) |
+| Switching mid-session | Impossible | Appears possible; not yet observed |
+| This era's ablation corpus | A separate run per profile | Profiles can alternate inside one session |
+
+The last row is why this belongs to E1 and not only to the spec: under the current build the corpus must be run once per profile, and that doubles it.
+
+**Not decided here.** This is a 06 §9 (policy channel) and §12 (distribution layout) revision candidate — **B9**, alongside review §B's B1–B8 — and it is settled in `3-spec`, not in this document. Two things must land first: the interactive `/output-style` observation, and E4's reading of whether the profile distinction survives at all (the `register` mismatch below). If E4 drops or restates the distinction, B9's premise changes with it.
+
 ## Era boundary
 
 Scope decided with the user, 2026-09-16: era 02 covers E2–E7 (the measuring instrument, gate semantics, and the scope decisions). Era 03 is **not opened now**; it opens at this era's `7-review`. Until then, this table is where its items are parked, and `6-build` records add to it.
@@ -92,4 +124,5 @@ I investigate directly, and delegate to a `mid` subagent when a judgment is clos
 ## What this stage left open
 
 - **Concept open question 7 (Codex arrives late).** The offline route is Claude Code only. Whether the instrument stands up on Codex is re-judged when era 99 runs; it does not hold up era 02.
+- **Whether `/output-style` switches a profile mid-session.** The probe above measured selection through a setting, not through the interactive command. One interactive session settles it, and B9 waits on it.
 - **Whether the synthetic prompt set is representative.** By construction it is not a sample of real use. The defence is that era 02 produces candidate values and era 03 confirms them — but a prompt set that misses a whole kind of task would also hide a whole feature. E2 has to say what the prompt set covers and admit what it does not.

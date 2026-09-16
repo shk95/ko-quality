@@ -1,0 +1,80 @@
+{
+  "probe": "one plugin, unforced output styles: are they selectable?",
+  "era": "02-validation",
+  "stage": "2-exploration",
+  "item": "E1",
+  "date": "2026-09-16",
+  "harness": "Claude Code 2.1.273",
+  "model": "default (user settings)",
+  "method": "Throwaway probe plugins under the scratchpad, loaded with --plugin-dir; never in dist/. Each style body instructs the model to emit a canary token first. Prompt: '한국의 수도는 어디입니까?'. User settings carry no outputStyle.",
+  "runs": [
+    {
+      "case": "A-unforced-nosetting",
+      "plugin": "unforced (two styles, no force-for-plugin)",
+      "outputStyle": null,
+      "expect": "no style applied",
+      "markers": {
+        "agent-reply": 0,
+        "formal-report": 0
+      },
+      "reply_head": "한국의 수도는 **서울**입니다.\n\n- **공식 명칭**: 서울특별시\n- **인구**: 약 940만 명 (수도권 전체로는 약 2,600만 명)\n- **위치**: 한반도 중서부, 한강 유역\n\n참고로 행정 기능 일부는 ",
+      "cost_usd": 0.0771
+    },
+    {
+      "case": "B-unforced-namespaced",
+      "plugin": "unforced (two styles, no force-for-plugin)",
+      "outputStyle": "ko-quality:formal-report",
+      "expect": "formal-report applied",
+      "markers": {
+        "agent-reply": 0,
+        "formal-report": 1
+      },
+      "reply_head": "CANARY-FORMAL 대한민국의 수도는 서울특별시입니다.",
+      "cost_usd": 0.0749
+    },
+    {
+      "case": "C-unforced-barename",
+      "plugin": "unforced (two styles, no force-for-plugin)",
+      "outputStyle": "formal-report",
+      "expect": "bare name resolution",
+      "markers": {
+        "agent-reply": 0,
+        "formal-report": 0
+      },
+      "reply_head": "한국의 수도는 **서울**입니다.\n\n참고로 \"한국\"을 대한민국(남한)으로 보면 수도는 서울특별시이고, 북한(조선민주주의인민공화국)의 수도는 평양입니다.",
+      "cost_usd": 0.0114
+    },
+    {
+      "case": "D-forced-control",
+      "plugin": "forced (formal-report only, force-for-plugin: true)",
+      "outputStyle": null,
+      "expect": "formal-report applied (canary sanity check)",
+      "markers": {
+        "agent-reply": 0,
+        "formal-report": 1
+      },
+      "reply_head": "CANARY-FORMAL 한국의 수도는 서울입니다.",
+      "cost_usd": 0.0485
+    },
+    {
+      "case": "E-unforced-agentreply",
+      "plugin": "unforced (two styles, no force-for-plugin)",
+      "outputStyle": "ko-quality:agent-reply",
+      "expect": "agent-reply applied",
+      "markers": {
+        "agent-reply": 1,
+        "formal-report": 0
+      },
+      "reply_head": "CANARY-AGENTREPLY 한국의 수도는 서울입니다.",
+      "cost_usd": 0.0473
+    }
+  ],
+  "total_cost_usd": 0.2591,
+  "findings": [
+    "Unforced plugin output styles ARE selectable. B and E: two styles in ONE plugin each applied when selected, each showing only its own canary.",
+    "P3's 'formal-report unreachable' holds only while another style is forced. Remove force-for-plugin and both profiles are reachable from one plugin.",
+    "The namespaced name is required. C: bare 'formal-report' did not resolve; 'ko-quality:formal-report' did. P3 recorded both forms as 'accepted', but a forced style won in every P3 run, so the forms were never distinguished.",
+    "The cost is that install alone does nothing. A: no style applied with no setting, which breaks 06 §1 'a tool that is used once installed'.",
+    "Not observed: switching mid-session via /output-style. Headless cannot reproduce it. Selection by setting is shown; the interactive path is inferred, not measured."
+  ]
+}
