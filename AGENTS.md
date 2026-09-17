@@ -13,7 +13,10 @@ This file never holds state. Where the project is and what comes next lives in
 | `upstream/` | Their sentences. `lock.yaml` pins commits; `normalized/` is the only upstream content downstream reads; `.cache/` is never committed |
 | `assemble/` | Ours. Profiles, presets, agent definitions, skill templates |
 | `build/`, `dist/` | Generated. Never hand-edit `dist/` after the build step exists |
-| `server/`, `logger/` | MCP server (instructions only for now) and the hook logger |
+| `logger/` | The hook logger. Standard library only |
+| `measure/` | Offline measurement runner and judge runs. The only place a third-party import is allowed (check 6) |
+| `corpus/` | Corpus generator and prompt set. Records never live here |
+| `gate/` | Reserved for a gate executable. README only in era 02 |
 | `tests/` | Test cases, run summaries, and the provenance recomputation check (`check_provenance.py`, called by `build/checks.py` as part of check 1). Raw run logs stay outside the tree |
 
 ## Language

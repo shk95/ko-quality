@@ -8,15 +8,15 @@
 
 ## 설치
 
-프로파일마다 플러그인이 하나씩입니다. **둘 중 하나만 켭니다** — 강제 출력 스타일은 먼저 로드된 하나만 적용됩니다.
+Claude Code 플러그인은 `ko-quality` 하나이고, 두 프로파일은 **고를 수 있는 출력 스타일**로 들어 있습니다. 설치만으로는 메인 대화에 정책이 걸리지 않고, **프로젝트마다 한 번 스타일을 고릅니다**(`/output-style ko-quality:agent-reply`).
 
-| 프로파일 | 플러그인 | 정책 | 쓰임 |
-|---|---|---|---|
-| `agent-reply` | `ko-quality` | fluent-korean 코딩판 | 에이전트가 사용자에게 하는 보고·설명 |
-| `formal-report` | `ko-quality-formal` | fluent-korean 비코딩판 + 존대 블록 | 사용자에게 전달되는 문서 |
+| 프로파일 | Claude Code 스타일 | Codex 플러그인 | 정책 | 쓰임 |
+|---|---|---|---|---|
+| `agent-reply` | `ko-quality:agent-reply` | `ko-quality` | fluent-korean 코딩판 | 사용자에게 하는 간결한 코딩 답변 |
+| `formal-report` | `ko-quality:formal-report` | `ko-quality-formal` | fluent-korean 비코딩판 + 존대 블록 | 사용자를 사용자님으로 부르는 높임말 |
 
-- Claude Code: [`dist/claude-code/README.md`](dist/claude-code/README.md) — 로컬 마켓플레이스 등록 후 `claude plugin install`
-- Codex: [`dist/agent-plugin/README.md`](dist/agent-plugin/README.md) — 플러그인 설치 후 `install/ko_quality_codex.py install` (정책 절과 에이전트 파일은 플러그인이 나르지 못합니다)
+- Claude Code: [`dist/claude-code/README.md`](dist/claude-code/README.md) — 로컬 마켓플레이스 등록, `claude plugin install`, 스타일 선택
+- Codex: [`dist/agent-plugin/README.md`](dist/agent-plugin/README.md) — 플러그인 설치 후 `install/ko_quality_codex.py install` (정책 절과 에이전트 파일은 플러그인이 나르지 못합니다). 에이전트는 `multi_agent_v2`가 필요합니다
 
 ## 사용자가 할 수 있는 것
 
