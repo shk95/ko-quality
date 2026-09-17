@@ -26,10 +26,21 @@
       {
         "model": "gpt-5.6-luna",
         "result": "ok"
+      },
+      {
+        "model": "gpt-5.6-sol",
+        "result": "failed: 400, model not supported when using Codex with a ChatGPT account (the AGENTS.md large tier, corrected name)"
       }
     ],
-    "login": "ChatGPT account"
+    "login": "ChatGPT account",
+    "model_cache_slugs_in_temporary_home": [
+      "codex-auto-review",
+      "gpt-5.5",
+      "gpt-5.6-luna",
+      "gpt-5.6-terra",
+      "gpt-reserve"
+    ]
   },
   "hook_trust": "codex exec --dangerously-bypass-hook-trust was blocked by Claude Code's auto-mode classifier. No permission rule for it is in place.",
-  "verdict": "Both harnesses are usable now. gpt-5.6 (the large tier in AGENTS.md) is not available on this account. P2.3 needs a permission rule for hook trust, granted by the user."
+  "verdict": "Both harnesses are usable now for luna and terra. The large tier (gpt-5.6-sol) did not run from a temporary CODEX_HOME; whether that is the account or the setup is not established. The hook-trust flag was blocked by Claude Code's auto-mode classifier."
 }

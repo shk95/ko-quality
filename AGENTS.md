@@ -51,7 +51,7 @@ Three tiers, named by role so the rules read the same in every harness.
 |---|---|---|---|
 | small | Mechanical work: file maps, counting, diffing, extraction checks | Haiku 4.5 | `gpt-5.6-luna` |
 | mid | Exploration and verification: compare two options, check a claim against sources, verify a stage's done-condition | Sonnet 5 | `gpt-5.6-terra`, effort `high` |
-| large | Escalation only (below) | Opus 5 | `gpt-5.6`, effort `high` |
+| large | Escalation only (below) | Opus 5 | `gpt-5.6-sol`, effort `high` |
 | docs | Documentation lookups about a harness (flags, file formats, documented behavior) | `claude-code-guide` agent | — |
 
 - Default to `mid` for exploration and verification, `small` for mechanical work.
