@@ -2,7 +2,7 @@
 
 자율 구현 단계입니다. `dev` 브랜치에서 진행하고, `master` 머지는 7-review에서 정합니다.
 
-**진행:** 열림 (2026-09-17). **P8 끝, P9 진행 중.** 이 기기에서 `measure/.venv`(kiwipiepy 0.23.2)는 설치돼 있고 커밋되지 않습니다.
+**진행:** 열림 (2026-09-17). **빌드 끝 (2026-09-18). 7-review 대기.** P1~P9 모두 완료 조건 met, release-blocked 1건(아래 표). 이 기기에서 `measure/.venv`(kiwipiepy 0.23.2)는 설치돼 있고 커밋되지 않습니다.
 
 ## 이 단계가 따르는 것
 
@@ -53,8 +53,16 @@ P가 끝날 때마다 한 행을 채웁니다. 리뷰는 이 표에서 시작합
 | P5 | Tier 0 | [P5](P5_tier0.md) | met (2/2); 3 notes carried to P6 | 0 | $0 | `cf3c2f7` |
 | P6 | Tier 1 and Tier 2 | [P6](P6_tier1-tier2.md) | met (3/3) | 0 | $0 | `b1d7ded` |
 | P7 | Eval split and judge Tier A | [P7](P7_eval-split-and-judge.md) | met (2/2) | 0 | $3.22 | `e49349e` |
-| P8 | Corpus generator and pilot | [P8](P8_corpus-and-pilot.md) | met (4/4) | 0 | $12.87 | P8 record |
-| P9 | Sized batch and `watch:` candidates | — | — | — | — | — |
+| P8 | Corpus generator and pilot | [P8](P8_corpus-and-pilot.md) | met (4/4) | 0 | $12.87 | `9592171` |
+| P9 | Sized batch and `watch:` candidates | [P9](P9_batch-and-watch.md) | met (3/3) | 1 (budget cap, underpowered) | $191.11 | P9 record |
+
+### release-blocked 모음
+
+| P | 조건 | 근거 | 택한 되돌리기 싼 경로 | 리뷰에서 정할 것 |
+|---|---|---|---|---|
+| P9 | 크기를 정한 배치가 예산 상한에 막힘 (10_plan.md P9) | 파일럿 기준 칸당 63세션 ≈ $229.5 > $200. 칸당 54세션으로 돌렸고 달성 검정력 0.738 (`tests/runs/02-P9/batch-01-summary.json`) | 상한이 허용한 크기로 실행하고 결과와 후보를 검정력 부족으로 표시. `watch:`는 아무것도 읽지 않음 | 검정력이 부족한 배치를 시대 02의 결과로 받을지, 상한을 올려 새 배치 id로 보충 배치를 돌릴지 |
+
+리뷰가 먼저 볼 발견(각 P 기록의 "Spec did not know"): 정책이 영어 프롬프트에도 한국어로 답하게 함(P9), `phrase_battery`가 길이에 영향받는 원시 개수라는 점(P9), 형태소 분석기가 외래어 일반명사를 NNP로 태깅함(P6), 판정 도구가 이유를 내지 않음(P7), 헤드리스 stream-json 입력을 한꺼번에 넣으면 턴이 합쳐짐(P8), `ruleset` 규칙 수 115 → 136(P9).
 
 ## 빌드가 끝나면
 
