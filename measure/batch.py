@@ -45,8 +45,8 @@ def bootstrap_diff(xs, ys, rng, resamples=RESAMPLES):
         return None
     diffs = []
     for _ in range(resamples):
-        a = [xs[rng.randrange(len(xs))] for _ in xs]
-        b = [ys[rng.randrange(len(ys))] for _ in ys]
+        a = rng.choices(xs, k=len(xs))
+        b = rng.choices(ys, k=len(ys))
         diffs.append(statistics.fmean(a) - statistics.fmean(b))
     diffs.sort()
     lo, hi = percentile(diffs, (1 - LEVEL) / 2), percentile(diffs, 1 - (1 - LEVEL) / 2)
@@ -86,12 +86,21 @@ def run(home, batch, resamples=RESAMPLES, seed=SEED):
     RESAMPLES = resamples
     rng = random.Random(seed)
     anns, logs, by_turn, derived = load(home, batch)
+    # a session whose turns did not line up with its records is left out whole (arm check, task match, turn count, errors)
+    failed = {a["session_id"] for a in anns if not (a.get("arm_check") and a.get("task_matches_prompt") and a.get("log_record_found")
+                                                     and a.get("turns_complete", True) and not a.get("is_error"))}
+    excluded = {"sessions": len(failed), "annotations": sum(1 for a in anns if a["session_id"] in failed),
+                "log_records": sum(1 for r in logs if r["session_id"] in failed),
+                "rule": "any annotation of the session fails arm_check, task_matches_prompt, log_record_found or turns_complete, or is_error"}
+    anns = [a for a in anns if a["session_id"] not in failed]
+    logs = [r for r in logs if r["session_id"] not in failed]
+    by_turn = {k: v for k, v in by_turn.items() if k[0] not in failed}
     pairs = [(r, by_turn[(r["session_id"], r.get("turn_key"))]) for r in logs if (r["session_id"], r.get("turn_key")) in by_turn]
     decl = registry.declarations()
     strata = sorted({a["stratum"] for a in anns})
     out = {"batch": batch, "exclusion_version": exclusion.version(), "analyser": registry.analyser_status(),
            "bootstrap": {"method": "session-level percentile bootstrap", "resamples": resamples, "seed": seed, "level": LEVEL},
-           "false_positive_method": "Wilson score interval, 95%", "sessions_by_arm": {}, "measurements": {}, "candidates": {}}
+           "false_positive_method": "Wilson score interval, 95%", "excluded": excluded, "sessions_by_arm": {}, "measurements": {}, "candidates": {}}
     for arm in ("A", "B", "C"):
         out["sessions_by_arm"][arm] = len({a["session_id"] for a in anns if a["arm"] == arm})
     for name, (path, rule) in PRIMARY.items():

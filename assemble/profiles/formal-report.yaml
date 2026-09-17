@@ -8,3 +8,23 @@ intensity: conservative
 output_style:
   name: formal-report
   description: "Korean output policy for replies to the user in 높임말, addressing the user as 사용자님 (fluent-korean, not-coding variant, honorific block). Select with /output-style ko-quality:formal-report."
+# watch: candidates only (09 §15.7). Nothing reads them in era 02. Written by 6-build P9 from measure/batch.py;
+# values and intervals in tests/runs/02-P9/batch-01-report.json.
+watch:
+  em_dash_count:
+    max: 0.0
+  phrase_battery:
+    max: 0.0
+  noun_ending_ratio:
+    max: 0.0
+  particle_absence_ratio:
+    max: 0.3636
+  speech_level:
+    max: 1.0
+  genitive_ui_ratio:
+    max: 0.0667
+  _meta:
+    source: "corpus batch-01"
+    arm: C
+    exclusion_version: "ex-3"
+    status: candidate
