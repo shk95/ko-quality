@@ -2,7 +2,7 @@
 
 자율 구현 단계입니다. `dev` 브랜치에서 진행하고, `master` 머지는 7-review에서 정합니다.
 
-**진행:** 열림 (2026-09-17). **P6 끝, P7 진행 중.** 이 기기에서 `measure/.venv`(kiwipiepy 0.23.2)는 설치돼 있고 커밋되지 않습니다.
+**진행:** 열림 (2026-09-17). **P7 끝, P8 진행 중.** 이 기기에서 `measure/.venv`(kiwipiepy 0.23.2)는 설치돼 있고 커밋되지 않습니다.
 
 ## 이 단계가 따르는 것
 
@@ -51,8 +51,8 @@ P가 끝날 때마다 한 행을 채웁니다. 리뷰는 이 표에서 시작합
 | P3 | Self-application | [P3](P3_self-application.md) | met (3/3) | 0 | $0.36 | `3edac84` |
 | P4 | Exclusion pass and `measure/` | [P4](P4_exclusion-and-measure.md) | met (3/3); 4 findings fixed in P5 | 0 | $0 | `edf5bfd` |
 | P5 | Tier 0 | [P5](P5_tier0.md) | met (2/2); 3 notes carried to P6 | 0 | $0 | `cf3c2f7` |
-| P6 | Tier 1 and Tier 2 | [P6](P6_tier1-tier2.md) | met (3/3) | 0 | $0 | P6 record |
-| P7 | Eval split and judge Tier A | — | — | — | — | — |
+| P6 | Tier 1 and Tier 2 | [P6](P6_tier1-tier2.md) | met (3/3) | 0 | $0 | `b1d7ded` |
+| P7 | Eval split and judge Tier A | [P7](P7_eval-split-and-judge.md) | met (2/2) | 0 | $3.22 | P7 record |
 | P8 | Corpus generator and pilot | — | — | — | — | — |
 | P9 | Sized batch and `watch:` candidates | — | — | — | — | — |
 
