@@ -2,7 +2,7 @@
 
 자율 구현 단계입니다. `dev` 브랜치에서 진행하고, `master` 머지는 7-review에서 정합니다.
 
-**진행:** 열림 (2026-09-17). P4 끝, P5 진행 중.
+**진행:** 열림 (2026-09-17). **P5 끝, P6 시작 전** (세션 종료, 2026-09-17). P6은 [`P5_tier0.md`](P5_tier0.md) 끝의 이월 메모 세 가지로 시작합니다. 이 기기에서 `measure/.venv`(kiwipiepy 0.23.2)는 설치돼 있고 커밋되지 않습니다.
 
 ## 이 단계가 따르는 것
 
@@ -49,8 +49,8 @@ P가 끝날 때마다 한 행을 채웁니다. 리뷰는 이 표에서 시작합
 | P1 | Distribution under B9 | [P1](P1_distribution.md) | met (4/4) | 0 | $1.14 | `639831a` |
 | P2 | Logger | [P2](P2_logger.md) | met (5/5) | 0 | $0.92 | `5d15f70` |
 | P3 | Self-application | [P3](P3_self-application.md) | met (3/3) | 0 | $0.36 | `3edac84` |
-| P4 | Exclusion pass and `measure/` | [P4](P4_exclusion-and-measure.md) | met (3/3); 4 findings carried to P5 | 0 | $0 | P4 record |
-| P5 | Tier 0 | — | — | — | — | — |
+| P4 | Exclusion pass and `measure/` | [P4](P4_exclusion-and-measure.md) | met (3/3); 4 findings fixed in P5 | 0 | $0 | `edf5bfd` |
+| P5 | Tier 0 | [P5](P5_tier0.md) | met (2/2); 3 notes carried to P6 | 0 | $0 | P5 record |
 | P6 | Tier 1 and Tier 2 | — | — | — | — | — |
 | P7 | Eval split and judge Tier A | — | — | — | — | — |
 | P8 | Corpus generator and pilot | — | — | — | — | — |
