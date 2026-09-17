@@ -2,7 +2,7 @@
 
 > 이 단계의 문서 지도와 현재 위치입니다. 문서 본문은 영어, 이 README는 한국어입니다 (`AGENTS.md`).
 
-**진행:** 열림 (2026-09-17). [`flow.md`](flow.md)와 [`explorations.md`](explorations.md) 초안 작성됨. U1~U3·U5 답함, 실측 X1~X6 완료(2026-09-17). 남은 것: U4(Codex hook trust 권한 규칙), U6(`-ㅁ` 종결 처리). 마지막 상호작용 단계입니다. 사용자가 preflight를 수락하면 빌드는 P1부터 끝까지 자율로 돕니다.
+**진행:** 열림 (2026-09-17). [`flow.md`](flow.md)와 [`explorations.md`](explorations.md) 초안 작성됨. U1~U6 모두 답함, 실측 X1~X6 완료(2026-09-17). 사용자 수락 대기. 마지막 상호작용 단계입니다. 사용자가 preflight를 수락하면 빌드는 P1부터 끝까지 자율로 돕니다.
 
 ## 입력
 

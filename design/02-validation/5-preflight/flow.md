@@ -1,12 +1,12 @@
 # Build flow — era 02-validation, P1–P9
 
-> Preflight document. **Draft, 2026-09-17.** Defines how the autonomous build (`6-build`) runs [`10_plan.md`](../4-plan/10_plan.md), answers the decisions that can be answered now, and collects what blocks release. Once the user accepts this file, the build starts at P1 on `dev` and does not stop.
+> Preflight document. **Draft, 2026-09-17. Every decision answered; awaiting the user's acceptance.** Defines how the autonomous build (`6-build`) runs [`10_plan.md`](../4-plan/10_plan.md), answers the decisions that can be answered now, and collects what blocks release. Once the user accepts this file, the build starts at P1 on `dev` and does not stop.
 >
 > Read before every P: its section in `10_plan.md`, its section here, and the latest record in `6-build/`. Rules for judgment, subagents and git are in `AGENTS.md` and are not repeated here. Raw material for §1 is in [`explorations.md`](explorations.md).
 
 ## 1. Decisions settled in preflight
 
-Pre-decided answers are not reopened during the build. If build evidence shows a premise false, take the cheapest-to-reverse path, record the deviation with the evidence, and continue. Rows marked **pending** wait on an exploration or the user.
+Pre-decided answers are not reopened during the build. If build evidence shows a premise false, take the cheapest-to-reverse path, record the deviation with the evidence, and continue. No row is pending.
 
 | # | Decision | Answer | Counter-argument and the answer to it | Conf. |
 |---|---|---|---|---|
@@ -24,7 +24,7 @@ Pre-decided answers are not reopened during the build. If build evidence shows a
 | F12 | Self-application switch (P3) | The build removes `outputStyle` from `.claude/settings.local.json` (**consent given, user 2026-09-17, U3**). **The running build session is not affected**: settings are read at launch. Sessions started after P3 run under `agent-reply` and write to `~/.ko-quality-dev` | The builder's later sessions become records of the thing being built. Answer: 09 §21.3 accepts that; records from this repository never enter a sample | high |
 | F13 | `github` marketplace (L4) | **The per-machine `marketplace add` step stays.** X1: a `github` marketplace in committed settings did not load headlessly, with or without `path` | Interactive trust might load it. Answer: untested, and the build cannot test it headlessly; 7-review may revisit | high |
 | F14 | Records of runs | `tests/runs/P<n>/` holds summaries only: counts, hashes, tokens, costs, synthetic text. Corpus records stay under the corpus home outside the tree (09 §20). No personal paths | — | high |
-| F15 | The `-ㅁ`/`-음` sentence ending in `noun_ending_ratio` (X3) | **pending: user** (§4, U6). Proposed: a sentence whose final `EF` morpheme is `ᆷ` or `음` counts as a **noun ending** (개조식 명사형 종결, which `coding.12` targets). 09 §15.4's recipe note gains this line before the build | Some `-음` endings are legitimate in 문서체 (`~함을 알 수 있음` in a memo). Answer: the measurement is a rate compared across arms, not a verdict; the case set (F7) includes both kinds and reports them | medium |
+| F15 | The `-ㅁ`/`-음` sentence ending in `noun_ending_ratio` (X3) | **Accepted (user, 2026-09-17, U6):** a sentence whose final `EF` morpheme is `ᆷ` or `음` counts as a **noun ending** (개조식 명사형 종결, which `coding.12` targets). 09 §15.4's recipe note carries this line | Some `-음` endings are legitimate in 문서체 (`~함을 알 수 있음` in a memo). Answer: the measurement is a rate compared across arms, not a verdict; the case set (F7) includes both kinds and reports them | medium |
 | F16 | Codex models | Load checks `gpt-5.6-luna`, behaviour checks `gpt-5.6-terra` (F2). The `large` tier's `gpt-5.6-sol` did not run (X4; not measured in era 02, cause not investigated): a `large` Codex run is replaced by `large` on Claude Code (`claude-opus-5`), recorded as such | — | high |
 
 ## 2. Verification run (one per P, outside the cap)
@@ -168,9 +168,9 @@ Common to every P:
 | U1 | Power parameters | P8 | **Answered:** F9's proposal |
 | U2 | Budget ceiling | P8, P9 | **Answered:** pilot $21, batch $200 |
 | U3 | Consent to remove the local `outputStyle` in P3 | P3 | **Answered:** yes |
-| U4 | Codex availability and the hook-trust permission rule | P2 | Codex: usable (X4). **Open:** a Bash permission rule allowing `codex exec --dangerously-bypass-hook-trust`, scoped to a temporary `CODEX_HOME`. Without it, P2.3 is release-blocked |
+| U4 | Codex availability and the hook-trust permission rule | P2 | **Answered:** Codex usable (X4); the user added the Claude Code permission rule, and X6's re-run passed |
 | U5 | Which explorations run now | preflight | **Answered:** all; run 2026-09-17 |
-| U6 | F15: count a final `-ㅁ`/`-음` as a noun ending | P6 | **Open** |
+| U6 | F15: count a final `-ㅁ`/`-음` as a noun ending | P6 | **Answered:** F15's proposal |
 
 ## 5. Release-blocked conditions, collected
 

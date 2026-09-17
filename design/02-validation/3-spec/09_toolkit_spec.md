@@ -633,7 +633,7 @@ The list is organised by measurement, not by rule id. Each cites the rules it se
 
 | Measurement | Layer | Serves | Emits | Recipe notes |
 |---|---|---|---|---|
-| `noun_ending_ratio` | policy | coding.12, diag 11.3 | ratio | **Pop trailing `SF/SP/SS/SE/SO/SW` before testing for `EF`.** Headings and list items are excluded (the rule exempts them) |
+| `noun_ending_ratio` | policy | coding.12, diag 11.3 | ratio | **Pop trailing `SF/SP/SS/SE/SO/SW` before testing for `EF`.** **A final `EF` whose form is `ᆷ` or `음` (개조식 `-함`/`-음`) counts as a noun ending**: `kiwipiepy` tags it `EF` (5-preflight X3, F15). Headings and list items are excluded (the rule exempts them) |
 | `particle_absence_ratio` | policy | coding.14, diag 11.2 | ratio | **Skip `XSN`/`XSM` when looking ahead, and drop 체언 followed by `XSV`/`XSA` from the denominator** |
 | `speech_level` | policy | coding.09, honorific, E-7, grammar | label distribution | Tags matched **by prefix** (`VV-I`, `VV-R` exist). **Never a judge reference** (E3) |
 | `noun_run_length` | policy | coding.15 | mean, max | **Strict: consecutive `NN*` tokens with nothing between.** Bridging is not measured (E2 left it open; strict is the conservative reading) |

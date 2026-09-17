@@ -56,10 +56,10 @@
 - **Question.** Can the build run `codex exec` with the plugin's hooks trusted, in a temporary `CODEX_HOME`?
 - **Why.** P2.3 needs a live Codex session with the logger. In era 01, `--dangerously-bypass-hook-trust` was blocked by the auto-mode classifier until the user granted a permission rule. Era 99 ran with hooks.
 - **Method.** Confirm the rule is still in place with one throwaway run (scratch `CODEX_HOME`, `auth.json` symlinked, never the user's `~/.codex`).
-- **Status.** **Run 2026-09-17** (`x4-x6-harness.json`). `--dangerously-bypass-hook-trust` was **blocked by the auto-mode classifier**: no permission rule is in place. P2.3 needs the user to grant one (`flow.md` §4, U4).
+- **Status.** **Run 2026-09-17** (`x4-x6-harness.json`). `--dangerously-bypass-hook-trust` was **blocked by the auto-mode classifier**: no permission rule is in place. P2.3 needs the user to grant one (`flow.md` §4, U4). **Re-run after the user added the rule:** hooks ran, and the era 01 logger wrote a Codex record. That record says `policy_on: true` with no `AGENTS.md` section installed: the stamp-implied false positive 09 §11.3 removes.
 
 ## What `flow.md` must still settle
 
 - ~~Power parameters and budget ceiling~~: answered (U1, U2).
 - ~~Which explorations run now~~: all, 2026-09-17 (U5).
-- **Still open:** the `-ㅁ` ending (F15, U6) and the hook-trust permission rule (U4).
+- ~~The `-ㅁ` ending and the hook-trust rule~~: answered (U6, U4).
