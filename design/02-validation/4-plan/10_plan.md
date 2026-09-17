@@ -1,6 +1,6 @@
 # 10. Build plan: era 02
 
-> Stage document. **Draft, 2026-09-17. L1–L5 accepted by the user 2026-09-17.** What era 02 builds, in what order, and how each step is known to be done. The implementation target is [`09_toolkit_spec.md`](../3-spec/09_toolkit_spec.md). Entry to this stage is recorded in [`09a`](../3-spec/09a_findings_spec_close.md) §3.
+> Stage document. **Accepted by the user 2026-09-17** (L1–L5 and P1–P9, after the verification in §6). Next: [`5-preflight`](../5-preflight/README.md). What era 02 builds, in what order, and how each step is known to be done. The implementation target is [`09_toolkit_spec.md`](../3-spec/09_toolkit_spec.md). Entry to this stage is recorded in [`09a`](../3-spec/09a_findings_spec_close.md) §3.
 >
 > **Depth (user, 2026-09-17):** steps, dependency order, done-conditions. File-level execution flow, probes and pre-decided build choices belong to `5-preflight`.
 

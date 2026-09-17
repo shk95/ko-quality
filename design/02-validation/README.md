@@ -2,7 +2,7 @@
 
 넣은 것이 효과가 있는지 아는 장치를 짓는 시대입니다. 시대 01이 "설치하면 쓰이는 도구"를 짓고 미뤄 둔 질문을 받습니다.
 
-**현재 위치:** `3-spec` 닫힘 (2026-09-17). 구현 대상 스펙은 [`09_toolkit_spec.md`](3-spec/09_toolkit_spec.md)이고, 마무리 검사와 번들 4 검토는 [`09a`](3-spec/09a_findings_spec_close.md)에 있습니다. `4-plan`에 진입했습니다 (`09a` §3). 다음은 계획 문서 `10_plan.md`입니다.
+**현재 위치:** `3-spec` 닫힘 (2026-09-17). 구현 대상 스펙은 [`09_toolkit_spec.md`](3-spec/09_toolkit_spec.md)이고, 마무리 검사와 번들 4 검토는 [`09a`](3-spec/09a_findings_spec_close.md)에 있습니다. `4-plan` 닫힘, 계획 [`10_plan.md`](4-plan/10_plan.md) 수락 (2026-09-17). 지금은 `5-preflight`입니다.
 
 ## 문서 지도
 
@@ -16,8 +16,8 @@
 | 2-exploration | `04_*.md`~`08_*.md` | E3~E7 조사 결과. 목록은 [단계 README](2-exploration/README.md) | 작성됨 |
 | 3-spec | [`3-spec/09_toolkit_spec.md`](3-spec/09_toolkit_spec.md) | **구현 대상.** 06을 대체하는 자기완결 스펙(영어). B1~B9, E2~E7, 시대 99 결과, 결정 S1~S3 | 네 번들 모두 검토됨, 검증됨 |
 | 3-spec | [`3-spec/09a_findings_spec_close.md`](3-spec/09a_findings_spec_close.md) | 3-spec 마무리: 마무리 기준과 검사(빈틈 G1~G5 수정), 번들 4 검토, 4-plan 진입 검토 | 작성됨 |
-| 4-plan | [`4-plan/README.md`](4-plan/README.md) | 무엇을 어떤 순서로 짓는가. 입력, 계획 문서의 형태와 깊이. 계획은 `10_plan.md`(독립 문서) | 열림, `10_plan.md` 초안 |
-| 5-preflight | — | 구현 흐름 정의. 시대 01의 §D가 입력입니다 | 비어 있음 |
+| 4-plan | [`4-plan/README.md`](4-plan/README.md) | 무엇을 어떤 순서로 짓는가. 입력, 계획 문서의 형태와 깊이. 계획은 `10_plan.md`(독립 문서) | 닫힘. `10_plan.md` 수락됨 |
+| 5-preflight | [`5-preflight/README.md`](5-preflight/README.md) | 구현 흐름 정의. 입력과 할 일(`10_plan.md` §5, 시대 01 review §D) | 열림 |
 | 6-build | — | 자율 구현 기록 | 비어 있음 |
 | 7-review | — | 구현 후 리뷰. 시대 03을 여는 곳 | 비어 있음 |
 
