@@ -1,0 +1,13 @@
+# Tier 0 case (09 §17.3). Synthetic. Two different terms, each glossed once at first use: upstream's correct form of B-1.
+id: t0-correct-07-first-glosses
+profile: agent-reply
+arm: any
+layer: skill
+input: "배포 과정은 파이프라인(pipeline) 하나로 묶었습니다. 확장성(scalability)은 다음 분기에 따로 검토하겠습니다. 파이프라인은 지금 구성으로도 충분히 빠르게 돌고, 확장성 검토에는 두 주 정도가 걸릴 것으로 보입니다."
+expect:
+  english_gloss_repeat.count:
+    equals: 0
+  english_gloss_repeat.glosses:
+    equals: 2
+  english_gloss_repeat.terms:
+    equals: 2

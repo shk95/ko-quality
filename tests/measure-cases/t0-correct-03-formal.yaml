@@ -12,4 +12,4 @@ expect:
   english_ratio.ratio:
     max: 0.05
   sentence_len_var.cv:
-    min: 0.2
+    min: 0.25

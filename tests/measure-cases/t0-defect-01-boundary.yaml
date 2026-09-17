@@ -1,9 +1,10 @@
 # Tier 0 case (09 §17.3). Synthetic. Each defect occurs exactly once: the boundary case F6 asks for.
+# english_gloss_repeat: one term glossed twice is one repeat (B-1: the first gloss is correct).
 id: t0-defect-01-boundary
 profile: agent-reply
 arm: any
 layer: skill
-input: "캐시를 비우면 해결됩니다 — 다만 첫 요청은 조금 느립니다. 로그 확인 결과 문제 없음 🙂 되요. **중요** 수정은 끝났습니다. 이 방식은 소위 '혁신'이라고 부르기 어렵습니다. 책를 정리했습니다. 파이프라인(pipeline)도 그대로입니다. 설정을 바꾸고, 다시 실행했습니다. 그는 \"끝났다고 했습니다."
+input: "캐시를 비우면 해결됩니다 — 다만 첫 요청은 조금 느립니다. 로그 확인 결과 문제 없음 🙂 되요. **중요** 수정은 끝났습니다. 이 방식은 소위 '혁신'이라고 부르기 어렵습니다. 책를 정리했습니다. 파이프라인(pipeline)도 그대로입니다. 새 파이프라인(pipeline)은 다음 주에 붙입니다. 설정을 바꾸고, 다시 실행했습니다. 그는 \"끝났다고 했습니다."
 expect:
   em_dash_count.count:
     equals: 1
@@ -19,6 +20,8 @@ expect:
     equals: 1
   english_gloss_repeat.count:
     equals: 1
+  english_gloss_repeat.glosses:
+    equals: 2
   comma_rate.after_connective:
     equals: 1
   quote_balance.balanced:

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """P4 checks for measure/ (10_plan.md P4.2, P4.3): retention on a fixture home, and identical derived records on re-run.
+P5 and P6: run report fields (09 §15.6), and the capture-dependent delegation_prompt_ measurements (09 §15.4).
 Run from the repository root. Every text here is synthetic."""
 import datetime
 import json
@@ -9,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from measure import measurements as registry  # noqa: E402
 from measure import runner  # noqa: E402
 
 TODAY = datetime.date(2026, 9, 17)
@@ -91,6 +93,21 @@ def main():
         # no measurement applies an upstream threshold: thresholds are data only (09 §15.1)
         src = "".join(p.read_text(encoding="utf-8") for p in (ROOT / "measure").rglob("*.py") if ".venv" not in p.parts)
         check("upstream_threshold" not in src, "no measurement code reads upstream_threshold")
+        # capture-dependent (09 §15.4): a sub record's delegation prompt gets the policy-layer measurements, and only those
+        sub = rec(5, "2026-09", "캐시 계층을 검토해 주세요 — 특히 만료 정책을 봐 주세요. 결과는 짧게 알려 주세요.", "검토했습니다. 만료 정책은 그대로 두어도 됩니다.")
+        sub.update(harness_position="sub-to-orchestrator", agent_type="ko-quality:korean-reviewer")
+        feats = registry.compute(sub, None)
+        declared = registry.declarations()
+        policy = sorted(n for n, d in declared.items() if "policy" in d["layers"])
+        skill_only = sorted(n for n, d in declared.items() if "policy" not in d["layers"])
+        check(all("delegation_prompt_" + n in feats for n in policy), f"sub record carries delegation_prompt_ for every policy measurement: {policy}")
+        check(not any("delegation_prompt_" + n in feats for n in skill_only), "no delegation_prompt_ for a skill-only measurement")
+        check(feats.get("delegation_prompt_em_dash_count", {}).get("count") == 1, f"delegation prompt em dash counted: {feats.get('delegation_prompt_em_dash_count')}")
+        check(feats.get("em_dash_count", {}).get("count") == 0, "output em dash count is the output's, not the prompt's")
+        main_feats = registry.compute(dict(sub, harness_position="main-to-user"), None)
+        check(not any(k.startswith("delegation_prompt_") for k in main_feats), "a main record carries no delegation_prompt_ field")
+        nosub = registry.compute(dict(sub, task=""), None)
+        check(not any(k.startswith("delegation_prompt_") for k in nosub), "a sub record without a captured task carries no delegation_prompt_ field")
         print(json.dumps({"first_run": report, "second_run": report2}, ensure_ascii=False, indent=2))
     for f in failures:
         print("FAIL", f)

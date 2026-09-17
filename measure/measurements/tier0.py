@@ -22,7 +22,7 @@ SENTENCE_END = re.compile(r"(?<=[.?!。])\s+|(?<=[다요죠음함임됨까])\s*\
 CONNECTIVE_COMMA = re.compile(r"[가-힣]*(?:고|며|지만|면서|아서|어서|는데|니까|으나|거나)\s?,")
 CONJUNCTION_COMMA = re.compile(r"(?:^|(?<=\s))(?:그리고|하지만|또한|그러나|따라서|그래서|즉|게다가|더욱이)\s?,")
 FORMULAIC_HEADINGS = {"서론", "본론", "결론", "개요", "요약", "마무리", "들어가며", "나가며", "맺음말"}
-GLOSS = re.compile(r"[가-힣]{1,20}\s?\(\s?[A-Za-z][A-Za-z .&/-]{1,60}\)")
+GLOSS = re.compile(r"[가-힣]{1,20}\s?\(\s?([A-Za-z][A-Za-z .&/-]{1,60})\)")
 TRIAD = ("먼저", "반면", "결국")
 DENYLIST = {"되요": re.compile(r"되요"), "됬": re.compile(r"됬"), "왠 (outside 왠지)": re.compile(r"왠(?!지)"), "!!!": re.compile(r"!{3,}")}
 
@@ -85,8 +85,17 @@ def english_ratio(res):
 
 
 def english_gloss_repeat(res):
+    """B-1: a term glossed again after its first gloss. The first gloss of a term is upstream's correct form, so `count` is
+    repeats only; `glosses` is every 한글(English) gloss, and `terms` the distinct glossed terms (keyed by the English)."""
     lines = res.prose(ALL_PROSE, zones=("code", "url_path_id", "quotation", "number"))
-    return {"count": sum(len(GLOSS.findall(line)) for line in lines)}
+    seen, glosses, repeats = set(), 0, 0
+    for line in lines:
+        for m in GLOSS.finditer(line):
+            key = " ".join(m.group(1).lower().split())
+            glosses += 1
+            repeats += key in seen
+            seen.add(key)
+    return {"count": repeats, "glosses": glosses, "terms": len(seen)}
 
 
 def sentences(res, kinds=("paragraph", "list_item")):

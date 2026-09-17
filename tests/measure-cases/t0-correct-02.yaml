@@ -32,7 +32,7 @@ expect:
   allomorph_errors.count:
     max: 0
   sentence_len_var.cv:
-    min: 0.2
+    min: 0.25
   phrase_battery.entries.rewrite.A-1.max_per_paragraph:
     max: 0
   phrase_battery.entries.rewrite.D-1.count:
