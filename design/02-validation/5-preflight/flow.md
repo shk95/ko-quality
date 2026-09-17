@@ -23,9 +23,9 @@ Pre-decided answers are not reopened during the build. If build evidence shows a
 | F11 | Bootstrap (P9.1) | Session-level percentile bootstrap, **10,000 resamples**, fixed seed recorded | — | high |
 | F12 | Self-application switch (P3) | The build removes `outputStyle` from `.claude/settings.local.json` (**consent given, user 2026-09-17, U3**). **The running build session is not affected**: settings are read at launch. Sessions started after P3 run under `agent-reply` and write to `~/.ko-quality-dev` | The builder's later sessions become records of the thing being built. Answer: 09 §21.3 accepts that; records from this repository never enter a sample | high |
 | F13 | `github` marketplace (L4) | **The per-machine `marketplace add` step stays.** X1: a `github` marketplace in committed settings did not load headlessly, with or without `path` | Interactive trust might load it. Answer: untested, and the build cannot test it headlessly; 7-review may revisit | high |
+| F14 | Records of runs | `tests/runs/P<n>/` holds summaries only: counts, hashes, tokens, costs, synthetic text. Corpus records stay under the corpus home outside the tree (09 §20). No personal paths | — | high |
 | F15 | The `-ㅁ`/`-음` sentence ending in `noun_ending_ratio` (X3) | **pending: user** (§4, U6). Proposed: a sentence whose final `EF` morpheme is `ᆷ` or `음` counts as a **noun ending** (개조식 명사형 종결, which `coding.12` targets). 09 §15.4's recipe note gains this line before the build | Some `-음` endings are legitimate in 문서체 (`~함을 알 수 있음` in a memo). Answer: the measurement is a rate compared across arms, not a verdict; the case set (F7) includes both kinds and reports them | medium |
 | F16 | Codex models | Load checks `gpt-5.6-luna`, behaviour checks `gpt-5.6-terra` (F2). `gpt-5.6` is unavailable on this account (X4): a `large` Codex run is replaced by `large` on Claude Code (`claude-opus-5`) | — | high |
-| F14 | Records of runs | `tests/runs/P<n>/` holds summaries only: counts, hashes, tokens, costs, synthetic text. Corpus records stay under the corpus home outside the tree (09 §20). No personal paths | — | high |
 
 ## 2. Verification run (one per P, outside the cap)
 
