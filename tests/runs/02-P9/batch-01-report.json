@@ -1,0 +1,7556 @@
+{
+  "batch": "batch-01",
+  "exclusion_version": "ex-3",
+  "analyser": {
+    "version": "kiwipiepy 0.23.2 (kiwipiepy_model 0.23.0, cong)"
+  },
+  "bootstrap": {
+    "method": "session-level percentile bootstrap",
+    "resamples": 10000,
+    "seed": 20260917,
+    "level": 0.95
+  },
+  "false_positive_method": "Wilson score interval, 95%",
+  "excluded": {
+    "sessions": 6,
+    "annotations": 8,
+    "log_records": 7,
+    "rule": "any annotation of the session fails arm_check, task_matches_prompt, log_record_found or turns_complete, or is_error"
+  },
+  "sessions_by_arm": {
+    "A": 483,
+    "B": 485,
+    "C": 484
+  },
+  "measurements": {
+    "em_dash_count": {
+      "primary": "per_100_eojeol",
+      "layers": [
+        "policy",
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.070931,
+              0.0
+            ],
+            "difference": 0.070931,
+            "interval": [
+              0.0,
+              0.185956
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.070931,
+              0.0
+            ],
+            "difference": 0.070931,
+            "interval": [
+              0.0,
+              0.185956
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.035613,
+              0.070931
+            ],
+            "difference": -0.035319,
+            "interval": [
+              -0.159928,
+              0.08
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.602037,
+              0.075267
+            ],
+            "difference": 0.52677,
+            "interval": [
+              0.248309,
+              0.820557
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.602037,
+              0.015117
+            ],
+            "difference": 0.58692,
+            "interval": [
+              0.331825,
+              0.86729
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.69382,
+              0.602037
+            ],
+            "difference": 0.091783,
+            "interval": [
+              -0.291368,
+              0.470963
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.5844,
+              0.0
+            ],
+            "difference": 1.5844,
+            "interval": [
+              0.988106,
+              2.216623
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.5844,
+              0.0
+            ],
+            "difference": 1.5844,
+            "interval": [
+              0.991617,
+              2.221237
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.659011,
+              1.5844
+            ],
+            "difference": 1.074611,
+            "interval": [
+              0.135342,
+              1.988886
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "correct-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.9608,
+              1.9608
+            ],
+            "difference": 0.0,
+            "interval": [
+              -1.089333,
+              1.089333
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.9608,
+              1.9608
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.9804,
+              1.089333
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.9608,
+              1.9608
+            ],
+            "difference": 0.0,
+            "interval": [
+              -1.089333,
+              1.089333
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.963592,
+              0.008694
+            ],
+            "difference": 0.954898,
+            "interval": [
+              0.540287,
+              1.418222
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.963592,
+              0.062294
+            ],
+            "difference": 0.901298,
+            "interval": [
+              0.465181,
+              1.347226
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              0.345648,
+              0.963592
+            ],
+            "difference": -0.617944,
+            "interval": [
+              -1.108199,
+              -0.148723
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.364808
+            ]
+          }
+        },
+        "document": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.178181,
+              0.0
+            ],
+            "difference": 0.178181,
+            "interval": [
+              0.0197,
+              0.381273
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.178181,
+              0.0
+            ],
+            "difference": 0.178181,
+            "interval": [
+              0.0197,
+              0.381263
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.227115,
+              0.178181
+            ],
+            "difference": 0.048934,
+            "interval": [
+              -0.250672,
+              0.378905
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.654304,
+              0.089969
+            ],
+            "difference": 1.564335,
+            "interval": [
+              1.214085,
+              1.939998
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.654304,
+              0.080252
+            ],
+            "difference": 1.574052,
+            "interval": [
+              1.224795,
+              1.947012
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.972213,
+              1.654304
+            ],
+            "difference": 0.317909,
+            "interval": [
+              -0.172708,
+              0.817533
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.950049,
+              0.187759
+            ],
+            "difference": 0.76229,
+            "interval": [
+              0.33682,
+              1.245153
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.950049,
+              0.212539
+            ],
+            "difference": 0.73751,
+            "interval": [
+              0.3125,
+              1.21908
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.644294,
+              0.950049
+            ],
+            "difference": -0.305755,
+            "interval": [
+              -0.870302,
+              0.255394
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [
+          "coding-reply:B_minus_C/agent-reply",
+          "coding-reply:B_minus_C/formal-report",
+          "conversation:B_minus_C/agent-reply",
+          "conversation:B_minus_C/formal-report",
+          "delegation:B_minus_C/agent-reply",
+          "delegation:B_minus_C/formal-report",
+          "document:B_minus_C/agent-reply",
+          "document:B_minus_C/formal-report",
+          "english:B_minus_C/agent-reply",
+          "english:B_minus_C/formal-report",
+          "paste-in:B_minus_C/agent-reply",
+          "paste-in:B_minus_C/formal-report"
+        ],
+        "qualifies": true,
+        "reason": "both 09 §15.7 conditions hold"
+      }
+    },
+    "emoji_count": {
+      "primary": "per_100_eojeol",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.9608,
+              1.9608
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.9804,
+              1.089333
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.084822
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.055278,
+              0.222019
+            ],
+            "difference": -0.166741,
+            "interval": [
+              -0.289121,
+              -0.037934
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "bold_density": {
+      "primary": "per_100_eojeol",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.468222,
+              1.615785
+            ],
+            "difference": -0.147563,
+            "interval": [
+              -0.677047,
+              0.377826
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              4.3661,
+              3.794865
+            ],
+            "difference": 0.571235,
+            "interval": [
+              -0.042053,
+              1.187301
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              0.186671,
+              2.608128
+            ],
+            "difference": -2.421457,
+            "interval": [
+              -3.005759,
+              -1.875485
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              1.784496
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.0,
+              0.744997
+            ],
+            "difference": -0.744997,
+            "interval": [
+              -1.092974,
+              -0.438006
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.624854,
+              1.854467
+            ],
+            "difference": 0.770387,
+            "interval": [
+              -0.066539,
+              1.650642
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.330037,
+              0.971269
+            ],
+            "difference": -0.641232,
+            "interval": [
+              -0.994485,
+              -0.297435
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "bullet_density": {
+      "primary": "ratio",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.468863,
+              0.477159
+            ],
+            "difference": -0.008296,
+            "interval": [
+              -0.091431,
+              0.075228
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.633978,
+              0.555352
+            ],
+            "difference": 0.078626,
+            "interval": [
+              0.004674,
+              0.156578
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              0.373377,
+              0.25387
+            ],
+            "difference": 0.119507,
+            "interval": [
+              0.042578,
+              0.197027
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.20787
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.025158,
+              0.171747
+            ],
+            "difference": -0.146589,
+            "interval": [
+              -0.207626,
+              -0.083593
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.201189,
+              0.14862
+            ],
+            "difference": 0.052569,
+            "interval": [
+              -0.038518,
+              0.142321
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.253967,
+              0.212298
+            ],
+            "difference": 0.041669,
+            "interval": [
+              -0.03496,
+              0.117216
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "header_formula": {
+      "primary": "ratio",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              0,
+              0
+            ],
+            "means": [
+              null,
+              null
+            ]
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              1,
+              2
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": null,
+            "interval_method": "not computed: fewer than 2 sessions in an arm",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              0,
+              0
+            ],
+            "means": [
+              null,
+              null
+            ]
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              0,
+              0
+            ],
+            "means": [
+              null,
+              null
+            ]
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              0,
+              0
+            ],
+            "means": [
+              null,
+              null
+            ]
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              0,
+              15
+            ],
+            "means": [
+              null,
+              0.0
+            ]
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              90
+            ],
+            "means": [
+              null,
+              0.046451
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              0,
+              0
+            ],
+            "means": [
+              null,
+              null
+            ]
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              0,
+              0
+            ],
+            "means": [
+              null,
+              null
+            ]
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              0,
+              4
+            ],
+            "means": [
+              null,
+              0.0
+            ]
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {},
+      "candidate": {
+        "fp_observed": false,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no false-positive rate observed on correct Korean"
+      }
+    },
+    "quote_emphasis_count": {
+      "primary": "count",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.018519,
+              0.0
+            ],
+            "difference": 0.018519,
+            "interval": [
+              0.0,
+              0.055556
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.703704,
+              0.611111
+            ],
+            "difference": 0.092593,
+            "interval": [
+              -0.185185,
+              0.37037
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.148148,
+              1.203704
+            ],
+            "difference": -0.055556,
+            "interval": [
+              -0.740741,
+              0.611111
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.333333,
+              0.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.166667,
+              0.185185
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              2.192308,
+              4.367925
+            ],
+            "difference": -2.175617,
+            "interval": [
+              -3.435786,
+              -0.929209
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              11.065421
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.09434,
+              0.138889
+            ],
+            "difference": -0.044549,
+            "interval": [
+              -0.201607,
+              0.113915
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.12963,
+              0.240741
+            ],
+            "difference": -0.111111,
+            "interval": [
+              -0.333333,
+              0.092593
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              4.074074,
+              3.62037
+            ],
+            "difference": 0.453704,
+            "interval": [
+              -0.787037,
+              1.703704
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "phrase_battery": {
+      "primary": "total",
+      "layers": [
+        "skill",
+        "policy"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.462963,
+              0.518519
+            ],
+            "difference": -0.055556,
+            "interval": [
+              -0.5,
+              0.388889
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.462963,
+              1.148148
+            ],
+            "difference": -0.685185,
+            "interval": [
+              -1.333333,
+              -0.074074
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.37037,
+              0.462963
+            ],
+            "difference": -0.092593,
+            "interval": [
+              -0.518519,
+              0.333333
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              4.981481,
+              7.37037
+            ],
+            "difference": -2.388889,
+            "interval": [
+              -3.537037,
+              -1.222222
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              4.981481,
+              8.962963
+            ],
+            "difference": -3.981481,
+            "interval": [
+              -5.444444,
+              -2.555556
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              5.222222,
+              4.981481
+            ],
+            "difference": 0.240741,
+            "interval": [
+              -0.759259,
+              1.259259
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.296296,
+              2.518519
+            ],
+            "difference": -1.222222,
+            "interval": [
+              -1.777778,
+              -0.648148
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.296296,
+              3.666667
+            ],
+            "difference": -2.37037,
+            "interval": [
+              -3.037037,
+              -1.758796
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.111111,
+              1.296296
+            ],
+            "difference": -0.185185,
+            "interval": [
+              -0.611111,
+              0.240741
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              4.333333,
+              4.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -2.407407,
+              2.407407
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              4.333333,
+              4.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -2.166667,
+              2.407407
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              4.333333,
+              4.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -2.407407,
+              2.407407
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              5.122642,
+              6.148148
+            ],
+            "difference": -1.025507,
+            "interval": [
+              -2.700061,
+              0.686937
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              5.122642,
+              7.611111
+            ],
+            "difference": -2.48847,
+            "interval": [
+              -4.896903,
+              -0.160893
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              4.211538,
+              5.122642
+            ],
+            "difference": -0.911103,
+            "interval": [
+              -2.479336,
+              0.547905
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              16.14486
+            ]
+          }
+        },
+        "document": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.462963,
+              0.538462
+            ],
+            "difference": -0.075499,
+            "interval": [
+              -0.284544,
+              0.141026
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.462963,
+              0.721154
+            ],
+            "difference": -0.258191,
+            "interval": [
+              -0.505351,
+              -0.014236
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.377358,
+              0.462963
+            ],
+            "difference": -0.085604,
+            "interval": [
+              -0.291405,
+              0.11236
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.037037,
+              2.740741
+            ],
+            "difference": -2.703704,
+            "interval": [
+              -3.37037,
+              -2.092593
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.037037,
+              3.388889
+            ],
+            "difference": -3.351852,
+            "interval": [
+              -4.277778,
+              -2.5
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.037037,
+              0.037037
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.111111,
+              0.111111
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              6.157407,
+              6.981481
+            ],
+            "difference": -0.824074,
+            "interval": [
+              -2.944676,
+              1.342824
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              6.157407,
+              8.212963
+            ],
+            "difference": -2.055556,
+            "interval": [
+              -4.138889,
+              0.055787
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              4.962963,
+              6.157407
+            ],
+            "difference": -1.194444,
+            "interval": [
+              -3.212963,
+              0.824074
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [
+          "coding-edit:B_minus_C/formal-report",
+          "coding-reply:B_minus_C/agent-reply",
+          "coding-reply:B_minus_C/formal-report",
+          "conversation:B_minus_C/agent-reply",
+          "conversation:B_minus_C/formal-report",
+          "delegation:B_minus_C/formal-report",
+          "document:B_minus_C/formal-report",
+          "english:B_minus_C/agent-reply",
+          "english:B_minus_C/formal-report"
+        ],
+        "qualifies": true,
+        "reason": "both 09 §15.7 conditions hold"
+      }
+    },
+    "english_ratio": {
+      "primary": "ratio",
+      "layers": [
+        "policy"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.006678,
+              0.026183
+            ],
+            "difference": -0.019506,
+            "interval": [
+              -0.043451,
+              0.000751
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.006678,
+              0.013385
+            ],
+            "difference": -0.006707,
+            "interval": [
+              -0.019646,
+              0.005517
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.050231,
+              0.02225
+            ],
+            "difference": 0.027981,
+            "interval": [
+              0.013563,
+              0.042819
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.050231,
+              0.0222
+            ],
+            "difference": 0.028031,
+            "interval": [
+              0.013755,
+              0.042662
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "conversation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.00322,
+              0.0
+            ],
+            "difference": 0.00322,
+            "interval": [
+              0.000898,
+              0.005959
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.00322,
+              0.000431
+            ],
+            "difference": 0.002789,
+            "interval": [
+              0.000367,
+              0.005583
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "correct-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.055567,
+              0.055567
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.03087,
+              0.027783
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.055567,
+              0.055567
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.027783,
+              0.03087
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.039832,
+              0.035031
+            ],
+            "difference": 0.004801,
+            "interval": [
+              -0.012929,
+              0.021957
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.039832,
+              0.04234
+            ],
+            "difference": -0.002508,
+            "interval": [
+              -0.020902,
+              0.01556
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.031264
+            ]
+          }
+        },
+        "document": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.039818,
+              0.000948
+            ],
+            "difference": 0.03887,
+            "interval": [
+              0.023732,
+              0.054831
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.039818,
+              0.001672
+            ],
+            "difference": 0.038145,
+            "interval": [
+              0.022425,
+              0.054501
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "english": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              0.11942
+            ],
+            "difference": 0.88058,
+            "interval": [
+              0.793849,
+              0.954462
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              0.064304
+            ],
+            "difference": 0.935696,
+            "interval": [
+              0.866183,
+              0.989713
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "paste-in": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.009327,
+              0.004956
+            ],
+            "difference": 0.004371,
+            "interval": [
+              -0.00112,
+              0.011025
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.009327,
+              0.004183
+            ],
+            "difference": 0.005144,
+            "interval": [
+              -0.000609,
+              0.01215
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "not_observable": "no zero line: the clean value is not zero"
+      },
+      "candidate": {
+        "fp_observed": false,
+        "nonzero_B_minus_C": [
+          "coding-reply:B_minus_C/agent-reply",
+          "coding-reply:B_minus_C/formal-report",
+          "conversation:B_minus_C/agent-reply",
+          "conversation:B_minus_C/formal-report",
+          "document:B_minus_C/agent-reply",
+          "document:B_minus_C/formal-report",
+          "english:B_minus_C/agent-reply",
+          "english:B_minus_C/formal-report"
+        ],
+        "qualifies": false,
+        "reason": "no false-positive rate observed on correct Korean (no zero line)"
+      }
+    },
+    "english_gloss_repeat": {
+      "primary": "count",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.037037
+            ],
+            "difference": -0.037037,
+            "interval": [
+              -0.111111,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.333333,
+              0.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.185185,
+              0.185185
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.004673
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "sentence_len_var": {
+      "primary": "cv",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.129202,
+              0.143565
+            ],
+            "difference": -0.014363,
+            "interval": [
+              -0.079293,
+              0.050968
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.4194,
+              0.428656
+            ],
+            "difference": -0.009256,
+            "interval": [
+              -0.100154,
+              0.081257
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.335346,
+              0.346604
+            ],
+            "difference": -0.011257,
+            "interval": [
+              -0.077117,
+              0.057595
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.241233,
+              0.241233
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.025211,
+              0.02565
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.565633,
+              0.565633
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.052105,
+              0.051252
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              51,
+              53
+            ],
+            "means": [
+              0.6988,
+              0.466226
+            ],
+            "difference": 0.232574,
+            "interval": [
+              0.152282,
+              0.315632
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.584024
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.25063,
+              0.385989
+            ],
+            "difference": -0.135359,
+            "interval": [
+              -0.212631,
+              -0.057792
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              0,
+              0
+            ],
+            "means": [
+              null,
+              null
+            ]
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.462424,
+              0.604819
+            ],
+            "difference": -0.142394,
+            "interval": [
+              -0.229295,
+              -0.055361
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "not_observable": "no zero line: the clean value is not zero"
+      },
+      "candidate": {
+        "fp_observed": false,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no false-positive rate observed on correct Korean (no zero line)"
+      }
+    },
+    "paragraph_initial_repeat": {
+      "primary": "ratio",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.07738,
+              0.064469
+            ],
+            "difference": 0.012911,
+            "interval": [
+              -0.047364,
+              0.072971
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.014815,
+              0.066667
+            ],
+            "difference": -0.051852,
+            "interval": [
+              -0.096296,
+              -0.007407
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              0.0,
+              0.04313
+            ],
+            "difference": -0.04313,
+            "interval": [
+              -0.064071,
+              -0.024099
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.16658
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.188861,
+              0.128696
+            ],
+            "difference": 0.060165,
+            "interval": [
+              -0.005679,
+              0.12843
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0598,
+              0.019713
+            ],
+            "difference": 0.040087,
+            "interval": [
+              0.015457,
+              0.064918
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "comma_rate": {
+      "primary": "after_connective",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.166667,
+              0.222222
+            ],
+            "difference": -0.055556,
+            "interval": [
+              -0.222222,
+              0.111111
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.592593,
+              2.333333
+            ],
+            "difference": 0.259259,
+            "interval": [
+              -0.240741,
+              0.777778
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.944444,
+              1.055556
+            ],
+            "difference": -0.111111,
+            "interval": [
+              -0.518519,
+              0.296296
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.333333,
+              0.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.166667,
+              0.166667
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.333333,
+              0.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.166667,
+              0.185185
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              1.692308,
+              0.801887
+            ],
+            "difference": 0.890421,
+            "interval": [
+              0.52793,
+              1.260913
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              2.696262
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.283019,
+              0.388889
+            ],
+            "difference": -0.10587,
+            "interval": [
+              -0.265024,
+              0.052935
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.444444,
+              0.944444
+            ],
+            "difference": -0.5,
+            "interval": [
+              -0.768519,
+              -0.231481
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        },
+        "B/none": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "spelling_denylist": {
+      "primary": "count",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.666667,
+              0.666667
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.37037,
+              0.333333
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.0
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "quote_balance": {
+      "primary": "balanced",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              1.0
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "allomorph_errors": {
+      "primary": "count",
+      "layers": [
+        "skill"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.037037,
+              0.037037
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.074074,
+              0.074074
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.12963,
+              0.018519
+            ],
+            "difference": 0.111111,
+            "interval": [
+              0.0,
+              0.240741
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.333333,
+              0.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.185185,
+              0.166667
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.03271
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "honorific_address": {
+      "primary": "present",
+      "layers": [
+        "policy"
+      ],
+      "tier": 0,
+      "by_stratum": {
+        "coding-edit": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.259259
+            ],
+            "difference": -0.259259,
+            "interval": [
+              -0.388889,
+              -0.148148
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "coding-reply": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.351852
+            ],
+            "difference": -0.351852,
+            "interval": [
+              -0.481481,
+              -0.222222
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "conversation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.537037
+            ],
+            "difference": -0.537037,
+            "interval": [
+              -0.666667,
+              -0.407407
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "correct-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.0,
+              0.018519
+            ],
+            "difference": -0.018519,
+            "interval": [
+              -0.046296,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.0,
+              0.564815
+            ],
+            "difference": -0.564815,
+            "interval": [
+              -0.675926,
+              -0.444444
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.0
+            ]
+          }
+        },
+        "document": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.0,
+              0.586538
+            ],
+            "difference": -0.586538,
+            "interval": [
+              -0.721154,
+              -0.451923
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "english": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.037037
+            ],
+            "difference": -0.037037,
+            "interval": [
+              -0.092593,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.351852
+            ],
+            "difference": -0.351852,
+            "interval": [
+              -0.481481,
+              -0.222222
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "paste-in": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.037037
+            ],
+            "difference": -0.037037,
+            "interval": [
+              -0.092593,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.527778
+            ],
+            "difference": -0.527778,
+            "interval": [
+              -0.657407,
+              -0.398148
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "not_observable": "no zero line: the clean value is not zero"
+      },
+      "candidate": {
+        "fp_observed": false,
+        "nonzero_B_minus_C": [
+          "coding-edit:B_minus_C/formal-report",
+          "coding-reply:B_minus_C/formal-report",
+          "conversation:B_minus_C/formal-report",
+          "delegation:B_minus_C/formal-report",
+          "document:B_minus_C/formal-report",
+          "english:B_minus_C/formal-report",
+          "paste-in:B_minus_C/formal-report"
+        ],
+        "qualifies": false,
+        "reason": "no false-positive rate observed on correct Korean (no zero line)"
+      }
+    },
+    "noun_ending_ratio": {
+      "primary": "ratio",
+      "layers": [
+        "policy"
+      ],
+      "tier": 1,
+      "by_stratum": {
+        "coding-edit": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              41,
+              52
+            ],
+            "means": [
+              0.04878,
+              0.0
+            ],
+            "difference": 0.04878,
+            "interval": [
+              0.0,
+              0.121951
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              41,
+              54
+            ],
+            "means": [
+              0.04878,
+              0.0
+            ],
+            "difference": 0.04878,
+            "interval": [
+              0.0,
+              0.121951
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.138128,
+              0.064491
+            ],
+            "difference": 0.073637,
+            "interval": [
+              0.015758,
+              0.135839
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.138128,
+              0.044919
+            ],
+            "difference": 0.093209,
+            "interval": [
+              0.036344,
+              0.155871
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "conversation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.041563,
+              0.012552
+            ],
+            "difference": 0.029011,
+            "interval": [
+              0.001335,
+              0.061114
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.041563,
+              0.020537
+            ],
+            "difference": 0.021026,
+            "interval": [
+              -0.007379,
+              0.053442
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.333333,
+              0.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.185185,
+              0.185185
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.333333,
+              0.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.185185,
+              0.185185
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.275041,
+              0.154534
+            ],
+            "difference": 0.120506,
+            "interval": [
+              0.06062,
+              0.180914
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.275041,
+              0.131019
+            ],
+            "difference": 0.144022,
+            "interval": [
+              0.084658,
+              0.203585
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.242444
+            ]
+          }
+        },
+        "document": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.034412,
+              0.0
+            ],
+            "difference": 0.034412,
+            "interval": [
+              0.012344,
+              0.061571
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.034412,
+              0.035256
+            ],
+            "difference": -0.000844,
+            "interval": [
+              -0.045596,
+              0.039414
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              0,
+              49
+            ],
+            "means": [
+              null,
+              0.020047
+            ]
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              0,
+              52
+            ],
+            "means": [
+              null,
+              0.012004
+            ]
+          }
+        },
+        "paste-in": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.32876,
+              0.137598
+            ],
+            "difference": 0.191162,
+            "interval": [
+              0.106117,
+              0.27858
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.32876,
+              0.124146
+            ],
+            "difference": 0.204614,
+            "interval": [
+              0.119362,
+              0.289838
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [
+          "coding-reply:B_minus_C/agent-reply",
+          "coding-reply:B_minus_C/formal-report",
+          "conversation:B_minus_C/agent-reply",
+          "delegation:B_minus_C/agent-reply",
+          "delegation:B_minus_C/formal-report",
+          "document:B_minus_C/agent-reply",
+          "paste-in:B_minus_C/agent-reply",
+          "paste-in:B_minus_C/formal-report"
+        ],
+        "qualifies": true,
+        "reason": "both 09 §15.7 conditions hold"
+      }
+    },
+    "particle_absence_ratio": {
+      "primary": "ratio",
+      "layers": [
+        "policy"
+      ],
+      "tier": 1,
+      "by_stratum": {
+        "coding-edit": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.298083,
+              0.285917
+            ],
+            "difference": 0.012167,
+            "interval": [
+              -0.054888,
+              0.077426
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.298083,
+              0.287852
+            ],
+            "difference": 0.010231,
+            "interval": [
+              -0.056238,
+              0.074154
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.501733,
+              0.382759
+            ],
+            "difference": 0.118974,
+            "interval": [
+              0.077912,
+              0.161649
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.501733,
+              0.373833
+            ],
+            "difference": 0.1279,
+            "interval": [
+              0.090166,
+              0.167215
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "conversation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.571911,
+              0.431776
+            ],
+            "difference": 0.140135,
+            "interval": [
+              0.076335,
+              0.201211
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.571911,
+              0.435348
+            ],
+            "difference": 0.136563,
+            "interval": [
+              0.073756,
+              0.196298
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "correct-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.272467,
+              0.272467
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.032963,
+              0.033437
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.272467,
+              0.272467
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.033789,
+              0.033437
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.522233,
+              0.522233
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.134563,
+              0.132713
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.522233,
+              0.522233
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.132728,
+              0.132713
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.520395,
+              0.391911
+            ],
+            "difference": 0.128484,
+            "interval": [
+              0.079216,
+              0.178048
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.520395,
+              0.379763
+            ],
+            "difference": 0.140632,
+            "interval": [
+              0.100229,
+              0.181761
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.586409
+            ]
+          }
+        },
+        "document": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.634473,
+              0.678079
+            ],
+            "difference": -0.043606,
+            "interval": [
+              -0.09122,
+              0.001967
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.634473,
+              0.658414
+            ],
+            "difference": -0.023941,
+            "interval": [
+              -0.074974,
+              0.024799
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              0,
+              49
+            ],
+            "means": [
+              null,
+              0.387522
+            ]
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              0,
+              52
+            ],
+            "means": [
+              null,
+              0.359042
+            ]
+          }
+        },
+        "paste-in": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.574994,
+              0.443171
+            ],
+            "difference": 0.131822,
+            "interval": [
+              0.084541,
+              0.178949
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.574994,
+              0.442713
+            ],
+            "difference": 0.132281,
+            "interval": [
+              0.088912,
+              0.173841
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 54,
+          "n": 54,
+          "rate": 1.0,
+          "wilson_95": [
+            0.9336,
+            1.0
+          ]
+        },
+        "B/none": {
+          "fires": 54,
+          "n": 54,
+          "rate": 1.0,
+          "wilson_95": [
+            0.9336,
+            1.0
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 54,
+          "n": 54,
+          "rate": 1.0,
+          "wilson_95": [
+            0.9336,
+            1.0
+          ]
+        },
+        "C/formal-report": {
+          "fires": 54,
+          "n": 54,
+          "rate": 1.0,
+          "wilson_95": [
+            0.9336,
+            1.0
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [
+          "coding-reply:B_minus_C/agent-reply",
+          "coding-reply:B_minus_C/formal-report",
+          "conversation:B_minus_C/agent-reply",
+          "conversation:B_minus_C/formal-report",
+          "delegation:B_minus_C/agent-reply",
+          "delegation:B_minus_C/formal-report",
+          "paste-in:B_minus_C/agent-reply",
+          "paste-in:B_minus_C/formal-report"
+        ],
+        "qualifies": true,
+        "reason": "both 09 §15.7 conditions hold"
+      }
+    },
+    "speech_level": {
+      "primary": "levels_present",
+      "layers": [
+        "policy"
+      ],
+      "tier": 1,
+      "by_stratum": {
+        "coding-edit": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.888889,
+              1.074074
+            ],
+            "difference": -0.185185,
+            "interval": [
+              -0.388889,
+              0.018519
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.888889,
+              1.0
+            ],
+            "difference": -0.111111,
+            "interval": [
+              -0.277778,
+              0.055556
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.055556
+            ],
+            "difference": -0.055556,
+            "interval": [
+              -0.148148,
+              0.018519
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.037037
+            ],
+            "difference": -0.037037,
+            "interval": [
+              -0.111111,
+              0.037037
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.62963,
+              1.203704
+            ],
+            "difference": 0.425926,
+            "interval": [
+              0.259259,
+              0.592593
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.62963,
+              1.018519
+            ],
+            "difference": 0.611111,
+            "interval": [
+              0.462963,
+              0.740741
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "correct-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.296296,
+              0.296296
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.0,
+              1.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.314815,
+              0.314815
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              1.273585,
+              1.342593
+            ],
+            "difference": -0.069008,
+            "interval": [
+              -0.209993,
+              0.080189
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              1.273585,
+              1.222222
+            ],
+            "difference": 0.051363,
+            "interval": [
+              -0.070929,
+              0.173655
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              1.537383
+            ]
+          }
+        },
+        "document": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              1.138889,
+              1.0
+            ],
+            "difference": 0.138889,
+            "interval": [
+              0.074074,
+              0.203704
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              1.138889,
+              1.0
+            ],
+            "difference": 0.138889,
+            "interval": [
+              0.074074,
+              0.203704
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "english": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              1.0
+            ],
+            "difference": -1.0,
+            "interval": [
+              -1.111111,
+              -0.888889
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              1.0
+            ],
+            "difference": -1.0,
+            "interval": [
+              -1.074074,
+              -0.925926
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "paste-in": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.509259,
+              1.5
+            ],
+            "difference": 0.009259,
+            "interval": [
+              -0.185185,
+              0.203704
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.509259,
+              1.555556
+            ],
+            "difference": -0.046296,
+            "interval": [
+              -0.240741,
+              0.138889
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [
+          "conversation:B_minus_C/agent-reply",
+          "conversation:B_minus_C/formal-report",
+          "document:B_minus_C/agent-reply",
+          "document:B_minus_C/formal-report",
+          "english:B_minus_C/agent-reply",
+          "english:B_minus_C/formal-report"
+        ],
+        "qualifies": true,
+        "reason": "both 09 §15.7 conditions hold"
+      }
+    },
+    "noun_run_length": {
+      "primary": "max",
+      "layers": [
+        "policy"
+      ],
+      "tier": 1,
+      "by_stratum": {
+        "coding-edit": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.925926,
+              2.277778
+            ],
+            "difference": -0.351852,
+            "interval": [
+              -0.648148,
+              -0.037037
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.925926,
+              2.37037
+            ],
+            "difference": -0.444444,
+            "interval": [
+              -0.740741,
+              -0.12963
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "coding-reply": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.888889,
+              3.37037
+            ],
+            "difference": -0.481481,
+            "interval": [
+              -0.907407,
+              -0.074074
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.888889,
+              3.12963
+            ],
+            "difference": -0.240741,
+            "interval": [
+              -0.592593,
+              0.111111
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.907407,
+              2.759259
+            ],
+            "difference": 0.148148,
+            "interval": [
+              -0.259259,
+              0.574074
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.907407,
+              3.111111
+            ],
+            "difference": -0.203704,
+            "interval": [
+              -0.611111,
+              0.203704
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.333333,
+              2.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.166667,
+              0.166667
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.333333,
+              2.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.185185,
+              0.166667
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.0,
+              2.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.314815,
+              0.296296
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.0,
+              2.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.314815,
+              0.296296
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              3.009434,
+              2.833333
+            ],
+            "difference": 0.176101,
+            "interval": [
+              -0.205106,
+              0.55853
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              3.009434,
+              2.777778
+            ],
+            "difference": 0.231656,
+            "interval": [
+              -0.103774,
+              0.560281
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              3.915888
+            ]
+          }
+        },
+        "document": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              3.787037,
+              3.855769
+            ],
+            "difference": -0.068732,
+            "interval": [
+              -0.431633,
+              0.304496
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              3.787037,
+              4.269231
+            ],
+            "difference": -0.482194,
+            "interval": [
+              -0.870379,
+              -0.098647
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "english": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              0,
+              49
+            ],
+            "means": [
+              null,
+              3.020408
+            ]
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              0,
+              52
+            ],
+            "means": [
+              null,
+              3.115385
+            ]
+          }
+        },
+        "paste-in": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              3.185185,
+              3.231481
+            ],
+            "difference": -0.046296,
+            "interval": [
+              -0.342593,
+              0.240741
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              3.185185,
+              3.305556
+            ],
+            "difference": -0.12037,
+            "interval": [
+              -0.398148,
+              0.138889
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "not_observable": "no zero line: the clean value is not zero"
+      },
+      "candidate": {
+        "fp_observed": false,
+        "nonzero_B_minus_C": [
+          "coding-edit:B_minus_C/agent-reply",
+          "coding-edit:B_minus_C/formal-report",
+          "coding-reply:B_minus_C/agent-reply",
+          "document:B_minus_C/formal-report"
+        ],
+        "qualifies": false,
+        "reason": "no false-positive rate observed on correct Korean (no zero line)"
+      }
+    },
+    "genitive_ui_ratio": {
+      "primary": "ratio",
+      "layers": [
+        "policy"
+      ],
+      "tier": 1,
+      "by_stratum": {
+        "coding-edit": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.003546,
+              0.012663
+            ],
+            "difference": -0.009117,
+            "interval": [
+              -0.018317,
+              -0.000668
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.003546,
+              0.020057
+            ],
+            "difference": -0.016511,
+            "interval": [
+              -0.026247,
+              -0.007142
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "coding-reply": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.012067,
+              0.028331
+            ],
+            "difference": -0.016265,
+            "interval": [
+              -0.024408,
+              -0.008122
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.012067,
+              0.03022
+            ],
+            "difference": -0.018154,
+            "interval": [
+              -0.025467,
+              -0.010939
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "conversation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.005004,
+              0.01342
+            ],
+            "difference": -0.008417,
+            "interval": [
+              -0.015322,
+              -0.001696
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.005004,
+              0.01995
+            ],
+            "difference": -0.014946,
+            "interval": [
+              -0.021924,
+              -0.008293
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "correct-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.022233,
+              0.022233
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.012352,
+              0.012352
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.022233,
+              0.022233
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.012352,
+              0.012352
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.076933,
+              0.076933
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.042741,
+              0.042741
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.076933,
+              0.076933
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.042741,
+              0.038467
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.013904,
+              0.01705
+            ],
+            "difference": -0.003146,
+            "interval": [
+              -0.010262,
+              0.003527
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.013904,
+              0.012868
+            ],
+            "difference": 0.001036,
+            "interval": [
+              -0.004433,
+              0.006618
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.022191
+            ]
+          }
+        },
+        "document": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.0037,
+              0.005524
+            ],
+            "difference": -0.001824,
+            "interval": [
+              -0.00712,
+              0.00313
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              52
+            ],
+            "means": [
+              0.0037,
+              0.004288
+            ],
+            "difference": -0.000588,
+            "interval": [
+              -0.004693,
+              0.003353
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              0,
+              49
+            ],
+            "means": [
+              null,
+              0.029537
+            ]
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              0,
+              52
+            ],
+            "means": [
+              null,
+              0.038619
+            ]
+          }
+        },
+        "paste-in": {
+          "B_minus_C/agent-reply": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.016664,
+              0.018156
+            ],
+            "difference": -0.001492,
+            "interval": [
+              -0.009895,
+              0.007176
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          },
+          "B_minus_C/formal-report": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.016664,
+              0.017495
+            ],
+            "difference": -0.000831,
+            "interval": [
+              -0.008963,
+              0.008026
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        },
+        "B/none": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [
+          "coding-edit:B_minus_C/agent-reply",
+          "coding-edit:B_minus_C/formal-report",
+          "coding-reply:B_minus_C/agent-reply",
+          "coding-reply:B_minus_C/formal-report",
+          "conversation:B_minus_C/agent-reply",
+          "conversation:B_minus_C/formal-report"
+        ],
+        "qualifies": true,
+        "reason": "both 09 §15.7 conditions hold"
+      }
+    },
+    "ending_monotony": {
+      "primary": "ratio",
+      "layers": [
+        "skill"
+      ],
+      "tier": 1,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              34,
+              39
+            ],
+            "means": [
+              0.821568,
+              0.818374
+            ],
+            "difference": 0.003193,
+            "interval": [
+              -0.122399,
+              0.123155
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              53
+            ],
+            "means": [
+              0.548187,
+              0.553528
+            ],
+            "difference": -0.005341,
+            "interval": [
+              -0.091951,
+              0.07927
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.54835,
+              0.545163
+            ],
+            "difference": 0.003187,
+            "interval": [
+              -0.069458,
+              0.077363
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.416667,
+              0.416667
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.046296,
+              0.041667
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.75,
+              0.75
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.138889,
+              0.138889
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              51,
+              53
+            ],
+            "means": [
+              0.361431,
+              0.526271
+            ],
+            "difference": -0.164839,
+            "interval": [
+              -0.216917,
+              -0.115809
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.418791
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              54
+            ],
+            "means": [
+              0.791663,
+              0.682097
+            ],
+            "difference": 0.109566,
+            "interval": [
+              0.018749,
+              0.19943
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              0,
+              0
+            ],
+            "means": [
+              null,
+              null
+            ]
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.505861,
+              0.446031
+            ],
+            "difference": 0.059831,
+            "interval": [
+              -0.017662,
+              0.137615
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "not_observable": "no zero line: the clean value is not zero"
+      },
+      "candidate": {
+        "fp_observed": false,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no false-positive rate observed on correct Korean (no zero line)"
+      }
+    },
+    "pos_ngram_diversity": {
+      "primary": "ratio",
+      "layers": [
+        "skill"
+      ],
+      "tier": 1,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.7557,
+              0.729789
+            ],
+            "difference": 0.025911,
+            "interval": [
+              -0.011123,
+              0.062904
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.734485,
+              0.722143
+            ],
+            "difference": 0.012343,
+            "interval": [
+              -0.03187,
+              0.055392
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.91943,
+              0.884026
+            ],
+            "difference": 0.035404,
+            "interval": [
+              0.003917,
+              0.06493
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.858833,
+              0.858833
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.025694,
+              0.025183
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.750433,
+              0.750433
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.086674,
+              0.085707
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              51,
+              53
+            ],
+            "means": [
+              0.719563,
+              0.846543
+            ],
+            "difference": -0.126981,
+            "interval": [
+              -0.160074,
+              -0.093783
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              0.633278
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.708934,
+              0.782231
+            ],
+            "difference": -0.073297,
+            "interval": [
+              -0.103764,
+              -0.043583
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              0,
+              0
+            ],
+            "means": [
+              null,
+              null
+            ]
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.82572,
+              0.778968
+            ],
+            "difference": 0.046753,
+            "interval": [
+              0.005448,
+              0.087962
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "not_observable": "no zero line: the clean value is not zero"
+      },
+      "candidate": {
+        "fp_observed": false,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no false-positive rate observed on correct Korean (no zero line)"
+      }
+    },
+    "adnominal_chain_depth": {
+      "primary": "count",
+      "layers": [
+        "skill"
+      ],
+      "tier": 1,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.111111,
+              0.166667
+            ],
+            "difference": -0.055556,
+            "interval": [
+              -0.222222,
+              0.111111
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.277778,
+              0.166667
+            ],
+            "difference": 0.111111,
+            "interval": [
+              -0.055556,
+              0.296296
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.111111,
+              0.203704
+            ],
+            "difference": -0.092593,
+            "interval": [
+              -0.259259,
+              0.055556
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              0.019231,
+              0.122642
+            ],
+            "difference": -0.103411,
+            "interval": [
+              -0.188679,
+              -0.018142
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              1.046729
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.0,
+              0.018519
+            ],
+            "difference": -0.018519,
+            "interval": [
+              -0.055556,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.111111,
+              0.055556
+            ],
+            "difference": 0.055556,
+            "interval": [
+              -0.037037,
+              0.166667
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "suffix_jeok_density": {
+      "primary": "per_100_eojeol",
+      "layers": [
+        "skill"
+      ],
+      "tier": 1,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.262094,
+              0.741617
+            ],
+            "difference": 0.520478,
+            "interval": [
+              -0.407968,
+              1.487617
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.248744,
+              1.17477
+            ],
+            "difference": 0.073974,
+            "interval": [
+              -0.515331,
+              0.655593
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.424259,
+              1.506124
+            ],
+            "difference": -0.081865,
+            "interval": [
+              -0.807155,
+              0.663802
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              6.2678,
+              6.2678
+            ],
+            "difference": 0.0,
+            "interval": [
+              -1.725228,
+              1.741056
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              0.066333,
+              1.325753
+            ],
+            "difference": -1.25942,
+            "interval": [
+              -1.736373,
+              -0.831709
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              2.267027
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              0.429042,
+              0.573184
+            ],
+            "difference": -0.144143,
+            "interval": [
+              -0.585401,
+              0.301312
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              2.054783,
+              2.481059
+            ],
+            "difference": -0.426276,
+            "interval": [
+              -1.547844,
+              0.687031
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "B/none": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 0,
+          "n": 54,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.0664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    },
+    "spacing_errors": {
+      "primary": "per_100_eojeol",
+      "layers": [
+        "skill"
+      ],
+      "tier": 1,
+      "by_stratum": {
+        "coding-edit": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              6.144515,
+              4.653491
+            ],
+            "difference": 1.491024,
+            "interval": [
+              -1.496978,
+              4.533206
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "coding-reply": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              3.879419,
+              3.686526
+            ],
+            "difference": 0.192893,
+            "interval": [
+              -1.156961,
+              1.519294
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "conversation": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              6.079037,
+              3.994139
+            ],
+            "difference": 2.084898,
+            "interval": [
+              0.098701,
+              4.112143
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "correct-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              1.333333,
+              1.333333
+            ],
+            "difference": 0.0,
+            "interval": [
+              -0.740741,
+              0.740741
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "defective-korean": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              8.446467,
+              8.446467
+            ],
+            "difference": 0.0,
+            "interval": [
+              -2.673667,
+              2.756835
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "delegation": {
+          "A_minus_B": {
+            "n_sessions": [
+              52,
+              53
+            ],
+            "means": [
+              4.043065,
+              6.692277
+            ],
+            "difference": -2.649212,
+            "interval": [
+              -4.237447,
+              -1.127231
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          },
+          "agent_layer_A_minus_BC": {
+            "n_sessions": [
+              0,
+              107
+            ],
+            "means": [
+              null,
+              4.554682
+            ]
+          }
+        },
+        "document": {
+          "A_minus_B": {
+            "n_sessions": [
+              53,
+              54
+            ],
+            "means": [
+              6.40846,
+              9.550832
+            ],
+            "difference": -3.142372,
+            "interval": [
+              -5.54607,
+              -0.6342
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": true
+          }
+        },
+        "english": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              0.0,
+              0.0
+            ],
+            "difference": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        },
+        "paste-in": {
+          "A_minus_B": {
+            "n_sessions": [
+              54,
+              54
+            ],
+            "means": [
+              4.296722,
+              5.439015
+            ],
+            "difference": -1.142293,
+            "interval": [
+              -2.318474,
+              0.006349
+            ],
+            "interval_method": "session-level percentile bootstrap, 10000 resamples, 95%",
+            "nonzero": false
+          }
+        }
+      },
+      "false_positive_rate_correct_stratum": {
+        "A/none": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        },
+        "B/none": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        },
+        "C/agent-reply": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        },
+        "C/formal-report": {
+          "fires": 18,
+          "n": 54,
+          "rate": 0.3333,
+          "wilson_95": [
+            0.2224,
+            0.4664
+          ]
+        }
+      },
+      "candidate": {
+        "fp_observed": true,
+        "nonzero_B_minus_C": [],
+        "qualifies": false,
+        "reason": "no B − C interval excludes zero (skill layer: B − C is not this layer's comparison)"
+      }
+    }
+  },
+  "candidates": {
+    "agent-reply": {
+      "em_dash_count": {
+        "max": 0.0,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "phrase_battery": {
+        "max": 0.0,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "noun_ending_ratio": {
+        "max": 0.0,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "particle_absence_ratio": {
+        "max": 0.3636,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "speech_level": {
+        "max": 1.0,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "genitive_ui_ratio": {
+        "max": 0.0667,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "_meta": {
+        "source": "corpus batch-01",
+        "arm": "C",
+        "exclusion_version": "ex-3",
+        "status": "candidate"
+      }
+    },
+    "formal-report": {
+      "em_dash_count": {
+        "max": 0.0,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "phrase_battery": {
+        "max": 0.0,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "noun_ending_ratio": {
+        "max": 0.0,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "particle_absence_ratio": {
+        "max": 0.3636,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "speech_level": {
+        "max": 1.0,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "genitive_ui_ratio": {
+        "max": 0.0667,
+        "basis": "95th percentile of arm C session means, correct-korean stratum, n=54"
+      },
+      "_meta": {
+        "source": "corpus batch-01",
+        "arm": "C",
+        "exclusion_version": "ex-3",
+        "status": "candidate"
+      }
+    }
+  }
+}
