@@ -57,3 +57,27 @@ Every gap the runs reported was checked against the source by the builder before
 ### 1.6 Verdict
 
 **Criteria 1, 3, 4 and 5 are met after the fixes. Criterion 2 is met for bundles 1–3.** Bundle 4 has not been reviewed with the user, and that is step 1. Step 0 is closed.
+
+## 2. Step 1: closing review
+
+### 2.1 Bundle 4 (§19–§23), reviewed with the user 2026-09-17
+
+| # | Question | Decision | Change to 09 |
+|---|---|---|---|
+| 1 | §19: reserve `gate/` and the four gate record fields now, though no gate runs in era 02? Cost: the fields are empty all era. Benefit: era 03 opens `gate:` without a schema change | **Reserve** | §22.1 gate row names the reservation |
+| 2 | §20: does the runner delete expired monthly files automatically, or only report them? | **Automatic**, irreversibility accepted. It keeps "enforced by a program, not a habit" | §20 retention row; §22.1 retention row |
+| 3 | §21: at which build step is self-application switched on? 09 fixed the preconditions, not the timing | **`4-plan` decides.** Leaning: right after the step that builds the logger's isolation (`~` expansion, `project`) and `build_id` | §21.1 pointer; new §22.2 row |
+| 4 | §22.2: keep "effective output style observable live on Claude Code" as an era 03 blocker only? Era 02's corpus labels its arms itself, so it is unaffected | **Keep as is** | none |
+| 5 | Status alignment | Bundle 4 marked reviewed; `design/README.md` and the era README say `3-spec` closed | header; both READMEs |
+
+No run was made for this step. The decisions are the user's, and the edits are wording that records them.
+
+### 2.2 §22 as settled
+
+§22.1 gains the two reservations above. §22.2 now holds, by settling point:
+
+- **`4-plan`:** directory names; per-call scan cap; extractor reads the rewrite taxonomy directly (61 → 85); `github` marketplace source; build step for self-application.
+- **`6-build`:** sessions per arm (after the pilot); subagent hand-back routing (first batch); `ruleset` adoption (record, then review).
+- **Later:** effective output style observable (era 03 blocker); Codex `task_type` third value (no era assigned).
+
+Nothing in §22.2 is owed to `3-spec`. **`3-spec` is closed.** 09 stays revisable through `5-preflight`, as the design README allows.

@@ -13,7 +13,7 @@
 > - **Bundle 1** (§1–§10, §13): supply and distribution. **Reviewed (S1 decided).**
 > - **Bundle 2** (§11–§12, §14): hooks, logger, and the record. **Reviewed (S2 decided).**
 > - **Bundle 3** (§15–§18): measurement, judge, eval, and corpus. **Reviewed (S3 decided).**
-> - **Bundle 4** (§19–§23): gate semantics, log data, self-application, decision status, and the section map. **Written.**
+> - **Bundle 4** (§19–§23): gate semantics, log data, self-application, decision status, and the section map. **Reviewed (2026-09-17, [`09a`](09a_findings_spec_close.md) §2).**
 
 ## 1. Purpose and premises
 
@@ -841,7 +841,7 @@ A record holds the user's prompt and the reply **verbatim**, masked only for the
 | **Every copy stays under `KO_QUALITY_HOME`** | Judge and grader copies, derived records, and exports included. One place to delete |
 | **No real text goes to an `llm` grader in era 02** | Sending real text to a model provider for grading is a decision era 03 makes with the user, and records |
 | **Text expires after 90 days** (E7-b, user) | `task` and `output` in `logs/`, and every copy of them. Deletion is by **whole monthly file**, once the file's last day is more than 90 days old, so text lives 90–~120 days. Derived values do not expire, which is why they live in `derived/` and never only in `logs/` (§11.4) |
-| **Retention is enforced by a program, not a habit** | The measurement runner (or a sibling command) deletes expired monthly files, and reports what it deleted, at the start of every run |
+| **Retention is enforced by a program, not a habit** | The measurement runner (or a sibling command) deletes expired monthly files, and reports what it deleted, at the start of every run. **Deletion is automatic and irreversible, accepted** (user, 2026-09-17) |
 | **Masking is best-effort and labelled so** | `masked: false` means none of the patterns matched, not that the text is clean. Names are never masked |
 
 **Basis:** E7-b; AGENTS.md (public repository); 06 §11.4.
@@ -852,7 +852,7 @@ A record holds the user's prompt and the reply **verbatim**, masked only for the
 
 ### 21.1 What makes it safe to switch on
 
-**Everything below is in place before the default is switched on.**
+**Everything below is in place before the default is switched on.** Where in the build that happens is `4-plan`'s decision (§22.2).
 
 | Requirement | Mechanism | Evidence |
 |---|---|---|
@@ -894,7 +894,7 @@ The per-machine steps go in the repository's Korean `README.md`. **Whether a `gi
 | Exclusion-dependent fields are derived offline, not in the hook (S2) | §11.1, §12.3 | user 2026-09-16 |
 | `kiwipiepy` allowed in `measure/` only, with a build check (S3) | §15.3, §13 | user 2026-09-16 |
 | stop-slop-ko not in era 02; `exempt` removed | §1, §6 | E7-a, user |
-| 90-day text retention, by monthly file | §20 | E7-b, user |
+| 90-day text retention, by monthly file, deleted automatically by the runner | §20 | E7-b, user; automatic deletion user 2026-09-17 |
 | Self-application as repository default, behind isolation | §21 | E7-d, user |
 | Codex agents need `multi_agent_v2`, no `--ephemeral`; A1 lifted for that configuration | §2.2, §8 | era 99 R1, user |
 | ko-rewrite redirect placed under upstream step 1 | §7 | era 99 R3 |
@@ -904,7 +904,7 @@ The per-machine steps go in the repository's Korean `README.md`. **Whether a `gi
 | Two runners; policy cases leave `claude plugin eval`, including the em-dash regex E5 kept there | §17 | E5; eval-style-selection probe |
 | `ruleset` deferred (Apache-2.0 noted) | §17.4 | E5 |
 | `ko.change_rate` deferred to the gate era | §15.5 | E4 item 8 |
-| Gate: a separate `Stop` executable; four arms; not opened | §19 | E6 |
+| Gate: a separate `Stop` executable; four arms; not opened; `gate/` and the four record fields reserved now | §19, §12.1 | E6; reservation user 2026-09-17 |
 
 ### 22.2 Open
 
@@ -915,6 +915,7 @@ The per-machine steps go in the repository's Korean `README.md`. **Whether a `gi
 | Extractor reads the rewrite taxonomy directly (61 → 85 patterns) | — | 4-plan (§14.2) |
 | Sessions per arm | from pilot variance | 6-build, after the pilot (§18.4) |
 | `github` marketplace source for self-application | — | 4-plan (§21.2) |
+| Build step at which self-application is switched on | right after the step that builds the logger's isolation (`~` expansion, `project`) and `build_id` | 4-plan (§21.1) |
 | Whether subagent reports always use hand-back on Claude Code | count in pilot | 6-build (§14.2) |
 | Effective output style observable live on Claude Code | — | **era 03 blocker** (§11.3) |
 | Codex `task_type` third value | — | when a Codex arm is added: not in era 02, whose corpus is `claude -p` only (§18.2); no era is assigned yet |
