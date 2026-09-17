@@ -1,0 +1,224 @@
+{
+  "stage": "02-P7",
+  "item": "10_plan.md P7.1",
+  "tool": "claude plugin eval (Claude Code 2.1.274)",
+  "command": "claude plugin eval <scratch copy of dist/claude-code/ko-quality with evals/ = tests/evals/claude-code/*-fires> --ablation with-without -j 4 --max-cost-usd 4 --no-publish --trust-plugin --json",
+  "arms": "with = plugin installed, no style selected (arm B, 09 §17.2); without = no plugin (arm A)",
+  "plugin": {
+    "name": "ko-quality",
+    "version": "0.2.0",
+    "build_id": "51112680979b60c3"
+  },
+  "started_at": "2026-09-17T09:48:25.551Z",
+  "duration_seconds": 112,
+  "cost_usd": 1.6677,
+  "aggregates": {
+    "casesTotal": 4,
+    "casesPassed": 4,
+    "overallScore": 1,
+    "overallPassRate": 1,
+    "meanDelta": 1
+  },
+  "cases": {
+    "diagnose-fires": {
+      "grader": {
+        "tool": "Skill",
+        "input_match": "\"skill\"\\s*:\\s*\"(?:[\\w-]+:)?ko-diagnose\""
+      },
+      "arms": {
+        "with": [
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 6,
+            "cost_usd": 0.3457,
+            "error": null,
+            "graders": [
+              {
+                "name": "skill-fired",
+                "passed": true,
+                "explanation": "Skill called 1x (expected 1..∞)",
+                "withOnly": false
+              }
+            ]
+          }
+        ],
+        "without": [
+          {
+            "score": 0,
+            "passed": false,
+            "turns": 1,
+            "cost_usd": 0.077,
+            "error": null,
+            "graders": [
+              {
+                "name": "skill-fired",
+                "passed": false,
+                "explanation": "Skill called 0x (expected 1..∞)",
+                "withOnly": false
+              }
+            ]
+          }
+        ]
+      },
+      "aggregates": {
+        "score": 1,
+        "passRate": 1,
+        "scoreWithout": 0,
+        "passRateWithout": 0,
+        "delta": 1
+      },
+      "delta_A_vs_B": 1
+    },
+    "grammar-fires": {
+      "grader": {
+        "tool": "Skill",
+        "input_match": "\"skill\"\\s*:\\s*\"(?:[\\w-]+:)?ko-grammar\""
+      },
+      "arms": {
+        "with": [
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 4,
+            "cost_usd": 0.18,
+            "error": null,
+            "graders": [
+              {
+                "name": "skill-fired",
+                "passed": true,
+                "explanation": "Skill called 1x (expected 1..∞)",
+                "withOnly": false
+              }
+            ]
+          }
+        ],
+        "without": [
+          {
+            "score": 0,
+            "passed": false,
+            "turns": 1,
+            "cost_usd": 0.0835,
+            "error": null,
+            "graders": [
+              {
+                "name": "skill-fired",
+                "passed": false,
+                "explanation": "Skill called 0x (expected 1..∞)",
+                "withOnly": false
+              }
+            ]
+          }
+        ]
+      },
+      "aggregates": {
+        "score": 1,
+        "passRate": 1,
+        "scoreWithout": 0,
+        "passRateWithout": 0,
+        "delta": 1
+      },
+      "delta_A_vs_B": 1
+    },
+    "rewrite-fires": {
+      "grader": {
+        "tool": "Skill",
+        "input_match": "\"skill\"\\s*:\\s*\"(?:[\\w-]+:)?ko-rewrite\""
+      },
+      "arms": {
+        "with": [
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 4,
+            "cost_usd": 0.3642,
+            "error": null,
+            "graders": [
+              {
+                "name": "skill-fired",
+                "passed": true,
+                "explanation": "Skill called 1x (expected 1..∞)",
+                "withOnly": false
+              }
+            ]
+          }
+        ],
+        "without": [
+          {
+            "score": 0,
+            "passed": false,
+            "turns": 1,
+            "cost_usd": 0.088,
+            "error": null,
+            "graders": [
+              {
+                "name": "skill-fired",
+                "passed": false,
+                "explanation": "Skill called 0x (expected 1..∞)",
+                "withOnly": false
+              }
+            ]
+          }
+        ]
+      },
+      "aggregates": {
+        "score": 1,
+        "passRate": 1,
+        "scoreWithout": 0,
+        "passRateWithout": 0,
+        "delta": 1
+      },
+      "delta_A_vs_B": 1
+    },
+    "route-fires": {
+      "grader": {
+        "tool": "Skill",
+        "input_match": "\"skill\"\\s*:\\s*\"(?:[\\w-]+:)?ko-route\""
+      },
+      "arms": {
+        "with": [
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 9,
+            "cost_usd": 0.4054,
+            "error": null,
+            "graders": [
+              {
+                "name": "skill-fired",
+                "passed": true,
+                "explanation": "Skill called 1x (expected 1..∞)",
+                "withOnly": false
+              }
+            ]
+          }
+        ],
+        "without": [
+          {
+            "score": 0,
+            "passed": false,
+            "turns": 4,
+            "cost_usd": 0.1239,
+            "error": null,
+            "graders": [
+              {
+                "name": "skill-fired",
+                "passed": false,
+                "explanation": "Skill called 0x (expected 1..∞)",
+                "withOnly": false
+              }
+            ]
+          }
+        ]
+      },
+      "aggregates": {
+        "score": 1,
+        "passRate": 1,
+        "scoreWithout": 0,
+        "passRateWithout": 0,
+        "delta": 1
+      },
+      "delta_A_vs_B": 1
+    }
+  }
+}
