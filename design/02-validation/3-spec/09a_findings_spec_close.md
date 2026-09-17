@@ -74,7 +74,7 @@ No run was made for this step. The decisions are the user's, and the edits are w
 
 ### 2.2 §22 as settled
 
-§22.1 gains the two reservations above. §22.2 now holds, by settling point:
+§22.1 records decisions 1 and 2 above. §22.2 now holds, by settling point:
 
 - **`4-plan`:** directory names; per-call scan cap; extractor reads the rewrite taxonomy directly (61 → 85); `github` marketplace source; build step for self-application.
 - **`6-build`:** sessions per arm (after the pilot); subagent hand-back routing (first batch); `ruleset` adoption (record, then review).
