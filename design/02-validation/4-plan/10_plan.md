@@ -1,6 +1,6 @@
 # 10. Build plan: era 02
 
-> Stage document. **Draft, 2026-09-17.** What era 02 builds, in what order, and how each step is known to be done. The implementation target is [`09_toolkit_spec.md`](../3-spec/09_toolkit_spec.md). Entry to this stage is recorded in [`09a`](../3-spec/09a_findings_spec_close.md) §3.
+> Stage document. **Draft, 2026-09-17. L1–L5 accepted by the user 2026-09-17.** What era 02 builds, in what order, and how each step is known to be done. The implementation target is [`09_toolkit_spec.md`](../3-spec/09_toolkit_spec.md). Entry to this stage is recorded in [`09a`](../3-spec/09a_findings_spec_close.md) §3.
 >
 > **Depth (user, 2026-09-17):** steps, dependency order, done-conditions. File-level execution flow, probes and pre-decided build choices belong to `5-preflight`.
 
@@ -16,7 +16,7 @@
 
 ## 2. Decisions settled here
 
-09 §22.2 hands five decisions to this stage. Each answer below is a proposal until the user accepts this plan.
+09 §22.2 hands five decisions to this stage. **All five accepted as proposed (user, 2026-09-17).**
 
 | # | Decision | Proposal | Why | Conf. |
 |---|---|---|---|---|
@@ -35,7 +35,7 @@
 | A-12, A-13, A-14, A-17, A-23, B-3, B-4, C-1, C-3, C-4, C-6, C-12, E-3, E-4, E-5, E-6, F-1, F-2, F-3, H-2, I-5, I-6, J-4 | 23 | `quick: false` | **Excluded by upstream's contract.** "strict 전용. 문서 레벨 판단(리듬·구조·분포·POS 분석)이 필요하거나 hold 상태인 패턴" |
 | J-1 | 1 | `quick: true` | **A generator drop** (H2 heading, P1) |
 
-Every `quick: true` pattern except J-1 is in `normalized/`, and no `quick: false` pattern is. **09 is corrected in wording before `5-preflight`** (§14.2 row, §15.4 `phrase_battery` coverage note, §22.2 row), with a pointer to this section. The 23 are document-level judgments, not surface signals: they are not a gap in a surface battery, and they are candidates for Tier 1 or `llm` measurement in a later era.
+Every `quick: true` pattern except J-1 is in `normalized/`, and no `quick: false` pattern is. **09 was corrected in wording on 2026-09-17** (§14.2 row, §15.4 `phrase_battery` coverage note, §22.2 row removed as settled), with a pointer in its header. The L1–L5 answers were entered in 09 at the same time (§4, §11.2, §14.2, §21, §22). `09a` §1.4 G2 carries a forward pointer. The 23 are document-level judgments, not surface signals: they are not a gap in a surface battery, and they are candidates for Tier 1 or `llm` measurement in a later era.
 
 ## 3. Order
 
@@ -194,4 +194,3 @@ P2 + P6 + P7 ──→ P8 corpus generator + pilot ──→ P9 sized batch + wa
 - **Budget:** pilot and batch cost from §18.4's $0.12 per run, with a ceiling the user sets.
 - **User actions during the build:** removing the local `outputStyle` in P3.
 - **Pre-decided build choices** for P4 (zone set size), P5 (case counts per measurement), P8 (prompts per stratum in the pilot).
-- **The 09 wording correction** of §2.1, made before `5-preflight` closes.

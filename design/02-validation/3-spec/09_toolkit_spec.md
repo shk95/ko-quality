@@ -9,7 +9,7 @@
 >
 > Each section names its sources in a closing **Basis** line. Section numbers are 09's own. §23 maps 06's sections to 09's.
 >
-> **Status: draft, written in four bundles and reviewed with the user bundle by bundle. Verified 2026-09-17** by an independent `mid` run over the whole document. It found one unexplained reversal of an E5 handoff (§17), one dropped E4 detail (§11.2 scan cap), and one unassigned field value (§11.3). All three are fixed, and no measured fact was wrong. Supporting probes made during this stage are in `tests/runs/02-spec/`. **Closure check 2026-09-17** ([`09a`](09a_findings_spec_close.md) §1): five gaps found and fixed (G1–G5), re-verified.
+> **Status: draft, written in four bundles and reviewed with the user bundle by bundle. Verified 2026-09-17** by an independent `mid` run over the whole document. It found one unexplained reversal of an E5 handoff (§17), one dropped E4 detail (§11.2 scan cap), and one unassigned field value (§11.3). All three are fixed, and no measured fact was wrong. Supporting probes made during this stage are in `tests/runs/02-spec/`. **Closure check 2026-09-17** ([`09a`](09a_findings_spec_close.md) §1): five gaps found and fixed (G1–G5), re-verified. **Revised 2026-09-17 from `4-plan`** ([`10_plan.md`](../4-plan/10_plan.md) §2): the 24 missing rewrite patterns are 23 `quick: false` plus J-1, not 24 generator drops (§2.1); decisions L1–L5 are entered (§22).
 > - **Bundle 1** (§1–§10, §13): supply and distribution. **Reviewed (S1 decided).**
 > - **Bundle 2** (§11–§12, §14): hooks, logger, and the record. **Reviewed (S2 decided).**
 > - **Bundle 3** (§15–§18): measurement, judge, eval, and corpus. **Reviewed (S3 decided).**
@@ -130,7 +130,7 @@ ko-quality/
 
 - `server/` is removed. It held only a README saying nothing is shipped (§10).
 - **Records never live in the tree.** The corpus lives under a `KO_QUALITY_HOME` outside it (§18, §20).
-- `measure/`, `corpus/`, and `gate/` are proposed names. `4-plan` may rename them. What is fixed is that they are three separate things: the gate must not share a file with the logger or the measurement runner (§19).
+- `measure/`, `corpus/`, and `gate/` are proposed names. `4-plan` kept them ([`10_plan.md`](../4-plan/10_plan.md) §2, L1). What is fixed is that they are three separate things: the gate must not share a file with the logger or the measurement runner (§19).
 
 **Basis:** 06 §4; E1; E5 §3; E6; P7 decision 4.
 
@@ -341,7 +341,7 @@ State is kept per session, and **within a session per agent** (`agent_id`, or `m
 |---|---|---|
 | `SessionStart` | `session_id`, `cwd`, `model` if present | `model` is present on Codex. **It is absent on Claude Code**, where no hook carries it |
 | `UserPromptSubmit` | `prompt` → the turn's `task`, and the turn key (`prompt_id` on Claude Code, `turn_id` on Codex) | **A harness-injected prompt is not a task.** Claude Code delivers a subagent's hand-back to the orchestrator as a `UserPromptSubmit` whose prompt begins `<agent-message from=`. Such prompts are counted in `injected_prompts` and do not overwrite `task` |
-| `PostToolUse`, main or per `agent_id` | edit tools and their `file_path`; skills invoked; tool errors; Hangul and Latin character counts of `tool_response` string leaves, **scanning at most a fixed number of characters per call** (the cap is set in `4-plan`), with truncated calls counted | Skills: the Claude Code `Skill` tool's input. On Codex, a shell read of `skills/<name>/SKILL.md` (`skills_method: path-read`) |
+| `PostToolUse`, main or per `agent_id` | edit tools and their `file_path`; skills invoked; tool errors; Hangul and Latin character counts of `tool_response` string leaves, **scanning at most a fixed number of characters per call** (100,000 characters, set in [`10_plan.md`](../4-plan/10_plan.md) §2, L2), with truncated calls counted | Skills: the Claude Code `Skill` tool's input. On Codex, a shell read of `skills/<name>/SKILL.md` (`skills_method: path-read`) |
 | `PostToolUse`, `Agent` tool (Claude Code) | `tool_input.prompt` keyed by the returned `agentId` | The delegation prompt. `coding.19` governs this text, and it is the sub-record's input |
 | `PostToolUse`, `SubagentHandback` (Claude Code) | `tool_input.message` keyed by `agent_id` | **The subagent's actual report** where the harness routes it this way |
 | `SubagentStop` | sub record: `agent_id`, `agent_type`, output | Output is the captured hand-back message if one exists for that `agent_id`, else `last_assistant_message`. On 2.1.273 the latter was a stub ("I sent my report to the agent that started me.") whenever hand-back was used. On Codex it is the real report (era 99) |
@@ -544,10 +544,10 @@ dist/claude-code/
 | Codex custom agents interactively, project-scope agents | Untested (era 99) | When a Codex arm is added |
 | `PreToolUse(Write)` as a gate site | Asserted, not probed; different deny shape (E6) | The era that opens `gate:` |
 | A blocking `Stop` hook under a marketplace install | Probed only with `--plugin-dir` (E6) | Same |
-| Relative or `github` marketplace source declared in committed settings | Relative `directory` not loaded headlessly; interactive trust untested | `4-plan`, for self-application (§21) |
+| Relative or `github` marketplace source declared in committed settings | Relative `directory` not loaded headlessly; interactive trust untested | `5-preflight` probe; the per-machine step stands unless it passes ([`10_plan.md`](../4-plan/10_plan.md) §2, L4) |
 | `ruleset` provider licence | **Resolved**: Apache-2.0 with NOTICE, checked 2026-09-16 (§17.4) | — |
 | Removal clears the style selection from `settings.local.json` (B9) | Not yet measured (§13) | 6-build, when the removal steps are written into `README.md` |
-| Whether the extractor reads the rewrite taxonomy directly, so the 24 patterns upstream's generator drops (J-1 among them) enter `normalized/` | `normalized/taxonomy/rewrite.yaml` holds 61 of upstream's 85 (P1, E2). The battery is built from the 61 (§15.4) | `4-plan` |
+| Whether the extractor reads the rewrite taxonomy directly | `normalized/taxonomy/rewrite.yaml` holds 61 of upstream's 85. **23 of the 24 missing are `quick: false`, excluded by upstream's own contract** (strict-only, document-level judgment); **only J-1 is a generator drop** (P1). **Settled in `4-plan`: no extractor change in era 02** ([`10_plan.md`](../4-plan/10_plan.md) §2, L3) | — |
 
 ### 14.3 Structural limits — not fixable here
 
@@ -618,7 +618,7 @@ The list is organised by measurement, not by rule id. Each cites the rules it se
 | `emoji_count` | skill | C-5, diag 8.2 | count |
 | `bold_density`, `bullet_density`, `header_formula` | skill | diag 8.1/5.2/5.3, C-2/C-9/C-10 | ratio |
 | `quote_emphasis_count` | skill | J-2, diag 8.4 | count |
-| `phrase_battery`: one table, entries with scope (paragraph or document) | skill (and policy where a policy rule names the phrase) | ~47 rewrite entries (including **G-3, held by upstream as 실증 부족**), diag 1–4, 6, 7, 10. **Coverage gap: the rewrite entries come from the 61 patterns in `normalized/`; the 24 of upstream's 85 that its generator drops are not measured** (§14.2) | **count per entry**; upstream thresholds are stored as data, not applied |
+| `phrase_battery`: one table, entries with scope (paragraph or document) | skill (and policy where a policy rule names the phrase) | ~47 rewrite entries (including **G-3, held by upstream as 실증 부족**), diag 1–4, 6, 7, 10. **Coverage: the rewrite entries come from the 61 `quick: true` patterns in `normalized/`. J-1, the one `quick: true` pattern upstream's generator drops, is excess bold, which `bold_density` measures. The 23 `quick: false` patterns are document-level judgments upstream keeps out of its surface rulebook, and are not a surface measurement** (§14.2) | **count per entry**; upstream thresholds are stored as data, not applied |
 | `english_ratio`: Latin share of prose after exclusion, **on the output** | policy | coding.08, diag 10.2 | ratio |
 | `english_gloss_repeat` | skill | B-1, diag 10.1/10.3 | count |
 | `sentence_len_var`: mean, stdev, CV, max | skill | E-1, diag 5.4/9.2 | ratio |
@@ -852,7 +852,7 @@ A record holds the user's prompt and the reply **verbatim**, masked only for the
 
 ### 21.1 What makes it safe to switch on
 
-**Everything below is in place before the default is switched on.** Where in the build that happens is `4-plan`'s decision (§22.2).
+**Everything below is in place before the default is switched on.** It is switched on in build step P3, after the plugin and the logger ([`10_plan.md`](../4-plan/10_plan.md) §2, L5).
 
 | Requirement | Mechanism | Evidence |
 |---|---|---|
@@ -870,7 +870,7 @@ A record holds the user's prompt and the reply **verbatim**, masked only for the
 | The marketplace | **no**: it is recorded in user settings with an absolute path, and a relative path in project settings was not loaded headlessly | `claude plugin marketplace add <repo>/dist/claude-code` |
 | `outputStyle: "ko-quality:agent-reply"` | yes, as the default | **Remove any local `outputStyle`** (this repository's `settings.local.json` holds `Concise`), because a local selection beats the committed one |
 
-The per-machine steps go in the repository's Korean `README.md`. **Whether a `github` marketplace source removes the marketplace step is `4-plan`'s question** (§14.2).
+The per-machine steps go in the repository's Korean `README.md`. **Whether a `github` marketplace source removes the marketplace step is probed in `5-preflight`** ([`10_plan.md`](../4-plan/10_plan.md) §2, L4).
 
 ### 21.3 What it costs, accepted
 
@@ -904,18 +904,15 @@ The per-machine steps go in the repository's Korean `README.md`. **Whether a `gi
 | Two runners; policy cases leave `claude plugin eval`, including the em-dash regex E5 kept there | §17 | E5; eval-style-selection probe |
 | `ruleset` deferred (Apache-2.0 noted) | §17.4 | E5 |
 | `ko.change_rate` deferred to the gate era | §15.5 | E4 item 8 |
+| `4-plan` decisions: directory names kept; scan cap 100,000 characters; no extractor change; self-application at P3 | §4, §11.2, §14.2, §21.1 | [`10_plan.md`](../4-plan/10_plan.md) §2, L1–L3, L5; user 2026-09-17 |
 | Gate: a separate `Stop` executable; four arms; not opened; `gate/` and the four record fields reserved now | §19, §12.1 | E6; reservation user 2026-09-17 |
 
 ### 22.2 Open
 
 | Decision | Leaning | Settled in |
 |---|---|---|
-| Directory names `measure/`, `corpus/`, `gate/` | as written | 4-plan |
-| Per-call scan cap for `tool_output_chars` | — | 4-plan (§11.2) |
-| Extractor reads the rewrite taxonomy directly (61 → 85 patterns) | — | 4-plan (§14.2) |
 | Sessions per arm | from pilot variance | 6-build, after the pilot (§18.4) |
-| `github` marketplace source for self-application | — | 4-plan (§21.2) |
-| Build step at which self-application is switched on | right after the step that builds the logger's isolation (`~` expansion, `project`) and `build_id` | 4-plan (§21.1) |
+| `github` marketplace source for self-application | per-machine step stands | `5-preflight` probe (§21.2) |
 | Whether subagent reports always use hand-back on Claude Code | count in pilot | 6-build (§14.2) |
 | Effective output style observable live on Claude Code | — | **era 03 blocker** (§11.3) |
 | Codex `task_type` third value | — | when a Codex arm is added: not in era 02, whose corpus is `claude -p` only (§18.2); no era is assigned yet |
