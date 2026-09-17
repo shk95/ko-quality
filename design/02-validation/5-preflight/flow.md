@@ -25,7 +25,7 @@ Pre-decided answers are not reopened during the build. If build evidence shows a
 | F13 | `github` marketplace (L4) | **The per-machine `marketplace add` step stays.** X1: a `github` marketplace in committed settings did not load headlessly, with or without `path` | Interactive trust might load it. Answer: untested, and the build cannot test it headlessly; 7-review may revisit | high |
 | F14 | Records of runs | `tests/runs/P<n>/` holds summaries only: counts, hashes, tokens, costs, synthetic text. Corpus records stay under the corpus home outside the tree (09 §20). No personal paths | — | high |
 | F15 | The `-ㅁ`/`-음` sentence ending in `noun_ending_ratio` (X3) | **pending: user** (§4, U6). Proposed: a sentence whose final `EF` morpheme is `ᆷ` or `음` counts as a **noun ending** (개조식 명사형 종결, which `coding.12` targets). 09 §15.4's recipe note gains this line before the build | Some `-음` endings are legitimate in 문서체 (`~함을 알 수 있음` in a memo). Answer: the measurement is a rate compared across arms, not a verdict; the case set (F7) includes both kinds and reports them | medium |
-| F16 | Codex models | Load checks `gpt-5.6-luna`, behaviour checks `gpt-5.6-terra` (F2). The `large` tier's `gpt-5.6-sol` did not run from a temporary `CODEX_HOME` (X4; cause not established): a `large` Codex run is replaced by `large` on Claude Code (`claude-opus-5`), recorded as such | — | high |
+| F16 | Codex models | Load checks `gpt-5.6-luna`, behaviour checks `gpt-5.6-terra` (F2). The `large` tier's `gpt-5.6-sol` did not run (X4; not measured in era 02, cause not investigated): a `large` Codex run is replaced by `large` on Claude Code (`claude-opus-5`), recorded as such | — | high |
 
 ## 2. Verification run (one per P, outside the cap)
 

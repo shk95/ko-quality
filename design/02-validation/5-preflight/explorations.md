@@ -7,7 +7,7 @@
 | Item | Value | Note |
 |---|---|---|
 | Claude Code | 2.1.274 | 09 §2.1's facts were measured on 2.1.270–2.1.273. X2 re-checks the ones the build depends on |
-| Codex | codex-cli 0.154.0, ChatGPT account | Unchanged since era 01 and era 99. `gpt-5.6-luna` and `gpt-5.6-terra` run. **The `large` tier's model is `gpt-5.6-sol`** (`AGENTS.md` corrected 2026-09-17; it said `gpt-5.6`). Both `gpt-5.6-sol` and `gpt-5.6` return 400 "not supported when using Codex with a ChatGPT account" from a temporary `CODEX_HOME`. The temporary home's model cache lists only `gpt-5.5`, `gpt-5.6-luna`, `gpt-5.6-terra`, `codex-auto-review`, `gpt-reserve`. **Whether `large` is unavailable to the account or only to this CLI version and home is not established** (X4) |
+| Codex | codex-cli 0.154.0, ChatGPT account | Unchanged since era 01 and era 99. `gpt-5.6-luna` and `gpt-5.6-terra` run. **The `large` tier's model is `gpt-5.6-sol`** (`AGENTS.md` corrected 2026-09-17; it said `gpt-5.6`). Both `gpt-5.6-sol` and `gpt-5.6` return 400 "not supported when using Codex with a ChatGPT account" from a temporary `CODEX_HOME`. The temporary home's model cache lists only `gpt-5.5`, `gpt-5.6-luna`, `gpt-5.6-terra`, `codex-auto-review`, `gpt-reserve`. **Not measured in era 02; the cause was not investigated.** `gpt-5.6-sol` stays the `large` tier's model (X4) |
 | Python | 3.9.6 (system) | The logger and build stay stdlib on this version. `measure/` uses a virtualenv (S3) |
 | Branch | `dev`, clean | — |
 | This repository's local style | `.claude/settings.local.json` holds `outputStyle: "Concise"` | P3 removes it (09 §21.2), with the user's consent (`flow.md` §4) |

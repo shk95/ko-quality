@@ -39,8 +39,9 @@
       "gpt-5.6-luna",
       "gpt-5.6-terra",
       "gpt-reserve"
-    ]
+    ],
+    "cause_of_400s": "Not measured in era 02; the cause was not investigated. gpt-5.6-sol remains the large tier's model."
   },
   "hook_trust": "codex exec --dangerously-bypass-hook-trust was blocked by Claude Code's auto-mode classifier. No permission rule for it is in place.",
-  "verdict": "Both harnesses are usable now for luna and terra. The large tier (gpt-5.6-sol) did not run from a temporary CODEX_HOME; whether that is the account or the setup is not established. The hook-trust flag was blocked by Claude Code's auto-mode classifier."
+  "verdict": "Both harnesses are usable now for luna and terra. The large tier (gpt-5.6-sol) did not run from a temporary CODEX_HOME; not measured in era 02, the cause was not investigated. The hook-trust flag was blocked by Claude Code's auto-mode classifier."
 }
