@@ -1,0 +1,26 @@
+# P1 step 7: two consecutive builds byte-compared, then checks 1-6. 2026-09-17
+built dist/claude-code/ko-quality (styles: agent-reply, formal-report; agents: agent-reply policy)
+built dist/claude-code/.claude-plugin/marketplace.json
+built dist/claude-code/README.md
+built dist/agent-plugin/agent-reply (ko-quality)
+built dist/agent-plugin/formal-report (ko-quality-formal)
+built dist/agent-plugin/.agents/plugins/marketplace.json
+built dist/claude-code/ko-quality (styles: agent-reply, formal-report; agents: agent-reply policy)
+built dist/claude-code/.claude-plugin/marketplace.json
+built dist/claude-code/README.md
+built dist/agent-plugin/agent-reply (ko-quality)
+built dist/agent-plugin/formal-report (ko-quality-formal)
+built dist/agent-plugin/.agents/plugins/marketplace.json
+== diff -r build1 build2 (empty = byte-identical)
+diff exit 0
+== python3 -m build.checks
+check 1 re-extraction: check: 11 files, 1012 fragments, 0 failures
+check 1 sidecars: ok
+check 2 agent-reply: compared agent-plugin/agent-reply, claude-code/ko-quality
+check 2 formal-report: compared agent-plugin/formal-report, claude-code/ko-quality
+check 3 agents: 3 agents across 3 dists
+check 4 skills: compared 3 dists
+check 5 agent names: 0 repository agents against 3 shipped names
+check 6 dependency boundary: 23 files under logger, build, upstream, dist, 0 third-party imports
+checks: 0 failures
+== force-for-plugin in dist: 0 files
