@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3, F7). Synthetic. Correct honorific prose. XSN 님 before a particle, and 체언 + XSA (필요하).
+id: t1-correct-04-honorific
+profile: agent-reply
+arm: any
+layer: policy
+input: "사용자님께서 요청하신 보고서를 정리했습니다. 내용이 길어서 핵심만 먼저 말씀드리겠습니다. 추가 검토가 필요하면 알려 주십시오."
+expect:
+  noun_ending_ratio.ratio:
+    max: 0
+  particle_absence_ratio.ratio:
+    max: 0.5

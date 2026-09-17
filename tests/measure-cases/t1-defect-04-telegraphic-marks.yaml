@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3, F7). Synthetic. Telegraphic with other trailing marks: !, a closing parenthesis, ?.
+id: t1-defect-04-telegraphic-marks
+profile: agent-reply
+arm: any
+layer: policy
+input: "원인 파악 중!\n로그 수집 완료 (서버 두 대)\n다음 단계 설정 롤백 검토?"
+expect:
+  noun_ending_ratio.ratio:
+    min: 1
+  particle_absence_ratio.ratio:
+    min: 0.6

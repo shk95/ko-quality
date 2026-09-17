@@ -1,0 +1,13 @@
+# Tier 2 paste-in case (09 §17.3, §15.4). Synthetic. input: the original; output: the rewrite. Fails code_url_path only: the path becomes a description.
+id: t2-defect-03-code-url-path
+profile: agent-reply
+arm: any
+layer: skill
+input: "김민준 님이 \"배포는 금요일 오후 3시에 한다\"고 말했습니다. 설정은 `config/prod.yaml`에서 읽고, 캐시 크기는 512MB로 잡았습니다. 이 방식이야말로 '혁신적인' 변화라고 할 수 있습니다. 네이버 클라우드와 GitHub Actions에서 같은 결과를 확인했습니다."
+output: "김민준 님은 \"배포는 금요일 오후 3시에 한다\"고 말했습니다. 설정은 운영 설정 파일에서 읽습니다. 캐시 크기는 512MB입니다. 이 방식은 큰 변화입니다. 네이버 클라우드와 GitHub Actions에서도 같은 결과가 나왔습니다."
+expect:
+  preserve: [number_unit_date, quote, proper_noun, register]
+  ko.preserve.code_url_path.pass:
+    equals: false
+  ko.preserve.code_url_path.count:
+    min: 1

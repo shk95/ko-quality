@@ -1,0 +1,13 @@
+# Tier 1 case (09 §17.3). Synthetic. E-2: the same closing ending five sentences in a row.
+id: t1-defect-09-monotony
+profile: agent-reply
+arm: any
+layer: skill
+input: "파일을 읽었다. 설정을 고쳤다. 테스트를 돌렸다. 결과를 보냈다. 작업을 끝냈다."
+expect:
+  ending_monotony.longest_run:
+    min: 5
+  ending_monotony.ratio:
+    equals: 1
+  pos_ngram_diversity.ratio:
+    max: 0.5

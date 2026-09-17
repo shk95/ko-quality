@@ -98,9 +98,14 @@ def english_gloss_repeat(res):
     return {"count": repeats, "glosses": glosses, "terms": len(seen)}
 
 
-def sentences(res, kinds=("paragraph", "list_item")):
+PLACEHOLDER = "\u25a1"   # □: an excluded character that still takes its place in a sentence
+
+
+def sentences(res, kinds=("paragraph", "list_item"), keep_length=False):
+    """Sentences with Hangul. With `keep_length`, excluded characters are a placeholder rather than spaces, so a sentence
+    that opens with a number, a path or a proper noun keeps its length (P6: NNP made the loss visible)."""
     out = []
-    for line in res.prose(kinds):
+    for line in res.prose(kinds, fill=PLACEHOLDER if keep_length else " "):
         for s in re.split(r"(?<=[.?!。])\s+", line):
             s = s.strip()
             if HANGUL.search(s):
@@ -109,7 +114,7 @@ def sentences(res, kinds=("paragraph", "list_item")):
 
 
 def sentence_len_var(res):
-    lens = [len(s) for s in sentences(res, ("paragraph",))]
+    lens = [len(s) for s in sentences(res, ("paragraph",), keep_length=True)]
     if not lens:
         return {"n": 0, "mean": None, "stdev": None, "cv": None, "max": None}
     mean = statistics.mean(lens)

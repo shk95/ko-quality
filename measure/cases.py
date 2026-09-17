@@ -4,6 +4,12 @@ A case is YAML in the subset build/mini_yaml.py reads: `id`, `profile`, `arm`, `
 the reply text the measurements read), and `expect`, whose keys are dotted paths into a measurement's value
 (`em_dash_count.count`, `phrase_battery.entries.rewrite.A-1.count`) with `max`, `min` or `equals`. A key nothing reads is
 an error, not a silent pass (09 §17.3: a field nothing reads is not kept).
+
+A paste-in case (Tier 2) carries the original in `input`, as 09 §17.3 says, and the rewrite in `output`: the measurements
+then read `output`, and `ko.preserve` reads both. `expect.preserve: [kinds]` passes when each kind has zero violations; a
+case that must fail a kind says so with a dotted path (`ko.preserve.quote.pass: {equals: false}`).
+
+A check on a measurement whose tier did not run (Tier 1 without the analyser) is reported as skipped, never as a pass.
 """
 import json
 import sys
@@ -15,6 +21,8 @@ from build.mini_yaml import load as load_yaml  # noqa: E402
 
 from measure import exclusion  # noqa: E402
 from measure import measurements as registry  # noqa: E402
+
+DECLARED = registry.declarations()
 
 
 def number(v):
@@ -29,8 +37,17 @@ def number(v):
             return v
 
 
+def measurement_of(path):
+    """The measurement a dotted path names: the longest declared name it starts with (`ko.preserve` contains a dot)."""
+    for name in sorted(DECLARED, key=len, reverse=True):
+        if path == name or path.startswith(name + "."):
+            return name
+    return path.split(".")[0]
+
+
 def lookup(features, path):
-    name, _, rest = path.partition(".")
+    name = measurement_of(path)
+    rest = path[len(name) + 1:]
     if name not in features:
         raise KeyError(f"no measurement {name}")
     value = features[name]
@@ -56,14 +73,25 @@ def check(value, op, target):
     return value <= target if op == "max" else value >= target if op == "min" else None
 
 
-def run(cases_dir, tiers=(0,)):
-    results, failures = [], []
+def run(cases_dir, tiers=None):
+    tiers = registry.available_tiers() if tiers is None else tiers
+    results, failures, skipped = [], [], []
     covered = {}
     for f in sorted(Path(cases_dir).glob("*.yaml")):
         case = load_yaml(f)
-        feats = registry.compute_text(case["input"], tiers)
-        for path, cond in (case.get("expect") or {}).items():
-            if path == "preserve":
+        if case.get("output") is not None:
+            feats = registry.compute_pair(case["input"], case["output"], tiers)
+        else:
+            feats = registry.compute_text(case["input"], tiers)
+        expect = dict(case.get("expect") or {})
+        for kind in expect.pop("preserve", None) or []:
+            expect[f"{registry.PRESERVE}.{kind}.pass"] = {"equals": True}
+        for path, cond in expect.items():
+            name = measurement_of(path)
+            tier = DECLARED.get(name, {}).get("tier")
+            kind_tier1 = name == registry.PRESERVE and any(path.startswith(f"{name}.{k}") for k in ("proper_noun", "register"))
+            if tier not in tiers or ((tier == 1 or kind_tier1) and 1 not in tiers):
+                skipped.append({"case": case["id"], "expect": path, "reason": f"tier {1 if kind_tier1 else tier} not computed"})
                 continue
             for op, target in cond.items():
                 try:
@@ -74,12 +102,13 @@ def run(cases_dir, tiers=(0,)):
                 row = {"case": case["id"], "expect": path, "op": op, "target": number(target), "value": value, "pass": bool(ok)}
                 results.append(row)
                 kind = "correct" if "-correct-" in case["id"] else "defective"
-                covered.setdefault(path.split(".")[0], {"correct": set(), "defective": set()})[kind].add(case["id"])
+                covered.setdefault(name, {"correct": set(), "defective": set()})[kind].add(case["id"])
                 if not ok:
                     failures.append(row)
     coverage = {m: {k: len(v) for k, v in c.items()} for m, c in sorted(covered.items())}
-    return {"exclusion_version": exclusion.EXCLUSION_VERSION, "checks": len(results), "failures": failures,
-            "coverage_cases_per_measurement": coverage, "results": results}
+    return {"exclusion_version": exclusion.version(None if 1 in tiers else False), "analyser": registry.analyser_status(),
+            "tiers": list(tiers), "checks": len(results), "failures": failures, "skipped": len(skipped),
+            "skipped_checks": skipped, "coverage_cases_per_measurement": coverage, "results": results}
 
 
 if __name__ == "__main__":

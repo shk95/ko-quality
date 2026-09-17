@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3, F7). Synthetic. Telegraphic without trailing punctuation: coding.14 and coding.15's own defective examples, one per line.
+id: t1-defect-03-telegraphic-bare
+profile: agent-reply
+arm: any
+layer: policy
+input: "이 결정은 이후 중요 정책이 갈리는 자리.\n지출 비용 추론 용도의 토큰 카운트 함수의 오류 상황\n배포 일정 오후 네 시 확정"
+expect:
+  noun_ending_ratio.ratio:
+    min: 1
+  particle_absence_ratio.ratio:
+    min: 0.6

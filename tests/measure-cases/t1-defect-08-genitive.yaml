@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3). Synthetic. coding.11b: 의 compressing relations.
+id: t1-defect-08-genitive
+profile: agent-reply
+arm: any
+layer: policy
+input: "사본의 문구는 작업의 상황을 알립니다. 회의의 결과의 요약의 형식을 바꿨습니다."
+expect:
+  genitive_ui_ratio.ratio:
+    min: 0.5
+  genitive_ui_ratio.jkg:
+    min: 5

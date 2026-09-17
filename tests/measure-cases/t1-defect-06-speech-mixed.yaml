@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3). Synthetic. E-7: three speech levels in one reply.
+id: t1-defect-06-speech-mixed
+profile: agent-reply
+arm: any
+layer: policy
+input: "설정 파일을 고쳤습니다. 이제 서비스가 정상으로 돌아가요. 남은 작업은 내일 처리한다. 로그도 따로 정리했습니다."
+expect:
+  speech_level.levels_present:
+    min: 3
+  speech_level.dominant:
+    equals: hapsyo

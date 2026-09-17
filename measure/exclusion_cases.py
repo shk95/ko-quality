@@ -13,7 +13,7 @@ from pathlib import Path
 
 from measure import exclusion
 
-TIER1_PENDING = {"proper_noun": "Tier 1: NNP needs the analyser (P6). Only Latin capitalised tokens are found in Tier 0"}
+from measure import analyser
 
 
 def locate(text, needle, nth=0):
@@ -65,6 +65,6 @@ def evaluate(cases_dir, run=exclusion.run):
                 if label == "negatives" and covered(spans, *loc, case["text"], whole=False):
                     row["false_positives"] += 1
                     row["wrongly_excluded"].append(f"{case['id']}: {item['text']}")
-    for z, note in TIER1_PENDING.items():
-        zones[z]["status"] = note
-    return {"exclusion_version": exclusion.EXCLUSION_VERSION, "cases": len(files), "zones": zones, "label_errors": errors}
+    if not analyser.available():
+        zones["proper_noun"]["status"] = "Tier 1 half not applied: the analyser is unavailable. Only Latin capitalised tokens are found"
+    return {"exclusion_version": exclusion.version(), "analyser": analyser.version(), "cases": len(files), "zones": zones, "label_errors": errors}

@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3, F15). Synthetic. 문서체 memo -음, which some readers accept: under F15 it counts as a noun ending. Reported beside the separation sets, not inside them.
+id: t1-defect-05-memo-eum
+profile: agent-reply
+arm: any
+layer: policy
+input: "점검 결과 설정 오류가 원인임을 알 수 있음. 동일 증상은 이전 배포에서도 확인되었음. 담당자에게 공유하였음."
+expect:
+  noun_ending_ratio.ratio:
+    min: 1
+  noun_ending_ratio.by_final.ef_nominal:
+    min: 2

@@ -14,7 +14,10 @@ $KO_QUALITY_HOME
 1. **보존 기한 먼저.** 실행할 때마다 텍스트가 든 월별 파일(`logs/`, `judge/`, `grader/`, `exports/`)중 그 달의 마지막 날이 90일보다 오래된 것을 지우고, 지운 목록을 보고합니다. 되돌릴 수 없습니다. `derived/`와 `annotations/`는 지우지 않습니다(09 §20).
 2. **제외 패스**(`exclusion.py`, 09 §15.2). 코드, URL·경로·식별자, 출처 있는 직접 인용, 숫자·날짜·단위·통화, 수식·화학식, 법조문, 영문 약어, 고유명사를 줄 단위로 걸러 내고, 제목·목록·표 행은 따로 표시합니다. 버전은 `exclusion_version`으로 기록됩니다.
 3. **파생 필드.** `instruction_lang`, `artifact_lang`(제외 뒤 한글 비율), `usable`(제외 뒤 한국어 어절 20개 이상. 걸러 내는 조건으로 쓰지 않는 표시일 뿐입니다).
-4. **측정값**(`measurements/`). 측정마다 층(`policy`, `skill`)과 단계(Tier)를 밝히고, 숫자와 비율만 냅니다. upstream의 기준값(`문단 3회+` 등)은 `data/phrase_battery.json`에 자료로만 두고 적용하지 않습니다. Tier 1과 Tier 2는 P6에서 들어옵니다.
+4. **측정값**(`measurements/`). 측정마다 층(`policy`, `skill`)과 단계(Tier)를 밝히고, 숫자와 비율만 냅니다. upstream의 기준값(`문단 3회+` 등)은 `data/phrase_battery.json`에 자료로만 두고 적용하지 않습니다.
+   - Tier 0(`tier0.py`)은 표준 라이브러리만 씁니다.
+   - Tier 1(`tier1.py`)은 형태소 분석기로 문단 줄의 문장을 읽습니다. 분석기가 없으면 계산하지 않고, 실행 보고에 그 이유를 적습니다. 이때 제외 패스 버전에는 `-t0`이 붙어서 두 결과가 섞이지 않습니다.
+   - Tier 2(`tier2.py`)의 `ko.preserve`는 원문과 고친 글을 함께 읽습니다. 붙여 넣기(paste-in) 레코드와 사례에서만 계산합니다. 붙여 넣기 프롬프트는 지시문 한 단락, 빈 줄, 원문 순서로 씁니다.
 
 같은 입력으로 다시 돌리면 같은 파생 레코드가 나옵니다. 로그가 기한으로 지워져도 파생 레코드는 남습니다.
 
@@ -23,8 +26,9 @@ $KO_QUALITY_HOME
 ```sh
 python3 -m measure run --home ~/.ko-quality-corpus --report report.json
 python3 -m measure exclusion-cases          # tests/exclusion-cases의 구역별 놓친 수
-python3 -m measure cases                    # tests/measure-cases의 맞는 사례·틀린 사례
-python3 tests/measure_runner_test.py        # 보존 기한과 재실행 동일성
+python3 -m measure cases                    # tests/measure-cases의 맞는 사례·틀린 사례. 분석기가 없으면 Tier 1 검사는 건너뜀으로 셉니다
+python3 -m measure separation               # 맞는 한국어와 전보체의 분리 정도를 E2 기록과 나란히 보고합니다(Tier 1)
+python3 tests/measure_runner_test.py        # 보존 기한, 재실행 동일성, 실행 보고 항목, 위임 프롬프트와 붙여 넣기 측정
 ```
 
 ## 가상 환경

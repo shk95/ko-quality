@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3, F7). Synthetic. Telegraphic 개조식: -함, -됨, -음 endings (F15: EF ᆷ/음 and ETN both count).
+id: t1-defect-02-telegraphic-ham
+profile: agent-reply
+arm: any
+layer: policy
+input: "설정 파일 로드 로직 수정함. 캐시 비어 있을 시 파일 재로드함. 테스트 전부 통과됨. 응답 시간 소폭 줄었음."
+expect:
+  noun_ending_ratio.ratio:
+    min: 1
+  particle_absence_ratio.ratio:
+    min: 0.6

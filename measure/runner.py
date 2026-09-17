@@ -51,7 +51,7 @@ def join(record, index):
 
 
 def derive_record(record, annotation):
-    d = {"record_id": record["id"], "exclusion_version": exclusion.EXCLUSION_VERSION}
+    d = {"record_id": record["id"], "exclusion_version": exclusion.version()}
     d.update(derived_fields.derive(record))
     d["features"] = registry.compute(record, annotation)
     return d
@@ -59,7 +59,7 @@ def derive_record(record, annotation):
 
 def run(home, write=True, today=None):
     home = Path(home)
-    report = {"exclusion_version": exclusion.EXCLUSION_VERSION, "code_version": code_version()}
+    report = {"exclusion_version": exclusion.version(), "code_version": code_version()}
     report["retention_deleted"] = retention.enforce(home, today)
     logs = read_jsonl(home / "logs")
     index = annotation_index(home)

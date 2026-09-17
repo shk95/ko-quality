@@ -1,0 +1,9 @@
+# Tier 1 case (09 §17.3). Synthetic. coding.15: a long run of bare nouns (the rule's own defective example inside a sentence).
+id: t1-defect-07-noun-run
+profile: agent-reply
+arm: any
+layer: policy
+input: "지출 비용 추론 용도 토큰 카운트 함수 오류 상황이 다시 발생했습니다."
+expect:
+  noun_run_length.max:
+    min: 4

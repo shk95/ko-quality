@@ -85,6 +85,15 @@ def main():
         # 09 §15.6: what every run report carries
         for key in ("exclusion_version", "code_version", "arm_counts", "stratum_counts", "floor_exclusions", "measurements"):
             check(key in report, f"run report carries {key}")
+        # 09 §15.6: for a Tier 1 measurement, the analyser version; without the analyser, the reason and a -t0 exclusion version
+        if 1 in registry.available_tiers():
+            check(str(report.get("analyser", {}).get("version", "")).startswith("kiwipiepy 0.23.2"), f"analyser version in the report: {report.get('analyser')}")
+            check(report.get("exclusion_version") == "ex-3", f"exclusion version with the analyser: {report.get('exclusion_version')}")
+            check(any(k in d06[rec(2, "", "", "")["id"]]["features"] for k in ("noun_ending_ratio", "particle_absence_ratio")), "derived records carry Tier 1 features")
+        else:
+            check(report.get("analyser", {}).get("unavailable"), f"analyser unavailability reported: {report.get('analyser')}")
+            check(report.get("exclusion_version", "").endswith("-t0"), "exclusion version without the analyser carries -t0")
+        check(all(d.get("exclusion_version") == report["exclusion_version"] for d in d06.values()), "derived records carry the run's exclusion version")
         check(report.get("arm_counts") == {"B": 1, "C": 1, "unannotated": 1}, f"arm counts from joined annotations: {report.get('arm_counts')}")
         check(report.get("stratum_counts") == {"english": 1, "conversation": 1, "unannotated": 1}, f"stratum counts: {report.get('stratum_counts')}")
         check(report.get("annotations_joined") == 2, "two log records join an annotation")
@@ -98,12 +107,20 @@ def main():
         sub.update(harness_position="sub-to-orchestrator", agent_type="ko-quality:korean-reviewer")
         feats = registry.compute(sub, None)
         declared = registry.declarations()
-        policy = sorted(n for n, d in declared.items() if "policy" in d["layers"])
+        tiers = registry.available_tiers()
+        policy = sorted(n for n, d in declared.items() if "policy" in d["layers"] and d["tier"] in tiers and d["tier"] != 2)
         skill_only = sorted(n for n, d in declared.items() if "policy" not in d["layers"])
         check(all("delegation_prompt_" + n in feats for n in policy), f"sub record carries delegation_prompt_ for every policy measurement: {policy}")
         check(not any("delegation_prompt_" + n in feats for n in skill_only), "no delegation_prompt_ for a skill-only measurement")
         check(feats.get("delegation_prompt_em_dash_count", {}).get("count") == 1, f"delegation prompt em dash counted: {feats.get('delegation_prompt_em_dash_count')}")
         check(feats.get("em_dash_count", {}).get("count") == 0, "output em dash count is the output's, not the prompt's")
+        paste = rec(6, "2026-09", "아래 글을 자연스럽게 고쳐 주세요.\n\n배포는 3시에 시작합니다. 설정은 `config/prod.yaml`에서 읽습니다.",
+                    "배포는 4시에 시작합니다. 설정은 `config/prod.yaml`에서 읽습니다.")
+        pf = registry.compute(paste, {"session_id": "s-6", "arm": "C", "stratum": "paste-in"})
+        kp = pf.get("ko.preserve", {})
+        check(kp.get("number_unit_date", {}).get("pass") is False and kp.get("code_url_path", {}).get("pass") is True,
+              f"paste-in record: ko.preserve reads the pasted text after the instruction: {kp}")
+        check("ko.preserve" not in registry.compute(paste, {"session_id": "s-6", "arm": "C", "stratum": "conversation"}), "no ko.preserve outside paste-in")
         main_feats = registry.compute(dict(sub, harness_position="main-to-user"), None)
         check(not any(k.startswith("delegation_prompt_") for k in main_feats), "a main record carries no delegation_prompt_ field")
         nosub = registry.compute(dict(sub, task=""), None)

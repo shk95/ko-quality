@@ -1,0 +1,21 @@
+{
+  "id": "x13-korean-proper-nouns",
+  "kind": "correct",
+  "text": "부산 지사의 박지현 님이 삼성전자 협력사 목록을 보내 주셨습니다. 한국은행 발표 자료와 카카오 공지를 함께 검토했습니다. 이순신 장군 동상 앞에서 사진도 찍었습니다. 로더를 고친 뒤 캐시를 비웠고, 스레드 수와 쿼리 시간을 다시 쟀습니다. 서버 메모리도 확인했습니다.",
+  "positives": [
+    {"zone": "proper_noun", "text": "부산"},
+    {"zone": "proper_noun", "text": "박지현"},
+    {"zone": "proper_noun", "text": "삼성전자"},
+    {"zone": "proper_noun", "text": "한국은행"},
+    {"zone": "proper_noun", "text": "카카오"},
+    {"zone": "proper_noun", "text": "이순신"}
+  ],
+  "negatives": [
+    {"zone": "proper_noun", "text": "로더"},
+    {"zone": "proper_noun", "text": "캐시"},
+    {"zone": "proper_noun", "text": "스레드"},
+    {"zone": "proper_noun", "text": "쿼리"},
+    {"zone": "proper_noun", "text": "서버"},
+    {"zone": "proper_noun", "text": "메모리"}
+  ]
+}

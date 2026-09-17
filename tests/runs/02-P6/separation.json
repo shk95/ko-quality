@@ -1,0 +1,162 @@
+{
+  "exclusion_version": "ex-3",
+  "analyser": {
+    "version": "kiwipiepy 0.23.2 (kiwipiepy_model 0.23.0, cong)"
+  },
+  "sets": {
+    "correct": [
+      "t1-correct-01-prose",
+      "t1-correct-02-irregular",
+      "t1-correct-03-haeyo",
+      "t1-correct-04-honorific",
+      "t1-correct-05-technical"
+    ],
+    "telegraphic": [
+      "t1-defect-01-telegraphic-nouns",
+      "t1-defect-02-telegraphic-ham",
+      "t1-defect-03-telegraphic-bare",
+      "t1-defect-04-telegraphic-marks"
+    ],
+    "beside": [
+      "t1-defect-05-memo-eum"
+    ]
+  },
+  "measurements": {
+    "noun_ending_ratio": {
+      "correct": {
+        "cases": 5,
+        "noun_endings": 0,
+        "sentences": 17,
+        "pooled": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "per_case": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "telegraphic": {
+        "cases": 4,
+        "noun_endings": 14,
+        "sentences": 14,
+        "pooled": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "per_case": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "gap_mean": 1.0,
+      "gap_pooled": 1.0,
+      "gap_min_telegraphic_minus_max_correct": 1.0,
+      "direction": "telegraphic higher",
+      "fully_separable": true,
+      "beside": {
+        "t1-defect-05-memo-eum": {
+          "sentences": 3,
+          "noun_endings": 3,
+          "ratio": 1.0,
+          "by_final": {
+            "verbal": 0,
+            "nominal": 0,
+            "etn": 1,
+            "ef_nominal": 2,
+            "connective": 0,
+            "other": 0,
+            "excluded": 0
+          }
+        }
+      }
+    },
+    "particle_absence_ratio": {
+      "correct": {
+        "cases": 5,
+        "absent": 14,
+        "nouns": 49,
+        "pooled": 0.2857,
+        "mean": 0.2584,
+        "min": 0.0,
+        "max": 0.4706,
+        "per_case": [
+          0.2857,
+          0.0,
+          0.25,
+          0.2857,
+          0.4706
+        ]
+      },
+      "telegraphic": {
+        "cases": 4,
+        "absent": 51,
+        "nouns": 55,
+        "pooled": 0.9273,
+        "mean": 0.9474,
+        "min": 0.7895,
+        "max": 1.0,
+        "per_case": [
+          1.0,
+          1.0,
+          0.7895,
+          1.0
+        ]
+      },
+      "gap_mean": 0.689,
+      "gap_pooled": 0.6416,
+      "gap_min_telegraphic_minus_max_correct": 0.3189,
+      "direction": "telegraphic higher",
+      "fully_separable": true,
+      "beside": {
+        "t1-defect-05-memo-eum": {
+          "nouns": 11,
+          "absent": 6,
+          "ratio": 0.5455,
+          "absent_by_next": {
+            "noun": 5,
+            "predicate_after_NNB": 1
+          },
+          "verbalised_dropped": 2,
+          "undetermined_dropped": 0
+        }
+      }
+    }
+  },
+  "e2": {
+    "noun_ending_ratio": {
+      "recipe": "fixed_strip_trailing_punctuation",
+      "correct": 0.0,
+      "telegraphic": 1.0,
+      "gap": 1.0
+    },
+    "particle_absence_ratio": {
+      "recipe": "exclude_verbalised_nouns_from_denominator",
+      "correct_mean": 0.17,
+      "defective_mean": 0.96,
+      "gap": 0.79,
+      "fully_separable": true,
+      "correct": {
+        "prose": 0.12,
+        "honorific": 0.0,
+        "technical": 0.4,
+        "long_prose": 0.17
+      },
+      "defective": {
+        "telegraphic": 1.0,
+        "noun_ending": 0.88,
+        "telegraphic_2": 1.0
+      }
+    }
+  },
+  "failures": [],
+  "sentences": {
+    "correct": 17,
+    "telegraphic": 14
+  }
+}

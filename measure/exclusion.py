@@ -14,11 +14,16 @@ Zones (09 §15.2 table rows):
   math          mathematical and chemical notation                                    Tier 0
   legal         legal text: 제N조, 제N항, 제N호 markers, and a line that opens with one Tier 0
   abbreviation  Latin all-caps tokens                                                 Tier 0
-  proper_noun   Latin capitalised tokens here; 체언 tagged NNP is added in Tier 1     Tier 1
+  proper_noun   Latin capitalised tokens (Tier 0), and 체언 tagged NNP by the analyser Tier 1
+
+With the analyser (measure/analyser.py) the version is EXCLUSION_VERSION; without it the NNP half of the proper_noun zone
+is not applied and the version carries `-t0`, so the two are never pooled. The analyser's sentences for every prose line
+are kept on the Result (`analysis`), for Tier 1 to reuse.
 """
 import re
 
-EXCLUSION_VERSION = "ex-2"  # ex-2: honorific speech verbs (하셨, 하시) after 라고/고 (P4 verification)
+EXCLUSION_VERSION = "ex-3"  # ex-2: honorific speech verbs (하셨, 하시) after 라고/고 (P4 verification). ex-3: NNP (P6)
+TIER0_SUFFIX = "-t0"        # the version of a run without the analyser
 A = re.ASCII  # \b and \w must not treat Hangul as a word character: particles attach directly (`320ms에서`, `max_retries를`)
 ZONES = ("code", "url_path_id", "quotation", "number", "structure", "math", "legal", "abbreviation", "proper_noun")
 REMOVED = ("code", "url_path_id", "quotation", "number", "math", "legal", "abbreviation", "proper_noun")
@@ -68,13 +73,19 @@ ABBREV = re.compile(r"(?<![A-Za-z0-9_])[A-Z][A-Z0-9]*[A-Z](?:s)?(?![A-Za-z0-9_])
 CAPITALISED = re.compile(r"(?<![A-Za-z0-9_])[A-Z][a-z]+(?:[A-Z][a-z]+)*(?:\s[A-Z][a-z]+)*(?![A-Za-z0-9_])")
 
 
+def version(analyse=None):
+    from measure import analyser
+    return EXCLUSION_VERSION if (analyser.available() if analyse is None else analyse) else EXCLUSION_VERSION + TIER0_SUFFIX
+
+
 class Result:
     def __init__(self, text):
         self.text = text
         self.spans = {z: [] for z in ZONES}
         self.spans["rhetorical_quote"] = []
         self.lines = []          # (start, end, kind): kind in paragraph, heading, list_item, table_row, quote, code, blank
-        self.version = EXCLUSION_VERSION
+        self.analysis = None     # {(start, end): [sentence token lists, offsets into self.text]} when the analyser ran
+        self.version = EXCLUSION_VERSION + TIER0_SUFFIX
 
     def removed_mask(self, zones=REMOVED):
         mask = bytearray(len(self.text))
@@ -84,14 +95,15 @@ class Result:
                     mask[i] = 1
         return mask
 
-    def prose(self, kinds=("paragraph", "heading", "list_item", "table_row"), zones=REMOVED):
-        """Text left after exclusion, per line, for the line kinds asked. Excluded characters become spaces."""
+    def prose(self, kinds=("paragraph", "heading", "list_item", "table_row"), zones=REMOVED, fill=" "):
+        """Text left after exclusion, per line, for the line kinds asked. Excluded characters become `fill` (a space, or a
+        placeholder when a measurement needs the excluded text to keep its length)."""
         mask = self.removed_mask(zones)
         out = []
         for s, e, kind in self.lines:
             if kind not in kinds:
                 continue
-            line = "".join(" " if mask[i] else self.text[i] for i in range(s, e))
+            line = "".join((fill if not self.text[i].isspace() else self.text[i]) if mask[i] else self.text[i] for i in range(s, e))
             if kind == "heading":
                 line = HEADING.sub("", line)
             elif kind == "list_item":
@@ -136,8 +148,10 @@ def _find_quotes(line):
     return found
 
 
-def run(text):
-    """Apply the pass to one text. Order matters: code first, then zones that could contain other zones' look-alikes."""
+def run(text, analyse=None):
+    """Apply the pass to one text. Order matters: code first, then zones that could contain other zones' look-alikes.
+    `analyse`: None uses the analyser when it is installed; False never does (Tier 0 only)."""
+    from measure import analyser
     text = text or ""
     res = Result(text)
     taken = bytearray(len(text))
@@ -175,6 +189,10 @@ def run(text):
         if kind in ("heading", "list_item", "table_row"):
             res.spans["structure"].append((s, e))
         _line_zones(res, taken, raw, s)
+    if analyse is None:
+        analyse = analyser.available()
+    if analyse:
+        _nnp(res, taken, analyser)
     for z in res.spans:
         res.spans[z].sort()
     return res
@@ -217,6 +235,33 @@ def _line_zones(res, taken, raw, base):
     for m in CAPITALISED.finditer(raw):
         for w in re.finditer(r"\S+", m.group(0)):
             _add(res, taken, "proper_noun", base + m.start() + w.start(), base + m.start() + w.end())
+
+
+def _nnp(res, taken, analyser):
+    """Tier 1 half of the proper_noun zone: every token tagged NNP, on raw prose lines, after the Tier 0 zones. Only the
+    characters no other zone took are added, so a name partly inside a path keeps its free part."""
+    res.analysis = {}
+    for s, e, kind in res.lines:
+        if kind not in ("paragraph", "heading", "list_item", "table_row"):
+            continue
+        sents = analyser.sentences(res.text[s:e])
+        for sent in sents:
+            for t in sent:
+                t.start += s
+                t.end += s
+                if analyser.is_tag(t.tag, "NNP"):
+                    i = t.start
+                    while i < t.end:
+                        if taken[i] or res.text[i].isspace():
+                            i += 1
+                            continue
+                        j = i
+                        while j < t.end and not taken[j] and not res.text[j].isspace():
+                            j += 1
+                        _add(res, taken, "proper_noun", i, j)
+                        i = j
+        res.analysis[(s, e)] = sents
+    res.version = EXCLUSION_VERSION
 
 
 ELEMENTS = set("H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr "
