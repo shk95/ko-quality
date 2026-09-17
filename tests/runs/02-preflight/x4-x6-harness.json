@@ -1,0 +1,35 @@
+{
+  "probe": "X4 and X6: harness availability and Codex hook trust",
+  "era": "02-validation",
+  "stage": "5-preflight",
+  "date": "2026-09-17",
+  "claude_code": {
+    "harness": "2.1.274",
+    "minimal_run": "ok, claude-sonnet-5, $0.055"
+  },
+  "codex": {
+    "harness": "codex-cli 0.154.0",
+    "method": "Throwaway CODEX_HOME with auth.json symlinked; codex exec --json -s read-only in an empty git repository; the user's ~/.codex was never CODEX_HOME.",
+    "runs": [
+      {
+        "model": "gpt-5.6-terra",
+        "result": "ok"
+      },
+      {
+        "model": "default",
+        "result": "ok"
+      },
+      {
+        "model": "gpt-5.6",
+        "result": "failed: 400, model not supported when using Codex with a ChatGPT account"
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "result": "ok"
+      }
+    ],
+    "login": "ChatGPT account"
+  },
+  "hook_trust": "codex exec --dangerously-bypass-hook-trust was blocked by Claude Code's auto-mode classifier. No permission rule for it is in place.",
+  "verdict": "Both harnesses are usable now. gpt-5.6 (the large tier in AGENTS.md) is not available on this account. P2.3 needs a permission rule for hook trust, granted by the user."
+}

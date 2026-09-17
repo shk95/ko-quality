@@ -1,0 +1,15 @@
+{
+  "probe": "X1: does a github marketplace declared in committed project settings load the plugin headlessly?",
+  "era": "02-validation",
+  "stage": "5-preflight",
+  "date": "2026-09-17",
+  "harness": "Claude Code 2.1.274",
+  "method": "Two scratch projects under the scratchpad, each with only .claude/settings.json: extraKnownMarketplaces.ko-quality with source github repo shk95/ko-quality, (a) without path, (b) with path dist/claude-code; enabledPlugins ko-quality@ko-quality. One headless run each (claude -p, --max-turns 1, stream-json). The init event's plugins, agents and skills were read.",
+  "results": {
+    "no_path": "not loaded: no ko-quality plugin, no korean-* agents, no ko-* skills",
+    "with_path": "not loaded: same"
+  },
+  "side_effects": "None: the user's marketplace list, plugin directory and user settings were identical before and after.",
+  "verdict": "A github marketplace in committed settings does not load headlessly. The per-machine marketplace step stays (L4, F13). Interactive trust remains untested.",
+  "cost_usd": "not captured"
+}

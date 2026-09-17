@@ -12,17 +12,19 @@ Pre-decided answers are not reopened during the build. If build evidence shows a
 |---|---|---|---|---|
 | F1 | Claude Code test harness | A **scratch project** per run under the scratchpad, holding `.claude/settings.local.json` with the arm's selection and `env.KO_QUALITY_HOME` pointed at a scratch home. `claude -p "<prompt>" --plugin-dir <dist>/ko-quality --output-format stream-json --verbose --max-turns 8`, launched with the scratch project as working directory | `--plugin-dir` is not how users install. Answer: the install path is measured once in P1.4 and in P3; every other check needs a clean, disposable project, and selection lives in project settings either way (09 §2.1) | high |
 | F2 | Codex test harness | Era 01's: `codex exec --json -m <model> -C <workdir>`, temporary `CODEX_HOME` with `auth.json` symlinked, deleted afterwards. **No `--ephemeral` when a custom agent is spawned** (09 §2.2). Load checks `gpt-5.6-luna`, behaviour checks `gpt-5.6-terra`. The user's `~/.codex` is never touched | — | high |
-| F3 | Canary device | 02-E1's: a scratch **copy** of the built plugin with a marker line added to each style body and each agent body, never in `dist/`. A marker is a unique token per location (`KQ-CANARY-<arm>-<location>-<n>`). A check passes on the token's presence in the right reply and absence everywhere else | Adding a line changes the thing tested. Answer: the line is outside the policy text, and the unmodified plugin is what the corpus runs (P8); the canary proves routing only | high, **pending X2** |
+| F3 | Canary device | 02-E1's: a scratch **copy** of the built plugin with a marker line added to each style body and each agent body, never in `dist/`. A marker is a unique token per location (`KQ-CANARY-<arm>-<location>-<n>`). A check passes on the token's presence in the right reply and absence everywhere else | Adding a line changes the thing tested. Answer: the line is outside the policy text, and the unmodified plugin is what the corpus runs (P8); the canary proves routing only | high (X2: held on 2.1.274) |
 | F4 | Generator and judge models | Corpus and live checks: **`claude-sonnet-5`**, pinned with `--model`. Tier A judge (P7): **`claude-opus-5`** via `--judge-model`. Judge ≠ generator (09 §17.2) | A user's default model may differ. Answer: era 02's corpus is synthetic; pinning makes batches comparable and cost predictable. The model is recorded in every annotation (§12.2) | medium |
 | F5 | P4 zone set | One labelled reply per case, **at least 5 positive spans per row of 09 §15.2's zone table** across the set, and **at least 3 near-miss negatives per row** (text that looks like the zone and is not). Written by us, synthetic, committed under `tests/exclusion-cases/` | A small set hides false negatives. Answer: the done-condition is that the count is reported, not that it is zero; P8.3 measures the pass again on generated replies | medium |
 | F6 | P5 cases per measurement | **At least 2 correct and 2 defective cases per Tier 0 measurement**, one of the defective ones at the boundary (a single occurrence). `phrase_battery`: at least one case per scope (paragraph, document) | — | medium |
 | F7 | P6 case set | **At least 10 correct and 10 telegraphic sentences**, covering the recipe pitfalls E2 found (trailing punctuation, `VV-I`/`VV-R`, 체언 + `XSV`/`XSA`) | — | medium |
 | F8 | P8 pilot shape | **3 prompts per stratum** of 09 §18.3 (9 strata, counting correct and defective Korean as two) × arms A, B, C = **81 sessions**, plus one canary run per arm. Arm C sessions alternate both profiles | Three prompts cannot estimate variance well. Answer: the pilot sizes the batch; its variance estimate is reported with its own uncertainty, and P9's power is reported as achieved (`10_plan.md` P9) | medium |
-| F9 | Power parameters (P8.4) | **pending: user** (§4). Proposed: α = 0.05 two-sided, power 0.8, minimum effect of interest 0.5 of the pilot's pooled session-level SD unless the user sets a measurement-specific value | — | — |
-| F10 | Budget ceiling (P9) | **pending: user** (§4). X5's estimate: pilot about $10–$21, batch about $100–$200 at 30 sessions per arm per stratum | — | — |
+| F9 | Power parameters (P8.4) | **α = 0.05 two-sided, power 0.8, minimum effect of interest 0.5 of the pilot's pooled session-level SD** for every measurement (user, 2026-09-17, U1) | A standardized effect ignores what matters per measurement. Answer: no measurement has an observed scale yet; era 03 sets measurement-specific effects from real distributions | medium |
+| F10 | Budget ceiling (P8, P9) | **Pilot $21, batch $200** (user, 2026-09-17, U2). X5's revised estimate: pilot $6–$12, batch $50–$110 at 30 sessions per arm per stratum. Canary and probe runs count toward the step's ceiling | — | high |
 | F11 | Bootstrap (P9.1) | Session-level percentile bootstrap, **10,000 resamples**, fixed seed recorded | — | high |
-| F12 | Self-application switch (P3) | The build edits `.claude/settings.local.json` to remove `outputStyle` **only with the user's consent given here** (§4). **The running build session is not affected**: settings are read at launch. Sessions started after P3 run under `agent-reply` and write to `~/.ko-quality-dev` | The builder's later sessions become records of the thing being built. Answer: 09 §21.3 accepts that; records from this repository never enter a sample | high |
-| F13 | `github` marketplace (L4) | **pending X1.** If X1 passes, P3 declares it in committed settings and the README drops the per-machine step. Otherwise the step stays | — | — |
+| F12 | Self-application switch (P3) | The build removes `outputStyle` from `.claude/settings.local.json` (**consent given, user 2026-09-17, U3**). **The running build session is not affected**: settings are read at launch. Sessions started after P3 run under `agent-reply` and write to `~/.ko-quality-dev` | The builder's later sessions become records of the thing being built. Answer: 09 §21.3 accepts that; records from this repository never enter a sample | high |
+| F13 | `github` marketplace (L4) | **The per-machine `marketplace add` step stays.** X1: a `github` marketplace in committed settings did not load headlessly, with or without `path` | Interactive trust might load it. Answer: untested, and the build cannot test it headlessly; 7-review may revisit | high |
+| F15 | The `-ㅁ`/`-음` sentence ending in `noun_ending_ratio` (X3) | **pending: user** (§4, U6). Proposed: a sentence whose final `EF` morpheme is `ᆷ` or `음` counts as a **noun ending** (개조식 명사형 종결, which `coding.12` targets). 09 §15.4's recipe note gains this line before the build | Some `-음` endings are legitimate in 문서체 (`~함을 알 수 있음` in a memo). Answer: the measurement is a rate compared across arms, not a verdict; the case set (F7) includes both kinds and reports them | medium |
+| F16 | Codex models | Load checks `gpt-5.6-luna`, behaviour checks `gpt-5.6-terra` (F2). `gpt-5.6` is unavailable on this account (X4): a `large` Codex run is replaced by `large` on Claude Code (`claude-opus-5`) | — | high |
 | F14 | Records of runs | `tests/runs/P<n>/` holds summaries only: counts, hashes, tokens, costs, synthetic text. Corpus records stay under the corpus home outside the tree (09 §20). No personal paths | — | high |
 
 ## 2. Verification run (one per P, outside the cap)
@@ -77,9 +79,9 @@ Common to every P:
   2. Logger: per-session per-agent state; §11.2's event table; §11.3's table; `tool_output_chars` with the 100,000-character cap and `truncated_calls`; masking additions; `expanduser`; §11.4 layout; `SessionEnd` cleanup.
   3. Malformed-payload test: truncated JSON, missing keys, unknown event.
   4. Live Claude Code: scratch project, plugin via F1, a prompt that makes the main thread delegate to `ko-quality:korean-reviewer`.
-  5. Live Codex: F2 with hooks trusted (X6), global install of the agent-plugin dist, a prompt that spawns a custom agent.
+  5. Live Codex: F2 with hooks trusted (needs U4's permission rule), global install of the agent-plugin dist, a prompt that spawns a custom agent.
 - **Checks:** `10_plan.md` P2.1–P2.5; no record contains an unmasked home path; `logs/` has no per-profile split.
-- **Release-blocked if:** P2.2 or P2.3 fails. Codex unavailable → P2.3 release-blocked with the reason.
+- **Release-blocked if:** P2.2 or P2.3 fails. Codex unavailable, or hook trust not permitted → P2.3 release-blocked with the reason.
 
 ### P3 — Self-application
 
@@ -161,13 +163,14 @@ Common to every P:
 
 ## 4. Needed from the user before the build starts
 
-| # | Question | Needed by |
-|---|---|---|
-| U1 | Power parameters: accept F9's proposal, or set α, power and minimum effects | P8 |
-| U2 | Budget ceiling for the pilot and the batch (X5's estimate: $10–$21 and $100–$200) | P8, P9 |
-| U3 | Consent to remove `outputStyle` from this machine's `.claude/settings.local.json` in P3 | P3 |
-| U4 | Codex availability for P2's live run, and whether the hook-trust permission rule is still granted (X4, X6) | P2 |
-| U5 | Which explorations run now: X1 (github marketplace), X2 (canaries on 2.1.274), X3 (`kiwipiepy`), X4 and X6 (harness checks) | preflight |
+| # | Question | Needed by | Status |
+|---|---|---|---|
+| U1 | Power parameters | P8 | **Answered:** F9's proposal |
+| U2 | Budget ceiling | P8, P9 | **Answered:** pilot $21, batch $200 |
+| U3 | Consent to remove the local `outputStyle` in P3 | P3 | **Answered:** yes |
+| U4 | Codex availability and the hook-trust permission rule | P2 | Codex: usable (X4). **Open:** a Bash permission rule allowing `codex exec --dangerously-bypass-hook-trust`, scoped to a temporary `CODEX_HOME`. Without it, P2.3 is release-blocked |
+| U5 | Which explorations run now | preflight | **Answered:** all; run 2026-09-17 |
+| U6 | F15: count a final `-ㅁ`/`-음` as a noun ending | P6 | **Open** |
 
 ## 5. Release-blocked conditions, collected
 
@@ -178,7 +181,7 @@ Merge `dev` → `master` is decided in 7-review; each mark there is resolved or 
 | any | Done-condition clause "not met" or "cannot tell" by the verification run |
 | any | An `adapted` fragment without `original`; an upstream sentence changed without `adapted` |
 | P1 | No style applies without selection is false, or a selected style does not apply (arm B not constructible) |
-| P2 | Live Claude Code records do not match §11.3; live Codex records do not match, or Codex unavailable |
+| P2 | Live Claude Code records do not match §11.3; live Codex records do not match, Codex unavailable, or hook trust not permitted |
 | P3 | Records reach `~/.ko-quality`, or a subdirectory session is not identifiable by `project` |
 | P4 | A zone's false-negative count not reported |
 | P6 | `kiwipiepy` not installable (Tier 1 falls back to S3 option B) |
