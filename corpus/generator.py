@@ -84,23 +84,26 @@ def logger_only_plugin(work):
 
 # ---- sessions ---------------------------------------------------------------------------------------------------
 
-def session_plan(prompts, arms, per_stratum):
+def session_plan(prompts, arms, per_stratum, replicates=1):
     """[(arm, [(prompt, profile or None)], key)]. Arm C takes prompt i under one profile, then prompt i+1 of the same
-    stratum under the other; the starting profile alternates with i."""
+    stratum under the other; the starting profile alternates with i (and with the replicate, so each prompt meets both
+    profiles first). Replicates run in rounds over every cell, so a batch stopped by its ceiling stays balanced."""
     by = {}
     for p in prompts:
         by.setdefault(p["stratum"], []).append(p)
     plan = []
-    for stratum in sorted(by):
-        ps = by[stratum][:per_stratum]
-        for i, p in enumerate(ps):
-            for arm in arms:
-                if arm == "C":
-                    first, second = PROFILES[i % 2], PROFILES[(i + 1) % 2]
-                    turns = [(p, first), (ps[(i + 1) % len(ps)], second)]
-                else:
-                    turns = [(p, None)]
-                plan.append((arm, turns, f"{stratum}-{i + 1}-{arm}"))
+    for rep in range(replicates):
+        for stratum in sorted(by):
+            ps = by[stratum][:per_stratum]
+            for i, p in enumerate(ps):
+                for arm in arms:
+                    if arm == "C":
+                        first, second = PROFILES[(i + rep) % 2], PROFILES[(i + rep + 1) % 2]
+                        turns = [(p, first), (ps[(i + 1) % len(ps)], second)]
+                    else:
+                        turns = [(p, None)]
+                    key = f"{stratum}-{i + 1}-{arm}" + (f"-r{rep + 1}" if replicates > 1 else "")
+                    plan.append((arm, turns, key))
     return plan
 
 
@@ -287,46 +290,75 @@ def annotate(batch, arm, turns, parsed, home, gen_version, bid):
     return rows
 
 
-def run_batch(batch, home, work, arms=("A", "B", "C"), prompts_path=PROMPTS, per_stratum=3, ceiling=None, spent=0.0, only=None):
+def run_batch(batch, home, work, arms=("A", "B", "C"), prompts_path=PROMPTS, per_stratum=3, ceiling=None, spent=0.0, only=None,
+              replicates=1, jobs=1):
+    """Sessions run on `jobs` threads. Each session is its own claude process; the logger appends one line per record
+    with one write, and this process serialises its own writes (annotations, progress) under a lock. No new session
+    starts once spent + the cost of sessions in flight (estimated at the running mean) reaches the ceiling."""
+    import threading
+    from concurrent.futures import ThreadPoolExecutor
     home, work = Path(home).expanduser(), Path(work)
     work.mkdir(parents=True, exist_ok=True)
     prompts = json.loads(Path(prompts_path).read_text(encoding="utf-8"))["prompts"]
     plugins = {"A": logger_only_plugin(work), "B": plugin_copy(work)}
     plugins["C"] = plugins["B"]
     gen_version, bid = generator_version(), build_id()
-    plan = session_plan(prompts, arms, per_stratum)
+    plan = session_plan(prompts, arms, per_stratum, replicates)
     if only:
-        plan = [s for s in plan if s[2] in only]
+        plan = [x for x in plan if x[2] in only]
     progress = work / f"{batch}.progress.jsonl"
-    done = set()
+    done, costs = set(), []
     if progress.exists():
         for line in progress.read_text(encoding="utf-8").splitlines():
             row = json.loads(line)
+            if row.get("skipped"):
+                continue
             done.add(row["key"])
             spent += row.get("cost_usd") or 0
-    for arm, turns, key in plan:
-        if key in done:
-            continue
-        if ceiling is not None and spent >= ceiling:
-            append_jsonl(progress, [{"key": key, "skipped": "ceiling", "spent_usd": round(spent, 4)}])
-            continue
-        parsed, rc, err, started = run_session(arm, turns, key, plugins[arm], home, work)
-        rows = annotate(batch, arm, turns, parsed, home, gen_version, bid) if parsed["session_id"] else []
-        append_jsonl(home / "annotations" / f"{started:%Y-%m}.jsonl", rows)
-        cost = parsed["turns"][-1]["cumulative_cost_usd"] if parsed["turns"] else None
-        spent += cost or 0
-        append_jsonl(progress, [{"key": key, "arm": arm, "session_id": parsed["session_id"], "rc": rc, "stderr_tail": err[-300:] if rc else "",
-                                 "turns_seen": parsed["turns_seen"], "turns_expected": parsed["turns_expected"],
-                                 "annotations": len(rows), "arm_check": all(r["arm_check"] for r in rows) if rows else False,
-                                 "task_matches": all(r["task_matches_prompt"] for r in rows) if rows else False,
-                                 "log_records_found": sum(r["log_record_found"] for r in rows), "cost_usd": cost, "spent_usd": round(spent, 4)}])
-        print(f"{key}: rc={rc} turns={parsed['turns_seen']}/{parsed['turns_expected']} cost={cost} spent={spent:.2f}", file=sys.stderr, flush=True)
+            costs.append(row.get("cost_usd") or 0)
+    lock = threading.Lock()
+    state = {"spent": spent, "inflight": 0, "costs": costs}
+
+    def estimate():
+        c = state["costs"]
+        return (sum(c) / len(c)) if c else 0.15
+
+    def one(item):
+        arm, turns, key = item
+        with lock:
+            if ceiling is not None and state["spent"] + (state["inflight"] + 1) * estimate() > ceiling:
+                append_jsonl(progress, [{"key": key, "skipped": "ceiling", "spent_usd": round(state["spent"], 4)}])
+                return
+            state["inflight"] += 1
+        try:
+            parsed, rc, err, started = run_session(arm, turns, key, plugins[arm], home, work)
+            rows = annotate(batch, arm, turns, parsed, home, gen_version, bid) if parsed["session_id"] else []
+            cost = parsed["turns"][-1]["cumulative_cost_usd"] if parsed["turns"] else None
+        finally:
+            with lock:
+                state["inflight"] -= 1
+        with lock:
+            append_jsonl(home / "annotations" / f"{started:%Y-%m}.jsonl", rows)
+            state["spent"] += cost or 0
+            state["costs"].append(cost or 0)
+            append_jsonl(progress, [{"key": key, "arm": arm, "session_id": parsed["session_id"], "rc": rc, "stderr_tail": err[-300:] if rc else "",
+                                     "turns_seen": parsed["turns_seen"], "turns_expected": parsed["turns_expected"],
+                                     "annotations": len(rows), "arm_check": all(r["arm_check"] for r in rows) if rows else False,
+                                     "task_matches": all(r["task_matches_prompt"] for r in rows) if rows else False,
+                                     "log_records_found": sum(r["log_record_found"] for r in rows), "cost_usd": cost,
+                                     "spent_usd": round(state["spent"], 4)}])
+            print(f"{key}: rc={rc} turns={parsed['turns_seen']}/{parsed['turns_expected']} cost={cost} spent={state['spent']:.2f}", file=sys.stderr, flush=True)
+
+    todo = [x for x in plan if x[2] not in done]
+    with ThreadPoolExecutor(max_workers=max(1, jobs)) as pool:
+        list(pool.map(one, todo))
     return progress
 
 
 # ---- canary -----------------------------------------------------------------------------------------------------
 
 CANARY_PROMPT = {"id": "canary/1", "stratum": "canary", "text": "파이썬에서 리스트와 튜플의 차이를 두 문장으로 설명해 줘."}
+CANARY_DELEGATION = {"id": "canary/delegation", "stratum": "canary", "text": "ko-quality:korean-reviewer 에이전트에게 다음 문장의 검토를 맡기고, 에이전트가 돌려준 보고를 그대로 전해 줘: '본 보고서는 매우 중요한 의미를 가지고 있다고 할 수 있다.'"}
 CANARY_PROMPT_2 = {"id": "canary/2", "stratum": "canary", "text": "자바스크립트에서 let과 const의 차이를 두 문장으로 설명해 줘."}
 
 
@@ -360,5 +392,21 @@ def canary(batch, home, work, mislabel=False):
         report["runs"].append({"setup": setup_arm, "label": label, "session_id": parsed["session_id"], "rc": rc, "checks": checks, "pass": ok,
                                "cost_usd": parsed["turns"][-1]["cumulative_cost_usd"] if parsed["turns"] else None})
         report["rejected"] = report["rejected"] or not ok
+    if not mislabel:
+        # agent channel (P8 V8): a delegation per arm; the agent marker must reach the record in B and C, and not in A
+        for arm in ("A", "B", "C"):
+            turns = [(CANARY_DELEGATION, PROFILES[0] if arm == "C" else None)]
+            key = f"canary-{arm}-delegation"
+            parsed, rc, err, _ = run_session(arm, turns, key, setups[arm], home, work)
+            token = f"{marker}-agent-korean-reviewer"
+            recs = session_records(home, parsed["session_id"]) if parsed["session_id"] else []
+            subs = [r for r in recs if r.get("harness_position") == "sub-to-orchestrator"]
+            found = any(token in r.get("output", "") for r in recs) or any(token in t["text"] for t in parsed["turns"])
+            want = arm != "A"
+            ok = found == want and (subs or arm == "A")
+            report["runs"].append({"setup": arm, "label": arm, "channel": "agent", "session_id": parsed["session_id"], "rc": rc,
+                                   "checks": [{"marker": token, "found": found, "expected": want, "sub_records": len(subs), "pass": bool(ok)}],
+                                   "pass": bool(ok), "cost_usd": parsed["turns"][-1]["cumulative_cost_usd"] if parsed["turns"] else None})
+            report["rejected"] = report["rejected"] or not ok
     report["verdict"] = "batch rejected: a marker is missing or in the wrong arm" if report["rejected"] else "batch accepted: every arm's markers are where its label says"
     return report

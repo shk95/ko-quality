@@ -1,4 +1,4 @@
-"""python3 -m corpus run --batch <id> --home <corpus home> --work <scratch dir> [--arms A,B,C] [--per-stratum 3] [--ceiling-usd N] [--spent-usd N] [--only key,...]
+"""python3 -m corpus run --batch <id> --home <corpus home> --work <scratch dir> [--arms A,B,C] [--per-stratum 3] [--ceiling-usd N] [--spent-usd N] [--only key,...] [--replicates N] [--jobs J]
 python3 -m corpus canary --batch <id> --home <canary home> --work <scratch dir> [--mislabel] [--report <path>]
 """
 import argparse
@@ -22,6 +22,8 @@ def main(argv=None):
     r.add_argument("--ceiling-usd", type=float)
     r.add_argument("--spent-usd", type=float, default=0.0)
     r.add_argument("--only")
+    r.add_argument("--replicates", type=int, default=1, help="rounds over every (prompt, arm) cell")
+    r.add_argument("--jobs", type=int, default=1, help="sessions run at once")
     c = sub.add_parser("canary", help="one canary session per arm; reject the batch on a marker in the wrong arm")
     c.add_argument("--batch", required=True)
     c.add_argument("--home", required=True)
@@ -31,7 +33,8 @@ def main(argv=None):
     args = ap.parse_args(argv)
     if args.command == "run":
         progress = generator.run_batch(args.batch, args.home, args.work, tuple(args.arms.split(",")), args.prompts, args.per_stratum,
-                                       args.ceiling_usd, args.spent_usd, set(args.only.split(",")) if args.only else None)
+                                       args.ceiling_usd, args.spent_usd, set(args.only.split(",")) if args.only else None,
+                                       args.replicates, args.jobs)
         print(progress)
         return 0
     out = generator.canary(args.batch, args.home, args.work, args.mislabel)
