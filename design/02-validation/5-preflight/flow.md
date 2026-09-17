@@ -18,7 +18,7 @@ Pre-decided answers are not reopened during the build. If build evidence shows a
 | F6 | P5 cases per measurement | **At least 2 correct and 2 defective cases per Tier 0 measurement**, one of the defective ones at the boundary (a single occurrence). `phrase_battery`: at least one case per scope (paragraph, document) | — | medium |
 | F7 | P6 case set | **At least 10 correct and 10 telegraphic sentences**, covering the recipe pitfalls E2 found (trailing punctuation, `VV-I`/`VV-R`, 체언 + `XSV`/`XSA`) | — | medium |
 | F8 | P8 pilot shape | **3 prompts per stratum** of 09 §18.3 (9 strata, counting correct and defective Korean as two) × arms A, B, C = **81 sessions**, plus one canary run per arm. Arm C sessions alternate both profiles | Three prompts cannot estimate variance well. Answer: the pilot sizes the batch; its variance estimate is reported with its own uncertainty, and P9's power is reported as achieved (`10_plan.md` P9) | medium |
-| F9 | Power parameters (P8.4) | **α = 0.05 two-sided, power 0.8, minimum effect of interest 0.5 of the pilot's pooled session-level SD** for every measurement (user, 2026-09-17, U1) | A standardized effect ignores what matters per measurement. Answer: no measurement has an observed scale yet; era 03 sets measurement-specific effects from real distributions | medium |
+| F9 | Power parameters (P8.4) | **α = 0.05 two-sided, power 0.8, minimum effect of interest 0.5 of each measurement's own pooled session-level SD** from the pilot (user, 2026-09-17, U1) | A standardized effect ignores what matters per measurement. Answer: no measurement has an observed scale yet; era 03 sets measurement-specific effects from real distributions | medium |
 | F10 | Budget ceiling (P8, P9) | **Pilot $21, batch $200** (user, 2026-09-17, U2). X5's revised estimate: pilot $6–$12, batch $50–$110 at 30 sessions per arm per stratum. Canary and probe runs count toward the step's ceiling | — | high |
 | F11 | Bootstrap (P9.1) | Session-level percentile bootstrap, **10,000 resamples**, fixed seed recorded | — | high |
 | F12 | Self-application switch (P3) | The build removes `outputStyle` from `.claude/settings.local.json` (**consent given, user 2026-09-17, U3**). **The running build session is not affected**: settings are read at launch. Sessions started after P3 run under `agent-reply` and write to `~/.ko-quality-dev` | The builder's later sessions become records of the thing being built. Answer: 09 §21.3 accepts that; records from this repository never enter a sample | high |
@@ -127,7 +127,7 @@ Common to every P:
   4. `ko.preserve`, five kinds, with paste-in cases.
   5. F7's case set; the separation report beside E2's recorded values.
 - **Checks:** `10_plan.md` P6.1–P6.3.
-- **Criteria only:** if `kiwipiepy` does not install, Tier 1 is release-blocked and 09 S3's option B applies (Tier 0 and Tier 2 regex only).
+- **Criteria only:** if `kiwipiepy` does not install, Tier 1 is release-blocked and 09 S3's option B applies (Tier 0 and Tier 2 regex only). `10_plan.md` P6 names no release-blocked condition; this one is added here from 09 §15.3 (S3). X3 found the package installable.
 
 ### P7 — Eval split and judge Tier A
 
