@@ -9,7 +9,7 @@
 >
 > Each section names its sources in a closing **Basis** line. Section numbers are 09's own. §23 maps 06's sections to 09's.
 >
-> **Status: draft, written in four bundles and reviewed with the user bundle by bundle. Verified 2026-09-17** by an independent `mid` run over the whole document. It found one unexplained reversal of an E5 handoff (§17), one dropped E4 detail (§11.2 scan cap), and one unassigned field value (§11.3). All three are fixed, and no measured fact was wrong. Supporting probes made during this stage are in `tests/runs/02-spec/`.
+> **Status: draft, written in four bundles and reviewed with the user bundle by bundle. Verified 2026-09-17** by an independent `mid` run over the whole document. It found one unexplained reversal of an E5 handoff (§17), one dropped E4 detail (§11.2 scan cap), and one unassigned field value (§11.3). All three are fixed, and no measured fact was wrong. Supporting probes made during this stage are in `tests/runs/02-spec/`. **Closure check 2026-09-17** ([`09a`](09a_findings_spec_close.md) §1): five gaps found and fixed (G1–G5), re-verified.
 > - **Bundle 1** (§1–§10, §13): supply and distribution. **Reviewed (S1 decided).**
 > - **Bundle 2** (§11–§12, §14): hooks, logger, and the record. **Reviewed (S2 decided).**
 > - **Bundle 3** (§15–§18): measurement, judge, eval, and corpus. **Reviewed (S3 decided).**
@@ -150,7 +150,7 @@ Unchanged from 06 §5.1–§5.2: one install, versions as facts, and composition
 | `procedure` | steps, invariants, self-check, grades, options, output contract | one per slot | im-not-ai (rewrite), korean-skills (grammar), yoonmoon (diagnose) |
 | `taxonomy` | categories, patterns, severities | one per slot | im-not-ai (rewrite), yoonmoon (diagnose) |
 | **`reference`** | material a procedure reads that is neither procedure nor taxonomy. `kind: rubric \| research \| recipes \| derived` | per slot, one file per upstream file | yoonmoon (diagnose ×3), korean-skills (grammar ×2) |
-| `ruleset` | deterministic rules | **open** (§17) | candidate `JangHyun-bin/korean-report-skills`, licence unchecked |
+| `ruleset` | deterministic rules | **deferred** (§17.4) | candidate `JangHyun-bin/korean-report-skills`, Apache-2.0 with NOTICE (checked 2026-09-16) |
 
 - The `policy` normalization unit is upstream's distribution unit: two variant files plus README's seven optional blocks.
 - `reference` was settled in P4 (flow D5). The schema is `upstream/interface/reference.schema.yaml`.
@@ -172,7 +172,7 @@ The anchor forms are the list in `upstream/interface/common.schema.yaml` `anchor
 
 ### 5.6 Lock
 
-Unchanged in shape. Four upstreams, all MIT, checked 2026-09-14. **Adding a provider requires a licence check before extraction.** This is the unconditional blocker for `ruleset` (§17).
+Unchanged in shape. Four upstreams, all MIT, checked 2026-09-14. **Adding a provider requires a licence check before extraction.** For the `ruleset` candidate that check is done (Apache-2.0, §17.4). Adoption is deferred for cost, not licence.
 
 **Basis:** 06 §5; B8; P4 decisions 6, 7, 9; E5; E7-a.
 
@@ -545,7 +545,9 @@ dist/claude-code/
 | `PreToolUse(Write)` as a gate site | Asserted, not probed; different deny shape (E6) | The era that opens `gate:` |
 | A blocking `Stop` hook under a marketplace install | Probed only with `--plugin-dir` (E6) | Same |
 | Relative or `github` marketplace source declared in committed settings | Relative `directory` not loaded headlessly; interactive trust untested | `4-plan`, for self-application (§21) |
-| `ruleset` provider licence | Unchecked | Before any extraction (§5.6) |
+| `ruleset` provider licence | **Resolved**: Apache-2.0 with NOTICE, checked 2026-09-16 (§17.4) | — |
+| Removal clears the style selection from `settings.local.json` (B9) | Not yet measured (§13) | 6-build, when the removal steps are written into `README.md` |
+| Whether the extractor reads the rewrite taxonomy directly, so the 24 patterns upstream's generator drops (J-1 among them) enter `normalized/` | `normalized/taxonomy/rewrite.yaml` holds 61 of upstream's 85 (P1, E2). The battery is built from the 61 (§15.4) | `4-plan` |
 
 ### 14.3 Structural limits — not fixable here
 
@@ -554,9 +556,10 @@ dist/claude-code/
 - **The hook cannot see the main-thread policy on Claude Code** (§11.3). Era 02 fills it in from the generator. Era 03 has no such source yet.
 - **Reply length defeats document thresholds.** Upstream thresholds (`문단 3회+`, `4문장+ 연속`) cannot fire in a two-sentence reply, so per-record verdicts carry no variance. Measurements are emitted as raw counts and rates, and aggregated within a stratum (§15).
 - **Tier 2 (input + output) exists only where the original was pasted into the prompt.** When the model reads the text from a file, the pair never enters the record. The corpus includes paste-in cases on purpose (§18).
+- **Upstream's grade rule caps unchanged text at B.** ko-rewrite grants A only at a 10–25% change rate, so text that needed no change gets B, and the model explains that B is not a defect (P1). The rule is upstream's sentence and is not edited (§5). It reaches no measurement, because a grade is a self-report kept as reported (§1).
 - **A record produced after a gate fires is a record of a taught model** (E6). No gate runs in era 02. The fields are reserved (§12.1).
 
-**Basis:** 06 §13; E2; E4; E6; E7; era 99; [`hook-payloads.json`](../../../tests/runs/02-spec/hook-payloads.json).
+**Basis:** 06 §13; P1; E2; E4; E6; E7; era 99; [`hook-payloads.json`](../../../tests/runs/02-spec/hook-payloads.json).
 
 ## 15. Measurement
 
@@ -615,7 +618,7 @@ The list is organised by measurement, not by rule id. Each cites the rules it se
 | `emoji_count` | skill | C-5, diag 8.2 | count |
 | `bold_density`, `bullet_density`, `header_formula` | skill | diag 8.1/5.2/5.3, C-2/C-9/C-10 | ratio |
 | `quote_emphasis_count` | skill | J-2, diag 8.4 | count |
-| `phrase_battery`: one table, entries with scope (paragraph or document) | skill (and policy where a policy rule names the phrase) | ~47 rewrite entries (including **G-3, held by upstream as 실증 부족**), diag 1–4, 6, 7, 10 | **count per entry**; upstream thresholds are stored as data, not applied |
+| `phrase_battery`: one table, entries with scope (paragraph or document) | skill (and policy where a policy rule names the phrase) | ~47 rewrite entries (including **G-3, held by upstream as 실증 부족**), diag 1–4, 6, 7, 10. **Coverage gap: the rewrite entries come from the 61 patterns in `normalized/`; the 24 of upstream's 85 that its generator drops are not measured** (§14.2) | **count per entry**; upstream thresholds are stored as data, not applied |
 | `english_ratio`: Latin share of prose after exclusion, **on the output** | policy | coding.08, diag 10.2 | ratio |
 | `english_gloss_repeat` | skill | B-1, diag 10.1/10.3 | count |
 | `sentence_len_var`: mean, stdev, CV, max | skill | E-1, diag 5.4/9.2 | ratio |
@@ -909,12 +912,13 @@ The per-machine steps go in the repository's Korean `README.md`. **Whether a `gi
 |---|---|---|
 | Directory names `measure/`, `corpus/`, `gate/` | as written | 4-plan |
 | Per-call scan cap for `tool_output_chars` | — | 4-plan (§11.2) |
+| Extractor reads the rewrite taxonomy directly (61 → 85 patterns) | — | 4-plan (§14.2) |
 | Sessions per arm | from pilot variance | 6-build, after the pilot (§18.4) |
 | `github` marketplace source for self-application | — | 4-plan (§21.2) |
 | Whether subagent reports always use hand-back on Claude Code | count in pilot | 6-build (§14.2) |
 | Effective output style observable live on Claude Code | — | **era 03 blocker** (§11.3) |
-| Codex `task_type` third value | — | when a Codex arm is added |
-| `ruleset` adoption | revisit once Tier 0 exists | 6-build record → review |
+| Codex `task_type` third value | — | when a Codex arm is added: not in era 02, whose corpus is `claude -p` only (§18.2); no era is assigned yet |
+| `ruleset` adoption | revisit once the exclusion pass and Tier 0 exist (§17.4) | 6-build record → review |
 
 ## 23. Map from 06
 
