@@ -1,0 +1,9 @@
+{
+  "env": {
+    "KO_QUALITY_HOME": "~/.ko-quality-dev"
+  },
+  "enabledPlugins": {
+    "ko-quality@ko-quality": true
+  },
+  "outputStyle": "ko-quality:agent-reply"
+}

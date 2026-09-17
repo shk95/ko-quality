@@ -1,0 +1,138 @@
+{
+  "record": "P3 self-application (flow.md §3 P3; F12, F13)",
+  "era": "02-validation",
+  "stage": "6-build P3",
+  "date": "2026-09-17",
+  "harness": "Claude Code 2.1.274",
+  "model": "claude-sonnet-5",
+  "committed_settings": {
+    "env": {
+      "KO_QUALITY_HOME": "~/.ko-quality-dev"
+    },
+    "enabledPlugins": {
+      "ko-quality@ko-quality": true
+    },
+    "outputStyle": "ko-quality:agent-reply"
+  },
+  "local_outputStyle_present": false,
+  "method": "Per-machine step: claude plugin marketplace add <marketplace>. For the canary, the marketplace was a scratch copy of dist/claude-code with one line appended to each output-style body (KQ-CANARY-P3-style-<name>-1); then it was swapped for the real dist/claude-code. Headless claude -p --output-format stream-json --verbose --model claude-sonnet-5, no --plugin-dir, launched at the repository root and in design/. A second design/ session added --plugin-dir <canary copy> with KO_QUALITY_HOME at a scratch home in the shell, standing in for a plugin installed at user scope, to test identification by project without writing to ~/.ko-quality.",
+  "sessions": [
+    {
+      "session": "root",
+      "launched_in": "repository root",
+      "marketplace_or_plugin": "canary marketplace (first add)",
+      "init_output_style": "ko-quality:agent-reply",
+      "ko_quality_loaded": true,
+      "canary_tokens_in_reply": [
+        "KQ-CANARY-P3-style-agent-reply-1"
+      ],
+      "cost_usd": 0.0823856
+    },
+    {
+      "session": "sub-plain",
+      "launched_in": "design/",
+      "marketplace_or_plugin": "none (project settings not read)",
+      "init_output_style": "default",
+      "ko_quality_loaded": false,
+      "canary_tokens_in_reply": [],
+      "cost_usd": 0.056579000000000004
+    },
+    {
+      "session": "sub-plugin",
+      "launched_in": "design/",
+      "marketplace_or_plugin": "--plugin-dir canary copy, KO_QUALITY_HOME scratch",
+      "init_output_style": "default",
+      "ko_quality_loaded": true,
+      "canary_tokens_in_reply": [],
+      "cost_usd": 0.0397998
+    },
+    {
+      "session": "root-real",
+      "launched_in": "repository root",
+      "marketplace_or_plugin": "real marketplace after remove + add (enabledPlugins had been stripped)",
+      "init_output_style": "ko-quality:agent-reply",
+      "ko_quality_loaded": false,
+      "canary_tokens_in_reply": [],
+      "cost_usd": 0.0464918
+    },
+    {
+      "session": "root-real2",
+      "launched_in": "repository root",
+      "marketplace_or_plugin": "same, retried",
+      "init_output_style": "ko-quality:agent-reply",
+      "ko_quality_loaded": false,
+      "canary_tokens_in_reply": [],
+      "cost_usd": 0.00785
+    },
+    {
+      "session": "root-canary2",
+      "launched_in": "repository root",
+      "marketplace_or_plugin": "canary marketplace re-added (enabledPlugins still stripped)",
+      "init_output_style": "ko-quality:agent-reply",
+      "ko_quality_loaded": false,
+      "canary_tokens_in_reply": [],
+      "cost_usd": 0.00788
+    },
+    {
+      "session": "root-canary3",
+      "launched_in": "repository root",
+      "marketplace_or_plugin": "canary marketplace, committed settings restored",
+      "init_output_style": "ko-quality:agent-reply",
+      "ko_quality_loaded": true,
+      "canary_tokens_in_reply": [
+        "KQ-CANARY-P3-style-agent-reply-1"
+      ],
+      "cost_usd": 0.0613734
+    },
+    {
+      "session": "root-real3",
+      "launched_in": "repository root",
+      "marketplace_or_plugin": "real marketplace after remove + add, committed settings restored",
+      "init_output_style": "ko-quality:agent-reply",
+      "ko_quality_loaded": true,
+      "canary_tokens_in_reply": [],
+      "cost_usd": 0.060994400000000004
+    }
+  ],
+  "records_in_dev_home": [
+    {
+      "project": "<project hash>",
+      "build_id": "51112680979b60c3",
+      "plugin_present": true,
+      "harness": "claude-code",
+      "harness_position": "main-to-user",
+      "policy_on": null
+    },
+    {
+      "project": "<project hash>",
+      "build_id": "51112680979b60c3",
+      "plugin_present": true,
+      "harness": "claude-code",
+      "harness_position": "main-to-user",
+      "policy_on": null
+    },
+    {
+      "project": "<project hash>",
+      "build_id": "51112680979b60c3",
+      "plugin_present": true,
+      "harness": "claude-code",
+      "harness_position": "main-to-user",
+      "policy_on": null
+    }
+  ],
+  "records_in_subdirectory_scratch_home": [
+    {
+      "project": "<project hash>",
+      "build_id": "51112680979b60c3",
+      "plugin_present": true,
+      "harness": "claude-code",
+      "harness_position": "main-to-user",
+      "policy_on": null
+    }
+  ],
+  "repository_root_project_hash": "<project hash> (sha256 of the root path, first 16 hex; computed on this machine)",
+  "default_home_after": "~/.ko-quality absent before and after the step",
+  "finding_marketplace_remove": "claude plugin marketplace remove ko-quality, run at the repository root, rewrote the committed .claude/settings.json: enabledPlugins lost ko-quality@ko-quality (became {}). The next sessions echoed outputStyle ko-quality:agent-reply in init but loaded no plugin and wrote no record. Restoring the file restored loading.",
+  "finding_in_place": "A directory marketplace plugin enabled in project settings loaded from the marketplace directory itself (init plugin path under dist/claude-code/ko-quality), with no install step and no entry in installed_plugins.json.",
+  "cost_usd_total": 0.3634
+}
