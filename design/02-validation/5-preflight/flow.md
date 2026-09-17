@@ -1,6 +1,6 @@
 # Build flow — era 02-validation, P1–P9
 
-> Preflight document. **Draft, 2026-09-17. Every decision answered; awaiting the user's acceptance.** Defines how the autonomous build (`6-build`) runs [`10_plan.md`](../4-plan/10_plan.md), answers the decisions that can be answered now, and collects what blocks release. Once the user accepts this file, the build starts at P1 on `dev` and does not stop.
+> Preflight document. **Accepted by the user 2026-09-17**, after a light verification run. The build starts from [`6-build/README.md`](../6-build/README.md). Defines how the autonomous build (`6-build`) runs [`10_plan.md`](../4-plan/10_plan.md), answers the decisions that can be answered now, and collects what blocks release. Once the user accepts this file, the build starts at P1 on `dev` and does not stop.
 >
 > Read before every P: its section in `10_plan.md`, its section here, and the latest record in `6-build/`. Rules for judgment, subagents and git are in `AGENTS.md` and are not repeated here. Raw material for §1 is in [`explorations.md`](explorations.md).
 
@@ -21,7 +21,7 @@ Pre-decided answers are not reopened during the build. If build evidence shows a
 | F9 | Power parameters (P8.4) | **α = 0.05 two-sided, power 0.8, minimum effect of interest 0.5 of each measurement's own pooled session-level SD** from the pilot (user, 2026-09-17, U1) | A standardized effect ignores what matters per measurement. Answer: no measurement has an observed scale yet; era 03 sets measurement-specific effects from real distributions | medium |
 | F10 | Budget ceiling (P8, P9) | **Pilot $21, batch $200** (user, 2026-09-17, U2). X5's revised estimate: pilot $6–$12, batch $50–$110 at 30 sessions per arm per stratum. Canary and probe runs count toward the step's ceiling | — | high |
 | F11 | Bootstrap (P9.1) | Session-level percentile bootstrap, **10,000 resamples**, fixed seed recorded | — | high |
-| F12 | Self-application switch (P3) | The build removes `outputStyle` from `.claude/settings.local.json` (**consent given, user 2026-09-17, U3**). **The running build session is not affected**: settings are read at launch. Sessions started after P3 run under `agent-reply` and write to `~/.ko-quality-dev` | The builder's later sessions become records of the thing being built. Answer: 09 §21.3 accepts that; records from this repository never enter a sample | high |
+| F12 | Self-application switch (P3) | **The user removes `outputStyle` from `.claude/settings.local.json` before the build starts** (consent U3). The auto-mode classifier blocked the builder from editing that file once ("Self-Modification", while adding the U4 rule), so the build does not depend on editing it. If the key is still there at P3, P3 records it and its condition 3 is release-blocked. **The running build session is not affected**: settings are read at launch. Sessions started after P3 run under `agent-reply` and write to `~/.ko-quality-dev` | The builder's later sessions become records of the thing being built. Answer: 09 §21.3 accepts that; records from this repository never enter a sample | high |
 | F13 | `github` marketplace (L4) | **The per-machine `marketplace add` step stays.** X1: a `github` marketplace in committed settings did not load headlessly, with or without `path` | Interactive trust might load it. Answer: untested, and the build cannot test it headlessly; 7-review may revisit | high |
 | F14 | Records of runs | `tests/runs/P<n>/` holds summaries only: counts, hashes, tokens, costs, synthetic text. Corpus records stay under the corpus home outside the tree (09 §20). No personal paths | — | high |
 | F15 | The `-ㅁ`/`-음` sentence ending in `noun_ending_ratio` (X3) | **Accepted (user, 2026-09-17, U6):** a sentence whose final `EF` morpheme is `ᆷ` or `음` counts as a **noun ending** (개조식 명사형 종결, which `coding.12` targets). 09 §15.4's recipe note carries this line | Some `-음` endings are legitimate in 문서체 (`~함을 알 수 있음` in a memo). Answer: the measurement is a rate compared across arms, not a verdict; the case set (F7) includes both kinds and reports them | medium |
@@ -88,7 +88,7 @@ Common to every P:
 - **Inputs:** 09 §21; F12, F13; the user's consent (§4).
 - **Steps:**
   1. Committed `.claude/settings.json`: `env.KO_QUALITY_HOME`, `enabledPlugins`, `outputStyle` (and the marketplace if F13 allows).
-  2. Remove `outputStyle` from this machine's `.claude/settings.local.json`.
+  2. Confirm `outputStyle` is absent from this machine's `.claude/settings.local.json` (F12).
   3. Per-machine steps in the Korean `README.md`.
   4. A headless session at the repository root; one in `design/`.
 - **Checks:** `10_plan.md` P3.1–P3.3; `~/.ko-quality` gains no file during the step (listing before and after).
