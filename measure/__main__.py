@@ -1,5 +1,6 @@
 """python3 -m measure run --home <KO_QUALITY_HOME> [--report <path>]
 python3 -m measure exclusion-cases [--cases tests/exclusion-cases] [--report <path>]
+python3 -m measure cases [--cases tests/measure-cases] [--report <path>]
 """
 import argparse
 import json
@@ -16,10 +17,16 @@ def main(argv=None):
     x = sub.add_parser("exclusion-cases", help="false negatives per zone on the labelled set")
     x.add_argument("--cases", default="tests/exclusion-cases")
     x.add_argument("--report")
+    c = sub.add_parser("cases", help="every measurement against its correct and defective cases (09 §17.3)")
+    c.add_argument("--cases", default="tests/measure-cases")
+    c.add_argument("--report")
     args = ap.parse_args(argv)
     if args.command == "run":
         from measure import runner
         out = runner.run(Path(args.home).expanduser())
+    elif args.command == "cases":
+        from measure import cases
+        out = cases.run(Path(args.cases))
     else:
         from measure import exclusion_cases
         out = exclusion_cases.evaluate(Path(args.cases))
@@ -27,7 +34,7 @@ def main(argv=None):
     if args.report:
         Path(args.report).write_text(text, encoding="utf-8")
     sys.stdout.write(text)
-    return 0
+    return 1 if out.get("failures") else 0
 
 
 if __name__ == "__main__":

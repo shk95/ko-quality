@@ -1,0 +1,262 @@
+{
+  "first_run": {
+    "exclusion_version": "ex-2",
+    "code_version": "2af2def49c88185e",
+    "retention_deleted": [
+      "logs/2026-05.jsonl",
+      "judge/2026-04.jsonl",
+      "grader/2026-05.jsonl",
+      "exports/2025-12.csv"
+    ],
+    "log_records": 3,
+    "annotations_joined": 2,
+    "derived_records": 5,
+    "derived_kept_without_log": 2,
+    "arm_counts": {
+      "B": 1,
+      "C": 1,
+      "unannotated": 1
+    },
+    "stratum_counts": {
+      "english": 1,
+      "conversation": 1,
+      "unannotated": 1
+    },
+    "profile_counts": {
+      "none": 2,
+      "agent-reply": 1
+    },
+    "floor_exclusions": {
+      "count": 0,
+      "reason": "no Tier 0 measurement applies a length floor"
+    },
+    "measurements": {
+      "em_dash_count": {
+        "layers": [
+          "policy",
+          "skill"
+        ],
+        "tier": 0
+      },
+      "emoji_count": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "bold_density": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "bullet_density": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "header_formula": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "quote_emphasis_count": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "phrase_battery": {
+        "layers": [
+          "skill",
+          "policy"
+        ],
+        "tier": 0
+      },
+      "english_ratio": {
+        "layers": [
+          "policy"
+        ],
+        "tier": 0
+      },
+      "english_gloss_repeat": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "sentence_len_var": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "paragraph_initial_repeat": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "comma_rate": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "spelling_denylist": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "quote_balance": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "allomorph_errors": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "honorific_address": {
+        "layers": [
+          "policy"
+        ],
+        "tier": 0
+      }
+    }
+  },
+  "second_run": {
+    "exclusion_version": "ex-2",
+    "code_version": "2af2def49c88185e",
+    "retention_deleted": [],
+    "log_records": 3,
+    "annotations_joined": 2,
+    "derived_records": 5,
+    "derived_kept_without_log": 2,
+    "arm_counts": {
+      "B": 1,
+      "C": 1,
+      "unannotated": 1
+    },
+    "stratum_counts": {
+      "english": 1,
+      "conversation": 1,
+      "unannotated": 1
+    },
+    "profile_counts": {
+      "none": 2,
+      "agent-reply": 1
+    },
+    "floor_exclusions": {
+      "count": 0,
+      "reason": "no Tier 0 measurement applies a length floor"
+    },
+    "measurements": {
+      "em_dash_count": {
+        "layers": [
+          "policy",
+          "skill"
+        ],
+        "tier": 0
+      },
+      "emoji_count": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "bold_density": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "bullet_density": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "header_formula": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "quote_emphasis_count": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "phrase_battery": {
+        "layers": [
+          "skill",
+          "policy"
+        ],
+        "tier": 0
+      },
+      "english_ratio": {
+        "layers": [
+          "policy"
+        ],
+        "tier": 0
+      },
+      "english_gloss_repeat": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "sentence_len_var": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "paragraph_initial_repeat": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "comma_rate": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "spelling_denylist": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "quote_balance": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "allomorph_errors": {
+        "layers": [
+          "skill"
+        ],
+        "tier": 0
+      },
+      "honorific_address": {
+        "layers": [
+          "policy"
+        ],
+        "tier": 0
+      }
+    }
+  }
+}
+measure runner test: 0 failures

@@ -32,7 +32,7 @@ def covered(spans, s, e, text, whole=True):
 
 
 def evaluate(cases_dir, run=exclusion.run):
-    zones = {z: {"positives": 0, "false_negatives": 0, "other_zone": 0, "negatives": 0, "false_positives": 0, "missed": [], "wrongly_excluded": []}
+    zones = {z: {"positives": 0, "false_negatives": 0, "other_zone": 0, "other_zone_isolated_misses": 0, "negatives": 0, "false_positives": 0, "missed": [], "wrongly_excluded": []}
              for z in exclusion.ZONES}
     files = sorted(Path(cases_dir).glob("*.json"))
     errors = []
@@ -53,7 +53,12 @@ def evaluate(cases_dir, run=exclusion.run):
                     others = [s for oz in exclusion.REMOVED if oz != z for s in res.spans[oz]]
                     if z in exclusion.REMOVED and covered(spans + others, *loc, case["text"], whole=True):
                         row["other_zone"] += 1
-                        row["missed"].append(f"{case['id']}: {item['text']} (other zone)")
+                        # isolation: would the zone find it on its own line, without the span that swallowed it? (P4 V4)
+                        window = case["text"][loc[0]:loc[1] + 20].split("\n")[0]   # the item and what follows it (a speech marker follows its quote)
+                        alone = run(window).spans[z]
+                        found_alone = covered(alone, 0, len(item["text"]), window, whole=True)
+                        row["other_zone_isolated_misses"] += 0 if found_alone else 1
+                        row["missed"].append(f"{case['id']}: {item['text']} (other zone; alone: {'found' if found_alone else 'missed'})")
                     else:
                         row["false_negatives"] += 1
                         row["missed"].append(f"{case['id']}: {item['text']}")

@@ -18,7 +18,7 @@ Zones (09 §15.2 table rows):
 """
 import re
 
-EXCLUSION_VERSION = "ex-1"
+EXCLUSION_VERSION = "ex-2"  # ex-2: honorific speech verbs (하셨, 하시) after 라고/고 (P4 verification)
 A = re.ASCII  # \b and \w must not treat Hangul as a word character: particles attach directly (`320ms에서`, `max_retries를`)
 ZONES = ("code", "url_path_id", "quotation", "number", "structure", "math", "legal", "abbreviation", "proper_noun")
 REMOVED = ("code", "url_path_id", "quotation", "number", "math", "legal", "abbreviation", "proper_noun")
@@ -41,7 +41,7 @@ DOTTED = re.compile(r"\b[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)+(?:\(
 CALL = re.compile(r"\b[A-Za-z_][A-Za-z0-9_]*\(\)", A)
 
 QUOTE_PAIRS = [("\u201c", "\u201d"), ("\u2018", "\u2019"), ('"', '"'), ("'", "'"), ("\u300c", "\u300d"), ("\u300e", "\u300f")]
-SPEECH_MARKER = re.compile(r"^\s*(?:(?:이?라고|고|하고)\s*(?:말|했|하였|한다|합니다|밝혔|전했|물었|묻|답했|답하|적었|썼|주장|강조|설명|덧붙|외쳤|말씀|알렸|지적|토로|반문)|이?라며|이?라는\s*(?:말|답|질문|문구|메시지|지적|설명)|(?:하|이)?며\s|하더라|는\s*말|(?:이|가|의)?\s*(?:말|발표|보도|설명)?에\s*따르면)")  # a speech verb must follow 라고/고: `X라고 부르다` names, it does not quote. Markers from upstream's Do-NOT line: 말했다·밝혔다·따르면
+SPEECH_MARKER = re.compile(r"^\s*(?:(?:이?라고|고|하고)\s*(?:말|했|하였|하셨|하시|한다|합니다|밝혔|전했|물었|묻|답했|답하|적었|썼|주장|강조|설명|덧붙|외쳤|말씀|알렸|지적|토로|반문)|이?라며|이?라는\s*(?:말|답|질문|문구|메시지|지적|설명)|(?:하|이)?며\s|하더라|는\s*말|(?:이|가|의)?\s*(?:말|발표|보도|설명)?에\s*따르면)")  # a speech verb must follow 라고/고: `X라고 부르다` names, it does not quote. Markers from upstream's Do-NOT line: 말했다·밝혔다·따르면
 
 NUMBER = re.compile(
     r"(?:[₩$€£¥]\s?\d[\d,]*(?:\.\d+)?)"                                       # currency prefix

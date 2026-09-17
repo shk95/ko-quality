@@ -1,0 +1,15 @@
+# Tier 0 case (09 §17.3). Synthetic. `input` is the reply text the measurements read.
+id: t0-correct-03-formal
+profile: formal-report
+arm: C
+layer: policy
+input: "사용자님, 요청하신 보고서를 정리했습니다. 이번 분기에는 신규 가입자가 조금 늘었고 해지율은 지난 분기와 비슷했습니다.\n\n다음 주에 세부 지표를 함께 검토하시면 좋겠습니다."
+expect:
+  honorific_address.present:
+    equals: true
+  em_dash_count.count:
+    max: 0
+  english_ratio.ratio:
+    max: 0.05
+  sentence_len_var.cv:
+    min: 0.2

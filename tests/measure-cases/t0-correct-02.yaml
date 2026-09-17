@@ -1,0 +1,39 @@
+# Tier 0 case (09 §17.3). Synthetic. `input` is the reply text the measurements read.
+id: t0-correct-02
+profile: agent-reply
+arm: any
+layer: skill
+input: "## 로그인 오류 원인\n\n세션 토큰의 만료 시간을 초 단위로 저장해야 하는데 밀리초로 저장하고 있었습니다. 그래서 토큰이 곧바로 만료된 것으로 판단됐습니다.\n\n단위를 초로 맞추고 오래된 토큰은 다음 로그인 때 새로 발급하도록 했습니다. 가을에 배포한 버전부터 생긴 문제라서 그 뒤에 가입한 사용자만 영향을 받았습니다. 팀장은 \"이번 주 안에 배포하자\"고 말했습니다. 효과는 바로 확인할 수 있습니다."
+expect:
+  em_dash_count.count:
+    max: 0
+  emoji_count.count:
+    max: 0
+  bold_density.count:
+    max: 0
+  header_formula.formulaic:
+    max: 0
+  header_formula.colon_subtitle:
+    max: 0
+  quote_emphasis_count.count:
+    max: 0
+  english_ratio.ratio:
+    max: 0.05
+  english_gloss_repeat.count:
+    max: 0
+  paragraph_initial_repeat.repeated_openers:
+    max: 0
+  comma_rate.after_connective:
+    max: 0
+  spelling_denylist.count:
+    max: 0
+  quote_balance.balanced:
+    equals: true
+  allomorph_errors.count:
+    max: 0
+  sentence_len_var.cv:
+    min: 0.2
+  phrase_battery.entries.rewrite.A-1.max_per_paragraph:
+    max: 0
+  phrase_battery.entries.rewrite.D-1.count:
+    max: 0

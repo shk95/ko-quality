@@ -1,0 +1,11 @@
+# Tier 0 case (09 §17.3). Synthetic. `input` is the reply text the measurements read.
+id: t0-defect-03-english
+profile: agent-reply
+arm: any
+layer: policy
+input: "이번 release에서는 performance를 improve하기 위해 caching layer를 refactor했습니다. overall하게 stable합니다.\n\n다음에는 monitoring을 add할 예정입니다."
+expect:
+  english_ratio.ratio:
+    min: 0.3
+  em_dash_count.count:
+    max: 0

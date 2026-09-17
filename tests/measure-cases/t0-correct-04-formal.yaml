@@ -1,0 +1,15 @@
+# Tier 0 case (09 §17.3). Synthetic. `input` is the reply text the measurements read.
+id: t0-correct-04-formal
+profile: formal-report
+arm: C
+layer: policy
+input: "확인해 보니 결제 모듈의 시간대 설정이 달랐습니다. 사용자님께서 말씀하신 대로 한국 시간으로 맞추면 정산 시각이 하루 밀리지 않습니다. 바로 수정할까요?"
+expect:
+  honorific_address.present:
+    equals: true
+  em_dash_count.count:
+    max: 0
+  allomorph_errors.count:
+    max: 0
+  spelling_denylist.count:
+    max: 0

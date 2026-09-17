@@ -1,0 +1,809 @@
+{
+  "exclusion_version": "ex-2",
+  "checks": 92,
+  "failures": [],
+  "coverage_cases_per_measurement": {
+    "allomorph_errors": {
+      "correct": 3,
+      "defective": 2
+    },
+    "bold_density": {
+      "correct": 3,
+      "defective": 2
+    },
+    "bullet_density": {
+      "correct": 2,
+      "defective": 2
+    },
+    "comma_rate": {
+      "correct": 2,
+      "defective": 3
+    },
+    "em_dash_count": {
+      "correct": 5,
+      "defective": 3
+    },
+    "emoji_count": {
+      "correct": 3,
+      "defective": 2
+    },
+    "english_gloss_repeat": {
+      "correct": 2,
+      "defective": 2
+    },
+    "english_ratio": {
+      "correct": 3,
+      "defective": 2
+    },
+    "header_formula": {
+      "correct": 3,
+      "defective": 2
+    },
+    "honorific_address": {
+      "correct": 3,
+      "defective": 2
+    },
+    "paragraph_initial_repeat": {
+      "correct": 2,
+      "defective": 2
+    },
+    "phrase_battery": {
+      "correct": 3,
+      "defective": 3
+    },
+    "quote_balance": {
+      "correct": 3,
+      "defective": 2
+    },
+    "quote_emphasis_count": {
+      "correct": 2,
+      "defective": 2
+    },
+    "sentence_len_var": {
+      "correct": 3,
+      "defective": 2
+    },
+    "spelling_denylist": {
+      "correct": 4,
+      "defective": 2
+    }
+  },
+  "results": [
+    {
+      "case": "t0-correct-01",
+      "expect": "em_dash_count.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "emoji_count.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "bold_density.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "bullet_density.list_items",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "header_formula.headings",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "quote_emphasis_count.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "english_ratio.ratio",
+      "op": "max",
+      "target": 0.05,
+      "value": 0.0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "english_gloss_repeat.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "paragraph_initial_repeat.repeated_openers",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "comma_rate.after_connective",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "spelling_denylist.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "quote_balance.balanced",
+      "op": "equals",
+      "target": true,
+      "value": true,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "allomorph_errors.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "honorific_address.present",
+      "op": "equals",
+      "target": false,
+      "value": false,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-01",
+      "expect": "phrase_battery.total",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "em_dash_count.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "emoji_count.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "bold_density.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "header_formula.formulaic",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "header_formula.colon_subtitle",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "quote_emphasis_count.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "english_ratio.ratio",
+      "op": "max",
+      "target": 0.05,
+      "value": 0.0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "english_gloss_repeat.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "paragraph_initial_repeat.repeated_openers",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "comma_rate.after_connective",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "spelling_denylist.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "quote_balance.balanced",
+      "op": "equals",
+      "target": true,
+      "value": true,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "allomorph_errors.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "sentence_len_var.cv",
+      "op": "min",
+      "target": 0.2,
+      "value": 0.3135,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "phrase_battery.entries.rewrite.A-1.max_per_paragraph",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-02",
+      "expect": "phrase_battery.entries.rewrite.D-1.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-03-formal",
+      "expect": "honorific_address.present",
+      "op": "equals",
+      "target": true,
+      "value": true,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-03-formal",
+      "expect": "em_dash_count.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-03-formal",
+      "expect": "english_ratio.ratio",
+      "op": "max",
+      "target": 0.05,
+      "value": 0.0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-03-formal",
+      "expect": "sentence_len_var.cv",
+      "op": "min",
+      "target": 0.2,
+      "value": 0.2594,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-04-formal",
+      "expect": "honorific_address.present",
+      "op": "equals",
+      "target": true,
+      "value": true,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-04-formal",
+      "expect": "em_dash_count.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-04-formal",
+      "expect": "allomorph_errors.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-04-formal",
+      "expect": "spelling_denylist.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-05-phrase",
+      "expect": "phrase_battery.entries.rewrite.A-1.max_per_paragraph",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-05-phrase",
+      "expect": "phrase_battery.entries.rewrite.D-1.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-05-phrase",
+      "expect": "phrase_battery.entries.rewrite.D-6.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-05-phrase",
+      "expect": "bullet_density.list_items",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-05-phrase",
+      "expect": "sentence_len_var.cv",
+      "op": "min",
+      "target": 0.1,
+      "value": 0.6843,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-06-markdown",
+      "expect": "em_dash_count.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-06-markdown",
+      "expect": "emoji_count.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-06-markdown",
+      "expect": "spelling_denylist.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-06-markdown",
+      "expect": "bold_density.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-06-markdown",
+      "expect": "header_formula.formulaic",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-06-markdown",
+      "expect": "header_formula.colon_subtitle",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-correct-06-markdown",
+      "expect": "quote_balance.balanced",
+      "op": "equals",
+      "target": true,
+      "value": true,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-01-boundary",
+      "expect": "em_dash_count.count",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-01-boundary",
+      "expect": "emoji_count.count",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-01-boundary",
+      "expect": "spelling_denylist.count",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-01-boundary",
+      "expect": "bold_density.count",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-01-boundary",
+      "expect": "quote_emphasis_count.count",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-01-boundary",
+      "expect": "allomorph_errors.count",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-01-boundary",
+      "expect": "english_gloss_repeat.count",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-01-boundary",
+      "expect": "comma_rate.after_connective",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-01-boundary",
+      "expect": "quote_balance.balanced",
+      "op": "equals",
+      "target": false,
+      "value": false,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-01-boundary",
+      "expect": "english_ratio.ratio",
+      "op": "min",
+      "target": 0.01,
+      "value": 0.069,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "em_dash_count.count",
+      "op": "min",
+      "target": 3,
+      "value": 3,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "emoji_count.count",
+      "op": "min",
+      "target": 3,
+      "value": 3,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "bold_density.count",
+      "op": "min",
+      "target": 2,
+      "value": 2,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "bullet_density.list_items",
+      "op": "min",
+      "target": 3,
+      "value": 3,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "header_formula.colon_subtitle",
+      "op": "min",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "header_formula.formulaic",
+      "op": "min",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "paragraph_initial_repeat.triad_먼저_반면_결국",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "spelling_denylist.count",
+      "op": "min",
+      "target": 3,
+      "value": 4,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "comma_rate.after_connective",
+      "op": "min",
+      "target": 3,
+      "value": 5,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "quote_emphasis_count.count",
+      "op": "min",
+      "target": 3,
+      "value": 3,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "english_gloss_repeat.count",
+      "op": "min",
+      "target": 3,
+      "value": 4,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "quote_balance.balanced",
+      "op": "equals",
+      "target": false,
+      "value": false,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "allomorph_errors.count",
+      "op": "min",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-02",
+      "expect": "phrase_battery.entries.rewrite.D-1.count",
+      "op": "min",
+      "target": 2,
+      "value": 2,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-03-english",
+      "expect": "english_ratio.ratio",
+      "op": "min",
+      "target": 0.3,
+      "value": 0.6961,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-03-english",
+      "expect": "em_dash_count.count",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-04-uniform",
+      "expect": "sentence_len_var.cv",
+      "op": "max",
+      "target": 0.15,
+      "value": 0.0379,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-04-uniform",
+      "expect": "comma_rate.after_connective",
+      "op": "max",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-05-boundary-uniform",
+      "expect": "sentence_len_var.cv",
+      "op": "max",
+      "target": 0.3,
+      "value": 0.2465,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-06-paragraph-opener",
+      "expect": "paragraph_initial_repeat.repeated_openers",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-06-paragraph-opener",
+      "expect": "paragraph_initial_repeat.triad_먼저_반면_결국",
+      "op": "equals",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-07-honorific-missing",
+      "expect": "honorific_address.present",
+      "op": "equals",
+      "target": false,
+      "value": false,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-08-honorific-missing",
+      "expect": "honorific_address.present",
+      "op": "equals",
+      "target": false,
+      "value": false,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-09-phrase-paragraph",
+      "expect": "phrase_battery.entries.rewrite.A-1.max_per_paragraph",
+      "op": "equals",
+      "target": 3,
+      "value": 3,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-09-phrase-paragraph",
+      "expect": "phrase_battery.entries.rewrite.A-1.count",
+      "op": "equals",
+      "target": 3,
+      "value": 3,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-10-phrase-document",
+      "expect": "phrase_battery.entries.rewrite.D-1.count",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-10-phrase-document",
+      "expect": "phrase_battery.entries.rewrite.D-2.count",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-10-phrase-document",
+      "expect": "phrase_battery.entries.rewrite.D-6.count",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-11-boundary-structure",
+      "expect": "bullet_density.list_items",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-11-boundary-structure",
+      "expect": "header_formula.formulaic",
+      "op": "equals",
+      "target": 1,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "case": "t0-defect-11-boundary-structure",
+      "expect": "header_formula.colon_subtitle",
+      "op": "equals",
+      "target": 0,
+      "value": 0,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,901 @@
+{
+ "version": "pb-1",
+ "note": "Surface phrases from upstream/normalized/taxonomy/{rewrite,diagnose}.yaml as regular expressions. Patterns are ours; upstream thresholds are stored as data and never applied (09 §15.4). Counts run on text after the exclusion pass.",
+ "omitted_rewrite_patterns": {
+  "measured elsewhere": {
+   "B-1": "english_gloss_repeat",
+   "C-2": "bullet_density",
+   "C-5": "emoji_count",
+   "C-7": "paragraph_initial_repeat",
+   "C-10": "header_formula",
+   "C-11": "comma_rate",
+   "E-1": "sentence_len_var",
+   "E-2": "ending_monotony (Tier 1)",
+   "E-7": "speech_level (Tier 1)",
+   "J-2": "quote_emphasis_count",
+   "J-3": "em_dash_count",
+   "A-18": "adnominal_chain_depth (Tier 1)",
+   "F-4": "suffix_jeok_density (Tier 1)",
+   "F-5": "suffix_jeok_density (Tier 1)"
+  },
+  "no surface form": {
+   "A-16": "needs the antecedent count of the two previous sentences",
+   "D-5": "personified abstract subject needs meaning"
+  },
+  "not in normalized/": "J-1 (generator drop; bold_density) and the 23 quick: false patterns (10_plan.md §2.1)"
+ },
+ "entries": [
+  {
+   "id": "rewrite.A-1",
+   "source": "taxonomy/rewrite#pattern.A-1",
+   "pattern": "에\\s?대(?:해서?|하여)",
+   "anchor": "any",
+   "scope": "paragraph",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "paragraph"
+   }
+  },
+  {
+   "id": "rewrite.A-2",
+   "source": "taxonomy/rewrite#pattern.A-2",
+   "pattern": "(?:을|를)\\s?통(?:해서?|하여)",
+   "anchor": "any",
+   "scope": "paragraph",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "paragraph"
+   }
+  },
+  {
+   "id": "rewrite.A-3",
+   "source": "taxonomy/rewrite#pattern.A-3",
+   "pattern": "에\\s?있어(?:서)?(?![가-힣])",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.A-4",
+   "source": "taxonomy/rewrite#pattern.A-4",
+   "pattern": "(?:이)?라는\\s?점에서",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.A-5",
+   "source": "taxonomy/rewrite#pattern.A-5",
+   "pattern": "(?:와|과)\\s?관련(?:하여|해서?|된)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.A-6",
+   "source": "taxonomy/rewrite#pattern.A-6",
+   "pattern": "에\\s?기반(?:하여|해서?|한)|(?:을|를)\\s?바탕으로",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "남발"
+   }
+  },
+  {
+   "id": "rewrite.A-7",
+   "source": "taxonomy/rewrite#pattern.A-7",
+   "pattern": "가지고\\s?있",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.A-8",
+   "source": "taxonomy/rewrite#pattern.A-8",
+   "pattern": "되어지|되어져|지게\\s?되",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.A-9",
+   "source": "taxonomy/rewrite#pattern.A-9",
+   "pattern": "에\\s?의(?:해서?|하여|한)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.A-10",
+   "source": "taxonomy/rewrite#pattern.A-10",
+   "pattern": "([가-힣])\\s?수\\s?있(?:다|습니다|어요|음|는|을)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 4,
+    "per": "document"
+   },
+   "note": "the syllable before 수 must end in ㄹ (checked in code)"
+  },
+  {
+   "id": "rewrite.A-11",
+   "source": "taxonomy/rewrite#pattern.A-11",
+   "pattern": "(?:을|를)\\s?위(?:해서?|하여|한)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "남발"
+   }
+  },
+  {
+   "id": "rewrite.A-15",
+   "source": "taxonomy/rewrite#pattern.A-15",
+   "pattern": "(?:보여|제공|가져)(?:준다|한다|온다|줍니다|합니다|옵니다)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "추상 주어 + 만능 동사"
+   },
+   "note": "the verb only; the abstract subject is not checked"
+  },
+  {
+   "id": "rewrite.A-19",
+   "source": "taxonomy/rewrite#pattern.A-19",
+   "pattern": "(?:으로부터의|로부터의|에서의|에로의|으로의|에의)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.A-20",
+   "source": "taxonomy/rewrite#pattern.A-20",
+   "pattern": "(?:되|지)고\\s?있(?:다|습니다|어요|음)",
+   "anchor": "any",
+   "scope": "paragraph",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "paragraph"
+   }
+  },
+  {
+   "id": "rewrite.A-21",
+   "source": "taxonomy/rewrite#pattern.A-21",
+   "pattern": "단순한\\s?\\S+\\s?넘어",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.A-22",
+   "source": "taxonomy/rewrite#pattern.A-22",
+   "pattern": "(?:은|는)\\s?(?:명확|분명)(?:하다|합니다|해요|함)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.A-24",
+   "source": "taxonomy/rewrite#pattern.A-24",
+   "pattern": "더\\s?이상\\s(?:\\S+\\s){0,3}?\\S*(?:않|아니)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 2,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.B-2",
+   "source": "taxonomy/rewrite#pattern.B-2",
+   "pattern": "(?i)\\b(?:seamless(?:ly)?|robust|leverag(?:e|es|ed|ing)|synerg(?:y|ies)|holistic|cutting-edge|game-changer|empower(?:s|ed|ing)?|streamlin(?:e|ed|ing))\\b",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   },
+   "note": "the examples upstream names plus common buzzwords of the same kind; the list is ours"
+  },
+  {
+   "id": "rewrite.C-8",
+   "source": "taxonomy/rewrite#pattern.C-8",
+   "pattern": "인가\\s?,\\s?[^.?!\\n]{1,40}인가|(?:이|가)\\s아니라|것이\\s?아니라|것은\\s?아니다",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 2,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.C-9",
+   "source": "taxonomy/rewrite#pattern.C-9",
+   "pattern": "(?:^|\\s)\\d\\)\\s",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "나열"
+   }
+  },
+  {
+   "id": "rewrite.D-1",
+   "source": "taxonomy/rewrite#pattern.D-1",
+   "pattern": "결론적으로|따라서|이를\\s?통해|그러므로|요약하면|정리하자면",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.D-2",
+   "source": "taxonomy/rewrite#pattern.D-2",
+   "pattern": "시사하는\\s?바가\\s?(?:크|큽|컸)|주목할\\s?만하|매우\\s?중요하",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.D-3",
+   "source": "taxonomy/rewrite#pattern.D-3",
+   "pattern": "(?:세|두|네|다섯)\\s?가지로\\s?나눌\\s?수\\s?있|다음과\\s?같(?:은|다|습니다|이)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.D-4",
+   "source": "taxonomy/rewrite#pattern.D-4",
+   "pattern": "혁신적|획기적|압도적|파격적|폭발적|전례\\s?없는",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.D-6",
+   "source": "taxonomy/rewrite#pattern.D-6",
+   "pattern": "할\\s?때(?:입니다|이다)|시점(?:입니다|이다)|할\\s?순간(?:입니다|이다)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.D-7",
+   "source": "taxonomy/rewrite#pattern.D-7",
+   "pattern": "에서\\s\\S+(?:으로|로)\\s|(?:을|를)\\s?넘어\\s\\S+(?:으로|로)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "반복"
+   }
+  },
+  {
+   "id": "rewrite.D-8",
+   "source": "taxonomy/rewrite#pattern.D-8",
+   "pattern": "(?:필요한|중요한)\\s?것은|(?:문제|핵심|관건|답)은\\s",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.D-9",
+   "source": "taxonomy/rewrite#pattern.D-9",
+   "pattern": "(?:으로|로)\\s?이어진(?:다|습니다)|에\\s?직결된(?:다|습니다)|결국\\s",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 2,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.D-10",
+   "source": "taxonomy/rewrite#pattern.D-10",
+   "pattern": "하는\\s?이유(?:다|이다|입니다)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.D-11",
+   "source": "taxonomy/rewrite#pattern.D-11",
+   "pattern": "향후|앞으로|중장기적으로",
+   "anchor": "sentence_start",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document",
+    "text": "결말부(후반 30%) 문두"
+   },
+   "note": "position in the document is not checked; counted at sentence start anywhere"
+  },
+  {
+   "id": "rewrite.D-12",
+   "source": "taxonomy/rewrite#pattern.D-12",
+   "pattern": "과제도\\s?남아\\s?있|한계도\\s?분명하|아쉬운\\s?점도\\s?있",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.D-13",
+   "source": "taxonomy/rewrite#pattern.D-13",
+   "pattern": "어쩌면|비로소|천천히",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document",
+    "text": "에세이 결말 한정"
+   }
+  },
+  {
+   "id": "rewrite.D-14",
+   "source": "taxonomy/rewrite#pattern.D-14",
+   "pattern": "잠식|청사진|적신호|경고등|신호탄|움켜쥐|뿌리내리|짓누르",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   },
+   "note": "the 사람 0건 사전 은유 list only; 감각 술어 평가문 and concept metaphors are not surface patterns"
+  },
+  {
+   "id": "rewrite.F-7",
+   "source": "taxonomy/rewrite#pattern.F-7",
+   "pattern": "확대|강화|개선|확보|마련|구축",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "문서 밀집"
+   }
+  },
+  {
+   "id": "rewrite.G-1",
+   "source": "taxonomy/rewrite#pattern.G-1",
+   "pattern": "(?:으로|로)\\s?(?:보인다|보입니다|판단된다|판단됩니다)|(?:이)?라고\\s?여겨(?:진다|집니다)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 2,
+    "per": "document",
+    "text": "같은 추측 종결의 반복"
+   }
+  },
+  {
+   "id": "rewrite.G-2",
+   "source": "taxonomy/rewrite#pattern.G-2",
+   "pattern": "가능성이\\s?있을\\s?수\\s?있|보여질\\s?수\\s?있",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.G-3",
+   "source": "taxonomy/rewrite#pattern.G-3",
+   "pattern": "양쪽\\s?모두|두\\s?가지\\s?모두|장점도\\s?있지만|신중하게|균형",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 4,
+    "per": "document"
+   },
+   "note": "upstream holds this pattern as 실증 부족"
+  },
+  {
+   "id": "rewrite.H-1",
+   "source": "taxonomy/rewrite#pattern.H-1",
+   "pattern": "또한|따라서|즉|나아가|아울러|게다가|더욱이",
+   "anchor": "sentence_start",
+   "scope": "paragraph",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "paragraph"
+   }
+  },
+  {
+   "id": "rewrite.H-3",
+   "source": "taxonomy/rewrite#pattern.H-3",
+   "pattern": "이는\\s|이\\s?점에서|이\\s?관점에서|이\\s?말은",
+   "anchor": "sentence_start",
+   "scope": "paragraph",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "paragraph"
+   }
+  },
+  {
+   "id": "rewrite.H-4",
+   "source": "taxonomy/rewrite#pattern.H-4",
+   "pattern": "(?<![가-힣])즉(?![가-힣])",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "남발"
+   }
+  },
+  {
+   "id": "rewrite.I-1",
+   "source": "taxonomy/rewrite#pattern.I-1",
+   "pattern": "(?:한|할|일|인|는|된|될|된다는)\\s?것이(?:다|었다)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "text": "연속"
+   }
+  },
+  {
+   "id": "rewrite.I-2",
+   "source": "taxonomy/rewrite#pattern.I-2",
+   "pattern": "주목할\\s?점은|라는\\s?점에\\s?있",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.I-3",
+   "source": "taxonomy/rewrite#pattern.I-3",
+   "pattern": "다는\\s?(?:것|뜻)이(?:다|었다)|다는\\s?(?:것|뜻)입니다",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "rewrite.I-4",
+   "source": "taxonomy/rewrite#pattern.I-4",
+   "pattern": "할\\s?필요가\\s?있(?:다|습니다)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 2,
+    "per": "document",
+    "text": "당위로 끝나는 문단 2개+"
+   }
+  },
+  {
+   "id": "rewrite.I-7",
+   "source": "taxonomy/rewrite#pattern.I-7",
+   "pattern": "다는\\s?(?:분석|평가)(?:이다|다|입니다)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document"
+   }
+  },
+  {
+   "id": "diagnose.027",
+   "source": "taxonomy/diagnose#diagnose.027",
+   "name": "~에 대해/~에 관해 남용",
+   "pattern": "에\\s?(?:대해|관해)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.028",
+   "source": "taxonomy/diagnose#diagnose.028",
+   "name": "~을 통해/~를 통하여",
+   "pattern": "(?:을|를)\\s?통(?:해|하여)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.030",
+   "source": "taxonomy/diagnose#diagnose.030",
+   "name": "직역 대명사 그/그녀/그것/그들",
+   "pattern": "(?<![가-힣])(?:그녀|그것|그들)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document",
+    "severity": "강"
+   },
+   "note": "그 alone is not counted: it is overwhelmingly a determiner"
+  },
+  {
+   "id": "diagnose.031",
+   "source": "taxonomy/diagnose#diagnose.031",
+   "name": "가지다/갖다 직역",
+   "pattern": "가지(?:고|며|는|ㄴ)|가진다|갖(?:고|는다|는)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.032",
+   "source": "taxonomy/diagnose#diagnose.032",
+   "name": "~중 하나",
+   "pattern": "중\\s?하나",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "중첩 시에만",
+    "severity": "약"
+   }
+  },
+  {
+   "id": "diagnose.033",
+   "source": "taxonomy/diagnose#diagnose.033",
+   "name": "무생물 복수 -들",
+   "pattern": "(?:정보|문제|결과|데이터|요소|방법|기능|파일|항목|설정)들",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   },
+   "note": "a fixed list of inanimate nouns; ours"
+  },
+  {
+   "id": "diagnose.042",
+   "source": "taxonomy/diagnose#diagnose.042",
+   "name": "이중 피동",
+   "pattern": "되어지|보여지|생각되어지|이루어지게\\s?되",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document",
+    "severity": "강"
+   }
+  },
+  {
+   "id": "diagnose.043",
+   "source": "taxonomy/diagnose#diagnose.043",
+   "name": "~에 의해 수동",
+   "pattern": "에\\s?의(?:해|하여)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.044",
+   "source": "taxonomy/diagnose#diagnose.044",
+   "name": "~로 보여진다/여겨진다",
+   "pattern": "(?:으로|로)\\s?(?:보여진|여겨진)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.045",
+   "source": "taxonomy/diagnose#diagnose.045",
+   "name": "상태 피동 ~되어 있다",
+   "pattern": "되어\\s?있",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "중첩 시에만",
+    "severity": "약"
+   }
+  },
+  {
+   "id": "diagnose.053",
+   "source": "taxonomy/diagnose#diagnose.053",
+   "name": "정형 결론 도입",
+   "pattern": "결론적으로|종합하면|요컨대|정리하자면",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.054",
+   "source": "taxonomy/diagnose#diagnose.054",
+   "name": "메타 진입구",
+   "pattern": "주목할\\s?만하|흥미로운\\s?점은|여기서\\s?중요한\\s?것은",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.055",
+   "source": "taxonomy/diagnose#diagnose.055",
+   "name": "hedging 중첩",
+   "pattern": "(?:이)?라고\\s?할\\s?수\\s?있|인\\s?것으로\\s?보이|일\\s?수\\s?있",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.056",
+   "source": "taxonomy/diagnose#diagnose.056",
+   "name": "홍보·과장 어휘",
+   "pattern": "혁신적인|획기적인|강력한|놀라운|필수적인",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 1,
+    "per": "document",
+    "severity": "강"
+   }
+  },
+  {
+   "id": "diagnose.057",
+   "source": "taxonomy/diagnose#diagnose.057",
+   "name": "중요한 역할을 한다",
+   "pattern": "중요한\\s?역할을\\s?(?:한|합|하)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.058",
+   "source": "taxonomy/diagnose#diagnose.058",
+   "name": "균형 강박",
+   "pattern": "장점과\\s?단점이\\s?모두|한편으로는",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "중첩 시에만",
+    "severity": "약"
+   }
+  },
+  {
+   "id": "diagnose.066",
+   "source": "taxonomy/diagnose#diagnose.066",
+   "name": "문두 접속사 반복",
+   "pattern": "또한|따라서|그러므로",
+   "anchor": "sentence_start",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.067",
+   "source": "taxonomy/diagnose#diagnose.067",
+   "name": "즉 재정의 남발",
+   "pattern": "(?<![가-힣])즉(?![가-힣])",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.068",
+   "source": "taxonomy/diagnose#diagnose.068",
+   "name": "뿐만 아니라/더 나아가/무엇보다",
+   "pattern": "뿐만\\s?아니라|더\\s?나아가|무엇보다",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "중첩 시에만",
+    "severity": "약"
+   }
+  },
+  {
+   "id": "diagnose.087",
+   "source": "taxonomy/diagnose#diagnose.087",
+   "name": "것이다 종결 남발",
+   "pattern": "(?:할|인|한|일)\\s?것이다",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.088",
+   "source": "taxonomy/diagnose#diagnose.088",
+   "name": "~하는 것 명사화",
+   "pattern": "하는\\s?것(?:이|은|을)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.089",
+   "source": "taxonomy/diagnose#diagnose.089",
+   "name": "~한다는 점/~라는 점에서",
+   "pattern": "다는\\s?점|라는\\s?점에서",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.090",
+   "source": "taxonomy/diagnose#diagnose.090",
+   "name": "한자어 명사화 + 하다",
+   "pattern": "[가-힣]{2}(?:을|를)\\s하(?:다|고|는|며|였|여|기)",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   },
+   "note": "two-syllable noun + 을/를 + 하다; over-counts native verbs with an object"
+  },
+  {
+   "id": "diagnose.091",
+   "source": "taxonomy/diagnose#diagnose.091",
+   "name": "의존명사 체인",
+   "pattern": "할\\s?필요가\\s?있|할\\s?수\\s?있는\\s?바",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.099",
+   "source": "taxonomy/diagnose#diagnose.099",
+   "name": "강조부사 남발",
+   "pattern": "(?<![가-힣])(?:매우|정말|너무|굉장히|대단히)(?![가-힣])",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  },
+  {
+   "id": "diagnose.102",
+   "source": "taxonomy/diagnose#diagnose.102",
+   "name": "군더더기 부사",
+   "pattern": "기본적으로|사실상|본질적으로",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": null,
+    "per": "document",
+    "text": "중첩 시에만",
+    "severity": "약"
+   }
+  },
+  {
+   "id": "diagnose.130",
+   "source": "taxonomy/diagnose#diagnose.130",
+   "name": "미번역 용어",
+   "pattern": "(?i)\\b(?:leverag\\w*|seamless\\w*|robust\\w*)\\b",
+   "anchor": "any",
+   "scope": "document",
+   "upstream_threshold": {
+    "count": 3,
+    "per": "document",
+    "severity": "중"
+   }
+  }
+ ]
+}

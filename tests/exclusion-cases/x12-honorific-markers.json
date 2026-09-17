@@ -1,0 +1,33 @@
+{
+  "id": "x12-honorific-markers",
+  "kind": "correct",
+  "text": "부장님은 \"회의는 내일로 미루자\"고 하셨습니다. 고객께서 '환불이 늦다'고 말씀하셨어요. 선생님께서 “숙제를 다시 내라”라고 하셨다. 사장님은 '이번 분기는 괜찮다'며 웃으셨습니다. 그분이 강조하신 '안전'은 늘 같은 뜻입니다.",
+  "positives": [
+    {
+      "zone": "quotation",
+      "text": "\"회의는 내일로 미루자\""
+    },
+    {
+      "zone": "quotation",
+      "text": "'환불이 늦다'"
+    },
+    {
+      "zone": "quotation",
+      "text": "“숙제를 다시 내라”"
+    },
+    {
+      "zone": "quotation",
+      "text": "'이번 분기는 괜찮다'"
+    }
+  ],
+  "negatives": [
+    {
+      "zone": "quotation",
+      "text": "'안전'"
+    },
+    {
+      "zone": "quotation",
+      "text": "늘 같은 뜻입니다"
+    }
+  ]
+}

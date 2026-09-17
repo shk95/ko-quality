@@ -19,7 +19,7 @@ MEASURE_DIR = Path(__file__).resolve().parent
 def code_version():
     h = hashlib.sha256()
     for f in sorted(MEASURE_DIR.rglob("*.py")):
-        if "__pycache__" not in f.parts:
+        if "__pycache__" not in f.parts and ".venv" not in f.parts:   # the virtualenv lives inside measure/ (P4 V4)
             h.update(str(f.relative_to(MEASURE_DIR)).encode("utf-8") + b"\0" + f.read_bytes() + b"\0")
     return h.hexdigest()[:16]
 

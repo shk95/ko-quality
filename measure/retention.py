@@ -1,6 +1,6 @@
 """Retention (09 §20): text expires after 90 days, by whole monthly file. Run first in every invocation.
 
-A monthly file is `<yyyy-mm>.<ext>` directly under a text directory. It is deleted once its month's last day is more than
+A monthly file is any file named `<yyyy-mm>.<ext>` in a text directory, at any depth (judge and grader copies may nest per run). It is deleted once its month's last day is more than
 90 days before today, so text lives 90 to about 120 days. `derived/` and `annotations/` hold no text copy and never expire.
 Deletion is automatic and irreversible (user, 2026-09-17). Every deletion is reported.
 """

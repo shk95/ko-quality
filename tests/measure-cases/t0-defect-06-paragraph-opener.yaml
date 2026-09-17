@@ -1,0 +1,11 @@
+# Tier 0 case (09 §17.3). Synthetic. One repeated paragraph opener: the boundary.
+id: t0-defect-06-paragraph-opener
+profile: agent-reply
+arm: any
+layer: skill
+input: "이 변경으로 로딩이 빨라졌습니다.\n\n이 변경으로 메모리도 줄었습니다.\n\n다만 첫 요청은 여전히 느립니다."
+expect:
+  paragraph_initial_repeat.repeated_openers:
+    equals: 1
+  paragraph_initial_repeat.triad_먼저_반면_결국:
+    equals: 0

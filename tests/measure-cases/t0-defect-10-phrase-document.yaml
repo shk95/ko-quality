@@ -1,0 +1,13 @@
+# Tier 0 case (09 §17.3). Synthetic. phrase_battery, document scope: one occurrence each (the boundary).
+id: t0-defect-10-phrase-document
+profile: agent-reply
+arm: any
+layer: skill
+input: "결론적으로 캐시가 원인이었습니다.\n\n이 결과는 시사하는 바가 큽니다. 이제는 새로운 방식으로 전환할 때입니다."
+expect:
+  phrase_battery.entries.rewrite.D-1.count:
+    equals: 1
+  phrase_battery.entries.rewrite.D-2.count:
+    equals: 1
+  phrase_battery.entries.rewrite.D-6.count:
+    equals: 1

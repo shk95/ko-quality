@@ -1,0 +1,11 @@
+# Tier 0 case (09 §17.3). Synthetic. phrase_battery, paragraph scope: three 에 대해 in one paragraph.
+id: t0-defect-09-phrase-paragraph
+profile: agent-reply
+arm: any
+layer: skill
+input: "이 문제에 대해 먼저 설명하고, 원인에 대해서 정리한 뒤, 해결책에 대하여 제안하겠습니다.\n\n나머지는 그대로입니다."
+expect:
+  phrase_battery.entries.rewrite.A-1.max_per_paragraph:
+    equals: 3
+  phrase_battery.entries.rewrite.A-1.count:
+    equals: 3

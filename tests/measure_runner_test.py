@@ -48,6 +48,8 @@ def main():
             "derived/2026-05.jsonl": [{"record_id": "stale", "exclusion_version": "ex-0", "features": {}}],
             "annotations/2026-01.jsonl": [{"session_id": "s-0", "arm": "A"}],
             "annotations/2026-05.jsonl": [{"session_id": "s-1", "arm": "C", "profile_selected": "agent-reply"}],
+            "annotations/2026-06.jsonl": [{"session_id": "s-2", "arm": "B", "stratum": "english", "profile_selected": None},
+                                          {"session_id": "s-3", "arm": "C", "stratum": "conversation", "profile_selected": "agent-reply"}],
         }
         for rel, rows in files.items():
             p = home / rel
@@ -78,6 +80,17 @@ def main():
         again = {str(p.relative_to(home)): p.read_bytes() for p in sorted((home / "derived").glob("*.jsonl"))}
         check(snapshot == again, "re-running on unchanged input yields identical derived files")
         check(report2["retention_deleted"] == [], "second run deletes nothing")
+        # 09 §15.6: what every run report carries
+        for key in ("exclusion_version", "code_version", "arm_counts", "stratum_counts", "floor_exclusions", "measurements"):
+            check(key in report, f"run report carries {key}")
+        check(report.get("arm_counts") == {"B": 1, "C": 1, "unannotated": 1}, f"arm counts from joined annotations: {report.get('arm_counts')}")
+        check(report.get("stratum_counts") == {"english": 1, "conversation": 1, "unannotated": 1}, f"stratum counts: {report.get('stratum_counts')}")
+        check(report.get("annotations_joined") == 2, "two log records join an annotation")
+        check(all(m["tier"] in (0, 1, 2) and m["layers"] for m in report.get("measurements", {}).values()), "every measurement declares layer and tier")
+        check(all(d.get("features") for d in d06.values()), "derived records carry features")
+        # no measurement applies an upstream threshold: thresholds are data only (09 §15.1)
+        src = "".join(p.read_text(encoding="utf-8") for p in (ROOT / "measure").rglob("*.py") if ".venv" not in p.parts)
+        check("upstream_threshold" not in src, "no measurement code reads upstream_threshold")
         print(json.dumps({"first_run": report, "second_run": report2}, ensure_ascii=False, indent=2))
     for f in failures:
         print("FAIL", f)
