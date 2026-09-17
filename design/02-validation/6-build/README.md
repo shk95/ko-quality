@@ -2,7 +2,7 @@
 
 자율 구현 단계입니다. `dev` 브랜치에서 진행하고, `master` 머지는 7-review에서 정합니다.
 
-**진행:** 열림 (2026-09-17). P2 끝, P3 진행 중.
+**진행:** 열림 (2026-09-17). P3 끝, P4 진행 중.
 
 ## 이 단계가 따르는 것
 
@@ -47,8 +47,8 @@ P가 끝날 때마다 한 행을 채웁니다. 리뷰는 이 표에서 시작합
 | P | 이름 | 기록 | 완료 조건 판정 | release-blocked | 비용 | 마지막 커밋 |
 |---|---|---|---|---|---|---|
 | P1 | Distribution under B9 | [P1](P1_distribution.md) | met (4/4) | 0 | $1.14 | `639831a` |
-| P2 | Logger | [P2](P2_logger.md) | met (5/5) | 0 | $0.92 | P2 record (next row gives the hash) |
-| P3 | Self-application | — | — | — | — | — |
+| P2 | Logger | [P2](P2_logger.md) | met (5/5) | 0 | $0.92 | `5d15f70` |
+| P3 | Self-application | [P3](P3_self-application.md) | met (3/3) | 0 | $0.36 | P3 record (hash in the next row) |
 | P4 | Exclusion pass and `measure/` | — | — | — | — | — |
 | P5 | Tier 0 | — | — | — | — | — |
 | P6 | Tier 1 and Tier 2 | — | — | — | — | — |
