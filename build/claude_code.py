@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build dist/claude-code/<profile>/ from upstream/normalized/ and assemble/ (06 §12; decision ②: build-time profile).
+"""Build dist/claude-code/ko-quality/ from upstream/normalized/ and assemble/ (09 §13; B9: one plugin, both styles unforced).
 
 Run from the repository root:  python3 -m build.claude_code
 
@@ -13,6 +13,7 @@ Template directives (a line starting with @ in assemble/skills/<skill>/**/*.md; 
 All other lines are ours. Every file gets provenance: skills in SKILL.provenance.yaml, the rest in provenance/policy.yaml.
 """
 import fnmatch
+import hashlib
 import json
 import re
 import shutil
@@ -142,7 +143,7 @@ def directive(out, line, src, ctx):
             out.literal(f"- `{pname}`: {body}{note}", "assemble/presets.yaml")
         out.blank()
         for p in profiles:
-            out.literal(f"- Plugin `{p['plugin']['name']}` is profile `{p['id']}` ({p['register']}); its default preset is `{p['default_preset']}`.", f"assemble/profiles/{p['id']}.yaml")
+            out.literal(f"- Profile `{p['id']}` ({p['register']}): its default preset is `{p['default_preset']}`.", f"assemble/profiles/{p['id']}.yaml")
     else:
         raise SystemExit(f"{src}: unknown directive @{name}")
 
@@ -182,8 +183,6 @@ def output_style(profile):
     head = ["---", f"name: {profile['output_style']['name']}", f"description: {profile['output_style']['description']}"]
     if "keep-coding-instructions" in fm:
         head.append(f"keep-coding-instructions: {fm['keep-coding-instructions']}")
-    if profile["output_style"].get("force"):
-        head.append("force-for-plugin: true")
     head.append("---")
     for l in head:
         out.literal(l, src + " (frontmatter)")
@@ -247,69 +246,93 @@ def lock_versions():
     return dict(sorted(out.items()))
 
 
-def stamp(profile, harness, injection_point):
-    """Build stamp the logger reads (06 §11.2, P7). No timestamps or build commit, so rebuilds are byte-identical."""
-    return {"tool": "ko-quality", "version": "0.1.0", "profile": profile["id"], "plugin": profile["plugin"]["name"],
-            "harness": harness, "injection_point": injection_point, "upstream_versions": lock_versions()}
+BUILD_INPUTS = ("upstream/normalized", "assemble", "build", "logger")
 
 
-def ship_logger(pdir, profile, harness, injection_point):
+def build_id():
+    """sha256 over the build inputs (path and bytes, sorted), first 16 hex (09 §13). Not a time, so rebuilds stay byte-identical."""
+    h = hashlib.sha256()
+    for top in BUILD_INPUTS:
+        for f in sorted((ROOT / top).rglob("*")):
+            if f.is_file() and "__pycache__" not in f.parts and f.name != ".DS_Store":
+                h.update(str(f.relative_to(ROOT)).encode("utf-8") + b"\0" + f.read_bytes() + b"\0")
+    return h.hexdigest()[:16]
+
+
+def config():
+    return load_yaml(ASM / "build.yaml")
+
+
+def stamp(plugin, harness, extra=None):
+    """Build stamp the logger reads (09 §13). No timestamps or build commit, so rebuilds are byte-identical."""
+    out = {"tool": "ko-quality", "version": config()["version"], "plugin": plugin, "harness": harness}
+    out.update(extra or {})
+    out.update(upstream_versions=lock_versions(), build_id=build_id())
+    return out
+
+
+def ship_logger(pdir, stamp_data):
     (pdir / "logger").mkdir()
     shutil.copyfile(ROOT / "logger/ko_quality_log.py", pdir / "logger/ko_quality_log.py")
     (pdir / "hooks").mkdir()
     shutil.copyfile(ASM / "hooks/hooks.json", pdir / "hooks/hooks.json")
-    (pdir / "ko-quality.stamp.json").write_text(json.dumps(stamp(profile, harness, injection_point), ensure_ascii=False, indent=2) + "\n",
-                                                encoding="utf-8")
+    (pdir / "ko-quality.stamp.json").write_text(json.dumps(stamp_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def render_skills(pdir, ctx):
+    for sdir in sorted((ASM / "skills").iterdir()):
+        if not sdir.is_dir():
+            continue
+        files = []
+        for tpl in sorted(sdir.rglob("*.md")):
+            rel = str(tpl.relative_to(sdir))
+            o = render_template(tpl, ctx)
+            target = pdir / "skills" / sdir.name / rel
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(o.text(), encoding="utf-8")
+            files.append((rel, o))
+        files.sort(key=lambda x: (x[0] != "SKILL.md", x[0]))
+        (pdir / "skills" / sdir.name / "SKILL.provenance.yaml").write_text(sidecar(
+            "# Which spans are upstream, structure or ours (flow.md D3). Built by build/claude_code.py; do not edit.",
+            files).replace("files:\n", f"skill: {sdir.name}\nfiles:\n", 1), encoding="utf-8")
 
 
 def build():
+    cfg = config()
     presets = load_yaml(ASM / "presets.yaml")
     profiles = [load_yaml(p) for p in sorted((ASM / "profiles").glob("*.yaml"))]
+    agent_profile = next(p for p in profiles if p["id"] == cfg["agent_profile"])
     agents = {p.stem: load_yaml(p) for p in sorted((ASM / "agents").glob("*.yaml"))}
     ctx = dict(presets=presets, profiles=profiles)
     if DIST.exists():
         shutil.rmtree(DIST)
+    plugin = cfg["claude_code"]
+    pdir = DIST / plugin["name"]
+    (pdir / ".claude-plugin").mkdir(parents=True)
+    (pdir / ".claude-plugin/plugin.json").write_text(json.dumps({
+        "name": plugin["name"], "version": cfg["version"], "description": plugin["description"],
+        "author": {"name": "ko-quality"}, "license": "MIT"}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     market = {"name": "ko-quality", "owner": {"name": "ko-quality"},
-              "description": "ko-quality: Korean writing quality toolkit for Claude Code, one plugin per profile (enable one)",
-              "plugins": []}
+              "description": "ko-quality: Korean writing quality toolkit for Claude Code (one plugin; select a style once per project)",
+              "plugins": [{"name": plugin["name"], "source": f"./{plugin['name']}", "description": plugin["description"]}]}
+    render_skills(pdir, ctx)
+    pol = []
+    (pdir / "output-styles").mkdir()
     for profile in profiles:
-        pdir = DIST / profile["id"]
-        (pdir / ".claude-plugin").mkdir(parents=True)
-        (pdir / ".claude-plugin/plugin.json").write_text(json.dumps({
-            "name": profile["plugin"]["name"], "version": "0.1.0", "description": profile["plugin"]["description"],
-            "author": {"name": "ko-quality"}, "license": "MIT"}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        market["plugins"].append({"name": profile["plugin"]["name"], "source": f"./{profile['id']}",
-                                  "description": profile["plugin"]["description"]})
-        for sdir in sorted((ASM / "skills").iterdir()):
-            if not sdir.is_dir():
-                continue
-            files = []
-            for tpl in sorted(sdir.rglob("*.md")):
-                rel = str(tpl.relative_to(sdir))
-                o = render_template(tpl, ctx)
-                target = pdir / "skills" / sdir.name / rel
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_text(o.text(), encoding="utf-8")
-                files.append((rel, o))
-            files.sort(key=lambda x: (x[0] != "SKILL.md", x[0]))
-            (pdir / "skills" / sdir.name / "SKILL.provenance.yaml").write_text(sidecar(
-                "# Which spans are upstream, structure or ours (flow.md D3). Built by build/claude_code.py; do not edit.",
-                files).replace("files:\n", f"skill: {sdir.name}\nfiles:\n", 1), encoding="utf-8")
-        pol = []
         o = output_style(profile)
         rel = f"output-styles/{profile['output_style']['name']}.md"
-        (pdir / "output-styles").mkdir(); (pdir / rel).write_text(o.text(), encoding="utf-8"); pol.append((rel, o))
-        (pdir / "agents").mkdir()
-        for name, defn in agents.items():
-            o = agent(defn, profile, name)
-            rel = f"agents/{defn['name']}.md"
-            (pdir / rel).write_text(o.text(), encoding="utf-8"); pol.append((rel, o))
-        (pdir / "provenance").mkdir()
-        (pdir / "provenance/policy.yaml").write_text(sidecar(
-            "# Provenance for plugin files outside skills/ (flow.md D3). Built by build/claude_code.py; do not edit.",
-            pol, base=f"dist/claude-code/{profile['id']}"), encoding="utf-8")
-        ship_logger(pdir, profile, "claude-code", "output-style")
-        print(f"built dist/claude-code/{profile['id']} ({profile['plugin']['name']})")
+        (pdir / rel).write_text(o.text(), encoding="utf-8"); pol.append((rel, o))
+    (pdir / "agents").mkdir()
+    for name, defn in agents.items():
+        o = agent(defn, agent_profile, name)
+        rel = f"agents/{defn['name']}.md"
+        (pdir / rel).write_text(o.text(), encoding="utf-8"); pol.append((rel, o))
+    (pdir / "provenance").mkdir()
+    (pdir / "provenance/policy.yaml").write_text(sidecar(
+        "# Provenance for plugin files outside skills/ (flow.md D3). Built by build/claude_code.py; do not edit.",
+        pol, base=f"dist/claude-code/{plugin['name']}"), encoding="utf-8")
+    ship_logger(pdir, stamp(plugin["name"], "claude-code"))
+    print(f"built dist/claude-code/{plugin['name']} (styles: {', '.join(p['id'] for p in profiles)}; agents: {cfg['agent_profile']} policy)")
     (DIST / ".claude-plugin").mkdir()
     (DIST / ".claude-plugin/marketplace.json").write_text(json.dumps(market, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("built dist/claude-code/.claude-plugin/marketplace.json")

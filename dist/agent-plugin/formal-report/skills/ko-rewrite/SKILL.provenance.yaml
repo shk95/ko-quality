@@ -94,156 +94,159 @@ files:
       content_hash: "sha256:6e96b873e29c3147110ecc966699f94a0e40cb979b4457261d5192b30c1b1759"
       transform: "verbatim"
     - lines: [35, 35]
+      owner: "ours"
+      source: "assemble/skills/ko-rewrite/SKILL.md"
+    - lines: [36, 36]
       owner: "upstream"
       fragment: "procedure/rewrite#step.2"
       prefix: "2. "
       content_hash: "sha256:c60ba6136d4972bd1dfc64c01fec52150d280a15eb759912f4a31d6ea1e94a03"
       transform: "verbatim"
-    - lines: [36, 36]
+    - lines: [37, 37]
       owner: "upstream"
       fragment: "procedure/rewrite#step.2.hygiene"
       prefix: "   - "
       content_hash: "sha256:a18746f528e8de0ade4b6ae787b2ead417548e6c7c487868499b1f4c143d0443"
       transform: "verbatim"
-    - lines: [37, 37]
+    - lines: [38, 38]
       owner: "upstream"
       fragment: "procedure/rewrite#step.3"
       prefix: "3. "
       content_hash: "sha256:271f9e8608a08129f21051612bd3ae0451d4e42befc9ebdc1019f852651ce8ef"
       transform: "verbatim"
-    - lines: [38, 38]
+    - lines: [39, 39]
       owner: "upstream"
       fragment: "procedure/rewrite#step.4"
       prefix: "4. "
       content_hash: "sha256:52f1116c69e5440a774f5174ae42d840d5a87051b66209e5045a4e61dca15ed2"
       transform: "verbatim"
-    - lines: [39, 39]
+    - lines: [40, 40]
       owner: "upstream"
       fragment: "procedure/rewrite#step.4.anchor"
       prefix: "   - "
       content_hash: "sha256:f2387ba15fc1a71b09f47b2cf4fbec02063bbb3f8097889cd5b2e42242b4b826"
       transform: "verbatim"
-    - lines: [40, 40]
+    - lines: [41, 41]
       owner: "upstream"
       fragment: "procedure/rewrite#step.5"
       prefix: "5. "
       content_hash: "sha256:c3951886c16b352ad8f18ef1ae744a994b44f8c6e8f9b1fa8a22c3f221ec327e"
       transform: "verbatim"
-    - lines: [41, 41]
+    - lines: [42, 42]
       owner: "upstream"
       fragment: "procedure/rewrite#step.5.anchor"
       prefix: "   - "
       content_hash: "sha256:cebc489f5061749d98e009f6563c7031a938d08cea7c5363c07a6a2cd824cd72"
       transform: "verbatim"
-    - lines: [42, 42]
+    - lines: [43, 43]
       owner: "upstream"
       fragment: "procedure/rewrite#step.5.abort"
       prefix: "   - "
       content_hash: "sha256:44f30644a43d85a874fc4ba3defa17b9f79fb02058ba25cec110e32985c9be23"
       transform: "selected"
-    - lines: [43, 43]
+    - lines: [44, 44]
       owner: "upstream"
       fragment: "procedure/rewrite#step.6"
       prefix: "6. "
       content_hash: "sha256:d345cb953b1dbf58378f0606137cf4251545ceda0ff57a161f7d892e6c9b350d"
       transform: "verbatim"
-    - lines: [44, 44]
+    - lines: [45, 45]
       owner: "upstream"
       fragment: "procedure/rewrite#step.6.anchor"
       prefix: "   - "
       content_hash: "sha256:f9af461c03290bfa6ee73cafe409f29571d194952a4694eb8dcd87687d31fb2a"
       transform: "verbatim"
-    - lines: [45, 45]
+    - lines: [46, 46]
       owner: "ours"
       source: "assemble/skills/ko-rewrite/SKILL.md"
-    - lines: [46, 46]
+    - lines: [47, 47]
       owner: "upstream"
       fragment: "procedure/rewrite#reply.1"
       prefix: "   - "
       content_hash: "sha256:b7101b507f31d68d069c359c95d637c431e23c065661a9e41cc7d1eb129ea405"
       transform: "verbatim"
-    - lines: [47, 47]
+    - lines: [48, 48]
       owner: "upstream"
       fragment: "procedure/rewrite#reply.2"
       prefix: "   - "
       content_hash: "sha256:65eae0e0151951c3d8016ee977e37969ce21f9e9a905d465b252a3bdfea5a6ac"
       transform: "verbatim"
-    - lines: [48, 48]
+    - lines: [49, 49]
       owner: "upstream"
       fragment: "procedure/rewrite#reply.3"
       prefix: "   - "
       content_hash: "sha256:c5fa8f702402fb20138f1bdd5e94ebcdee19765660240df2b803d7f233908db9"
       transform: "verbatim"
-    - lines: [50, 50]
+    - lines: [51, 51]
       owner: "ours"
       source: "assemble/skills/ko-rewrite/SKILL.md"
-    - lines: [52, 53]
+    - lines: [53, 54]
       owner: "upstream"
       fragment: "procedure/rewrite#check.1"
       prefix: "1. "
       content_hash: "sha256:39d953ee742c07aab665361608ee94dab846dbb4f04ff22d0e82dcad6d6cdf05"
       transform: "verbatim"
-    - lines: [54, 54]
+    - lines: [55, 55]
       owner: "upstream"
       fragment: "procedure/rewrite#check.2"
       prefix: "2. "
       content_hash: "sha256:21e4b3be68994898e0ebfb318bd98443453b032bea9517c812abb0391c388e9b"
       transform: "selected"
-    - lines: [55, 55]
+    - lines: [56, 56]
       owner: "upstream"
       fragment: "procedure/rewrite#check.3"
       prefix: "3. "
       content_hash: "sha256:58c54232732e3992bb7e51a5fa3ffa7418f1210af7535467bc3ab5393d80bc28"
       transform: "verbatim"
-    - lines: [56, 56]
+    - lines: [57, 57]
       owner: "upstream"
       fragment: "procedure/rewrite#check.4"
       prefix: "4. "
       content_hash: "sha256:e3b833526233e1587c4523f59b9561b7796e9134f0fb369d81e48a5859e953bc"
       transform: "verbatim"
-    - lines: [57, 57]
+    - lines: [58, 58]
       owner: "upstream"
       fragment: "procedure/rewrite#check.5"
       prefix: "5. "
       content_hash: "sha256:5acb29551b74bbfa205ba9da4b36714af5bcf2277a391537fd3ef96e09b05e28"
       transform: "verbatim"
-    - lines: [58, 58]
+    - lines: [59, 59]
       owner: "upstream"
       fragment: "procedure/rewrite#check.6"
       prefix: "6. "
       content_hash: "sha256:657ba97d055403743fce2c98399d931c9ae2ce1e5c56799ccad68511e457f741"
       transform: "verbatim"
-    - lines: [60, 60]
+    - lines: [61, 61]
       owner: "ours"
       source: "assemble/skills/ko-rewrite/SKILL.md"
-    - lines: [62, 62]
+    - lines: [63, 63]
       owner: "upstream"
       fragment: "procedure/rewrite#grade.A"
       prefix: "- "
       content_hash: "sha256:957866b59bb67ad4d1dc8cff2462fef6ab1a6d155f7e5fbdf5ae09faf3df80da"
       transform: "verbatim"
-    - lines: [63, 63]
+    - lines: [64, 64]
       owner: "upstream"
       fragment: "procedure/rewrite#grade.B"
       prefix: "- "
       content_hash: "sha256:6a01853b7b73b2d81647d27bf2a1ee172e025aeca87512176808a27ffc1930eb"
       transform: "verbatim"
-    - lines: [64, 64]
+    - lines: [65, 65]
       owner: "upstream"
       fragment: "procedure/rewrite#grade.C"
       prefix: "- "
       content_hash: "sha256:4cc9352a4ef9c8206f7478f441b77d29382f8572a0986be5022e7760d1329e8a"
       transform: "verbatim"
-    - lines: [65, 65]
+    - lines: [66, 66]
       owner: "upstream"
       fragment: "procedure/rewrite#grade.D"
       prefix: "- "
       content_hash: "sha256:d8e36c572632f0257d95725c0bdc42f160c9e032089b9904fc1b781ad4fb7032"
       transform: "verbatim"
-    - lines: [67, 67]
+    - lines: [68, 68]
       owner: "ours"
       source: "assemble/skills/ko-rewrite/SKILL.md"
-    - lines: [69, 69]
+    - lines: [70, 70]
       owner: "upstream"
       fragment: "procedure/rewrite#options"
       prefix: "- "

@@ -3,17 +3,12 @@
   "owner": {
     "name": "ko-quality"
   },
-  "description": "ko-quality: Korean writing quality toolkit for Claude Code, one plugin per profile (enable one)",
+  "description": "ko-quality: Korean writing quality toolkit for Claude Code (one plugin; select a style once per project)",
   "plugins": [
     {
       "name": "ko-quality",
-      "source": "./agent-reply",
-      "description": "Korean writing quality toolkit: rewrite, diagnose, grammar and the Korean output policy for an agent's replies (profile agent-reply)"
-    },
-    {
-      "name": "ko-quality-formal",
-      "source": "./formal-report",
-      "description": "Korean writing quality toolkit: rewrite, diagnose, grammar and the Korean output policy for documents delivered to the user (profile formal-report)"
+      "source": "./ko-quality",
+      "description": "Korean writing quality toolkit: rewrite, diagnose and grammar skills, Korean-writing agents, and two selectable output styles (agent-reply, formal-report). Installing selects no style: run /output-style ko-quality:agent-reply or ko-quality:formal-report once per project."
     }
   ]
 }

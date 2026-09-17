@@ -1,98 +1,197 @@
 # Provenance for plugin files outside skills/ (flow.md D3). Built by build/claude_code.py; do not edit.
-base: dist/claude-code/formal-report
+base: dist/claude-code/ko-quality
 upstream: fluent-korean
 commit: ce8683f0eba8cddb91de4dcd151425ff73e60498
 files:
-  output-styles/formal-report.md:
+  output-styles/agent-reply.md:
     - lines: [1, 5]
       owner: "ours"
-      source: "assemble/profiles/formal-report.yaml (frontmatter)"
+      source: "assemble/profiles/agent-reply.yaml (frontmatter)"
     - lines: [7, 7]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.01"
+      fragment: "policy/fluent-korean#coding.01"
       content_hash: "sha256:90f026fa40c6b8664cac765e98173d2ee9873582ecca04d3839c4313b64be2b4"
       transform: "verbatim"
     - lines: [10, 10]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.02"
+      fragment: "policy/fluent-korean#coding.02"
       content_hash: "sha256:ce0d24309aa82e3c3def90eed14427cf0cd311c8056c6a6d90f1aea3e4d4eb0b"
       transform: "verbatim"
     - lines: [12, 12]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.03"
+      fragment: "policy/fluent-korean#coding.03"
       content_hash: "sha256:4b8261e341ef29737c56c54cf605385fc9dcf2568eec570aee163629ea02eea0"
       transform: "verbatim"
     - lines: [14, 14]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.04"
+      fragment: "policy/fluent-korean#coding.04"
       content_hash: "sha256:5a90993b169ce09207a96c812b56019085b19608e82d90b007d93db9611c1c5e"
       transform: "verbatim"
     - lines: [17, 17]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.05"
+      fragment: "policy/fluent-korean#coding.05"
       content_hash: "sha256:99d2426bf1b6a38c85529fe6da038ad9c16499a5272e2e5af588f871ad3585fb"
       transform: "verbatim"
     - lines: [19, 19]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.06"
+      fragment: "policy/fluent-korean#coding.06"
       content_hash: "sha256:632e900623f21846b532bfd6b3042223227b1038be701e95c723badeefbd477d"
       transform: "verbatim"
     - lines: [21, 21]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.07"
+      fragment: "policy/fluent-korean#coding.07"
       content_hash: "sha256:76f38cc98a31d23f50e3cad6f9cea7581bddfd954d14e649b0f09c81b60d98c6"
       transform: "verbatim"
     - lines: [23, 23]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.08"
+      fragment: "policy/fluent-korean#coding.08"
       content_hash: "sha256:924ccb4db1730935d678d1292cc94ef4bee3da8a6d72edbbfccf91d6dbcafeeb"
       transform: "verbatim"
     - lines: [25, 25]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.09"
+      fragment: "policy/fluent-korean#coding.09"
       content_hash: "sha256:9bc0f2577f4c00724f3f1a0196a61cf1d91ae783bafff68c625a218a74fae2f3"
       transform: "verbatim"
     - lines: [28, 28]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.10"
+      fragment: "policy/fluent-korean#coding.10"
       content_hash: "sha256:5024363c6faeff1f65199adc8ca47e309ecc8e0363e80635f4fa07ff4e60bc81"
       transform: "verbatim"
     - lines: [30, 30]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.11"
-      content_hash: "sha256:371b3df432af05647cf835077580a709eed0dfcf69ddcf081fb2e76be0489ca5"
+      fragment: "policy/fluent-korean#coding.11"
+      content_hash: "sha256:266638757af48054cf9d0fecb2a33ef3e499c7fd98ebfe58aaea673799f5f37f"
       transform: "verbatim"
     - lines: [32, 32]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.12"
+      fragment: "policy/fluent-korean#coding.12"
       content_hash: "sha256:8ed46f08bf4b45cca0393ae55b04655aa3aa0f40725be60684d2770a2aabd28f"
       transform: "verbatim"
     - lines: [35, 35]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.13"
+      fragment: "policy/fluent-korean#coding.13"
       content_hash: "sha256:0e148d8f2c392d052ae3dcba70a71593c8e4ad58ba7c1c1fd97d614a53760b5c"
       transform: "verbatim"
     - lines: [37, 37]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.14"
+      fragment: "policy/fluent-korean#coding.14"
       content_hash: "sha256:1d46ef71f346114f46ab9fc1049a96ca94af6c488392e84183fce3d527b82214"
       transform: "verbatim"
     - lines: [39, 39]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.15"
+      fragment: "policy/fluent-korean#coding.15"
       content_hash: "sha256:16433acd81521807ee8f8a08f8e3dac3cfe93118ff71e7568b22907e228419c5"
       transform: "verbatim"
     - lines: [41, 41]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.16"
+      fragment: "policy/fluent-korean#coding.16"
       content_hash: "sha256:b622c67e7727be76d2c9a3e0a4277a893e9c27f16d2eb8c6ebcee4a83208788a"
       transform: "verbatim"
     - lines: [43, 43]
       owner: "upstream"
+      fragment: "policy/fluent-korean#coding.17"
+      content_hash: "sha256:1ec1fa7c180f63d7fba40ef6f5f6d6ba4c27d68470dd3609b4b248ed0299538c"
+      transform: "verbatim"
+    - lines: [46, 46]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#coding.18"
+      content_hash: "sha256:a9c04a2977e078be6c99aca71d29cdad2a0aebdea3e0971340babec6985a7a7d"
+      transform: "verbatim"
+    - lines: [48, 48]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#coding.19"
+      content_hash: "sha256:df5a084e2f90d562336be3ac940add2802ccba8495e01b55fa46b7c5b8e42cbe"
+      transform: "verbatim"
+  output-styles/formal-report.md:
+    - lines: [1, 4]
+      owner: "ours"
+      source: "assemble/profiles/formal-report.yaml (frontmatter)"
+    - lines: [6, 6]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.01"
+      content_hash: "sha256:90f026fa40c6b8664cac765e98173d2ee9873582ecca04d3839c4313b64be2b4"
+      transform: "verbatim"
+    - lines: [9, 9]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.02"
+      content_hash: "sha256:ce0d24309aa82e3c3def90eed14427cf0cd311c8056c6a6d90f1aea3e4d4eb0b"
+      transform: "verbatim"
+    - lines: [11, 11]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.03"
+      content_hash: "sha256:4b8261e341ef29737c56c54cf605385fc9dcf2568eec570aee163629ea02eea0"
+      transform: "verbatim"
+    - lines: [13, 13]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.04"
+      content_hash: "sha256:5a90993b169ce09207a96c812b56019085b19608e82d90b007d93db9611c1c5e"
+      transform: "verbatim"
+    - lines: [16, 16]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.05"
+      content_hash: "sha256:99d2426bf1b6a38c85529fe6da038ad9c16499a5272e2e5af588f871ad3585fb"
+      transform: "verbatim"
+    - lines: [18, 18]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.06"
+      content_hash: "sha256:632e900623f21846b532bfd6b3042223227b1038be701e95c723badeefbd477d"
+      transform: "verbatim"
+    - lines: [20, 20]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.07"
+      content_hash: "sha256:76f38cc98a31d23f50e3cad6f9cea7581bddfd954d14e649b0f09c81b60d98c6"
+      transform: "verbatim"
+    - lines: [22, 22]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.08"
+      content_hash: "sha256:924ccb4db1730935d678d1292cc94ef4bee3da8a6d72edbbfccf91d6dbcafeeb"
+      transform: "verbatim"
+    - lines: [24, 24]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.09"
+      content_hash: "sha256:9bc0f2577f4c00724f3f1a0196a61cf1d91ae783bafff68c625a218a74fae2f3"
+      transform: "verbatim"
+    - lines: [27, 27]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.10"
+      content_hash: "sha256:5024363c6faeff1f65199adc8ca47e309ecc8e0363e80635f4fa07ff4e60bc81"
+      transform: "verbatim"
+    - lines: [29, 29]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.11"
+      content_hash: "sha256:371b3df432af05647cf835077580a709eed0dfcf69ddcf081fb2e76be0489ca5"
+      transform: "verbatim"
+    - lines: [31, 31]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.12"
+      content_hash: "sha256:8ed46f08bf4b45cca0393ae55b04655aa3aa0f40725be60684d2770a2aabd28f"
+      transform: "verbatim"
+    - lines: [34, 34]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.13"
+      content_hash: "sha256:0e148d8f2c392d052ae3dcba70a71593c8e4ad58ba7c1c1fd97d614a53760b5c"
+      transform: "verbatim"
+    - lines: [36, 36]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.14"
+      content_hash: "sha256:1d46ef71f346114f46ab9fc1049a96ca94af6c488392e84183fce3d527b82214"
+      transform: "verbatim"
+    - lines: [38, 38]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.15"
+      content_hash: "sha256:16433acd81521807ee8f8a08f8e3dac3cfe93118ff71e7568b22907e228419c5"
+      transform: "verbatim"
+    - lines: [40, 40]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#not-coding.16"
+      content_hash: "sha256:b622c67e7727be76d2c9a3e0a4277a893e9c27f16d2eb8c6ebcee4a83208788a"
+      transform: "verbatim"
+    - lines: [42, 42]
+      owner: "upstream"
       fragment: "policy/fluent-korean#not-coding.17"
       content_hash: "sha256:a00270afc8476cac08f04ae8736e53ed033e81324a1c04fc0df306f71bf182fa"
       transform: "verbatim"
-    - lines: [45, 45]
+    - lines: [44, 44]
       owner: "upstream"
       fragment: "policy/fluent-korean#block.honorific"
       content_hash: "sha256:8046687a532d9e328d0aa34049d583dedd8fb711b83fe97fb9c660316e75276a"
@@ -103,95 +202,100 @@ files:
       source: "assemble/agents/editor.yaml (frontmatter)"
     - lines: [7, 7]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.01"
+      fragment: "policy/fluent-korean#coding.01"
       content_hash: "sha256:90f026fa40c6b8664cac765e98173d2ee9873582ecca04d3839c4313b64be2b4"
       transform: "verbatim"
     - lines: [10, 10]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.02"
+      fragment: "policy/fluent-korean#coding.02"
       content_hash: "sha256:ce0d24309aa82e3c3def90eed14427cf0cd311c8056c6a6d90f1aea3e4d4eb0b"
       transform: "verbatim"
     - lines: [12, 12]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.03"
+      fragment: "policy/fluent-korean#coding.03"
       content_hash: "sha256:4b8261e341ef29737c56c54cf605385fc9dcf2568eec570aee163629ea02eea0"
       transform: "verbatim"
     - lines: [14, 14]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.04"
+      fragment: "policy/fluent-korean#coding.04"
       content_hash: "sha256:5a90993b169ce09207a96c812b56019085b19608e82d90b007d93db9611c1c5e"
       transform: "verbatim"
     - lines: [17, 17]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.05"
+      fragment: "policy/fluent-korean#coding.05"
       content_hash: "sha256:99d2426bf1b6a38c85529fe6da038ad9c16499a5272e2e5af588f871ad3585fb"
       transform: "verbatim"
     - lines: [19, 19]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.06"
+      fragment: "policy/fluent-korean#coding.06"
       content_hash: "sha256:632e900623f21846b532bfd6b3042223227b1038be701e95c723badeefbd477d"
       transform: "verbatim"
     - lines: [21, 21]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.07"
+      fragment: "policy/fluent-korean#coding.07"
       content_hash: "sha256:76f38cc98a31d23f50e3cad6f9cea7581bddfd954d14e649b0f09c81b60d98c6"
       transform: "verbatim"
     - lines: [23, 23]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.08"
+      fragment: "policy/fluent-korean#coding.08"
       content_hash: "sha256:924ccb4db1730935d678d1292cc94ef4bee3da8a6d72edbbfccf91d6dbcafeeb"
       transform: "verbatim"
     - lines: [25, 25]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.09"
+      fragment: "policy/fluent-korean#coding.09"
       content_hash: "sha256:9bc0f2577f4c00724f3f1a0196a61cf1d91ae783bafff68c625a218a74fae2f3"
       transform: "verbatim"
     - lines: [28, 28]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.10"
+      fragment: "policy/fluent-korean#coding.10"
       content_hash: "sha256:5024363c6faeff1f65199adc8ca47e309ecc8e0363e80635f4fa07ff4e60bc81"
       transform: "verbatim"
     - lines: [30, 30]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.11"
-      content_hash: "sha256:371b3df432af05647cf835077580a709eed0dfcf69ddcf081fb2e76be0489ca5"
+      fragment: "policy/fluent-korean#coding.11"
+      content_hash: "sha256:266638757af48054cf9d0fecb2a33ef3e499c7fd98ebfe58aaea673799f5f37f"
       transform: "verbatim"
     - lines: [32, 32]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.12"
+      fragment: "policy/fluent-korean#coding.12"
       content_hash: "sha256:8ed46f08bf4b45cca0393ae55b04655aa3aa0f40725be60684d2770a2aabd28f"
       transform: "verbatim"
     - lines: [35, 35]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.13"
+      fragment: "policy/fluent-korean#coding.13"
       content_hash: "sha256:0e148d8f2c392d052ae3dcba70a71593c8e4ad58ba7c1c1fd97d614a53760b5c"
       transform: "verbatim"
     - lines: [37, 37]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.14"
+      fragment: "policy/fluent-korean#coding.14"
       content_hash: "sha256:1d46ef71f346114f46ab9fc1049a96ca94af6c488392e84183fce3d527b82214"
       transform: "verbatim"
     - lines: [39, 39]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.15"
+      fragment: "policy/fluent-korean#coding.15"
       content_hash: "sha256:16433acd81521807ee8f8a08f8e3dac3cfe93118ff71e7568b22907e228419c5"
       transform: "verbatim"
     - lines: [41, 41]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.16"
+      fragment: "policy/fluent-korean#coding.16"
       content_hash: "sha256:b622c67e7727be76d2c9a3e0a4277a893e9c27f16d2eb8c6ebcee4a83208788a"
       transform: "verbatim"
     - lines: [43, 43]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.17"
-      content_hash: "sha256:a00270afc8476cac08f04ae8736e53ed033e81324a1c04fc0df306f71bf182fa"
+      fragment: "policy/fluent-korean#coding.17"
+      content_hash: "sha256:1ec1fa7c180f63d7fba40ef6f5f6d6ba4c27d68470dd3609b4b248ed0299538c"
       transform: "verbatim"
-    - lines: [45, 45]
+    - lines: [46, 46]
       owner: "upstream"
-      fragment: "policy/fluent-korean#block.honorific"
-      content_hash: "sha256:8046687a532d9e328d0aa34049d583dedd8fb711b83fe97fb9c660316e75276a"
-      transform: "selected"
-    - lines: [47, 47]
+      fragment: "policy/fluent-korean#coding.18"
+      content_hash: "sha256:a9c04a2977e078be6c99aca71d29cdad2a0aebdea3e0971340babec6985a7a7d"
+      transform: "verbatim"
+    - lines: [48, 48]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#coding.19"
+      content_hash: "sha256:df5a084e2f90d562336be3ac940add2802ccba8495e01b55fa46b7c5b8e42cbe"
+      transform: "verbatim"
+    - lines: [50, 50]
       owner: "ours"
       source: "assemble/agents/editor.yaml"
   agents/korean-reviewer.md:
@@ -200,95 +304,100 @@ files:
       source: "assemble/agents/reviewer.yaml (frontmatter)"
     - lines: [7, 7]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.01"
+      fragment: "policy/fluent-korean#coding.01"
       content_hash: "sha256:90f026fa40c6b8664cac765e98173d2ee9873582ecca04d3839c4313b64be2b4"
       transform: "verbatim"
     - lines: [10, 10]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.02"
+      fragment: "policy/fluent-korean#coding.02"
       content_hash: "sha256:ce0d24309aa82e3c3def90eed14427cf0cd311c8056c6a6d90f1aea3e4d4eb0b"
       transform: "verbatim"
     - lines: [12, 12]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.03"
+      fragment: "policy/fluent-korean#coding.03"
       content_hash: "sha256:4b8261e341ef29737c56c54cf605385fc9dcf2568eec570aee163629ea02eea0"
       transform: "verbatim"
     - lines: [14, 14]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.04"
+      fragment: "policy/fluent-korean#coding.04"
       content_hash: "sha256:5a90993b169ce09207a96c812b56019085b19608e82d90b007d93db9611c1c5e"
       transform: "verbatim"
     - lines: [17, 17]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.05"
+      fragment: "policy/fluent-korean#coding.05"
       content_hash: "sha256:99d2426bf1b6a38c85529fe6da038ad9c16499a5272e2e5af588f871ad3585fb"
       transform: "verbatim"
     - lines: [19, 19]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.06"
+      fragment: "policy/fluent-korean#coding.06"
       content_hash: "sha256:632e900623f21846b532bfd6b3042223227b1038be701e95c723badeefbd477d"
       transform: "verbatim"
     - lines: [21, 21]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.07"
+      fragment: "policy/fluent-korean#coding.07"
       content_hash: "sha256:76f38cc98a31d23f50e3cad6f9cea7581bddfd954d14e649b0f09c81b60d98c6"
       transform: "verbatim"
     - lines: [23, 23]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.08"
+      fragment: "policy/fluent-korean#coding.08"
       content_hash: "sha256:924ccb4db1730935d678d1292cc94ef4bee3da8a6d72edbbfccf91d6dbcafeeb"
       transform: "verbatim"
     - lines: [25, 25]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.09"
+      fragment: "policy/fluent-korean#coding.09"
       content_hash: "sha256:9bc0f2577f4c00724f3f1a0196a61cf1d91ae783bafff68c625a218a74fae2f3"
       transform: "verbatim"
     - lines: [28, 28]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.10"
+      fragment: "policy/fluent-korean#coding.10"
       content_hash: "sha256:5024363c6faeff1f65199adc8ca47e309ecc8e0363e80635f4fa07ff4e60bc81"
       transform: "verbatim"
     - lines: [30, 30]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.11"
-      content_hash: "sha256:371b3df432af05647cf835077580a709eed0dfcf69ddcf081fb2e76be0489ca5"
+      fragment: "policy/fluent-korean#coding.11"
+      content_hash: "sha256:266638757af48054cf9d0fecb2a33ef3e499c7fd98ebfe58aaea673799f5f37f"
       transform: "verbatim"
     - lines: [32, 32]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.12"
+      fragment: "policy/fluent-korean#coding.12"
       content_hash: "sha256:8ed46f08bf4b45cca0393ae55b04655aa3aa0f40725be60684d2770a2aabd28f"
       transform: "verbatim"
     - lines: [35, 35]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.13"
+      fragment: "policy/fluent-korean#coding.13"
       content_hash: "sha256:0e148d8f2c392d052ae3dcba70a71593c8e4ad58ba7c1c1fd97d614a53760b5c"
       transform: "verbatim"
     - lines: [37, 37]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.14"
+      fragment: "policy/fluent-korean#coding.14"
       content_hash: "sha256:1d46ef71f346114f46ab9fc1049a96ca94af6c488392e84183fce3d527b82214"
       transform: "verbatim"
     - lines: [39, 39]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.15"
+      fragment: "policy/fluent-korean#coding.15"
       content_hash: "sha256:16433acd81521807ee8f8a08f8e3dac3cfe93118ff71e7568b22907e228419c5"
       transform: "verbatim"
     - lines: [41, 41]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.16"
+      fragment: "policy/fluent-korean#coding.16"
       content_hash: "sha256:b622c67e7727be76d2c9a3e0a4277a893e9c27f16d2eb8c6ebcee4a83208788a"
       transform: "verbatim"
     - lines: [43, 43]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.17"
-      content_hash: "sha256:a00270afc8476cac08f04ae8736e53ed033e81324a1c04fc0df306f71bf182fa"
+      fragment: "policy/fluent-korean#coding.17"
+      content_hash: "sha256:1ec1fa7c180f63d7fba40ef6f5f6d6ba4c27d68470dd3609b4b248ed0299538c"
       transform: "verbatim"
-    - lines: [45, 45]
+    - lines: [46, 46]
       owner: "upstream"
-      fragment: "policy/fluent-korean#block.honorific"
-      content_hash: "sha256:8046687a532d9e328d0aa34049d583dedd8fb711b83fe97fb9c660316e75276a"
-      transform: "selected"
-    - lines: [47, 47]
+      fragment: "policy/fluent-korean#coding.18"
+      content_hash: "sha256:a9c04a2977e078be6c99aca71d29cdad2a0aebdea3e0971340babec6985a7a7d"
+      transform: "verbatim"
+    - lines: [48, 48]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#coding.19"
+      content_hash: "sha256:df5a084e2f90d562336be3ac940add2802ccba8495e01b55fa46b7c5b8e42cbe"
+      transform: "verbatim"
+    - lines: [50, 50]
       owner: "ours"
       source: "assemble/agents/reviewer.yaml"
   agents/korean-writer.md:
@@ -297,91 +406,96 @@ files:
       source: "assemble/agents/writer.yaml (frontmatter)"
     - lines: [7, 7]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.01"
+      fragment: "policy/fluent-korean#coding.01"
       content_hash: "sha256:90f026fa40c6b8664cac765e98173d2ee9873582ecca04d3839c4313b64be2b4"
       transform: "verbatim"
     - lines: [10, 10]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.02"
+      fragment: "policy/fluent-korean#coding.02"
       content_hash: "sha256:ce0d24309aa82e3c3def90eed14427cf0cd311c8056c6a6d90f1aea3e4d4eb0b"
       transform: "verbatim"
     - lines: [12, 12]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.03"
+      fragment: "policy/fluent-korean#coding.03"
       content_hash: "sha256:4b8261e341ef29737c56c54cf605385fc9dcf2568eec570aee163629ea02eea0"
       transform: "verbatim"
     - lines: [14, 14]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.04"
+      fragment: "policy/fluent-korean#coding.04"
       content_hash: "sha256:5a90993b169ce09207a96c812b56019085b19608e82d90b007d93db9611c1c5e"
       transform: "verbatim"
     - lines: [17, 17]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.05"
+      fragment: "policy/fluent-korean#coding.05"
       content_hash: "sha256:99d2426bf1b6a38c85529fe6da038ad9c16499a5272e2e5af588f871ad3585fb"
       transform: "verbatim"
     - lines: [19, 19]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.06"
+      fragment: "policy/fluent-korean#coding.06"
       content_hash: "sha256:632e900623f21846b532bfd6b3042223227b1038be701e95c723badeefbd477d"
       transform: "verbatim"
     - lines: [21, 21]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.07"
+      fragment: "policy/fluent-korean#coding.07"
       content_hash: "sha256:76f38cc98a31d23f50e3cad6f9cea7581bddfd954d14e649b0f09c81b60d98c6"
       transform: "verbatim"
     - lines: [23, 23]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.08"
+      fragment: "policy/fluent-korean#coding.08"
       content_hash: "sha256:924ccb4db1730935d678d1292cc94ef4bee3da8a6d72edbbfccf91d6dbcafeeb"
       transform: "verbatim"
     - lines: [25, 25]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.09"
+      fragment: "policy/fluent-korean#coding.09"
       content_hash: "sha256:9bc0f2577f4c00724f3f1a0196a61cf1d91ae783bafff68c625a218a74fae2f3"
       transform: "verbatim"
     - lines: [28, 28]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.10"
+      fragment: "policy/fluent-korean#coding.10"
       content_hash: "sha256:5024363c6faeff1f65199adc8ca47e309ecc8e0363e80635f4fa07ff4e60bc81"
       transform: "verbatim"
     - lines: [30, 30]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.11"
-      content_hash: "sha256:371b3df432af05647cf835077580a709eed0dfcf69ddcf081fb2e76be0489ca5"
+      fragment: "policy/fluent-korean#coding.11"
+      content_hash: "sha256:266638757af48054cf9d0fecb2a33ef3e499c7fd98ebfe58aaea673799f5f37f"
       transform: "verbatim"
     - lines: [32, 32]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.12"
+      fragment: "policy/fluent-korean#coding.12"
       content_hash: "sha256:8ed46f08bf4b45cca0393ae55b04655aa3aa0f40725be60684d2770a2aabd28f"
       transform: "verbatim"
     - lines: [35, 35]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.13"
+      fragment: "policy/fluent-korean#coding.13"
       content_hash: "sha256:0e148d8f2c392d052ae3dcba70a71593c8e4ad58ba7c1c1fd97d614a53760b5c"
       transform: "verbatim"
     - lines: [37, 37]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.14"
+      fragment: "policy/fluent-korean#coding.14"
       content_hash: "sha256:1d46ef71f346114f46ab9fc1049a96ca94af6c488392e84183fce3d527b82214"
       transform: "verbatim"
     - lines: [39, 39]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.15"
+      fragment: "policy/fluent-korean#coding.15"
       content_hash: "sha256:16433acd81521807ee8f8a08f8e3dac3cfe93118ff71e7568b22907e228419c5"
       transform: "verbatim"
     - lines: [41, 41]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.16"
+      fragment: "policy/fluent-korean#coding.16"
       content_hash: "sha256:b622c67e7727be76d2c9a3e0a4277a893e9c27f16d2eb8c6ebcee4a83208788a"
       transform: "verbatim"
     - lines: [43, 43]
       owner: "upstream"
-      fragment: "policy/fluent-korean#not-coding.17"
-      content_hash: "sha256:a00270afc8476cac08f04ae8736e53ed033e81324a1c04fc0df306f71bf182fa"
+      fragment: "policy/fluent-korean#coding.17"
+      content_hash: "sha256:1ec1fa7c180f63d7fba40ef6f5f6d6ba4c27d68470dd3609b4b248ed0299538c"
       transform: "verbatim"
-    - lines: [45, 45]
+    - lines: [46, 46]
       owner: "upstream"
-      fragment: "policy/fluent-korean#block.honorific"
-      content_hash: "sha256:8046687a532d9e328d0aa34049d583dedd8fb711b83fe97fb9c660316e75276a"
-      transform: "selected"
+      fragment: "policy/fluent-korean#coding.18"
+      content_hash: "sha256:a9c04a2977e078be6c99aca71d29cdad2a0aebdea3e0971340babec6985a7a7d"
+      transform: "verbatim"
+    - lines: [48, 48]
+      owner: "upstream"
+      fragment: "policy/fluent-korean#coding.19"
+      content_hash: "sha256:df5a084e2f90d562336be3ac940add2802ccba8495e01b55fa46b7c5b8e42cbe"
+      transform: "verbatim"

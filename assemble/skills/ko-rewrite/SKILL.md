@@ -32,6 +32,7 @@ metadata:
 ## 절차
 
 @frag procedure/rewrite#step.1 prefix="1. "
+   In this skill that file is `references/taxonomy-rewrite.md`. `references/quick-rules.md` does not exist here.
 @frag procedure/rewrite#step.2 prefix="2. "
 @frag procedure/rewrite#step.2.hygiene prefix="   - "
 @frag procedure/rewrite#step.3 prefix="3. "
