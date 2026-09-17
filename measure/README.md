@@ -28,6 +28,7 @@ python3 -m measure run --home ~/.ko-quality-corpus --report report.json
 python3 -m measure exclusion-cases          # tests/exclusion-cases의 구역별 놓친 수
 python3 -m measure cases                    # tests/measure-cases의 맞는 사례·틀린 사례. 분석기가 없으면 Tier 1 검사는 건너뜀으로 셉니다
 python3 -m measure separation               # 맞는 한국어와 전보체의 분리 정도를 E2 기록과 나란히 보고합니다(Tier 1)
+python3 -m measure pilot --home <코퍼스 홈> --batch <배치>   # 파일럿 보고: 조인, 생성된 답의 제외 누락, 맞는 층의 오탐률, 분산, 세션 수 계산
 python3 tests/measure_runner_test.py        # 보존 기한, 재실행 동일성, 실행 보고 항목, 위임 프롬프트와 붙여 넣기 측정
 ```
 

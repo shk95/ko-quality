@@ -2,6 +2,7 @@
 python3 -m measure exclusion-cases [--cases tests/exclusion-cases] [--report <path>]
 python3 -m measure cases [--cases tests/measure-cases] [--report <path>]
 python3 -m measure separation [--cases tests/measure-cases] [--report <path>]
+python3 -m measure pilot --home <corpus home> --batch <id> [--prompts corpus/prompts/set-1.json] [--report <path>]
 """
 import argparse
 import json
@@ -24,10 +25,18 @@ def main(argv=None):
     sp = sub.add_parser("separation", help="correct vs telegraphic on the F7 set, beside E2 (10_plan.md P6.1)")
     sp.add_argument("--cases", default="tests/measure-cases")
     sp.add_argument("--report")
+    pl = sub.add_parser("pilot", help="pilot report and power calculation for one corpus batch (10_plan.md P8.3-P8.4)")
+    pl.add_argument("--home", required=True)
+    pl.add_argument("--batch", required=True)
+    pl.add_argument("--prompts", default="corpus/prompts/set-1.json")
+    pl.add_argument("--report")
     args = ap.parse_args(argv)
     if args.command == "run":
         from measure import runner
         out = runner.run(Path(args.home).expanduser())
+    elif args.command == "pilot":
+        from measure import pilot
+        out = pilot.run(Path(args.home).expanduser(), args.batch, Path(args.prompts))
     elif args.command == "separation":
         from measure import separation
         out = separation.run(Path(args.cases))

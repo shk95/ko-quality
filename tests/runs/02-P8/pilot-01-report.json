@@ -1,0 +1,1328 @@
+{
+  "batch": "pilot-01",
+  "exclusion_version": "ex-3",
+  "analyser": {
+    "version": "kiwipiepy 0.23.2 (kiwipiepy_model 0.23.0, cong)"
+  },
+  "annotations_by_arm_profile": {
+    "A/none": 27,
+    "B/none": 27,
+    "C/agent-reply": 27,
+    "C/formal-report": 27
+  },
+  "arm_check_failures": [],
+  "cost_usd": 10.927,
+  "join": {
+    "log_records": 139,
+    "main": 122,
+    "sub": 17,
+    "annotations": 108,
+    "annotations_without_log_record": 0,
+    "records_without_annotation": 0,
+    "records_without_derived": 0,
+    "all_joined": true
+  },
+  "exclusion_on_generated_replies": {
+    "exclusion_version": "ex-3",
+    "echo_records": 24,
+    "text_reproduced_verbatim": 24,
+    "zones": {
+      "number": {
+        "positives": 20,
+        "not_reproduced": 0,
+        "false_negatives": 0,
+        "missed": []
+      },
+      "code": {
+        "positives": 4,
+        "not_reproduced": 0,
+        "false_negatives": 0,
+        "missed": []
+      },
+      "quotation": {
+        "positives": 4,
+        "not_reproduced": 0,
+        "false_negatives": 0,
+        "missed": []
+      },
+      "proper_noun": {
+        "positives": 4,
+        "not_reproduced": 0,
+        "false_negatives": 0,
+        "missed": []
+      },
+      "abbreviation": {
+        "positives": 4,
+        "not_reproduced": 0,
+        "false_negatives": 0,
+        "missed": []
+      }
+    }
+  },
+  "false_positive_rate_correct_stratum": {
+    "em_dash_count": {
+      "primary": "per_100_eojeol",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "emoji_count": {
+      "primary": "per_100_eojeol",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "bold_density": {
+      "primary": "per_100_eojeol",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "bullet_density": {
+      "primary": "ratio",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "header_formula": {
+      "primary": "ratio",
+      "rule": "gt0",
+      "all": {
+        "fires": 0,
+        "n": 0,
+        "fp_rate": null,
+        "reason": "no record had a value"
+      }
+    },
+    "quote_emphasis_count": {
+      "primary": "count",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "phrase_battery": {
+      "primary": "total",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "english_ratio": {
+      "primary": "ratio",
+      "rule": null,
+      "fp_rate": null,
+      "reason": "no zero line: the clean value is not zero",
+      "n": 12,
+      "mean": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "english_gloss_repeat": {
+      "primary": "count",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "sentence_len_var": {
+      "primary": "cv",
+      "rule": null,
+      "fp_rate": null,
+      "reason": "no zero line: the clean value is not zero",
+      "n": 12,
+      "mean": 0.2412,
+      "min": 0.1485,
+      "max": 0.3024
+    },
+    "paragraph_initial_repeat": {
+      "primary": "ratio",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "comma_rate": {
+      "primary": "after_connective",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 1,
+        "n": 3,
+        "fp_rate": 0.3333,
+        "wilson_95": [
+          0.0615,
+          0.7923
+        ]
+      },
+      "B/none": {
+        "fires": 1,
+        "n": 3,
+        "fp_rate": 0.3333,
+        "wilson_95": [
+          0.0615,
+          0.7923
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 1,
+        "n": 3,
+        "fp_rate": 0.3333,
+        "wilson_95": [
+          0.0615,
+          0.7923
+        ]
+      },
+      "C/formal-report": {
+        "fires": 1,
+        "n": 3,
+        "fp_rate": 0.3333,
+        "wilson_95": [
+          0.0615,
+          0.7923
+        ]
+      },
+      "all": {
+        "fires": 4,
+        "n": 12,
+        "fp_rate": 0.3333,
+        "wilson_95": [
+          0.1381,
+          0.6094
+        ]
+      }
+    },
+    "spelling_denylist": {
+      "primary": "count",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "quote_balance": {
+      "primary": "balanced",
+      "rule": "false",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "allomorph_errors": {
+      "primary": "count",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "honorific_address": {
+      "primary": "present",
+      "rule": null,
+      "fp_rate": null,
+      "reason": "no zero line: the clean value is not zero",
+      "n": 12,
+      "mean": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "noun_ending_ratio": {
+      "primary": "ratio",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "particle_absence_ratio": {
+      "primary": "ratio",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 3,
+        "n": 3,
+        "fp_rate": 1.0,
+        "wilson_95": [
+          0.4385,
+          1.0
+        ]
+      },
+      "B/none": {
+        "fires": 3,
+        "n": 3,
+        "fp_rate": 1.0,
+        "wilson_95": [
+          0.4385,
+          1.0
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 3,
+        "n": 3,
+        "fp_rate": 1.0,
+        "wilson_95": [
+          0.4385,
+          1.0
+        ]
+      },
+      "C/formal-report": {
+        "fires": 3,
+        "n": 3,
+        "fp_rate": 1.0,
+        "wilson_95": [
+          0.4385,
+          1.0
+        ]
+      },
+      "all": {
+        "fires": 12,
+        "n": 12,
+        "fp_rate": 1.0,
+        "wilson_95": [
+          0.7575,
+          1.0
+        ]
+      }
+    },
+    "speech_level": {
+      "primary": "levels_present",
+      "rule": "gt1",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "noun_run_length": {
+      "primary": "max",
+      "rule": null,
+      "fp_rate": null,
+      "reason": "no zero line: the clean value is not zero",
+      "n": 12,
+      "mean": 2.3333,
+      "min": 2.0,
+      "max": 3.0
+    },
+    "genitive_ui_ratio": {
+      "primary": "ratio",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 1,
+        "n": 3,
+        "fp_rate": 0.3333,
+        "wilson_95": [
+          0.0615,
+          0.7923
+        ]
+      },
+      "B/none": {
+        "fires": 1,
+        "n": 3,
+        "fp_rate": 0.3333,
+        "wilson_95": [
+          0.0615,
+          0.7923
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 2,
+        "n": 3,
+        "fp_rate": 0.6667,
+        "wilson_95": [
+          0.2077,
+          0.9385
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 4,
+        "n": 12,
+        "fp_rate": 0.3333,
+        "wilson_95": [
+          0.1381,
+          0.6094
+        ]
+      }
+    },
+    "ending_monotony": {
+      "primary": "ratio",
+      "rule": null,
+      "fp_rate": null,
+      "reason": "no zero line: the clean value is not zero",
+      "n": 12,
+      "mean": 0.4167,
+      "min": 0.25,
+      "max": 0.5
+    },
+    "pos_ngram_diversity": {
+      "primary": "ratio",
+      "rule": null,
+      "fp_rate": null,
+      "reason": "no zero line: the clean value is not zero",
+      "n": 12,
+      "mean": 0.8588,
+      "min": 0.7627,
+      "max": 0.9138
+    },
+    "adnominal_chain_depth": {
+      "primary": "count",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "suffix_jeok_density": {
+      "primary": "per_100_eojeol",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "B/none": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "all": {
+        "fires": 0,
+        "n": 12,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.2425
+        ]
+      }
+    },
+    "spacing_errors": {
+      "primary": "per_100_eojeol",
+      "rule": "gt0",
+      "A/none": {
+        "fires": 1,
+        "n": 3,
+        "fp_rate": 0.3333,
+        "wilson_95": [
+          0.0615,
+          0.7923
+        ]
+      },
+      "B/none": {
+        "fires": 1,
+        "n": 3,
+        "fp_rate": 0.3333,
+        "wilson_95": [
+          0.0615,
+          0.7923
+        ]
+      },
+      "C/agent-reply": {
+        "fires": 0,
+        "n": 3,
+        "fp_rate": 0.0,
+        "wilson_95": [
+          0.0,
+          0.5615
+        ]
+      },
+      "C/formal-report": {
+        "fires": 2,
+        "n": 3,
+        "fp_rate": 0.6667,
+        "wilson_95": [
+          0.2077,
+          0.9385
+        ]
+      },
+      "all": {
+        "fires": 4,
+        "n": 12,
+        "fp_rate": 0.3333,
+        "wilson_95": [
+          0.1381,
+          0.6094
+        ]
+      }
+    }
+  },
+  "hand_back": {
+    "sub_records": 17,
+    "stub_outputs": 0,
+    "rate": 0.0,
+    "stub": "I sent my report to the agent that started me.",
+    "wilson_95": [
+      0.0,
+      0.1843
+    ]
+  },
+  "truncation": {
+    "records": 139,
+    "records_with_truncated_calls": 0,
+    "rate": 0.0,
+    "calls_truncated": 0
+  },
+  "variance_and_power": {
+    "method": "normal approximation, two-sided two-sample: n per arm = 2 (z_(1-α/2) + z_(1-β))² σ² / δ²",
+    "alpha": 0.05,
+    "power": 0.8,
+    "effect": "δ = 0.5 × pooled session-level SD (flow.md F9)",
+    "z_sum": 2.801585,
+    "unit": "session; a session's value is the mean over its main records in one (stratum, arm, profile) cell",
+    "note": "With δ set as a multiple of σ, σ cancels: n = 2 (z/0.5)² for every measurement with observed variance. σ is reported so δ is known in each measurement's own units",
+    "measurements": {
+      "em_dash_count": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 1.506605,
+        "min_effect": 0.753302,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "emoji_count": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 1.136315,
+        "min_effect": 0.568158,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "bold_density": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 1.372385,
+        "min_effect": 0.686193,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "bullet_density": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 0.213343,
+        "min_effect": 0.106671,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "header_formula": {
+        "sessions": 9,
+        "cells_with_2_or_more": 3,
+        "df": 4,
+        "pooled_sd": 0.0,
+        "min_effect": null,
+        "sessions_per_arm": null,
+        "reason": "no session-level variance observed"
+      },
+      "quote_emphasis_count": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 1.881317,
+        "min_effect": 0.940658,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "phrase_battery": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 3.996526,
+        "min_effect": 1.998263,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "english_ratio": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 0.105578,
+        "min_effect": 0.052789,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "english_gloss_repeat": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 0.166667,
+        "min_effect": 0.083333,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "sentence_len_var": {
+        "sessions": 101,
+        "cells_with_2_or_more": 34,
+        "df": 67,
+        "pooled_sd": 0.190921,
+        "min_effect": 0.09546,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "paragraph_initial_repeat": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 0.109545,
+        "min_effect": 0.054772,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "comma_rate": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 1.262896,
+        "min_effect": 0.631448,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "spelling_denylist": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 0.333333,
+        "min_effect": 0.166667,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "quote_balance": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 0.0,
+        "min_effect": null,
+        "sessions_per_arm": null,
+        "reason": "no session-level variance observed"
+      },
+      "allomorph_errors": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 0.19245,
+        "min_effect": 0.096225,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "honorific_address": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 0.235702,
+        "min_effect": 0.117851,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "noun_ending_ratio": {
+        "sessions": 99,
+        "cells_with_2_or_more": 34,
+        "df": 65,
+        "pooled_sd": 0.228406,
+        "min_effect": 0.114203,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "particle_absence_ratio": {
+        "sessions": 101,
+        "cells_with_2_or_more": 34,
+        "df": 67,
+        "pooled_sd": 0.182357,
+        "min_effect": 0.091179,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "speech_level": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 0.451335,
+        "min_effect": 0.225668,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "noun_run_length": {
+        "sessions": 101,
+        "cells_with_2_or_more": 34,
+        "df": 67,
+        "pooled_sd": 0.840516,
+        "min_effect": 0.420258,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "genitive_ui_ratio": {
+        "sessions": 101,
+        "cells_with_2_or_more": 34,
+        "df": 67,
+        "pooled_sd": 0.045318,
+        "min_effect": 0.022659,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "ending_monotony": {
+        "sessions": 99,
+        "cells_with_2_or_more": 34,
+        "df": 65,
+        "pooled_sd": 0.218109,
+        "min_effect": 0.109055,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "pos_ngram_diversity": {
+        "sessions": 101,
+        "cells_with_2_or_more": 34,
+        "df": 67,
+        "pooled_sd": 0.127273,
+        "min_effect": 0.063637,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "adnominal_chain_depth": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 0.5,
+        "min_effect": 0.25,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "suffix_jeok_density": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 2.550408,
+        "min_effect": 1.275204,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      },
+      "spacing_errors": {
+        "sessions": 108,
+        "cells_with_2_or_more": 36,
+        "df": 72,
+        "pooled_sd": 5.060302,
+        "min_effect": 2.530151,
+        "sessions_per_arm_exact": 62.791,
+        "sessions_per_arm": 63
+      }
+    }
+  },
+  "tool_errors": 0,
+  "turn_errors": 0
+}

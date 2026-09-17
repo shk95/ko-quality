@@ -1,0 +1,78 @@
+{
+  "batch": "pilot-01",
+  "marker_prefix": "KQ-CANARY-pilot-01",
+  "runs": [
+    {
+      "setup": "A",
+      "label": "A",
+      "session_id": "<local>",
+      "rc": 0,
+      "checks": [
+        {
+          "profile_label": null,
+          "output_style": "default",
+          "markers_found": [],
+          "markers_expected": [],
+          "pass": true,
+          "cost_usd": 0.053905999999999996
+        }
+      ],
+      "pass": true,
+      "cost_usd": 0.053905999999999996
+    },
+    {
+      "setup": "B",
+      "label": "B",
+      "session_id": "<local>",
+      "rc": 0,
+      "checks": [
+        {
+          "profile_label": null,
+          "output_style": "default",
+          "markers_found": [],
+          "markers_expected": [],
+          "pass": true,
+          "cost_usd": 0.05718700000000001
+        }
+      ],
+      "pass": true,
+      "cost_usd": 0.05718700000000001
+    },
+    {
+      "setup": "C",
+      "label": "C",
+      "session_id": "<local>",
+      "rc": 0,
+      "checks": [
+        {
+          "profile_label": "agent-reply",
+          "output_style": "ko-quality:agent-reply",
+          "markers_found": [
+            "KQ-CANARY-pilot-01-style-agent-reply"
+          ],
+          "markers_expected": [
+            "KQ-CANARY-pilot-01-style-agent-reply"
+          ],
+          "pass": true,
+          "cost_usd": 0.0688336
+        },
+        {
+          "profile_label": "formal-report",
+          "output_style": "ko-quality:formal-report",
+          "markers_found": [
+            "KQ-CANARY-pilot-01-style-formal-report"
+          ],
+          "markers_expected": [
+            "KQ-CANARY-pilot-01-style-formal-report"
+          ],
+          "pass": true,
+          "cost_usd": 0.0955504
+        }
+      ],
+      "pass": true,
+      "cost_usd": 0.0955504
+    }
+  ],
+  "rejected": false,
+  "verdict": "batch accepted: every arm's markers are where its label says"
+}
