@@ -2,7 +2,7 @@
 
 넣은 것이 효과가 있는지 아는 장치를 짓는 시대입니다. 시대 01이 "설치하면 쓰이는 도구"를 짓고 미뤄 둔 질문을 받습니다.
 
-**현재 위치:** `3-spec` 닫힘 (2026-09-17). 구현 대상 스펙은 [`09_toolkit_spec.md`](3-spec/09_toolkit_spec.md)이고, 마무리 검사와 번들 4 검토는 [`09a`](3-spec/09a_findings_spec_close.md)에 있습니다. 다음은 `4-plan` 진입 검토(`09a` §3)입니다.
+**현재 위치:** `3-spec` 닫힘 (2026-09-17). 구현 대상 스펙은 [`09_toolkit_spec.md`](3-spec/09_toolkit_spec.md)이고, 마무리 검사와 번들 4 검토는 [`09a`](3-spec/09a_findings_spec_close.md)에 있습니다. `4-plan`에 진입했습니다 (`09a` §3). 다음은 계획 문서 `10_plan.md`입니다.
 
 ## 문서 지도
 
@@ -15,8 +15,8 @@
 | 2-exploration | [`2-exploration/03_features.md`](2-exploration/03_features.md) | **E2** — 네 원천의 규칙 209개를 mechanical/llm/human으로 분류하고, 중복을 걷어 측정 단위 28개로 정리. 3단 구성(표준 라이브러리 / 형태소 분석기 / 입력+출력), 제외 패스, `kiwipiepy` 의존성. 태그셋은 실측으로 통과, 레시피 둘은 깨져 있었고 수정안까지 실측 | 작성됨 |
 | 2-exploration | `04_*.md`~`08_*.md` | E3~E7 조사 결과. 목록은 [단계 README](2-exploration/README.md) | 작성됨 |
 | 3-spec | [`3-spec/09_toolkit_spec.md`](3-spec/09_toolkit_spec.md) | **구현 대상.** 06을 대체하는 자기완결 스펙(영어). B1~B9, E2~E7, 시대 99 결과, 결정 S1~S3 | 네 번들 모두 검토됨, 검증됨 |
-| 3-spec | [`3-spec/09a_findings_spec_close.md`](3-spec/09a_findings_spec_close.md) | 3-spec 마무리: 마무리 기준과 검사(빈틈 G1~G5 수정), 번들 4 검토, 4-plan 진입 검토 | §1·§2 작성됨 |
-| 4-plan | — | 무엇을 어떤 순서로 짓는가. 이 시대부터 계획은 독립 문서입니다 | 비어 있음 |
+| 3-spec | [`3-spec/09a_findings_spec_close.md`](3-spec/09a_findings_spec_close.md) | 3-spec 마무리: 마무리 기준과 검사(빈틈 G1~G5 수정), 번들 4 검토, 4-plan 진입 검토 | 작성됨 |
+| 4-plan | [`4-plan/README.md`](4-plan/README.md) | 무엇을 어떤 순서로 짓는가. 입력, 계획 문서의 형태와 깊이. 계획은 `10_plan.md`(독립 문서) | 열림, 계획 미작성 |
 | 5-preflight | — | 구현 흐름 정의. 시대 01의 §D가 입력입니다 | 비어 있음 |
 | 6-build | — | 자율 구현 기록 | 비어 있음 |
 | 7-review | — | 구현 후 리뷰. 시대 03을 여는 곳 | 비어 있음 |

@@ -81,3 +81,38 @@ No run was made for this step. The decisions are the user's, and the edits are w
 - **Later:** effective output style observable (era 03 blocker); Codex `task_type` third value (no era assigned).
 
 Nothing in §22.2 is owed to `3-spec`. **`3-spec` is closed.** 09 stays revisable through `5-preflight`, as the design README allows.
+
+## 3. Step 2: entry to `4-plan`
+
+### 3.1 Inputs
+
+| Input | Where |
+|---|---|
+| The implementation target | [`09_toolkit_spec.md`](09_toolkit_spec.md) |
+| Decisions owed to `4-plan` | 09 §22.2: directory names; per-call scan cap (§11.2); extractor reads the rewrite taxonomy directly, 61 → 85 (§14.2); `github` marketplace source (§21.2); build step for self-application (§21.1) |
+| The missing rewrite pattern ids | From the files (`upstream/normalized/taxonomy/rewrite.yaml` against the upstream taxonomy), not from `03_features.md:160` (§1.5) |
+| What era 01's preflight missed | [`review.md`](../../01-toolkit/7-review/review.md) §D: harness availability, settings echo is not state, hook environment per harness, heredoc hazard. Input to `5-preflight`, and it shapes step boundaries in the plan |
+
+### 3.2 Shape and depth of the plan (user, 2026-09-17)
+
+- **`4-plan/10_plan.md`** (English) is the plan. **`4-plan/README.md`** (Korean) is the stage map.
+- Modelled on 06 §14. Build steps are numbered from **P1** again, per era.
+- The document holds common rules, then per step: scope (09 sections), prerequisites, done-condition (checkable by an independent verification run), release-blocked conditions, and the `4-plan` decisions settled there.
+- **Depth: steps, dependency order and done-conditions.** File-level execution flow belongs to `5-preflight`.
+
+### 3.3 Order, as a starting sketch
+
+Direction only; `10_plan.md` settles it.
+
+1. Logger revisions (§11–§12): `session_id`, `policy_on` / `plugin_present`, `project`, `~` expansion, scan cap, `build_id`, reserved fields
+2. Self-application switched on (§21), right after 1
+3. Exclusion pass (§15.2), built and validated first among measurements
+4. Measurement runner: Tier 0 → Tier 1 (`kiwipiepy`, build check 6) → Tier 2 (§15), with retention deletion (§20)
+5. Eval runner split (§17)
+6. Corpus generator, pilot, then batches (§18)
+7. Judge Tier A (§16.3)
+8. Extractor taxonomy handling, placed by the `4-plan` decision
+
+### 3.4 Verdict
+
+**Entry confirmed** (user, 2026-09-17). `3-spec` is closed and every input exists. `4-plan` is open.
