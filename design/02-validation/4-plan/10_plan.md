@@ -47,6 +47,7 @@ P2 + P6 + P7 ──→ P8 corpus generator + pilot ──→ P9 sized batch + wa
 ```
 
 - **P1 before P2:** the logger reads `build_id` and `plugin_present` from the stamp P1 writes.
+- **P5 before P6:** Tier 1 measurements run inside the runner, case format and report that P5 builds.
 - **P4 before any measurement:** the exclusion pass is built first and validated first (§15.2).
 - **P7 is independent of P4–P6** and can run in any order after P1. It is placed before P8 so that the plugin the corpus uses has a green trigger suite.
 - **P8 needs P6:** the pilot's purpose is to measure false-positive rates and variance for every tier.
@@ -61,7 +62,7 @@ P2 + P6 + P7 ──→ P8 corpus generator + pilot ──→ P9 sized batch + wa
 - Agents carry the agent-reply policy (S1-A). The ko-rewrite redirect sits under upstream step 1 (R3).
 - Stamp gains `build_id`. `profile` and `injection_point` leave the Claude Code stamp. Version `0.2.0`.
 - Checks 5 (agent names) and 6 (dependency boundary) added to `build/checks.py`.
-- `exempt` removed from profiles; `register` restated. `server/` removed.
+- `exempt` removed from profiles; `register` restated. `server/` removed. `gate/` created with a README only (§4, §19; L1).
 - Install docs: select once per project; remove, including the style selection; Codex `multi_agent_v2`.
 
 **Done when:**
@@ -84,10 +85,11 @@ P2 + P6 + P7 ──→ P8 corpus generator + pilot ──→ P9 sized batch + wa
 **Done when:**
 1. `logger_test.py` passes on the recorded payloads for both harnesses (`hook-payloads.json`, era 99 records), including a subagent's edits kept out of the main record and a `<agent-message from=` prompt counted, not taken as `task`.
 2. A live headless Claude Code session with a delegation writes one main and one sub record whose fields match §11.3's table.
-3. The logger prints nothing and exits 0 on a malformed payload.
-4. Check 6 passes.
+3. A live `codex exec` session with the plugin's hooks trusted and a custom-agent spawn (`multi_agent_v2`, no `--ephemeral`) writes one main and one sub record whose fields match §11.3's Codex rows.
+4. The logger prints nothing and exits 0 on a malformed payload.
+5. Check 6 passes.
 
-**Release-blocked if:** 2 fails. **Codex live run:** if the harness is unavailable, 1 stands on recorded payloads and the live run is release-blocked with that reason (review §D).
+**Release-blocked if:** 2 fails, or 3 fails. **If Codex is unavailable**, 3 is release-blocked with that reason, and the Codex rows rest on condition 1's recorded payloads (review §D).
 
 ### P3 — Self-application
 
@@ -102,7 +104,7 @@ P2 + P6 + P7 ──→ P8 corpus generator + pilot ──→ P9 sized batch + wa
 2. A session launched in a subdirectory is identifiable from its record's `project` (§21.1).
 3. The main thread's reply shows the agent-reply policy (canary).
 
-**Release-blocked if:** 1 fails. The cheapest reverse is removing the committed settings file.
+**Release-blocked if:** 1 or 2 fails. They are §21.3's two guards: exclusion by location and by `project`. The cheapest reverse is removing the committed settings file.
 
 ### P4 — Exclusion pass and `measure/`
 
@@ -111,12 +113,12 @@ P2 + P6 + P7 ──→ P8 corpus generator + pilot ──→ P9 sized batch + wa
 - `measure/` skeleton: reads `logs/`, joins `annotations/`, writes `derived/`. Virtualenv and pinned `requirements.txt`.
 - The exclusion pass, versioned, every zone of §15.2.
 - `instruction_lang`, `artifact_lang`, `usable` (S2).
-- Retention: deletes monthly files past 90 days at the start of every run and reports what it deleted (§20).
-- A labelled zone set under `tests/measure-cases/`, written by us.
+- Retention: at the start of every run, deletes monthly files past 90 days **in `logs/` and every text copy** (judge and grader copies), and reports what it deleted. **`derived/` and `annotations/` never expire** (§20).
+- A zone-labelled set under `tests/exclusion-cases/`, written by us. It is not a §17.3 case: its labels are spans per zone, not expected measurement values.
 
 **Done when:**
 1. The false-negative count per zone on the labelled set is reported, with `exclusion_version`.
-2. On a fixture home, retention deletes exactly the expired monthly files, across every writer's directory, and reports them.
+2. On a fixture home holding expired and current monthly files in every directory, retention deletes exactly the expired files in `logs/` and in text-copy locations, reports them, and **leaves every file in `derived/` and `annotations/` in place**.
 3. Re-running on unchanged input yields identical derived records.
 
 **Release-blocked if:** a zone's false negatives are not reported (§15.2: the pass is not complete until measured).
@@ -138,10 +140,11 @@ P2 + P6 + P7 ──→ P8 corpus generator + pilot ──→ P9 sized batch + wa
 **Scope:** 09 §15.3–§15.4 Tier 1 and Tier 2. **Prerequisite:** P5.
 
 - `kiwipiepy` pinned in `measure/` only (S3). Recipe fixes from E2.
+- A committed case set of correct and telegraphic Korean for the two E2 measurements, written by us. E2's own sentences were never committed (`tests/runs/02-E2/`: a throwaway environment).
 - `ko.preserve`, all five kinds. `ko.change_rate` not built (§15.5).
 
 **Done when:**
-1. `noun_ending_ratio` and `particle_absence_ratio` reproduce E2's separation of correct from telegraphic Korean on E2's set.
+1. On that committed set, `noun_ending_ratio` and `particle_absence_ratio` each separate correct from telegraphic Korean **in the direction E2 measured** (telegraphic higher), and the size of the separation is reported beside E2's recorded values.
 2. Each `ko.preserve` kind passes and fails its paste-in cases as expected.
 3. Check 6 passes, and the analyser version appears in the run report.
 
@@ -168,7 +171,7 @@ P2 + P6 + P7 ──→ P8 corpus generator + pilot ──→ P9 sized batch + wa
 1. Every arm's canary passes. A batch with a marker in the wrong arm is rejected, and the rejection path is shown to work once.
 2. Every log record in the pilot joins an annotation and a derived record.
 3. The pilot report gives: exclusion-pass false negatives on generated replies, false-positive rate per measurement on the deliberately correct stratum, the hand-back rate (§14.2), the truncation rate (L2), and per-measurement variance.
-4. Sessions per arm are computed from that variance (§22.2).
+4. Sessions per arm are computed by a **normal-approximation power calculation** from the pilot's session-level variance, for the measurements that can carry a `watch:` candidate (§22.2). α, power and the minimum effect of interest are set in `5-preflight`. The computation is reproducible from the pilot report, and its parameters are recorded.
 
 **Release-blocked if:** 1 fails.
 
@@ -181,9 +184,11 @@ P2 + P6 + P7 ──→ P8 corpus generator + pilot ──→ P9 sized batch + wa
 - The `ruleset` revisit (§17.4), recorded for review.
 
 **Done when:**
-1. Per measurement: difference, interval, false-positive rate, and whether it qualifies as a candidate, with the reason.
+1. Per measurement: difference, interval, false-positive rate, and whether it qualifies as a candidate, with the reason. **Intervals:** Wilson for proportions (as §16.1); for B − C and A − B, a **session-level bootstrap**, because profiles alternate within one session (§18.2) and turns are not independent. The method and resample count are stated with every interval.
 2. Every candidate in a profile carries `_meta` with batch id, arm and `exclusion_version`.
 3. The `ruleset` comparison is recorded.
+
+**Release-blocked if:** the sized batch exceeds the budget ceiling set in `5-preflight`. Fallback: run at the size the ceiling allows, report the power achieved, and mark the results underpowered (review §D: an external limit is a release-blocked condition).
 
 **Not a done-condition:** that any candidate exists. Zero candidates is a result.
 
@@ -191,6 +196,30 @@ P2 + P6 + P7 ──→ P8 corpus generator + pilot ──→ P9 sized batch + wa
 
 - **Probes:** a `github` marketplace source from committed settings (L4); the canary device for P1 and P8 on the current CLI; `kiwipiepy` install in a virtualenv on this machine.
 - **Harness availability:** availability per harness for P2's live runs and P8's batches, with "harness unavailable" listed as a release-blocked condition and its fallback (review §D).
-- **Budget:** pilot and batch cost from §18.4's $0.12 per run, with a ceiling the user sets.
+- **Budget:** pilot and batch cost from §18.4's $0.12 per run, with a ceiling the user sets (P9's release-blocked condition).
+- **Power parameters for P8.4:** α, power, and the minimum effect of interest per measurement.
 - **User actions during the build:** removing the local `outputStyle` in P3.
 - **Pre-decided build choices** for P4 (zone set size), P5 (case counts per measurement), P8 (prompts per stratum in the pilot).
+
+## 6. Verification of this plan
+
+| Run | Tier | Purpose | Tokens | Verdict |
+|---|---|---|---|---|
+| 4-plan-v1 | mid (Sonnet 5) | Step order (§3) and done-conditions (§4) against 09, with §2 taken as accepted | ~177k | **Substantially sound.** 3 must-fix, 7 should-fix, 1 note |
+
+Each finding was checked against its source before it was acted on. **Accepted and applied** (user, 2026-09-17):
+
+| # | Finding | Applied |
+|---|---|---|
+| 1 | P6.1's "E2's set" was never committed | P6 writes its own case set; the condition is E2's direction, with size reported |
+| 2 | P4.2's retention wording could delete `derived/` | Deletion limited to `logs/` and text copies; `derived/` and `annotations/` shown to survive |
+| 3 | P3 release-blocked on condition 1 only | Conditions 1 and 2, §21.3's two guards |
+| 5 | Zone labels do not fit §17.3's case format | `tests/exclusion-cases/` |
+| 6 | P8.4 named no sizing method | Normal-approximation power calculation; parameters in `5-preflight` |
+| 7 | P9.1 named no interval method | Wilson for proportions; session-level bootstrap for differences |
+| 8 | No release-blocked condition for the budget | Added to P9 with a fallback |
+| 9 | Codex live session only implied in P2 | P2.3, with the unavailable-harness path |
+| 10 | No step creates `gate/` | P1 |
+| 11 | P5 → P6 edge unexplained | §3 |
+
+**Rejected:** #4, "P8 needs P3 because 09 §18.2 attributes the canary device to P3". That P3 is era 01's build step, not this plan's self-application step.
