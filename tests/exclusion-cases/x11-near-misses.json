@@ -1,0 +1,53 @@
+{
+  "id": "x11-near-misses",
+  "kind": "correct",
+  "text": "백틱 하나(`)만 있는 줄은 코드가 아닙니다. C++와 C# 문법 차이를 정리했습니다. 3분기 매출은 전년보다 늘었고, 담당자 박서연 님은 \"확인했다\"고 하셨습니다. 파일은 `main.go`와 notes/2026-plan.md 두 개입니다. 제목 # 기호를 본문에 쓴 문장입니다. 목표 달성률 100%를 넘기는 것은 어렵습니다. 법 조항이 아닌 제목 '제안'도 있습니다. 약어가 아닌 OK 사인과 NaN 값도 나옵니다.",
+  "positives": [
+    {
+      "zone": "code",
+      "text": "`main.go`"
+    },
+    {
+      "zone": "url_path_id",
+      "text": "notes/2026-plan.md"
+    },
+    {
+      "zone": "quotation",
+      "text": "\"확인했다\""
+    },
+    {
+      "zone": "number",
+      "text": "100%"
+    },
+    {
+      "zone": "number",
+      "text": "3분기"
+    },
+    {
+      "zone": "proper_noun",
+      "text": "박서연"
+    }
+  ],
+  "negatives": [
+    {
+      "zone": "code",
+      "text": "백틱 하나(`)만 있는 줄은"
+    },
+    {
+      "zone": "code",
+      "text": "C++와 C# 문법"
+    },
+    {
+      "zone": "structure",
+      "text": "제목 # 기호를 본문에 쓴 문장입니다."
+    },
+    {
+      "zone": "legal",
+      "text": "'제안'"
+    },
+    {
+      "zone": "math",
+      "text": "NaN"
+    }
+  ]
+}

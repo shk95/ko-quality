@@ -1,0 +1,26 @@
+{
+  "first_run": {
+    "exclusion_version": "ex-1",
+    "code_version": "7def1cd15df13bb3",
+    "retention_deleted": [
+      "logs/2026-05.jsonl",
+      "judge/2026-04.jsonl",
+      "grader/2026-05.jsonl",
+      "exports/2025-12.csv"
+    ],
+    "log_records": 3,
+    "annotations_joined": 0,
+    "derived_records": 5,
+    "derived_kept_without_log": 2
+  },
+  "second_run": {
+    "exclusion_version": "ex-1",
+    "code_version": "7def1cd15df13bb3",
+    "retention_deleted": [],
+    "log_records": 3,
+    "annotations_joined": 0,
+    "derived_records": 5,
+    "derived_kept_without_log": 2
+  }
+}
+measure runner test: 0 failures

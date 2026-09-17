@@ -1,0 +1,49 @@
+{
+  "id": "x06-math-chem",
+  "kind": "correct",
+  "text": "복잡도는 $O(n \\log n)$입니다. 오차는 \\frac{a}{b}로 계산하고, 식으로 쓰면 y = a*x + b입니다. 물은 H2O, 이산화탄소는 CO2, 소금은 NaCl로 씁니다. 황산은 H2SO4입니다. x^2 항은 무시했습니다. 이 모델은 GPT-4 계열이 아니고, 버전 A1과도 다릅니다. 방 번호 B2와 좌석 C3도 그대로 둡니다.",
+  "positives": [
+    {
+      "zone": "math",
+      "text": "$O(n \\log n)$"
+    },
+    {
+      "zone": "math",
+      "text": "\\frac{a}{b}"
+    },
+    {
+      "zone": "math",
+      "text": "y = a*x + b"
+    },
+    {
+      "zone": "math",
+      "text": "H2O"
+    },
+    {
+      "zone": "math",
+      "text": "CO2"
+    },
+    {
+      "zone": "math",
+      "text": "H2SO4"
+    },
+    {
+      "zone": "math",
+      "text": "x^2"
+    }
+  ],
+  "negatives": [
+    {
+      "zone": "math",
+      "text": "A1"
+    },
+    {
+      "zone": "math",
+      "text": "B2"
+    },
+    {
+      "zone": "math",
+      "text": "C3"
+    }
+  ]
+}

@@ -5,3 +5,5 @@ upstream/.cache/
 .DS_Store
 .claude/settings.local.json
 .claude/worktrees/
+measure/.venv/
+__pycache__/

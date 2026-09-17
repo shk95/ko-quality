@@ -1,0 +1,2 @@
+# measure/ only (09 §15.3, S3). Pinned. Installed into a virtualenv, never into system Python.
+# Empty until P6 adds the morphological analyser.

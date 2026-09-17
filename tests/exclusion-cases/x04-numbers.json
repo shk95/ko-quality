@@ -1,0 +1,53 @@
+{
+  "id": "x04-numbers",
+  "kind": "correct",
+  "text": "응답 시간이 320ms에서 180ms로 줄었습니다. 2026년 9월 17일 14:30에 배포했고, 비용은 월 ₩45,000에서 3만 원으로 내려갔습니다. 캐시 적중률은 87.5%입니다. 버전은 2.1.274를 씁니다. 디스크는 1.2GB가 남았습니다. 서버 두 대와 첫 번째 요청은 예외입니다. 하나둘씩 옮기면 됩니다.",
+  "positives": [
+    {
+      "zone": "number",
+      "text": "320ms"
+    },
+    {
+      "zone": "number",
+      "text": "180ms"
+    },
+    {
+      "zone": "number",
+      "text": "2026년 9월 17일"
+    },
+    {
+      "zone": "number",
+      "text": "14:30"
+    },
+    {
+      "zone": "number",
+      "text": "₩45,000"
+    },
+    {
+      "zone": "number",
+      "text": "87.5%"
+    },
+    {
+      "zone": "number",
+      "text": "2.1.274"
+    },
+    {
+      "zone": "number",
+      "text": "1.2GB"
+    }
+  ],
+  "negatives": [
+    {
+      "zone": "number",
+      "text": "두 대"
+    },
+    {
+      "zone": "number",
+      "text": "첫 번째"
+    },
+    {
+      "zone": "number",
+      "text": "하나둘씩"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "x01-code-review",
+  "kind": "correct",
+  "text": "## 변경 요약\n\n`load_config()` 함수가 설정 파일을 두 번 읽고 있어서 한 번만 읽도록 고쳤습니다. 수정한 파일은 `src/config/loader.py`입니다.\n\n```python\ndef load_config(path):\n    return json.loads(Path(path).read_text())\n```\n\n- `userName` 필드는 그대로 두었습니다.\n- 테스트는 `pytest tests/test_loader.py`로 돌렸고 12개가 모두 통과했습니다.\n\n자세한 내용은 https://docs.python.org/3/library/json.html 문서에 있습니다.",
+  "positives": [
+    {
+      "zone": "code",
+      "text": "`load_config()`"
+    },
+    {
+      "zone": "code",
+      "text": "`src/config/loader.py`"
+    },
+    {
+      "zone": "code",
+      "text": "def load_config(path):"
+    },
+    {
+      "zone": "code",
+      "text": "    return json.loads(Path(path).read_text())"
+    },
+    {
+      "zone": "code",
+      "text": "`userName`"
+    },
+    {
+      "zone": "code",
+      "text": "`pytest tests/test_loader.py`"
+    },
+    {
+      "zone": "url_path_id",
+      "text": "https://docs.python.org/3/library/json.html"
+    },
+    {
+      "zone": "number",
+      "text": "12개"
+    },
+    {
+      "zone": "structure",
+      "text": "## 변경 요약"
+    },
+    {
+      "zone": "structure",
+      "text": "- `userName` 필드는 그대로 두었습니다."
+    },
+    {
+      "zone": "structure",
+      "text": "- 테스트는 `pytest tests/test_loader.py`로 돌렸고 12개가 모두 통과했습니다."
+    }
+  ],
+  "negatives": [
+    {
+      "zone": "code",
+      "text": "설정 파일을 두 번 읽고"
+    },
+    {
+      "zone": "number",
+      "text": "두 번"
+    },
+    {
+      "zone": "structure",
+      "text": "자세한 내용은"
+    }
+  ]
+}
