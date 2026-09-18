@@ -6,7 +6,7 @@ Build of [`../4-plan/04_plan.md`](../4-plan/04_plan.md) under [`../5-preflight/0
 |---|---|---|---|
 | Q1 | [`Q1_hostguard.md`](Q1_hostguard.md) | see record | done |
 | Q2 | [`Q2_check7-hooks.md`](Q2_check7-hooks.md) | see record | done |
-| Q3 | [`Q3_local-root.md`](Q3_local-root.md) | | |
+| Q3 | [`Q3_local-root.md`](Q3_local-root.md) | see record | done |
 | Q4 | [`Q4_sources.md`](Q4_sources.md) | | |
 | Q5 | [`Q5_documents.md`](Q5_documents.md) | | |
 
