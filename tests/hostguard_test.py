@@ -4,7 +4,9 @@
 Every fixture that carries a host value is built at run time from this host or from a temporary fake home, so this
 file holds none (era 98 preflight F2). Planted values in git fixtures are committed only inside temporary repositories.
 """
+import getpass
 import hashlib
+import socket
 import json
 import os
 import shutil
@@ -74,6 +76,25 @@ check("plain-word plugin name inside a word not caught", "host:user-plugin" not 
 check("user marketplace caught on word boundary", "host:user-marketplace" in rules_hit(s, "listed (my-market)"))
 check("user marketplace not caught inside a longer name", "host:user-marketplace" not in rules_hit(s, "not-my-market-x"))
 check("model setting caught", "host:model-setting" in rules_hit(s, "model custom-model-x"))
+
+# review additions: every literal rule has a catch and a false positive (verification of 2026-09-18)
+user = getpass.getuser()
+if len(user) >= 3:
+    check("user in a path caught", "host:user-in-path" in rules_hit(s, sep("/home/", user, "/x")))
+    check("user name alone is not a path", "host:user-in-path" not in rules_hit(s, f"by {user} today"))
+hostname = socket.gethostname().split(".")[0]
+if len(hostname) >= 4 and hostname.lower() != "localhost":
+    check("hostname caught on a word boundary", "host:hostname" in rules_hit(s, f"built on {hostname} today"))
+    check("hostname inside a longer word not caught", "host:hostname" not in rules_hit(s, f"x{hostname}y"))
+slug = "-" + str(ROOT).strip("/").replace("/", "-")
+check("project slug caught", "host:project-slug" in rules_hit(s, f"projects/{slug}/memory"))
+check("project slug's last segment alone not caught", "host:project-slug" not in rules_hit(s, "-" + ROOT.name))
+check("home's parent alone is not home", "host:home" not in rules_hit(s, str(Path.home().parent) + "/"))
+check("repository name alone is not the repository path", "host:repo-path" not in rules_hit(s, f"the {ROOT.name} repository"))
+full = hashlib.sha256(str(ROOT).encode()).hexdigest()
+check("a shorter prefix of the path hash is not the hash", "host:repo-path-hash" not in rules_hit(s, full[:12]))
+wrapped = s.text(f"raw log at {home[:len(home) // 2]}\n  {home[len(home) // 2:]}/logs", "fixture.md")
+check("home path wrapped over a line break caught", any(r == "host:home" for _, _, r, _ in wrapped))
 
 # ---- fixed patterns: one catch, one false positive each ---------------------------------------------------------------
 cases = [
@@ -177,7 +198,35 @@ check("commit-msg refuses a planted session id", g("commit", "-q", "-m", sep("se
 g("add", "leak.md")
 g("commit", "-q", "--no-verify", "-m", "planted past the local hooks")
 check("pre-push refuses a commit carrying a planted value", g("push", "-q", "origin", "HEAD:refs/heads/main").returncode != 0)
-check("nothing reached the remote", subprocess.run(["git", "--git-dir", str(remote), "rev-parse", "-q", "--verify", "refs/heads/main"], capture_output=True).returncode != 0)
+check("nothing reached the remote (1)", subprocess.run(["git", "--git-dir", str(remote), "rev-parse", "-q", "--verify", "refs/heads/main"], capture_output=True).returncode != 0)
+
+# review addition: content that only a merge commit's resolution introduces
+m = TMP / "merge"
+m.mkdir()
+g("init", "-q", cwd=m)
+g("config", "core.hooksPath", str(ROOT / "hostguard/hooks"), cwd=m)
+(m / "f.txt").write_text("base\n")
+g("add", "f.txt", cwd=m)
+g("commit", "-q", "-m", "base", cwd=m)
+g("switch", "-q", "-c", "side", cwd=m)
+(m / "f.txt").write_text("side\n")
+g("commit", "-q", "-am", "side", cwd=m)
+g("switch", "-q", "-", cwd=m)
+(m / "f.txt").write_text("main\n")
+g("commit", "-q", "-am", "main", cwd=m)
+g("merge", "-q", "side", cwd=m)
+(m / "f.txt").write_text(f"resolved at {home}/work\n")
+g("add", "f.txt", cwd=m)
+g("commit", "-q", "--no-verify", "-m", "merge side", cwd=m)
+(m / "f.txt").write_text("clean again\n")
+g("commit", "-q", "--no-verify", "-am", "clean", cwd=m)
+hist = scan.Scanner(m, record=False).history("HEAD")
+check("history sees a value only a merge resolution introduced", any(r == "host:home" for _, _, r, _ in hist))
+mremote = TMP / "mremote.git"
+subprocess.run(["git", "init", "-q", "--bare", str(mremote)], check=True)
+g("remote", "add", "origin", str(mremote), cwd=m)
+check("pre-push refuses a push carrying it", g("push", "-q", "origin", "HEAD:refs/heads/main", cwd=m).returncode != 0)
+check("hooks directory has pre-merge-commit", (ROOT / "hostguard/hooks/pre-merge-commit").exists())
 
 shutil.rmtree(TMP, ignore_errors=True)
 print(f"hostguard test: {len(failures)} failures")

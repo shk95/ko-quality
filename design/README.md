@@ -6,7 +6,7 @@
 
 > 새 세션은 여기서 시작합니다.
 
-**현재 위치:** 끼어드는 시대 [`98-host-isolation`](98-host-isolation/README.md)은 **`6-build` 끝, `7-review` 대기** (2026-09-18). 독립 검증은 모두 리뷰에서 합니다. 시대 `02-validation`은 **`6-build` 끝, `7-review` 전에 멈춤** 상태이고, 시대 98이 `dev`에 머지되면 재개합니다. 멈춘 지점은 태그 `era02-6build-end`이며, 재개한 리뷰는 이 태그의 빌드를 대상으로 합니다. 시대 02의 기록: P1~P9 완료 조건 모두 met, release-blocked 1건(P9: 예산 상한 때문에 배치 검정력 부족). 리뷰는 [`02-validation/6-build/README.md`](02-validation/6-build/README.md)의 진행 현황과 release-blocked 모음에서 시작합니다. 이전 상태 기록: `6-build` 시작 전 (2026-09-17). preflight `flow.md`가 수락됐습니다. 범위가 정해졌습니다 — 이 시대는 headless 대조 실행으로 **임시 코퍼스**를 만들어 측정 장치를 짓고, 실사용 레코드 기반 재측정은 시대 03이 받습니다. 조사는 끝났고, 구현 대상 스펙 `09_toolkit_spec.md`가 06을 대체합니다.
+**현재 위치:** 시대 `02-validation`, **`7-review` 재개 대기** (2026-09-18). 끼어드는 시대 [`98-host-isolation`](98-host-isolation/README.md)은 닫혔고 결과가 `dev`에 있습니다. 재개한 리뷰는 태그 `era02-6build-end`의 빌드를 대상으로 하고, 리뷰 문서는 `AGENTS.md`의 새 공개 저장소 규칙을 따릅니다. `master` 머지는 시대 02의 리뷰에서 시대 98과 함께 정합니다. 시대 02의 기록: P1~P9 완료 조건 모두 met, release-blocked 1건(P9: 예산 상한 때문에 배치 검정력 부족). 리뷰는 [`02-validation/6-build/README.md`](02-validation/6-build/README.md)의 진행 현황과 release-blocked 모음에서 시작합니다. 이전 상태 기록: `6-build` 시작 전 (2026-09-17). preflight `flow.md`가 수락됐습니다. 범위가 정해졌습니다 — 이 시대는 headless 대조 실행으로 **임시 코퍼스**를 만들어 측정 장치를 짓고, 실사용 레코드 기반 재측정은 시대 03이 받습니다. 조사는 끝났고, 구현 대상 스펙 `09_toolkit_spec.md`가 06을 대체합니다.
 
 **같이 도는 것:** 없음. 임시 시대 `99-codex-retest`는 재시험을 마쳤고 (2026-09-16), 결과는 시대 02의 3-spec이 받았습니다.
 
@@ -72,9 +72,9 @@ design/
 | 시대 | 주제 | 상태 | 문서 |
 |---|---|---|---|
 | `01-toolkit` | 툴킷 — 공급 층, Skill, 하네스별 렌더, 최소 로거 | 닫힘 (2026-09-15). `master`에 있음 | [README](01-toolkit/README.md) |
-| `02-validation` | 검증 단계 — 측정, 판정기 검증, `watch:` 후보값, eval. 임시 코퍼스로 | 열림 (2026-09-16). 6-build 끝, 7-review 전에 멈춤 (2026-09-18). 시대 98 뒤에 재개 | [README](02-validation/README.md) |
+| `02-validation` | 검증 단계 — 측정, 판정기 검증, `watch:` 후보값, eval. 임시 코퍼스로 | 열림 (2026-09-16). 6-build 끝 (2026-09-18). 시대 98 뒤 7-review 재개 대기 | [README](02-validation/README.md) |
 | `03` (미개설) | 실사용 레코드로 재측정, `watch:`→`gate:` 승격, 대조군 교대 | 02의 `7-review`에서 엽니다 | — |
-| `98-host-isolation` | 저장소를 호스트 상태에서 떼어 내기 — 공개 기록 규칙, 로컬 데이터 규약, 기계적 차단 (끼어드는 시대) | 열림 (2026-09-18). 6-build 끝, 7-review 대기 | [README](98-host-isolation/README.md) |
+| `98-host-isolation` | 저장소를 호스트 상태에서 떼어 내기 — 공개 기록 규칙, 로컬 데이터 규약, 기계적 차단 (끼어드는 시대) | 닫힘 (2026-09-18). `dev`에 있음. `master`는 02의 리뷰 뒤 | [README](98-host-isolation/README.md) |
 | `99-codex-retest` | Codex 채널 재시험 (임시) | 재시험 끝 (2026-09-16). 결과는 02의 3-spec으로 | [README](99-codex-retest/README.md) |
 
 `99`는 임시 시대입니다. 새 설계를 열지 않고 미뤄 둔 실측만 담으며, 결과는 다른 시대의 입력으로 들어갑니다.
