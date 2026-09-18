@@ -36,6 +36,7 @@ concept → exploration → spec → plan → preflight → [build] → review
 
 - Stages before `build` are interactive. The depth of `plan` and `preflight` is tuned with the user.
 - `preflight` is the last interactive stage. It defines the expected flow of the build, resolves the decisions the build is known to face, and records the verification done ahead of time. Once the user accepts the preflight, the build runs autonomously to completion.
+- A cost estimate in `preflight` comes from a measured probe of the configuration the build will run, not from a per-run reference cost (era 02 review, C).
 - `build` does not revise the spec. Deviations, surprises, and choices the spec did not make are recorded in `6-build/`. Spec changes come out of `review` and open the next era.
 - Nothing flows backward. A discovery that invalidates an earlier stage is recorded where it was found and handled in `review` or the next era. Earlier stage documents are records, not specs: do not edit them; add a forward pointer at most.
 
@@ -45,6 +46,7 @@ concept → exploration → spec → plan → preflight → [build] → review
 - Minor decisions: take the recommended or conventional option.
 - Major decisions: weigh two candidates — the choice that is best for the build's goal, and the choice that is cheapest to reverse. Prefer the best choice. Because the best choice usually costs more now, first find out whether that cost is worth paying: delegate the exploration to an independent subagent, judge from its report, then pick the one that is worth it.
 - Attach a confidence level to every judgment. Low confidence means re-verify before acting, not proceed anyway.
+- A major decision below medium-high confidence gets an exploration run before it is acted on, within the cap. `preflight` names the decisions it expects to need one (era 02 review, C).
 - Each build step ends with a commit and a record in `6-build/`. A stage's done-condition is confirmed by an independent verification subagent, not by the builder's own claim.
 
 ## Subagents
@@ -63,6 +65,7 @@ Three tiers, named by role so the rules read the same in every harness.
 - `large` is allowed only when: two `mid` reports disagree on a major decision (one `large` run breaks the tie instead of a third `mid` run); or the exploration must weigh four or more sources across vendors with judgment, such as deriving the schema in P4 or the record shape in P7. A `large` run counts as two runs against the cap. At most one per stage. These conditions are a starting point: review re-evaluates them after the first era from the recorded runs (did `large` reach a different conclusion than `mid`, and did it matter).
 - **Cap: 4 exploration runs per build stage (P).** When the cap is reached, remaining decisions in that stage take the cheapest-to-reverse option and are recorded as such. One verification run per stage, for the stage's done-condition, is outside the cap.
 - Verification subagents are independent: they receive the question and the sources, never your conclusion or leaning. Ask for both sides in one report: the cost of the best option, and where it breaks.
+- A verification prompt says what is not expected to exist yet (the build record is written after verification), and limits deletion to the exact paths the subagent created, by full name, never by glob (era 02 review, C; era 98 review, E).
 - Every run is recorded in the stage's build record: tier, purpose, tokens, verdict. The record is the measurement; no separate tooling.
 - Never report a subagent's result before it arrives.
 
@@ -77,7 +80,7 @@ Three tiers, named by role so the rules read the same in every harness.
 
 - `master` holds completed build stages. `dev` is the working branch. The merge to `master` is a review decision: every release-blocked mark in `6-build/` is resolved or accepted there.
 - Branch off `dev` for review, fixes, and parallel work; merge back to `dev`. At the end of a build stage, `dev` merges to `master`.
-- Commit messages in English, one step per commit.
+- Commit messages in English, one step per commit. Before committing, check that the staged set (`git diff --cached --stat`) is the step the message names (era 02 review, C).
 
 ## Upstream text
 
