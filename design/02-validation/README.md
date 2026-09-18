@@ -2,7 +2,7 @@
 
 넣은 것이 효과가 있는지 아는 장치를 짓는 시대입니다. 시대 01이 "설치하면 쓰이는 도구"를 짓고 미뤄 둔 질문을 받습니다.
 
-**현재 위치:** `3-spec` 닫힘 (2026-09-17). 구현 대상 스펙은 [`09_toolkit_spec.md`](3-spec/09_toolkit_spec.md)이고, 마무리 검사와 번들 4 검토는 [`09a`](3-spec/09a_findings_spec_close.md)에 있습니다. `4-plan` 닫힘, 계획 [`10_plan.md`](4-plan/10_plan.md) 수락 (2026-09-17). `5-preflight` 닫힘, `flow.md` 수락 (2026-09-17). **`6-build` 끝, `7-review` 대기 (2026-09-18).** P1~P9의 완료 조건은 모두 met이고 release-blocked는 1건(P9 예산 상한, 검정력 부족)입니다. 진행 현황과 release-blocked 모음은 [`6-build/README.md`](6-build/README.md)에 있습니다. `master`에는 머지하지 않았습니다. **`7-review` 전에 멈춤 (2026-09-18).** 끼어드는 시대 [`98-host-isolation`](../98-host-isolation/README.md)이 `dev`에 머지된 뒤 재개합니다. 멈춘 지점은 태그 `era02-6build-end`이고, 재개한 리뷰는 이 태그의 빌드를 대상으로 합니다.
+**현재 위치:** `3-spec` 닫힘 (2026-09-17). 구현 대상 스펙은 [`09_toolkit_spec.md`](3-spec/09_toolkit_spec.md)이고, 마무리 검사와 번들 4 검토는 [`09a`](3-spec/09a_findings_spec_close.md)에 있습니다. `4-plan` 닫힘, 계획 [`10_plan.md`](4-plan/10_plan.md) 수락 (2026-09-17). `5-preflight` 닫힘, `flow.md` 수락 (2026-09-17). **`6-build` 끝, `7-review` 대기 (2026-09-18).** P1~P9의 완료 조건은 모두 met이고 release-blocked는 1건(P9 예산 상한, 검정력 부족)입니다. 진행 현황과 release-blocked 모음은 [`6-build/README.md`](6-build/README.md)에 있습니다. `master`에는 머지하지 않았습니다. **`7-review` 전에 멈췄다가 재개 대기 (2026-09-18).** 끼어드는 시대 [`98-host-isolation`](../98-host-isolation/README.md)이 닫혀 `dev`에 들어왔으므로 재개할 수 있습니다. 멈춘 지점은 태그 `era02-6build-end`이고, 재개한 리뷰는 이 태그의 빌드를 대상으로 합니다.
 
 ## 문서 지도
 

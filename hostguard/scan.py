@@ -1,6 +1,7 @@
 """Scanning (era 98 spec §2.1, §2.2, §2.5). A hit is (path, line number, rule, masked excerpt); the host value itself
 is never printed, so the output is safe to paste into a record or an agent's context."""
 import hashlib
+import re
 import subprocess
 from pathlib import Path
 
@@ -50,7 +51,21 @@ class Scanner:
                     excerpt = (line[max(0, m.start() - 30):m.start()] + f"<{rule}>" + line[m.end():m.end() + 30]).strip()
                     hits.append((path, n, rule, excerpt))
                     break
-        return hits
+        return hits + self.across_lines(text, path, {r for _, _, r, _ in hits})
+
+    def across_lines(self, text, path, found):
+        """A host path or hash wrapped over a line break: substring rules only, on the text with line breaks and the
+        indentation around them removed. Reported at line 0; not exemptable, since a wrapped host path is never meant."""
+        if "\n" not in text:
+            return []
+        joined = re.sub(r"[ \t]*\r?\n[ \t>]*", "", text)
+        out = []
+        for rule, rx in self.patterns:
+            if rule in rules.SUBSTRING_RULES and rule not in found:
+                m = rx.search(joined)
+                if m and not rx.search(text):
+                    out.append((path, 0, rule, "(value wrapped across a line break)"))
+        return out
 
     # ---- git sources -----------------------------------------------------------------------------------------
     def git(self, *a, input=None):
@@ -79,7 +94,8 @@ class Scanner:
         hits, seen = [], set() if seen is None else seen
         for c in commits:
             hits += [(f"{MESSAGE_PATH} {c[:7]}", n, r, e) for _, n, r, e in self.message(self.git("log", "-1", "--format=%B", c).decode("utf-8"))]
-            out = self.git("diff-tree", "-r", "--root", "--no-commit-id", "-z", c).decode("utf-8").split("\0")
+            # -m: a merge commit is diffed against each parent, so content that only its resolution introduced is seen
+            out = self.git("diff-tree", "-r", "-m", "--root", "--no-commit-id", "-z", c).decode("utf-8").split("\0")
             it = iter(filter(None, out))
             for meta in it:
                 path = next(it)

@@ -1,0 +1,28 @@
+{
+  "probe": "The two items era 98's build left unmeasured",
+  "era": "98-host-isolation",
+  "stage": "7-review",
+  "date": "2026-09-18",
+  "notice_relay": {
+    "question": "In an ordinary session, does the model pass the SessionStart cleanup notice on to the user?",
+    "method": "Two headless sessions at the repository root, Claude Code with claude-sonnet-5, an ordinary two-sentence question about the gate directory. Six cleanup candidates were ready.",
+    "runs": [
+      {"hook_fired": true, "notice_in_reply": false, "cost_usd": 0.1815},
+      {"hook_fired": true, "notice_in_reply": true, "cost_usd": 0.0223}
+    ],
+    "verdict": "The hook fires every time; the model relays the notice in 1 of 2 sessions. The model channel alone does not reliably reach the user. Whether the interactive UI shows systemMessage is still unmeasured."
+  },
+  "canary_after_change": {
+    "question": "Does the changed corpus canary keep the full report local and commit only a redacted copy?",
+    "method": "python3 -m corpus canary --mislabel (one session), corpus home and work directory under the local root, --report to a scratch path",
+    "observed": {
+      "exit_code": 1,
+      "rejected": true,
+      "note": "exit 1 and rejected are the expected outcome of the mislabel run",
+      "full_report": "written to the work directory, session_id kept",
+      "report_and_stdout": "identical; session_id is <local>; passes hostguard scan",
+      "cost_usd": 0.0709
+    },
+    "verdict": "Works as specified."
+  }
+}
