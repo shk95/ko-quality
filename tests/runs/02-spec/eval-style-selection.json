@@ -1,0 +1,43 @@
+{
+  "probe": "can a claude plugin eval case select a plugin output style (needed under B9)",
+  "era": "02-validation",
+  "stage": "3-spec",
+  "item": "09 §17.2",
+  "date": "2026-09-16",
+  "harness": "Claude Code 2.1.273",
+  "cost_usd": 0,
+  "method": "Scratch copy of dist/claude-code/agent-reply with one case whose prompt.md frontmatter carried a candidate key; claude plugin eval ./plug --case c --runs 1 --ablation none --max-cost-usd 0.001. Validator messages only; no model run.",
+  "results": [
+    {
+      "key": "settings: {outputStyle: ...}",
+      "result": "rejected: unknown frontmatter key \"settings\""
+    },
+    {
+      "key": "output_style: ...",
+      "result": "rejected: unknown frontmatter key"
+    },
+    {
+      "key": "env: {A: b}",
+      "result": "accepted by the loader; run failed: only EVAL_* keys can be set from case.yaml"
+    }
+  ],
+  "accepted_frontmatter_keys": [
+    "schema_version",
+    "name",
+    "description",
+    "tags",
+    "plugins",
+    "runs",
+    "expected_outcome",
+    "model",
+    "max_turns",
+    "timeout_seconds",
+    "allowed_tools",
+    "artifact_publish",
+    "growthbook_overrides",
+    "append_system_prompt",
+    "env"
+  ],
+  "finding": "A case cannot select an output style: there is no settings key, env is limited to EVAL_* keys, and runs use a temporary home. Plugin settings.json supports only agent and subagentStatusLine (06 §2.1). Under B9 (unforced styles) the tool's plugin-on arm therefore runs with no style selected, which is arm B, not arm C. Policy cases cannot stay in claude plugin eval.",
+  "cleanup": "The tool kept a sealed temp directory for the failed run; it was unsealed and removed."
+}

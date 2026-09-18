@@ -1,0 +1,84 @@
+{
+  "exclusion_version": "ex-3-t0",
+  "analyser": {
+    "version": null,
+    "unavailable": "ModuleNotFoundError: No module named 'kiwipiepy'"
+  },
+  "tiers": [
+    0,
+    2
+  ],
+  "checks": 118,
+  "failures": [],
+  "skipped": 56,
+  "coverage_cases_per_measurement": {
+    "allomorph_errors": {
+      "correct": 3,
+      "defective": 2
+    },
+    "bold_density": {
+      "correct": 3,
+      "defective": 2
+    },
+    "bullet_density": {
+      "correct": 2,
+      "defective": 2
+    },
+    "comma_rate": {
+      "correct": 2,
+      "defective": 3
+    },
+    "em_dash_count": {
+      "correct": 5,
+      "defective": 3
+    },
+    "emoji_count": {
+      "correct": 3,
+      "defective": 2
+    },
+    "english_gloss_repeat": {
+      "correct": 3,
+      "defective": 2
+    },
+    "english_ratio": {
+      "correct": 3,
+      "defective": 2
+    },
+    "header_formula": {
+      "correct": 3,
+      "defective": 2
+    },
+    "honorific_address": {
+      "correct": 3,
+      "defective": 2
+    },
+    "ko.preserve": {
+      "correct": 1,
+      "defective": 5
+    },
+    "paragraph_initial_repeat": {
+      "correct": 2,
+      "defective": 2
+    },
+    "phrase_battery": {
+      "correct": 3,
+      "defective": 3
+    },
+    "quote_balance": {
+      "correct": 3,
+      "defective": 2
+    },
+    "quote_emphasis_count": {
+      "correct": 2,
+      "defective": 2
+    },
+    "sentence_len_var": {
+      "correct": 3,
+      "defective": 2
+    },
+    "spelling_denylist": {
+      "correct": 4,
+      "defective": 2
+    }
+  }
+}

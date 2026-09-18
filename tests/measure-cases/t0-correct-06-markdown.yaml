@@ -1,0 +1,21 @@
+# Tier 0 case (09 §17.3). Synthetic. Defect look-alikes only inside code and a table: excluded zones must not count.
+id: t0-correct-06-markdown
+profile: agent-reply
+arm: any
+layer: skill
+input: "## 로더 캐시 변경\n\n변경한 파일은 두 개입니다.\n\n| 파일 | 내용 |\n|---|---|\n| `loader.py` | 한 번만 읽음 — 캐시 |\n\n```python\nx = a — b  # 😀 되요 **굵게**\n```\n\n배포는 내일 합니다."
+expect:
+  em_dash_count.count:
+    max: 0
+  emoji_count.count:
+    max: 0
+  spelling_denylist.count:
+    max: 0
+  bold_density.count:
+    max: 0
+  header_formula.formulaic:
+    max: 0
+  header_formula.colon_subtitle:
+    max: 0
+  quote_balance.balanced:
+    equals: true

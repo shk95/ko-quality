@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3, F7). Synthetic. Correct prose, 해라체. Irregular stems (듣 VV-I, 돕 VV-I, 걷 VV-I), and ! as the trailing mark.
+id: t1-correct-02-irregular
+profile: agent-reply
+arm: any
+layer: policy
+input: "사용자의 요청을 끝까지 들었다. 그는 문제의 원인을 함께 찾도록 도왔다. 우리는 회의실까지 천천히 걸었다! 그 뒤에 결론이 바로 나왔다."
+expect:
+  noun_ending_ratio.ratio:
+    max: 0
+  particle_absence_ratio.ratio:
+    max: 0.5

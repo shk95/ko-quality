@@ -1,0 +1,46 @@
+{
+  "ceiling_usd": 21,
+  "rows": [
+    {
+      "run": "probe: stream-json style switch",
+      "usd": 0.0937
+    },
+    {
+      "run": "canaries before the generator fix (3 arms)",
+      "usd": 0.2048
+    },
+    {
+      "run": "mislabelled canary before the fix",
+      "usd": 0.071
+    },
+    {
+      "run": "aborted pilot start: 5 completed sessions (a 6th was killed mid-run, cost not reported)",
+      "usd": 0.4728
+    },
+    {
+      "run": "fix test 1: two C sessions",
+      "usd": 0.3035
+    },
+    {
+      "run": "fix test 2: one delegation session",
+      "usd": 0.1867
+    },
+    {
+      "run": "fix test 3: delegation C and paste-in A",
+      "usd": 0.3331
+    },
+    {
+      "run": "canaries, committed generator (3 arms)",
+      "usd": 0.2066
+    },
+    {
+      "run": "mislabelled canary, committed generator",
+      "usd": 0.0697
+    },
+    {
+      "run": "pilot-01: 81 sessions",
+      "usd": 10.927
+    }
+  ],
+  "total_usd": 12.869
+}

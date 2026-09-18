@@ -4,3 +4,6 @@ upstream/.cache/
 # 로컬 환경
 .DS_Store
 .claude/settings.local.json
+.claude/worktrees/
+measure/.venv/
+__pycache__/

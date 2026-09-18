@@ -1,0 +1,53 @@
+{
+  "id": "x02-paths-identifiers",
+  "kind": "correct",
+  "text": "로그는 ~/.ko-quality/logs/2026-09.jsonl에 쌓입니다. 설정은 .claude/settings.json에서 읽고, 값이 없으면 기본값 max_retries를 씁니다. 호출 경로는 measure.runner.run()이고, 내부에서 parseRecord와 os.path.expanduser를 부릅니다. 윈도우에서는 C:\\Users\\dev\\ko-quality 아래를 봅니다. README.md도 같이 고쳤습니다. 이 방식은 사용자/관리자 모두에게 같습니다. 참고로 1/2 정도만 바뀌었습니다.",
+  "positives": [
+    {
+      "zone": "url_path_id",
+      "text": "~/.ko-quality/logs/2026-09.jsonl"
+    },
+    {
+      "zone": "url_path_id",
+      "text": ".claude/settings.json"
+    },
+    {
+      "zone": "url_path_id",
+      "text": "max_retries"
+    },
+    {
+      "zone": "url_path_id",
+      "text": "measure.runner.run()"
+    },
+    {
+      "zone": "url_path_id",
+      "text": "parseRecord"
+    },
+    {
+      "zone": "url_path_id",
+      "text": "os.path.expanduser"
+    },
+    {
+      "zone": "url_path_id",
+      "text": "C:\\Users\\dev\\ko-quality"
+    },
+    {
+      "zone": "url_path_id",
+      "text": "README.md"
+    }
+  ],
+  "negatives": [
+    {
+      "zone": "url_path_id",
+      "text": "사용자/관리자"
+    },
+    {
+      "zone": "url_path_id",
+      "text": "1/2"
+    },
+    {
+      "zone": "url_path_id",
+      "text": "고쳤습니다."
+    }
+  ]
+}

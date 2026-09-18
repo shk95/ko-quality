@@ -1,15 +1,30 @@
-# assemble/profiles/agent-reply.yaml — 06 §6. Build-time profile (decision ②, P5): one dist per profile.
+# assemble/profiles/agent-reply.yaml — 09 §6. One unforced output style in the one Claude Code plugin (B9); one Codex dist.
 id: agent-reply
-register: 에이전트가 사용자에게 하는 보고·설명
+register: coding-terse replies to the user
 policy: policy/fluent-korean#coding
 blocks: []
 default_preset: standard
 intensity: default
-exempt: []
-plugin:
-  name: ko-quality
-  description: "Korean writing quality toolkit: rewrite, diagnose, grammar and the Korean output policy for an agent's replies (profile agent-reply)"
 output_style:
   name: agent-reply
-  description: "Korean output policy for an agent's replies to the user (fluent-korean, coding variant). Keeps Claude Code's coding instructions."
-  force: true
+  description: "Korean output policy for coding-terse replies to the user (fluent-korean, coding variant). Keeps Claude Code's coding instructions. Select with /output-style ko-quality:agent-reply."
+# watch: candidates only (09 §15.7). Nothing reads them in era 02. Written by 6-build P9 from measure/batch.py;
+# values and intervals in tests/runs/02-P9/batch-01-report.json.
+watch:
+  em_dash_count:
+    max: 0.0
+  phrase_battery:
+    max: 0.0
+  noun_ending_ratio:
+    max: 0.0
+  particle_absence_ratio:
+    max: 0.3636
+  speech_level:
+    max: 1.0
+  genitive_ui_ratio:
+    max: 0.0667
+  _meta:
+    source: "corpus batch-01"
+    arm: C
+    exclusion_version: "ex-3"
+    status: candidate

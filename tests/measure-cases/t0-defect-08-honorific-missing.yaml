@@ -1,0 +1,9 @@
+# Tier 0 case (09 §17.3). Synthetic. `input` is the reply text the measurements read.
+id: t0-defect-08-honorific-missing
+profile: formal-report
+arm: C
+layer: policy
+input: "결제 모듈의 시간대 설정이 달랐습니다. 한국 시간으로 맞추면 정산 시각이 밀리지 않습니다. 사용자분께 확인을 부탁드립니다."
+expect:
+  honorific_address.present:
+    equals: false

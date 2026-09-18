@@ -1,0 +1,27 @@
+{
+  "probe": "X3: kiwipiepy in a virtualenv on this machine",
+  "era": "02-validation",
+  "stage": "5-preflight",
+  "date": "2026-09-17",
+  "environment": "kiwipiepy 0.23.2 on Python 3.9.6, scratch virtualenv under the scratchpad",
+  "result": "Installs and runs. The fixed noun_ending_ratio test (pop trailing SF/SP/SS/SE/SO/SW, then test EF):",
+  "sentences": [
+    {
+      "text": "이 기능은 값을 검증합니다.",
+      "tags": "MM NNG JX NNG JKO NNG XSV EF SF",
+      "final_EF": true
+    },
+    {
+      "text": "값 검증 완료.",
+      "tags": "NNG NNG NNG SF",
+      "final_EF": false
+    },
+    {
+      "text": "파일 읽기 실패함",
+      "tags": "NNG VV ETN NNG XSV EF(ᆷ)",
+      "final_EF": true
+    }
+  ],
+  "finding": "A nominal ending -ㅁ closing a sentence ('실패함') is tagged EF, so the recipe counts the telegraphic 개조식 '-함' ending as a proper verbal ending. E2's recipe notes do not say how to treat it.",
+  "verdict": "S3 option A is installable. The -ㅁ/-음 ending is an open recipe question for P6."
+}

@@ -1,0 +1,9 @@
+{
+  "_note": "USD per 1M tokens, standard tier, from the provider's official pricing page (era 98 spec §3). A model the page does not list has no entry. Claude Code reports total_cost_usd already at API prices and needs no entry here.",
+  "models": {
+    "gpt-5.6-sol": {"input": 4.00, "cached_input": 0.40, "output": 20.00, "source": "https://developers.openai.com/api/docs/pricing", "retrieved": "2026-09-18"},
+    "gpt-5.6-terra": {"input": 2.00, "cached_input": 0.20, "output": 12.00, "source": "https://developers.openai.com/api/docs/pricing", "retrieved": "2026-09-18"},
+    "gpt-5.6-luna": {"input": 0.20, "cached_input": 0.02, "output": 1.20, "source": "https://developers.openai.com/api/docs/pricing", "retrieved": "2026-09-18"},
+    "gpt-5.5": {"input": 5.00, "cached_input": 0.50, "output": 30.00, "source": "https://developers.openai.com/api/docs/pricing", "retrieved": "2026-09-18", "note": "short-context price (under 272K input tokens)"}
+  }
+}

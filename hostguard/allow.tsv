@@ -1,0 +1,13 @@
+# hostguard allowlist (era 98 spec §2.2): path<TAB>rule<TAB>line-sha256[:16]<TAB>reason. No host values.
+design/98-host-isolation/1-concept/01_idea.md	fixed:plan-ko	ac640495a462b44a	era 98 names the rule or the removed category; no host value
+design/98-host-isolation/1-concept/01_idea.md	fixed:plan-ko	031541ee3fe16ba2	era 98 names the rule or the removed category; no host value
+design/98-host-isolation/1-concept/01_idea.md	fixed:plan-ko	638990f3aa01c840	era 98 names the rule or the removed category; no host value
+design/98-host-isolation/2-exploration/02_exploration.md	fixed:plan-en	c8434e8907afc2b8	era 98 names the rule or the removed category; no host value
+design/98-host-isolation/3-spec/03_spec.md	fixed:tmp-path	0197ea37803bd18f	era 98 names the rule or the removed category; no host value
+design/98-host-isolation/3-spec/03_spec.md	fixed:nix-path	22724dada19803dd	era 98 names the rule or the removed category; no host value
+design/98-host-isolation/3-spec/03_spec.md	fixed:plan-en	bc7445e71c2198f7	era 98 names the rule or the removed category; no host value
+design/98-host-isolation/3-spec/03_spec.md	fixed:plan-ko	afd726f672aece6c	era 98 names the rule or the removed category; no host value
+tests/runs/98-E/hostscan-prototype.json	fixed:plan-en	68062e74bad1d171	era 98 names the rule or the removed category; no host value
+tests/runs/98-E/hostscan-prototype.json	fixed:plan-en	6596befd8b05bcb8	era 98 names the rule or the removed category; no host value
+tests/runs/98-E/hostscan-prototype.json	fixed:plan-en	ee767931fe3c628b	era 98 names the rule or the removed category; no host value
+AGENTS.md	fixed:plan-en	22136fa7a4110e7e	the rule's own table names the banned category; no host value

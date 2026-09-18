@@ -1,0 +1,43 @@
+{
+  "probe": "E2 Tier 1: does the assumed tagset exist, and do the recipes work as written?",
+  "era": "02-validation", "stage": "2-exploration", "item": "E2 (verification round)",
+  "date": "2026-09-16",
+  "environment": "kiwipiepy 0.23.2 on Python 3.9.6, throwaway venv, removed afterwards. Nothing installed into the system Python.",
+  "tagset": {
+    "verdict": "VERIFIED. All 20 tags the document names exist and mean what it assumed (Sejong tagset): EF EC ETM EP JKG JKS JKO JKB JX JC NNG NNP NNB XSN MAG MAJ VV VA VX NP.",
+    "caveat": "Irregular stems get subtype tags (VV-I, VV-R), so a tag == 'VV' test silently misses them. Prefix matching is required and no recipe said so."
+  },
+  "recipes": {
+    "verdict": "The tagset was fine. The recipes were not. Two of them are broken as literally written, and both are fixable.",
+    "noun_ending_ratio": {
+      "bug": "kiwipiepy emits sentence-final punctuation as a trailing SF morpheme AFTER the EF token, so 'is the final morpheme EF' is false for every period-terminated sentence.",
+      "evidence": "이 기능은 값을 검증합니다. -> last three tags ['XSV','EF','SF']",
+      "measured": {"naive": {"correct_prose": 1.00, "telegraphic": 1.00, "separation": 0.00},
+                   "fixed_strip_trailing_punctuation": {"correct_prose": 0.00, "telegraphic": 1.00, "separation": 1.00}},
+      "fix": "Pop trailing SF/SP/SS/SE/SO/SW before testing the final tag.",
+      "note": "Naive, this measurement fires at 100% on all text and separates nothing. Fixed, it separates perfectly on this corpus - the strongest result in the battery."
+    },
+    "particle_absence_ratio": {
+      "bug": "N + XSV (the 하다/-하 verbalizing suffix) puts a non-J* tag directly after the noun, and that is the dominant verb-formation pattern in formal Korean. Correct prose scored 0.50; correct honorific prose scored 0.80, because XSN (님) also sits between the noun and its particle.",
+      "evidence": "correct prose flagged 입력/XSV 검증/XSV 저장/XSV 실패/XSV 표시/XSV 중단/XSV - none of them a dropped 조사. 사용자님께서 tokenises as 사용자/NNG 님/XSN 께서/JKS.",
+      "measured": {
+        "naive":                 {"correct_mean": 0.66, "defective_mean": 0.94, "gap": 0.28},
+        "skip_suffixes_only":    {"correct_mean": 0.59, "defective_mean": 0.94, "gap": 0.35},
+        "exclude_verbalised_nouns_from_denominator": {
+          "correct": {"prose": 0.12, "honorific": 0.00, "technical": 0.40, "long_prose": 0.17},
+          "defective": {"telegraphic": 1.00, "noun_ending": 0.88, "telegraphic_2": 1.00},
+          "correct_mean": 0.17, "defective_mean": 0.96, "gap": 0.79, "fully_separable": true
+        }
+      },
+      "fix": "A 체언 followed by XSV/XSA is a verb stem, not a noun awaiting a particle: drop it from the denominator. Skip XSN/XSM when looking for the following J*.",
+      "residual": "The technical-compound case sits at 0.40, the closest of the correct cases to the defective range - the false positive E2 predicted, now measured."
+    }
+  },
+  "other_findings": [
+    "The exclusion pass must run on raw text lines BEFORE kiwipiepy's sentence splitter, not after. The splitter is paragraph-aware but knows nothing of markdown: consecutive bullets merge into one 'sentence' and a three-line table merges into another, after which individual lines cannot be attributed back. E2's phrasing implied the reverse order.",
+    "noun_run_length's 'no J* between' is ambiguous - strict consecutive NN* versus bridging over non-noun non-particle tags give very different numbers. Undecided in E2.",
+    "genitive_ui_ratio's predicted false positive is untested: no test case contained 의 at all.",
+    "A path's internal period is tagged SF at token level, but split_into_sents does not split there. A recipe that split on SF tags instead of using the splitter would break mid-path.",
+    "디렉터리 was tagged NNP rather than NNG - a tagger-accuracy risk for proper_noun_preservation in Tier 2."
+  ]
+}

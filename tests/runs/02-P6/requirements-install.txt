@@ -1,0 +1,5 @@
+# fresh virtualenv from measure/requirements.txt (Python 3.9.6), pip freeze:
+kiwipiepy==0.23.2
+kiwipiepy_model==0.23.0
+numpy==2.0.2
+tqdm==4.70.1

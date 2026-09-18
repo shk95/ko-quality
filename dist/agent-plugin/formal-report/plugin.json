@@ -1,7 +1,7 @@
 {
   "name": "ko-quality-formal",
-  "version": "0.1.0",
-  "description": "Korean writing quality toolkit: rewrite, diagnose, grammar and the Korean output policy for documents delivered to the user (profile formal-report)",
+  "version": "0.2.0",
+  "description": "Korean writing quality toolkit: rewrite, diagnose and grammar skills; the installer adds the Korean output policy for replies in 높임말 with 사용자님 (profile formal-report)",
   "author": {
     "name": "ko-quality"
   },

@@ -1,0 +1,482 @@
+{
+  "record": "P2 live sessions (flow.md §3 P2 steps 4-5; F1, F2)",
+  "era": "02-validation",
+  "stage": "6-build P2",
+  "date": "2026-09-17",
+  "claude_code": {
+    "harness": "Claude Code 2.1.274",
+    "model": "claude-sonnet-5",
+    "method": "Scratch project; settings.local.json with env.KO_QUALITY_HOME at a scratch home and outputStyle ko-quality:agent-reply; claude -p <prompt> --plugin-dir dist/claude-code/ko-quality (unmodified) --output-format stream-json --verbose --max-turns 8 --model claude-sonnet-5.",
+    "prompts": {
+      "default": "ko-quality:korean-reviewer 에이전트에게 다음 문장의 검토를 맡기고, 보고를 요약해서 전해 줘: '본 보고서는 매우 중요한 의미를 가지고 있다고 할 수 있다.'",
+      "foreground": "ko-quality:korean-reviewer 에이전트에게 다음 문장의 검토를 맡겨 줘. 에이전트는 백그라운드가 아니라 포그라운드로 실행해서 끝날 때까지 기다린 뒤, 보고를 요약해서 전해 줘: '본 보고서는 매우 중요한 의미를 가지고 있다고 할 수 있다.'"
+    },
+    "runs": [
+      {
+        "run": "first (logger before the <task-notification> fix, build 7e055919440959f5)",
+        "prompt": "default",
+        "cost_usd": 0.2967559,
+        "subagent_spawned": 1,
+        "started_in_background": 1,
+        "state_files_left": 0,
+        "logger_errors_log": false,
+        "records": [
+          {
+            "harness": "claude-code",
+            "harness_position": "main-to-user",
+            "agent_type": null,
+            "plugin_present": true,
+            "build_id": "7e055919440959f5",
+            "tool_version": "0.2.0",
+            "policy_on": null,
+            "injection_point": null,
+            "profile": null,
+            "policy_method": null,
+            "model": null,
+            "injected_prompts": 0,
+            "skills_invoked": [],
+            "skills_method": "tool",
+            "task_type": "conversation",
+            "task_type_method": "rule",
+            "tool_output_chars": {
+              "hangul": 74,
+              "latin": 174,
+              "truncated_calls": 0
+            },
+            "tool_errors": 0,
+            "tokens": {
+              "output": 60,
+              "method": "estimate-v2"
+            },
+            "masked": false,
+            "task_chars": 100,
+            "output_chars": 59,
+            "task_is_delegation_prompt": false,
+            "same_session_id_as_others": true
+          },
+          {
+            "harness": "claude-code",
+            "harness_position": "sub-to-orchestrator",
+            "agent_type": "ko-quality:korean-reviewer",
+            "plugin_present": true,
+            "build_id": "7e055919440959f5",
+            "tool_version": "0.2.0",
+            "policy_on": true,
+            "injection_point": "agent-definition",
+            "profile": null,
+            "policy_method": "agent-type",
+            "model": null,
+            "injected_prompts": 0,
+            "skills_invoked": [
+              "ko-quality:ko-diagnose"
+            ],
+            "skills_method": "tool",
+            "task_type": "conversation",
+            "task_type_method": "rule",
+            "tool_output_chars": {
+              "hangul": 6444,
+              "latin": 1786,
+              "truncated_calls": 0
+            },
+            "tool_errors": 0,
+            "tokens": {
+              "output": 1775,
+              "method": "estimate-v2"
+            },
+            "masked": false,
+            "task_chars": 117,
+            "output_chars": 1722,
+            "task_is_delegation_prompt": true,
+            "same_session_id_as_others": true
+          },
+          {
+            "harness": "claude-code",
+            "harness_position": "main-to-user",
+            "agent_type": null,
+            "plugin_present": true,
+            "build_id": "7e055919440959f5",
+            "tool_version": "0.2.0",
+            "policy_on": null,
+            "injection_point": null,
+            "profile": null,
+            "policy_method": null,
+            "model": null,
+            "injected_prompts": 0,
+            "skills_invoked": [],
+            "skills_method": "tool",
+            "task_type": "conversation",
+            "task_type_method": "rule",
+            "tool_output_chars": {
+              "hangul": 74,
+              "latin": 174,
+              "truncated_calls": 0
+            },
+            "tool_errors": 0,
+            "tokens": {
+              "output": 510,
+              "method": "estimate-v2"
+            },
+            "masked": false,
+            "task_chars": 100,
+            "output_chars": 481,
+            "task_is_delegation_prompt": false,
+            "same_session_id_as_others": true
+          },
+          {
+            "harness": "claude-code",
+            "harness_position": "main-to-user",
+            "agent_type": null,
+            "plugin_present": true,
+            "build_id": "7e055919440959f5",
+            "tool_version": "0.2.0",
+            "policy_on": null,
+            "injection_point": null,
+            "profile": null,
+            "policy_method": null,
+            "model": null,
+            "injected_prompts": 0,
+            "skills_invoked": [],
+            "skills_method": "tool",
+            "task_type": "conversation",
+            "task_type_method": "rule",
+            "tool_output_chars": {
+              "hangul": 0,
+              "latin": 0,
+              "truncated_calls": 0
+            },
+            "tool_errors": 0,
+            "tokens": {
+              "output": 86,
+              "method": "estimate-v2"
+            },
+            "masked": false,
+            "task_chars": 944,
+            "output_chars": 82,
+            "task_is_delegation_prompt": false,
+            "same_session_id_as_others": true
+          }
+        ],
+        "reading": "The agent started in the background. The main thread stopped once while waiting, once with the summary, and once more after a <task-notification> prompt, which this logger version took as a task (4th record's task was the notification)."
+      },
+      {
+        "run": "default (committed logger, build 51112680979b60c3)",
+        "prompt": "default",
+        "cost_usd": 0.2903002,
+        "subagent_spawned": 1,
+        "started_in_background": 1,
+        "state_files_left": 0,
+        "logger_errors_log": false,
+        "records": [
+          {
+            "harness": "claude-code",
+            "harness_position": "main-to-user",
+            "agent_type": null,
+            "plugin_present": true,
+            "build_id": "51112680979b60c3",
+            "tool_version": "0.2.0",
+            "policy_on": null,
+            "injection_point": null,
+            "profile": null,
+            "policy_method": null,
+            "model": null,
+            "injected_prompts": 0,
+            "skills_invoked": [],
+            "skills_method": "tool",
+            "task_type": "conversation",
+            "task_type_method": "rule",
+            "tool_output_chars": {
+              "hangul": 82,
+              "latin": 176,
+              "truncated_calls": 0
+            },
+            "tool_errors": 0,
+            "tokens": {
+              "output": 71,
+              "method": "estimate-v2"
+            },
+            "masked": false,
+            "task_chars": 100,
+            "output_chars": 67,
+            "task_is_delegation_prompt": false,
+            "same_session_id_as_others": true
+          },
+          {
+            "harness": "claude-code",
+            "harness_position": "sub-to-orchestrator",
+            "agent_type": "ko-quality:korean-reviewer",
+            "plugin_present": true,
+            "build_id": "51112680979b60c3",
+            "tool_version": "0.2.0",
+            "policy_on": true,
+            "injection_point": "agent-definition",
+            "profile": null,
+            "policy_method": "agent-type",
+            "model": null,
+            "injected_prompts": 0,
+            "skills_invoked": [
+              "ko-quality:ko-diagnose"
+            ],
+            "skills_method": "tool",
+            "task_type": "conversation",
+            "task_type_method": "rule",
+            "tool_output_chars": {
+              "hangul": 6444,
+              "latin": 1786,
+              "truncated_calls": 0
+            },
+            "tool_errors": 0,
+            "tokens": {
+              "output": 1815,
+              "method": "estimate-v2"
+            },
+            "masked": false,
+            "task_chars": 130,
+            "output_chars": 1735,
+            "task_is_delegation_prompt": true,
+            "same_session_id_as_others": true
+          },
+          {
+            "harness": "claude-code",
+            "harness_position": "main-to-user",
+            "agent_type": null,
+            "plugin_present": true,
+            "build_id": "51112680979b60c3",
+            "tool_version": "0.2.0",
+            "policy_on": null,
+            "injection_point": null,
+            "profile": null,
+            "policy_method": null,
+            "model": null,
+            "injected_prompts": 1,
+            "skills_invoked": [],
+            "skills_method": "tool",
+            "task_type": "conversation",
+            "task_type_method": "rule",
+            "tool_output_chars": {
+              "hangul": 82,
+              "latin": 176,
+              "truncated_calls": 0
+            },
+            "tool_errors": 0,
+            "tokens": {
+              "output": 674,
+              "method": "estimate-v2"
+            },
+            "masked": false,
+            "task_chars": 100,
+            "output_chars": 607,
+            "task_is_delegation_prompt": false,
+            "same_session_id_as_others": true
+          },
+          {
+            "harness": "claude-code",
+            "harness_position": "main-to-user",
+            "agent_type": null,
+            "plugin_present": true,
+            "build_id": "51112680979b60c3",
+            "tool_version": "0.2.0",
+            "policy_on": null,
+            "injection_point": null,
+            "profile": null,
+            "policy_method": null,
+            "model": null,
+            "injected_prompts": 2,
+            "skills_invoked": [],
+            "skills_method": "tool",
+            "task_type": "conversation",
+            "task_type_method": "rule",
+            "tool_output_chars": {
+              "hangul": 82,
+              "latin": 176,
+              "truncated_calls": 0
+            },
+            "tool_errors": 0,
+            "tokens": {
+              "output": 90,
+              "method": "estimate-v2"
+            },
+            "masked": false,
+            "task_chars": 100,
+            "output_chars": 85,
+            "task_is_delegation_prompt": false,
+            "same_session_id_as_others": true
+          }
+        ],
+        "reading": "Background agent again: 3 main records (waiting, summary, after the notification) and 1 sub record. The notification is now counted in injected_prompts and task stays the user's prompt."
+      },
+      {
+        "run": "foreground (committed logger, build 51112680979b60c3)",
+        "prompt": "foreground",
+        "cost_usd": 0.3322003,
+        "subagent_spawned": 1,
+        "started_in_background": 0,
+        "state_files_left": 0,
+        "logger_errors_log": false,
+        "records": [
+          {
+            "harness": "claude-code",
+            "harness_position": "sub-to-orchestrator",
+            "agent_type": "ko-quality:korean-reviewer",
+            "plugin_present": true,
+            "build_id": "51112680979b60c3",
+            "tool_version": "0.2.0",
+            "policy_on": true,
+            "injection_point": "agent-definition",
+            "profile": null,
+            "policy_method": "agent-type",
+            "model": null,
+            "injected_prompts": 0,
+            "skills_invoked": [
+              "ko-quality:ko-diagnose"
+            ],
+            "skills_method": "tool",
+            "task_type": "conversation",
+            "task_type_method": "rule",
+            "tool_output_chars": {
+              "hangul": 7294,
+              "latin": 2460,
+              "truncated_calls": 0
+            },
+            "tool_errors": 0,
+            "tokens": {
+              "output": 1602,
+              "method": "estimate-v2"
+            },
+            "masked": true,
+            "task_chars": 150,
+            "output_chars": 1875,
+            "task_is_delegation_prompt": true,
+            "same_session_id_as_others": true
+          },
+          {
+            "harness": "claude-code",
+            "harness_position": "main-to-user",
+            "agent_type": null,
+            "plugin_present": true,
+            "build_id": "51112680979b60c3",
+            "tool_version": "0.2.0",
+            "policy_on": null,
+            "injection_point": null,
+            "profile": null,
+            "policy_method": null,
+            "model": null,
+            "injected_prompts": 1,
+            "skills_invoked": [],
+            "skills_method": "tool",
+            "task_type": "conversation",
+            "task_type_method": "rule",
+            "tool_output_chars": {
+              "hangul": 90,
+              "latin": 223,
+              "truncated_calls": 0
+            },
+            "tool_errors": 0,
+            "tokens": {
+              "output": 690,
+              "method": "estimate-v2"
+            },
+            "masked": false,
+            "task_chars": 144,
+            "output_chars": 633,
+            "task_is_delegation_prompt": false,
+            "same_session_id_as_others": true
+          }
+        ],
+        "reading": "Foreground agent: exactly 1 main and 1 sub record. The hand-back arrived as an injected prompt (injected_prompts 1)."
+      }
+    ]
+  },
+  "codex": {
+    "harness": "codex-cli 0.154.0",
+    "model": "gpt-5.6-terra",
+    "build_id": "51112680979b60c3",
+    "method": "Throwaway CODEX_HOME (auth.json symlinked; config.toml [features] multi_agent_v2 = true); codex plugin marketplace add dist/agent-plugin; codex plugin add ko-quality@ko-quality; dist/agent-plugin/agent-reply/install/ko_quality_codex.py install --codex-home <tmp>; empty git repository as workdir; CODEX_HOME=<tmp> KO_QUALITY_HOME=<scratch> codex exec --json -m gpt-5.6-terra -s read-only -C <workdir> --dangerously-bypass-hook-trust <prompt>. No --ephemeral. The user's ~/.codex was never CODEX_HOME.",
+    "prompt": "korean-reviewer 에이전트를 띄워서 다음 문장을 검토하게 하고, 에이전트의 보고를 요약해서 전해 줘: '본 보고서는 매우 중요한 의미를 가지고 있다고 할 수 있다.'",
+    "usage": [
+      {
+        "input_tokens": 83703,
+        "cached_input_tokens": 70400,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 318,
+        "reasoning_output_tokens": 22
+      }
+    ],
+    "cost_usd": null,
+    "cost_note": "API-equivalent cost not computed; token counts recorded",
+    "state_files_left": 0,
+    "logger_errors_log": false,
+    "records": [
+      {
+        "harness": "codex",
+        "harness_position": "sub-to-orchestrator",
+        "agent_type": "korean-reviewer",
+        "plugin_present": true,
+        "build_id": "51112680979b60c3",
+        "tool_version": "0.2.0",
+        "policy_on": true,
+        "injection_point": "agent-definition",
+        "profile": null,
+        "policy_method": "agent-type",
+        "model": "gpt-5.6-terra",
+        "injected_prompts": 0,
+        "skills_invoked": [
+          "ko-diagnose"
+        ],
+        "skills_method": "path-read",
+        "task_type": "conversation",
+        "task_type_method": "rule-codex",
+        "tool_output_chars": {
+          "hangul": 3617,
+          "latin": 2673,
+          "truncated_calls": 0
+        },
+        "tool_errors": 0,
+        "tokens": {
+          "output": 365,
+          "method": "estimate-v2"
+        },
+        "masked": false,
+        "task_chars": 0,
+        "output_chars": 359,
+        "task_is_delegation_prompt": false,
+        "same_session_id_as_others": true
+      },
+      {
+        "harness": "codex",
+        "harness_position": "main-to-user",
+        "agent_type": null,
+        "plugin_present": true,
+        "build_id": "51112680979b60c3",
+        "tool_version": "0.2.0",
+        "policy_on": true,
+        "injection_point": "agents-md",
+        "profile": "agent-reply",
+        "policy_method": "agents-md-marker",
+        "model": "gpt-5.6-terra",
+        "injected_prompts": 0,
+        "skills_invoked": [],
+        "skills_method": "path-read",
+        "task_type": "conversation",
+        "task_type_method": "rule-codex",
+        "tool_output_chars": {
+          "hangul": 0,
+          "latin": 169,
+          "truncated_calls": 0
+        },
+        "tool_errors": 0,
+        "tokens": {
+          "output": 211,
+          "method": "estimate-v2"
+        },
+        "masked": false,
+        "task_chars": 98,
+        "output_chars": 190,
+        "task_is_delegation_prompt": false,
+        "same_session_id_as_others": true
+      }
+    ],
+    "reading": "1 main record (policy_on true, agents-md, profile agent-reply from the installed section) and 1 sub record (korean-reviewer, written by the installer: policy_on true, agent-definition). The spawn prompt is not captured on Codex (task empty): 09 §11.2 names only Claude Code's Agent tool."
+  },
+  "unmasked_home_paths_in_records": 0,
+  "logs_layout": "home/logs/<yyyy-mm>.jsonl only, no per-profile directory, in every run"
+}

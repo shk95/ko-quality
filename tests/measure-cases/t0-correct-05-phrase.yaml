@@ -1,0 +1,17 @@
+# Tier 0 case (09 §17.3). Synthetic. `input` is the reply text the measurements read.
+id: t0-correct-05-phrase
+profile: agent-reply
+arm: any
+layer: skill
+input: "빨라졌습니다. 원인은 요청이 들어올 때마다 설정 파일을 처음부터 다시 열어 읽던 오래된 코드였습니다.\n\n지금은 시작할 때 한 번만 읽습니다."
+expect:
+  phrase_battery.entries.rewrite.A-1.max_per_paragraph:
+    max: 0
+  phrase_battery.entries.rewrite.D-1.count:
+    max: 0
+  phrase_battery.entries.rewrite.D-6.count:
+    max: 0
+  bullet_density.list_items:
+    max: 0
+  sentence_len_var.cv:
+    min: 0.25

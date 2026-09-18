@@ -1,0 +1,123 @@
+{
+  "probe": "agent scope, plugin visibility under --scope local, and B9 through the marketplace install path",
+  "era": "02-validation",
+  "stage": "2-exploration",
+  "item": "E7 (and B9's remaining gap)",
+  "date": "2026-09-16",
+  "harness": "Claude Code 2.1.273",
+  "method": "A throwaway marketplace under the scratchpad holding one plugin copied from dist/claude-code/agent-reply, with BOTH output styles, force-for-plugin stripped, and a canary line added to each style and to the plugin's korean-writer agent. projA also carries .claude/agents/korean-writer.md with a different canary. ~/.claude/settings.json snapshotted before and restored after; KO_QUALITY_HOME pointed at the scratchpad so no records reach ~/.ko-quality.",
+  "results": [
+    {
+      "q": "Where does `claude plugin marketplace add` record the marketplace?",
+      "a": "User settings (~/.claude/settings.json), as extraKnownMarketplaces with source {source: directory, path}. Matches P5."
+    },
+    {
+      "q": "Where does `--scope local` record the install?",
+      "a": "<project>/.claude/settings.local.json, as enabledPlugins {\"koq@koqtest\": true}."
+    },
+    {
+      "q": "Does --scope local limit VISIBILITY, or only record the install? (undocumented)",
+      "a": "It limits visibility. `claude plugin list` shows the plugin enabled in projA and DISABLED in projB and in the ko-quality repository. A run in projB selecting ko-quality:agent-reply produced no canary; the same setting in projA did.",
+      "settles": "the open question recorded in 02_scope.md"
+    },
+    {
+      "q": "What namespaces a plugin's output style — the marketplace entry name or plugin.json's name?",
+      "a": "plugin.json's `name`. The marketplace entry was `koq`; `koq:agent-reply` did not resolve, `ko-quality:agent-reply` did."
+    },
+    {
+      "q": "Does B9 hold through the marketplace install path, not just --plugin-dir?",
+      "a": "Yes. Installed through the marketplace with both styles unforced: no style applied with no setting, and ko-quality:agent-reply applied when selected.",
+      "settles": "B9's remaining unmeasured item"
+    },
+    {
+      "q": "Do project agents outrank plugin agents?",
+      "a": "Yes. With korean-writer defined in both .claude/agents/ and the plugin, delegation reached the PROJECT one (CANARY-AGENT-PROJECT). The reply itself noted the plugin's is addressed as ko-quality:korean-writer, which also confirms plugin agents are namespaced — undocumented, and consistent with P3."
+    }
+  ],
+  "logger_records": {
+    "note": "The hook fired through a marketplace install and produced 5 records. KO_QUALITY_HOME isolated them; ~/.ko-quality stayed absent.",
+    "count": 5,
+    "records": [
+      {
+        "policy_on": true,
+        "injection_point": "output-style",
+        "harness_position": "main-to-user",
+        "agent_type": null,
+        "instruction_lang": "ko",
+        "artifact_lang": "ko",
+        "task_type": "writing",
+        "usable": false,
+        "tokens": {
+          "output": 2,
+          "method": "estimate"
+        }
+      },
+      {
+        "policy_on": true,
+        "injection_point": "output-style",
+        "harness_position": "main-to-user",
+        "agent_type": null,
+        "instruction_lang": "ko",
+        "artifact_lang": "ko",
+        "task_type": "writing",
+        "usable": false,
+        "tokens": {
+          "output": 6,
+          "method": "estimate"
+        }
+      },
+      {
+        "policy_on": true,
+        "injection_point": "output-style",
+        "harness_position": "main-to-user",
+        "agent_type": null,
+        "instruction_lang": "ko",
+        "artifact_lang": "ko",
+        "task_type": "writing",
+        "usable": true,
+        "tokens": {
+          "output": 76,
+          "method": "estimate"
+        }
+      },
+      {
+        "policy_on": true,
+        "injection_point": "agent-definition",
+        "harness_position": "sub-to-orchestrator",
+        "agent_type": "korean-writer",
+        "instruction_lang": "ko",
+        "artifact_lang": "mixed",
+        "task_type": "writing",
+        "usable": false,
+        "tokens": {
+          "output": 27,
+          "method": "estimate"
+        }
+      },
+      {
+        "policy_on": true,
+        "injection_point": "output-style",
+        "harness_position": "main-to-user",
+        "agent_type": null,
+        "instruction_lang": "en",
+        "artifact_lang": "mixed",
+        "task_type": "writing",
+        "usable": true,
+        "tokens": {
+          "output": 101,
+          "method": "estimate"
+        }
+      }
+    ]
+  },
+  "findings_about_the_logger": [
+    "policy_on is true on EVERY record, including the three runs where no output style was selected and the policy therefore did not apply. The logger derives it from the presence of the build stamp (`bool(stp)`), not from what took effect. Under B9 this field becomes false-positive by construction, and the three-arm control design (A: nothing, B: plugin installed but style unselected, C: style selected) is unmeasurable until it is fixed.",
+    "injection_point is stamp-derived in the same way. It reads `output-style` on runs where no output style applied.",
+    "The sub-to-orchestrator record says injection_point `agent-definition`, but the agent that ran was the PROJECT definition, which carries no policy. The field is wrong for that record for the same reason.",
+    "usable is false on 3 of 5 records. All three are short, correct Korean answers to a short question. This is the length problem E2 predicted, now observed: a floor of 20 Korean 어절 excludes ordinary agent replies, not just defective ones.",
+    "task_type is `writing` on every record, including `한국의 수도는 어디입니까?`. The rule is coding-if-edit-tools else writing-if-a-prompt-exists, so any non-editing turn is `writing`. 06 §13.1 called it an approximation; on this sample it carries no information.",
+    "instruction_lang read `en` for a prompt that was Korean prose containing the identifier `korean-writer`. Latin identifiers inside a Korean prompt skew the ratio.",
+    "artifact_lang read `mixed` wherever a Latin canary token appeared. Any English token moves it, which matters because coding replies routinely contain identifiers."
+  ],
+  "cleanup": "Plugin uninstalled, marketplace removed, user settings restored byte-identical to the snapshot, orphaned cache ~/.claude/plugins/cache/koqtest removed, ~/.ko-quality never created."
+}

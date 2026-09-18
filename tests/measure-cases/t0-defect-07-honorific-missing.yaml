@@ -1,0 +1,9 @@
+# Tier 0 case (09 §17.3). Synthetic. `input` is the reply text the measurements read.
+id: t0-defect-07-honorific-missing
+profile: formal-report
+arm: C
+layer: policy
+input: "요청한 보고서를 정리했습니다. 이번 분기에는 신규 가입자가 조금 늘었습니다."
+expect:
+  honorific_address.present:
+    equals: false

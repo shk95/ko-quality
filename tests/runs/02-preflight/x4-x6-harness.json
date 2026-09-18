@@ -1,0 +1,54 @@
+{
+  "probe": "X4 and X6: harness availability and Codex hook trust",
+  "era": "02-validation",
+  "stage": "5-preflight",
+  "date": "2026-09-17",
+  "claude_code": {
+    "harness": "2.1.274",
+    "minimal_run": "ok, claude-sonnet-5, $0.055"
+  },
+  "codex": {
+    "harness": "codex-cli 0.154.0",
+    "method": "Throwaway CODEX_HOME with auth.json symlinked; codex exec --json -s read-only in an empty git repository; the user's ~/.codex was never CODEX_HOME.",
+    "runs": [
+      {
+        "model": "gpt-5.6-terra",
+        "result": "ok"
+      },
+      {
+        "model": "default",
+        "result": "ok"
+      },
+      {
+        "model": "gpt-5.6",
+        "result": "failed: 400, model not supported when using Codex with a ChatGPT account"
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "result": "ok"
+      },
+      {
+        "model": "gpt-5.6-sol",
+        "result": "failed: 400, model not supported when using Codex with a ChatGPT account (the AGENTS.md large tier, corrected name)"
+      }
+    ],
+    "login": "ChatGPT account",
+    "model_cache_slugs_in_temporary_home": [
+      "codex-auto-review",
+      "gpt-5.5",
+      "gpt-5.6-luna",
+      "gpt-5.6-terra",
+      "gpt-reserve"
+    ],
+    "cause_of_400s": "Not measured in era 02; the cause was not investigated. gpt-5.6-sol remains the large tier's model."
+  },
+  "hook_trust": "codex exec --dangerously-bypass-hook-trust was blocked by Claude Code's auto-mode classifier. No permission rule for it is in place.",
+  "verdict": "Both harnesses are usable now for luna and terra. The large tier (gpt-5.6-sol) did not run from a temporary CODEX_HOME; not measured in era 02, the cause was not investigated. The hook-trust flag was blocked by the auto-mode classifier until the user added a permission rule; with it, Codex hooks run and the logger writes.",
+  "hook_trust_rerun": {
+    "date": "2026-09-17",
+    "after": "the user added a Claude Code Bash allow rule scoped to 'CODEX_HOME=* codex exec *--dangerously-bypass-hook-trust*' in the project's local settings",
+    "method": "Throwaway CODEX_HOME, local marketplace copy of dist/agent-plugin, codex plugin add ko-quality@ko-quality, codex exec --dangerously-bypass-hook-trust -m gpt-5.6-luna with a scratch KO_QUALITY_HOME",
+    "result": "ran; reply PING-OK; the era 01 logger wrote 1 record to logs/agent-reply/ with harness codex, policy_on true, injection_point agents-md, profile agent-reply",
+    "note": "No AGENTS.md section was installed, so policy_on true is the stamp-implied false positive 09 §11.3 removes."
+  }
+}

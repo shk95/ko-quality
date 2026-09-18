@@ -1,0 +1,10 @@
+# Tier 0 case (09 §17.3). Synthetic. One sentence breaks the uniform length: near the boundary.
+# The correct cases carry sentence_len_var.cv min 0.25: the two sides meet at one value (P5 V5).
+id: t0-defect-05-boundary-uniform
+profile: agent-reply
+arm: any
+layer: skill
+input: "로더를 고쳤습니다. 캐시를 켰습니다. 로그를 줄였습니다. 설정 파일 위치를 옮겼습니다."
+expect:
+  sentence_len_var.cv:
+    max: 0.25

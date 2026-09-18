@@ -1,0 +1,14 @@
+# assemble/build.yaml — build configuration (09 §6 change 3, §8 S1-A, §13). Read by build/claude_code.py and build/agent_plugin.py.
+version: 0.2.0
+# S1-A: every agent carries this profile's policy, in every dist, whichever style or section is active.
+agent_profile: agent-reply
+claude_code:
+  name: ko-quality
+  description: "Korean writing quality toolkit: rewrite, diagnose and grammar skills, Korean-writing agents, and two selectable output styles (agent-reply, formal-report). Installing selects no style: run /output-style ko-quality:agent-reply or ko-quality:formal-report once per project."
+agent_plugin:
+  agent-reply:
+    name: ko-quality
+    description: "Korean writing quality toolkit: rewrite, diagnose and grammar skills; the installer adds the Korean output policy for coding-terse replies to the user (profile agent-reply)"
+  formal-report:
+    name: ko-quality-formal
+    description: "Korean writing quality toolkit: rewrite, diagnose and grammar skills; the installer adds the Korean output policy for replies in 높임말 with 사용자님 (profile formal-report)"

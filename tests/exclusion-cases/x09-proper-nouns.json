@@ -1,0 +1,53 @@
+{
+  "id": "x09-proper-nouns",
+  "kind": "correct",
+  "text": "Python 3.12로 올린 뒤 GitHub Actions에서 테스트했습니다. Claude Code와 Codex 둘 다 같은 결과가 나왔습니다. 서울 사무실의 김민준 님이 확인해 주셨고, 네이버 클라우드에서도 재현했습니다. 카카오톡 알림은 끄셨습니다. 이 문장은 영어 문장 This is fine을 인용하지 않습니다.",
+  "positives": [
+    {
+      "zone": "proper_noun",
+      "text": "Python"
+    },
+    {
+      "zone": "proper_noun",
+      "text": "GitHub Actions"
+    },
+    {
+      "zone": "proper_noun",
+      "text": "Claude Code"
+    },
+    {
+      "zone": "proper_noun",
+      "text": "Codex"
+    },
+    {
+      "zone": "proper_noun",
+      "text": "서울"
+    },
+    {
+      "zone": "proper_noun",
+      "text": "김민준"
+    },
+    {
+      "zone": "proper_noun",
+      "text": "네이버"
+    },
+    {
+      "zone": "proper_noun",
+      "text": "카카오톡"
+    }
+  ],
+  "negatives": [
+    {
+      "zone": "proper_noun",
+      "text": "사무실"
+    },
+    {
+      "zone": "proper_noun",
+      "text": "클라우드에서도"
+    },
+    {
+      "zone": "proper_noun",
+      "text": "알림은"
+    }
+  ]
+}

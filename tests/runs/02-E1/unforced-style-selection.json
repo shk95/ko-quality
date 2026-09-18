@@ -1,0 +1,213 @@
+{
+  "probe": "one plugin, unforced output styles: are they selectable?",
+  "era": "02-validation",
+  "stage": "2-exploration",
+  "item": "E1",
+  "date": "2026-09-16",
+  "harness": "Claude Code 2.1.273",
+  "model": "default (user settings)",
+  "method": "Throwaway probe plugins under the scratchpad, loaded with --plugin-dir; never in dist/. Each style body instructs the model to emit a canary token first. Prompt: '한국의 수도는 어디입니까?'. User settings carry no outputStyle.",
+  "runs": [
+    {
+      "case": "A-unforced-nosetting",
+      "plugin": "unforced (two styles, no force-for-plugin)",
+      "outputStyle": null,
+      "expect": "no style applied",
+      "markers": {
+        "agent-reply": 0,
+        "formal-report": 0
+      },
+      "reply_head": "한국의 수도는 **서울**입니다.\n\n- **공식 명칭**: 서울특별시\n- **인구**: 약 940만 명 (수도권 전체로는 약 2,600만 명)\n- **위치**: 한반도 중서부, 한강 유역\n\n참고로 행정 기능 일부는 ",
+      "cost_usd": 0.0771
+    },
+    {
+      "case": "B-unforced-namespaced",
+      "plugin": "unforced (two styles, no force-for-plugin)",
+      "outputStyle": "ko-quality:formal-report",
+      "expect": "formal-report applied",
+      "markers": {
+        "agent-reply": 0,
+        "formal-report": 1
+      },
+      "reply_head": "CANARY-FORMAL 대한민국의 수도는 서울특별시입니다.",
+      "cost_usd": 0.0749
+    },
+    {
+      "case": "C-unforced-barename",
+      "plugin": "unforced (two styles, no force-for-plugin)",
+      "outputStyle": "formal-report",
+      "expect": "bare name resolution",
+      "markers": {
+        "agent-reply": 0,
+        "formal-report": 0
+      },
+      "reply_head": "한국의 수도는 **서울**입니다.\n\n참고로 \"한국\"을 대한민국(남한)으로 보면 수도는 서울특별시이고, 북한(조선민주주의인민공화국)의 수도는 평양입니다.",
+      "cost_usd": 0.0114
+    },
+    {
+      "case": "D-forced-control",
+      "plugin": "forced (formal-report only, force-for-plugin: true)",
+      "outputStyle": null,
+      "expect": "formal-report applied (canary sanity check)",
+      "markers": {
+        "agent-reply": 0,
+        "formal-report": 1
+      },
+      "reply_head": "CANARY-FORMAL 한국의 수도는 서울입니다.",
+      "cost_usd": 0.0485
+    },
+    {
+      "case": "E-unforced-agentreply",
+      "plugin": "unforced (two styles, no force-for-plugin)",
+      "outputStyle": "ko-quality:agent-reply",
+      "expect": "agent-reply applied",
+      "markers": {
+        "agent-reply": 1,
+        "formal-report": 0
+      },
+      "reply_head": "CANARY-AGENTREPLY 한국의 수도는 서울입니다.",
+      "cost_usd": 0.0473
+    }
+  ],
+  "total_cost_usd": 0.4698,
+  "findings": [
+    "Unforced plugin output styles ARE selectable. B and E: two styles in ONE plugin each applied when selected, each showing only its own canary.",
+    "P3's 'formal-report unreachable' holds only while another style is forced. Remove force-for-plugin and both profiles are reachable from one plugin.",
+    "The namespaced name is required. C: bare 'formal-report' did not resolve; 'ko-quality:formal-report' did. P3 recorded both forms as 'accepted', but a forced style won in every P3 run, so the forms were never distinguished.",
+    "The cost is that install alone does nothing. A: no style applied with no setting, which breaks 06 §1 'a tool that is used once installed'.",
+    "Not observed: switching mid-session via /output-style. Headless cannot reproduce it. Selection by setting is shown; the interactive path is inferred, not measured.",
+    "/output-style switches the style mid-session and the next turn obeys it: F turn 1 default and no canary, turn 2 the command, turn 3 CANARY-FORMAL.",
+    "It switches back and persists across processes: G started in the same cwd with no setting on the command line, replied CANARY-FORMAL, then switched to agent-reply and replied CANARY-AGENTREPLY.",
+    "The choice is stored per project, in <project>/.claude/settings.local.json. User settings were untouched. So an unforced design makes the profile a per-project choice, where today it is per install.",
+    "This does not contradict P3. P3 found init.output_style echoes the configured value, not the style in effect; here configured and effective agree because nothing is forced. A side effect: without forcing, that field becomes usable as evidence again (P7 injection_point)."
+  ],
+  "interactive_probe": {
+    "question": "Does /output-style switch the style mid-session, and where is the choice stored?",
+    "method": "Multi-turn through --input-format stream-json --output-format stream-json, one process per file, same cwd, --plugin-dir on the unforced probe plugin. ~/.claude/settings.json was snapshotted before the run and compared after.",
+    "F-mid-session-switch": {
+      "inputs": [
+        "한국의 수도는 어디입니까?",
+        "/output-style ko-quality:formal-report",
+        "일본의 수도는 어디입니까?"
+      ],
+      "stream": [
+        {
+          "event": "init",
+          "output_style": "default"
+        },
+        {
+          "event": "assistant",
+          "text": "한국의 수도는 **서울**입니다.\n\n대한민국의 수도이자 최대 도시로, 약 940만 명이 거주하고 있습니다. 정치·경제·문화의 중심지 역할을 하며, 일부 중앙행정기관은 세종특별자치시로 이전해 행정 기능이 분산되어 있습",
+          "markers": {
+            "agent-reply": 0,
+            "formal-report": 0
+          }
+        },
+        {
+          "event": "result",
+          "cost_usd": 0.0123
+        },
+        {
+          "event": "init",
+          "output_style": "ko-quality:formal-report"
+        },
+        {
+          "event": "assistant",
+          "text": "Output style set to ko-quality:formal-report",
+          "markers": {
+            "agent-reply": 0,
+            "formal-report": 0
+          }
+        },
+        {
+          "event": "result",
+          "cost_usd": 0.0123
+        },
+        {
+          "event": "init",
+          "output_style": "ko-quality:formal-report"
+        },
+        {
+          "event": "assistant",
+          "text": "CANARY-FORMAL 일본의 수도는 도쿄입니다.",
+          "markers": {
+            "agent-reply": 0,
+            "formal-report": 1
+          }
+        },
+        {
+          "event": "result",
+          "cost_usd": 0.0265
+        }
+      ]
+    },
+    "G-persist-and-switch-back": {
+      "inputs": [
+        "중국의 수도는 어디입니까?",
+        "/output-style ko-quality:agent-reply",
+        "프랑스의 수도는 어디입니까?"
+      ],
+      "note": "new process, same cwd, no setting passed on the command line",
+      "stream": [
+        {
+          "event": "init",
+          "output_style": "ko-quality:formal-report"
+        },
+        {
+          "event": "assistant",
+          "text": "CANARY-FORMAL 중국의 수도는 베이징(北京)입니다.",
+          "markers": {
+            "agent-reply": 0,
+            "formal-report": 1
+          }
+        },
+        {
+          "event": "result",
+          "cost_usd": 0.0489
+        },
+        {
+          "event": "init",
+          "output_style": "ko-quality:agent-reply"
+        },
+        {
+          "event": "assistant",
+          "text": "Output style set to ko-quality:agent-reply",
+          "markers": {
+            "agent-reply": 0,
+            "formal-report": 0
+          }
+        },
+        {
+          "event": "result",
+          "cost_usd": 0.0489
+        },
+        {
+          "event": "init",
+          "output_style": "ko-quality:agent-reply"
+        },
+        {
+          "event": "assistant",
+          "text": "CANARY-AGENTREPLY 프랑스의 수도는 파리입니다.",
+          "markers": {
+            "agent-reply": 1,
+            "formal-report": 0
+          }
+        },
+        {
+          "event": "result",
+          "cost_usd": 0.0617
+        }
+      ]
+    },
+    "where_it_is_stored": {
+      "file": "<project>/.claude/settings.local.json",
+      "content_after_F": {
+        "outputStyle": "ko-quality:formal-report"
+      },
+      "content_after_G": {
+        "outputStyle": "ko-quality:agent-reply"
+      },
+      "user_settings": "~/.claude/settings.json unchanged (sha1 identical to the pre-run snapshot)"
+    }
+  }
+}

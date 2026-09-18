@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3). Synthetic. A-18: three adnominal modifiers stacked before one head.
+id: t1-defect-10-adnominal
+profile: agent-reply
+arm: any
+layer: skill
+input: "어제 내가 만든 빨간 작은 상자를 열었습니다."
+expect:
+  adnominal_chain_depth.count:
+    min: 1
+  adnominal_chain_depth.max:
+    min: 3

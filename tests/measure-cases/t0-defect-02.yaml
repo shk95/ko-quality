@@ -1,0 +1,37 @@
+# Tier 0 case (09 §17.3). Synthetic. `input` is the reply text the measurements read.
+id: t0-defect-02
+profile: agent-reply
+arm: any
+layer: skill
+input: "# 결론: 성능 개선의 모든 것\n\n## 서론\n\n🚀 **배포** 완료 ✨ 그리고 **테스트** 완료 🔥\n\n- 캐시 — 적용\n- 로깅 — 적용\n- 재시도 — 제거\n\n먼저 캐시를 바꿨습니다. 결론적으로 속도가 빨라졌습니다.\n\n반면 메모리는 늘었습니다. 따라서 조정이 필요합니다.\n\n결국 균형이 중요합니다.\n\n되요 됬 왠만하면 확인!!! 사과가 맞습니다. 책를 읽고, 문서를 쓰고, 코드를 고치며, 그리고, 테스트했습니다. 이 기능은 '빠르고' '안정적이고' '혁신적'입니다. 서비스(service) 계층(layer)과 도메인(domain) 모델(model)을 나눴습니다. 서비스(service) 계층(layer)은 도메인(domain) 모델(model)만 호출합니다. “따옴표가 안 닫힘"
+expect:
+  em_dash_count.count:
+    min: 3
+  emoji_count.count:
+    min: 3
+  bold_density.count:
+    min: 2
+  bullet_density.list_items:
+    min: 3
+  header_formula.colon_subtitle:
+    min: 1
+  header_formula.formulaic:
+    min: 1
+  paragraph_initial_repeat.triad_먼저_반면_결국:
+    equals: 1
+  spelling_denylist.count:
+    min: 3
+  comma_rate.after_connective:
+    min: 3
+  quote_emphasis_count.count:
+    min: 3
+  english_gloss_repeat.count:
+    min: 3
+  english_gloss_repeat.terms:
+    equals: 4
+  quote_balance.balanced:
+    equals: false
+  allomorph_errors.count:
+    min: 1
+  phrase_battery.entries.rewrite.D-1.count:
+    min: 2

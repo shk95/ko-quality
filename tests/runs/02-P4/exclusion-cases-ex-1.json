@@ -1,0 +1,105 @@
+{
+  "exclusion_version": "ex-1",
+  "cases": 11,
+  "zones": {
+    "code": {
+      "positives": 9,
+      "false_negatives": 1,
+      "other_zone": 0,
+      "negatives": 4,
+      "false_positives": 2,
+      "missed": [
+        "x11-near-misses: `main.go`"
+      ],
+      "wrongly_excluded": [
+        "x11-near-misses: 백틱 하나(`)만 있는 줄은",
+        "x11-near-misses: C++와 C# 문법"
+      ]
+    },
+    "url_path_id": {
+      "positives": 12,
+      "false_negatives": 0,
+      "other_zone": 0,
+      "negatives": 4,
+      "false_positives": 0,
+      "missed": [],
+      "wrongly_excluded": []
+    },
+    "quotation": {
+      "positives": 8,
+      "false_negatives": 0,
+      "other_zone": 1,
+      "negatives": 4,
+      "false_positives": 0,
+      "missed": [
+        "x11-near-misses: \"확인했다\" (other zone)"
+      ],
+      "wrongly_excluded": []
+    },
+    "number": {
+      "positives": 14,
+      "false_negatives": 0,
+      "other_zone": 1,
+      "negatives": 4,
+      "false_positives": 0,
+      "missed": [
+        "x11-near-misses: 3분기 (other zone)"
+      ],
+      "wrongly_excluded": []
+    },
+    "structure": {
+      "positives": 11,
+      "false_negatives": 0,
+      "other_zone": 0,
+      "negatives": 5,
+      "false_positives": 0,
+      "missed": [],
+      "wrongly_excluded": []
+    },
+    "math": {
+      "positives": 7,
+      "false_negatives": 0,
+      "other_zone": 0,
+      "negatives": 5,
+      "false_positives": 0,
+      "missed": [],
+      "wrongly_excluded": []
+    },
+    "legal": {
+      "positives": 6,
+      "false_negatives": 0,
+      "other_zone": 0,
+      "negatives": 5,
+      "false_positives": 0,
+      "missed": [],
+      "wrongly_excluded": []
+    },
+    "abbreviation": {
+      "positives": 9,
+      "false_negatives": 0,
+      "other_zone": 0,
+      "negatives": 4,
+      "false_positives": 0,
+      "missed": [],
+      "wrongly_excluded": []
+    },
+    "proper_noun": {
+      "positives": 9,
+      "false_negatives": 4,
+      "other_zone": 2,
+      "negatives": 3,
+      "false_positives": 0,
+      "missed": [
+        "x09-proper-nouns: GitHub Actions (other zone)",
+        "x09-proper-nouns: 서울",
+        "x09-proper-nouns: 김민준",
+        "x09-proper-nouns: 네이버",
+        "x09-proper-nouns: 카카오톡",
+        "x11-near-misses: 박서연 (other zone)"
+      ],
+      "wrongly_excluded": [],
+      "status": "Tier 1: NNP needs the analyser (P6). Only Latin capitalised tokens are found in Tier 0"
+    }
+  },
+  "label_errors": []
+}

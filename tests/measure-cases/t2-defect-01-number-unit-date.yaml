@@ -1,0 +1,13 @@
+# Tier 2 paste-in case (09 §17.3, §15.4). Synthetic. input: the original; output: the rewrite. Fails number_unit_date only: the cache size changes unit and value.
+id: t2-defect-01-number-unit-date
+profile: agent-reply
+arm: any
+layer: skill
+input: "김민준 님이 \"배포는 금요일 오후 3시에 한다\"고 말했습니다. 설정은 `config/prod.yaml`에서 읽고, 캐시 크기는 512MB로 잡았습니다. 이 방식이야말로 '혁신적인' 변화라고 할 수 있습니다. 네이버 클라우드와 GitHub Actions에서 같은 결과를 확인했습니다."
+output: "김민준 님은 \"배포는 금요일 오후 3시에 한다\"고 말했습니다. 설정은 `config/prod.yaml`에서 읽습니다. 캐시 크기는 1GB입니다. 이 방식은 큰 변화입니다. 네이버 클라우드와 GitHub Actions에서도 같은 결과가 나왔습니다."
+expect:
+  preserve: [quote, code_url_path, proper_noun, register]
+  ko.preserve.number_unit_date.pass:
+    equals: false
+  ko.preserve.number_unit_date.count:
+    min: 1

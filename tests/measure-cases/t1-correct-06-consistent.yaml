@@ -1,0 +1,23 @@
+# Tier 1 case (09 §17.3). Synthetic. One speech level, varied endings, short noun runs, one 의, no stacked modifiers, no -적, spacing right.
+id: t1-correct-06-consistent
+profile: agent-reply
+arm: any
+layer: skill
+input: "로그를 확인해 보니 설정 파일이 비어 있었습니다. 그래서 기본값을 채워 넣고 서비스를 다시 시작했습니다. 지금은 요청이 정상적으로 처리됩니다. 내일 오전에 한 번 더 점검하겠습니다. 문제가 다시 생기면 바로 알려 드릴게요."
+expect:
+  speech_level.dominant:
+    equals: hapsyo
+  noun_run_length.max:
+    max: 2
+  genitive_ui_ratio.ratio:
+    max: 0.1
+  ending_monotony.longest_run:
+    max: 2
+  adnominal_chain_depth.count:
+    equals: 0
+  suffix_jeok_density.count:
+    max: 1
+  spacing_errors.count:
+    equals: 0
+  pos_ngram_diversity.ratio:
+    min: 0.7

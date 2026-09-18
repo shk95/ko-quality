@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3). Synthetic. grammar: missing spaces.
+id: t1-defect-12-spacing
+profile: agent-reply
+arm: any
+layer: skill
+input: "이기능은값을검증합니다. 설정파일을다시읽습니다."
+expect:
+  spacing_errors.count:
+    min: 3
+  spacing_errors.missing_space:
+    min: 3

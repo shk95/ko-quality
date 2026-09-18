@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3, F7). Synthetic. Telegraphic: noun-phrase endings with a period.
+id: t1-defect-01-telegraphic-nouns
+profile: agent-reply
+arm: any
+layer: policy
+input: "값 검증 완료. 캐시 초기화 후 재시도 필요. 테스트 전부 통과. 응답 시간 소폭 감소."
+expect:
+  noun_ending_ratio.ratio:
+    min: 1
+  particle_absence_ratio.ratio:
+    min: 0.6

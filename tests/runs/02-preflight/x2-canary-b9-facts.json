@@ -1,0 +1,69 @@
+{
+  "probe": "X2: canary device and B9 facts on the current CLI",
+  "era": "02-validation",
+  "stage": "5-preflight",
+  "date": "2026-09-17",
+  "harness": "Claude Code 2.1.274",
+  "model": "claude-sonnet-5",
+  "method": "Throwaway plugin kqprobe under the scratchpad (--plugin-dir): two unforced styles alpha and beta, each told to begin replies with a unique canary token; one agent prober with its own canary; command hooks dumping raw payloads for SessionStart, UserPromptSubmit, Stop, SubagentStop. One scratch project per run; the style selection written to its .claude/settings.local.json.",
+  "runs": [
+    {
+      "run": "no selection",
+      "style_canary": "none",
+      "cost_usd": 0.056
+    },
+    {
+      "run": "outputStyle kqprobe:alpha",
+      "style_canary": "alpha only",
+      "cost_usd": 0.058
+    },
+    {
+      "run": "outputStyle kqprobe:beta",
+      "style_canary": "beta only",
+      "cost_usd": 0.058
+    },
+    {
+      "run": "outputStyle alpha (bare name)",
+      "style_canary": "none",
+      "cost_usd": 0.056
+    },
+    {
+      "run": "kqprobe:alpha + delegation to prober",
+      "style_canary": "alpha only",
+      "agent_canary": "present in the relayed report",
+      "cost_usd": 0.129
+    },
+    {
+      "run": "kqprobe:beta + delegation to prober",
+      "style_canary": "beta only",
+      "agent_canary": "present in the relayed report",
+      "cost_usd": 0.107
+    }
+  ],
+  "hook_payloads": {
+    "counts": {
+      "SessionStart": 6,
+      "UserPromptSubmit": 8,
+      "Stop": 6,
+      "SubagentStop": 2
+    },
+    "style_or_model_in_any_payload": false,
+    "SessionStart_keys": [
+      "cwd",
+      "hook_event_name",
+      "session_id",
+      "source",
+      "transcript_path"
+    ],
+    "Stop_new_keys_vs_2.1.273": [
+      "background_tasks",
+      "effort",
+      "session_crons"
+    ],
+    "injected_prompts": "2 of 8 UserPromptSubmit prompts begin '<agent-message from=' (one per delegation)",
+    "SubagentStop_agent_type": "kqprobe:prober (namespaced, both runs)",
+    "SubagentStop_last_assistant_message": "not the report in either run: once the answer without the canary line, once a stub saying the report was already delivered via SubagentHandback"
+  },
+  "verdict": "09 §2.1 holds on 2.1.274: an unforced style applies only when selected; it resolves only as <plugin>:<style>; the agent's policy canary reaches the reply under either style; no payload carries the style or the model. Hand-back routing was used in 2 of 2 delegations, so the report must be captured from the SubagentHandback tool input (09 §11.2), not from SubagentStop.",
+  "cleanup": "Scratch directories only."
+}

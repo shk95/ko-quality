@@ -1,0 +1,9 @@
+{
+  "name": "ko-quality",
+  "version": "0.2.0",
+  "description": "Korean writing quality toolkit: rewrite, diagnose and grammar skills, Korean-writing agents, and two selectable output styles (agent-reply, formal-report). Installing selects no style: run /output-style ko-quality:agent-reply or ko-quality:formal-report once per project.",
+  "author": {
+    "name": "ko-quality"
+  },
+  "license": "MIT"
+}

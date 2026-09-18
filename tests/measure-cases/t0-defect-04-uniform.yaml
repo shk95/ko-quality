@@ -1,0 +1,11 @@
+# Tier 0 case (09 §17.3). Synthetic. `input` is the reply text the measurements read.
+id: t0-defect-04-uniform
+profile: agent-reply
+arm: any
+layer: skill
+input: "로더를 고쳤습니다. 캐시를 켰습니다. 로그를 줄였습니다. 설정을 옮겼습니다. 문서를 고쳤습니다. 배포를 마쳤습니다."
+expect:
+  sentence_len_var.cv:
+    max: 0.15
+  comma_rate.after_connective:
+    max: 0

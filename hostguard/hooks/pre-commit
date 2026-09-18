@@ -1,0 +1,4 @@
+#!/bin/sh
+# hostguard pre-commit hook (era 98 spec §2.5). Enable once per clone: git config core.hooksPath hostguard/hooks
+D=$(cd "$(dirname "$0")/../.." && pwd)
+PYTHONPATH="$D${PYTHONPATH:+:$PYTHONPATH}" exec python3 -m hostguard scan --staged

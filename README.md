@@ -8,15 +8,15 @@
 
 ## 설치
 
-프로파일마다 플러그인이 하나씩입니다. **둘 중 하나만 켭니다** — 강제 출력 스타일은 먼저 로드된 하나만 적용됩니다.
+Claude Code 플러그인은 `ko-quality` 하나이고, 두 프로파일은 **고를 수 있는 출력 스타일**로 들어 있습니다. 설치만으로는 메인 대화에 정책이 걸리지 않고, **프로젝트마다 한 번 스타일을 고릅니다**(`/output-style ko-quality:agent-reply`).
 
-| 프로파일 | 플러그인 | 정책 | 쓰임 |
-|---|---|---|---|
-| `agent-reply` | `ko-quality` | fluent-korean 코딩판 | 에이전트가 사용자에게 하는 보고·설명 |
-| `formal-report` | `ko-quality-formal` | fluent-korean 비코딩판 + 존대 블록 | 사용자에게 전달되는 문서 |
+| 프로파일 | Claude Code 스타일 | Codex 플러그인 | 정책 | 쓰임 |
+|---|---|---|---|---|
+| `agent-reply` | `ko-quality:agent-reply` | `ko-quality` | fluent-korean 코딩판 | 사용자에게 하는 간결한 코딩 답변 |
+| `formal-report` | `ko-quality:formal-report` | `ko-quality-formal` | fluent-korean 비코딩판 + 존대 블록 | 사용자를 사용자님으로 부르는 높임말 |
 
-- Claude Code: [`dist/claude-code/README.md`](dist/claude-code/README.md) — 로컬 마켓플레이스 등록 후 `claude plugin install`
-- Codex: [`dist/agent-plugin/README.md`](dist/agent-plugin/README.md) — 플러그인 설치 후 `install/ko_quality_codex.py install` (정책 절과 에이전트 파일은 플러그인이 나르지 못합니다)
+- Claude Code: [`dist/claude-code/README.md`](dist/claude-code/README.md) — 로컬 마켓플레이스 등록, `claude plugin install`, 스타일 선택
+- Codex: [`dist/agent-plugin/README.md`](dist/agent-plugin/README.md) — 플러그인 설치 후 `install/ko_quality_codex.py install` (정책 절과 에이전트 파일은 플러그인이 나르지 못합니다). 에이전트는 `multi_agent_v2`가 필요합니다
 
 ## 사용자가 할 수 있는 것
 
@@ -110,12 +110,57 @@ ko-quality/
 ├── upstream/   그들의 것. lock.yaml, normalized/ (커밋), .cache/ (커밋 안 함)
 ├── assemble/   우리의 것. 프로파일·프리셋·에이전트·스킬 템플릿
 ├── build/ dist/  만들어진 것
-├── server/ logger/
+├── logger/     hook 로거. 표준 라이브러리만
+├── measure/    오프라인 측정 도구 (시대 02)
+├── corpus/     코퍼스 생성기와 프롬프트 모음. 레코드는 두지 않음 (시대 02)
+├── gate/       gate 실행 파일 자리. 시대 02에서는 README만
 ├── AGENTS.md   에이전트 규칙. 상태 없음. Codex는 직접, Claude Code는 CLAUDE.md의 import로 읽음
 └── CLAUDE.md   `@AGENTS.md` 한 줄
 ```
 
 같은 그림을 한 페이지로 본 것: [`design/01-toolkit/3-spec/prompt-flow.html`](design/01-toolkit/3-spec/prompt-flow.html).
+
+## 이 저장소에서 개발할 때: 자기 적용
+
+이 저장소는 ko-quality를 자기 자신에게 적용합니다(`agent-reply` 스타일). 영어 코드베이스에서 한국어로 대화할 때 정책이 번역을 요구하지 않는지, 코드 옆 문장이 저장소 관례를 따르는지를 실제 개발 세션에서 보려는 것입니다. 커밋된 [`.claude/settings.json`](.claude/settings.json)이 세 가지를 정합니다.
+
+| 설정 | 값 | 이유 |
+|---|---|---|
+| `env.KO_QUALITY_HOME` | `~/.ko-quality-dev` | 개발 세션의 기록이 실제 기록(`~/.ko-quality`)과 섞이지 않게 합니다 |
+| `enabledPlugins` | `ko-quality@ko-quality` | 이 저장소에서만 플러그인을 켭니다 |
+| `outputStyle` | `ko-quality:agent-reply` | 메인 대화에 정책을 겁니다 |
+
+**기기마다 한 번 할 일**
+
+1. 로컬 마켓플레이스를 등록합니다. 마켓플레이스는 사용자 설정에 절대 경로로 기록되므로 커밋할 수 없습니다.
+
+   ```sh
+   python3 -m build.claude_code
+   claude plugin marketplace add "$(pwd)/dist/claude-code"
+   ```
+
+2. 이 저장소의 `.claude/settings.local.json`에 `outputStyle`이 있으면 지웁니다. 로컬 선택이 커밋된 선택을 이기므로, 남아 있으면 정책이 걸리지 않습니다.
+3. Claude Code를 **저장소 루트에서** 띄웁니다. 설정은 띄운 디렉터리의 것만 읽으므로, 하위 디렉터리에서 띄우면 플러그인도 격리도 적용되지 않습니다.
+4. 호스트 상태 검사 hook을 켭니다. 커밋과 커밋 메시지와 push마다, 이 기기의 경로·계정·설정 값이 공개 기록에 들어가지 않았는지 검사합니다(`AGENTS.md`의 "Public repository").
+
+   ```sh
+   git config core.hooksPath hostguard/hooks
+   ```
+
+5. 로컬 루트를 만듭니다. 빌드 원시 자료, 코퍼스, 재작성 백업이 여기에 모이고, 검사기가 과거의 호스트 값을 기억하는 목록(`deny.local`)도 여기에 쌓입니다.
+
+   ```sh
+   mkdir -p ~/.ko-quality-work
+   ```
+
+**알아둘 것**
+
+- 개발 세션도 프롬프트와 답변 원문을 `~/.ko-quality-dev`에 남기고, 90일 규칙(설계 09 §20)이 그대로 적용됩니다.
+- 로컬 데이터는 자동으로 지우지 않습니다. 지울 수 있게 된 것이 있으면 세션을 시작할 때 알려 주고, `python3 -m hostguard status`로 후보를 확인한 뒤 `python3 -m hostguard clean <id>`로 고른 것만 지웁니다.
+- 기록마다 `project`(저장소 루트 경로의 해시)와 `build_id`가 붙습니다. 이 저장소의 기록은 어떤 표본에도 들어가지 않습니다.
+- 개발 에이전트(`.claude/agents/`)에 배포 에이전트와 같은 이름을 쓰지 않습니다(빌드 검사 5).
+- 플러그인은 `dist/claude-code/ko-quality`에서 그대로 읽힙니다(설치 사본을 따로 두지 않습니다). 다시 빌드하면 다음 세션부터 새 빌드가 적용되고, 기록의 `build_id`가 바뀝니다.
+- **`claude plugin marketplace remove ko-quality`를 저장소 루트에서 실행하면 커밋된 `.claude/settings.json`의 `enabledPlugins` 항목도 지워집니다**(2.1.274에서 확인). 마켓플레이스를 다시 등록했다면 `git checkout .claude/settings.json`으로 되돌립니다.
 
 ## 라이선스
 

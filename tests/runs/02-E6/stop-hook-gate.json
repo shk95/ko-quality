@@ -1,0 +1,137 @@
+{
+  "probe": "can a gate actually stop an assistant reply, and what happens when it keeps firing?",
+  "era": "02-validation",
+  "stage": "2-exploration",
+  "item": "E6",
+  "date": "2026-09-16",
+  "harness": "Claude Code 2.1.273",
+  "method": "A throwaway plugin whose only content is a Stop hook. The hook writes {\"decision\":\"block\",\"reason\":...} to stdout and logs every invocation. Loaded with --plugin-dir in a scratch directory; nothing installed.",
+  "run_1_single_block": {
+    "prompt": "한국의 수도는 어디입니까? 한 문장으로 답하십시오.",
+    "hook": "block on the first Stop, allow afterwards",
+    "invocations": [
+      {
+        "n": 1,
+        "last_assistant_message": "대한민국(한국)의 수도는 서울입니다."
+      },
+      {
+        "n": 2,
+        "last_assistant_message": "GATE-RETRY 대한민국(한국)의 수도는 서울입니다."
+      }
+    ],
+    "finding": "The block worked and the model obeyed the reason string, prepending the token it was told to. A gate on the reply is enforceable - not only on Write."
+  },
+  "run_2_repeated_block": {
+    "prompt": "1+1은?",
+    "hook": "block five times, then relent",
+    "invocations": [
+      {
+        "n": 1,
+        "stop_hook_active": false,
+        "last": "1+1은 2예요. ..."
+      },
+      {
+        "n": 2,
+        "stop_hook_active": true,
+        "last": "RETRY1 1+1은 2예요."
+      },
+      {
+        "n": 3,
+        "stop_hook_active": true,
+        "last": "RETRY2 1+1은 2예요."
+      },
+      {
+        "n": 4,
+        "stop_hook_active": true,
+        "last": "RETRY3 1+1은 2예요."
+      },
+      {
+        "n": 5,
+        "stop_hook_active": true,
+        "last": "RETRY4 1+1은 2예요. 참고로, Stop hook(gate.py)이 응답할 때마다 번호만 올려서..."
+      },
+      {
+        "n": 6,
+        "stop_hook_active": true,
+        "last": "RETRY5 1+1은 2예요. Stop hook(gate.py)이 계속 번호만 올려서 응답을 막고 있어요..."
+      }
+    ],
+    "num_turns": 6,
+    "cost_usd": 0.1443,
+    "findings": [
+      "stop_hook_active is false on the first Stop and true on every retry. The first draft concluded from this run that the harness caps nothing - WRONG, and corrected by run 3 below. This run's hook relented at five, which is below the harness's own cap, so the cap never fired.",
+      "Cost: six turns and $0.14 for a one-line question. A retry re-runs the whole turn, not just the check.",
+      "By the fourth retry the model began explaining the hook to the user - 'Stop hook(gate.py)이 계속 번호만 올려서 응답을 막고 있어요'. A gate that keeps firing makes itself part of the product."
+    ]
+  },
+  "payload_keys_on_stop": [
+    "background_tasks",
+    "cwd",
+    "effort",
+    "hook_event_name",
+    "last_assistant_message",
+    "permission_mode",
+    "prompt_id",
+    "session_crons",
+    "session_id",
+    "stop_hook_active",
+    "transcript_path"
+  ],
+  "note_for_e4": "session_id IS present in the Stop payload, which confirms E4's fix (add it to the record) is a one-line change.",
+  "run_3_unconditional_block": {
+    "prompt": "1+1은? 한 단어로.",
+    "hook": "block on EVERY Stop, never relent; also sets systemMessage",
+    "result": {
+      "stop_hook_fired": 9,
+      "num_turns": 10,
+      "subtype": "success",
+      "stop_reason": "end_turn",
+      "terminal_reason": "completed",
+      "cost_usd": 0.1982,
+      "final_result": "",
+      "usage": {
+        "input_tokens": 18,
+        "cache_creation_input_tokens": 11270,
+        "cache_read_input_tokens": 137688,
+        "output_tokens": 625
+      }
+    },
+    "findings": [
+      "The harness DOES cap a stuck Stop hook. The hook never relented and the turn ended anyway after 9 fires. Documentation gives the default as 8 consecutive blocks, raisable with CLAUDE_CODE_STOP_HOOK_BLOCK_CAP.",
+      "The final result was EMPTY. Documentation describes the cap as ending the turn with a warning; what the caller received was an empty result string. A gate that never passes does not degrade to emit_with_flag - it produces no answer at all.",
+      "Cost is dominated by context, not by retries: 625 output tokens across 10 turns against 137,688 cache-read tokens. The earlier '$0.14 for six turns' figure is mostly per-turn cache reads and overstates the marginal cost of a retry."
+    ]
+  },
+  "run_4_blocking_without_a_reason": {
+    "question": "Can a gate block without telling the model anything?",
+    "variants": [
+      {
+        "mode": "reason: \"\"",
+        "blocked": true,
+        "final_result": "대한민국의 수도는 서울입니다.  (종료 훅 g.py가 응답을 막았지만 이유는 알려주지 않았습니다. 답변 자체는 바뀌지 않으…)"
+      },
+      {
+        "mode": "no reason key",
+        "blocked": true,
+        "final_result": "대한민국의 수도는 서울입니다. 다만 응답을 마치려 할 때 Stop 훅이 \"Blocked by hook\"…"
+      },
+      {
+        "mode": "exit code 2 + stderr",
+        "blocked": true,
+        "final_result": "대한민국의 수도는 서울입니다."
+      }
+    ],
+    "findings": [
+      "The first draft's claim that `reason` is the only channel is wrong - there are at least three block routes.",
+      "But blocking with no information does not buy a clean sample. The model notices being blocked and narrates it to the user, and in the empty-reason case it said the answer itself had not changed - it re-emitted the same text plus commentary.",
+      "The exit-2 case was not narrated, but its stderr text was uninteresting, so one sample cannot establish that the channel differs."
+    ]
+  },
+  "corrections_to_first_reading": [
+    "'the harness capped nothing' and 'an unbounded loop on the user's account' were both false. Measured cap at 9 fires; documented default 8.",
+    "'the reason string is the only channel a Stop hook has' was false. JSON reason, the default message when reason is absent, and exit-2 stderr all block. systemMessage is documented as a separate user-only channel and was not exercised here.",
+    "The cost figure was cache-dominated and did not measure marginal retry cost.",
+    "PreToolUse(Write) was asserted, never probed, and its deny schema is a different shape (hookSpecificOutput.permissionDecision) rather than 'the same mechanism'.",
+    "All probes used --plugin-dir, not an installed plugin."
+  ]
+}

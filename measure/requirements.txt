@@ -1,0 +1,6 @@
+# measure/ only (09 §15.3, S3). Pinned. Installed into a virtualenv, never into system Python.
+# kiwipiepy is LGPL-3.0: a dependency of this offline tool, never of anything under dist/ (build check 6).
+kiwipiepy==0.23.2
+kiwipiepy_model==0.23.0
+numpy==2.0.2
+tqdm==4.70.1

@@ -1,0 +1,15 @@
+{
+  "probe": "Can a SessionStart hook show a notice to the user, or only to the model?",
+  "era": "98-host-isolation",
+  "stage": "3-spec",
+  "date": "2026-09-18",
+  "harness": "Claude Code 2.1.276, headless (-p, stream-json), model claude-haiku-4-5-20251001",
+  "method": "Throwaway git project in the scratchpad with a committed-style .claude/settings.json whose SessionStart hook prints one JSON object: systemMessage carrying token KQ-PROBE-USER-NOTICE, hookSpecificOutput.additionalContext carrying token KQ-PROBE-MODEL-CONTEXT. Prompt: reply OK and repeat any KQ-PROBE token in context.",
+  "observed": {
+    "hook_ran": "yes: a system/hook_response event for SessionStart:startup carries the hook's stdout",
+    "additionalContext": "reached the model: the reply was 'OK' followed by KQ-PROBE-MODEL-CONTEXT",
+    "systemMessage": "present only in the hook_response event; the model did not see it. Whether the interactive UI displays it is not observable headlessly"
+  },
+  "cost_usd": 0.0201,
+  "verdict": "The model channel (additionalContext) is measured and reliable. The user channel (systemMessage) is unverified in the interactive UI. A notice that must reach the user uses both: systemMessage for the UI, and additionalContext asking the model to tell the user once."
+}

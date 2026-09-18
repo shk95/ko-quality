@@ -1,0 +1,38 @@
+{
+  "batch": "batch-01",
+  "marker_prefix": "KQ-CANARY-batch-01",
+  "runs": [
+    {
+      "setup": "B",
+      "label": "C",
+      "session_id": "<local>",
+      "rc": 0,
+      "checks": [
+        {
+          "profile_label": "agent-reply",
+          "output_style": "default",
+          "markers_found": [],
+          "markers_expected": [
+            "KQ-CANARY-batch-01-style-agent-reply"
+          ],
+          "pass": false,
+          "cost_usd": 0.05707
+        },
+        {
+          "profile_label": "formal-report",
+          "output_style": "default",
+          "markers_found": [],
+          "markers_expected": [
+            "KQ-CANARY-batch-01-style-formal-report"
+          ],
+          "pass": false,
+          "cost_usd": 0.0701044
+        }
+      ],
+      "pass": false,
+      "cost_usd": 0.0701044
+    }
+  ],
+  "rejected": true,
+  "verdict": "batch rejected: a marker is missing or in the wrong arm"
+}

@@ -1,0 +1,53 @@
+{
+  "batch": "batch-01",
+  "build_id_of_records": "51112680979b60c3",
+  "prompt_set": "set-1",
+  "replicates": 18,
+  "jobs": 4,
+  "sessions_planned": 1458,
+  "sessions_per_stratum_arm_cell_planned": 54,
+  "sessions_per_arm_cell_required_by_pilot": 63,
+  "sizing": "63 per (stratum, arm) cell × 27 cells at pilot mean cost per cell ($3.64 for one session per cell) = $229.5 > $200; the ceiling allowed 53, rounded up to 18 rounds × 3 prompts = 54",
+  "achieved_power": {
+    "n_per_arm": 54,
+    "effect": "0.5 SD",
+    "alpha": 0.05,
+    "power": 0.7383,
+    "method": "normal approximation, Φ(sqrt(n/2)·d − z_(1−α/2))"
+  },
+  "excluded": {
+    "sessions": 6,
+    "annotations": 8,
+    "log_records": 7,
+    "rule": "any annotation of the session fails arm_check, task_matches_prompt, log_record_found or turns_complete, or is_error"
+  },
+  "sessions_by_arm_analysed": {
+    "A": 483,
+    "B": 485,
+    "C": 484
+  },
+  "cost_usd": {
+    "canaries": 0.9015,
+    "batch": 190.2118,
+    "total": 191.1133,
+    "ceiling": 200
+  },
+  "candidates": {
+    "agent-reply": [
+      "em_dash_count",
+      "genitive_ui_ratio",
+      "noun_ending_ratio",
+      "particle_absence_ratio",
+      "phrase_battery",
+      "speech_level"
+    ],
+    "formal-report": [
+      "em_dash_count",
+      "genitive_ui_ratio",
+      "noun_ending_ratio",
+      "particle_absence_ratio",
+      "phrase_battery",
+      "speech_level"
+    ]
+  }
+}

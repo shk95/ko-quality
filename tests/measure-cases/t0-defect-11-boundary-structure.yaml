@@ -1,0 +1,13 @@
+# Tier 0 case (09 §17.3). Synthetic. One list item and one formulaic heading: the boundary for bullet_density and header_formula.
+id: t0-defect-11-boundary-structure
+profile: agent-reply
+arm: any
+layer: skill
+input: "## 결론\n\n로더를 고쳐서 설정 파일을 한 번만 읽습니다.\n\n- 테스트는 모두 통과했습니다.\n\n배포는 내일 오전에 하겠습니다."
+expect:
+  bullet_density.list_items:
+    equals: 1
+  header_formula.formulaic:
+    equals: 1
+  header_formula.colon_subtitle:
+    equals: 0

@@ -1,0 +1,32 @@
+{
+  "probe": "whether a project settings file can isolate the logger's home for self-application",
+  "era": "02-validation",
+  "stage": "2-exploration",
+  "item": "E7 (self-application)",
+  "date": "2026-09-16",
+  "harness": "Claude Code 2.1.273",
+  "method": "A scratch project whose .claude/settings.local.json sets env.KO_QUALITY_HOME to a scratch directory. Run 1: the same file also registers SessionStart and Stop command hooks that append the variable's value to a file. Run 2: the hooks are removed, and the shipped logger is loaded through --plugin-dir dist/claude-code/agent-reply. KO_QUALITY_HOME was not set in the launching shell for either run. Two headless runs; cost not captured.",
+  "results": [
+    {
+      "q": "Does `env` in a project's .claude/settings.local.json reach command hooks?",
+      "a": "Yes. Both SessionStart and Stop saw KO_QUALITY_HOME set to the settings value."
+    },
+    {
+      "q": "Does it reach a plugin's hooks, that is, the shipped logger?",
+      "a": "Yes. The logger wrote one record to <scratch>/home-from-settings/logs/agent-reply/2026-09.jsonl. ~/.ko-quality was absent before and after the run."
+    }
+  ],
+  "record": {
+    "profile": "agent-reply",
+    "policy_on": true,
+    "harness_position": "main-to-user",
+    "output": "대한민국의 수도는 서울입니다."
+  },
+  "findings": [
+    "Isolation can be configured per project in one settings line, with no change to the plugin or the shell.",
+    ".claude/settings.local.json is gitignored in this repository. Isolation written there is per machine and not versioned: a fresh clone, or a session on another machine, writes into the default home with nothing in the record to show where it came from.",
+    "The logger reads KO_QUALITY_HOME with Path(...) and does not expand `~`. A committed .claude/settings.json cannot carry a portable value without either a machine-specific absolute path (forbidden by AGENTS.md) or a one-line expanduser in the logger. Whether Claude Code itself expands `~` in settings env was not tested.",
+    "The record has no field that identifies the originating project. The Stop payload carries `cwd` (tests/runs/02-E6/stop-hook-gate.json), but the logger does not keep it."
+  ],
+  "cleanup": "Scratch directory only. No user or repository settings were modified."
+}

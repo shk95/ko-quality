@@ -1,0 +1,202 @@
+{
+  "record": "P1 canary and removal runs (flow.md §3 P1 steps 8-9; F1, F3)",
+  "era": "02-validation",
+  "stage": "6-build P1",
+  "date": "2026-09-17",
+  "harness": "Claude Code 2.1.274",
+  "model": "claude-sonnet-5",
+  "build_id": "34ca2331593d24e8",
+  "canary": {
+    "method": "Scratch copy of dist/claude-code/ko-quality (never dist/) with one line appended to each output-style body ('Begin every reply with the line <token>') and each agent body ('Begin your report with the line <token>'). One scratch project per run holding .claude/settings.local.json with the selection and env.KO_QUALITY_HOME at a scratch home. claude -p <prompt> --plugin-dir <copy> --output-format stream-json --verbose --max-turns 8 --model claude-sonnet-5.",
+    "tokens": {
+      "KQ-CANARY-P1-style-agent-reply-1": "output-styles/agent-reply.md",
+      "KQ-CANARY-P1-style-formal-report-1": "output-styles/formal-report.md",
+      "KQ-CANARY-P1-agent-korean-editor-1": "agents/korean-editor.md",
+      "KQ-CANARY-P1-agent-korean-reviewer-1": "agents/korean-reviewer.md",
+      "KQ-CANARY-P1-agent-korean-writer-1": "agents/korean-writer.md"
+    },
+    "prompts": {
+      "question": "파이썬에서 리스트와 튜플의 차이를 두 문장으로 설명해 줘.",
+      "delegation": "ko-quality:korean-reviewer 에이전트에게 다음 문장의 검토를 맡기고, 에이전트가 돌려준 보고를 그대로 전해 줘: '본 보고서는 매우 중요한 의미를 가지고 있다고 할 수 있다.'"
+    },
+    "fields": "main_thread_tokens: tokens in main-thread assistant text; handback_tokens: tokens in SubagentHandback tool input (the subagent's own report); final_result_tokens: tokens in the result document",
+    "runs": [
+      {
+        "run": "no-selection",
+        "style": "none",
+        "exit": 0,
+        "output_style_in_init": "default",
+        "plugins_in_init": [
+          "ko-quality",
+          "<user-scope plugin>"
+        ],
+        "agents_in_init": [
+          "ko-quality:korean-editor",
+          "ko-quality:korean-reviewer",
+          "ko-quality:korean-writer"
+        ],
+        "final_result_tokens": [],
+        "main_thread_tokens": [],
+        "subagent_text_tokens": [],
+        "handback_tokens": [],
+        "agent_tool_calls": 0,
+        "cost_usd": 0.060782,
+        "num_turns": 1,
+        "is_error": false
+      },
+      {
+        "run": "sel-agent-reply",
+        "style": "ko-quality:agent-reply",
+        "exit": 0,
+        "output_style_in_init": "ko-quality:agent-reply",
+        "plugins_in_init": [
+          "ko-quality",
+          "<user-scope plugin>"
+        ],
+        "agents_in_init": [
+          "ko-quality:korean-editor",
+          "ko-quality:korean-reviewer",
+          "ko-quality:korean-writer"
+        ],
+        "final_result_tokens": [
+          "KQ-CANARY-P1-style-agent-reply-1"
+        ],
+        "main_thread_tokens": [
+          "KQ-CANARY-P1-style-agent-reply-1"
+        ],
+        "subagent_text_tokens": [],
+        "handback_tokens": [],
+        "agent_tool_calls": 0,
+        "cost_usd": 0.07264659999999999,
+        "num_turns": 1,
+        "is_error": false
+      },
+      {
+        "run": "sel-formal-report",
+        "style": "ko-quality:formal-report",
+        "exit": 0,
+        "output_style_in_init": "ko-quality:formal-report",
+        "plugins_in_init": [
+          "ko-quality",
+          "<user-scope plugin>"
+        ],
+        "agents_in_init": [
+          "ko-quality:korean-editor",
+          "ko-quality:korean-reviewer",
+          "ko-quality:korean-writer"
+        ],
+        "final_result_tokens": [
+          "KQ-CANARY-P1-style-formal-report-1"
+        ],
+        "main_thread_tokens": [
+          "KQ-CANARY-P1-style-formal-report-1"
+        ],
+        "subagent_text_tokens": [],
+        "handback_tokens": [],
+        "agent_tool_calls": 0,
+        "cost_usd": 0.139112,
+        "num_turns": 1,
+        "is_error": false
+      },
+      {
+        "run": "deleg-agent-reply",
+        "style": "ko-quality:agent-reply",
+        "exit": 0,
+        "output_style_in_init": "ko-quality:agent-reply",
+        "plugins_in_init": [
+          "ko-quality",
+          "<user-scope plugin>"
+        ],
+        "agents_in_init": [
+          "ko-quality:korean-editor",
+          "ko-quality:korean-reviewer",
+          "ko-quality:korean-writer"
+        ],
+        "final_result_tokens": [
+          "KQ-CANARY-P1-agent-korean-reviewer-1",
+          "KQ-CANARY-P1-style-agent-reply-1"
+        ],
+        "main_thread_tokens": [
+          "KQ-CANARY-P1-agent-korean-reviewer-1",
+          "KQ-CANARY-P1-style-agent-reply-1"
+        ],
+        "subagent_text_tokens": [],
+        "handback_tokens": [
+          "KQ-CANARY-P1-agent-korean-reviewer-1"
+        ],
+        "agent_tool_calls": 1,
+        "cost_usd": 0.334302,
+        "num_turns": 2,
+        "is_error": false
+      },
+      {
+        "run": "deleg-formal-report",
+        "style": "ko-quality:formal-report",
+        "exit": 0,
+        "output_style_in_init": "ko-quality:formal-report",
+        "plugins_in_init": [
+          "ko-quality",
+          "<user-scope plugin>"
+        ],
+        "agents_in_init": [
+          "ko-quality:korean-editor",
+          "ko-quality:korean-reviewer",
+          "ko-quality:korean-writer"
+        ],
+        "final_result_tokens": [],
+        "main_thread_tokens": [
+          "KQ-CANARY-P1-style-formal-report-1"
+        ],
+        "subagent_text_tokens": [],
+        "handback_tokens": [
+          "KQ-CANARY-P1-agent-korean-reviewer-1"
+        ],
+        "agent_tool_calls": 1,
+        "cost_usd": 0.4013454,
+        "num_turns": 2,
+        "is_error": false
+      }
+    ],
+    "note": "A user-scope plugin was enabled on this machine and loaded in every run. It ships no output style."
+  },
+  "removal": {
+    "method": "claude plugin marketplace add dist/claude-code; claude plugin install ko-quality@ko-quality --scope local in a scratch project; outputStyle ko-quality:agent-reply written to its settings.local.json; one session; then the documented removal (uninstall --scope local, marketplace remove); one session with the outputStyle line still present; the line deleted as the doc says; one session. User settings were snapshotted before and restored after.",
+    "sessions": [
+      {
+        "session": "installed-selected",
+        "init_output_style": "ko-quality:agent-reply",
+        "plugins_in_init": [
+          "ko-quality",
+          "<user-scope plugin>"
+        ],
+        "is_error": false,
+        "stderr_empty": true,
+        "cost_usd": 0.07019059999999999
+      },
+      {
+        "session": "removed-style-left",
+        "init_output_style": "ko-quality:agent-reply",
+        "plugins_in_init": [
+          "<user-scope plugin>"
+        ],
+        "is_error": false,
+        "stderr_empty": true,
+        "cost_usd": 0.055768000000000005
+      },
+      {
+        "session": "removed-style-cleared",
+        "init_output_style": "default",
+        "plugins_in_init": [
+          "<user-scope plugin>"
+        ],
+        "is_error": false,
+        "stderr_empty": true,
+        "cost_usd": 0.0072992000000000005
+      }
+    ],
+    "project_settings_after": "enabledPlugins: {} (empty key left by uninstall); no outputStyle",
+    "user_settings_trace": "~/.claude/settings.json gained an empty \"extraKnownMarketplaces\": {} (restored from snapshot); ~/.claude/plugins/cache/ko-quality/ko-quality/0.2.0 left with .orphaned_at (moved to Trash). known_marketplaces.json and installed_plugins.json matched the snapshot.",
+    "finding": "With the style line left after removal, the harness still reports output_style ko-quality:agent-reply in init and runs silently with no error or warning. After the documented deletion it reports default."
+  },
+  "cost_usd_total": 1.1414
+}

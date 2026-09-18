@@ -1,0 +1,105 @@
+{
+  "era": "02-validation",
+  "stage": "2-exploration",
+  "item": "E7 review (independent mid-tier reviewer)",
+  "probe": "E7 review: committed-settings plugin/style/agent scope, precedence, and subdirectory discovery",
+  "harness": "Claude Code 2.1.273",
+  "date": "2026-09-16",
+  "method": "Scratch project at scratchpad/e7-review/proj with a copy of dist/claude-code/agent-reply (plugin name changed to 'koqtest') under proj/.marketplace-src, canary lines added to the output style and korean-writer agent, plus a colliding project agent .claude/agents/korean-writer.md (different canary) and a non-colliding pair koqtest:korean-reviewer/korean-editor. Extra command hooks appended to hooks.json to dump raw SubagentStop/Stop payloads. All runs used claude -p (headless), most loaded the plugin via --plugin-dir (session-only, no marketplace trust gate) to isolate the questions under test from the marketplace-trust question, which was tested separately via committed settings.json declarations.",
+  "Q1_committed_project_settings": {
+    "a_plugin_install_scope_project": {
+      "command": "claude plugin install koqtest@koqtest-mp --scope project",
+      "result": "Wrote proj/.claude/settings.json (COMMITTED, not .local.json): {\"enabledPlugins\": {\"koqtest@koqtest-mp\": true}}. The marketplace itself (added earlier via `claude plugin marketplace add ./.marketplace-src`) was recorded in USER settings ~/.claude/settings.json under extraKnownMarketplaces with an ABSOLUTE path, never in project settings.",
+      "confidence": "high, single direct observation"
+    },
+    "b_relative_marketplace_path_fresh_copy": {
+      "setup": "proj/.claude/settings.json manually set to {\"extraKnownMarketplaces\": {\"koqtest-mp\": {\"source\": {\"source\": \"directory\", \"path\": \"./.marketplace-src\"}}}}, \"enabledPlugins\": {\"koqtest@koqtest-mp\": true}}, with the user-level marketplace entry and its plugin cache fully removed first.",
+      "result_same_dir_headless": "claude -p asked to delegate to koqtest:korean-writer -> 'no agent named koqtest:korean-writer in this session' (fell back to the project agent). Relative path is syntactically accepted (no parse error) but the plugin was NOT loaded.",
+      "result_fresh_copy_headless": "Copied the whole proj dir (including .marketplace-src and .claude/settings.json, unchanged) to proj-copy at a different path. claude -p there: 'Agent type koqtest:korean-writer not found. Available agents: claude, Explore, general-purpose, Plan, statusline-setup'. Plugin not loaded.",
+      "confidence": "high for headless; interactive untested (see e)"
+    },
+    "c_env_KO_QUALITY_HOME_from_committed_settings_reaches_plugin_hooks": {
+      "setup": "proj/.claude/settings.json (committed, no .local.json involved) = {\"env\": {\"KO_QUALITY_HOME\": \"<scratch>/koq-home-pluginhook-committed\"}}. Plugin loaded via --plugin-dir (bypasses the marketplace-trust gate found in (b), isolating this question).",
+      "result": "logger wrote <scratch>/koq-home-pluginhook-committed/logs/agent-reply/2026-09.jsonl. ~/.ko-quality stayed absent during the run.",
+      "confidence": "high; matches the prior 02-E7 settings-env-isolation.json result which used settings.local.json instead"
+    },
+    "d_tilde_and_HOME_expansion": {
+      "setup": "proj/.claude/settings.json env = {\"KO_QUALITY_HOME\": \"~/koq-tilde-probe-DONOTCREATE\", \"KO_QUALITY_HOME2\": \"$HOME/koq-dollar-probe-DONOTCREATE\"}. A Stop hook in the same settings.json dumped os.environ.get(...) verbatim.",
+      "result": "Captured: \"'~/koq-tilde-probe-DONOTCREATE'|'$HOME/koq-dollar-probe-DONOTCREATE'\" -- both stored and delivered to the hook's environment LITERALLY, unexpanded. Neither directory was created as a side effect.",
+      "confidence": "high, direct capture"
+    },
+    "e_trust_approval_gate": {
+      "observed": "`claude --help` states the workspace trust dialog is SKIPPED in non-interactive mode (-p, or non-TTY stdout). Our scratch project never appears in ~/.claude.json's 'projects' map (no trust record was ever created), and the committed-settings marketplace declaration from (b) was never honored in any headless run, in the same directory or a fresh copy. This is consistent with headless mode treating an unestablished-trust project as untrusted for marketplace/plugin loading, and simply declining to load it silently (no error, no prompt) rather than auto-trusting it.",
+      "not_tested": "Interactive trust dialog outcome (accept/decline) was NOT live-tested: this reviewer's own sandbox blocks spawning a nested interactive `claude` session ('Create Unsafe Agents' denial) and blocks direct edits to ~/.claude.json trust state ('Self-Modification' denial). Only the headless path could be observed directly.",
+      "confidence": "medium: headless behavior is solidly observed; interactive behavior is inferred from CLI help text only"
+    }
+  },
+  "Q2_output_style_interaction": {
+    "setup_common": "proj/.claude/settings.local.json = {\"outputStyle\": \"Concise\"}. Plugin loaded via --plugin-dir.",
+    "a_forced_style_vs_local_concise": {
+      "plugin_style_frontmatter": "force-for-plugin: true",
+      "committed_settings_json": "{} (no outputStyle set there)",
+      "result": "Reply began with the literal canary line CANARY-STYLE-PLUGIN, i.e. the plugin's forced Korean-policy output style applied despite settings.local.json saying Concise.",
+      "verdict": "forced plugin style wins over a user-level Concise selection"
+    },
+    "b_unforced_committed_vs_local": {
+      "plugin_style_frontmatter": "force-for-plugin: false",
+      "committed_settings_json": "{\"outputStyle\": \"agent-reply\"}",
+      "settings_local_json": "{\"outputStyle\": \"Concise\"}",
+      "result": "No CANARY-STYLE-PLUGIN in the reply; the reply was short/direct, characteristic of Concise, not of the Korean-policy style.",
+      "verdict": "settings.local.json's Concise wins over committed settings.json's outputStyle when the plugin style is unforced"
+    },
+    "confidence": "high, both are single clean canary-based observations"
+  },
+  "Q3_agent_name_resolution": {
+    "setup": "Plugin loaded via --plugin-dir (plugin.json name 'koqtest'), providing koqtest:korean-writer, koqtest:korean-reviewer, koqtest:korean-editor. Project agent .claude/agents/korean-writer.md provides 'korean-writer' (no namespace). A hook captured raw SubagentStop JSON.",
+    "explicit_namespaced_request": {
+      "prompt": "delegate to koqtest:korean-writer",
+      "result_text": "resolved and ran (reply in English despite the instruction to write Korean and to lead with a canary token -- a model-compliance miss, not a resolution failure)",
+      "subagentstop_payload_agent_type": "koqtest:korean-writer"
+    },
+    "unqualified_request": {
+      "prompt": "delegate to korean-writer (no namespace prefix)",
+      "result_text": "CANARY-AGENT-PROJECT appeared verbatim, confirming the PROJECT agent ran",
+      "subagentstop_payload_agent_type": "korean-writer"
+    },
+    "list_agent_types": {
+      "prompt": "list every subagent type available",
+      "result": "9 types listed: claude, Explore, general-purpose, koqtest:korean-editor, koqtest:korean-reviewer, koqtest:korean-writer, korean-writer, Plan, statusline-setup. The model explicitly noted korean-writer and koqtest:korean-writer are different agents from different sources."
+    },
+    "verdict_a": "COEXISTENCE, not shadowing: both the plugin agent (namespaced) and the project agent (unqualified) are simultaneously available under distinct names. When asked for the bare 'korean-writer' name (which only the project agent claims), the project version is what runs.",
+    "verdict_b": "agent_type in the SubagentStop payload is exactly the resolved name string used to invoke it (namespaced for the plugin agent, bare for the project agent) -- it disambiguates cleanly.",
+    "verdict_c": "Non-colliding plugin agents (korean-reviewer, korean-editor) coexist and invoke normally: koqtest:korean-reviewer was called directly and replied 'OK' as instructed.",
+    "confidence": "high; SubagentStop payload capture is a direct, unambiguous signal independent of model text compliance"
+  },
+  "Q4_subdirectory_discovery": {
+    "setup": "proj/sub/ created under proj (which has proj/.claude/settings.json + a Stop hook that appends {ko_env, payload_cwd, os_getcwd} to a capture file).",
+    "no_git_at_root": {
+      "result": "claude -p run from proj/sub: capture file never created -- the root .claude/settings.json (env var + hook) was NOT applied."
+    },
+    "with_git_init_at_root": {
+      "action": "git init -q run in proj (no commits, just .git/ created)",
+      "result": "claude -p run from proj/sub again: capture file STILL never created -- git root does not change discovery either."
+    },
+    "control_settings_in_cwd_itself": {
+      "setup": "A second, independent .claude/settings.json + Stop hook placed directly in proj/sub/.claude/",
+      "result": "Fired correctly. Capture: payload_cwd == os_getcwd() == the proj/sub path exactly.",
+      "purpose": "confirms the hook/capture mechanism itself works; the negative results above are a genuine discovery miss, not a broken probe"
+    },
+    "verdict": "Project settings (.claude/settings.json, settings.local.json: env, hooks) are NOT discovered by walking up from a subdirectory -- neither via a git root nor by any other means observed. Claude Code appears to treat the CLI's launch cwd itself as the project root for settings discovery. The Stop hook payload's cwd field carries the launch cwd (not any repo root).",
+    "confidence": "high; positive control run rules out a broken hook as the explanation for the two negative results"
+  },
+  "cleanup": {
+    "settings_json_sha1_before": "7990989fcf81c42d1c1dd498b2bcde5eb495e102",
+    "settings_json_sha1_after": "7990989fcf81c42d1c1dd498b2bcde5eb495e102",
+    "settings_json_match": true,
+    "stray_plugin_data_dir_removed": "~/.claude/plugins/data/koqtest-inline (removed)",
+    "leftover_ko_quality_home_found_and_removed": "~/.ko-quality was created during two Q2 probe runs where KO_QUALITY_HOME was not exported before invoking --plugin-dir; contents were 3 harmless canary/test log lines (say-hi replies), verified then deleted; ~/.ko-quality confirmed absent afterward.",
+    "claude_json_projects_map": "no entry for the scratch project path was ever created (grep for 'e7-review' in ~/.claude.json returns nothing) -- consistent with headless mode not establishing trust records",
+    "claude_json_other_drift": "~/.claude.json shows unrelated counter/feature-flag drift (numStartups, growthbook flags) from ordinary background telemetry across the session; this reviewer never wrote to that file (an attempted edit for a trust-state test was blocked by the sandbox's self-modification guard) and did not revert this drift, since it is normal usage noise unrelated to the probes.",
+    "installed_plugins_known_marketplaces_drift": "Both files show an unrelated pre-existing plugin (<user-scope plugin>) auto-updating itself (0.5.0 -> 0.6.0) during the session; no koqtest/e7-review references remain in either file. Not reverted, as it is unrelated background activity, not something this probe caused.",
+    "repo_files": "Nothing in <repository> was read-write touched; .claude/settings.local.json there is byte-identical to before.",
+    "cache_and_marketplace_dirs": "~/.claude/plugins/cache and ~/.claude/plugins/marketplaces contain no koqtest/e7-review residue; match pre-probe listing (<user-scope plugin>, <user-scope marketplace> / <user-scope plugin>, claude-plugins-official)."
+  },
+  "note": "Relative marketplace path (Q1b): the plugin was not loaded headlessly, but the run does not separate 'relative directory source unsupported' from 'untrusted workspace in -p mode'. Q2 runs twice created ~/.ko-quality because KO_QUALITY_HOME was not exported; the reviewer deleted it, which is itself an example of the leak E7-d describes."
+}

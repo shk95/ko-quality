@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3, F7). Synthetic. Correct prose, 해요체. A question mark, and a sentence closed by a parenthesis before the period.
+id: t1-correct-03-haeyo
+profile: agent-reply
+arm: any
+layer: policy
+input: "오늘 배포는 오후 네 시에 시작해요. 로그를 먼저 확인할까요? 문제가 생기면 이전 버전으로 되돌리면 돼요(설정은 그대로 두세요)."
+expect:
+  noun_ending_ratio.ratio:
+    max: 0
+  particle_absence_ratio.ratio:
+    max: 0.5

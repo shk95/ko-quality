@@ -1,0 +1,45 @@
+{
+  "id": "x05-structure-table",
+  "kind": "defective",
+  "text": "# 결과 정리\n\n| 항목 | 이전 | 이후 |\n|---|---|---|\n| 지연 | 320ms | 180ms |\n| 비용 | 높음 | 낮음 |\n\n1. 캐시 설정 변경함\n2. 재시도 로직 제거\n* 로그 정리 완료\n\n다음 단계 논의 필요. 표의 - 기호와 # 기호는 본문에서도 씁니다.\n배포 후 3 - 1 = 2개 서버만 남았습니다.",
+  "positives": [
+    {
+      "zone": "structure",
+      "text": "# 결과 정리"
+    },
+    {
+      "zone": "structure",
+      "text": "| 항목 | 이전 | 이후 |"
+    },
+    {
+      "zone": "structure",
+      "text": "| 지연 | 320ms | 180ms |"
+    },
+    {
+      "zone": "structure",
+      "text": "1. 캐시 설정 변경함"
+    },
+    {
+      "zone": "structure",
+      "text": "2. 재시도 로직 제거"
+    },
+    {
+      "zone": "structure",
+      "text": "* 로그 정리 완료"
+    }
+  ],
+  "negatives": [
+    {
+      "zone": "structure",
+      "text": "다음 단계 논의 필요."
+    },
+    {
+      "zone": "structure",
+      "text": "표의 - 기호와 # 기호는"
+    },
+    {
+      "zone": "structure",
+      "text": "배포 후 3 - 1 = 2개 서버만 남았습니다."
+    }
+  ]
+}

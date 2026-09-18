@@ -1,0 +1,37 @@
+# Tier 0 case (09 §17.3). Synthetic. `input` is the reply text the measurements read.
+id: t0-correct-01
+profile: agent-reply
+arm: any
+layer: skill
+input: "설정 파일을 한 번만 읽도록 로더를 고쳤습니다. 이전에는 요청마다 파일을 다시 열어서 응답이 느렸습니다.\n\n바꾼 뒤에는 시작할 때 한 번 읽고 값이 바뀌면 그때만 다시 읽습니다. 테스트는 모두 통과했고 기존 동작도 그대로입니다. 왠지 캐시가 오래 남는 것 같다면 서버를 다시 시작하면 돼요."
+expect:
+  em_dash_count.count:
+    max: 0
+  emoji_count.count:
+    max: 0
+  bold_density.count:
+    max: 0
+  bullet_density.list_items:
+    max: 0
+  header_formula.headings:
+    max: 0
+  quote_emphasis_count.count:
+    max: 0
+  english_ratio.ratio:
+    max: 0.05
+  english_gloss_repeat.count:
+    max: 0
+  paragraph_initial_repeat.repeated_openers:
+    max: 0
+  comma_rate.after_connective:
+    max: 0
+  spelling_denylist.count:
+    max: 0
+  quote_balance.balanced:
+    equals: true
+  allomorph_errors.count:
+    max: 0
+  honorific_address.present:
+    equals: false
+  phrase_battery.total:
+    max: 0

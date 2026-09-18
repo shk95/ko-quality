@@ -1,0 +1,11 @@
+# Tier 1 case (09 §17.3, F7). Synthetic. Correct technical prose with noun compounds: the closest correct case to the telegraphic range in E2.
+id: t1-correct-05-technical
+profile: agent-reply
+arm: any
+layer: policy
+input: "이번 변경은 토큰 카운트 함수의 오류 처리 방식을 바꿉니다. 지출한 비용을 추론하는 함수에 오류가 발생하면 기본값을 돌려줍니다. 기존 동작은 설정으로 되돌릴 수 있습니다."
+expect:
+  noun_ending_ratio.ratio:
+    max: 0
+  particle_absence_ratio.ratio:
+    max: 0.5
