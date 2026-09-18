@@ -1,0 +1,132 @@
+{
+  "batch": "batch-01",
+  "marker_prefix": "KQ-CANARY-batch-01",
+  "runs": [
+    {
+      "setup": "A",
+      "label": "A",
+      "session_id": "<local>",
+      "rc": 0,
+      "checks": [
+        {
+          "profile_label": null,
+          "output_style": "default",
+          "markers_found": [],
+          "markers_expected": [],
+          "pass": true,
+          "cost_usd": 0.053517999999999996
+        }
+      ],
+      "pass": true,
+      "cost_usd": 0.053517999999999996
+    },
+    {
+      "setup": "B",
+      "label": "B",
+      "session_id": "<local>",
+      "rc": 0,
+      "checks": [
+        {
+          "profile_label": null,
+          "output_style": "default",
+          "markers_found": [],
+          "markers_expected": [],
+          "pass": true,
+          "cost_usd": 0.056349
+        }
+      ],
+      "pass": true,
+      "cost_usd": 0.056349
+    },
+    {
+      "setup": "C",
+      "label": "C",
+      "session_id": "<local>",
+      "rc": 0,
+      "checks": [
+        {
+          "profile_label": "agent-reply",
+          "output_style": "ko-quality:agent-reply",
+          "markers_found": [
+            "KQ-CANARY-batch-01-style-agent-reply"
+          ],
+          "markers_expected": [
+            "KQ-CANARY-batch-01-style-agent-reply"
+          ],
+          "pass": true,
+          "cost_usd": 0.0681566
+        },
+        {
+          "profile_label": "formal-report",
+          "output_style": "ko-quality:formal-report",
+          "markers_found": [
+            "KQ-CANARY-batch-01-style-formal-report"
+          ],
+          "markers_expected": [
+            "KQ-CANARY-batch-01-style-formal-report"
+          ],
+          "pass": true,
+          "cost_usd": 0.0947308
+        }
+      ],
+      "pass": true,
+      "cost_usd": 0.0947308
+    },
+    {
+      "setup": "A",
+      "label": "A",
+      "channel": "agent",
+      "session_id": "<local>",
+      "rc": 0,
+      "checks": [
+        {
+          "marker": "KQ-CANARY-batch-01-agent-korean-reviewer",
+          "found": false,
+          "expected": false,
+          "sub_records": 0,
+          "pass": true
+        }
+      ],
+      "pass": true,
+      "cost_usd": 0.12958899999999998
+    },
+    {
+      "setup": "B",
+      "label": "B",
+      "channel": "agent",
+      "session_id": "<local>",
+      "rc": 0,
+      "checks": [
+        {
+          "marker": "KQ-CANARY-batch-01-agent-korean-reviewer",
+          "found": true,
+          "expected": true,
+          "sub_records": 1,
+          "pass": true
+        }
+      ],
+      "pass": true,
+      "cost_usd": 0.27546800000000005
+    },
+    {
+      "setup": "C",
+      "label": "C",
+      "channel": "agent",
+      "session_id": "<local>",
+      "rc": 0,
+      "checks": [
+        {
+          "marker": "KQ-CANARY-batch-01-agent-korean-reviewer",
+          "found": true,
+          "expected": true,
+          "sub_records": 1,
+          "pass": true
+        }
+      ],
+      "pass": true,
+      "cost_usd": 0.24797119999999997
+    }
+  ],
+  "rejected": false,
+  "verdict": "batch accepted: every arm's markers are where its label says"
+}
