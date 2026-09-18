@@ -395,6 +395,8 @@ The event list does not change. `PreToolUse` and `SubagentStart` exist and add n
 
 ### 12.1 Log record (written by the logger)
 
+> Forward pointer (era 98, [spec §4](../../98-host-isolation/3-spec/03_spec.md)): `project` stands. Revisit it if era 03 pools records from more than one machine.
+
 ```yaml
 id: uuid4
 ts: datetime
@@ -471,6 +473,8 @@ features: {name: value}                # §15
 **Basis:** 06 §11.3; B7; E2; E4; E6 (reserved gate fields); E7-b, E7-d; `tests/logger_test.py`, which asserts 06's keys and changes with this schema.
 
 ## 13. Build and distribution
+
+> Forward pointer (era 98, [spec §2.5](../../98-host-isolation/3-spec/03_spec.md)): check 7 (host state) is added, and `hostguard/` joins check 6's boundary.
 
 ```text
 upstream/normalized/ ─┐
@@ -752,6 +756,8 @@ Dropped from 04 §13.1: `gate_pass` and `max_change_rate` (no gate, no procedure
 **Basis:** E5 (`06_ruleset_and_eval.md`); E3; 02-E5 validator record; GitHub API (licence).
 
 ## 18. The corpus
+
+> Forward pointer (era 98, [spec §2.3, §3](../../98-host-isolation/3-spec/03_spec.md)): committed session lists come from `python3 -m corpus summary`, without session ids; corpus homes live under the local root.
 
 Era 02's material is **real records with a synthetic prompt distribution** (E1). Era 03 swaps the distribution, not the schema, the code, or the graders.
 

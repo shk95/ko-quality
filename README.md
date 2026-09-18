@@ -141,10 +141,22 @@ ko-quality/
 
 2. 이 저장소의 `.claude/settings.local.json`에 `outputStyle`이 있으면 지웁니다. 로컬 선택이 커밋된 선택을 이기므로, 남아 있으면 정책이 걸리지 않습니다.
 3. Claude Code를 **저장소 루트에서** 띄웁니다. 설정은 띄운 디렉터리의 것만 읽으므로, 하위 디렉터리에서 띄우면 플러그인도 격리도 적용되지 않습니다.
+4. 호스트 상태 검사 hook을 켭니다. 커밋과 커밋 메시지와 push마다, 이 기기의 경로·계정·설정 값이 공개 기록에 들어가지 않았는지 검사합니다(`AGENTS.md`의 "Public repository").
+
+   ```sh
+   git config core.hooksPath hostguard/hooks
+   ```
+
+5. 로컬 루트를 만듭니다. 빌드 원시 자료, 코퍼스, 재작성 백업이 여기에 모이고, 검사기가 과거의 호스트 값을 기억하는 목록(`deny.local`)도 여기에 쌓입니다.
+
+   ```sh
+   mkdir -p ~/.ko-quality-work
+   ```
 
 **알아둘 것**
 
 - 개발 세션도 프롬프트와 답변 원문을 `~/.ko-quality-dev`에 남기고, 90일 규칙(설계 09 §20)이 그대로 적용됩니다.
+- 로컬 데이터는 자동으로 지우지 않습니다. 지울 수 있게 된 것이 있으면 세션을 시작할 때 알려 주고, `python3 -m hostguard status`로 후보를 확인한 뒤 `python3 -m hostguard clean <id>`로 고른 것만 지웁니다.
 - 기록마다 `project`(저장소 루트 경로의 해시)와 `build_id`가 붙습니다. 이 저장소의 기록은 어떤 표본에도 들어가지 않습니다.
 - 개발 에이전트(`.claude/agents/`)에 배포 에이전트와 같은 이름을 쓰지 않습니다(빌드 검사 5).
 - 플러그인은 `dist/claude-code/ko-quality`에서 그대로 읽힙니다(설치 사본을 따로 두지 않습니다). 다시 빌드하면 다음 세션부터 새 빌드가 적용되고, 기록의 `build_id`가 바뀝니다.

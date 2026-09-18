@@ -18,11 +18,15 @@
 ## 실행
 
 ```sh
-python3 -m corpus canary --batch pilot-01 --home ~/.ko-quality-corpus-canary --work <임시 디렉터리>
-python3 -m corpus run --batch pilot-01 --home ~/.ko-quality-corpus --work <임시 디렉터리> --ceiling-usd 20
-measure/.venv/bin/python -m measure run --home ~/.ko-quality-corpus
-measure/.venv/bin/python -m measure pilot --home ~/.ko-quality-corpus --batch pilot-01
+W=~/.ko-quality-work/<시대>
+python3 -m corpus canary --batch pilot-01 --home $W/corpus/canary --work $W/build/pilot-01 --report tests/runs/<시대>/canary-pilot-01.json
+python3 -m corpus run --batch pilot-01 --home $W/corpus/pilot-01 --work $W/build/pilot-01 --ceiling-usd 20
+python3 -m corpus summary --progress $W/build/pilot-01/pilot-01.progress.jsonl --out tests/runs/<시대>/pilot-01-sessions.json
+measure/.venv/bin/python -m measure run --home $W/corpus/pilot-01
+measure/.venv/bin/python -m measure pilot --home $W/corpus/pilot-01 --batch pilot-01
 ```
+
+코퍼스 홈과 작업 디렉터리는 로컬 루트(`~/.ko-quality-work`, 설계 98 스펙 §2.3) 아래에 둡니다. 커밋하는 파일은 `--report`와 `summary`가 만든 것뿐입니다. 두 파일에는 세션 ID가 없고, 세션 ID와 키의 대응은 로컬 진행 기록에만 남습니다.
 
 `--ceiling-usd`에 이른 뒤에는 새 세션을 시작하지 않습니다. 진행 기록(`<batch>.progress.jsonl`)이 남아 있으면 끝난 세션은 건너뛰고 이어서 돌립니다.
 

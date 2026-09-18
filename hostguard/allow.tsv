@@ -10,3 +10,4 @@ design/98-host-isolation/3-spec/03_spec.md	fixed:plan-ko	afd726f672aece6c	era 98
 tests/runs/98-E/hostscan-prototype.json	fixed:plan-en	68062e74bad1d171	era 98 names the rule or the removed category; no host value
 tests/runs/98-E/hostscan-prototype.json	fixed:plan-en	6596befd8b05bcb8	era 98 names the rule or the removed category; no host value
 tests/runs/98-E/hostscan-prototype.json	fixed:plan-en	ee767931fe3c628b	era 98 names the rule or the removed category; no host value
+AGENTS.md	fixed:plan-en	22136fa7a4110e7e	the rule's own table names the banned category; no host value

@@ -17,7 +17,8 @@ This file never holds state. Where the project is and what comes next lives in
 | `measure/` | Offline measurement runner and judge runs. The only place a third-party import is allowed (check 6) |
 | `corpus/` | Corpus generator and prompt set. Records never live here |
 | `gate/` | Reserved for a gate executable. README only in era 02 |
-| `tests/` | Test cases, run summaries, and the provenance recomputation check (`check_provenance.py`, called by `build/checks.py` as part of check 1). Raw run logs stay outside the tree |
+| `hostguard/` | Host isolation (era 98): the host-state scan behind check 7 and the git hooks, the local root's `status`/`clean`, `redact` for committed summaries. Standard library only |
+| `tests/` | Test cases, run summaries, and the provenance recomputation check (`check_provenance.py`, called by `build/checks.py` as part of check 1). Raw run logs stay in the local root, outside the tree |
 
 ## Language
 
@@ -86,6 +87,19 @@ Three tiers, named by role so the rules read the same in every harness.
 
 ## Public repository
 
-- No personal data, secrets, or machine-specific paths in committed files.
-- Logs live outside the tree (`~/.ko-quality/`).
-- `.claude/settings.local.json` and `upstream/.cache/` stay ignored.
+The test for every committed file and every commit message: **would a different builder, on a different machine, with a different account, write the same text?** If not, the text carries host state, and host state is never committed. Privacy is part of it; the rest is that a record bound to one machine cannot be read or reproduced by anyone else.
+
+| Host state (never committed) | Allowed |
+|---|---|
+| Absolute or home-relative paths to the repository, scratch or temporary directories, clone names | The repository's public identity (GitHub owner and name, `LICENSE`) |
+| Harness session and thread ids, fragments included | Tool versions stated as a test condition |
+| Values derived from any of these (the logger's `project` hash) | Models named as test conditions by a plan or spec (`hostguard/conditions.txt`) |
+| User-scope plugins and marketplaces, the user's model settings | Home directories the code defines (`~/.ko-quality`, `~/.ko-quality-dev`, `~/.ko-quality-work`) |
+| The account's plan, usage limit, reset date; private links only the owner can open | |
+
+- Local data is named by role (`<scratch>`, `<local>`, `<build>`), never by path. Committed summaries are written through `hostguard.redact`; corpus session lists through `python3 -m corpus summary`.
+- A harness or account limitation is written "not measured; cause not investigated". Deferred work is "deferred", never a date.
+- Cost is token counts and API-equivalent cost (`measure/cost.py`), whatever the login.
+- Enforcement: check 7 and the `pre-commit`, `commit-msg` and `pre-push` hooks (`git config core.hooksPath hostguard/hooks`, once per clone). A false positive is exempted in `hostguard/allow.tsv` with a reason; a real hit is removed. Never bypass a hook with `--no-verify`.
+- Host data lives in the local root (`~/.ko-quality-work`, era 98 spec §2.3): build material, corpus homes, rewrite backups, `LOCAL-NOTES.md`, `deny.local`. Logs stay in their homes. `.claude/settings.local.json` and `upstream/.cache/` stay ignored.
+- Nothing local is deleted automatically. When an era's `7-review` closes (`python3 -m hostguard mark-reviewed <era>`) and after a history rewrite, run `python3 -m hostguard status` and ask the user which candidates to delete.
