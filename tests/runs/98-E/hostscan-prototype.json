@@ -1,0 +1,29 @@
+{
+  "probe": "Prototype of check 7: a host-state scan with a deny list built from this host at scan time",
+  "era": "98-host-isolation",
+  "stage": "2-exploration",
+  "date": "2026-09-18",
+  "method": "Throwaway scanner in the scratchpad, standard library only. Host literals: home path, user name in a path, short hostname, repository absolute path and its sha256[:16], the Claude Code project-directory slug, user-scope marketplaces and plugins from ~/.claude/plugins, the model in ~/.codex/config.toml, the model in ~/.claude/settings.json. Fixed patterns: temporary and Nix paths, a path ending in scratchpad/, UUIDs, plan and usage-limit vocabulary in English and Korean. Blobs outside upstream/ and commit messages. Output names rules and paths only; no host value is recorded here.",
+  "deny_list_sources": {"home": 1, "user_in_path": 1, "hostname": 1, "repo_path": 1, "repo_path_hash": 1, "project_slug": 1, "user_marketplace": 1, "user_plugin": 2, "codex_model": 1, "claude_model_setting": 1},
+  "runtime_seconds": {"tip": "under 1", "full_history_dev_and_master": 7.4},
+  "precision_on_current_history": {
+    "true_positives": 0,
+    "false_positives": [
+      {"rule": "user_plugin", "files": 7, "cause": "the two user-scope plugin names are common English words and match as substrings of unrelated text (a script name, a word in a spec)"},
+      {"rule": "plan_en", "files": 1, "cause": "case-insensitive 'plus Tier' in 'a fresh closed-stem table plus Tier-1-style stem lookup'"},
+      {"rule": "plan_ko", "files": 1, "cause": "the era 98 concept names the vocabulary it bans"},
+      {"rule": "scratch_path", "files": 1, "cause": "an elided placeholder path '.../scratchpad/p9/...' in the P9 record"}
+    ]
+  },
+  "recall_on_pre_rewrite_history": {
+    "refs": "the local backups of the history before each rewrite of 2026-09-18",
+    "caught": ["Nix shell path", "temporary and scratch paths", "session UUIDs and the private artifact link", "path-derived project hash", "a user-scope marketplace still configured", "the Codex personal model", "plan and usage-limit wording (14 files in English, 7 in Korean)"],
+    "missed": [
+      {"item": "repository path", "occurrences": 58, "cause": "it was committed in home-relative form (~/...), the form the logger and the verifiers write; the rule matched only the absolute form"},
+      {"item": "a user-scope plugin, a user marketplace and the Claude Code model setting", "cause": "host drift: all three have since been removed or changed on the host, so a deny list read from the current configuration no longer contains them"},
+      {"item": "the clone directory name", "cause": "a fragment of a path; the file was flagged only through other rules"},
+      {"item": "the usage-limit reset date", "cause": "a date is not a rule; files were flagged through the wording around it"}
+    ]
+  },
+  "verdict": "A host-derived deny list is feasible and fast. It must match the home-relative form of paths, match host words on word boundaries, and be backed by a local accumulated list, because host configuration drifts and past values disappear from it. Vocabulary rules need case sensitivity and an allowlist for documents that discuss the rules."
+}
