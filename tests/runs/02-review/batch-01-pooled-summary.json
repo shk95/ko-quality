@@ -1,0 +1,72 @@
+{
+ "batch": "batch-01",
+ "topup_rounds": [
+  19,
+  20,
+  21
+ ],
+ "sessions": {
+  "first_run": 1458,
+  "topup": 243,
+  "total": 1701
+ },
+ "sessions_per_stratum_arm_cell": [
+  63
+ ],
+ "cells": 27,
+ "achieved_power": {
+  "n_per_arm": 63,
+  "effect": "0.5 SD",
+  "alpha": 0.05,
+  "power": 0.8013,
+  "before_topup": 0.7383,
+  "method": "normal approximation, Φ(sqrt(n/2)·d − z_(1−α/2))"
+ },
+ "topup_failed_sessions": 0,
+ "excluded": {
+  "sessions": 6,
+  "annotations": 8,
+  "log_records": 7,
+  "rule": "any annotation of the session fails arm_check, task_matches_prompt, log_record_found or turns_complete, or is_error"
+ },
+ "sessions_by_arm_analysed": {
+  "A": 564,
+  "B": 566,
+  "C": 565
+ },
+ "claude_code_version_in_streams": {
+  "2.1.274": 3042
+ },
+ "cost_usd_api_equivalent": {
+  "first_run": 190.2118,
+  "topup": 31.1098,
+  "topup_canaries": 0.8576,
+  "topup_ceiling": 40
+ },
+ "canary_verdict": "batch accepted: every arm's markers are where its label says",
+ "nonzero_interval_pairs": {
+  "total_pairs": 314,
+  "B_minus_C": [
+   68,
+   68
+  ],
+  "A_minus_B": [
+   29,
+   31
+  ],
+  "became_nonzero": [
+   "bold_density|conversation|A_minus_B",
+   "english_ratio|coding-edit|B_minus_C/agent-reply",
+   "english_ratio|paste-in|B_minus_C/formal-report",
+   "paragraph_initial_repeat|english|A_minus_B",
+   "spacing_errors|paste-in|A_minus_B"
+  ],
+  "became_zero": [
+   "noun_run_length|coding-reply|B_minus_C/agent-reply",
+   "noun_run_length|document|B_minus_C/formal-report",
+   "pos_ngram_diversity|paste-in|A_minus_B"
+  ],
+  "order": "[before top-up, pooled]"
+ },
+ "candidate_values_unchanged": true
+}
