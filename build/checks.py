@@ -8,8 +8,9 @@
            every Codex profile dist), and it starts with the agent-reply policy body (S1-A)
   check 4  skills identical: skills/ trees are byte-identical across all dists
   check 5  agent names: no .claude/agents/*.md in this repository has a name that is in assemble/agents/ (E7-c)
-  check 6  dependency boundary: no Python file under logger/, build/, upstream/ or dist/ imports outside the standard library;
-           third-party imports are allowed only under measure/ (S3)
+  check 6  dependency boundary: no Python file under logger/, build/, upstream/, dist/ or hostguard/ imports outside the
+           standard library; third-party imports are allowed only under measure/ (S3; hostguard/ added by era 98)
+  check 7  host state: no file in the tip tree and no commit reachable from HEAD carries host state (era 98 spec §2.5)
 """
 import ast
 import filecmp
@@ -23,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from build.mini_yaml import load as load_yaml  # noqa: E402
 
-BOUNDARY = ("logger", "build", "upstream", "dist")
+BOUNDARY = ("logger", "build", "upstream", "dist", "hostguard")
 
 
 def body(path):
@@ -184,6 +185,12 @@ def main():
     bad = [hit for f in pys for hit in third_party_imports(f)]
     failures += [f"check 6: third-party import {b}" for b in bad]
     print(f"check 6 dependency boundary: {len(pys)} files under {', '.join(BOUNDARY)}, {len(bad)} third-party imports")
+    # check 7
+    from hostguard import scan  # noqa: E402
+    hits = list(dict.fromkeys(scan.Scanner(ROOT).history("HEAD")))
+    for path, n, rule, excerpt in hits:
+        failures.append(f"check 7: {path}:{n}: {rule}: {excerpt}")
+    print(f"check 7 host state: tip and history of HEAD, {len(hits)} hits")
     for f in failures:
         print("FAIL", f)
     print(f"checks: {len(failures)} failures")
