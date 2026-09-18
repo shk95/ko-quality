@@ -91,17 +91,30 @@ Hooks need `git config core.hooksPath <dir>` once per clone; this cannot be comm
 
 The log homes `~/.ko-quality` and `~/.ko-quality-dev` stay where the spec puts them; they are the product's and the development session's homes, not build material.
 
-**Retention.**
+**Nothing is deleted automatically (user, 2026-09-18).** Deletion cannot be undone, so the user decides; the tooling only says when something has become deletable, and why.
 
-| Data | Rule | Why |
+| Data | Becomes a deletion candidate when | Why |
 |---|---|---|
-| Log and corpus text | 90 days, as now (09 §20) | unchanged |
-| `<era>/build/` | kept until that era's review closes, then deleted | review needs the raw material; after it, the record is the committed summary |
-| `<era>/rewrites/` | deleted when the owner confirms the rewritten history | a backup of what was removed must not outlive its purpose |
-| `state/` files | the logger deletes files older than 7 days at `SessionStart` | a session that never ended leaves text behind today |
-| `LOCAL-NOTES.md`, `deny.local` | kept | the deny list must remember past host values (§2) |
+| Log and corpus text | 90 days pass; `measure run` already deletes it (09 §20, a product rule the user set as automatic) | unchanged |
+| `<era>/build/` | that era's review closes | review needs the raw material; after it, the record is the committed summary |
+| `<era>/rewrites/` | the owner has confirmed the rewritten history | a backup of what was removed must not outlive its purpose |
+| `state/` files in the development home | older than 7 days | a session that never ended leaves a prompt behind |
+| `LOCAL-NOTES.md`, `deny.local` | never | the deny list must remember past host values (§2) |
 
-**P-3.** The local root and layout above as a committed convention (in `AGENTS.md` and the root README's per-machine steps). Era-based deletion of build material, owner-confirmed deletion of rewrite backups, a 7-day sweep of `state/`.
+**The reminder.** A local command with two verbs: `status` lists the candidates with their reason, and `clean` deletes only the candidates the user names. It is surfaced at two points:
+
+| Where | How | Why |
+|---|---|---|
+| Process points | `AGENTS.md`: when an era's `7-review` closes and after a history rewrite, run `status` and ask the user | these are the moments candidates appear |
+| Session start | a SessionStart hook in this repository's committed settings prints one line when candidates exist, nothing otherwise | a backstop when a process point was missed. **Unverified:** whether a SessionStart hook can show a message to the user, rather than only to the model. To be measured in `3-spec` |
+
+Rejected: a line in check 7's output (seen only at build steps, and it blurs the leak check), a notice in the `pre-push` hook (every push; noise).
+
+The 7-day threshold for `state/` has weak grounds: sessions longer than a week are rare. Confidence medium.
+
+**Out of scope here.** Stale `state/` files also accumulate in a product user's `~/.ko-quality`. That is the shipped logger's behaviour (09), so it is not changed in this era; it goes to era 03 as an open question.
+
+**P-3.** The local root and layout above as a committed convention (in `AGENTS.md` and the root README's per-machine steps). No automatic deletion: a `status`/`clean` command, run at process points and announced by a SessionStart hook when candidates exist.
 
 ## 4. Sources that write host state (goal D)
 
@@ -126,16 +139,18 @@ The concept listed `project` (a hash of the repository's absolute path) as host-
 
 The harm in the rewrites was **committing** the value, not having it. Check 7's repo-path-hash rule now blocks that. Replacing it with a repository-intrinsic value (a committed random id, or the first commit's hash) would make `project` agree across clones, which no plan uses; the first commit's hash would also change at every rewrite, as it just did. The cost is a spec change to 09 §12.1 and a migration of existing local logs.
 
-**P-5.** Keep `project` as it is. Goal E is closed as "not host-bound where it lives". Check 7 keeps it out of the public record.
+**When the rejected option would be right.** If era 03 pools real-use records from several of the user's machines, each machine gives this repository a different `project`, and "records from this repository" cannot be gathered into one. A committed random id would then be the best choice: stable across clones and across rewrites.
+
+**P-5.** Keep `project` as it is, **on one condition: if era 03 decides to pool records from more than one machine, this decision is revisited** (the committed random id is the candidate). Goal E is closed as "not host-bound where it lives". Check 7 keeps it out of the public record. The condition goes to era 03 as an input.
 
 ## 6. What this leaves for the spec
 
 | Goal | Proposal | Spec would state |
 |---|---|---|
 | A | P-1 | The rule text for `AGENTS.md`, with the test and the table |
-| B | P-3 | The local root, layout, retention, per-machine steps |
+| B | P-3 | The local root and layout, deletion candidates, the `status`/`clean` command and its two reminders, per-machine steps |
 | C | P-2 | Check 7, hooks, deny list sources and forms, allowlist format |
 | D | P-4 | `corpus summary`, the masking helper, the price table |
-| E | P-5 | Nothing; a forward note in the spec that 09 §12.1 stands |
+| E | P-5 | Nothing; a forward note that 09 §12.1 stands, and the pooling condition handed to era 03 |
 
 Order for the build, unchanged from the concept: C first, then A and B, then D.
